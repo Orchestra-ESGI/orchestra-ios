@@ -1,0 +1,641 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4701260A5F8B001D8196 /* AppDelegate.swift */; };
+		636F4704260A5F8B001D8196 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4703260A5F8B001D8196 /* SceneDelegate.swift */; };
+		636F4706260A5F8B001D8196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4705260A5F8B001D8196 /* ViewController.swift */; };
+		636F4709260A5F8B001D8196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F4707260A5F8B001D8196 /* Main.storyboard */; };
+		636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F470A260A5F8F001D8196 /* Assets.xcassets */; };
+		636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */; };
+		636F4713260A5F8F001D8196 /* Orchestra WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 636F4712260A5F8F001D8196 /* Orchestra WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		636F4719260A5F8F001D8196 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F4717260A5F8F001D8196 /* Interface.storyboard */; };
+		636F471B260A5F91001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F471A260A5F91001D8196 /* Assets.xcassets */; };
+		636F4722260A5F91001D8196 /* Orchestra WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 636F4721260A5F91001D8196 /* Orchestra WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		636F4727260A5F91001D8196 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4726260A5F91001D8196 /* InterfaceController.swift */; };
+		636F4729260A5F91001D8196 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4728260A5F91001D8196 /* ExtensionDelegate.swift */; };
+		636F472B260A5F91001D8196 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472A260A5F91001D8196 /* NotificationController.swift */; };
+		636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472C260A5F91001D8196 /* ComplicationController.swift */; };
+		636F472F260A5F93001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F472E260A5F93001D8196 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		636F4714260A5F8F001D8196 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 636F46F6260A5F8B001D8196 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 636F4711260A5F8F001D8196;
+			remoteInfo = "Orchestra WatchKit App";
+		};
+		636F4723260A5F91001D8196 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 636F46F6260A5F8B001D8196 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 636F4720260A5F91001D8196;
+			remoteInfo = "Orchestra WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		636F4737260A5F94001D8196 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				636F4722260A5F91001D8196 /* Orchestra WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		636F473B260A5F94001D8196 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				636F4713260A5F8F001D8196 /* Orchestra WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		636F46FE260A5F8B001D8196 /* Orchestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orchestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		636F4701260A5F8B001D8196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		636F4703260A5F8B001D8196 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		636F4705260A5F8B001D8196 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		636F4708260A5F8B001D8196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		636F470A260A5F8F001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		636F470D260A5F8F001D8196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		636F470F260A5F8F001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636F4712260A5F8F001D8196 /* Orchestra WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Orchestra WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636F4718260A5F8F001D8196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		636F471A260A5F91001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		636F471C260A5F91001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636F4721260A5F91001D8196 /* Orchestra WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Orchestra WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636F4726260A5F91001D8196 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		636F4728260A5F91001D8196 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		636F472A260A5F91001D8196 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		636F472C260A5F91001D8196 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		636F472E260A5F93001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		636F4730260A5F93001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636F4731260A5F93001D8196 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		636F46FB260A5F8B001D8196 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		636F471E260A5F91001D8196 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		636F46F5260A5F8B001D8196 = {
+			isa = PBXGroup;
+			children = (
+				636F4700260A5F8B001D8196 /* Orchestra */,
+				636F4716260A5F8F001D8196 /* Orchestra WatchKit App */,
+				636F4725260A5F91001D8196 /* Orchestra WatchKit Extension */,
+				636F46FF260A5F8B001D8196 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		636F46FF260A5F8B001D8196 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				636F46FE260A5F8B001D8196 /* Orchestra.app */,
+				636F4712260A5F8F001D8196 /* Orchestra WatchKit App.app */,
+				636F4721260A5F91001D8196 /* Orchestra WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		636F4700260A5F8B001D8196 /* Orchestra */ = {
+			isa = PBXGroup;
+			children = (
+				636F4701260A5F8B001D8196 /* AppDelegate.swift */,
+				636F4703260A5F8B001D8196 /* SceneDelegate.swift */,
+				636F4705260A5F8B001D8196 /* ViewController.swift */,
+				636F4707260A5F8B001D8196 /* Main.storyboard */,
+				636F470A260A5F8F001D8196 /* Assets.xcassets */,
+				636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */,
+				636F470F260A5F8F001D8196 /* Info.plist */,
+			);
+			path = Orchestra;
+			sourceTree = "<group>";
+		};
+		636F4716260A5F8F001D8196 /* Orchestra WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				636F4717260A5F8F001D8196 /* Interface.storyboard */,
+				636F471A260A5F91001D8196 /* Assets.xcassets */,
+				636F471C260A5F91001D8196 /* Info.plist */,
+			);
+			path = "Orchestra WatchKit App";
+			sourceTree = "<group>";
+		};
+		636F4725260A5F91001D8196 /* Orchestra WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				636F4726260A5F91001D8196 /* InterfaceController.swift */,
+				636F4728260A5F91001D8196 /* ExtensionDelegate.swift */,
+				636F472A260A5F91001D8196 /* NotificationController.swift */,
+				636F472C260A5F91001D8196 /* ComplicationController.swift */,
+				636F472E260A5F93001D8196 /* Assets.xcassets */,
+				636F4730260A5F93001D8196 /* Info.plist */,
+				636F4731260A5F93001D8196 /* PushNotificationPayload.apns */,
+			);
+			path = "Orchestra WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		636F46FD260A5F8B001D8196 /* Orchestra */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 636F473C260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra" */;
+			buildPhases = (
+				636F46FA260A5F8B001D8196 /* Sources */,
+				636F46FB260A5F8B001D8196 /* Frameworks */,
+				636F46FC260A5F8B001D8196 /* Resources */,
+				636F473B260A5F94001D8196 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				636F4715260A5F8F001D8196 /* PBXTargetDependency */,
+			);
+			name = Orchestra;
+			productName = Orchestra;
+			productReference = 636F46FE260A5F8B001D8196 /* Orchestra.app */;
+			productType = "com.apple.product-type.application";
+		};
+		636F4711260A5F8F001D8196 /* Orchestra WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 636F4738260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit App" */;
+			buildPhases = (
+				636F4710260A5F8F001D8196 /* Resources */,
+				636F4737260A5F94001D8196 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				636F4724260A5F91001D8196 /* PBXTargetDependency */,
+			);
+			name = "Orchestra WatchKit App";
+			productName = "Orchestra WatchKit App";
+			productReference = 636F4712260A5F8F001D8196 /* Orchestra WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		636F4720260A5F91001D8196 /* Orchestra WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 636F4734260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit Extension" */;
+			buildPhases = (
+				636F471D260A5F91001D8196 /* Sources */,
+				636F471E260A5F91001D8196 /* Frameworks */,
+				636F471F260A5F91001D8196 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Orchestra WatchKit Extension";
+			productName = "Orchestra WatchKit Extension";
+			productReference = 636F4721260A5F91001D8196 /* Orchestra WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		636F46F6260A5F8B001D8196 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					636F46FD260A5F8B001D8196 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					636F4711260A5F8F001D8196 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					636F4720260A5F91001D8196 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = 636F46F9260A5F8B001D8196 /* Build configuration list for PBXProject "Orchestra" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 636F46F5260A5F8B001D8196;
+			productRefGroup = 636F46FF260A5F8B001D8196 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				636F46FD260A5F8B001D8196 /* Orchestra */,
+				636F4711260A5F8F001D8196 /* Orchestra WatchKit App */,
+				636F4720260A5F91001D8196 /* Orchestra WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		636F46FC260A5F8B001D8196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */,
+				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
+				636F4709260A5F8B001D8196 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		636F4710260A5F8F001D8196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F471B260A5F91001D8196 /* Assets.xcassets in Resources */,
+				636F4719260A5F8F001D8196 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		636F471F260A5F91001D8196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F472F260A5F93001D8196 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		636F46FA260A5F8B001D8196 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F4706260A5F8B001D8196 /* ViewController.swift in Sources */,
+				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
+				636F4704260A5F8B001D8196 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		636F471D260A5F91001D8196 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636F472B260A5F91001D8196 /* NotificationController.swift in Sources */,
+				636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */,
+				636F4729260A5F91001D8196 /* ExtensionDelegate.swift in Sources */,
+				636F4727260A5F91001D8196 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		636F4715260A5F8F001D8196 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 636F4711260A5F8F001D8196 /* Orchestra WatchKit App */;
+			targetProxy = 636F4714260A5F8F001D8196 /* PBXContainerItemProxy */;
+		};
+		636F4724260A5F91001D8196 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 636F4720260A5F91001D8196 /* Orchestra WatchKit Extension */;
+			targetProxy = 636F4723260A5F91001D8196 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		636F4707260A5F8B001D8196 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636F4708260A5F8B001D8196 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636F470D260A5F8F001D8196 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		636F4717260A5F8F001D8196 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636F4718260A5F8F001D8196 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		636F4732260A5F93001D8196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		636F4733260A5F93001D8196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		636F4735260A5F94001D8196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WFH7JUNUYM;
+				INFOPLIST_FILE = "Orchestra WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rk.pg.Orchestra.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Debug;
+		};
+		636F4736260A5F94001D8196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WFH7JUNUYM;
+				INFOPLIST_FILE = "Orchestra WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rk.pg.Orchestra.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Release;
+		};
+		636F4739260A5F94001D8196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WFH7JUNUYM;
+				IBSC_MODULE = Orchestra_WatchKit_Extension;
+				INFOPLIST_FILE = "Orchestra WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rk.pg.Orchestra.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Debug;
+		};
+		636F473A260A5F94001D8196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WFH7JUNUYM;
+				IBSC_MODULE = Orchestra_WatchKit_Extension;
+				INFOPLIST_FILE = "Orchestra WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rk.pg.Orchestra.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.1;
+			};
+			name = Release;
+		};
+		636F473D260A5F94001D8196 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WFH7JUNUYM;
+				INFOPLIST_FILE = Orchestra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rk.pg.Orchestra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		636F473E260A5F94001D8196 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WFH7JUNUYM;
+				INFOPLIST_FILE = Orchestra/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rk.pg.Orchestra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		636F46F9260A5F8B001D8196 /* Build configuration list for PBXProject "Orchestra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636F4732260A5F93001D8196 /* Debug */,
+				636F4733260A5F93001D8196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		636F4734260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636F4735260A5F94001D8196 /* Debug */,
+				636F4736260A5F94001D8196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		636F4738260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636F4739260A5F94001D8196 /* Debug */,
+				636F473A260A5F94001D8196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		636F473C260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636F473D260A5F94001D8196 /* Debug */,
+				636F473E260A5F94001D8196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 636F46F6260A5F8B001D8196 /* Project object */;
+}
