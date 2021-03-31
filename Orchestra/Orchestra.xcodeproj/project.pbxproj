@@ -3,14 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0CCD4870297548DB69FCB0 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F075D592E6AAE56846ABC0 /* Pods_Orchestra_WatchKit_Extension.framework */; };
+		234A20437DDBC771EF71D3EC /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B735EEEF660363E2D830B4C /* Pods_Orchestra_WatchKit_App.framework */; };
+		630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE209261479B300F88DB2 /* RaspberryService.swift */; };
+		630BE20F261479FF00F88DB2 /* HomeAssistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE20E261479FF00F88DB2 /* HomeAssistantService.swift */; };
+		630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE21426147A4A00F88DB2 /* UserServices.swift */; };
+		631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB1C2610EA38003F65F9 /* StringUtils.swift */; };
+		631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB212610EA8E003F65F9 /* FileUtils.swift */; };
+		633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E402610D0F50094B148 /* FakeUserDataService.swift */; };
+		633E7E4C2610D12D0094B148 /* RootApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E4B2610D12D0094B148 /* RootApiService.swift */; };
+		633E7E542610D1400094B148 /* UserDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E532610D1400094B148 /* UserDto.swift */; };
+		633E7E742610D6660094B148 /* HouseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E732610D6660094B148 /* HouseDto.swift */; };
+		633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E792610D67B0094B148 /* SceneDto.swift */; };
+		633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E812610D7460094B148 /* ActionsSceneDto.swift */; };
 		636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4701260A5F8B001D8196 /* AppDelegate.swift */; };
 		636F4704260A5F8B001D8196 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4703260A5F8B001D8196 /* SceneDelegate.swift */; };
 		636F4706260A5F8B001D8196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4705260A5F8B001D8196 /* ViewController.swift */; };
-		636F4709260A5F8B001D8196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F4707260A5F8B001D8196 /* Main.storyboard */; };
 		636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F470A260A5F8F001D8196 /* Assets.xcassets */; };
 		636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */; };
 		636F4713260A5F8F001D8196 /* Orchestra WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 636F4712260A5F8F001D8196 /* Orchestra WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -22,6 +34,13 @@
 		636F472B260A5F91001D8196 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472A260A5F91001D8196 /* NotificationController.swift */; };
 		636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472C260A5F91001D8196 /* ComplicationController.swift */; };
 		636F472F260A5F93001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F472E260A5F93001D8196 /* Assets.xcassets */; };
+		63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63880ED02610E66E003C3701 /* ApiUtils.swift */; };
+		638AB8E6261494510020EE75 /* SceneServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB8E5261494510020EE75 /* SceneServices.swift */; };
+		638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB8EA261495EB0020EE75 /* HouseServices.swift */; };
+		638AB90826149CC30020EE75 /* AppPresentationPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */; };
+		638AB90926149CC30020EE75 /* AppPresentationPagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */; };
+		63D5B2982610FB35004573D7 /* ErrorDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5B2972610FB35004573D7 /* ErrorDto.swift */; };
+		70ED95813EEF630AF26D70E4 /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B6ADD194894FF7445EA81F /* Pods_Orchestra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,11 +86,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04F075D592E6AAE56846ABC0 /* Pods_Orchestra_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A7FEF5096A34D2A5A869A4D /* Pods-Orchestra WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		13F2108F62321BCC655C711B /* Pods-Orchestra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.release.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.release.xcconfig"; sourceTree = "<group>"; };
+		37C260031D86BBF0238B6425 /* Pods-Orchestra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.debug.xcconfig"; sourceTree = "<group>"; };
+		3B735EEEF660363E2D830B4C /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BDE37616BABCBC7B01C8F73 /* Pods-Orchestra WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		57B6ADD194894FF7445EA81F /* Pods_Orchestra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		630BE209261479B300F88DB2 /* RaspberryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaspberryService.swift; sourceTree = "<group>"; };
+		630BE20E261479FF00F88DB2 /* HomeAssistantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssistantService.swift; sourceTree = "<group>"; };
+		630BE21426147A4A00F88DB2 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
+		631BAB1C2610EA38003F65F9 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		631BAB212610EA8E003F65F9 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		633E7E402610D0F50094B148 /* FakeUserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserDataService.swift; sourceTree = "<group>"; };
+		633E7E4B2610D12D0094B148 /* RootApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootApiService.swift; sourceTree = "<group>"; };
+		633E7E532610D1400094B148 /* UserDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDto.swift; sourceTree = "<group>"; };
+		633E7E732610D6660094B148 /* HouseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDto.swift; sourceTree = "<group>"; };
+		633E7E792610D67B0094B148 /* SceneDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDto.swift; sourceTree = "<group>"; };
+		633E7E812610D7460094B148 /* ActionsSceneDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsSceneDto.swift; sourceTree = "<group>"; };
 		636F46FE260A5F8B001D8196 /* Orchestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orchestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636F4701260A5F8B001D8196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		636F4703260A5F8B001D8196 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		636F4705260A5F8B001D8196 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		636F4708260A5F8B001D8196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		636F470A260A5F8F001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636F470D260A5F8F001D8196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		636F470F260A5F8F001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,13 +123,30 @@
 		636F472E260A5F93001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636F4730260A5F93001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636F4731260A5F93001D8196 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		63880ED02610E66E003C3701 /* ApiUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtils.swift; sourceTree = "<group>"; };
+		638AB8E5261494510020EE75 /* SceneServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneServices.swift; sourceTree = "<group>"; };
+		638AB8EA261495EB0020EE75 /* HouseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseServices.swift; sourceTree = "<group>"; };
+		638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresentationPagerViewController.swift; sourceTree = "<group>"; };
+		638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppPresentationPagerViewController.xib; sourceTree = "<group>"; };
+		63D5B2972610FB35004573D7 /* ErrorDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDto.swift; sourceTree = "<group>"; };
+		83EA41DF70BBD1FA5AC06684 /* Pods-Orchestra WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		E6C57C9C7904F65F5C0EB2AA /* Pods-Orchestra WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00A852ECB76DB9266A5CE67E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				234A20437DDBC771EF71D3EC /* Pods_Orchestra_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		636F46FB260A5F8B001D8196 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70ED95813EEF630AF26D70E4 /* Pods_Orchestra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,12 +154,95 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B0CCD4870297548DB69FCB0 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C234B1F80F51B1918CA428F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37C260031D86BBF0238B6425 /* Pods-Orchestra.debug.xcconfig */,
+				13F2108F62321BCC655C711B /* Pods-Orchestra.release.xcconfig */,
+				4BDE37616BABCBC7B01C8F73 /* Pods-Orchestra WatchKit App.debug.xcconfig */,
+				E6C57C9C7904F65F5C0EB2AA /* Pods-Orchestra WatchKit App.release.xcconfig */,
+				0A7FEF5096A34D2A5A869A4D /* Pods-Orchestra WatchKit Extension.debug.xcconfig */,
+				83EA41DF70BBD1FA5AC06684 /* Pods-Orchestra WatchKit Extension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		633E7E392610CFE60094B148 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				636F4705260A5F8B001D8196 /* ViewController.swift */,
+				638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */,
+				638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		633E7E3A2610CFEF0094B148 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		633E7E3B2610CFFE0094B148 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				63880E7D2610E1E5003C3701 /* Utils */,
+				633E7E3D2610D03E0094B148 /* Rest */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		633E7E3D2610D03E0094B148 /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				633E7E482610D1010094B148 /* Dto */,
+				633E7E3F2610D0720094B148 /* Services */,
+				633E7E3E2610D0610094B148 /* Mocks */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		633E7E3E2610D0610094B148 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				633E7E402610D0F50094B148 /* FakeUserDataService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		633E7E3F2610D0720094B148 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				633E7E4B2610D12D0094B148 /* RootApiService.swift */,
+				630BE209261479B300F88DB2 /* RaspberryService.swift */,
+				630BE20E261479FF00F88DB2 /* HomeAssistantService.swift */,
+				630BE21426147A4A00F88DB2 /* UserServices.swift */,
+				638AB8E5261494510020EE75 /* SceneServices.swift */,
+				638AB8EA261495EB0020EE75 /* HouseServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		633E7E482610D1010094B148 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				633E7E532610D1400094B148 /* UserDto.swift */,
+				633E7E732610D6660094B148 /* HouseDto.swift */,
+				633E7E792610D67B0094B148 /* SceneDto.swift */,
+				633E7E812610D7460094B148 /* ActionsSceneDto.swift */,
+				63D5B2972610FB35004573D7 /* ErrorDto.swift */,
+			);
+			path = Dto;
+			sourceTree = "<group>";
+		};
 		636F46F5260A5F8B001D8196 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +250,8 @@
 				636F4716260A5F8F001D8196 /* Orchestra WatchKit App */,
 				636F4725260A5F91001D8196 /* Orchestra WatchKit Extension */,
 				636F46FF260A5F8B001D8196 /* Products */,
+				3C234B1F80F51B1918CA428F /* Pods */,
+				B19AC53DF5A703AACBEFE883 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,10 +268,11 @@
 		636F4700260A5F8B001D8196 /* Orchestra */ = {
 			isa = PBXGroup;
 			children = (
+				633E7E3B2610CFFE0094B148 /* Core */,
+				633E7E3A2610CFEF0094B148 /* ViewModels */,
+				633E7E392610CFE60094B148 /* Views */,
 				636F4701260A5F8B001D8196 /* AppDelegate.swift */,
 				636F4703260A5F8B001D8196 /* SceneDelegate.swift */,
-				636F4705260A5F8B001D8196 /* ViewController.swift */,
-				636F4707260A5F8B001D8196 /* Main.storyboard */,
 				636F470A260A5F8F001D8196 /* Assets.xcassets */,
 				636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */,
 				636F470F260A5F8F001D8196 /* Info.plist */,
@@ -165,6 +304,26 @@
 			path = "Orchestra WatchKit Extension";
 			sourceTree = "<group>";
 		};
+		63880E7D2610E1E5003C3701 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63880ED02610E66E003C3701 /* ApiUtils.swift */,
+				631BAB1C2610EA38003F65F9 /* StringUtils.swift */,
+				631BAB212610EA8E003F65F9 /* FileUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B19AC53DF5A703AACBEFE883 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57B6ADD194894FF7445EA81F /* Pods_Orchestra.framework */,
+				3B735EEEF660363E2D830B4C /* Pods_Orchestra_WatchKit_App.framework */,
+				04F075D592E6AAE56846ABC0 /* Pods_Orchestra_WatchKit_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,10 +331,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636F473C260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra" */;
 			buildPhases = (
+				168DD8E091EA7C128DA3B187 /* [CP] Check Pods Manifest.lock */,
 				636F46FA260A5F8B001D8196 /* Sources */,
 				636F46FB260A5F8B001D8196 /* Frameworks */,
 				636F46FC260A5F8B001D8196 /* Resources */,
 				636F473B260A5F94001D8196 /* Embed Watch Content */,
+				3B7A99AB2A263D060CA1C8C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,8 +352,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636F4738260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit App" */;
 			buildPhases = (
+				EFF4C9688BA577AF59068D54 /* [CP] Check Pods Manifest.lock */,
 				636F4710260A5F8F001D8196 /* Resources */,
 				636F4737260A5F94001D8196 /* Embed App Extensions */,
+				00A852ECB76DB9266A5CE67E /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,9 +371,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636F4734260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit Extension" */;
 			buildPhases = (
+				3A30667A593B2BCCBAE092CB /* [CP] Check Pods Manifest.lock */,
 				636F471D260A5F91001D8196 /* Sources */,
 				636F471E260A5F91001D8196 /* Frameworks */,
 				636F471F260A5F91001D8196 /* Resources */,
+				AECDA34C9C249247A069DF9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,7 +433,7 @@
 			files = (
 				636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */,
 				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
-				636F4709260A5F8B001D8196 /* Main.storyboard in Resources */,
+				638AB90926149CC30020EE75 /* AppPresentationPagerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,13 +456,132 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		168DD8E091EA7C128DA3B187 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Orchestra-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A30667A593B2BCCBAE092CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Orchestra WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B7A99AB2A263D060CA1C8C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AECDA34C9C249247A069DF9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFF4C9688BA577AF59068D54 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Orchestra WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		636F46FA260A5F8B001D8196 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */,
 				636F4706260A5F8B001D8196 /* ViewController.swift in Sources */,
+				633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */,
+				633E7E542610D1400094B148 /* UserDto.swift in Sources */,
+				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
+				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
+				638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */,
+				638AB8E6261494510020EE75 /* SceneServices.swift in Sources */,
+				633E7E4C2610D12D0094B148 /* RootApiService.swift in Sources */,
+				63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */,
+				630BE20F261479FF00F88DB2 /* HomeAssistantService.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
+				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
+				633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */,
+				638AB90826149CC30020EE75 /* AppPresentationPagerViewController.swift in Sources */,
+				631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */,
+				633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */,
+				63D5B2982610FB35004573D7 /* ErrorDto.swift in Sources */,
 				636F4704260A5F8B001D8196 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,14 +613,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		636F4707260A5F8B001D8196 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				636F4708260A5F8B001D8196 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -469,6 +745,7 @@
 		};
 		636F4735260A5F94001D8196 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A7FEF5096A34D2A5A869A4D /* Pods-Orchestra WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -491,6 +768,7 @@
 		};
 		636F4736260A5F94001D8196 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83EA41DF70BBD1FA5AC06684 /* Pods-Orchestra WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -514,6 +792,7 @@
 		};
 		636F4739260A5F94001D8196 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BDE37616BABCBC7B01C8F73 /* Pods-Orchestra WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -534,6 +813,7 @@
 		};
 		636F473A260A5F94001D8196 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6C57C9C7904F65F5C0EB2AA /* Pods-Orchestra WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -555,13 +835,16 @@
 		};
 		636F473D260A5F94001D8196 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37C260031D86BBF0238B6425 /* Pods-Orchestra.debug.xcconfig */;
 			buildSettings = {
+				API_SECRET = TOKEN;
+				API_URL = "http://localhost:8000";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WFH7JUNUYM;
 				INFOPLIST_FILE = Orchestra/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,19 +853,22 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		636F473E260A5F94001D8196 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13F2108F62321BCC655C711B /* Pods-Orchestra.release.xcconfig */;
 			buildSettings = {
+				API_SECRET = TOKEN;
+				API_URL = "http://localhost:8000";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WFH7JUNUYM;
 				INFOPLIST_FILE = Orchestra/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,7 +877,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

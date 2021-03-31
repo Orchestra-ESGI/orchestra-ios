@@ -1,12 +1,22 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+#platform :ios, '12.0'
 
 target 'Orchestra' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Orchestra
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
+  
+  # Utils
+  #pod 'Kingfisher' # https://github.com/onevcat/Kingfisher
+  pod 'ReachabilitySwift' # https://github.com/ashleymills/Reachability.swift
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
+  # REST
+  pod 'Alamofire' # https://github.com/Alamofire/Alamofire
+  pod 'RxAlamofire' # https://github.com/RxSwiftCommunity/RxAlamofire
+  pod 'ObjectMapper' # https://github.com/tristanhimmelman/ObjectMapper
 end
 
 target 'Orchestra WatchKit App' do
@@ -21,6 +31,10 @@ target 'Orchestra WatchKit Extension' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Orchestra WatchKit Extension
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
+
+  # REST
+  pod 'Alamofire'
 
 end
