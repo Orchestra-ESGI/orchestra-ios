@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
 
 class ViewController: UIViewController {
-
+    let disposeBag = DisposeBag()
+    
+    let apiService = RootApiService.shared
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
 
