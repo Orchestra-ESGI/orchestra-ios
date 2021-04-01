@@ -17,6 +17,10 @@ target 'Orchestra' do
   pod 'Alamofire' # https://github.com/Alamofire/Alamofire
   pod 'RxAlamofire' # https://github.com/RxSwiftCommunity/RxAlamofire
   pod 'ObjectMapper' # https://github.com/tristanhimmelman/ObjectMapper
+
+  # Material
+  pod 'NotificationBannerSwift', '2.0.1'
+  pod 'MRProgress'
 end
 
 target 'Orchestra WatchKit App' do
