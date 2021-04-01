@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Orchestra
+
+  Created by Ramzy Kermad on 01/04/2021.
+  
+*/
+
+// - MARK: Notifications
+// Login
+"login.notification.unreachable.title" = "Réseau indisponible!"
+"login.notification.unreachable.subtitle" = "Veuillez vérifier votre connexion à internet et réessayer"
+"login.notification.ok.title" = "Connexion réussie"
+"login.notification.ok.subtitle" =
+"login.notification.ko.title" = "Un problème est survenu!"
+"login.notification.ko.subtitle" = "Réessayez ulterieurement"
+"login.notification.koapi.title" = "Connexion impossible!"
+"login.notification.koapi.subtitle" = "Vous devez renseigner tous les champs!"
+
+// Signup
