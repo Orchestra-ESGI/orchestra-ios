@@ -8,13 +8,13 @@
 
 // - MARK: Notifications
 // Login
-"login.notification.unreachable.title" = "网络不可用"
-"login.notification.unreachable.subtitle" = "请检查您的网络连接，再试一次"
-"login.notification.ok.title" = "成功连接"
-"login.notification.ok.subtitle" =
-"login.notification.ko.title" = "出现了一个问题"
-"login.notification.ko.subtitle" = "稍后再试"
-"login.notification.koapi.title" = "无法连接"
-"login.notification.koapi.subtitle" = "你必须填写所有字段!"
+"login.notification.unreachable.title" = "网络不可用";
+"login.notification.unreachable.subtitle" = "请检查您的网络连接，再试一次";
+"login.notification.ok.title" = "成功连接";
+"login.notification.ok.subtitle" = "";
+"login.notification.ko.title" = "出现了一个问题";
+"login.notification.ko.subtitle" = "稍后再试";
+"login.notification.koapi.title" = "无法连接";
+"login.notification.koapi.subtitle" = "你必须填写所有字段!";
 
 // Signup

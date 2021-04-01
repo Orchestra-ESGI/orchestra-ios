@@ -8,13 +8,13 @@
 
 // - MARK: Notifications
 // Login
-"login.notification.unreachable.title" = "Red no disponible."
-"login.notification.unreachable.subtitle" = "Por favor, compruebe su conexión a Internet y vuelva a intentarlo"
-"login.notification.ok.title" = "¡Conexión exitosa!"
-"login.notification.ok.subtitle" =
-"login.notification.ko.title" = "Ha surgido un problema."
-"login.notification.ko.subtitle" = "Vuelve a intentarlo más tarde"
-"login.notification.koapi.title" = "No se puede conectar"
-"login.notification.koapi.subtitle" = "Debe rellenar todos los campos."
+"login.notification.unreachable.title" = "Red no disponible.";
+"login.notification.unreachable.subtitle" = "Por favor, compruebe su conexión a Internet y vuelva a intentarlo";
+"login.notification.ok.title" = "¡Conexión exitosa!";
+"login.notification.ok.subtitle" = "";
+"login.notification.ko.title" = "Ha surgido un problema.";
+"login.notification.ko.subtitle" = "Vuelve a intentarlo más tarde";
+"login.notification.koapi.title" = "No se puede conectar";
+"login.notification.koapi.subtitle" = "Debe rellenar todos los campos.";
 
 // Signup
