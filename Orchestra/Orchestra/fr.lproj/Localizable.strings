@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  Orchestra
+
+  Created by Ramzy Kermad on 01/04/2021.
+  
+*/
+
+// - MARK: Login Notifications
+
+"login.notification.unreachable.title" = "Réseau indisponible!";
+"login.notification.unreachable.subtitle" = "Veuillez vérifier votre connexion à internet et réessayer";
+"login.notification.ok.title" = "Connexion réussie";
+"login.notification.ok.subtitle" = "";
+"login.notification.ko.title" = "Un problème est survenu!";
+"login.notification.ko.subtitle" = "Réessayez ulterieurement";
+"login.notification.koapi.title" = "Connexion impossible!";
+"login.notification.koapi.subtitle" = "Vous devez renseigner tous les champs!";
+"login.notification.credantials.wrong.title" = "Informations éronnées";
+"login.notification.credantials.wrong.subtitle" = "Modifiez les information et reéssayez";
+
+// MARK: Progress labels and texts
+"progress.notification.undetermined.title" = "Veuillez patienter...";
+
+// - MARK: Login Labels and texts
+"login.vc.welcome.text" = "Bienvenue sur Orchestra, vous êtez de retour !";
+"login.vc.email.label.text" = "Email";
+"login.vc.email.label.hint" = "ex: toto@gmail.com";
+"login.vc.password.label.text" = "Mot de passe";
+"login.vc.password.forgot.buttonn.text" = "Mot de passe oublié ?";
+"login.vc.connexion.button.text" = "Connexion";
+"login.vc.signup.button.text" = "Créer un compte";
+
+
+// - MARK: Signup Labels and texts
+"signup.vc.title"= "Création de compte";
+"signup.vc.appbar.send.form" = "Continuer";
+"signup.vc.welcome.text" = "Créez un compte pour synchroniser toutes vos informations";
+"signup.vc.email.label.text" = "Email";
+"signup.vc.password.label.text" = "Mot de passe";
+"signup.vc.password.second.label.text" = "Confirmez le mot de passe";
+"signup.vc.name.label.text" = "Nom";

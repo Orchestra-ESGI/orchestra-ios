@@ -8,13 +8,35 @@
 
 // - MARK: Notifications
 // Login
-"login.notification.unreachable.title" = "Réseau indisponible!";
-"login.notification.unreachable.subtitle" = "Veuillez vérifier votre connexion à internet et réessayer";
-"login.notification.ok.title" = "Connexion réussie";
+"login.notification.unreachable.title" = "Network unavailable!";
+"login.notification.unreachable.subtitle" = "Please check your internet connection and try again";
+"login.notification.ok.title" = "Successful connection!";
 "login.notification.ok.subtitle" = "";
-"login.notification.ko.title" = "Un problème est survenu!";
-"login.notification.ko.subtitle" = "Réessayez ulterieurement";
-"login.notification.koapi.title" = "Connexion impossible!";
-"login.notification.koapi.subtitle" = "Vous devez renseigner tous les champs!";
+"login.notification.ko.title" = "A problem has arisen!";
+"login.notification.ko.subtitle" = "Try again later";
+"login.notification.koapi.title" = "Can't connect!";
+"login.notification.koapi.subtitle" = "You must fill in all fields!";
+"login.notification.credantials.wrong.title" = "Erroneous information";
+"login.notification.credantials.wrong.subtitle" = "Change the information and try again";
 
-// Signup
+// MARK: Progress labels and texts
+"progress.notification.undetermined.title" = "Please wait...";
+
+// - MARK: Login Labels and texts
+"login.vc.welcome.text" = "Welcome back to Orchestra!";
+"login.vc.email.label.text" = "Email";
+"login.vc.email.label.hint" = "ex: toto@gmail.com";
+"login.vc.password.label.text" = "Password";
+"login.vc.password.forgot.buttonn.text" = "Forgot your password?";
+"login.vc.connexion.button.text" = "Connect";
+"login.vc.signup.button.text" = "Create an account";
+
+
+// - MARK: Signup Labels and texts
+"signup.vc.title"= "Account creation";
+"signup.vc.appbar.send.form" = "Continue";
+"signup.vc.welcome.text" = "Create an account to synchronise all your information";
+"signup.vc.email.label.text" = "Email";
+"signup.vc.password.label.text" = "Password";
+"signup.vc.password.second.label.text" = "Confirm your password";
+"signup.vc.name.label.text" = "Name";

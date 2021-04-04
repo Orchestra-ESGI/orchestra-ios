@@ -21,6 +21,17 @@
 		633E7E742610D6660094B148 /* HouseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E732610D6660094B148 /* HouseDto.swift */; };
 		633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E792610D67B0094B148 /* SceneDto.swift */; };
 		633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E812610D7460094B148 /* ActionsSceneDto.swift */; };
+		634F9544261A340A0092C269 /* ScenesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F9542261A340A0092C269 /* ScenesListViewController.swift */; };
+		634F9545261A340A0092C269 /* ScenesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634F9543261A340A0092C269 /* ScenesListViewController.xib */; };
+		634F954D261A41240092C269 /* ScreensLabelLocalizableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F954C261A41240092C269 /* ScreensLabelLocalizableUtils.swift */; };
+		635DD49E26188025001D1EFC /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD49D26188025001D1EFC /* Users.json */; };
+		635DD4A326188034001D1EFC /* Scenes.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4A226188034001D1EFC /* Scenes.json */; };
+		635DD4A826188041001D1EFC /* Houses.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4A726188041001D1EFC /* Houses.json */; };
+		635DD4B02618867E001D1EFC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DD4AE2618867E001D1EFC /* LoginViewController.swift */; };
+		635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4AF2618867E001D1EFC /* LoginViewController.xib */; };
+		635DD4E7261A0640001D1EFC /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DD4E5261A0640001D1EFC /* SigninViewController.swift */; };
+		635DD4E8261A0640001D1EFC /* SigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4E6261A0640001D1EFC /* SigninViewController.xib */; };
+		635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635DD4F7261A0BDC001D1EFC /* AppError.swift */; };
 		636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4701260A5F8B001D8196 /* AppDelegate.swift */; };
 		636F4704260A5F8B001D8196 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4703260A5F8B001D8196 /* SceneDelegate.swift */; };
 		636F4706260A5F8B001D8196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F4705260A5F8B001D8196 /* ViewController.swift */; };
@@ -118,6 +129,20 @@
 		6346F0832615D09B008ACED9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6346F0842615D09C008ACED9 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6346F0852615D09D008ACED9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		634F9542261A340A0092C269 /* ScenesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesListViewController.swift; sourceTree = "<group>"; };
+		634F9543261A340A0092C269 /* ScenesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScenesListViewController.xib; sourceTree = "<group>"; };
+		634F954C261A41240092C269 /* ScreensLabelLocalizableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreensLabelLocalizableUtils.swift; sourceTree = "<group>"; };
+		635DD49D26188025001D1EFC /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		635DD4A226188034001D1EFC /* Scenes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenes.json; sourceTree = "<group>"; };
+		635DD4A726188041001D1EFC /* Houses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Houses.json; sourceTree = "<group>"; };
+		635DD4AE2618867E001D1EFC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		635DD4AF2618867E001D1EFC /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		635DD4CC2618A174001D1EFC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		635DD4CD2618A174001D1EFC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Interface.strings; sourceTree = "<group>"; };
+		635DD4CE2618A174001D1EFC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		635DD4E5261A0640001D1EFC /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		635DD4E6261A0640001D1EFC /* SigninViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SigninViewController.xib; sourceTree = "<group>"; };
+		635DD4F7261A0BDC001D1EFC /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		636F46FE260A5F8B001D8196 /* Orchestra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orchestra.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		636F4701260A5F8B001D8196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		636F4703260A5F8B001D8196 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,9 +232,11 @@
 		633E7E392610CFE60094B148 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				634F9541261A33E80092C269 /* Accueil */,
+				635DD50E261A177F001D1EFC /* Présentation */,
+				635DD4E4261A0629001D1EFC /* Signin */,
+				635DD4AC26188660001D1EFC /* Login */,
 				636F4705260A5F8B001D8196 /* ViewController.swift */,
-				638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */,
-				638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,6 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				633E7E402610D0F50094B148 /* FakeUserDataService.swift */,
+				635DD49D26188025001D1EFC /* Users.json */,
+				635DD4A226188034001D1EFC /* Scenes.json */,
+				635DD4A726188041001D1EFC /* Houses.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -274,6 +304,54 @@
 			path = Dto;
 			sourceTree = "<group>";
 		};
+		634F9541261A33E80092C269 /* Accueil */ = {
+			isa = PBXGroup;
+			children = (
+				634F9542261A340A0092C269 /* ScenesListViewController.swift */,
+				634F9543261A340A0092C269 /* ScenesListViewController.xib */,
+			);
+			path = Accueil;
+			sourceTree = "<group>";
+		};
+		635DD4AC26188660001D1EFC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				635DD4AE2618867E001D1EFC /* LoginViewController.swift */,
+				635DD4AF2618867E001D1EFC /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		635DD4E4261A0629001D1EFC /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				635DD4E5261A0640001D1EFC /* SigninViewController.swift */,
+				635DD4E6261A0640001D1EFC /* SigninViewController.xib */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		635DD50E261A177F001D1EFC /* Présentation */ = {
+			isa = PBXGroup;
+			children = (
+				638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */,
+				638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */,
+			);
+			name = "Présentation";
+			path = "Présentation";
+			sourceTree = "<group>";
+		};
+		635DD50F261A1799001D1EFC /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				636F4701260A5F8B001D8196 /* AppDelegate.swift */,
+				636F4703260A5F8B001D8196 /* SceneDelegate.swift */,
+				636F470A260A5F8F001D8196 /* Assets.xcassets */,
+				636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
 		636F46F5260A5F8B001D8196 = {
 			isa = PBXGroup;
 			children = (
@@ -299,13 +377,10 @@
 		636F4700260A5F8B001D8196 /* Orchestra */ = {
 			isa = PBXGroup;
 			children = (
+				635DD50F261A1799001D1EFC /* Ressources */,
 				633E7E3B2610CFFE0094B148 /* Core */,
 				633E7E3A2610CFEF0094B148 /* ViewModels */,
 				633E7E392610CFE60094B148 /* Views */,
-				636F4701260A5F8B001D8196 /* AppDelegate.swift */,
-				636F4703260A5F8B001D8196 /* SceneDelegate.swift */,
-				636F470A260A5F8F001D8196 /* Assets.xcassets */,
-				636F470C260A5F8F001D8196 /* LaunchScreen.storyboard */,
 				636F470F260A5F8F001D8196 /* Info.plist */,
 				637FB6D12615CEA600790735 /* Localizable.strings */,
 			);
@@ -341,6 +416,7 @@
 			children = (
 				637FB6702615BE8000790735 /* UserLocalizableUtils.swift */,
 				637FB6BA2615CBAE00790735 /* NotificationLocalizableUtils.swift */,
+				634F954C261A41240092C269 /* ScreensLabelLocalizableUtils.swift */,
 			);
 			path = LocalizableStringUtils;
 			sourceTree = "<group>";
@@ -354,6 +430,7 @@
 				631BAB212610EA8E003F65F9 /* FileUtils.swift */,
 				637FB6412615BCB900790735 /* NotificationUtils.swift */,
 				637FB6782615BFA200790735 /* ProgressUtils.swift */,
+				635DD4F7261A0BDC001D1EFC /* AppError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -463,6 +540,7 @@
 				it,
 				"pt-PT",
 				nl,
+				fr,
 			);
 			mainGroup = 636F46F5260A5F8B001D8196;
 			productRefGroup = 636F46FF260A5F8B001D8196 /* Products */;
@@ -481,9 +559,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635DD4E8261A0640001D1EFC /* SigninViewController.xib in Resources */,
+				635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */,
+				635DD4A826188041001D1EFC /* Houses.json in Resources */,
+				634F9545261A340A0092C269 /* ScenesListViewController.xib in Resources */,
 				636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */,
 				637FB6CF2615CEA600790735 /* Localizable.strings in Resources */,
+				635DD4A326188034001D1EFC /* Scenes.json in Resources */,
 				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
+				635DD49E26188025001D1EFC /* Users.json in Resources */,
 				638AB90926149CC30020EE75 /* AppPresentationPagerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -616,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				637FB6422615BCB900790735 /* NotificationUtils.swift in Sources */,
+				634F954D261A41240092C269 /* ScreensLabelLocalizableUtils.swift in Sources */,
 				630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */,
 				636F4706260A5F8B001D8196 /* ViewController.swift in Sources */,
 				633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */,
@@ -624,15 +709,19 @@
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
 				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
 				638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */,
+				634F9544261A340A0092C269 /* ScenesListViewController.swift in Sources */,
 				638AB8E6261494510020EE75 /* SceneServices.swift in Sources */,
 				633E7E4C2610D12D0094B148 /* RootApiService.swift in Sources */,
 				637FB6BB2615CBAE00790735 /* NotificationLocalizableUtils.swift in Sources */,
 				637FB62C2615125000790735 /* UsersViewModel.swift in Sources */,
+				635DD4B02618867E001D1EFC /* LoginViewController.swift in Sources */,
 				63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */,
 				630BE20F261479FF00F88DB2 /* HomeAssistantService.swift in Sources */,
+				635DD4E7261A0640001D1EFC /* SigninViewController.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
 				633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */,
+				635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */,
 				638AB90826149CC30020EE75 /* AppPresentationPagerViewController.swift in Sources */,
 				631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */,
 				633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */,
@@ -679,6 +768,7 @@
 				6382CD0B2615CFEF00384F69 /* it */,
 				63E81DD22615D028003FD580 /* pt-PT */,
 				6346F07F2615D095008ACED9 /* nl */,
+				635DD4CC2618A174001D1EFC /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -693,6 +783,7 @@
 				6382CD0F2615CFF000384F69 /* it */,
 				63E81DD32615D028003FD580 /* pt-PT */,
 				6346F0802615D095008ACED9 /* nl */,
+				635DD4CD2618A174001D1EFC /* fr */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -707,6 +798,7 @@
 				6346F0832615D09B008ACED9 /* it */,
 				6346F0842615D09C008ACED9 /* pt-PT */,
 				6346F0852615D09D008ACED9 /* es */,
+				635DD4CE2618A174001D1EFC /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

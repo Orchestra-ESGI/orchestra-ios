@@ -16,5 +16,27 @@
 "login.notification.ko.subtitle" = "Riprova più tardi";
 "login.notification.koapi.title" = "Non riesco a connettermi!";
 "login.notification.koapi.subtitle" = "Devi riempire tutti i campi!";
+"login.notification.credantials.wrong.title" = "Informazioni errate";
+"login.notification.credantials.wrong.subtitle" = "Cambia le informazioni e prova di nuovo";
 
-// Signup
+// MARK: Progress labels and texts
+"progress.notification.undetermined.title" = "Si prega di attendere...";
+
+// - MARK: Login Labels and texts
+"login.vc.welcome.text" = "Bentornato all'Orchestra!";
+"login.vc.email.label.text" = "Email";
+"login.vc.email.label.hint" = "ex: toto@gmail.com";
+"login.vc.password.label.text" = "Password";
+"login.vc.password.forgot.buttonn.text" = "Hai dimenticato la tua password?";
+"login.vc.connexion.button.text" = "Connessione";
+"login.vc.signup.button.text" = "Creare un account";
+
+
+// - MARK: Signup Labels and texts
+"signup.vc.title"= "Creare un account";
+"signup.vc.appbar.send.form" = "Continua";
+"signup.vc.welcome.text" = "Crea un account per sincronizzare tutte le tue informazioni";
+"signup.vc.email.label.text" = "Email";
+"signup.vc.password.label.text" = "password";
+"signup.vc.password.second.label.text" = "Conferma la password";
+"signup.vc.name.label.text" = "Nome";

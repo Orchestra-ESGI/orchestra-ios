@@ -16,5 +16,27 @@
 "login.notification.ko.subtitle" = "Probeer het later nog eens.";
 "login.notification.koapi.title" = "Ik kan geen verbinding maken!";
 "login.notification.koapi.subtitle" = "U moet alle velden invullen!";
+"login.notification.credantials.wrong.title" = "Foutieve informatie";
+"login.notification.credantials.wrong.subtitle" = "Verander de informatie en probeer opnieuw";
 
-// Signup
+// MARK: Progress labels and texts
+"progress.notification.undetermined.title" = "Wacht alstublieft...";
+
+// - MARK: Login Labels and texts
+"login.vc.welcome.text" = "Welkom terug bij het Orchestra!";
+"login.vc.email.label.text" = "E-mail";
+"login.vc.email.label.hint" = "ex: toto@gmail.com";
+"login.vc.password.label.text" = "Wachtwoord";
+"login.vc.password.forgot.buttonn.text" = "Wachtwoord vergeten?";
+"login.vc.connexion.button.text" = "Aansluiting";
+"login.vc.signup.button.text" = "Maak een account aan";
+
+
+// - MARK: Signup Labels and texts
+"signup.vc.title"= "Maak een account aan";
+"signup.vc.appbar.send.form" = "Ga door";
+"signup.vc.welcome.text" = "Maak een account aan om al uw informatie te synchroniseren";
+"signup.vc.email.label.text" = "E-mail";
+"signup.vc.password.label.text" = "Wachtwoord";
+"signup.vc.password.second.label.text" = "Bevestig wachtwoord";
+"signup.vc.name.label.text" = "Naam";

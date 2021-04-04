@@ -16,5 +16,27 @@
 "login.notification.ko.subtitle" = "稍后再试";
 "login.notification.koapi.title" = "无法连接";
 "login.notification.koapi.subtitle" = "你必须填写所有字段!";
+"login.notification.credantials.wrong.title" = "错误的信息";
+"login.notification.credantials.wrong.subtitle" = "更改信息后再试";
 
-// Signup
+// MARK: Progress labels and texts
+"progress.notification.undetermined.title" = "请等待...";
+
+// - MARK: Login Labels and texts
+"login.vc.welcome.text" = "欢迎回到Orchestra!";
+"login.vc.email.label.text" = "电子邮件";
+"login.vc.email.label.hint" = "例：toto@gmail.com";
+"login.vc.password.label.text" = "密码";
+"login.vc.password.forgot.buttonn.text" = "忘记密码？";
+"login.vc.connexion.button.text" = "连接";
+"login.vc.signup.button.text" = "创建一个账户";
+
+
+// - MARK: Signup Labels and texts
+"signup.vc.title"= "创建一个账户";
+"signup.vc.appbar.send.form" = "继续";
+"signup.vc.welcome.text" = "创建一个账户来同步您的所有信息";
+"signup.vc.email.label.text" = "电子邮件";
+"signup.vc.password.label.text" = "密码";
+"signup.vc.password.second.label.text" = "确认密码";
+"signup.vc.name.label.text" = "名称";
