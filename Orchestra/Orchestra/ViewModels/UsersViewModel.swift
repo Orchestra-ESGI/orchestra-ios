@@ -15,13 +15,50 @@ class UsersViewModel{
     let progressUtils = ProgressUtils()
     let notificationLocalizable = NotificationLocalizableUtils.shared
     
+    var isLoginFormValid = PublishSubject<Bool>()
+    var isSignupFormValid = PublishSubject<Bool>()
+    
     let currentUser = PublishSubject<UserDto>()
     
-    func login(email: String, password: String) -> Observable<UserDto>{
-        return userWs.login(email: email, password: password)
+    func login(email: String, password: String, on vewController: UIViewController) -> Observable<UserDto>{
+        return Observable<UserDto>.create { (observer) -> Disposable in
+            _ = self.userWs
+                .login(email: email, password: password)
+                .subscribe { (user) in
+                    self.responseHandle(status: .OK, on: vewController)
+                    self.saveUsreCredentials()
+                    observer.onNext(user)
+                } onError: { (err) in
+                    self.responseHandle(status: .KOAPI, on: vewController)
+                    observer.onError(err)
+                }.disposed(by: self.disposeBag)
+            
+            return Disposables.create()
+        }
+
     }
     
-    func responseHandle(status: StatusInsert) {
+    func signin(name: String, email: String, pwd: String) -> Observable<UserDto>{
+        return userWs.signin(name: name, email: email, password: pwd)
+    }
+    
+    func deleteAccount(usersId: [String]) -> Observable<[String]>{
+        return userWs.removeUser(usersId: usersId)
+    }
+    
+    func updateUser(credentialName: String, id: String, credentialValue: String) -> Observable<UserDto>{
+        return userWs.updateUser(credentialName, id, credentialValue)
+    }
+    
+    func saveUsreCredentials(){
+        // Save user credentials in shared pref or local storage
+    }
+    
+    func updateUserCredentials(){
+        // Update saved user credentials in shared pref or local storage
+    }
+    
+    func responseHandle(status: StatusInsert, on viewController: UIViewController) {
         self.progressUtils.dismiss()
         var redirect = false
         switch status {
@@ -44,6 +81,20 @@ class UsersViewModel{
     }
     
     func redirect(){
+    }
+    
+    func checkLoginForm(emailTf: UITextField, passwordTf: UITextField){
+        var isValid = false
+        
+        if(emailTf.text != nil && passwordTf.text != nil){
+            // do some checking here
+            isValid = true
+        }
+        self.isLoginFormValid.onNext(isValid)
+    }
+    
+    func checkSignupForm(){
+        self.isSignupFormValid.onNext(true)
     }
 }
 

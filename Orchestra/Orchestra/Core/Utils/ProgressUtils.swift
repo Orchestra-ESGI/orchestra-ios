@@ -20,7 +20,7 @@ enum EnumModeView{
 
 class ProgressUtils {
     
-    static var sharred = ProgressUtils()
+    static var shared = ProgressUtils()
     
     var overlay: MRProgressOverlayView!
     var mode: EnumModeView.Type!

@@ -23,6 +23,11 @@ public class NotificationLocalizableUtils {
     let koApiNotificationTitle = NSLocalizedString("login.notification.koapi.title", comment: "")
     let koApiNotificationSubtitle = NSLocalizedString("login.notification.koapi.subtitle", comment: "")
     
+    let loginCredentialsWrongNotificationTitle = NSLocalizedString("login.notification.credantials.wrong.title", comment: "")
+    let loginCredentialsWrongNotificationSubtitle = NSLocalizedString("login.notification.credantials.wrong.subtitle", comment: "")
+    
+    // - MARK: Progress notifications
+    let undeterminedProgressViewTitle = NSLocalizedString("progress.notification.undetermined.title", comment: "")
     
     // - MARK: Signup Notifications
     
