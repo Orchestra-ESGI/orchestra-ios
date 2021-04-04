@@ -55,7 +55,7 @@
                         <constraint firstAttribute="height" constant="159" id="ny2-GW-3N8"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" systemColor="systemPinkColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbq-0Y-GUY">
@@ -63,14 +63,14 @@
                     <state key="normal" title="Mot de passe oublié ?"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F26-Rc-Wtm">
-                    <rect key="frame" x="149.5" y="679" width="115" height="30"/>
+                    <rect key="frame" x="149.5" y="604" width="115" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="Créer un compte">
                         <color key="titleColor" systemColor="linkColor"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-nY-Tah">
-                    <rect key="frame" x="132" y="569" width="150" height="45"/>
+                    <rect key="frame" x="132" y="529" width="150" height="45"/>
                     <color key="backgroundColor" systemColor="linkColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="150" id="LL3-CZ-cEe"/>
@@ -97,9 +97,9 @@
                 <constraint firstItem="d4X-vW-lzU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="OsN-4z-U8f"/>
                 <constraint firstAttribute="trailing" secondItem="d4X-vW-lzU" secondAttribute="trailing" constant="30" id="RRI-Qs-xOB"/>
                 <constraint firstAttribute="trailing" secondItem="lZr-V6-8nc" secondAttribute="trailing" constant="30" id="RhF-cM-zQX"/>
-                <constraint firstItem="F26-Rc-Wtm" firstAttribute="top" secondItem="UY3-nY-Tah" secondAttribute="bottom" constant="65" id="TFE-tt-dOr"/>
+                <constraint firstItem="F26-Rc-Wtm" firstAttribute="top" secondItem="UY3-nY-Tah" secondAttribute="bottom" constant="30" id="TFE-tt-dOr"/>
                 <constraint firstItem="Epf-1H-J57" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="X0w-01-pme"/>
-                <constraint firstItem="UY3-nY-Tah" firstAttribute="top" secondItem="mbq-0Y-GUY" secondAttribute="bottom" constant="80" id="bDn-dN-i16"/>
+                <constraint firstItem="UY3-nY-Tah" firstAttribute="top" secondItem="mbq-0Y-GUY" secondAttribute="bottom" constant="40" id="bDn-dN-i16"/>
                 <constraint firstItem="r1f-Pe-iJH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="dqM-0d-Rwi"/>
                 <constraint firstAttribute="trailing" secondItem="d4X-vW-lzU" secondAttribute="trailing" constant="30" id="iRX-Lj-L1B"/>
                 <constraint firstItem="UY3-nY-Tah" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jVd-8y-Yg9"/>
@@ -118,6 +118,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
