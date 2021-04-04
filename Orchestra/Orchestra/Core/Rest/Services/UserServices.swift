@@ -44,33 +44,31 @@ class UserServices: RootApiService{
     }
     
     /// Removes 1 or many users
-    func removeUser(usersId: [String]) -> Observable<[UserDto]>{
+    func removeUser(usersId: [String]) -> Observable<[String]>{
         var body: [String: Any] = [:]
         body["id_user"] = usersId
         
         
-        return Observable<[UserDto]>.create({observer in
+        return Observable<[String]>.create({observer in
             AF.request("\(self.ROOT_PATH)/users/get/all", method: .delete, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
                         case .success( _):
-                            guard let responseData =  response.value as? [Any] else {
-                                return observer.onCompleted()
+                            guard let responseData =  response.value as? [String: Any],
+                                  let usersIds = responseData["users_id"] as? [String] else {
+                                observer.onNext([])
+                                return
                             }
-                            var removedusers: [UserDto] = []
-                            for userJson in responseData {
-                                removedusers.append(Mapper<UserDto>().map(JSONObject: userJson)!)
-                            }
-                            observer.onNext(removedusers)
-                    case .failure(_):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - UserServices - removeUser()")
-                            observer.onError(errorDto!)
+                            observer.onNext(usersId)
+                        case .failure(_):
+                                guard let errorJson =  response.value  else {
+                                    return observer.onCompleted()
+                                }
+                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
+                                
+                                print("Error - UserServices - removeUser()")
+                                observer.onError(errorDto!)
                     }
                 }
             return Disposables.create();
@@ -87,7 +85,7 @@ class UserServices: RootApiService{
     /// `userId`: id of the user we want to update
     /// `credentialValue`: the new value of the credential updated
     
-    func updateUser(credentialName: String, id userId: String, credentialValue: String) -> Observable<UserDto>{
+    func updateUser(_  credentialName: String, _ userId: String, _ credentialValue: String) -> Observable<UserDto>{
         var body: [String: Any] = [:]
         body["user_id"] = userId
         switch credentialName {
@@ -113,14 +111,14 @@ class UserServices: RootApiService{
                             }
                             let updatedUser = Mapper<UserDto>().map(JSONObject: responseData)!
                             observer.onNext(updatedUser)
-                    case .failure( _):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - UserServices - updateUser()")
-                            observer.onError(errorDto!)
+                        case .failure( _):
+                                guard let errorJson =  response.value  else {
+                                    return observer.onCompleted()
+                                }
+                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
+                                
+                                print("Error - UserServices - updateUser()")
+                                observer.onError(errorDto!)
                     }
                 }
             return Disposables.create();
@@ -141,23 +139,23 @@ class UserServices: RootApiService{
                             guard let responseData =  response.value else {
                                 return observer.onCompleted()
                             }
-                            let updatedUser = Mapper<UserDto>().map(JSONObject: responseData)!
-                            observer.onNext(updatedUser)
-                    case .failure( _):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - UserServices - login()")
-                            observer.onError(errorDto!)
+                            let user = Mapper<UserDto>().map(JSONObject: responseData)!
+                            observer.onNext(user)
+                        case .failure( _):
+                                guard let errorJson =  response.value  else {
+                                    return observer.onCompleted()
+                                }
+                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
+                                
+                                print("Error - UserServices - login()")
+                                observer.onError(errorDto!)
                     }
                 }
             return Disposables.create();
         })
     }
     
-    func singin(name: String, email: String, password: String) -> Observable<UserDto>{
+    func signin(name: String, email: String, password: String) -> Observable<UserDto>{
         var body: [String: Any] = [:]
         body["name"] = email
         body["email"] = email
@@ -172,17 +170,17 @@ class UserServices: RootApiService{
                             guard let responseData =  response.value else {
                                 return observer.onCompleted()
                             }
-                            let updatedUser = Mapper<UserDto>().map(JSONObject: responseData)!
-                            observer.onNext(updatedUser)
-                    case .failure( _):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - UserServices - singin()")
-                            observer.onError(errorDto!)
-                    }
+                            let signedUser = Mapper<UserDto>().map(JSONObject: responseData)!
+                            observer.onNext(signedUser)
+                        case .failure( _):
+                                guard let errorJson =  response.value  else {
+                                    return observer.onCompleted()
+                                }
+                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
+                                
+                                print("Error - UserServices - singin()")
+                                observer.onError(errorDto!)
+                        }
                 }
             return Disposables.create();
         })
