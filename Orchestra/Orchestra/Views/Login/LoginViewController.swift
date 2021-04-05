@@ -131,6 +131,9 @@ class LoginViewController: UIViewController {
                 if userCredentials.count == 1 {
                     self.notificationUtils
                         .showFloatingNotificationBanner(title: self.notificationLocalize.okNotificationTitle, subtitle: self.notificationLocalize.okNotificationSubtitle, position: .top, style: .success)
+                    let sceneVC = ScenesListViewController()
+                    sceneVC.userLoggedInData = userCredentials[0]
+                    self.navigationController?.pushViewController(sceneVC, animated: true)
 //                    self.notificationUtils
 //                        .showFloatingNotificationBanner(title: "Hello \(userCredentials[0].name)", subtitle: "You are successfully logged", position: .top, style: .success)
                 }else{

@@ -115,7 +115,12 @@ class SigninViewController: UIViewController {
             .userSignupStream
             .subscribe(onNext: { (user) in
                 self.alert!.dismiss(animated: true, completion: nil)
-                self.notificationUtils.showBadCredentialsNotification()
+                self.notificationUtils
+                    .showFloatingNotificationBanner(title: self.notificationLocalize.okNotificationTitle, subtitle: self.notificationLocalize.okNotificationSubtitle, position: .top, style: .success)
+                
+                let sceneVC = ScenesListViewController()
+                sceneVC.userLoggedInData = user
+                self.navigationController?.pushViewController(sceneVC, animated: true)
             }, onError: { (err) in
                 self.notificationUtils.showBadCredentialsNotification()
             })
