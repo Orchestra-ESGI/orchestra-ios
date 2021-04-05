@@ -40,3 +40,7 @@
 "signup.vc.password.label.text" = "Password";
 "signup.vc.password.second.label.text" = "Confirm your password";
 "signup.vc.name.label.text" = "Name";
+
+// - MARK: Home Labels and texts
+"home.collection.header.objects" = "My items";
+"home.collection.header.scenes" = "My scenes";
