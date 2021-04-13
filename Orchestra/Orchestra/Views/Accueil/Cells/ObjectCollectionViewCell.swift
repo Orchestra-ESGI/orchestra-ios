@@ -15,6 +15,7 @@ class ObjectCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var objectNameLabel: UILabel!
     @IBOutlet weak var objectStatusLabel: UILabel!
     @IBOutlet weak var cellContentView: UIView!
+    @IBOutlet weak var favIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
