@@ -10,8 +10,8 @@ import ObjectMapper
 import RxSwift
 import RxCocoa
 
-class FakeApi{
-    static var shared = FakeApi()
+class FakeUserServices{
+    static var shared = FakeUserServices()
     var userStream = PublishSubject<[UserDto]>()
     var userSignupStream = PublishSubject<UserDto>()
     

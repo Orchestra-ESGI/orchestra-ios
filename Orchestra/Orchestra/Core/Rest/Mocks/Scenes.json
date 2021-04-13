@@ -1,0 +1,147 @@
+{
+  "scenes": [
+    {
+      "_id": "6071ebe6c7737be2af20059d",
+      "title": "Detecteur Mi",
+      "sceneDescription": "Garage",
+      "backgroundColor": "AXPIY63",
+      "manufacturer": "Xiaomi",
+      "idUser": "6071ebe6be11dd008bbfdd07",
+      "actions": [
+        {
+          "title": "Eteindre toutes les lampes"
+        },
+        {
+          "title": "Allumer la lampe"
+        },
+        {
+          "title": "Eteindre toutes les lampes"
+        },
+        {
+          "title": "Eteindre la lampe"
+        },
+        {
+          "title": "Eteindre toutes les lampes"
+        },
+        {
+          "title": "Fermer les portes"
+        },
+        {
+          "title": "Ouvrir les fenetres"
+        }
+      ]
+    },
+    {
+      "_id": "6071ebe67d6be860e3fda3ac",
+      "title": "Detcteur de fumée",
+      "sceneDescription": "Chambre étage",
+      "backgroundColor": "AXPIY63",
+      "manufacturer": "Somfy",
+      "idUser": "6071ebe65d4829e5e172ad1c",
+      "actions": [
+        {
+          "title": "Allumer la lampe"
+        },
+        {
+          "title": "Activer tous les detecteurs"
+        },
+        {
+          "title": "Fermer les portes"
+        },
+        {
+          "title": "Ouvrir les fenetres"
+        },
+        {
+          "title": "Ouvrir les fenetres"
+        },
+        {
+          "title": "Allumer la lampe"
+        },
+        {
+          "title": "Eteindre la lampe"
+        }
+      ]
+    },
+    {
+      "_id": "6071ebe6c568450b997add3b",
+      "title": "Rideaux éléctriques",
+      "sceneDescription": "Cuisine",
+      "backgroundColor": "XEHD87E",
+      "manufacturer": "Amazon",
+      "idUser": "6071ebe6926d2d0fd5937c7a",
+      "actions": [
+        {
+          "title": "Allumer la lampe"
+        },
+        {
+          "title": "Eteindre toutes les lampes"
+        },
+        {
+          "title": "Activer tous les detecteurs"
+        },
+        {
+          "title": "Eteindre la lampe"
+        },
+        {
+          "title": "Ouvrir les fenetres"
+        }
+      ]
+    },
+    {
+      "_id": "6071ebe628bfb25a02113e7c",
+      "title": "Rideaux éléctriques",
+      "sceneDescription": "Hall",
+      "backgroundColor": "AXPIY63",
+      "manufacturer": "Amazon",
+      "idUser": "6071ebe6a7435d92105fc495",
+      "actions": [
+        {
+          "title": "Fermer les portes"
+        },
+        {
+          "title": "Fermer les fenêtres"
+        },
+        {
+          "title": "Fermer les fenêtres"
+        },
+        {
+          "title": "Eteindre la lampe"
+        },
+        {
+          "title": "Activer tous les detecteurs"
+        },
+        {
+          "title": "Fermer les fenêtres"
+        }
+      ]
+    },
+    {
+      "_id": "6071ebe6846c0d5cbc572daf",
+      "title": "Detecteur Mi",
+      "sceneDescription": "Jardin",
+      "backgroundColor": "AXPIY63",
+      "manufacturer": "Philips Hue",
+      "idUser": "6071ebe6441a9352e39cc668",
+      "actions": [
+        {
+          "title": "Fermer les portes"
+        },
+        {
+          "title": "Eteindre toutes les lampes"
+        },
+        {
+          "title": "Eteindre toutes les lampes"
+        },
+        {
+          "title": "Allumer la lampe"
+        },
+        {
+          "title": "Ouvrir les fenetres"
+        },
+        {
+          "title": "Ouvrir les fenetres"
+        }
+      ]
+    }
+  ]
+}

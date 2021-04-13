@@ -40,3 +40,7 @@
 "signup.vc.password.label.text" = "密码";
 "signup.vc.password.second.label.text" = "确认密码";
 "signup.vc.name.label.text" = "名称";
+
+// - MARK: Home Labels and texts
+"home.collection.header.objects" = "我的对象";
+"home.collection.header.scenes" = "我的场景";

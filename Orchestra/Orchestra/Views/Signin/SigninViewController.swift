@@ -25,7 +25,7 @@ class SigninViewController: UIViewController {
     
     // - MARK: Services
     let userVM = UsersViewModel()
-    let fakeApi = FakeApi.shared
+    let userWS = FakeUserServices.shared
     
     
     // - MARK: Utils
@@ -90,7 +90,7 @@ class SigninViewController: UIViewController {
             .isSignupFormValid
             .subscribe(onNext: { (isValid) in
             if(isValid){
-                self.fakeApi.signup()
+                self.userWS.signup()
             }else{
                 self.notificationUtils.showBadCredentialsNotification()
             }
@@ -111,11 +111,16 @@ class SigninViewController: UIViewController {
     // - MARK: Fake Data
     private func observeSigninFakeUserEvent(){
         _ = self
-            .fakeApi
+            .userWS
             .userSignupStream
             .subscribe(onNext: { (user) in
                 self.alert!.dismiss(animated: true, completion: nil)
-                self.notificationUtils.showBadCredentialsNotification()
+                self.notificationUtils
+                    .showFloatingNotificationBanner(title: self.notificationLocalize.okNotificationTitle, subtitle: self.notificationLocalize.okNotificationSubtitle, position: .top, style: .success)
+                
+                let sceneVC = ScenesListViewController()
+                sceneVC.userLoggedInData = user
+                self.navigationController?.pushViewController(sceneVC, animated: true)
             }, onError: { (err) in
                 self.notificationUtils.showBadCredentialsNotification()
             })
