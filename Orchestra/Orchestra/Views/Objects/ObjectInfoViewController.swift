@@ -16,6 +16,8 @@ class ObjectInfoViewController: UIViewController {
     @IBOutlet weak var onOffButton: UIButton!
     @IBOutlet weak var caracteristicsTableView: UITableView!
     
+    // MARK: - Utils
+    let localizerUtils = ScreensLabelLocalizableUtils()
     
     // MARK: - Local data
     var objectData: ObjectDto?
@@ -40,8 +42,9 @@ class ObjectInfoViewController: UIViewController {
     private func setUpUI(){
         let isObjectFavourite = self.objectData?.isFav
         let favIcon = isObjectFavourite ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
         
-        okButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: nil)
+        okButton = UIBarButtonItem(title: okButtonText , style: .plain, target: self, action: nil)
         favButton = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: nil)
         
         self.navigationItem.rightBarButtonItems = [okButton!, favButton!]
@@ -64,13 +67,23 @@ class ObjectInfoViewController: UIViewController {
     }
     
     private func setUpData(){
-        self.objectInfoNames = ["Fabricant", "Série", "Modèle", "Version", "Disponibilite"]
+        let manufacturerLabel = self.localizerUtils.objectInfoManufacturerLabelText
+        let serialNumberLabel = self.localizerUtils.objectInfoSerialNumberLabelText
+        let modeleLabel = self.localizerUtils.objectInfoModeleLabelText
+        let versionLabel = self.localizerUtils.objectInfoVersionLabelText
+        let reachabilityLabel = self.localizerUtils.objectCellReachabilityLabelText
+        let reachableStatus = (self.objectData?.isReachable ?? false) ?
+                                self.localizerUtils.objectCellReachabilityStatusOkLabelText :
+                                self.localizerUtils.objectCellReachabilityStatusKoLabelText
+        
+        self.objectInfoNames = [manufacturerLabel, serialNumberLabel,
+                                modeleLabel, versionLabel, reachabilityLabel]
         
         self.objectInfoKeyValue["Fabricant"] = self.objectData?.manufacturer
         self.objectInfoKeyValue["Série"] = self.objectData?.serialNumber
         self.objectInfoKeyValue["Modèle"] = self.objectData?.model
         self.objectInfoKeyValue["Version"] = self.objectData?.version
-        self.objectInfoKeyValue["Disponibilite"] = "Disponible"
+        self.objectInfoKeyValue["Disponibilite"] = reachableStatus
     }
     
     private func setUpClickObservers(){

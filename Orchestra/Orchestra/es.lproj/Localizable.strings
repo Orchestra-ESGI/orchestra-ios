@@ -44,3 +44,17 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mis objetos";
 "home.collection.header.scenes" = "Mis escenas";
+
+"object.info.manufacturer.label.text" = "Fabricante";
+"object.info.serial.label.text" = "Número de serie";
+"object.info.model.label.text" = "Modelo";
+"object.info.version.label.text" = "Versión";
+"home.object.cell.reachability.label.text" = "Disponibilidad";
+"home.object.cell.reachability.status.ok.label.text" = "Disponible";
+"home.object.cell.reachability.status.ko.label.text" = "No disponible";
+"object.info.ok.button.label.text" = "OK"
+
+
+// - MARK: New scene Labels annd texts
+"new.scene.vc.title" = "Nueva escena"
+"update.scene.vc.title" = "Modification"

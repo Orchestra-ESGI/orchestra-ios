@@ -9,8 +9,16 @@ import UIKit
 
 class SceneViewController: UIViewController {
 
+    // MARK: - UI
+    
+    
+    
+    // MARK: Utils
+    let localizeUtils = ScreensLabelLocalizableUtils()
+    
+    
     // MARK: - Local data
-    var isUpdating: Bool = true
+    var isUpdating: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +28,9 @@ class SceneViewController: UIViewController {
     
     
     private func setUpUI(){
-        self.title = self.isUpdating ? "Nouvelle scène" : "Modification"
+        let newSceneTitle = self.localizeUtils.newSceneVcTitle
+        let updateSceneTitle = self.localizeUtils.updateSceneVcTitle
+        
+        self.title = self.isUpdating ? updateSceneTitle : newSceneTitle
     }
 }
