@@ -17,6 +17,7 @@ class ObjectDto: NSObject, Mappable{
     var model: String?
     var isOn: Bool?
     var isFav: Bool?
+    var isReachable: Bool?
     var version: String?
     
     required init?(map: Map) {
@@ -32,6 +33,7 @@ class ObjectDto: NSObject, Mappable{
         model <- map["model"]
         isOn <- map["isOn"]
         isFav <- map["isFav"]
+        isReachable <- map["isReachable"]
         version <- map["version"]
     }
     
