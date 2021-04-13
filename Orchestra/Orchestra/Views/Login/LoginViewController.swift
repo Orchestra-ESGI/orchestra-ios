@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signinButton: UIButton!
     
     // - MARK : Services
-    let usersWS = FakeApi.shared //UserServices.shared
+    let usersWS = FakeUserServices.shared //UserServices.shared
     
     // - MARK : View models
     let userVm = UsersViewModel()

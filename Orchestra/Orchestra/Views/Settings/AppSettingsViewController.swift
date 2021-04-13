@@ -39,10 +39,10 @@ class AppSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         setUpView()
+        self.title = "Paramètres"
     }
 
     private func setUpView(){
-        self.navigationItem.hidesBackButton = true
         // Set layout to collection view
         // MARK: Create list layout
         if #available(iOS 14.0, *) {
@@ -95,17 +95,13 @@ class AppSettingsViewController: UIViewController {
                 case .header(let headerItem):
                 
                     // Dequeue header cell
-                    let cell = collectionView.dequeueConfiguredReusableCell(using: headerCellRegistration,
-                                                                            for: indexPath,
-                                                                            item: headerItem)
+                    let cell = collectionView.dequeueConfiguredReusableCell(using: headerCellRegistration, for: indexPath, item: headerItem)
                     return cell
                 
                 case .symbol(let symbolItem):
                     
                     // Dequeue symbol cell
-                    let cell = collectionView.dequeueConfiguredReusableCell(using: symbolCellRegistration,
-                                                                            for: indexPath,
-                                                                            item: symbolItem)
+                    let cell = collectionView.dequeueConfiguredReusableCell(using: symbolCellRegistration, for: indexPath, item: symbolItem)
                     return cell
                 }
             }
