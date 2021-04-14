@@ -52,9 +52,10 @@
 "home.object.cell.reachability.label.text" = "可用性";
 "home.object.cell.reachability.status.ok.label.text" = "可用";
 "home.object.cell.reachability.status.ko.label.text" = "不可用";
-"object.info.ok.button.label.text" = "好的"
+"object.info.ok.button.label.text" = "好的";
 
 
 // - MARK: New scene Labels annd texts
-"new.scene.vc.title" = "新场景"
-"update.scene.vc.title" = "修改"
+"new.scene.vc.title" = "新场景";
+"update.scene.vc.title" = "修改";
+"object.info.onoff.button.text" = "开/关";

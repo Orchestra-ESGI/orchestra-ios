@@ -52,9 +52,10 @@
 "home.object.cell.reachability.label.text" = "Availability";
 "home.object.cell.reachability.status.ok.label.text" = "Available";
 "home.object.cell.reachability.status.ko.label.text" = "Unavailable";
-"object.info.ok.button.label.text" = "OK"
+"object.info.ok.button.label.text" = "OK";
 
 
 // - MARK: New scene Labels annd texts
-"new.scene.vc.title" = "New scene"
-"update.scene.vc.title" = "Update"
+"new.scene.vc.title" = "New scene";
+"update.scene.vc.title" = "Update";
+"object.info.onoff.button.text" = "ON/OFF";

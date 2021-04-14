@@ -52,9 +52,10 @@
 "home.object.cell.reachability.label.text" = "Beschikbaarheid";
 "home.object.cell.reachability.status.ok.label.text" = "Beschikbaar";
 "home.object.cell.reachability.status.ko.label.text" = "Niet beschikbaar";
-"object.info.ok.button.label.text" = "OK"
+"object.info.ok.button.label.text" = "OK";
 
 
 // - MARK: New scene Labels annd texts
-"new.scene.vc.title" = "Nieuwe scène"
-"update.scene.vc.title" = "Wijziging"
+"new.scene.vc.title" = "Nieuwe scène";
+"update.scene.vc.title" = "Wijziging";
+"object.info.onoff.button.text" = "AAN/UIT";
