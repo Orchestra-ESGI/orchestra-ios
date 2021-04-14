@@ -63,7 +63,7 @@ class ObjectInfoViewController: UIViewController {
         self.onOffButton.layer.cornerRadius = 8.0
         self.tableViewContainer.layer.cornerRadius = 12.0
         self.tableViewContainer.layer.masksToBounds = true
-
+        self.onOffButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
     }
     
     private func setUpData(){
@@ -79,11 +79,12 @@ class ObjectInfoViewController: UIViewController {
         self.objectInfoNames = [manufacturerLabel, serialNumberLabel,
                                 modeleLabel, versionLabel, reachabilityLabel]
         
-        self.objectInfoKeyValue["Fabricant"] = self.objectData?.manufacturer
-        self.objectInfoKeyValue["Série"] = self.objectData?.serialNumber
-        self.objectInfoKeyValue["Modèle"] = self.objectData?.model
-        self.objectInfoKeyValue["Version"] = self.objectData?.version
-        self.objectInfoKeyValue["Disponibilite"] = reachableStatus
+        self.objectInfoKeyValue[manufacturerLabel] = self.objectData?.manufacturer
+        self.objectInfoKeyValue[serialNumberLabel] = self.objectData?.serialNumber
+        self.objectInfoKeyValue[modeleLabel] = self.objectData?.model
+        self.objectInfoKeyValue[versionLabel] = self.objectData?.version
+        self.objectInfoKeyValue[reachabilityLabel] = reachableStatus
+        self.onOffButton.setTitle(self.localizerUtils.objectInfoOnOffButtonText, for: .normal)
     }
     
     private func setUpClickObservers(){
@@ -93,7 +94,7 @@ class ObjectInfoViewController: UIViewController {
                 guard let isOn = self.objectData?.isOn else{
                     return
                 }
-                self.onOffButton.backgroundColor = isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+                self.onOffButton.backgroundColor = isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
                 self.objectData?.isOn = !isOn
             }.disposed(by: self.disposeBag)
         

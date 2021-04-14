@@ -214,6 +214,10 @@ extension ScenesListViewController: UICollectionViewDataSource{
             let objectCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OBJECT", for: indexPath) as! ObjectCollectionViewCell
             
             objectCell.objectImageView.image = UIImage(systemName: "message.fill")
+            let currentObject = self.homeObjects[indexPath.row]
+            let reachableStatus = (currentObject.isReachable ?? false) ?
+                                    self.screenLabelLocalize.objectCellReachabilityStatusOkLabelText :
+                                    self.screenLabelLocalize.objectCellReachabilityStatusKoLabelText
             if self.traitCollection.userInterfaceStyle == .dark {
                 objectCell.objectImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             }else{
@@ -223,10 +227,11 @@ extension ScenesListViewController: UICollectionViewDataSource{
             
             objectCell.objectPlaceNameLabel.text = self.homeObjects[currentCellPos].name
             objectCell.objectNameLabel.text = self.homeObjects[currentCellPos].roomName
-            objectCell.objectStatusLabel.text = "Disponible"
+            objectCell.objectStatusLabel.text = reachableStatus
             objectCell.favIcon.image = self.homeObjects[currentCellPos].isFav! ? UIImage(systemName: "heart.fill") : UIImage(systemName: "")
-            objectCell.favIcon.tintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            objectCell.favIcon.tintColor = #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
             objectCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
+
             objectCell.contentView.layer.cornerRadius = 8.0
             objectCell.contentView.layer.borderWidth = 0.2
             objectCell.contentView.layer.masksToBounds = true;
