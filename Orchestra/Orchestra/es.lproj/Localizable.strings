@@ -31,6 +31,9 @@
 "login.vc.connexion.button.text" = "Conexión";
 "login.vc.signup.button.text" = "Crear una cuenta";
 
+"login.welcome.notification.title" = "Bienvenido ";
+"login.welcome.notification.subtitle" = "Estábamos esperando tu regreso";
+"login.complete.checkmark.title" = "Conexión exitosa";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Crear una cuenta";
@@ -72,3 +75,8 @@
 
 "new.scene.unsuccessfully.created.title" = "¡No puedo añadir!";
 "new.scene.unsuccessfully.created.subtitle" = "La escena no ha sido añadida, ¡inténtalo de nuevo!";
+
+"home.vc.remove.alert.title" = "Borrar los elementos seleccionados";
+"home.vc.remove.alert.subtitle" = "¿Realmente quieres borrar la selección? \n Cuidado, esta acción es irreversible, perderás los datos borrados.";
+"home.vc.remove.alert.cancel.button.text" = "Cancelar";
+"home.vc.remove.alert.delete.button.text" = "Borrar";

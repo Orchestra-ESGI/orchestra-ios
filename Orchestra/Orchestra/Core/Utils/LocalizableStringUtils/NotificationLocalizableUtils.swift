@@ -26,6 +26,11 @@ public class NotificationLocalizableUtils {
     let loginCredentialsWrongNotificationTitle = NSLocalizedString("login.notification.credantials.wrong.title", comment: "")
     let loginCredentialsWrongNotificationSubtitle = NSLocalizedString("login.notification.credantials.wrong.subtitle", comment: "")
     
+    let loginWelcomeNotificatiionTitle = NSLocalizedString("login.welcome.notification.title", comment: "")
+    let loginWelcomeNotificationSubtitle = NSLocalizedString("login.welcome.notification.subtitle", comment: "")
+    let loginCompleteCheckmarkTitle = NSLocalizedString("login.complete.checkmark.title", comment: "")
+    
+    
     // - MARK: Progress notifications
     let undeterminedProgressViewTitle = NSLocalizedString("progress.notification.undetermined.title", comment: "")
     
@@ -39,9 +44,11 @@ public class NotificationLocalizableUtils {
     let unsuccessfullyAddedNotificationTitle = NSLocalizedString("new.scene.unsuccessfully.created.title", comment: "")
     let unsuccessfullyAddedNotificationSubtitle = NSLocalizedString("new.scene.unsuccessfully.created.subtitle", comment: "")
     
-    
-    
-    // - MARK: Login Notifications
+    let removeDataAlertTitle = NSLocalizedString("home.vc.remove.alert.title", comment: "")
+    let removeDataAlertSubtitle = NSLocalizedString("home.vc.remove.alert.subtitle", comment: "")
+    let removeDataAlertCancelButtonText = NSLocalizedString("home.vc.remove.alert.cancel.button.text", comment: "")
+    let removeDataAlertDeleteButtonText = NSLocalizedString("home.vc.remove.alert.delete.button.text", comment: "")
+        
     
     init() {
         

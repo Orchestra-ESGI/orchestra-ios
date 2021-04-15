@@ -71,6 +71,7 @@
 		638856E6262769B9002354FB /* SceneVcColorsCvExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638856E5262769B9002354FB /* SceneVcColorsCvExtension.swift */; };
 		638856EB262769D1002354FB /* SceneVsActiosnTvExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638856EA262769D1002354FB /* SceneVsActiosnTvExtension.swift */; };
 		63885706262851DE002354FB /* ScenesListVcExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63885705262851DE002354FB /* ScenesListVcExtension.swift */; };
+		6388571126288BDE002354FB /* SceneListVcShakingCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388571026288BDE002354FB /* SceneListVcShakingCellExtension.swift */; };
 		638AB8E6261494510020EE75 /* SceneServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB8E5261494510020EE75 /* SceneServices.swift */; };
 		638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB8EA261495EB0020EE75 /* HouseServices.swift */; };
 		638AB90826149CC30020EE75 /* AppPresentationPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */; };
@@ -210,6 +211,7 @@
 		638856E5262769B9002354FB /* SceneVcColorsCvExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneVcColorsCvExtension.swift; sourceTree = "<group>"; };
 		638856EA262769D1002354FB /* SceneVsActiosnTvExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneVsActiosnTvExtension.swift; sourceTree = "<group>"; };
 		63885705262851DE002354FB /* ScenesListVcExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesListVcExtension.swift; sourceTree = "<group>"; };
+		6388571026288BDE002354FB /* SceneListVcShakingCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneListVcShakingCellExtension.swift; sourceTree = "<group>"; };
 		638AB8E5261494510020EE75 /* SceneServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneServices.swift; sourceTree = "<group>"; };
 		638AB8EA261495EB0020EE75 /* HouseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseServices.swift; sourceTree = "<group>"; };
 		638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresentationPagerViewController.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				63885705262851DE002354FB /* ScenesListVcExtension.swift */,
+				6388571026288BDE002354FB /* SceneListVcShakingCellExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				635DD4E7261A0640001D1EFC /* SigninViewController.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
+				6388571126288BDE002354FB /* SceneListVcShakingCellExtension.swift in Sources */,
 				633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */,
 				635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */,
 				634AF63D2622061300F6CBBE /* ObjectInfoTableViewCell.swift in Sources */,

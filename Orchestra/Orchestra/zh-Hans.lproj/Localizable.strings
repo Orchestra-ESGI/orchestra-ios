@@ -31,6 +31,9 @@
 "login.vc.connexion.button.text" = "连接";
 "login.vc.signup.button.text" = "创建一个账户";
 
+"login.welcome.notification.title" = "欢迎光临 ";
+"login.welcome.notification.subtitle" = "我们在等你回来";
+"login.complete.checkmark.title" = "成功连接";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "创建一个账户";
@@ -72,3 +75,8 @@
 
 "new.scene.unsuccessfully.created.title" = "不能加！";
 "new.scene.unsuccessfully.created.subtitle" = "场景还未添加，请再试一次!";
+
+"home.vc.remove.alert.title" = "删除所选项目";
+"home.vc.remove.alert.subtitle" = "你真的想删除选择吗？\n 小心，这个动作是不可逆的，你会失去被删除的数据。";
+"home.vc.remove.alert.cancel.button.text" = "取消";
+"home.vc.remove.alert.delete.button.text" = "删除";

@@ -31,6 +31,9 @@
 "login.vc.connexion.button.text" = "Aansluiting";
 "login.vc.signup.button.text" = "Maak een account aan";
 
+"login.welcome.notification.title" = "Welkom ";
+"login.welcome.notification.subtitle" = "We wachtten op je terugkeer";
+"login.complete.checkmark.title" = "Succesvolle verbinding";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Maak een account aan";
@@ -72,3 +75,8 @@
 
 "new.scene.unsuccessfully.created.title" = "Ajout impossible!";
 "new.scene.unsuccessfully.created.subtitle" = "De scène is niet toegevoegd, probeer het opnieuw!";
+
+"home.vc.remove.alert.title" = "Verwijder geselecteerde items";
+"home.vc.remove.alert.subtitle" = "Wil je echt de selectie verwijderen ? \Wees voorzichtig, deze actie is onomkeerbaar, u zult de verwijderde gegevens verliezen.";
+"home.vc.remove.alert.cancel.button.text" = "Annuleren";
+"home.vc.remove.alert.delete.button.text" = "Verwijder";
