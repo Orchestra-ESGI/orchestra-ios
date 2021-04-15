@@ -33,6 +33,15 @@ class FakeObjectsDataService{
         }
     }
     
+    func removeObject() -> Observable<ObjectDto>{
+        return Observable<ObjectDto>.create { (observer) -> Disposable in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                observer.onNext(ObjectDto(JSON: ["": ""])!)
+            }
+            return Disposables.create()
+        }
+    }
+    
     func getObjectData(for objectId: String){
         
     }

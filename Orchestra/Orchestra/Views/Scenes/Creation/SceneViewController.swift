@@ -55,7 +55,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         self.setActionsTableView()
         self.generatesBackGroundColor()
         self.clickObservers()
-        self.observStreamsEvent()
     }
     
     
@@ -108,10 +107,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: Observers Setup
-    
-    private func observStreamsEvent(){
-        
-    }
     
     private func clickObservers(){
         _ = self.addSceneAppbarButon?

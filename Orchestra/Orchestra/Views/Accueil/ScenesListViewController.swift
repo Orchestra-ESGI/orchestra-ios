@@ -22,6 +22,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     let screenLabelLocalize = ScreensLabelLocalizableUtils()
+    let progressUtils = ProgressUtils.shared
     
     // - MARK: Services
     let fakeObjectsWS = FakeObjectsDataService.shared
@@ -273,16 +274,63 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     }
     
     private func clearCellsSelection(){
-        self.homeObjects = self.homeObjects.filter { (object) -> Bool in
-            return !self.objectsToRemove.contains(object)
+        // Do call WS here to remove from db
+        self.progressUtils.displayIndeterminateProgeress(title: "Supression en cours, veuillez patienter...", view: self.view)
+        let removedObjectObservable = self.clearObjectSelected()
+        let removedSceneObservable = self.clearScenesSelected()
+        
+        _ = Observable.combineLatest(removedObjectObservable, removedSceneObservable){ (obs1, obs2) -> Bool in
+            return obs1 && obs2
+        }.subscribe { (finished) in
+            if(finished.element!){
+                self.stopCellsShake()
+                self.isCellsShaking = !self.isCellsShaking
+                self.progressUtils.dismiss()
+                self.progressUtils.displayCheckMark(title: "Supression effectuée", view: self.view)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.progressUtils.dismiss()
+                }
+            }
         }
-        self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
-            return !self.scenesToRemove.contains(scene)
-        })
-        self.objectsToRemove.removeAll()
-        self.scenesToRemove.removeAll()
-        self.stopCellsShake()
-        self.isCellsShaking = !self.isCellsShaking
+    }
+    
+    private func clearObjectSelected() -> Observable<Bool>{
+        return Observable<Bool>.create { (observer) -> Disposable in
+            _ = self.fakeObjectsWS
+                .removeObject()
+                .subscribe(onNext: { (objectRemoved) in
+                    self.homeObjects = self.homeObjects.filter { (object) -> Bool in
+                        return !self.objectsToRemove.contains(object)
+                    }
+                    self.objectsToRemove.removeAll()
+                    observer.onNext(true)
+                }, onError: { (err) in
+                    observer.onError(err)
+                    print("err")
+                })
+                .disposed(by: self.disposeBag)
+            return Disposables.create()
+        }
+    }
+    
+    
+    private func clearScenesSelected() -> Observable<Bool>{
+        return Observable<Bool>.create { (observer) -> Disposable in
+            self.fakeScenesWS
+                .removeScene()
+                .subscribe { (sceneRemoved) in
+                    self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
+                        return !self.scenesToRemove.contains(scene)
+                    })
+                    self.scenesToRemove.removeAll()
+                    observer.onNext(true)
+                } onError: { (err) in
+                    observer.onError(err)
+                    print("err")
+                }.disposed(by: self.disposeBag)
+            
+            return Disposables.create()
+        }
     }
     
     func saveScene(scene: SceneDto) {

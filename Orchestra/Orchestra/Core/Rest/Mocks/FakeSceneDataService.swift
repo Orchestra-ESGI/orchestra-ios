@@ -64,8 +64,14 @@ class FakeSceneDataService{
         
     }
     
-    func addObject(){
-        
+    func removeScene() -> Observable<SceneDto>{
+        return Observable<SceneDto>.create { (oberver) -> Disposable in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                oberver.onNext(SceneDto(JSON: ["": ""])!)
+            }
+            
+            return Disposables.create()
+        }
     }
     
     
