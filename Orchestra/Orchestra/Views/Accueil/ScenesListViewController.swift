@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate {
+class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, SendBackDataProtocol {
     
     // - MARK: UI
     @IBOutlet weak var collectionView: UICollectionView!
@@ -59,7 +59,9 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate {
         self.addSceneAppbarButon?.rx
             .tap
             .bind { [weak self] in
-                self?.navigationController?.pushViewController(SceneViewController(), animated: true)
+                let sceneVc = SceneViewController()
+                sceneVc.dataDelegate = self
+                self?.navigationController?.pushViewController(sceneVc, animated: true)
         }.disposed(by: self.disposeBag)
         
         self.userSettingsAppbarButton?.rx
@@ -94,6 +96,21 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
+    
+    // MARK: Internal functions
+    func saveScene(scene: SceneDto) {
+        self.notificationUtils.showFloatingNotificationBanner(title: self.notificationLocalize.successfullyAddedNotificationTitle, subtitle: self.notificationLocalize.successfullyAddedNotificationSubtitle, position: .top, style: .success)
+        self.homeScenes.append(scene)
+    }
+    
+    func updateScene(scene: SceneDto) {
+        guard let index = self.homeScenes.firstIndex(of: scene) else{
+            return
+        }
+        self.homeScenes.insert(scene, at: index)
+        self.homeScenes.remove(at: index + 1)
+    }
+    
     // - MARK: UI
     private func setUpView(){
         self.navigationItem.hidesBackButton = true
@@ -121,7 +138,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate {
 
     }
     
-    private func generatesBackGroundColor() -> UIColor{
+    func generatesBackGroundColor() -> UIColor{
         return UIColor(red: .random(in: 0.2...0.7),
                        green: .random(in: 0.2...0.7),
                        blue: .random(in: 0.2...0.7),
@@ -135,7 +152,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate {
         self.collectionView.reloadData()
     }
     
-    private func showInfoDetailAboutObject(for indexPath: IndexPath){
+    func showInfoDetailAboutObject(for indexPath: IndexPath){
         // Object clicked on
         // Show more about the object
         let objectVC =  ObjectInfoViewController()
@@ -160,120 +177,9 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate {
         })
     }
     
-    private func startSceneActions(for indexPath: IndexPath){
+    func startSceneActions(for indexPath: IndexPath){
         // Scene clicked on
         // Start actionsn of the scene
         print("Strating actions...")
     }
-}
-
-
-
-// - MARK: Collection view setup
-extension ScenesListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if(indexPath.section == 0){
-            let totalHeight: CGFloat = (self.view.frame.width / 3) - 20
-            let totalWidth: CGFloat = (self.view.frame.width / 3) - 20
-
-            return CGSize(width: totalWidth, height: totalHeight)
-        }else{
-            let totalWidth: CGFloat = (self.view.frame.width / 2) - 20
-            return CGSize(width: totalWidth, height: 60.0)
-        }
-    }
-}
-
-extension ScenesListViewController: UICollectionViewDataSource{
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        var sections = 2
-        if(self.homeObjects.count == 0){
-            sections -= 1
-        }
-        if(self.homeScenes.count == 0){
-            sections -= 1
-        }
-        
-        return sections
-    }
-
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return self.homeObjects.count
-        }else if section == 1{
-            return self.homeScenes.count
-        }
-
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(indexPath.section == 0){
-            let objectCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OBJECT", for: indexPath) as! ObjectCollectionViewCell
-            
-            objectCell.objectImageView.image = UIImage(systemName: "message.fill")
-            if self.traitCollection.userInterfaceStyle == .dark {
-                objectCell.objectImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            }else{
-                objectCell.objectImageView.tintColor = .black
-            }
-            let currentCellPos = indexPath.row
-            
-            objectCell.objectPlaceNameLabel.text = self.homeObjects[currentCellPos].name
-            objectCell.objectNameLabel.text = self.homeObjects[currentCellPos].roomName
-            objectCell.objectStatusLabel.text = "Disponible"
-            objectCell.favIcon.image = self.homeObjects[currentCellPos].isFav! ? UIImage(systemName: "heart.fill") : UIImage(systemName: "")
-            objectCell.favIcon.tintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-            objectCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
-            objectCell.contentView.layer.cornerRadius = 8.0
-            objectCell.contentView.layer.borderWidth = 0.2
-            objectCell.contentView.layer.masksToBounds = true;
-            
-            return objectCell
-        }else{
-            let sceneCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SCENE", for: indexPath) as! SceneCollectionViewCell
-            
-            sceneCell.sceneImageView.image = UIImage(systemName: "sunset.fill")
-            if self.traitCollection.userInterfaceStyle == .dark {
-                sceneCell.sceneImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            }else{
-                sceneCell.sceneImageView.tintColor = .black
-            }
-            let currentCellPos = indexPath.row
-            
-            sceneCell.sceneDescription .text = self.homeScenes[currentCellPos].title
-            sceneCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
-            sceneCell.contentView.layer.cornerRadius = 8.0
-            sceneCell.contentView.layer.borderWidth = 0.2
-            sceneCell.contentView.layer.masksToBounds = true;
-            
-            return sceneCell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SECTION_HEADER", for: indexPath) as! HeaderCollectionViewCell
-        
-        if(indexPath.section == 0){
-            headerCell.headerTextLabel.text = self.screenLabelLocalize.homeHeaderObjectsText
-        }else{
-            headerCell.headerTextLabel.text = self.screenLabelLocalize.homeHeaderScenesText
-        }
-        
-        return headerCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(indexPath.section == 0){
-            self.showInfoDetailAboutObject(for: indexPath)
-        }else{
-            self.startSceneActions(for: indexPath)
-        }
-    }
-}
-
-extension ScenesListViewController: UICollectionViewDelegate{
-    
 }

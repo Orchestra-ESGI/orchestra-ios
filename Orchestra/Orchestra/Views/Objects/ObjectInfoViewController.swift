@@ -16,6 +16,8 @@ class ObjectInfoViewController: UIViewController {
     @IBOutlet weak var onOffButton: UIButton!
     @IBOutlet weak var caracteristicsTableView: UITableView!
     
+    // MARK: - Utils
+    let localizerUtils = ScreensLabelLocalizableUtils()
     
     // MARK: - Local data
     var objectData: ObjectDto?
@@ -40,8 +42,9 @@ class ObjectInfoViewController: UIViewController {
     private func setUpUI(){
         let isObjectFavourite = self.objectData?.isFav
         let favIcon = isObjectFavourite ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
         
-        okButton = UIBarButtonItem(title: "OK", style: .plain, target: self, action: nil)
+        okButton = UIBarButtonItem(title: okButtonText , style: .plain, target: self, action: nil)
         favButton = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: nil)
         
         self.navigationItem.rightBarButtonItems = [okButton!, favButton!]
@@ -60,17 +63,28 @@ class ObjectInfoViewController: UIViewController {
         self.onOffButton.layer.cornerRadius = 8.0
         self.tableViewContainer.layer.cornerRadius = 12.0
         self.tableViewContainer.layer.masksToBounds = true
-
+        self.onOffButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
     }
     
     private func setUpData(){
-        self.objectInfoNames = ["Fabricant", "Série", "Modèle", "Version", "Disponibilite"]
+        let manufacturerLabel = self.localizerUtils.objectInfoManufacturerLabelText
+        let serialNumberLabel = self.localizerUtils.objectInfoSerialNumberLabelText
+        let modeleLabel = self.localizerUtils.objectInfoModeleLabelText
+        let versionLabel = self.localizerUtils.objectInfoVersionLabelText
+        let reachabilityLabel = self.localizerUtils.objectCellReachabilityLabelText
+        let reachableStatus = (self.objectData?.isReachable ?? false) ?
+                                self.localizerUtils.objectCellReachabilityStatusOkLabelText :
+                                self.localizerUtils.objectCellReachabilityStatusKoLabelText
         
-        self.objectInfoKeyValue["Fabricant"] = self.objectData?.manufacturer
-        self.objectInfoKeyValue["Série"] = self.objectData?.serialNumber
-        self.objectInfoKeyValue["Modèle"] = self.objectData?.model
-        self.objectInfoKeyValue["Version"] = self.objectData?.version
-        self.objectInfoKeyValue["Disponibilite"] = "Disponible"
+        self.objectInfoNames = [manufacturerLabel, serialNumberLabel,
+                                modeleLabel, versionLabel, reachabilityLabel]
+        
+        self.objectInfoKeyValue[manufacturerLabel] = self.objectData?.manufacturer
+        self.objectInfoKeyValue[serialNumberLabel] = self.objectData?.serialNumber
+        self.objectInfoKeyValue[modeleLabel] = self.objectData?.model
+        self.objectInfoKeyValue[versionLabel] = self.objectData?.version
+        self.objectInfoKeyValue[reachabilityLabel] = reachableStatus
+        self.onOffButton.setTitle(self.localizerUtils.objectInfoOnOffButtonText, for: .normal)
     }
     
     private func setUpClickObservers(){
@@ -80,7 +94,7 @@ class ObjectInfoViewController: UIViewController {
                 guard let isOn = self.objectData?.isOn else{
                     return
                 }
-                self.onOffButton.backgroundColor = isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+                self.onOffButton.backgroundColor = isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
                 self.objectData?.isOn = !isOn
             }.disposed(by: self.disposeBag)
         

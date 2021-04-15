@@ -32,8 +32,12 @@ public class NotificationLocalizableUtils {
     // - MARK: Signup Notifications
     
     
-    
     // - MARK: Scenes Notifications
+    let successfullyAddedNotificationTitle = NSLocalizedString("new.scene.successfully.created.title", comment: "")
+    let successfullyAddedNotificationSubtitle = NSLocalizedString("new.scene.successfully.created.subtitle", comment: "")
+    
+    let unsuccessfullyAddedNotificationTitle = NSLocalizedString("new.scene.unsuccessfully.created.title", comment: "")
+    let unsuccessfullyAddedNotificationSubtitle = NSLocalizedString("new.scene.unsuccessfully.created.subtitle", comment: "")
     
     
     

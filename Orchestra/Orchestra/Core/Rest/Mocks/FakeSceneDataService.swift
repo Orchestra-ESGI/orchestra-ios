@@ -33,6 +33,33 @@ class FakeSceneDataService{
         }
     }
     
+    func createNewScene(name: String, description: String, color: String, actions: [ActionSceneDto]) -> Observable<SceneDto>{
+        
+        return Observable<SceneDto>.create { (observer) -> Disposable in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                var sceneActions: [[String: Any]] = []
+                for action in actions{
+                    let item = ["title": action.title]
+                    sceneActions.append(item)
+                }
+                
+                let jsonObject: [String: Any] = [
+                    "_id": self.generateRanId(),
+                    "title": name,
+                    "sceneDescription": description,
+                    "backgroundColor": color,
+                    "manufacturer": "Xiaomi",
+                    "idUser": self.generateRanId(),
+                    "actions": sceneActions
+                ]
+
+                let createdScene = SceneDto(JSON: jsonObject)!
+                observer.onNext(createdScene)
+            }
+            return Disposables.create()
+        }
+    }
+    
     func getObjectData(for objectId: String){
         
     }
@@ -41,4 +68,9 @@ class FakeSceneDataService{
         
     }
     
+    
+    func generateRanId() -> String{
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<24).map{ _ in letters.randomElement()! })
+    }
 }

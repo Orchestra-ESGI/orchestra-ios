@@ -44,3 +44,31 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "我的对象";
 "home.collection.header.scenes" = "我的场景";
+
+"object.info.manufacturer.label.text" = "制造商";
+"object.info.serial.label.text" = "序号";
+"object.info.model.label.text" = "型号";
+"object.info.version.label.text" = "版本";
+"home.object.cell.reachability.label.text" = "可用性";
+"home.object.cell.reachability.status.ok.label.text" = "可用";
+"home.object.cell.reachability.status.ko.label.text" = "不可用";
+"object.info.ok.button.label.text" = "好的";
+
+
+// - MARK: New scene Labels annd texts
+"new.scene.vc.title" = "新场景";
+"update.scene.vc.title" = "修改";
+"object.info.onoff.button.text" = "开/关";
+
+"scene.form.name.label.text" = "名称";
+"scene.form.name.tf.textt" = "日落时开灯";
+"scene.form.bg.color.label.text" = "选择一种颜色";
+"scene.form.description.label.text" = "说明";
+"scene.form.description.tf.text" = "天黑就开灯";
+"scene.form.add.action.button" = "增加行动";
+
+"new.scene.successfully.created.title" = "添加！";
+"new.scene.successfully.created.subtitle" = "场景已经添加了!";
+
+"new.scene.unsuccessfully.created.title" = "不能加！";
+"new.scene.unsuccessfully.created.subtitle" = "场景还未添加，请再试一次!";
