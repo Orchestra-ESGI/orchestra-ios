@@ -12,6 +12,7 @@ class SceneCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sceneImageView: UIImageView!
     @IBOutlet weak var sceneDescription: UILabel!
     @IBOutlet weak var cellContentView: UIView!
+    @IBOutlet weak var sceneDetailButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,27 +22,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description example" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SB5-lN-zAs">
-                                <rect key="frame" x="65" y="5" width="130" height="50"/>
+                                <rect key="frame" x="45" y="5" width="120" height="50"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="re3-Zm-dAw">
-                                <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                <rect key="frame" x="10" y="17.5" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="j49-5p-rTa"/>
-                                    <constraint firstAttribute="height" constant="40" id="jVJ-6V-qUl"/>
+                                    <constraint firstAttribute="width" constant="25" id="j49-5p-rTa"/>
+                                    <constraint firstAttribute="height" constant="25" id="jVJ-6V-qUl"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOC-aO-AhP">
+                                <rect key="frame" x="170" y="5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Ccw-Nk-Mhb"/>
+                                    <constraint firstAttribute="height" constant="25" id="Fn1-Vg-mFS"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="ellipsis" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="re3-Zm-dAw" firstAttribute="leading" secondItem="l4p-b2-X5j" secondAttribute="leading" constant="10" id="49Q-Pp-8B6"/>
+                            <constraint firstItem="sOC-aO-AhP" firstAttribute="top" secondItem="l4p-b2-X5j" secondAttribute="top" constant="5" id="5R3-uE-4ur"/>
                             <constraint firstItem="SB5-lN-zAs" firstAttribute="centerY" secondItem="l4p-b2-X5j" secondAttribute="centerY" id="FxG-u7-9Tf"/>
-                            <constraint firstItem="SB5-lN-zAs" firstAttribute="leading" secondItem="re3-Zm-dAw" secondAttribute="trailing" constant="15" id="P7G-lL-JGC"/>
+                            <constraint firstItem="SB5-lN-zAs" firstAttribute="leading" secondItem="re3-Zm-dAw" secondAttribute="trailing" constant="10" id="P7G-lL-JGC"/>
                             <constraint firstItem="re3-Zm-dAw" firstAttribute="centerY" secondItem="l4p-b2-X5j" secondAttribute="centerY" id="ZC2-qc-nWe"/>
                             <constraint firstItem="SB5-lN-zAs" firstAttribute="top" secondItem="l4p-b2-X5j" secondAttribute="top" constant="5" id="bCp-f1-DOS"/>
-                            <constraint firstAttribute="trailing" secondItem="SB5-lN-zAs" secondAttribute="trailing" constant="5" id="cYl-eS-0fN"/>
+                            <constraint firstItem="sOC-aO-AhP" firstAttribute="leading" secondItem="SB5-lN-zAs" secondAttribute="trailing" constant="5" id="eQy-rv-Xwx"/>
+                            <constraint firstAttribute="trailing" secondItem="sOC-aO-AhP" secondAttribute="trailing" constant="5" id="lA9-TP-63O"/>
                             <constraint firstAttribute="bottom" secondItem="SB5-lN-zAs" secondAttribute="bottom" constant="5" id="zyY-q1-3o1"/>
                         </constraints>
                     </view>
@@ -59,12 +70,14 @@
             <connections>
                 <outlet property="cellContentView" destination="l4p-b2-X5j" id="Rwb-DR-MVQ"/>
                 <outlet property="sceneDescription" destination="SB5-lN-zAs" id="uvf-yg-cwT"/>
+                <outlet property="sceneDetailButton" destination="sOC-aO-AhP" id="N8F-cd-GwO"/>
                 <outlet property="sceneImageView" destination="re3-Zm-dAw" id="PL0-d9-9c1"/>
             </connections>
             <point key="canvasLocation" x="207.97101449275365" y="122.20982142857142"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

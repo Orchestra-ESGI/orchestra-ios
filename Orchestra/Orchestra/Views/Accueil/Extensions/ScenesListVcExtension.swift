@@ -61,6 +61,10 @@ extension ScenesListViewController: UICollectionViewDataSource{
                 objectCell.objectImageView.tintColor = .black
             }
             let currentCellPos = indexPath.row
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressed))
+            longPressRecognizer.minimumPressDuration = 0.5
+            longPressRecognizer.delaysTouchesBegan = true
+            objectCell.addGestureRecognizer(longPressRecognizer)
             
             objectCell.objectPlaceNameLabel.text = self.homeObjects[currentCellPos].name
             objectCell.objectNameLabel.text = self.homeObjects[currentCellPos].roomName
@@ -70,8 +74,13 @@ extension ScenesListViewController: UICollectionViewDataSource{
             objectCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
 
             objectCell.contentView.layer.cornerRadius = 8.0
+            objectCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             objectCell.contentView.layer.borderWidth = 0.2
             objectCell.contentView.layer.masksToBounds = true;
+            
+            if(self.isCellsShaking){
+                addWiggleAnimationToCell(cell: objectCell)
+            }
             
             return objectCell
         }else{
@@ -85,11 +94,24 @@ extension ScenesListViewController: UICollectionViewDataSource{
             }
             let currentCellPos = indexPath.row
             
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressed))
+            longPressRecognizer.minimumPressDuration = 0.5
+            longPressRecognizer.delaysTouchesBegan = true
+            sceneCell.addGestureRecognizer(longPressRecognizer)
+            
             sceneCell.sceneDescription .text = self.homeScenes[currentCellPos].title
             sceneCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
             sceneCell.contentView.layer.cornerRadius = 8.0
+            sceneCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             sceneCell.contentView.layer.borderWidth = 0.2
             sceneCell.contentView.layer.masksToBounds = true;
+        
+            sceneCell.sceneDetailButton.tag = indexPath.row
+            sceneCell.sceneDetailButton.addTarget(self, action: #selector(showSceneDetail), for: .touchUpInside)
+            
+            if(self.isCellsShaking){
+                addWiggleAnimationToCell(cell: sceneCell)
+            }
             
             return sceneCell
         }
@@ -108,10 +130,52 @@ extension ScenesListViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(indexPath.section == 0){
-            self.showInfoDetailAboutObject(for: indexPath)
+        if(self.isCellsShaking){
+            let cellBorderColor: CGColor?
+            let cellBorderWidth: CGFloat?
+            if(indexPath.section == 0){
+                // Object cell selected
+                let objectCellSelected = collectionView.cellForItem(at: indexPath) as! ObjectCollectionViewCell
+                let objectDtoSelected = self.homeObjects[indexPath.row]
+                if(self.objectsToRemove.contains(objectDtoSelected)){
+                    // Unselect cell
+                    let index = self.objectsToRemove.firstIndex(of: objectDtoSelected)!
+                    self.objectsToRemove.remove(at: index)
+                    cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    cellBorderWidth = 2.0
+                }else{
+                    // Select cell
+                    self.objectsToRemove.append(objectDtoSelected)
+                    cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
+                    cellBorderWidth = 4.0
+                }
+                objectCellSelected.contentView.layer.borderColor = cellBorderColor!
+                objectCellSelected.contentView.layer.borderWidth = cellBorderWidth!
+            }else{
+                // Scene cell selected
+                let sceneCellSelected = collectionView.cellForItem(at: indexPath) as! SceneCollectionViewCell
+                let sceneCellDtoSelected = self.homeScenes[indexPath.row]
+                if(self.scenesToRemove.contains(sceneCellDtoSelected)){
+                    // Unselect cell
+                    let index = self.scenesToRemove.firstIndex(of: sceneCellDtoSelected)!
+                    self.scenesToRemove.remove(at: index)
+                    cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    cellBorderWidth = 2.0
+                }else{
+                    // Select cell
+                    self.scenesToRemove.append(sceneCellDtoSelected)
+                    cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
+                    cellBorderWidth = 4.0
+                }
+                sceneCellSelected.contentView.layer.borderColor = cellBorderColor!
+                sceneCellSelected.contentView.layer.borderWidth = cellBorderWidth!
+            }
         }else{
-            self.startSceneActions(for: indexPath)
+            if(indexPath.section == 0){
+                self.showInfoDetailAboutObject(for: indexPath)
+            }else{
+                self.startSceneActions(for: indexPath)
+            }
         }
     }
 }

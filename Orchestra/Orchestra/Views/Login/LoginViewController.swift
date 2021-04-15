@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     let screenLocalize = ScreensLabelLocalizableUtils()
+    let progressUtils = ProgressUtils.shared
     
     let disposeBag = DisposeBag()
 
@@ -65,6 +66,7 @@ class LoginViewController: UIViewController {
             .isLoginFormValid
             .subscribe { (isValid) in
                 if isValid {
+                    self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
                     self.usersWS.getAllFakeUsers()
                 }else{
                     self.notificationUtils.showBadCredentialsNotification()
@@ -85,7 +87,8 @@ class LoginViewController: UIViewController {
         self.loginButton
             .rx.tap
             .bind {
-                self.userVm.checkLoginForm(emailTf: (self.emailTextField)!, passwordTf: (self.passwordTextField)!)            }
+                self.userVm.checkLoginForm(emailTf: (self.emailTextField)!, passwordTf: (self.passwordTextField)!)
+            }
             .disposed(by: self.disposeBag)
         
         self.passwordForgotButton
@@ -129,13 +132,18 @@ class LoginViewController: UIViewController {
                         && user.password == self.passwordTextField.text
                 }
                 if userCredentials.count == 1 {
+                    let welcomeNotificationTitle = self.notificationLocalize.loginWelcomeNotificatiionTitle + userCredentials[0].name
+                    let welcomeNotificationSubtitle = self.notificationLocalize.loginWelcomeNotificationSubtitle
+                    let checkMarkTitle = self.notificationLocalize.loginCompleteCheckmarkTitle
                     self.notificationUtils
-                        .showFloatingNotificationBanner(title: self.notificationLocalize.okNotificationTitle, subtitle: self.notificationLocalize.okNotificationSubtitle, position: .top, style: .success)
-                    let sceneVC = ScenesListViewController()
-                    sceneVC.userLoggedInData = userCredentials[0]
-                    self.navigationController?.pushViewController(sceneVC, animated: true)
-//                    self.notificationUtils
-//                        .showFloatingNotificationBanner(title: "Hello \(userCredentials[0].name)", subtitle: "You are successfully logged", position: .top, style: .success)
+                        .showFloatingNotificationBanner(title: welcomeNotificationTitle, subtitle: welcomeNotificationSubtitle, position: .top, style: .success)
+                    self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self.progressUtils.dismiss()
+                        let sceneVC = ScenesListViewController()
+                        sceneVC.userLoggedInData = userCredentials[0]
+                        self.navigationController?.pushViewController(sceneVC, animated: true)
+                    }
                 }else{
                     self.notificationUtils.showBadCredentialsNotification()
                 }
