@@ -59,3 +59,16 @@
 "new.scene.vc.title" = "Nouvelle scène";
 "update.scene.vc.title" = "Modification";
 "object.info.onoff.button.text" = "ON/OFF";
+
+"scene.form.name.label.text" = "Nom";
+"scene.form.name.tf.textt" = "\"Allumer la lumière au coucher du soleil\"";
+"scene.form.bg.color.label.text" = "Choisissez une couleur";
+"scene.form.description.label.text" = "Description";
+"scene.form.description.tf.text" = "\"Allumer les lampes si il fait nuit\"";
+"scene.form.add.action.button" = "Ajouter des actions";
+
+"new.scene.successfully.created.title" = "Ajout effecuté!";
+"new.scene.successfully.created.subtitle" = "La scène a été ajoutée!";
+
+"new.scene.unsuccessfully.created.title" = "Ajout impossible!";
+"new.scene.unsuccessfully.created.subtitle" = "La scène n'a pa été ajoutée, reéssayez !";

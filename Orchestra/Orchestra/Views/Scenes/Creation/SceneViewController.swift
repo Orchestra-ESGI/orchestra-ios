@@ -48,8 +48,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.localizeLabels()
         self.setUpUI()
-        self.setUpData()
+        self.setUpTextFields()
         self.setColorsCollectionView()
         self.setActionsTableView()
         self.generatesBackGroundColor()
@@ -59,8 +60,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: Controller Setup
-    
-    private func setUpData(){
+    private func localizeLabels(){
         self.sceneNameLabel.text = self.localizeUtils.sceneFormNameLabel
         self.sceneBackgroundColorLabel.text = self.localizeUtils.sceneFormBackgroundColorLabel
         self.sceneDescriptionLabel.text = self.localizeUtils.sceneFormDescriptionLabel
@@ -68,6 +68,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         self.sceneDescriptionTf.placeholder = self.localizeUtils.sceneFormDescriptionTf
         self.sceneNameTf.placeholder = self.localizeUtils.sceneFormNameTf
         
+    }
+    
+    private func setUpTextFields(){
         self.sceneNameTf.delegate = self
         self.sceneDescriptionTf.delegate = self
     }

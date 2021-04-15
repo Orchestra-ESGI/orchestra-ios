@@ -99,6 +99,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     
     // MARK: Internal functions
     func saveScene(scene: SceneDto) {
+        self.notificationUtils.showFloatingNotificationBanner(title: self.notificationLocalize.successfullyAddedNotificationTitle, subtitle: self.notificationLocalize.successfullyAddedNotificationSubtitle, position: .top, style: .success)
         self.homeScenes.append(scene)
     }
     

@@ -48,4 +48,11 @@ class ScreensLabelLocalizableUtils{
     // - MARK New scene Labels & text
     let newSceneVcTitle = NSLocalizedString("new.scene.vc.title", comment: "")
     let updateSceneVcTitle = NSLocalizedString("update.scene.vc.title", comment: "")
+    
+    let sceneFormNameLabel = NSLocalizedString("scene.form.name.label.text", comment: "")
+    let sceneFormNameTf = NSLocalizedString("scene.form.name.tf.textt", comment: "")
+    let sceneFormBackgroundColorLabel = NSLocalizedString("scene.form.bg.color.label.text", comment: "")
+    let sceneFormDescriptionLabel = NSLocalizedString("scene.form.description.label.text", comment: "")
+    let sceneFormDescriptionTf = NSLocalizedString("scene.form.description.tf.text", comment: "")
+    let addActionButtonnText = NSLocalizedString("scene.form.add.action.button", comment: "")
 }

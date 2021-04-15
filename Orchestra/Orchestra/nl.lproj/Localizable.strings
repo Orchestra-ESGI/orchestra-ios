@@ -59,3 +59,16 @@
 "new.scene.vc.title" = "Nieuwe scène";
 "update.scene.vc.title" = "Wijziging";
 "object.info.onoff.button.text" = "AAN/UIT";
+
+"scene.form.name.label.text" = "Naam";
+"scene.form.name.tf.textt" = "Doe het licht aan bij zonsondergang";
+"scene.form.bg.color.label.text" = "Kies een kleur";
+"scene.form.description.label.text" = "Beschrijving";
+"scene.form.description.tf.text" = "Doe de lichten aan als het donker is";
+"scene.form.add.action.button" = "Acties toevoegen";
+
+"new.scene.successfully.created.title" = "Toegevoegd!";
+"new.scene.successfully.created.subtitle" = "De scène is toegevoegd!";
+
+"new.scene.unsuccessfully.created.title" = "Ajout impossible!";
+"new.scene.unsuccessfully.created.subtitle" = "De scène is niet toegevoegd, probeer het opnieuw!";

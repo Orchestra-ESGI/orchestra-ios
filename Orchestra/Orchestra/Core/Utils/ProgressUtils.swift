@@ -38,6 +38,7 @@ class ProgressUtils {
     }
     
     func displayV2(view:UIView, title: String, modeView: EnumModeView, pro: Float = 1.0){
+        overlay = MRProgressOverlayView(frame: CGRect(x: 0, y: 0, width: 50, height: 65))
         overlay.titleLabelText = title
         switch modeView {
             case .UIProgressView:

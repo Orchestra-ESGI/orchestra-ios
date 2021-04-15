@@ -59,3 +59,16 @@
 "new.scene.vc.title" = "Nueva escena";
 "update.scene.vc.title" = "Modification";
 "object.info.onoff.button.text" = "ON/OFF";
+
+"scene.form.name.label.text" = "Denominación";
+"scene.form.name.tf.textt" = "Encender la luz al atardecer";
+"scene.form.bg.color.label.text" = "Elige un color";
+"scene.form.description.label.text" = "Descripción";
+"scene.form.description.tf.text" = "Encienda las luces si está oscuro";
+"scene.form.add.action.button" = "Agregar acciones";
+
+"new.scene.successfully.created.title" = "¡Agregado!";
+"new.scene.successfully.created.subtitle" = "¡La escena ha sido añadida!";
+
+"new.scene.unsuccessfully.created.title" = "¡No puedo añadir!";
+"new.scene.unsuccessfully.created.subtitle" = "La escena no ha sido añadida, ¡inténtalo de nuevo!";
