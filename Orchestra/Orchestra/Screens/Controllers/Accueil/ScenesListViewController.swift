@@ -221,7 +221,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         floatingActionButton.openAnimationType = .slideUp
         
         let pairPhoneButton = setUpFloatyItem()
-        pairPhoneButton.title = "Appairage au Hub"
+        pairPhoneButton.title = self.screenLabelLocalize.floatyButtonPairingButtonTitle
         pairPhoneButton.icon =  UIImage(named: "hub")!
         pairPhoneButton.handler = { item in
             self.showPairingVc()
@@ -230,7 +230,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         
         let shareAppButton = setUpFloatyItem()
         shareAppButton.icon =  UIImage(systemName: "square.and.arrow.up")
-        shareAppButton.title = "Notez nous"
+        shareAppButton.title = self.screenLabelLocalize.floatyButtonShareButtonTitle
         shareAppButton.handler = { item in
             self.showRatemarks()
             floatingActionButton.close()
@@ -240,7 +240,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         let rateAppButton = setUpFloatyItem()
         rateAppButton.icon =  UIImage(systemName: "star")
         rateAppButton.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        rateAppButton.title = "Partagez Orchestra"
+        rateAppButton.title = self.screenLabelLocalize.floatyButtonRateButtonTitle
         rateAppButton.handler = { item in
             self.showShareBottomSheet()
             floatingActionButton.close()
@@ -410,6 +410,9 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     
     private func showPairingVc(){
         print("Hub pairing...")
+        let paringVc = HubPairingViewController()
+        let paringNavVc = UINavigationController(rootViewController: paringVc)
+        self.navigationController?.present(paringNavVc, animated: true)
     }
     
     private func showRatemarks(){
