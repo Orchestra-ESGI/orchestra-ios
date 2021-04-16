@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Floaty
 
 class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, SendBackDataProtocol {
     
@@ -55,6 +56,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         
         self.setUpTopBar()
         self.setUpCollectionView()
+        self.setUpFAB()
         self.observeClick()
         self.setUpObservers()
         // Throw calls needed to refresh UI
@@ -211,6 +213,58 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.collectionView.reloadData()
     }
     
+    private func setUpFAB(){
+        let floatingActionButton = Floaty()
+        floatingActionButton.buttonImage = UIImage(systemName: "gearshape.fill")
+        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        floatingActionButton.buttonColor = #colorLiteral(red: 0.9254902005, green: 0.02265601113, blue: 0, alpha: 1)
+        floatingActionButton.openAnimationType = .slideUp
+        
+        let pairPhoneButton = setUpFloatyItem()
+        pairPhoneButton.title = "Appairage au Hub"
+        pairPhoneButton.icon =  UIImage(named: "hub")!
+        pairPhoneButton.handler = { item in
+            self.showPairingVc()
+            floatingActionButton.close()
+        }
+        
+        let shareAppButton = setUpFloatyItem()
+        shareAppButton.icon =  UIImage(systemName: "square.and.arrow.up")
+        shareAppButton.title = "Notez nous"
+        shareAppButton.handler = { item in
+            self.showRatemarks()
+            floatingActionButton.close()
+        }
+        
+
+        let rateAppButton = setUpFloatyItem()
+        rateAppButton.icon =  UIImage(systemName: "star")
+        rateAppButton.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        rateAppButton.title = "Partagez Orchestra"
+        rateAppButton.handler = { item in
+            self.showShareBottomSheet()
+            floatingActionButton.close()
+        }
+
+
+        floatingActionButton.addItem(item: pairPhoneButton)
+        floatingActionButton.addItem(item: shareAppButton)
+        floatingActionButton.addItem(item: rateAppButton)
+        
+        self.view.addSubview(floatingActionButton)
+    }
+    
+    private func setUpFloatyItem() -> FloatyItem{
+        let floaty = FloatyItem()
+        floaty.titleLabel.font = UIFont(name: "Avenir Medium", size: 19)
+        floaty.titleLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        floaty.titleLabel.layer.cornerRadius = 5
+        floaty.titleLabel.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        floaty.titleLabel.layer.borderWidth = 1
+        floaty.titleLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        return floaty
+    }
     
     // MARK: Internal functions
     func showInfoDetailAboutObject(for indexPath: IndexPath){
@@ -352,6 +406,18 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
             }
             return Disposables.create()
         }
+    }
+    
+    private func showPairingVc(){
+        print("Hub pairing...")
+    }
+    
+    private func showRatemarks(){
+        print("Rate us")
+    }
+    
+    private func showShareBottomSheet(){
+        print("Share")
     }
     
     func saveScene(scene: SceneDto) {

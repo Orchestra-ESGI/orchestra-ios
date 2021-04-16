@@ -21,6 +21,7 @@ target 'Orchestra' do
   # Material
   pod 'NotificationBannerSwift', '2.0.1'
   pod 'MRProgress'
+  pod 'Floaty', '~> 4.2.0'
 end
 
 target 'Orchestra WatchKit App' do

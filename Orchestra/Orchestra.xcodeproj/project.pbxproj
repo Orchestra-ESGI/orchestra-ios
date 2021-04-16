@@ -10,6 +10,8 @@
 		3653130CB065165D68A170BD /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D162F61AA955C0AA6A7EF18 /* Pods_Orchestra.framework */; };
 		5A5AFD1AF1FD1F2254A4819C /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FAD353EAECCA6536257D9E8 /* Pods_Orchestra_WatchKit_Extension.framework */; };
 		5C4EBF5457359C3995E9FFCD /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D82E963E24E7DDADBC96DA3 /* Pods_Orchestra_WatchKit_App.framework */; };
+		6304590D2629B20000FA7F40 /* HubPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304590B2629B20000FA7F40 /* HubPairingViewController.swift */; };
+		6304590E2629B20000FA7F40 /* HubPairingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6304590C2629B20000FA7F40 /* HubPairingViewController.xib */; };
 		630B1010261E2A9900B41804 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B100E261E2A9900B41804 /* SceneViewController.swift */; };
 		630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B100F261E2A9900B41804 /* SceneViewController.xib */; };
 		630B1017261E2DDC00B41804 /* ObjectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */; };
@@ -129,6 +131,8 @@
 		2D162F61AA955C0AA6A7EF18 /* Pods_Orchestra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		345D1894693AA5764AA58039 /* Pods-Orchestra WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		5D82E963E24E7DDADBC96DA3 /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6304590B2629B20000FA7F40 /* HubPairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubPairingViewController.swift; sourceTree = "<group>"; };
+		6304590C2629B20000FA7F40 /* HubPairingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HubPairingViewController.xib; sourceTree = "<group>"; };
 		630B100E261E2A9900B41804 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		630B100F261E2A9900B41804 /* SceneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneViewController.xib; sourceTree = "<group>"; };
 		630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectInfoViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +277,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6304590A2629B1D500FA7F40 /* Hub Pairing */ = {
+			isa = PBXGroup;
+			children = (
+				6304590B2629B20000FA7F40 /* HubPairingViewController.swift */,
+				6304590C2629B20000FA7F40 /* HubPairingViewController.xib */,
+			);
+			path = "Hub Pairing";
+			sourceTree = "<group>";
+		};
+		630459152629B67E00FA7F40 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				635DD50E261A177F001D1EFC /* Présentation Pager */,
+				635DD4E4261A0629001D1EFC /* Signin */,
+				635DD4AC26188660001D1EFC /* Login */,
+				634F9541261A33E80092C269 /* Accueil */,
+				630B100C261E2A2600B41804 /* Scenes */,
+				634AF6292622042800F6CBBE /* Objects Info */,
+				6304590A2629B1D500FA7F40 /* Hub Pairing */,
+				634F9566261B42C10092C269 /* Settings */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		630B100C261E2A2600B41804 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,19 +319,13 @@
 			path = Creation;
 			sourceTree = "<group>";
 		};
-		633E7E392610CFE60094B148 /* Views */ = {
+		633E7E392610CFE60094B148 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				634AF6292622042800F6CBBE /* Objects */,
-				630B100C261E2A2600B41804 /* Scenes */,
-				634F9566261B42C10092C269 /* Settings */,
-				634F9541261A33E80092C269 /* Accueil */,
-				635DD50E261A177F001D1EFC /* Présentation */,
-				635DD4E4261A0629001D1EFC /* Signin */,
-				635DD4AC26188660001D1EFC /* Login */,
+				630459152629B67E00FA7F40 /* Controllers */,
 				636F4705260A5F8B001D8196 /* ViewController.swift */,
 			);
-			path = Views;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		633E7E3A2610CFEF0094B148 /* ViewModels */ = {
@@ -373,14 +395,14 @@
 			path = Dto;
 			sourceTree = "<group>";
 		};
-		634AF6292622042800F6CBBE /* Objects */ = {
+		634AF6292622042800F6CBBE /* Objects Info */ = {
 			isa = PBXGroup;
 			children = (
 				634AF6342622046500F6CBBE /* Cell */,
 				630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */,
 				630B1016261E2DDC00B41804 /* ObjectInfoViewController.xib */,
 			);
-			path = Objects;
+			path = "Objects Info";
 			sourceTree = "<group>";
 		};
 		634AF6342622046500F6CBBE /* Cell */ = {
@@ -459,13 +481,13 @@
 			path = Signin;
 			sourceTree = "<group>";
 		};
-		635DD50E261A177F001D1EFC /* Présentation */ = {
+		635DD50E261A177F001D1EFC /* Présentation Pager */ = {
 			isa = PBXGroup;
 			children = (
 				638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */,
 				638AB90626149CC30020EE75 /* AppPresentationPagerViewController.swift */,
 			);
-			name = "Présentation";
+			name = "Présentation Pager";
 			path = "Présentation";
 			sourceTree = "<group>";
 		};
@@ -508,7 +530,7 @@
 				635DD50F261A1799001D1EFC /* Ressources */,
 				633E7E3B2610CFFE0094B148 /* Core */,
 				633E7E3A2610CFEF0094B148 /* ViewModels */,
-				633E7E392610CFE60094B148 /* Views */,
+				633E7E392610CFE60094B148 /* Screens */,
 				636F470F260A5F8F001D8196 /* Info.plist */,
 				637FB6D12615CEA600790735 /* Localizable.strings */,
 			);
@@ -720,6 +742,7 @@
 				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
 				635DD49E26188025001D1EFC /* Users.json in Resources */,
 				634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */,
+				6304590E2629B20000FA7F40 /* HubPairingViewController.xib in Resources */,
 				638AB90926149CC30020EE75 /* AppPresentationPagerViewController.xib in Resources */,
 				634F957D261B65920092C269 /* ObjectCollectionViewCell.xib in Resources */,
 				630B1018261E2DDC00B41804 /* ObjectInfoViewController.xib in Resources */,
@@ -882,6 +905,7 @@
 				63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */,
 				630BE20F261479FF00F88DB2 /* HomeAssistantService.swift in Sources */,
 				634F958D261B6B260092C269 /* HeaderCollectionViewCell.swift in Sources */,
+				6304590D2629B20000FA7F40 /* HubPairingViewController.swift in Sources */,
 				635DD4E7261A0640001D1EFC /* SigninViewController.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
