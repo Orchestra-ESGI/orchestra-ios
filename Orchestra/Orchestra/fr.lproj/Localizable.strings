@@ -48,21 +48,24 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mes objects";
 "home.collection.header.scenes" = "Mes scènes";
+"home.object.cell.reachability.label.text" = "Disponnibilité";
+"home.object.cell.reachability.status.ok.label.text" = "Disponible";
+"home.object.cell.reachability.status.ko.label.text" = "Indisponible";
 
 "object.info.manufacturer.label.text" = "Fabricant";
 "object.info.serial.label.text" = "Série";
 "object.info.model.label.text" = "Modèle";
 "object.info.version.label.text" = "Version";
-"home.object.cell.reachability.label.text" = "Disponnibilité";
-"home.object.cell.reachability.status.ok.label.text" = "Disponible";
-"home.object.cell.reachability.status.ko.label.text" = "Indisponible";
 "object.info.ok.button.label.text" = "OK";
+"object.info.onoff.button.text" = "ON/OFF";
 
+"floaty.pairing.item.title" = " Appairage au Hub ";
+"floaty.share.item.title" = " Notez nous ";
+"floaty.pairing.rate.title" = " Partagez Orchestra ";
 
 // - MARK: New scene Labels annd texts
 "new.scene.vc.title" = "Nouvelle scène";
 "update.scene.vc.title" = "Modification";
-"object.info.onoff.button.text" = "ON/OFF";
 
 "scene.form.name.label.text" = "Nom";
 "scene.form.name.tf.textt" = "\"Allumer la lumière au coucher du soleil\"";
@@ -81,3 +84,14 @@
 "home.vc.remove.alert.subtitle" = "Voulez-vous vraiment supprimer la selection ? \n Attention cette action est irréversible, vous perdrez les données supprimées.";
 "home.vc.remove.alert.cancel.button.text" = "Annuler";
 "home.vc.remove.alert.delete.button.text" = "Supprimer";
+
+
+// - MARK: Hub Pairing Labels & texts
+"hub.pairing.vc.topbar.title" = "Appairage";
+"hub.pairing.info.alert.title" = "Où trouver mon code d'appairage ?";
+"hub.pairing.info.alert.body.text" = "Allumez votre Hub NRV, puis tapez l'URL dans votre navigateur et vous trouverez un QrCode et votre code d'appairage";
+"hub.pairing.info.alert.ok.button.text" = "Ok";
+
+"hub.pairing.progress.alert.title" = "Appairage en cours, patientez...";
+"hub.pairing.vc.code.label" = "Entrez le code d'appairage";
+"hub.pairing.vc.reachable.hub" = "Hub disponibles";

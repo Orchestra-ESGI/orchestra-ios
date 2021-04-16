@@ -47,21 +47,24 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "我的对象";
 "home.collection.header.scenes" = "我的场景";
+"home.object.cell.reachability.label.text" = "可用性";
+"home.object.cell.reachability.status.ok.label.text" = "可用";
+"home.object.cell.reachability.status.ko.label.text" = "不可用";
 
 "object.info.manufacturer.label.text" = "制造商";
 "object.info.serial.label.text" = "序号";
 "object.info.model.label.text" = "型号";
 "object.info.version.label.text" = "版本";
-"home.object.cell.reachability.label.text" = "可用性";
-"home.object.cell.reachability.status.ok.label.text" = "可用";
-"home.object.cell.reachability.status.ko.label.text" = "不可用";
 "object.info.ok.button.label.text" = "好的";
+"object.info.onoff.button.text" = "开/关";
 
+"floaty.pairing.item.title" = " 搭配枢纽 ";
+"floaty.share.item.title" = " 给我们评分 ";
+"floaty.pairing.rate.title" = " 分享 Orchestra ";
 
 // - MARK: New scene Labels annd texts
 "new.scene.vc.title" = "新场景";
 "update.scene.vc.title" = "修改";
-"object.info.onoff.button.text" = "开/关";
 
 "scene.form.name.label.text" = "名称";
 "scene.form.name.tf.textt" = "日落时开灯";
@@ -80,3 +83,13 @@
 "home.vc.remove.alert.subtitle" = "你真的想删除选择吗？\n 小心，这个动作是不可逆的，你会失去被删除的数据。";
 "home.vc.remove.alert.cancel.button.text" = "取消";
 "home.vc.remove.alert.delete.button.text" = "删除";
+
+// - MARK: Hub Pairing Labels & texts
+"hub.pairing.vc.topbar.title" = "搭配";
+"hub.pairing.info.alert.title" = "我在哪里可以找到我的配对代码？";
+"hub.pairing.info.alert.body.text" = "打开您的NRV Hub，然后在浏览器中输入URL，您会发现一个QrCode和您的配对代码。";
+"hub.pairing.info.alert.ok.button.text" = "好的";
+
+"hub.pairing.progress.alert.title" = "配对中，请稍等... ...";
+"hub.pairing.vc.code.label" = "输入配对代码";
+"hub.pairing.vc.reachable.hub" = "可用的枢纽";

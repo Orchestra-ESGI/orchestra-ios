@@ -47,21 +47,25 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "I miei oggetti";
 "home.collection.header.scenes" = "Le mie scene";
+"home.object.cell.reachability.label.text" = "Disponibilità";
+"home.object.cell.reachability.status.ok.label.text" = "Disponibile";
+"home.object.cell.reachability.status.ko.label.text" = "Non disponibile";
 
 "object.info.manufacturer.label.text" = "Produttore";
 "object.info.serial.label.text" = "Numero di serie";
 "object.info.model.label.text" = "Modello";
 "object.info.version.label.text" = "Versione";
-"home.object.cell.reachability.label.text" = "Disponibilità";
-"home.object.cell.reachability.status.ok.label.text" = "Disponibile";
-"home.object.cell.reachability.status.ko.label.text" = "Non disponibile";
 "object.info.ok.button.label.text" = "OK";
+"object.info.onoff.button.text" = "ON/OFF";
+
+"floaty.pairing.item.title" = " Accoppiamento con l'hub ";
+"floaty.share.item.title" = " Votaci ";
+"floaty.pairing.rate.title" = " Condividi Orchestra ";
 
 
 // - MARK: New scene Labels annd texts
 "new.scene.vc.title" = "Nuova scena";
 "update.scene.vc.title" = "Modificazione";
-"object.info.onoff.button.text" = "ON/OFF";
 
 "scene.form.name.label.text" = "Nome";
 "scene.form.name.tf.textt" = "Accendere la luce al tramonto";
@@ -80,3 +84,14 @@
 "home.vc.remove.alert.subtitle" = "Vuoi davvero cancellare la selezione? \Fai attenzione, questa azione è irreversibile, perderai i dati cancellati.";
 "home.vc.remove.alert.cancel.button.text" = "Cancella";
 "home.vc.remove.alert.delete.button.text" = "Eliminare";
+
+
+// - MARK: Hub Pairing Labels & texts
+"hub.pairing.vc.topbar.title" = "Abbinamento";
+"hub.pairing.info.alert.title" = "Dove posso trovare il mio codice di abbinamento?";
+"hub.pairing.info.alert.body.text" = "Accendi il tuo NRV Hub, poi digita l'URL nel tuo browser e troverai un QrCode e il tuo codice di abbinamento";
+"hub.pairing.info.alert.ok.button.text" = "Ok";
+
+"hub.pairing.progress.alert.title" = "Accoppiamento in corso, attendere prego...";
+"hub.pairing.vc.code.label" = "Inserire il codice di accoppiamento";
+"hub.pairing.vc.reachable.hub" = "Hub disponibile";

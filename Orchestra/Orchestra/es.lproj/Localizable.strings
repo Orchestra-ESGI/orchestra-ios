@@ -47,21 +47,25 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mis objetos";
 "home.collection.header.scenes" = "Mis escenas";
+"home.object.cell.reachability.label.text" = "Disponibilidad";
+"home.object.cell.reachability.status.ok.label.text" = "Disponible";
+"home.object.cell.reachability.status.ko.label.text" = "No disponible";
 
 "object.info.manufacturer.label.text" = "Fabricante";
 "object.info.serial.label.text" = "Número de serie";
 "object.info.model.label.text" = "Modelo";
 "object.info.version.label.text" = "Versión";
-"home.object.cell.reachability.label.text" = "Disponibilidad";
-"home.object.cell.reachability.status.ok.label.text" = "Disponible";
-"home.object.cell.reachability.status.ko.label.text" = "No disponible";
 "object.info.ok.button.label.text" = "OK";
+"object.info.onoff.button.text" = "ON/OFF";
+
+"floaty.pairing.item.title" = " Emparejamiento con el Hub ";
+"floaty.share.item.title" = " Califícanos ";
+"floaty.pairing.rate.title" = " Compartir Orchestra ";
 
 
 // - MARK: New scene Labels annd texts
 "new.scene.vc.title" = "Nueva escena";
 "update.scene.vc.title" = "Modification";
-"object.info.onoff.button.text" = "ON/OFF";
 
 "scene.form.name.label.text" = "Denominación";
 "scene.form.name.tf.textt" = "Encender la luz al atardecer";
@@ -80,3 +84,13 @@
 "home.vc.remove.alert.subtitle" = "¿Realmente quieres borrar la selección? \n Cuidado, esta acción es irreversible, perderás los datos borrados.";
 "home.vc.remove.alert.cancel.button.text" = "Cancelar";
 "home.vc.remove.alert.delete.button.text" = "Borrar";
+
+// - MARK: Hub Pairing Labels & texts
+"hub.pairing.vc.topbar.title" = "Emparejamiento";
+"hub.pairing.info.alert.title" = "¿Dónde puedo encontrar mi código de emparejamiento?";
+"hub.pairing.info.alert.body.text" = "Enciende tu NRV Hub, luego escribe la URL en tu navegador y encontrarás un QrCode y tu código de emparejamiento";
+"hub.pairing.info.alert.ok.button.text" = "Ok";
+
+"hub.pairing.progress.alert.title" = "Emparejamiento en curso, por favor espere...";
+"hub.pairing.vc.code.label" = "Introducir código de emparejamiento";
+"hub.pairing.vc.reachable.hub" = "Hub disponible";

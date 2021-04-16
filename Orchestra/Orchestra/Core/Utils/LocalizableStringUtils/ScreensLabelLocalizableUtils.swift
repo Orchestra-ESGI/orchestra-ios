@@ -34,6 +34,9 @@ class ScreensLabelLocalizableUtils{
     let homeHeaderScenesText = NSLocalizedString("home.collection.header.scenes", comment: "")
     let objectCellReachabilityStatusOkLabelText = NSLocalizedString("home.object.cell.reachability.status.ok.label.text", comment: "")
     let objectCellReachabilityStatusKoLabelText = NSLocalizedString("home.object.cell.reachability.status.ko.label.text", comment: "")
+    let floatyButtonPairingButtonTitle = NSLocalizedString("floaty.pairing.item.title", comment: "")
+    let floatyButtonShareButtonTitle = NSLocalizedString("floaty.share.item.title", comment: "")
+    let floatyButtonRateButtonTitle = NSLocalizedString("floaty.pairing.rate.title", comment: "")
     
     // - MARK: Object info Labels & text
     let objectInfoOnOffButtonText = NSLocalizedString("object.info.onoff.button.text", comment: "")
@@ -45,7 +48,7 @@ class ScreensLabelLocalizableUtils{
     let objectInfoOkButtonLabelText = NSLocalizedString("object.info.ok.button.label.text", comment: "")
     
     
-    // - MARK New scene Labels & text
+    // - MARK: New scene Labels & text
     let newSceneVcTitle = NSLocalizedString("new.scene.vc.title", comment: "")
     let updateSceneVcTitle = NSLocalizedString("update.scene.vc.title", comment: "")
     
@@ -55,4 +58,15 @@ class ScreensLabelLocalizableUtils{
     let sceneFormDescriptionLabel = NSLocalizedString("scene.form.description.label.text", comment: "")
     let sceneFormDescriptionTf = NSLocalizedString("scene.form.description.tf.text", comment: "")
     let addActionButtonnText = NSLocalizedString("scene.form.add.action.button", comment: "")
+    
+    
+    // -  MARK: Pairing to hub Labels & text
+    let hubPairingVcTitle = NSLocalizedString("hub.pairing.vc.topbar.title", comment: "")
+    let hubPairingAlertInfoTitle = NSLocalizedString("hub.pairing.info.alert.title", comment: "")
+    let hubPairingAlertInfoBodyText = NSLocalizedString("hub.pairing.info.alert.body.text", comment: "")
+    let hubPairingAlertInfoOkButtonText = NSLocalizedString("hub.pairing.info.alert.ok.button.text", comment: "")
+    
+    let hubPairingProgressAlertTitle = NSLocalizedString("hub.pairing.progress.alert.title", comment: "")
+    let hubPairingVcPairingCodeLabel = NSLocalizedString("hub.pairing.vc.code.label", comment: "")
+    let hubPairingVcReachableHubLabel = NSLocalizedString("hub.pairing.vc.reachable.hub", comment: "")
 }

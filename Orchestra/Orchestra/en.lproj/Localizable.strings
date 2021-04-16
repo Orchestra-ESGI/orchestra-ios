@@ -33,7 +33,7 @@
 
 "login.welcome.notification.title" = "Welcome ";
 "login.welcome.notification.subtitle" = "We were waiting for your return";
-"login.complete.checkmark.title" = "Connexion réussie";
+"login.complete.checkmark.title" = "Successful connection!";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Account creation";
@@ -47,21 +47,25 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "My items";
 "home.collection.header.scenes" = "My scenes";
+"home.object.cell.reachability.label.text" = "Availability";
+"home.object.cell.reachability.status.ok.label.text" = "Available";
+"home.object.cell.reachability.status.ko.label.text" = "Unavailable";
 
 "object.info.manufacturer.label.text" = "Manufacturer";
 "object.info.serial.label.text" = "Serial Number";
 "object.info.model.label.text" = "Model";
 "object.info.version.label.text" = "Version";
-"home.object.cell.reachability.label.text" = "Availability";
-"home.object.cell.reachability.status.ok.label.text" = "Available";
-"home.object.cell.reachability.status.ko.label.text" = "Unavailable";
 "object.info.ok.button.label.text" = "OK";
+"object.info.onoff.button.text" = "ON/OFF";
+
+"floaty.pairing.item.title" = " Pairing with the Hub ";
+"floaty.share.item.title" = " Rate us ";
+"floaty.pairing.rate.title" = " Share Orchestra ";
 
 
 // - MARK: New scene Labels annd texts
 "new.scene.vc.title" = "New scene";
 "update.scene.vc.title" = "Update";
-"object.info.onoff.button.text" = "ON/OFF";
 
 "scene.form.name.label.text" = "Name";
 "scene.form.name.tf.textt" = "Turn on the light at sunset";
@@ -80,3 +84,13 @@
 "home.vc.remove.alert.subtitle" = "Do you really want to delete the selection? \n Warning: this action is irreversible, you will lose the deleted data.";
 "home.vc.remove.alert.cancel.button.text" = "Cancel";
 "home.vc.remove.alert.delete.button.text" = "Delete";
+
+// - MARK: Hub Pairing Labels & texts
+"hub.pairing.vc.topbar.title" = "Pairing";
+"hub.pairing.info.alert.title" = "Where can I find my pairing code?";
+"hub.pairing.info.alert.body.text" = "Turn on your NRV Hub, then type the URL into your browser and you will find a QrCode and your pairing code";
+"hub.pairing.info.alert.ok.button.text" = "Ok";
+
+"hub.pairing.progress.alert.title" = "Pairing in progress, please wait...";
+"hub.pairing.vc.code.label" = "Enter the pairing code";
+"hub.pairing.vc.reachable.hub" = "Hubs available";
