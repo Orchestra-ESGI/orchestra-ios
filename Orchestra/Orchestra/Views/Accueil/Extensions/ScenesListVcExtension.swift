@@ -141,10 +141,16 @@ extension ScenesListViewController: UICollectionViewDataSource{
                     // Unselect cell
                     let index = self.objectsToRemove.firstIndex(of: objectDtoSelected)!
                     self.objectsToRemove.remove(at: index)
+                    if(self.objectsToRemove.count == 0 && self.scenesToRemove.count == 0){
+                        self.elementsToRemoveStream.onNext(false)
+                    }
                     cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     cellBorderWidth = 2.0
                 }else{
                     // Select cell
+                    if(self.objectsToRemove.count == 0 || self.scenesToRemove.count == 0){
+                        self.elementsToRemoveStream.onNext(true)
+                    }
                     self.objectsToRemove.append(objectDtoSelected)
                     cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
                     cellBorderWidth = 4.0
@@ -159,10 +165,16 @@ extension ScenesListViewController: UICollectionViewDataSource{
                     // Unselect cell
                     let index = self.scenesToRemove.firstIndex(of: sceneCellDtoSelected)!
                     self.scenesToRemove.remove(at: index)
+                    if(self.objectsToRemove.count == 0 && self.scenesToRemove.count == 0){
+                        self.elementsToRemoveStream.onNext(false)
+                    }
                     cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     cellBorderWidth = 2.0
                 }else{
                     // Select cell
+                    if(self.objectsToRemove.count == 0 || self.scenesToRemove.count == 0){
+                        self.elementsToRemoveStream.onNext(true)
+                    }
                     self.scenesToRemove.append(sceneCellDtoSelected)
                     cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
                     cellBorderWidth = 4.0

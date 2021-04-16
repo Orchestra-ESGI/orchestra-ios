@@ -34,6 +34,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     let disposeBag = DisposeBag()
     var isCellsShaking = false
     let isSchakingStream = PublishSubject<Bool>()
+    let elementsToRemoveStream = PublishSubject<Bool>()
     
     var objectsToRemove: [ObjectDto] = []
     var scenesToRemove: [SceneDto] = []
@@ -147,6 +148,18 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
             }
         }.disposed(by: self.disposeBag)
 
+        self.elementsToRemoveStream
+            .subscribe { (elementsExists) in
+                if(elementsExists.element!){
+                    self.trashButton?.isEnabled = true
+                    self.trashButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
+                }else{
+                    self.trashButton?.isEnabled = false
+                    self.trashButton?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+                }
+        }.disposed(by: self.disposeBag)
+        
+
     }
 
     
@@ -233,6 +246,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     
     func shakeCells(){
         self.isSchakingStream.onNext(true)
+        self.elementsToRemoveStream.onNext(false)
         for cell in self.collectionView.visibleCells {
             if cell is ObjectCollectionViewCell {
                 let customCell: ObjectCollectionViewCell = cell as! ObjectCollectionViewCell
@@ -296,19 +310,23 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     
     private func clearObjectSelected() -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in
-            _ = self.fakeObjectsWS
-                .removeObject()
-                .subscribe(onNext: { (objectRemoved) in
-                    self.homeObjects = self.homeObjects.filter { (object) -> Bool in
-                        return !self.objectsToRemove.contains(object)
-                    }
-                    self.objectsToRemove.removeAll()
-                    observer.onNext(true)
-                }, onError: { (err) in
-                    observer.onError(err)
-                    print("err")
-                })
-                .disposed(by: self.disposeBag)
+            if(self.objectsToRemove.count > 0){
+                _ = self.fakeObjectsWS
+                    .removeObject()
+                    .subscribe(onNext: { (objectRemoved) in
+                        self.homeObjects = self.homeObjects.filter { (object) -> Bool in
+                            return !self.objectsToRemove.contains(object)
+                        }
+                        self.objectsToRemove.removeAll()
+                        observer.onNext(true)
+                    }, onError: { (err) in
+                        observer.onError(err)
+                        print("err")
+                    })
+                    .disposed(by: self.disposeBag)
+            }else{
+                observer.onNext(true)
+            }
             return Disposables.create()
         }
     }
@@ -316,19 +334,22 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     
     private func clearScenesSelected() -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in
-            self.fakeScenesWS
-                .removeScene()
-                .subscribe { (sceneRemoved) in
-                    self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
-                        return !self.scenesToRemove.contains(scene)
-                    })
-                    self.scenesToRemove.removeAll()
-                    observer.onNext(true)
-                } onError: { (err) in
-                    observer.onError(err)
-                    print("err")
-                }.disposed(by: self.disposeBag)
-            
+            if(self.scenesToRemove.count > 0){
+                _ = self.fakeScenesWS
+                    .removeScene()
+                    .subscribe { (sceneRemoved) in
+                        self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
+                            return !self.scenesToRemove.contains(scene)
+                        })
+                        self.scenesToRemove.removeAll()
+                        observer.onNext(true)
+                    } onError: { (err) in
+                        observer.onError(err)
+                        print("err")
+                    }.disposed(by: self.disposeBag)
+            }else{
+                observer.onNext(true)
+            }
             return Disposables.create()
         }
     }
