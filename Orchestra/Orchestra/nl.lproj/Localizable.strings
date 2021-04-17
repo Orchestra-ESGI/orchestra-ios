@@ -34,6 +34,7 @@
 "login.welcome.notification.title" = "Welkom ";
 "login.welcome.notification.subtitle" = "We wachtten op je terugkeer";
 "login.complete.checkmark.title" = "Succesvolle verbinding";
+"login.vc.no.account.label.text" = "Heb je geen account?";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Maak een account aan";

@@ -124,7 +124,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
                 ]
                 let sceneName = self.sceneNameTf.text!
                 let sceneDescription = self.sceneDescriptionTf.text!
-                let sceneBackGroundColor = self.sceneColors[self.selectedColor].description
+                let sceneBackGroundColor = self.sceneColors[self.selectedColor].toHexString()
                 
                 
                 self.sceneWS

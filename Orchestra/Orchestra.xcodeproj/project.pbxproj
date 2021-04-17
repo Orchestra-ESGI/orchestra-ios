@@ -80,6 +80,10 @@
 		638AB90926149CC30020EE75 /* AppPresentationPagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638AB90726149CC30020EE75 /* AppPresentationPagerViewController.xib */; };
 		63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */; };
 		63D5B2982610FB35004573D7 /* ErrorDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5B2972610FB35004573D7 /* ErrorDto.swift */; };
+		63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E84FB0262B73F300AA9558 /* SceneDetailViewController.swift */; };
+		63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E84FB1262B73F300AA9558 /* SceneDetailViewController.xib */; };
+		63E84FBB262B81AC00AA9558 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E84FBA262B81AC00AA9558 /* ColorUtils.swift */; };
+		63E84FC0262B821100AA9558 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E84FBF262B821100AA9558 /* UIColorExtensions.swift */; };
 		63F116182621DF0900B93A33 /* ObjectDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F116172621DF0900B93A33 /* ObjectDto.swift */; };
 		63F1161D2621E02000B93A33 /* Objects.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F1161C2621E02000B93A33 /* Objects.json */; };
 		63F116222621E45B00B93A33 /* FakeObjectsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F116212621E45B00B93A33 /* FakeObjectsDataService.swift */; };
@@ -228,6 +232,10 @@
 		63D5B2972610FB35004573D7 /* ErrorDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDto.swift; sourceTree = "<group>"; };
 		63E81DD22615D028003FD580 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63E81DD32615D028003FD580 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Interface.strings"; sourceTree = "<group>"; };
+		63E84FB0262B73F300AA9558 /* SceneDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDetailViewController.swift; sourceTree = "<group>"; };
+		63E84FB1262B73F300AA9558 /* SceneDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneDetailViewController.xib; sourceTree = "<group>"; };
+		63E84FBA262B81AC00AA9558 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		63E84FBF262B821100AA9558 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		63F116172621DF0900B93A33 /* ObjectDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDto.swift; sourceTree = "<group>"; };
 		63F1161C2621E02000B93A33 /* Objects.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Objects.json; sourceTree = "<group>"; };
 		63F116212621E45B00B93A33 /* FakeObjectsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeObjectsDataService.swift; sourceTree = "<group>"; };
@@ -306,6 +314,7 @@
 		630B100C261E2A2600B41804 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				63E84FAF262B73A200AA9558 /* Detail */,
 				630B100D261E2A4E00B41804 /* Creation */,
 			);
 			path = Scenes;
@@ -584,6 +593,7 @@
 				637FB6412615BCB900790735 /* NotificationUtils.swift */,
 				637FB6782615BFA200790735 /* ProgressUtils.swift */,
 				635DD4F7261A0BDC001D1EFC /* AppError.swift */,
+				63E84FBA262B81AC00AA9558 /* ColorUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -610,8 +620,18 @@
 			isa = PBXGroup;
 			children = (
 				63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */,
+				63E84FBF262B821100AA9558 /* UIColorExtensions.swift */,
 			);
 			path = "Global Extensions";
+			sourceTree = "<group>";
+		};
+		63E84FAF262B73A200AA9558 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				63E84FB0262B73F300AA9558 /* SceneDetailViewController.swift */,
+				63E84FB1262B73F300AA9558 /* SceneDetailViewController.xib */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		9AEACD527D41A017C3E5AA78 /* Frameworks */ = {
@@ -756,6 +776,7 @@
 				6304590E2629B20000FA7F40 /* HubPairingViewController.xib in Resources */,
 				638AB90926149CC30020EE75 /* AppPresentationPagerViewController.xib in Resources */,
 				634F957D261B65920092C269 /* ObjectCollectionViewCell.xib in Resources */,
+				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
 				630B1018261E2DDC00B41804 /* ObjectInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -889,6 +910,7 @@
 			files = (
 				637FB6422615BCB900790735 /* NotificationUtils.swift in Sources */,
 				634F954D261A41240092C269 /* ScreensLabelLocalizableUtils.swift in Sources */,
+				63E84FBB262B81AC00AA9558 /* ColorUtils.swift in Sources */,
 				638856EB262769D1002354FB /* SceneVsActiosnTvExtension.swift in Sources */,
 				63F116222621E45B00B93A33 /* FakeObjectsDataService.swift in Sources */,
 				630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */,
@@ -901,6 +923,7 @@
 				638856E6262769B9002354FB /* SceneVcColorsCvExtension.swift in Sources */,
 				637FB6792615BFA200790735 /* ProgressUtils.swift in Sources */,
 				63F116182621DF0900B93A33 /* ObjectDto.swift in Sources */,
+				63E84FC0262B821100AA9558 /* UIColorExtensions.swift in Sources */,
 				634F9574261B42FD0092C269 /* AppSettingsViewController.swift in Sources */,
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
 				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
@@ -923,6 +946,7 @@
 				63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */,
 				6388571126288BDE002354FB /* SceneListVcShakingCellExtension.swift in Sources */,
 				633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */,
+				63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */,
 				635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */,
 				634AF63D2622061300F6CBBE /* ObjectInfoTableViewCell.swift in Sources */,
 				638AB90826149CC30020EE75 /* AppPresentationPagerViewController.swift in Sources */,

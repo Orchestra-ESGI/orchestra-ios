@@ -100,7 +100,8 @@ extension ScenesListViewController: UICollectionViewDataSource{
             sceneCell.addGestureRecognizer(longPressRecognizer)
             
             sceneCell.sceneDescription .text = self.homeScenes[currentCellPos].title
-            sceneCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
+            let cellColor = self.homeScenes[currentCellPos].backgroundColor
+            sceneCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: cellColor!)
             sceneCell.contentView.layer.cornerRadius = 8.0
             sceneCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             sceneCell.contentView.layer.borderWidth = 0.2

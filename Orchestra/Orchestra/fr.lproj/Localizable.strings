@@ -23,7 +23,7 @@
 "progress.notification.undetermined.title" = "Veuillez patienter...";
 
 // - MARK: Login Labels and texts
-"login.vc.welcome.text" = "Bienvenue sur Orchestra, vous êtez de retour !";
+"login.vc.welcome.text" = "Bienvenue sur Orchestra, vous êtes de retour !";
 "login.vc.email.label.text" = "Email";
 "login.vc.email.label.hint" = "ex: toto@gmail.com";
 "login.vc.password.label.text" = "Mot de passe";
@@ -34,7 +34,7 @@
 "login.welcome.notification.title" = "Bienvenue ";
 "login.welcome.notification.subtitle" = "Nous attendions votre retour";
 "login.complete.checkmark.title" = "Connexion réussie";
-
+"login.vc.no.account.label.text" = "Vous n'avez pas de compte ?";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Création de compte";

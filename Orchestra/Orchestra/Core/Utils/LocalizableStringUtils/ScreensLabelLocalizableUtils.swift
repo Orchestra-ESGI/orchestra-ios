@@ -18,6 +18,7 @@ class ScreensLabelLocalizableUtils{
     let loginPasswordForgotButtonText = NSLocalizedString("login.vc.password.forgot.buttonn.text", comment: "")
     let loginConnexionButtonText = NSLocalizedString("login.vc.connexion.button.text", comment: "")
     let loginSigupbButtonText = NSLocalizedString("login.vc.signup.button.text", comment: "")
+    let noAccountLabelText = NSLocalizedString("login.vc.no.account.label.text", comment: "")
 
 
     // - MARK: Signup Labels and texts

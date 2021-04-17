@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordForgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var noAccountLabel: UILabel!
     
     // - MARK : Services
     let usersWS = FakeUserServices.shared //UserServices.shared
@@ -57,6 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordForgotButton.setTitle(self.screenLocalize.loginPasswordForgotButtonText, for: .normal)
         self.loginButton.setTitle(self.screenLocalize.loginConnexionButtonText, for: .normal)
         self.signinButton.setTitle(self.screenLocalize.loginSigupbButtonText.uppercased(), for: .normal)
+        self.noAccountLabel.text = self.screenLocalize.noAccountLabelText
     }
     
     private func setUpUI(){

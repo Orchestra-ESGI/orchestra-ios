@@ -34,6 +34,7 @@
 "login.welcome.notification.title" = "Benvenuto ";
 "login.welcome.notification.subtitle" = "Aspettavamo il tuo ritorno";
 "login.complete.checkmark.title" = "Connessione riuscita";
+"login.vc.no.account.label.text" = "Non hai un account?";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Creare un account";

@@ -34,6 +34,7 @@
 "login.welcome.notification.title" = "欢迎光临 ";
 "login.welcome.notification.subtitle" = "我们在等你回来";
 "login.complete.checkmark.title" = "成功连接";
+"login.vc.no.account.label.text" = "没有账户？";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "创建一个账户";
