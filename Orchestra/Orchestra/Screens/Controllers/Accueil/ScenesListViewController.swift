@@ -24,6 +24,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     let notificationLocalize = NotificationLocalizableUtils.shared
     let screenLabelLocalize = ScreensLabelLocalizableUtils()
     let progressUtils = ProgressUtils.shared
+    let colorUtils = ColorUtils.shared
     
     // - MARK: Services
     let fakeObjectsWS = FakeObjectsDataService.shared
@@ -216,8 +217,9 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     private func setUpFAB(){
         let floatingActionButton = Floaty()
         floatingActionButton.buttonImage = UIImage(systemName: "gearshape.fill")
+        floatingActionButton.size = CGFloat(60.0)
         floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = #colorLiteral(red: 0.9254902005, green: 0.02265601113, blue: 0, alpha: 1)
+        floatingActionButton.buttonColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
         floatingActionButton.openAnimationType = .slideUp
         
         let pairPhoneButton = setUpFloatyItem()
@@ -338,7 +340,12 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     }
     
     @objc func showSceneDetail(sender: UIButton){
-        print("Scene detail of \(sender.tag)")
+        let sceneSelected = sender.tag
+        let sceneDetailVc = SceneDetailViewController()
+        let navigationCtr = UINavigationController(rootViewController: sceneDetailVc)
+        let sceneData = self.homeScenes[sceneSelected]
+        sceneDetailVc.sceneData = sceneData
+        self.navigationController?.present(navigationCtr, animated: true, completion: nil)
     }
     
     private func clearCellsSelection(){

@@ -4,7 +4,7 @@
       "_id": "6071ebe6c7737be2af20059d",
       "title": "Detecteur Mi",
       "sceneDescription": "Garage",
-      "backgroundColor": "AXPIY63",
+      "backgroundColor": "AE9CA0",
       "manufacturer": "Xiaomi",
       "idUser": "6071ebe6be11dd008bbfdd07",
       "actions": [
@@ -35,7 +35,7 @@
       "_id": "6071ebe67d6be860e3fda3ac",
       "title": "Detcteur de fumée",
       "sceneDescription": "Chambre étage",
-      "backgroundColor": "AXPIY63",
+      "backgroundColor": "F49CA0",
       "manufacturer": "Somfy",
       "idUser": "6071ebe65d4829e5e172ad1c",
       "actions": [
@@ -66,7 +66,7 @@
       "_id": "6071ebe6c568450b997add3b",
       "title": "Rideaux éléctriques",
       "sceneDescription": "Cuisine",
-      "backgroundColor": "XEHD87E",
+      "backgroundColor": "497FFF",
       "manufacturer": "Amazon",
       "idUser": "6071ebe6926d2d0fd5937c7a",
       "actions": [
@@ -91,7 +91,7 @@
       "_id": "6071ebe628bfb25a02113e7c",
       "title": "Rideaux éléctriques",
       "sceneDescription": "Hall",
-      "backgroundColor": "AXPIY63",
+      "backgroundColor": "497F27",
       "manufacturer": "Amazon",
       "idUser": "6071ebe6a7435d92105fc495",
       "actions": [
@@ -119,7 +119,7 @@
       "_id": "6071ebe6846c0d5cbc572daf",
       "title": "Detecteur Mi",
       "sceneDescription": "Jardin",
-      "backgroundColor": "AXPIY63",
+      "backgroundColor": "FFC4D0",
       "manufacturer": "Philips Hue",
       "idUser": "6071ebe6441a9352e39cc668",
       "actions": [
