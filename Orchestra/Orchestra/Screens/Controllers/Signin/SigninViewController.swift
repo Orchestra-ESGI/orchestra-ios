@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SigninViewController: UIViewController {
+class SigninViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var explanationLabel: UILabel!
     
@@ -41,6 +41,8 @@ class SigninViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setUpTextFields()
+        self.setUpUI()
         self.localizeUI()
         self.setUpView()
         self.setUpObservers()
@@ -55,7 +57,31 @@ class SigninViewController: UIViewController {
         self.nameLabel.text = self.screenLocalize.signnupVcNameLabelText
     }
     
-    
+    private func setUpUI(){
+        self.emailTF.setUpLeftIcon(iconName: "envelope.fill")
+        self.emailTF.layer.borderWidth = 0.5
+        self.emailTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.emailTF.layer.cornerRadius = 15.0
+        self.emailTF.clipsToBounds = true
+         
+        self.passwordTF.setUpLeftIcon(iconName: "lock.fill")
+        self.passwordTF.layer.borderWidth = 0.5
+        self.passwordTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.passwordTF.layer.cornerRadius = 15.0
+        self.passwordTF.clipsToBounds = true
+         
+        self.confirmPasswordTF.setUpLeftIcon(iconName: "lock.fill")
+        self.confirmPasswordTF.layer.borderWidth = 0.5
+        self.confirmPasswordTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.confirmPasswordTF.layer.cornerRadius = 15.0
+        self.confirmPasswordTF.clipsToBounds = true
+         
+        self.nameTF.setUpLeftIcon(iconName: "person.fill")
+        self.nameTF.layer.borderWidth = 0.5
+        self.nameTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.nameTF.layer.cornerRadius = 15.0
+        self.nameTF.clipsToBounds = true
+    }
 
     func setUpView(){
         self.title = self.screenLocalize.signupVcTitle
@@ -125,5 +151,17 @@ class SigninViewController: UIViewController {
                 self.notificationUtils.showBadCredentialsNotification()
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func setUpTextFields(){
+        self.emailTF.delegate = self
+        self.passwordTF.delegate = self
+        self.confirmPasswordTF.delegate = self
+        self.nameTF.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }

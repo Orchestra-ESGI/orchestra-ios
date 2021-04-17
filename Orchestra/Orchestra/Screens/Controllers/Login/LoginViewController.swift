@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import NotificationBannerSwift
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bigTitle: UILabel!
     
     
@@ -42,6 +42,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setUpTextFields()
+        self.setUpUI()
         self.localizeUI()
         self.setUpUiBindings()
         self.setUpObservers()
@@ -54,10 +56,27 @@ class LoginViewController: UIViewController {
         self.passwordLabel.text = self.screenLocalize.loginPasswordLabelText
         self.passwordForgotButton.setTitle(self.screenLocalize.loginPasswordForgotButtonText, for: .normal)
         self.loginButton.setTitle(self.screenLocalize.loginConnexionButtonText, for: .normal)
-        self.signinButton.setTitle(self.screenLocalize.loginSigupbButtonText, for: .normal)
+        self.signinButton.setTitle(self.screenLocalize.loginSigupbButtonText.uppercased(), for: .normal)
     }
     
-    
+    private func setUpUI(){
+        self.emailTextField.setUpLeftIcon(iconName: "envelope.fill")
+        self.emailTextField.layer.borderWidth = 0.5
+        self.emailTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.emailTextField.layer.cornerRadius = 30.0
+        self.emailTextField.clipsToBounds = true
+
+        self.passwordTextField.setUpLeftIcon(iconName: "lock.fill")
+        self.passwordTextField.layer.borderWidth = 0.5
+        self.passwordTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.passwordTextField.layer.cornerRadius = 30.0
+        self.passwordTextField.clipsToBounds = true
+
+        self.loginButton.layer.borderWidth = 0.5
+        self.loginButton.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.loginButton.layer.cornerRadius = 30.0
+        self.loginButton.clipsToBounds = true
+    }
 
     // - MARK: Observers
     private func setUpObservers(){
@@ -70,6 +89,7 @@ class LoginViewController: UIViewController {
                     self.usersWS.getAllFakeUsers()
                 }else{
                     self.notificationUtils.showBadCredentialsNotification()
+                    self.progressUtils.dismiss()
                 }
             } onError: { (err) in
                 // Show some error in screen
@@ -146,10 +166,21 @@ class LoginViewController: UIViewController {
                     }
                 }else{
                     self.notificationUtils.showBadCredentialsNotification()
+                    self.progressUtils.dismiss()
                 }
         } onError: { (err) in
             self.notificationUtils.showBadCredentialsNotification()
         }.disposed(by: self.disposeBag)
+    }
+    
+    private func setUpTextFields(){
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 
 }
