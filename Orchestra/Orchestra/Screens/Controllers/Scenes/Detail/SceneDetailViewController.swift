@@ -24,6 +24,7 @@ class SceneDetailViewController: UIViewController {
     // MARK: Utils
     let colorUtils = ColorUtils.shared
     let progressUtils = ProgressUtils.shared
+    let localizeLabels = ScreensLabelLocalizableUtils()
     
     // MARK: Local data
     var sceneData: SceneDto?
@@ -68,15 +69,16 @@ class SceneDetailViewController: UIViewController {
     private func setUpFAB(){
         
         let floatingActionButton = Floaty()
-        floatingActionButton.buttonImage = UIImage(systemName: "plus")
+        floatingActionButton.buttonImage = UIImage(systemName: "play.fill")
         floatingActionButton.size = CGFloat(60.0)
         floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
+        floatingActionButton.buttonColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         // These 2 lines trigger the handler of the first item without opening the floaty items menu
         floatingActionButton.handleFirstItemDirectly = true
         floatingActionButton.addItem(title: "") { (flb) in
             floatingActionButton.close()
-            self.progressUtils.displayIndeterminateProgeress(title: "Scène en cours d'execution", view: self.view)
+            let alertTitle = self.localizeLabels.sceneInfoStartingSceneProgressAlertTitle
+            self.progressUtils.displayIndeterminateProgeress(title: alertTitle, view: self.view)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.progressUtils.dismiss()
             }

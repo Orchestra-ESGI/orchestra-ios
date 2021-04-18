@@ -58,6 +58,8 @@
 "object.info.version.label.text" = "Version";
 "object.info.ok.button.label.text" = "OK";
 "object.info.onoff.button.text" = "EIN/AUS";
+"object.info.room.name.title.text" = "Zimmer";
+"object.info.characteristics.title.text" = "Merkmale";
 
 "floaty.pairing.item.title" = " Koppeln mit dem Hub ";
 "floaty.share.item.title" = " Bewerten Sie uns ";
@@ -76,9 +78,10 @@
 
 "new.scene.successfully.created.title" = "Hinzugefügt!";
 "new.scene.successfully.created.subtitle" = "Die Szene wurde hinzugefügt!";
-
 "new.scene.unsuccessfully.created.title" = "Kann nicht addieren!";
 "new.scene.unsuccessfully.created.subtitle" = "Die Szene wurde nicht hinzugefügt, versuchen Sie es erneut!";
+
+"scene.info.startnig.progress.alert.title" = "Läuft, bitte warten...";
 
 "home.vc.remove.alert.title" = "Ausgewählte Elemente löschen?";
 "home.vc.remove.alert.subtitle" = "Wollen Sie die Auswahl wirklich löschen? \n Vorsicht, diese Aktion ist irreversibel, Sie verlieren die gelöschten Daten.";

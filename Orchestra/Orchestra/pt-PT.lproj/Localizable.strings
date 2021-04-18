@@ -58,6 +58,8 @@
 "object.info.version.label.text" = "Versão";
 "object.info.ok.button.label.text" = "OK";
 "object.info.onoff.button.text" = "ON/OFF";
+"object.info.room.name.title.text" = "Quarto";
+"object.info.characteristics.title.text" = "Características";
 
 "floaty.pairing.item.title" = " Emparelhamento com o Hub ";
 "floaty.share.item.title" = " Classifique-nos ";
@@ -77,9 +79,10 @@
 
 "new.scene.successfully.created.title" = "Adicionado!";
 "new.scene.successfully.created.subtitle" = "A cena foi acrescentada!";
-
 "new.scene.unsuccessfully.created.title" = "Não posso acrescentar!";
 "new.scene.unsuccessfully.created.subtitle" = "A cena não foi acrescentada, tente novamente!";
+
+"scene.info.startnig.progress.alert.title" = "A correr, por favor aguarde...";
 
 "home.vc.remove.alert.title" = "Eliminar itens seleccionados";
 "home.vc.remove.alert.subtitle" = "Quer mesmo eliminar a selecção? \n Tenha cuidado, esta acção é irreversível, perderá os dados apagados.";

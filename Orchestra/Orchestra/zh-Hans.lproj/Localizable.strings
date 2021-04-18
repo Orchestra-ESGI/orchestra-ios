@@ -58,6 +58,8 @@
 "object.info.version.label.text" = "版本";
 "object.info.ok.button.label.text" = "好的";
 "object.info.onoff.button.text" = "开/关";
+"object.info.room.name.title.text" = "房间";
+"object.info.characteristics.title.text" = "特点";
 
 "floaty.pairing.item.title" = " 搭配枢纽 ";
 "floaty.share.item.title" = " 给我们评分 ";
@@ -76,9 +78,10 @@
 
 "new.scene.successfully.created.title" = "添加！";
 "new.scene.successfully.created.subtitle" = "场景已经添加了!";
-
 "new.scene.unsuccessfully.created.title" = "不能加！";
 "new.scene.unsuccessfully.created.subtitle" = "场景还未添加，请再试一次!";
+
+"scene.info.startnig.progress.alert.title" = "跑步，请等一下...";
 
 "home.vc.remove.alert.title" = "删除所选项目";
 "home.vc.remove.alert.subtitle" = "你真的想删除选择吗？\n 小心，这个动作是不可逆的，你会失去被删除的数据。";

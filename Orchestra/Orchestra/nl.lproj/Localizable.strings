@@ -58,6 +58,8 @@
 "object.info.version.label.text" = "Versie";
 "object.info.ok.button.label.text" = "OK";
 "object.info.onoff.button.text" = "AAN/UIT";
+"object.info.room.name.title.text" = "Kamer";
+"object.info.characteristics.title.text" = "Kenmerken";
 
 "floaty.pairing.item.title" = " Koppelen met de Hub ";
 "floaty.share.item.title" = " Beoordeel ons ";
@@ -76,9 +78,10 @@
 
 "new.scene.successfully.created.title" = "Toegevoegd!";
 "new.scene.successfully.created.subtitle" = "De scène is toegevoegd!";
-
 "new.scene.unsuccessfully.created.title" = "Ajout impossible!";
 "new.scene.unsuccessfully.created.subtitle" = "De scène is niet toegevoegd, probeer het opnieuw!";
+
+"scene.info.startnig.progress.alert.title" = "Lopen, even wachten...";
 
 "home.vc.remove.alert.title" = "Verwijder geselecteerde items";
 "home.vc.remove.alert.subtitle" = "Wil je echt de selectie verwijderen ? \Wees voorzichtig, deze actie is onomkeerbaar, u zult de verwijderde gegevens verliezen.";

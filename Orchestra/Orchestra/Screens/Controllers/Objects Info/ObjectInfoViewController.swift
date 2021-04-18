@@ -8,16 +8,21 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Floaty
 
 class ObjectInfoViewController: UIViewController {
     
     // MARK: - UI
     @IBOutlet weak var tableViewContainer: UIView!
-    @IBOutlet weak var onOffButton: UIButton!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationTitleLabel: UILabel!
+    @IBOutlet weak var tableViewTitleLabel: UILabel!
     @IBOutlet weak var caracteristicsTableView: UITableView!
     
     // MARK: - Utils
     let localizerUtils = ScreensLabelLocalizableUtils()
+    let localizeLabels = ScreensLabelLocalizableUtils()
+    let colorUtils = ColorUtils.shared
     
     // MARK: - Local data
     var objectData: ObjectDto?
@@ -40,6 +45,13 @@ class ObjectInfoViewController: UIViewController {
     }
 
     private func setUpUI(){
+        self.setUpNavBar()
+        self.setUpFAB()
+        self.setUpTableView()
+        self.setUpLabels()
+    }
+    
+    private func setUpNavBar(){
         let isObjectFavourite = self.objectData?.isFav
         let favIcon = isObjectFavourite ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
@@ -53,17 +65,53 @@ class ObjectInfoViewController: UIViewController {
         }
         
         self.navigationItem.title = objectName
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : self.colorUtils.hexStringToUIColor(hex: (self.objectData?.backgroundColor)!)]
+    }
+    
+    
+    private func setUpTableView(){
         self.caracteristicsTableView.delegate = self
         self.caracteristicsTableView.dataSource = self
         self.caracteristicsTableView.layer.masksToBounds = true
         self.caracteristicsTableView.register(UINib(nibName: "ObjectInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "CHAR_CELL")
         self.caracteristicsTableView.tableFooterView = UIView()
         
-        self.onOffButton.layer.cornerRadius = 8.0
         self.tableViewContainer.layer.cornerRadius = 12.0
         self.tableViewContainer.layer.masksToBounds = true
-        self.onOffButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
+    }
+    
+    private func setUpFAB(){
+        
+        let floatingActionButton = Floaty()
+        floatingActionButton.buttonImage = UIImage(systemName: "play.fill")
+        floatingActionButton.size = CGFloat(60.0)
+        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        floatingActionButton.buttonColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        // These 2 lines trigger the handler of the first item without opening the floaty items menu
+        floatingActionButton.handleFirstItemDirectly = true
+        floatingActionButton.addItem(title: "") { (flb) in
+            guard let isOn = self.objectData?.isOn else{
+                return
+            }
+            floatingActionButton.buttonColor = !isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
+            floatingActionButton.buttonImage = !isOn ? UIImage(systemName: "play.fill") : UIImage(systemName: "stop.fill")
+            
+            if isOn {
+                print("Object activated")
+            }else{
+                print("Object deactivated")
+            }
+            self.objectData?.isOn = !isOn
+        }
+        
+        self.view.addSubview(floatingActionButton)
+    }
+    
+    private func setUpLabels(){
+        self.locationLabel.text = self.objectData?.roomName
+        self.locationTitleLabel.text = self.localizeLabels.objectRoomNameTitleLabelText
+        self.tableViewTitleLabel.text = self.localizeLabels.objectCaracteristicsTitleLabelText
     }
     
     private func setUpData(){
@@ -84,19 +132,9 @@ class ObjectInfoViewController: UIViewController {
         self.objectInfoKeyValue[modeleLabel] = self.objectData?.model
         self.objectInfoKeyValue[versionLabel] = self.objectData?.version
         self.objectInfoKeyValue[reachabilityLabel] = reachableStatus
-        self.onOffButton.setTitle(self.localizerUtils.objectInfoOnOffButtonText, for: .normal)
     }
     
     private func setUpClickObservers(){
-        self.onOffButton
-            .rx
-            .tap.bind{
-                guard let isOn = self.objectData?.isOn else{
-                    return
-                }
-                self.onOffButton.backgroundColor = isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
-                self.objectData?.isOn = !isOn
-            }.disposed(by: self.disposeBag)
         
         self.favButton?
             .rx

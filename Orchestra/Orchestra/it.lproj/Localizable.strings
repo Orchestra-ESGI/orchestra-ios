@@ -58,6 +58,8 @@
 "object.info.version.label.text" = "Versione";
 "object.info.ok.button.label.text" = "OK";
 "object.info.onoff.button.text" = "ON/OFF";
+"object.info.room.name.title.text" = "Camera";
+"object.info.characteristics.title.text" = "Caratteristiche";
 
 "floaty.pairing.item.title" = " Accoppiamento con l'hub ";
 "floaty.share.item.title" = " Votaci ";
@@ -77,9 +79,10 @@
 
 "new.scene.successfully.created.title" = "Aggiunto!";
 "new.scene.successfully.created.subtitle" = "La scena è stata aggiunta!";
-
 "new.scene.unsuccessfully.created.title" = "Non si può aggiungere!";
 "new.scene.unsuccessfully.created.subtitle" = "La scena non è stata aggiunta, riprova!";
+
+"scene.info.startnig.progress.alert.title" = "In esecuzione, attendere prego...";
 
 "home.vc.remove.alert.title" = "Elimina gli elementi selezionati";
 "home.vc.remove.alert.subtitle" = "Vuoi davvero cancellare la selezione? \Fai attenzione, questa azione è irreversibile, perderai i dati cancellati.";

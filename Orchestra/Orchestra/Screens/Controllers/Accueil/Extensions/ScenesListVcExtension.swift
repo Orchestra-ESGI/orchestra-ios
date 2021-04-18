@@ -71,8 +71,8 @@ extension ScenesListViewController: UICollectionViewDataSource{
             objectCell.objectStatusLabel.text = reachableStatus
             objectCell.favIcon.image = self.homeObjects[currentCellPos].isFav! ? UIImage(systemName: "heart.fill") : UIImage(systemName: "")
             objectCell.favIcon.tintColor = #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
-            objectCell.cellContentView.backgroundColor = self.generatesBackGroundColor()
-
+            
+            objectCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: currentObject.backgroundColor!) //self.generatesBackGroundColor()
             objectCell.contentView.layer.cornerRadius = 8.0
             objectCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             objectCell.contentView.layer.borderWidth = 0.2

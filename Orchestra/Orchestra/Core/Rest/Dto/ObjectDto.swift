@@ -12,6 +12,7 @@ class ObjectDto: NSObject, Mappable{
     var _id: String?
     var name: String?
     var roomName: String?
+    var backgroundColor: String?
     var manufacturer: String?
     var serialNumber: String?
     var model: String?
@@ -28,6 +29,7 @@ class ObjectDto: NSObject, Mappable{
         _id <- map["_id"]
         name <- map["name"]
         roomName <- map["roomName"]
+        backgroundColor <- map["backgroundColor"]
         manufacturer <- map["manufacturer"]
         serialNumber <- map["serialNumber"]
         model <- map["model"]

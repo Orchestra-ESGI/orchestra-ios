@@ -10,7 +10,7 @@
 // Login
 "login.notification.unreachable.title" = "Network unavailable!";
 "login.notification.unreachable.subtitle" = "Please check your internet connection and try again";
-"login.notification.ok.title" = "Successful connection!";
+"login.notification.ok.title" = "Successfully connected!";
 "login.notification.ok.subtitle" = "";
 "login.notification.ko.title" = "A problem has arisen!";
 "login.notification.ko.subtitle" = "Try again later";
@@ -33,7 +33,7 @@
 
 "login.welcome.notification.title" = "Welcome ";
 "login.welcome.notification.subtitle" = "We were waiting for your return";
-"login.complete.checkmark.title" = "Successful connection!";
+"login.complete.checkmark.title" = "Successfully connected!";
 "login.vc.no.account.label.text" = "Don't have an account?";
 
 // - MARK: Signup Labels and texts
@@ -58,6 +58,8 @@
 "object.info.version.label.text" = "Version";
 "object.info.ok.button.label.text" = "OK";
 "object.info.onoff.button.text" = "ON/OFF";
+"object.info.room.name.title.text" = "Room";
+"object.info.characteristics.title.text" = "Features";
 
 "floaty.pairing.item.title" = " Pairing with the Hub ";
 "floaty.share.item.title" = " Rate us ";
@@ -77,9 +79,10 @@
 
 "new.scene.successfully.created.title" = "Added!";
 "new.scene.successfully.created.subtitle" = "The scene has been added!";
-
 "new.scene.unsuccessfully.created.title" = "Cannot be added!";
 "new.scene.unsuccessfully.created.subtitle" = "The scene has not been added, try again!";
+
+"scene.info.startnig.progress.alert.title" = "Running, please wait...";
 
 "home.vc.remove.alert.title" = "Delete selected items";
 "home.vc.remove.alert.subtitle" = "Do you really want to delete the selection? \n Warning: this action is irreversible, you will lose the deleted data.";

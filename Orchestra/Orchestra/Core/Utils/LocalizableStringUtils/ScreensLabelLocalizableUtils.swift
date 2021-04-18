@@ -47,7 +47,11 @@ class ScreensLabelLocalizableUtils{
     let objectInfoVersionLabelText = NSLocalizedString("object.info.version.label.text", comment: "")
     let objectCellReachabilityLabelText = NSLocalizedString("home.object.cell.reachability.label.text", comment: "")
     let objectInfoOkButtonLabelText = NSLocalizedString("object.info.ok.button.label.text", comment: "")
+    let objectRoomNameTitleLabelText = NSLocalizedString("object.info.room.name.title.text", comment: "")
+    let objectCaracteristicsTitleLabelText = NSLocalizedString("object.info.characteristics.title.text", comment: "")
     
+    // - MARK: Scene info Labels & text
+    let sceneInfoStartingSceneProgressAlertTitle = NSLocalizedString("scene.info.startnig.progress.alert.title", comment: "")
     
     // - MARK: New scene Labels & text
     let newSceneVcTitle = NSLocalizedString("new.scene.vc.title", comment: "")
