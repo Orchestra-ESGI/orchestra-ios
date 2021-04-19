@@ -26,7 +26,7 @@ extension ScenesListViewController: UICollectionViewDelegateFlowLayout {
 
 extension ScenesListViewController: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        var sections = 2
+//        var sections = 2
 //        if(self.homeObjects.count == 0){
 //            sections -= 1
 //        }
@@ -34,7 +34,7 @@ extension ScenesListViewController: UICollectionViewDataSource{
 //            sections -= 1
 //        }
         
-        return sections
+        return 2
     }
 
     

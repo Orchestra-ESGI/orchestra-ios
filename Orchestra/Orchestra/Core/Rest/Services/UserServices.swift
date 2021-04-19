@@ -60,7 +60,7 @@ class UserServices: RootApiService{
                                 observer.onNext([])
                                 return
                             }
-                            observer.onNext(usersId)
+                            observer.onNext(usersIds)
                         case .failure(_):
                                 guard let errorJson =  response.value  else {
                                     return observer.onCompleted()

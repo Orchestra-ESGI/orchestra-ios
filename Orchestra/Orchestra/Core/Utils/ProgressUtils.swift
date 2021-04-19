@@ -51,7 +51,7 @@ class ProgressUtils {
             case .UIActivityIndicatorView:
                 overlay.mode = MRProgressOverlayViewMode.indeterminateSmall
                 let progress = UIActivityIndicatorView()
-                progress.style = UIActivityIndicatorView.Style.gray
+                progress.style = UIActivityIndicatorView.Style.medium
                 overlay.modeView = progress
             
             case .MRCrossIconView:

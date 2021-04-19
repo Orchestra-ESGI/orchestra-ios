@@ -39,7 +39,7 @@ class NotificationsUtils {
         banner.onSwipeUp = {
             self.banner.dismiss()
         }
-        showBanners([(banner as? FloatGrowingNotificationBanner)!], position: position)
+        showBanners([(banner as? FloatingNotificationBanner)!], position: position)
     }
     
     func showGrowingNotificationBanner(title: String, subtitle: String, position: BannerPosition, style: BannerStyle) {
@@ -75,7 +75,7 @@ class NotificationsUtils {
         banner.show()
     }
     
-    func showBanners(_ banners: [FloatGrowingNotificationBanner], position: BannerPosition, duration: Double = 1.5) {
+    func showBanners(_ banners: [FloatingNotificationBanner], position: BannerPosition, duration: Double = 1.5) {
         _ = banners.map { b in
             b.duration = duration
             b.show(bannerPosition: position,
@@ -109,7 +109,7 @@ class NotificationsUtils {
             case .info:
                 notificationSideViewImage = UIImageView(image: #imageLiteral(resourceName: "info"))
                 break
-            case .none:
+            case .customView:
                 notificationSideViewImage = UIImageView(image: #imageLiteral(resourceName: "success"))
                 break
             case .success:
@@ -122,7 +122,7 @@ class NotificationsUtils {
         
         switch type {
         case "Floating":
-            return FloatGrowingNotificationBanner(title: title, subtitle: subtitle,
+            return FloatingNotificationBanner(title: title, subtitle: subtitle,
                                                   leftView: notificationSideViewImage, style: style)
         case "Simple":
             return NotificationBanner(title: title, subtitle: subtitle,
@@ -131,7 +131,7 @@ class NotificationsUtils {
             return GrowingNotificationBanner(title: title, subtitle: subtitle,
                                              leftView: notificationSideViewImage, style: style)
         default:
-            return FloatGrowingNotificationBanner(title: title, subtitle: subtitle,
+            return FloatingNotificationBanner(title: title, subtitle: subtitle,
                                                   leftView: notificationSideViewImage, style: style)
         }
     }
