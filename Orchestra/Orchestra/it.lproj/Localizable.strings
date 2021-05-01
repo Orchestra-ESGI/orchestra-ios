@@ -51,6 +51,8 @@
 "home.object.cell.reachability.label.text" = "Disponibilità";
 "home.object.cell.reachability.status.ok.label.text" = "Disponibile";
 "home.object.cell.reachability.status.ko.label.text" = "Non disponibile";
+"home.edit.progress.title.text" = "Cancellazione in corso, attendere prego...";
+"home.finish.edit.progress.title.text" = "Rimosso con successo!";
 
 "object.info.manufacturer.label.text" = "Produttore";
 "object.info.serial.label.text" = "Numero di serie";

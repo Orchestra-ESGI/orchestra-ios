@@ -35,6 +35,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Service
     let sceneWS = FakeSceneDataService.shared
+    let sceneVM = SceneViewModel()
     
     // MARK: - Local data
     var dataDelegate: SendBackDataProtocol?
@@ -127,21 +128,19 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
                 let sceneBackGroundColor = self.sceneColors[self.selectedColor].toHexString()
                 
                 
-                self.sceneWS
+                _ = self.sceneVM
                     .createNewScene(name: sceneName,
                                     description: sceneDescription,
                                     color: sceneBackGroundColor, actions: actions)
-                    .subscribe { (createdScene) in
+                    .subscribe { scene in
+                        guard let createdScene = scene.element else{
+                            return
+                        }
                         self.dataDelegate?.saveScene(scene: createdScene)
                         self.progressUtils.dismiss()
                         self.navigationController?.popViewController(animated: true)
-                    } onError: { (err) in
-                        self.notificationUtils
-                            .showFloatingNotificationBanner(
-                                title: self.notificationLocalize.loginCredentialsWrongNotificationTitle,
-                                subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle,
-                                position: .top, style: .warning)
-                    }.disposed(by: self.disposebag)
+                    }
+
 
         }
     }

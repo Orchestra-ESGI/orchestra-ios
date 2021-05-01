@@ -51,6 +51,8 @@
 "home.object.cell.reachability.label.text" = "Beschikbaarheid";
 "home.object.cell.reachability.status.ok.label.text" = "Beschikbaar";
 "home.object.cell.reachability.status.ko.label.text" = "Niet beschikbaar";
+"home.edit.progress.title.text" = "Verwijdering bezig, gelieve te wachten...";
+"home.finish.edit.progress.title.text" = "Met succes verwijderd!";
 
 "object.info.manufacturer.label.text" = "Fabrikant";
 "object.info.serial.label.text" = "Serienummer";

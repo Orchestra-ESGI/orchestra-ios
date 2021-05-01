@@ -25,8 +25,6 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK: Services
     let userVM = UsersViewModel()
-    let userWS = FakeUserServices.shared
-    
     
     // - MARK: Utils
     let notificationUtils = NotificationsUtils.shared
@@ -116,7 +114,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             .isSignupFormValid
             .subscribe(onNext: { (isValid) in
             if(isValid){
-                self.userWS.signup()
+                self.userVM.fakeUserWS.signup()
             }else{
                 self.notificationUtils.showBadCredentialsNotification()
             }
@@ -137,7 +135,8 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     // - MARK: Fake Data
     private func observeSigninFakeUserEvent(){
         _ = self
-            .userWS
+            .userVM
+            .fakeUserWS
             .userSignupStream
             .subscribe(onNext: { (user) in
                 self.alert!.dismiss(animated: true, completion: nil)

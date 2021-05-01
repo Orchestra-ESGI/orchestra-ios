@@ -33,6 +33,8 @@ public class NotificationLocalizableUtils {
     
     // - MARK: Progress notifications
     let undeterminedProgressViewTitle = NSLocalizedString("progress.notification.undetermined.title", comment: "")
+    let editingHomeProgressViewTitle = NSLocalizedString("home.edit.progress.title.text", comment: "")
+    let finishEditingHomeProgressViewTitle = NSLocalizedString("home.finish.edit.progress.title.text", comment: "")
     
     // - MARK: Signup Notifications
     

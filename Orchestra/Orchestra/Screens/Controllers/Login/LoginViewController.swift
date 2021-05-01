@@ -25,9 +25,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var noAccountLabel: UILabel!
     
-    // - MARK : Services
-    let usersWS = FakeUserServices.shared //UserServices.shared
-    
     // - MARK : View models
     let userVm = UsersViewModel()
     
@@ -88,7 +85,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .subscribe { (isValid) in
                 if isValid {
                     self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
-                    self.usersWS.getAllFakeUsers()
+                    self.userVm.fakeUserWS.getAllFakeUsers()
                 }else{
                     self.notificationUtils.showBadCredentialsNotification()
                     self.progressUtils.dismiss()
@@ -106,29 +103,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK: RX binding
     private func setUpUiBindings(){
-        self.loginButton
-            .rx.tap
-            .bind {
-                self.userVm.checkLoginForm(emailTf: (self.emailTextField)!, passwordTf: (self.passwordTextField)!)
-            }
-            .disposed(by: self.disposeBag)
-        
-        self.passwordForgotButton
-            .rx.tap
-            .bind { [weak self] in
-                //self.navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
-                self?.notificationUtils.showBasicBanner(title: "Forgot button clicked", subtitle: "WIP", position: .bottom, style: .info)
-            }
-            .disposed(by: self.disposeBag)
-        
-        self.signinButton
-            .rx.tap
-            .bind { [weak self] in
-                let signinVC = SigninViewController()
-                self?.navigationController?.pushViewController(signinVC, animated: true)
-            }
-            .disposed(by: self.disposeBag)
+        self.setupLoginButtonBindings()
+        self.setUpPasswordBindings()
+        self.setUpSigninButtonBindings()
     }
+    
+    
     
     // - MARK: Real Data
     private func observeLoginUserEvent(){
@@ -146,7 +126,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK: Fake Data
     private func observeFakeLoginUserEvent(){
-        _ = self.usersWS
+        _ = self.userVm.fakeUserWS
             .userStream
             .subscribe { (users) in
                 let userCredentials = users.filter { (user) -> Bool in

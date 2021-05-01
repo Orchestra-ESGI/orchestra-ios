@@ -26,18 +26,11 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     let progressUtils = ProgressUtils.shared
     let colorUtils = ColorUtils.shared
     
-    // - MARK: Services
-    let fakeObjectsWS = FakeObjectsDataService.shared
-    let fakeScenesWS = FakeSceneDataService.shared
-    
     
     // - MARK: Data
     var userLoggedInData: UserDto?
-    let disposeBag = DisposeBag()
     var isCellsShaking = false
-    let isSchakingStream = PublishSubject<Bool>()
-    let elementsToRemoveStream = PublishSubject<Bool>()
-    
+    var objectVM = HomeViewModel()
     var objectsToRemove: [ObjectDto] = []
     var scenesToRemove: [SceneDto] = []
     
@@ -51,221 +44,23 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
             self.collectionView.reloadData()
         }
     }
+    let disposeBag = DisposeBag()
+    let isSchakingStream = PublishSubject<Bool>()
+    let elementsToRemoveStream = PublishSubject<Bool>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup UI
         self.setUpTopBar()
         self.setUpCollectionView()
         self.setUpFAB()
-        self.observeClick()
+        // Binding click with buttons
+        self.bindClickToButtons()
         self.setUpObservers()
-        // Throw calls needed to refresh UI
-        self.fakeObjectsWS.getAllObjects(for: "")
-        self.fakeScenesWS.getAllScenes(for: "")
-    }
-    
-
-    // - MARK: Observers
-    private func observeClick(){
-        self.addSceneAppbarButon?.rx
-            .tap
-            .bind { [weak self] in
-                if((self!.isCellsShaking)){
-                    self?.stopCellsShake()
-                    self?.isCellsShaking = !self!.isCellsShaking
-                }
-                let sceneVc = SceneViewController()
-                sceneVc.dataDelegate = self
-                self?.navigationController?.pushViewController(sceneVc, animated: true)
-        }.disposed(by: self.disposeBag)
-        
-        self.userSettingsAppbarButton?.rx
-            .tap
-            .bind { [weak self] in
-                if((self!.isCellsShaking)){
-                    self?.stopCellsShake()
-                    self?.isCellsShaking = !self!.isCellsShaking
-                }
-                self?.navigationController?.pushViewController(AppSettingsViewController(), animated: true)
-        }.disposed(by: self.disposeBag)
-        
-        _ = cancelButton?.rx.tap.bind{
-            self.stopCellsShake()
-            self.isCellsShaking = !self.isCellsShaking
-        }
-        
-        _ = trashButton?
-            .rx
-            .tap.bind{
-            let alertTitle = self.notificationLocalize.removeDataAlertTitle
-            let alertSubtitle = self.notificationLocalize.removeDataAlertSubtitle
-            let alertCancelAction = self.notificationLocalize.removeDataAlertCancelButtonText
-            let alertRemoveAction = self.notificationLocalize.removeDataAlertDeleteButtonText
-            
-            let alert = UIAlertController(title: alertTitle, message: alertSubtitle, preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: alertRemoveAction, style: .destructive, handler: { _ in
-                self.clearCellsSelection()
-            }))
-            alert.addAction(UIAlertAction(title: alertCancelAction, style: .cancel, handler: nil))
-
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    private func setUpObservers(){
-        self.fakeObjectsWS
-            .objectStream
-            .subscribe { (objects) in
-                self.homeObjects = objects
-                self.homeObjects.sort { (object1, object2) in
-                    return object1.isFav! && !object2.isFav!
-                }
-        } onError: { (err) in
-            self.notificationUtils
-                .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
-        }.disposed(by: self.disposeBag)
-        
-        
-        self.fakeScenesWS
-            .sceneStream
-            .subscribe { (scenes) in
-                self.homeScenes = scenes
-        } onError: { (err) in
-            self.notificationUtils
-                .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
-        }.disposed(by: self.disposeBag)
-        
-        self.isSchakingStream.subscribe { (isShaking) in
-            if(isShaking.element!){
-                self.cancelButton?.isEnabled = true
-                self.cancelButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-                self.trashButton?.isEnabled = true
-                self.trashButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-            }else{
-                self.cancelButton?.isEnabled = false
-                self.cancelButton?.tintColor = .clear
-                self.trashButton?.isEnabled = false
-                self.trashButton?.tintColor = .clear
-            }
-        }.disposed(by: self.disposeBag)
-
-        self.elementsToRemoveStream
-            .subscribe { (elementsExists) in
-                if(elementsExists.element!){
-                    self.trashButton?.isEnabled = true
-                    self.trashButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-                }else{
-                    self.trashButton?.isEnabled = false
-                    self.trashButton?.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-                }
-        }.disposed(by: self.disposeBag)
-        
-
-    }
-
-    
-    // - MARK: UI
-    private func setUpTopBar(){
-        self.navigationItem.hidesBackButton = true
-        self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: nil)
-        cancelButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .done, target: self, action: nil)
-        trashButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .done, target: self, action: nil)
-        userSettingsAppbarButton = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .done, target: self, action: nil)
-        
-        cancelButton?.isEnabled = false
-        cancelButton?.tintColor = .clear
-        trashButton?.isEnabled = false
-        trashButton?.tintColor = .clear
-        addSceneAppbarButon!.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-        userSettingsAppbarButton!.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-        
-        self.navigationItem.rightBarButtonItems = [addSceneAppbarButon!, trashButton!, cancelButton!]
-        self.navigationItem.leftBarButtonItem = userSettingsAppbarButton!
-    }
-    
-    func setUpCollectionView(){
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        
-        // CELLS
-        self.collectionView.register(UINib(nibName: "ObjectCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OBJECT")
-        self.collectionView.register(UINib(nibName: "SceneCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SCENE")
-        
-        // HEADERS AND FOOTERS
-        self.collectionView?.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SECTION_HEADER")
-    }
-    
-    func generatesBackGroundColor() -> UIColor{
-        return UIColor(red: .random(in: 0.2...0.7),
-                       green: .random(in: 0.2...0.7),
-                       blue: .random(in: 0.2...0.7),
-                                alpha: 1.0)
-
-    }
-    
-    // Catch Dark mode / light mode switch
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        self.collectionView.reloadData()
-    }
-    
-    private func setUpFAB(){
-        let floatingActionButton = Floaty()
-        floatingActionButton.buttonImage = UIImage(systemName: "gearshape.fill")
-        floatingActionButton.size = CGFloat(60.0)
-        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-        floatingActionButton.openAnimationType = .slideUp
-        
-        let pairPhoneButton = setUpFloatyItem()
-        pairPhoneButton.title = self.screenLabelLocalize.floatyButtonPairingButtonTitle
-        pairPhoneButton.icon =  UIImage(named: "hub")!
-        pairPhoneButton.handler = { item in
-            self.showPairingVc()
-            floatingActionButton.close()
-        }
-        
-        let shareAppButton = setUpFloatyItem()
-        shareAppButton.icon =  UIImage(systemName: "square.and.arrow.up")
-        shareAppButton.title = self.screenLabelLocalize.floatyButtonShareButtonTitle
-        shareAppButton.handler = { item in
-            self.showRatemarks()
-            floatingActionButton.close()
-        }
-        
-
-        let rateAppButton = setUpFloatyItem()
-        rateAppButton.icon =  UIImage(systemName: "star")
-        rateAppButton.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        rateAppButton.title = self.screenLabelLocalize.floatyButtonRateButtonTitle
-        rateAppButton.handler = { item in
-            self.showShareBottomSheet()
-            floatingActionButton.close()
-        }
-
-
-        floatingActionButton.addItem(item: pairPhoneButton)
-        floatingActionButton.addItem(item: shareAppButton)
-        floatingActionButton.addItem(item: rateAppButton)
-        
-        self.view.addSubview(floatingActionButton)
-    }
-    
-    private func setUpFloatyItem() -> FloatyItem{
-        let floaty = FloatyItem()
-        floaty.titleLabel.font = UIFont(name: "Avenir Medium", size: 19)
-        floaty.titleLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        floaty.titleLabel.layer.cornerRadius = 5
-        floaty.titleLabel.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        floaty.titleLabel.layer.borderWidth = 1
-        floaty.titleLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
-        return floaty
+        // Fetch data
+        self.objectVM.fakeObjectsWS.getAllObjects(for: "")
+        self.objectVM.fakeScenesWS.getAllScenes(for: "")
     }
     
     // MARK: Internal functions
@@ -348,11 +143,33 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.navigationController?.present(navigationCtr, animated: true, completion: nil)
     }
     
-    private func clearCellsSelection(){
+    
+    func showPairingVc(){
+        print("Hub pairing...")
+        let paringVc = HubPairingViewController()
+        let paringNavVc = UINavigationController(rootViewController: paringVc)
+        self.navigationController?.present(paringNavVc, animated: true)
+    }
+    
+    func showRatemarks(){
+        print("Rate us")
+    }
+    
+    func showShareBottomSheet(){
+        print("Share")
+    }
+    
+    func clearCellsSelection(){
         // Do call WS here to remove from db
-        self.progressUtils.displayIndeterminateProgeress(title: "Supression en cours, veuillez patienter...", view: self.view)
-        let removedObjectObservable = self.clearObjectSelected()
-        let removedSceneObservable = self.clearScenesSelected()
+        let progressAlertTitle = self.notificationLocalize.editingHomeProgressViewTitle
+        let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
+        self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
+        let removedObjectObservable = self.objectVM.clearObjectSelected {
+            self.deleteSelectedObjects()
+        }
+        let removedSceneObservable = self.objectVM.clearScenesSelected{
+            self.deleteSelectedScenes()
+        }
         
         _ = Observable.combineLatest(removedObjectObservable, removedSceneObservable){ (obs1, obs2) -> Bool in
             return obs1 && obs2
@@ -361,7 +178,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
                 self.stopCellsShake()
                 self.isCellsShaking = !self.isCellsShaking
                 self.progressUtils.dismiss()
-                self.progressUtils.displayCheckMark(title: "Supression effectuée", view: self.view)
+                self.progressUtils.displayCheckMark(title: finishProgressAlertTitle, view: self.view)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.progressUtils.dismiss()
                 }
@@ -369,77 +186,46 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         }
     }
     
-    private func clearObjectSelected() -> Observable<Bool>{
-        return Observable<Bool>.create { (observer) -> Disposable in
-            if(self.objectsToRemove.count > 0){
-                _ = self.fakeObjectsWS
-                    .removeObject()
-                    .subscribe(onNext: { (objectRemoved) in
-                        self.homeObjects = self.homeObjects.filter { (object) -> Bool in
-                            return !self.objectsToRemove.contains(object)
-                        }
-                        self.objectsToRemove.removeAll()
-                        observer.onNext(true)
-                    }, onError: { (err) in
-                        observer.onError(err)
-                        print("err")
-                    })
-                    .disposed(by: self.disposeBag)
-            }else{
-                observer.onNext(true)
-            }
-            return Disposables.create()
+    private func deleteSelectedObjects(){
+        self.homeObjects = self.homeObjects.filter { (object) -> Bool in
+            return !self.objectsToRemove.contains(object)
         }
+        self.objectsToRemove.removeAll()
     }
     
-    
-    private func clearScenesSelected() -> Observable<Bool>{
-        return Observable<Bool>.create { (observer) -> Disposable in
-            if(self.scenesToRemove.count > 0){
-                _ = self.fakeScenesWS
-                    .removeScene()
-                    .subscribe { (sceneRemoved) in
-                        self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
-                            return !self.scenesToRemove.contains(scene)
-                        })
-                        self.scenesToRemove.removeAll()
-                        observer.onNext(true)
-                    } onError: { (err) in
-                        observer.onError(err)
-                        print("err")
-                    }.disposed(by: self.disposeBag)
-            }else{
-                observer.onNext(true)
-            }
-            return Disposables.create()
-        }
+    private func deleteSelectedScenes(){
+        self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
+            return !self.scenesToRemove.contains(scene)
+        })
+        self.scenesToRemove.removeAll()
     }
-    
-    private func showPairingVc(){
-        print("Hub pairing...")
-        let paringVc = HubPairingViewController()
-        let paringNavVc = UINavigationController(rootViewController: paringVc)
-        self.navigationController?.present(paringNavVc, animated: true)
-    }
-    
-    private func showRatemarks(){
-        print("Rate us")
-    }
-    
-    private func showShareBottomSheet(){
-        print("Share")
-    }
-    
+
+    // To move to VM
     func saveScene(scene: SceneDto) {
         self.notificationUtils.showFloatingNotificationBanner(title: self.notificationLocalize.successfullyAddedNotificationTitle, subtitle: self.notificationLocalize.successfullyAddedNotificationSubtitle, position: .top, style: .success)
         self.homeScenes.append(scene)
     }
     
+    // To move to VM
     func updateScene(scene: SceneDto) {
         guard let index = self.homeScenes.firstIndex(of: scene) else{
             return
         }
         self.homeScenes.insert(scene, at: index)
         self.homeScenes.remove(at: index + 1)
+    }
+    
+    // - MARK: Observers
+    private func bindClickToButtons(){
+        setAddSceneButtonBinding()
+        setUserSettingButtonBinding()
+        setTrashButtonBinding()
+    }
+    
+    private func setUpObservers(){
+        self.setObjectStreamObserver()
+        self.setScenesStreamObserver()
+        self.setEditModeObserver()
+        self.editingTableViewObserver()
     }
 }

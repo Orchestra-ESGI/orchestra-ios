@@ -10,7 +10,9 @@ import RxSwift
 import RxCocoa
 
 class UsersViewModel{
-    let userWs = UserServices()
+    let realUserWS = UserServices()
+    let fakeUserWS = FakeUserServices.shared
+    
     let disposeBag = DisposeBag()
     let progressUtils = ProgressUtils()
     let notificationLocalizable = NotificationLocalizableUtils.shared
@@ -22,7 +24,7 @@ class UsersViewModel{
     
     func login(email: String, password: String, on vewController: UIViewController) -> Observable<UserDto>{
         return Observable<UserDto>.create { (observer) -> Disposable in
-            _ = self.userWs
+            _ = self.realUserWS
                 .login(email: email, password: password)
                 .subscribe { (user) in
                     self.responseHandle(status: .OK, on: vewController)
@@ -39,15 +41,15 @@ class UsersViewModel{
     }
     
     func signin(name: String, email: String, pwd: String) -> Observable<UserDto>{
-        return userWs.signin(name: name, email: email, password: pwd)
+        return realUserWS.signin(name: name, email: email, password: pwd)
     }
     
     func deleteAccount(usersId: [String]) -> Observable<[String]>{
-        return userWs.removeUser(usersId: usersId)
+        return realUserWS.removeUser(usersId: usersId)
     }
     
     func updateUser(credentialName: String, id: String, credentialValue: String) -> Observable<UserDto>{
-        return userWs.updateUser(credentialName, id, credentialValue)
+        return realUserWS.updateUser(credentialName, id, credentialValue)
     }
     
     func saveUsreCredentials(){
