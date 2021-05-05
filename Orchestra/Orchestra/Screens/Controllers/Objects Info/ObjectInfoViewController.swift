@@ -146,7 +146,7 @@ class ObjectInfoViewController: UIViewController {
                 let isFavIcon = !isFav ?
                     UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
                 self.favButton?.image = isFavIcon
-                self.favClicStream.onNext(self.objectData?._id ?? "")
+                self.favClicStream.onNext(self.objectData?.id ?? "")
             }.disposed(by: self.disposeBag)
         
         self.okButton?

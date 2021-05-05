@@ -6,6 +6,19 @@
   
 */
 
+// - MARK: Pager
+"pager.slide.1.label.text" = "Beheer uw huis en uw aangesloten objecten allemaal vanuit dezelfde applicatie en maak uw leven eenvoudiger";
+"pager.slide.2.label.text" = "Beheer uw volledige docmilice vanuit Orchestra snel en gemakkelijk";
+"pager.slide.3.label.text" = "Te veel draden? Te veel hubs? Te veel aanvragen? Te veel dingen om uw domotica te beheren, met Orchestra, ontdoe u van het overtollige, en bewaar alleen het essentiële";
+"pager.slide.4.label.text" = "Je besluit om van telefoon of merk te veranderen? Geen zorgen, installeer Orchestra opnieuw op uw nieuwe toestel, wij zorgen ervoor dat alles gesynchroniseerd wordt";
+"pager.slide.5.label.text" = "Orchestra, eenvoudige en nuttige domotica";
+
+"pager.slide.1.title.label.text" = "Eenvoud";
+"pager.slide.2.title.label.text" = "Efficiëntie";
+"pager.slide.3.title.label.text" = "Duidelijkheid";
+"pager.slide.4.title.label.text" = "Sychronisatie";
+"pager.slide.5.title.label.text" = "Laten we beginnen!";
+
 // - MARK: Notifications
 // Login
 "login.notification.unreachable.title" = "Netwerk niet beschikbaar!";

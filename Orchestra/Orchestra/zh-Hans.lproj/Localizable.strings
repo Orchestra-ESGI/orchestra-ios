@@ -6,6 +6,19 @@
   
 */
 
+// - MARK: Pager
+"pager.slide.1.label.text" = "从同一个应用程序管理你的家和你的连接物体，并简化你的生活。";
+"pager.slide.2.label.text" = "从Orchestra快速而轻松地管理你的家";
+"pager.slide.3.label.text" = "电线太多？枢纽太多？申请太多？太多的东西来管理你的家庭自动化，用Orchestra，摆脱多余的东西，只保留必要的东西。";
+"pager.slide.4.label.text" = "你决定改变你的手机或品牌？别担心，在你的新设备上重新安装Orchestra，我们将为你处理好一切同步事宜。";
+"pager.slide.5.label.text" = "Orchestra, 简单而有用的家庭自动化";
+
+"pager.slide.1.title.label.text" = "简洁性";
+"pager.slide.2.title.label.text" = "效率";
+"pager.slide.3.title.label.text" = "清晰度";
+"pager.slide.4.title.label.text" = "同步化";
+"pager.slide.5.title.label.text" = "让我们开始吧!";
+
 // - MARK: Notifications
 // Login
 "login.notification.unreachable.title" = "网络不可用";

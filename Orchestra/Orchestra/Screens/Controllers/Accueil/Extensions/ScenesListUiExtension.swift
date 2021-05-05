@@ -12,10 +12,24 @@ import Floaty
 extension ScenesListViewController{
     
     // - MARK: UI
+    func setClickableTitle() {
+        let titleView = UIButton()
+        titleView.setTitle("Mon domicile", for: .normal)
+        titleView.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+        titleView.addLeftIcon(image: UIImage(systemName: "chevron.down")!)
+        let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
+        titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 500))
+        self.navigationItem.titleView = titleView
+
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.titleWasTapped))
+        titleView.isUserInteractionEnabled = true
+        titleView.addGestureRecognizer(recognizer)
+    }
+    
     func setUpTopBar(){
         self.navigationItem.hidesBackButton = true
-        self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
         
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: nil)
         cancelButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .done, target: self, action: nil)

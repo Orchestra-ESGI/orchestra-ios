@@ -9,7 +9,7 @@ import Foundation
 import ObjectMapper
 
 class UserDto: NSObject, Mappable{
-    var _id: String = ""
+    var id: String = ""
     var name: String = ""
     var email: String = ""
     var password: String = ""
@@ -22,7 +22,7 @@ class UserDto: NSObject, Mappable{
     }
     
     func mapping(map: Map) {
-        self._id <- map["_id"]
+        self.id <- map["id"]
         self.name <- map["name"]
         self.email <- map["email"]
         self.password <- map["password"]

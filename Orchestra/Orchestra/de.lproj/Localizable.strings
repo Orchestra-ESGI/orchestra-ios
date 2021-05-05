@@ -6,6 +6,19 @@
   
 */
 
+// - MARK: Pager
+"pager.slide.1.label.text" = "Verwalten Sie Ihr Zuhause und Ihre angeschlossenen Objekte über dieselbe Anwendung und vereinfachen Sie Ihr Leben";
+"pager.slide.2.label.text" = "Verwalten Sie Ihr gesamtes Docmilice von Orchestra aus schnell und einfach";
+"pager.slide.3.label.text" = "Zu viele Drähte? Zu viele Hubs? Zu viele Anwendungen? Zu viele Dinge, um Ihre Heimautomation zu verwalten, mit Orchestra, loswerden der Überschuss, und halten Sie nur das Wesentliche";
+"pager.slide.4.label.text" = "Sie entscheiden sich für ein anderes Telefon oder eine andere Marke? Keine Sorge, installieren Sie Orchestra auf Ihrem neuen Gerät neu, wir kümmern uns um die Synchronisation für Sie";
+"pager.slide.5.label.text" = "Orchestra, einfache und nützliche Hausautomation";
+
+"pager.slide.1.title.label.text" = "Einfachheit";
+"pager.slide.2.title.label.text" = "Wirkungsgrad";
+"pager.slide.3.title.label.text" = "Klarheit";
+"pager.slide.4.title.label.text" = "Sychronisation";
+"pager.slide.5.title.label.text" = "Fangen wir an!";
+
 // - MARK: Notifications
 // Login
 "login.notification.unreachable.title" = "Netzwerk nicht verfügbar!";

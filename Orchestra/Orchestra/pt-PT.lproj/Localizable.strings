@@ -6,6 +6,19 @@
   
 */
 
+// - MARK: Pager
+"pager.slide.1.label.text" = "Gerir a sua casa e os seus objectos ligados todos a partir da mesma aplicação e simplificar a sua vida";
+"pager.slide.2.label.text" = "Gerir toda a sua docmilice a partir da Orquestra de forma rápida e fácil";
+"pager.slide.3.label.text" = "Demasiados fios? Demasiados pólos? Demasiadas aplicações? Demasiadas coisas para gerir a sua domótica, com a Orquestra, livrar-se do excedente, e manter apenas o essencial";
+"pager.slide.4.label.text" = "Decide mudar o seu telefone ou a sua marca? Não se preocupe, reinstale a Orchestra no seu novo aparelho, nós tratamos de sincronizar tudo para si";
+"pager.slide.5.label.text" = "Orchestra, fácil e útil automatização doméstica";
+
+"pager.slide.1.title.label.text" = "Simplicidade";
+"pager.slide.2.title.label.text" = "Eficiência";
+"pager.slide.3.title.label.text" = "Clareza";
+"pager.slide.4.title.label.text" = "Sincronização";
+"pager.slide.5.title.label.text" = "Vamos começar!";
+
 // - MARK: Notifications
 // Login
 "login.notification.unreachable.title" = "Rede indisponível";

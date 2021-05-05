@@ -10,6 +10,19 @@ import Foundation
 
 class ScreensLabelLocalizableUtils{
     
+    // - MARK: Pager Labels and texts
+    let pagerSlide1LabelText = NSLocalizedString("pager.slide.1.label.text", comment: "")
+    let pagerSlide2LabelText = NSLocalizedString("pager.slide.2.label.text", comment: "")
+    let pagerSlide3LabelText = NSLocalizedString("pager.slide.3.label.text", comment: "")
+    let pagerSlide4LabelText = NSLocalizedString("pager.slide.4.label.text", comment: "")
+    let pagerSlide5LabelText = NSLocalizedString("pager.slide.1.label.text", comment: "")
+    
+    let pageSlide1TitleLabelText = NSLocalizedString("pager.slide.1.title.label.text", comment: "")
+    let pageSlide2TitleLabelText = NSLocalizedString("pager.slide.2.title.label.text", comment: "")
+    let pageSlide3TitleLabelText = NSLocalizedString("pager.slide.3.title.label.text", comment: "")
+    let pageSlide4TitleLabelText = NSLocalizedString("pager.slide.4.title.label.text", comment: "")
+    let pageSlide5TitleLabelText = NSLocalizedString("pager.slide.5.title.label.text", comment: "")
+    
     // - MARK: Login Labels and texts
     let loginBigText = NSLocalizedString("login.vc.welcome.text", comment: "")
     let loginEmailLabelText = NSLocalizedString("login.vc.email.label.text", comment: "")

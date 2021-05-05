@@ -63,6 +63,18 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.objectVM.fakeScenesWS.getAllScenes(for: "")
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+
+        if parent != nil && self.navigationItem.titleView == nil {
+            setClickableTitle()
+        }
+    }    
+
+    @objc func titleWasTapped() {
+        NSLog("Hello, titleWasTapped!")
+    }
+    
     // MARK: Internal functions
     func showInfoDetailAboutObject(for indexPath: IndexPath){
         // Object clicked on
@@ -72,7 +84,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         _ = objectVC.favClicStream
             .subscribe(onNext: { (objId) in
             let objectToUpdate = self.homeObjects.compactMap { (object) in
-                return object._id == objId ? object : nil
+                return object.id == objId ? object : nil
             }
             objectToUpdate[0].isFav = !objectToUpdate[0].isFav!
             // Sort objects to show fav at the top
@@ -227,5 +239,25 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.setScenesStreamObserver()
         self.setEditModeObserver()
         self.editingTableViewObserver()
+    }
+}
+
+
+extension UIButton {
+    func addLeftIcon(image: UIImage) {
+        let imageView = UIImageView(image: image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        addSubview(imageView)
+
+        let length = CGFloat(15)
+        titleEdgeInsets.left += length
+
+        NSLayoutConstraint.activate([
+            imageView.leftAnchor.constraint(equalTo: self.titleLabel!.leftAnchor, constant: -20),
+            imageView.centerYAnchor.constraint(equalTo: self.titleLabel!.centerYAnchor, constant: 0),
+            imageView.widthAnchor.constraint(equalToConstant: length),
+            imageView.heightAnchor.constraint(equalToConstant: length)
+        ])
     }
 }

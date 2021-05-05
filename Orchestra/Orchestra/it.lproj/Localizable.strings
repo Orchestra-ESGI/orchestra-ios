@@ -6,6 +6,19 @@
   
 */
 
+// - MARK: Pager
+"pager.slide.1.label.text" = "Gestisci la tua casa e i tuoi oggetti connessi dalla stessa applicazione e semplifica la tua vita";
+"pager.slide.2.label.text" = "Gestisci tutto il tuo docmilice da Orchestra in modo facile e veloce";
+"pager.slide.3.label.text" = "Troppi fili? Troppi hub? Troppe applicazioni? Troppe cose per gestire la vostra automazione domestica, con Orchestra, sbarazzarsi del surplus, e mantenere solo l'essenziale";
+"pager.slide.4.label.text" = "Hai deciso di cambiare il tuo telefono o la tua marca? Non preoccuparti, reinstalla Orchestra sul tuo nuovo dispositivo, ci occuperemo di sincronizzare tutto per te";
+"pager.slide.5.label.text" = "Orchestra, automazione domestica facile e utile";
+
+"pager.slide.1.title.label.text" = "Semplicità";
+"pager.slide.2.title.label.text" = "Efficienza";
+"pager.slide.3.title.label.text" = "Chiarezza";
+"pager.slide.4.title.label.text" = "Sincronizzazione";
+"pager.slide.5.title.label.text" = "Cominciamo!";
+
 // - MARK: Notifications
 // Login
 "login.notification.unreachable.title" = "Rete non disponibile!";

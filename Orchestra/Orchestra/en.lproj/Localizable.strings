@@ -6,6 +6,19 @@
   
 */
 
+// - MARK: Pager
+"pager.slide.1.label.text" = "Manage your home(s) & your connected objects all from the same application and simplify your life";
+"pager.slide.2.label.text" = "Manage your entire home from Orchestra simply and quickly";
+"pager.slide.3.label.text" = "Too many wires? Too many hubs? Too many applications? Too many things to manage your home automation, with Orchestra, get rid of excess, and keep only the essentials";
+"pager.slide.4.label.text" = "Do you decide to change your phone or brand? No worries, reinstall Orchestra on your new device, we'll sync everything for you";
+"pager.slide.5.label.text" = "Orchestra, easy and useful home automation";
+
+"pager.slide.1.title.label.text" = "Simplicity";
+"pager.slide.2.title.label.text" = "Efficiency";
+"pager.slide.3.title.label.text" = "Clarity";
+"pager.slide.4.title.label.text" = "Sychronisation";
+"pager.slide.5.title.label.text" = "Here we go!";
+
 // - MARK: Notifications
 // Login
 "login.notification.unreachable.title" = "Network unavailable!";

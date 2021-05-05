@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Slide" customModule="Orchestra" customModuleProvider="target">
+            <connections>
+                <outlet property="slideDescription" destination="Hii-Ah-B7t" id="xQ1-Du-EOG"/>
+                <outlet property="slideImage" destination="TK9-R8-5qC" id="Fyb-Wd-q3j"/>
+                <outlet property="slideTitle" destination="8b1-cD-QVi" id="Kpm-EW-dYl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="Slide" customModule="Orchestra" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="couple-couch-slide-1" translatesAutoresizingMaskIntoConstraints="NO" id="TK9-R8-5qC">
+                    <rect key="frame" x="0.0" y="44" width="414" height="304"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="304" id="gWD-vB-cxI"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simplicité" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8b1-cD-QVi">
+                    <rect key="frame" x="20" y="363" width="374" height="48"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
+                    <color key="textColor" red="0.34509803921568627" green="0.19129442335008742" blue="0.87871439557302378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Controlez votre maison directement depuis l'application Orchestra" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hii-Ah-B7t">
+                    <rect key="frame" x="25" y="426" width="369" height="150"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="ZI2-9i-s3j"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8b1-cD-QVi" secondAttribute="trailing" constant="20" id="09K-R9-Dcp"/>
+                <constraint firstItem="Hii-Ah-B7t" firstAttribute="top" secondItem="8b1-cD-QVi" secondAttribute="bottom" constant="15" id="1bl-BI-yGc"/>
+                <constraint firstItem="Hii-Ah-B7t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="811-Km-bij"/>
+                <constraint firstItem="TK9-R8-5qC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CcO-qb-UCu"/>
+                <constraint firstItem="8b1-cD-QVi" firstAttribute="top" secondItem="TK9-R8-5qC" secondAttribute="bottom" constant="15" id="JrL-9c-i6B"/>
+                <constraint firstItem="TK9-R8-5qC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="WrF-KX-O4A"/>
+                <constraint firstItem="8b1-cD-QVi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Y7K-7L-mdm"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TK9-R8-5qC" secondAttribute="trailing" id="zMt-mb-lDf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hii-Ah-B7t" secondAttribute="trailing" constant="20" id="zcY-vL-Gl2"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="couple-couch-slide-1" width="612" height="408"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

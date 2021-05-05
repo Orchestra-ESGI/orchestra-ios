@@ -9,7 +9,7 @@ import Foundation
 import ObjectMapper
 
 class SceneDto: NSObject, Mappable{
-    var _id: String = ""
+    var id: String = ""
     var title: String = ""
     var sceneDescription: String = ""
     var backgroundColor: String?
@@ -21,7 +21,7 @@ class SceneDto: NSObject, Mappable{
     }
     
     func mapping(map: Map) {
-        self._id <- map["_id"]
+        self.id <- map["id"]
         self.title <- map["title"]
         self.sceneDescription <- map["sceneDescription"]
         self.backgroundColor <- map["backgroundColor"]

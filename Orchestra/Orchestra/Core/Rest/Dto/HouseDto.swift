@@ -9,20 +9,22 @@ import Foundation
 import ObjectMapper
 
 class HouseDto: NSObject, Mappable{
-    var _id: String = ""
+    var id: String = ""
     var houseName: String = ""
     var houseAdress: String = ""
     var scenes: [SceneDto] = []
+    var devices: [ObjectDto] = []
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        self._id <- map["_id"]
+        self.id <- map["id"]
         self.houseName <- map["houseName"]
         self.houseAdress <- map["houseAdress"]
         self.scenes <- map["scenes"]
+        self.devices <- map["devices"]
         
     }
     

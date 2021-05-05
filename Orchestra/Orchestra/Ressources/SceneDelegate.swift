@@ -15,10 +15,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+  
+//        var rootController: UIViewController?
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
+//        let preferences = UserDefaults.standard
+//        let showPager = "showAppPager"
+//
+//        if preferences.object(forKey: showPager) == nil {
+//            rootController = OrchestraPager()
+//            preferences.set(true, forKey: showPager)
+//            let didSave = preferences.synchronize()
+//            if !didSave {
+//                NSLog("Error while saving user data in shared preferences")
+//            }
+//        } else {
+//            let isFirstOpening = preferences.bool(forKey: showPager)
+//            rootController = isFirstOpening ?  UINavigationController(rootViewController: LoginViewController()) : OrchestraPager()
+//        }
+        window?.rootViewController = OrchestraPager() //rootController
         window?.makeKeyAndVisible()
     }
 
