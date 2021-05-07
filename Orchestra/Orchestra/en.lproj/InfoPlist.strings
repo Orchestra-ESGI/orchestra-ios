@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Orchestra
+
+  Created by Ramzy Kermad on 07/05/2021.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "We need your location to program automation";
+"NSBluetoothUsageDescription" = "We need to use the bluetooth to scan the devices around you and find a hub";
+"NSNotificatitonUsageDescription" = "Our notifications will always be relevant and alert you to important information";
+"NSMediaUsageDescription" = "We need to access yout photos if you want to custom a automation";

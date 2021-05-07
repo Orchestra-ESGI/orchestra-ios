@@ -6,6 +6,26 @@
   
 */
 
+// - MARK: Permissions
+"permissions.alert.header.title" = "VERZOEK OM TOESTEMMING";
+"permissions.alert.title" = "Het Orchestra heeft deze machtigingen nodig";
+
+// Notification
+"permissions.notification.alert.title" = "Locatie";
+"permissions.notification.alert.description" = "Om uw huis te lokaliseren";
+// Location
+"permissions.location.alert.title" = "Kennisgevingen";
+"permissions.location.alert.description" = "Om u op de hoogte te brengen van belangrijke informatie";
+// Bluetooth
+"permissions.bluetooth.alert.title" = "Bluetooth";
+"permissions.bluetooth.alert.description" = "Om de Hub te gebruiken";
+
+"permission.alert.footer.title" = "Wij traceren of verkopen uw gegevens niet, de bovenstaande toelatingen zullen ons toelaten u een optimale service te verlenen";
+
+"permission.button.allow.text" = "Accepteren";
+"permission.button.allowed.text" = "Geaccepteerd";
+
+
 // - MARK: Pager
 "pager.slide.1.label.text" = "Beheer uw huis en uw aangesloten objecten allemaal vanuit dezelfde applicatie en maak uw leven eenvoudiger";
 "pager.slide.2.label.text" = "Beheer uw volledige docmilice vanuit Orchestra snel en gemakkelijk";

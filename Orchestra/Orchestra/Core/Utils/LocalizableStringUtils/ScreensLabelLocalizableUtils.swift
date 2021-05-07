@@ -10,6 +10,24 @@ import Foundation
 
 class ScreensLabelLocalizableUtils{
     
+    // - MARK: Permissions
+    let permissionsAlertTitle = NSLocalizedString("permissions.alert.title", comment: "")
+    let permissionsAlertHeaderTitle = NSLocalizedString("permissions.alert.header.title", comment: "")
+    
+    let permissionsNotificationAlertTitle = NSLocalizedString("permissions.notification.alert.title", comment: "")
+    let permissionsNotificationAlertDescription = NSLocalizedString("permissions.notification.alert.description", comment: "")
+    
+    let permissionsLocationAlertTitle = NSLocalizedString("permissions.location.alert.title", comment: "")
+    let permissionsLocationAlertDescription = NSLocalizedString("permissions.location.alert.description", comment: "")
+    
+    let permissionsBluetoothAlertTitle = NSLocalizedString("permissions.bluetooth.alert.title", comment: "")
+    let permissionsBluetoothAlertDescription = NSLocalizedString("permissions.bluetooth.alert.description", comment: "")
+    
+    let permissionAlertFooterTitle = NSLocalizedString("permission.alert.footer.title", comment: "")
+    
+    let permissionAlertAllowButtonText = NSLocalizedString("permission.button.allow.text", comment: "")
+    let permissionAlertAllowedButtonText = NSLocalizedString("permission.button.allowed.text", comment: "")
+    
     // - MARK: Pager Labels and texts
     let pagerSlide1LabelText = NSLocalizedString("pager.slide.1.label.text", comment: "")
     let pagerSlide2LabelText = NSLocalizedString("pager.slide.2.label.text", comment: "")

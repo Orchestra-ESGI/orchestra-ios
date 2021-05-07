@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NotificationBannerSwift
+import SPPermissions
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bigTitle: UILabel!
@@ -39,13 +40,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.getPermissionsUser()
         self.setUpTextFields()
         self.setUpUI()
         self.localizeUI()
         self.setUpUiBindings()
         self.setUpObservers()
     }
+    
+    private func getPermissionsUser(){
+        let controller = SPPermissions.dialog([.notification, .bluetooth, .locationWhenInUse])
+
+        // Overide texts in controller
+        controller.titleText = self.screenLocalize.permissionsAlertTitle
+        controller.headerText = self.screenLocalize.permissionsAlertHeaderTitle
+        controller.footerText = self.screenLocalize.permissionAlertFooterTitle
+        
+        controller.dataSource = self
+        controller.delegate = self
+        
+        controller.present(on: self)
+    }
+    
     
     // - MARK: Localization
     private func localizeUI(){
@@ -165,4 +181,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
 
+}
+
+extension LoginViewController: SPPermissionsDelegate {
+    
+}
+
+extension LoginViewController: SPPermissionsDataSource{
+    func configure(_ cell: SPPermissionTableViewCell, for permission: SPPermission) -> SPPermissionTableViewCell {
+        return OrchestraPermissions(category: permission.rawValue, cell).setPermissionCell()
+    }
 }

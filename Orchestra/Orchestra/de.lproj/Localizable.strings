@@ -6,6 +6,26 @@
   
 */
 
+// - MARK: Permissions
+"permissions.alert.header.title" = "GENEHMIGUNGSANFRAGE";
+"permissions.alert.title" = "Orchestra benötigt diese Berechtigungen";
+
+// Notification
+"permissions.notification.alert.title" = "Standort";
+"permissions.notification.alert.description" = "So lokalisieren Sie Ihr Zuhause";
+// Location
+"permissions.location.alert.title" = "BenachrichtigungenLocalisation";
+"permissions.location.alert.description" = "Um Sie über wichtige Informationen zu informieren";
+// Bluetooth
+"permissions.bluetooth.alert.title" = "Bluetooth";
+"permissions.bluetooth.alert.description" = "So verwenden Sie den Hub";
+
+"permission.alert.footer.title" = "Wir verfolgen oder verkaufen Ihre Daten nicht, die oben genannten Berechtigungen ermöglichen es uns, Ihnen einen optimalen Service zu bieten";
+
+"permission.button.allow.text" = "Akzeptieren";
+"permission.button.allowed.text" = "Angenommen";
+
+
 // - MARK: Pager
 "pager.slide.1.label.text" = "Verwalten Sie Ihr Zuhause und Ihre angeschlossenen Objekte über dieselbe Anwendung und vereinfachen Sie Ihr Leben";
 "pager.slide.2.label.text" = "Verwalten Sie Ihr gesamtes Docmilice von Orchestra aus schnell und einfach";

@@ -12,6 +12,12 @@ target 'Orchestra' do
   pod 'ReachabilitySwift' # https://github.com/ashleymills/Reachability.swift
   pod 'RxSwift'
   pod 'RxCocoa'
+  
+  #Permissions
+  pod 'SPPermissions/Notification' # https://github.com/ivanvorobei/SPPermissions
+  pod 'SPPermissions/Bluetooth'
+  pod 'SPPermissions/PhotoLibrary'
+  pod 'SPPermissions/Location'
 
   # REST
   pod 'Alamofire' # https://github.com/Alamofire/Alamofire

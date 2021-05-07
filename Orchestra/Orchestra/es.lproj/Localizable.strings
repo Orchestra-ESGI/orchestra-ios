@@ -6,6 +6,26 @@
   
 */
 
+// - MARK: Permissions
+"permissions.alert.header.title" = "SOLICITUD DE PERMISO";
+"permissions.alert.title" = "Orchestra necesita estas autorizaciones";
+
+// Notification
+"permissions.notification.alert.title" = "Ubicación";
+"permissions.notification.alert.description" = "Para localizar su casa";
+// Location
+"permissions.location.alert.title" = "Notifications";
+"permissions.location.alert.description" = "Para notificarle información importante";
+// Bluetooth
+"permissions.bluetooth.alert.title" = "Bluetooth";
+"permissions.bluetooth.alert.description" = "Para utilizar el Hub";
+
+"permission.alert.footer.title" = "No rastreamos ni vendemos sus datos, las autorizaciones anteriores nos permitirán ofrecerle un servicio óptimo";
+
+"permission.button.allow.text" = "Accepar";
+"permission.button.allowed.text" = "Aceptado";
+
+
 // - MARK: Pager
 "pager.slide.1.label.text" = "Gestiona tu casa y tus objetos conectados desde la misma aplicación y simplifica tu vida";
 "pager.slide.2.label.text" = "Gestione toda su docmilicia desde Orchestra de forma rápida y sencilla";
