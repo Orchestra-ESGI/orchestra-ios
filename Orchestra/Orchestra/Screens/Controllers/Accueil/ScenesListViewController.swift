@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Floaty
+import FittedSheets
 
 class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, SendBackDataProtocol {
     
@@ -71,8 +72,18 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         }
     }    
 
-    @objc func titleWasTapped() {
+    @objc func showHousesnBottomSheet() {
         NSLog("Hello, titleWasTapped!")
+        
+        let housesBottomSheet = UserHousesBottomSheetTableViewController()
+        let options = SheetOptions(
+            useInlineMode: true
+        )
+        let sheetController = SheetViewController(controller: housesBottomSheet, sizes: [.percent(0.3), .percent(0.8)], options: options)
+        sheetController.allowGestureThroughOverlay = true
+
+        // animate in
+        sheetController.animateIn(to: view, in: self)
     }
     
     // MARK: Internal functions
@@ -256,8 +267,8 @@ extension UIButton {
         NSLayoutConstraint.activate([
             imageView.leftAnchor.constraint(equalTo: self.titleLabel!.leftAnchor, constant: -20),
             imageView.centerYAnchor.constraint(equalTo: self.titleLabel!.centerYAnchor, constant: 0),
-            imageView.widthAnchor.constraint(equalToConstant: length),
-            imageView.heightAnchor.constraint(equalToConstant: length)
+            imageView.widthAnchor.constraint(equalToConstant: 18),
+            imageView.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
 }

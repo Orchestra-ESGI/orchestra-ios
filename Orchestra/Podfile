@@ -29,6 +29,7 @@ target 'Orchestra' do
   pod 'MRProgress'
   pod 'Floaty', '~> 4.2.0'
   pod 'CHIPageControl', '~> 0.1.3'
+  pod 'FittedSheets'
 end
 
 target 'Orchestra WatchKit App' do

@@ -15,13 +15,13 @@ extension ScenesListViewController{
     func setClickableTitle() {
         let titleView = UIButton()
         titleView.setTitle("Mon domicile", for: .normal)
-        titleView.titleLabel?.font = UIFont(name: "HelveticaNeue-Medium", size: 20)
+        titleView.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25.0)
         titleView.addLeftIcon(image: UIImage(systemName: "chevron.down")!)
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
-        titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 500))
+        titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 60))
         self.navigationItem.titleView = titleView
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.titleWasTapped))
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.showHousesnBottomSheet))
         titleView.isUserInteractionEnabled = true
         titleView.addGestureRecognizer(recognizer)
     }
