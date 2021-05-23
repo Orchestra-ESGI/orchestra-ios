@@ -13,6 +13,7 @@ class InterfaceController: WKInterfaceController {
 
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
+        self.setTitle("Orchestra")
     }
     
     override func willActivate() {
@@ -22,5 +23,14 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
     }
-
+    
+    
+    @IBAction func showScenesController() {
+        self.pushController(withName: "scenes_controller", context: nil)
+    }
+    
+    @IBAction func showDevicesController() {
+        self.pushController(withName: "devices_controller", context: nil)
+    }
+    
 }
