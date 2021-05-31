@@ -23,7 +23,7 @@ class OrchestraPager: UIViewController {
     private let floatingActionButton = Floaty()
     
     // MARK: - Utils
-    let screenLabelLocalizeUtils = ScreensLabelLocalizableUtils()
+    let screenLabelLocalizeUtils = ScreensLabelLocalizableUtils.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,10 @@ import UIKit
 
 class UserHousesBottomSheetTableViewController: UITableViewController {
 
-    let houses = ["Mon domicile", "Domicile secondaire", "Maison de vacances","Mon domicile", "Domicile secondaire", "Maison de vacances","Mon domicile", "Domicile secondaire", "Maison de vacances","Mon domicile", "Domicile secondaire", "Maison de vacances","Mon domicile", "Domicile secondaire", "Maison de vacances"]
+    let houses = ["Mon domicile", "Domicile secondaire"]
+    
+    // - MARK: Utils
+    let localizeLabels = ScreensLabelLocalizableUtils.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class UserHousesBottomSheetTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row > self.houses.count - 1){
             let newHouseCell = tableView.dequeueReusableCell(withIdentifier: "BOTTOM_SHEET_ADD_HOUSE") as! AddHouseTableViewCell
+            newHouseCell.cellText.text = self.localizeLabels.homeScreenBottomSheetAddHouseButtonTitle
             return  newHouseCell
         }else{
             let houseCell = tableView.dequeueReusableCell(withIdentifier: "BOTTOM_SHEET_HOUSE_NAME") as! CurrentHouseTableViewCell
@@ -56,7 +60,7 @@ class UserHousesBottomSheetTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView,
             viewForHeaderInSection section: Int) -> UIView? {
        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "BOTTOM_SHEET_HEADER") as! BottomSheetHeader
-        header.title.text = "Vos domiciles"
+        header.title.text = self.localizeLabels.homeScreenBottomSheetTitle //"Vos domiciles"
         
        return header
     }

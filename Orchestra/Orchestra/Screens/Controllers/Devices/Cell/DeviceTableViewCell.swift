@@ -1,15 +1,16 @@
 //
-//  AddHouseTableViewCell.swift
+//  DeviceTableViewCell.swift
 //  Orchestra
 //
-//  Created by Ramzy Kermad on 07/05/2021.
+//  Created by Ramzy Kermad on 28/05/2021.
 //
 
 import UIKit
 
-class AddHouseTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var cellText: UILabel!
+class DeviceTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var accessoryImageView: UIImageView!    
+    @IBOutlet weak var accessoryNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

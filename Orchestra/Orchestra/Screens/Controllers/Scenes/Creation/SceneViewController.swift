@@ -28,7 +28,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     var addSceneAppbarButon: UIBarButtonItem?
     
     // MARK: Utils
-    let localizeUtils = ScreensLabelLocalizableUtils()
+    let localizeUtils = ScreensLabelLocalizableUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let progressUtils = ProgressUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared

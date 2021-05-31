@@ -8,9 +8,10 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import PopMenu
 
 extension ScenesListViewController{
-    func setAddSceneButtonBinding(){
+    func setAddSceneOrDeviceButtonBinding(){
         self.addSceneAppbarButon?.rx
             .tap
             .bind { [weak self] in
@@ -18,9 +19,28 @@ extension ScenesListViewController{
                     self?.stopCellsShake()
                     self?.isCellsShaking = !self!.isCellsShaking
                 }
-                let sceneVc = SceneViewController()
-                sceneVc.dataDelegate = self
-                self?.navigationController?.pushViewController(sceneVc, animated: true)
+                
+                let addSceneLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewScene
+                let addScene = PopMenuDefaultAction(title: addSceneLabelText, image: UIImage(systemName: "timer"), didSelect: { action in
+                    let sceneVc = SceneViewController()
+                    sceneVc.dataDelegate = self
+                    self?.navigationController?.pushViewController(sceneVc, animated: true)
+                })
+                
+                let addDeviceLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewDevice
+                let addDevice = PopMenuDefaultAction(title: addDeviceLabelText,image: UIImage(systemName: "lightbulb.fill"), didSelect: { action in
+                    let newDeviceVc = NewDevicePairingViewController()
+                    self?.navigationController?.pushViewController(newDeviceVc, animated: true)
+                })
+                
+                let addHouseLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewHouse
+                let addHouse = PopMenuDefaultAction(title: addHouseLabelText,image: UIImage(systemName: "house.fill"), didSelect: { action in
+                    self!.showHousesnBottomSheet()
+                })
+                
+                let menuViewController = PopMenuViewController(actions: [addScene, addDevice, addHouse])
+                menuViewController.appearance.popMenuBackgroundStyle = .blurred(.regular)
+                self!.present(menuViewController, animated: true, completion: nil)
         }.disposed(by: self.disposeBag)
     }
     

@@ -83,6 +83,17 @@
 		639E43A2263F031D0042951E /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639E43A1263F031D0042951E /* Slide.xib */; };
 		639E43A4263F03450042951E /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E43A3263F03450042951E /* Slide.swift */; };
 		63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */; };
+		63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A94B2661680300DEDB96 /* SupportedDevices.json */; };
+		63D1A94E2661684800DEDB96 /* SupportedAccessoriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */; };
+		63D1A950266168BA00DEDB96 /* SupportedDevicesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */; };
+		63D1A95226616A0F00DEDB96 /* DeviceConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A95126616A0F00DEDB96 /* DeviceConfigService.swift */; };
+		63D1A958266171EC00DEDB96 /* NewDevicePairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A956266171EC00DEDB96 /* NewDevicePairingViewController.swift */; };
+		63D1A959266171EC00DEDB96 /* NewDevicePairingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A957266171EC00DEDB96 /* NewDevicePairingViewController.xib */; };
+		63D1A95B2661722400DEDB96 /* DeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A95A2661722400DEDB96 /* DeviceViewModel.swift */; };
+		63D1A96026617F9800DEDB96 /* DeviceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A95E26617F9800DEDB96 /* DeviceTableViewCell.swift */; };
+		63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A95F26617F9800DEDB96 /* DeviceTableViewCell.xib */; };
+		63D1A9662661837000DEDB96 /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A9642661837000DEDB96 /* DevicesViewController.swift */; };
+		63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A9652661837000DEDB96 /* DevicesViewController.xib */; };
 		63D235E32639C3DB00D2485F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D235E22639C3DB00D2485F /* HomeViewModel.swift */; };
 		63D235E62639C81500D2485F /* ScenesListUiExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D235E52639C81500D2485F /* ScenesListUiExtension.swift */; };
 		63D235E82639CC2200D2485F /* ScenesListUiBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D235E72639CC2200D2485F /* ScenesListUiBindingExtension.swift */; };
@@ -258,6 +269,17 @@
 		63BB149A2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63BB149B2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Interface.strings"; sourceTree = "<group>"; };
 		63BB149C2615CEF7001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		63D1A94B2661680300DEDB96 /* SupportedDevices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SupportedDevices.json; sourceTree = "<group>"; };
+		63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedAccessoriesDto.swift; sourceTree = "<group>"; };
+		63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedDevicesDto.swift; sourceTree = "<group>"; };
+		63D1A95126616A0F00DEDB96 /* DeviceConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConfigService.swift; sourceTree = "<group>"; };
+		63D1A956266171EC00DEDB96 /* NewDevicePairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDevicePairingViewController.swift; sourceTree = "<group>"; };
+		63D1A957266171EC00DEDB96 /* NewDevicePairingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDevicePairingViewController.xib; sourceTree = "<group>"; };
+		63D1A95A2661722400DEDB96 /* DeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel.swift; sourceTree = "<group>"; };
+		63D1A95E26617F9800DEDB96 /* DeviceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTableViewCell.swift; sourceTree = "<group>"; };
+		63D1A95F26617F9800DEDB96 /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceTableViewCell.xib; sourceTree = "<group>"; };
+		63D1A9642661837000DEDB96 /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		63D1A9652661837000DEDB96 /* DevicesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicesViewController.xib; sourceTree = "<group>"; };
 		63D235E22639C3DB00D2485F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		63D235E52639C81500D2485F /* ScenesListUiExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesListUiExtension.swift; sourceTree = "<group>"; };
 		63D235E72639CC2200D2485F /* ScenesListUiBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesListUiBindingExtension.swift; sourceTree = "<group>"; };
@@ -346,12 +368,11 @@
 		630459152629B67E00FA7F40 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63D1A95326616B2C00DEDB96 /* Login - Signin */,
 				635DD50E261A177F001D1EFC /* Présentation Pager */,
-				635DD4E4261A0629001D1EFC /* Signin */,
-				635DD4AC26188660001D1EFC /* Login */,
 				634F9541261A33E80092C269 /* Accueil */,
 				630B100C261E2A2600B41804 /* Scenes */,
-				634AF6292622042800F6CBBE /* Objects Info */,
+				63D1A955266170E700DEDB96 /* Devices */,
 				6304590A2629B1D500FA7F40 /* Hub Pairing */,
 				634F9566261B42C10092C269 /* Settings */,
 			);
@@ -417,14 +438,6 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		633E7E3A2610CFEF0094B148 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				637FB62B2615125000790735 /* UsersViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		633E7E3B2610CFFE0094B148 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +454,7 @@
 				633E7E482610D1010094B148 /* Dto */,
 				633E7E3F2610D0720094B148 /* Services */,
 				633E7E3E2610D0610094B148 /* Mocks */,
+				63D1A95126616A0F00DEDB96 /* DeviceConfigService.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -455,6 +469,7 @@
 				635DD4A226188034001D1EFC /* Scenes.json */,
 				635DD4A726188041001D1EFC /* Houses.json */,
 				63F1161C2621E02000B93A33 /* Objects.json */,
+				63D1A94B2661680300DEDB96 /* SupportedDevices.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -481,18 +496,20 @@
 				633E7E812610D7460094B148 /* ActionsSceneDto.swift */,
 				63D5B2972610FB35004573D7 /* ErrorDto.swift */,
 				63F116172621DF0900B93A33 /* ObjectDto.swift */,
+				63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */,
+				63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */,
 			);
 			path = Dto;
 			sourceTree = "<group>";
 		};
-		634AF6292622042800F6CBBE /* Objects Info */ = {
+		634AF6292622042800F6CBBE /* Detail */ = {
 			isa = PBXGroup;
 			children = (
 				634AF6342622046500F6CBBE /* Cell */,
 				630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */,
 				630B1016261E2DDC00B41804 /* ObjectInfoViewController.xib */,
 			);
-			path = "Objects Info";
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		634AF6342622046500F6CBBE /* Cell */ = {
@@ -507,12 +524,12 @@
 		634F9541261A33E80092C269 /* Accueil */ = {
 			isa = PBXGroup;
 			children = (
+				63D235E22639C3DB00D2485F /* HomeViewModel.swift */,
 				6322683126459B140037672D /* HousesBottomSheet */,
 				63885704262851B7002354FB /* Extensions */,
 				634F9592261B6E550092C269 /* Header */,
 				634F9579261B65670092C269 /* Cells */,
 				634F9542261A340A0092C269 /* ScenesListViewController.swift */,
-				63D235E22639C3DB00D2485F /* HomeViewModel.swift */,
 				634F9543261A340A0092C269 /* ScenesListViewController.xib */,
 			);
 			path = Accueil;
@@ -623,7 +640,6 @@
 			children = (
 				635DD50F261A1799001D1EFC /* Ressources */,
 				633E7E3B2610CFFE0094B148 /* Core */,
-				633E7E3A2610CFEF0094B148 /* ViewModels */,
 				633E7E392610CFE60094B148 /* Screens */,
 				636F470F260A5F8F001D8196 /* Info.plist */,
 				6322682926458FB70037672D /* InfoPlist.strings */,
@@ -709,6 +725,63 @@
 				63E84FBF262B821100AA9558 /* UIColorExtensions.swift */,
 			);
 			path = "Global Extensions";
+			sourceTree = "<group>";
+		};
+		63D1A95326616B2C00DEDB96 /* Login - Signin */ = {
+			isa = PBXGroup;
+			children = (
+				637FB62B2615125000790735 /* UsersViewModel.swift */,
+				635DD4E4261A0629001D1EFC /* Signin */,
+				635DD4AC26188660001D1EFC /* Login */,
+			);
+			path = "Login - Signin";
+			sourceTree = "<group>";
+		};
+		63D1A955266170E700DEDB96 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				63D1A95D26617F7B00DEDB96 /* Cell */,
+				634AF6292622042800F6CBBE /* Detail */,
+				63D1A95C2661723F00DEDB96 /* Creation */,
+				63D1A95A2661722400DEDB96 /* DeviceViewModel.swift */,
+			);
+			path = Devices;
+			sourceTree = "<group>";
+		};
+		63D1A95C2661723F00DEDB96 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				63D1A9632661834500DEDB96 /* Accessory Device */,
+				63D1A9622661833600DEDB96 /* Accessory Type */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		63D1A95D26617F7B00DEDB96 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				63D1A95E26617F9800DEDB96 /* DeviceTableViewCell.swift */,
+				63D1A95F26617F9800DEDB96 /* DeviceTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		63D1A9622661833600DEDB96 /* Accessory Type */ = {
+			isa = PBXGroup;
+			children = (
+				63D1A956266171EC00DEDB96 /* NewDevicePairingViewController.swift */,
+				63D1A957266171EC00DEDB96 /* NewDevicePairingViewController.xib */,
+			);
+			path = "Accessory Type";
+			sourceTree = "<group>";
+		};
+		63D1A9632661834500DEDB96 /* Accessory Device */ = {
+			isa = PBXGroup;
+			children = (
+				63D1A9642661837000DEDB96 /* DevicesViewController.swift */,
+				63D1A9652661837000DEDB96 /* DevicesViewController.xib */,
+			);
+			path = "Accessory Device";
 			sourceTree = "<group>";
 		};
 		63E84FAF262B73A200AA9558 /* Detail */ = {
@@ -844,9 +917,11 @@
 			files = (
 				635DD4E8261A0640001D1EFC /* SigninViewController.xib in Resources */,
 				6322682726458FB70037672D /* InfoPlist.strings in Resources */,
+				63D1A959266171EC00DEDB96 /* NewDevicePairingViewController.xib in Resources */,
 				630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */,
 				634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */,
 				634F9587261B67A80092C269 /* SceneCollectionViewCell.xib in Resources */,
+				63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */,
 				635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */,
 				635DD4A826188041001D1EFC /* Houses.json in Resources */,
 				634F9575261B42FD0092C269 /* AppSettingsViewController.xib in Resources */,
@@ -863,7 +938,9 @@
 				639E43A2263F031D0042951E /* Slide.xib in Resources */,
 				632268382645A2170037672D /* AddHouseTableViewCell.xib in Resources */,
 				634F957D261B65920092C269 /* ObjectCollectionViewCell.xib in Resources */,
+				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
 				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
+				63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */,
 				630B1018261E2DDC00B41804 /* ObjectInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -996,6 +1073,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				632268372645A2170037672D /* AddHouseTableViewCell.swift in Sources */,
+				63D1A95226616A0F00DEDB96 /* DeviceConfigService.swift in Sources */,
 				637FB6422615BCB900790735 /* NotificationUtils.swift in Sources */,
 				634F954D261A41240092C269 /* ScreensLabelLocalizableUtils.swift in Sources */,
 				63E84FBB262B81AC00AA9558 /* ColorUtils.swift in Sources */,
@@ -1005,6 +1083,7 @@
 				630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */,
 				630B1010261E2A9900B41804 /* SceneViewController.swift in Sources */,
 				636F4706260A5F8B001D8196 /* ViewController.swift in Sources */,
+				63D1A94E2661684800DEDB96 /* SupportedAccessoriesDto.swift in Sources */,
 				63885706262851DE002354FB /* ScenesListVcExtension.swift in Sources */,
 				63065A23263DAA0C00CBE30D /* SceneViewModel.swift in Sources */,
 				633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */,
@@ -1018,6 +1097,7 @@
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
 				63D235EA2639CCA700D2485F /* ScenesListObserversExtension.swift in Sources */,
 				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
+				63D1A950266168BA00DEDB96 /* SupportedDevicesDto.swift in Sources */,
 				638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */,
 				634F9544261A340A0092C269 /* ScenesListViewController.swift in Sources */,
 				6322683326459B5A0037672D /* UserHousesBottomSheetTableViewController.swift in Sources */,
@@ -1026,6 +1106,7 @@
 				63D235E32639C3DB00D2485F /* HomeViewModel.swift in Sources */,
 				638AB8E6261494510020EE75 /* SceneServices.swift in Sources */,
 				633E7E4C2610D12D0094B148 /* RootApiService.swift in Sources */,
+				63D1A958266171EC00DEDB96 /* NewDevicePairingViewController.swift in Sources */,
 				63F854DF2643108F00983044 /* OrchestraPermissions.swift in Sources */,
 				637FB6BB2615CBAE00790735 /* NotificationLocalizableUtils.swift in Sources */,
 				637FB62C2615125000790735 /* UsersViewModel.swift in Sources */,
@@ -1042,12 +1123,15 @@
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
 				63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */,
+				63D1A9662661837000DEDB96 /* DevicesViewController.swift in Sources */,
 				6388571126288BDE002354FB /* SceneListVcShakingCellExtension.swift in Sources */,
 				633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */,
+				63D1A95B2661722400DEDB96 /* DeviceViewModel.swift in Sources */,
 				63065A2F263DFC5800CBE30D /* OrchestraPager.swift in Sources */,
 				63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */,
 				635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */,
 				63D235E82639CC2200D2485F /* ScenesListUiBindingExtension.swift in Sources */,
+				63D1A96026617F9800DEDB96 /* DeviceTableViewCell.swift in Sources */,
 				634AF63D2622061300F6CBBE /* ObjectInfoTableViewCell.swift in Sources */,
 				631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */,
 				633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */,

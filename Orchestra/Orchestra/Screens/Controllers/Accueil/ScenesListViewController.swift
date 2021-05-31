@@ -23,7 +23,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     // - MARK: Utils
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
-    let screenLabelLocalize = ScreensLabelLocalizableUtils()
+    let screenLabelLocalize = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     let colorUtils = ColorUtils.shared
     
@@ -68,18 +68,16 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         super.didMove(toParent: parent)
 
         if parent != nil && self.navigationItem.titleView == nil {
-            setClickableTitle()
+            //setClickableTitle()
         }
     }    
 
     @objc func showHousesnBottomSheet() {
-        NSLog("Hello, titleWasTapped!")
-        
         let housesBottomSheet = UserHousesBottomSheetTableViewController()
         let options = SheetOptions(
             useInlineMode: true
         )
-        let sheetController = SheetViewController(controller: housesBottomSheet, sizes: [.percent(0.3), .percent(0.8)], options: options)
+        let sheetController = SheetViewController(controller: housesBottomSheet, sizes: [.percent(0.4), .percent(0.6)], options: options)
         sheetController.allowGestureThroughOverlay = true
 
         // animate in
@@ -223,6 +221,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.scenesToRemove.removeAll()
     }
 
+    
     // To move to VM
     func saveScene(scene: SceneDto) {
         self.notificationUtils.showFloatingNotificationBanner(title: self.notificationLocalize.successfullyAddedNotificationTitle, subtitle: self.notificationLocalize.successfullyAddedNotificationSubtitle, position: .top, style: .success)
@@ -237,10 +236,10 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.homeScenes.insert(scene, at: index)
         self.homeScenes.remove(at: index + 1)
     }
-    
+
     // - MARK: Observers
     private func bindClickToButtons(){
-        setAddSceneButtonBinding()
+        setAddSceneOrDeviceButtonBinding()
         setUserSettingButtonBinding()
         setTrashButtonBinding()
     }

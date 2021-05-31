@@ -24,7 +24,7 @@ class SceneDetailViewController: UIViewController {
     // MARK: Utils
     let colorUtils = ColorUtils.shared
     let progressUtils = ProgressUtils.shared
-    let localizeLabels = ScreensLabelLocalizableUtils()
+    let localizeLabels = ScreensLabelLocalizableUtils.shared
     
     // MARK: Local data
     var sceneData: SceneDto?

@@ -30,7 +30,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
-    let screenLocalize = ScreensLabelLocalizableUtils()
+    let screenLocalize = ScreensLabelLocalizableUtils.shared
     
     let disposeBag = DisposeBag()
     

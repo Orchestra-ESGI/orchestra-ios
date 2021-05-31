@@ -14,7 +14,7 @@ class UsersViewModel{
     let fakeUserWS = FakeUserServices.shared
     
     let disposeBag = DisposeBag()
-    let progressUtils = ProgressUtils()
+    let progressUtils = ProgressUtils.shared
     let notificationLocalizable = NotificationLocalizableUtils.shared
     
     var isLoginFormValid = PublishSubject<Bool>()

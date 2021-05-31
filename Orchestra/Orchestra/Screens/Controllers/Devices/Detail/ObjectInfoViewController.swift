@@ -20,8 +20,8 @@ class ObjectInfoViewController: UIViewController {
     @IBOutlet weak var caracteristicsTableView: UITableView!
     
     // MARK: - Utils
-    let localizerUtils = ScreensLabelLocalizableUtils()
-    let localizeLabels = ScreensLabelLocalizableUtils()
+    let localizerUtils = ScreensLabelLocalizableUtils.shared
+    let localizeLabels = ScreensLabelLocalizableUtils.shared
     let colorUtils = ColorUtils.shared
     
     // MARK: - Local data

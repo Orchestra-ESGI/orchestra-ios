@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // - MARK : Utils
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
-    let screenLocalize = ScreensLabelLocalizableUtils()
+    let screenLocalize = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     
     let disposeBag = DisposeBag()

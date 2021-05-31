@@ -16,7 +16,8 @@ extension ScenesListViewController{
         let titleView = UIButton()
         titleView.setTitle("Mon domicile", for: .normal)
         titleView.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25.0)
-        titleView.addLeftIcon(image: UIImage(systemName: "chevron.down")!)
+        titleView.tintColor = .systemBackground
+
         let width = titleView.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)).width
         titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 60))
         self.navigationItem.titleView = titleView
@@ -28,8 +29,8 @@ extension ScenesListViewController{
     
     func setUpTopBar(){
         self.navigationItem.hidesBackButton = true
-        //self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
-        //self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: nil)
         cancelButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .done, target: self, action: nil)

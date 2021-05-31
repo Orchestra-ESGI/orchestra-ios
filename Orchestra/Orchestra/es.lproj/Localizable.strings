@@ -133,3 +133,16 @@
 "hub.pairing.progress.alert.title" = "Emparejamiento en curso, por favor espere...";
 "hub.pairing.vc.code.label" = "Introducir código de emparejamiento";
 "hub.pairing.vc.reachable.hub" = "Hub disponible";
+
+// - MARK: Home Screen Bottom Sheet
+"home.screen.bottom.sheet.title" = "Sus casas";
+"home.screen.bottom.sheet.add.home.button" = "Nuevo hogar";
+
+// - MARK: Home Screen Nav Bar plus button alert
+"home.screen.new.scene.alert" = "Añadir una escena";
+"home.screen.new.device.alert" = "Añadir un objeto";
+"home.screen.new.house.alert" = "Añadir una casa";
+
+// - MARK: Add New Device Screen (supported types)
+"new.device.controller.title" = "Añadir un dispositivo";
+"progress.notification.config.finished.title" = "Carga de la configuración completada";

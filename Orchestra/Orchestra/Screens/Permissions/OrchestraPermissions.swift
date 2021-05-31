@@ -12,7 +12,7 @@ class OrchestraPermissions{
     private var category: Int = 2
     private var cell: SPPermissionTableViewCell?
     
-    private let labelLocalize = ScreensLabelLocalizableUtils()
+    private let labelLocalize = ScreensLabelLocalizableUtils.shared
     
     init(category permissionId: Int, _ cell: SPPermissionTableViewCell) {
         self.category = permissionId

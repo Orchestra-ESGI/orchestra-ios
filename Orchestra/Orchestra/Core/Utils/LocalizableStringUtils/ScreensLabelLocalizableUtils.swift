@@ -9,6 +9,7 @@ import Foundation
 
 
 class ScreensLabelLocalizableUtils{
+    static let shared = ScreensLabelLocalizableUtils()
     
     // - MARK: Permissions
     let permissionsAlertTitle = NSLocalizedString("permissions.alert.title", comment: "")
@@ -105,4 +106,16 @@ class ScreensLabelLocalizableUtils{
     let hubPairingProgressAlertTitle = NSLocalizedString("hub.pairing.progress.alert.title", comment: "")
     let hubPairingVcPairingCodeLabel = NSLocalizedString("hub.pairing.vc.code.label", comment: "")
     let hubPairingVcReachableHubLabel = NSLocalizedString("hub.pairing.vc.reachable.hub", comment: "")
+    
+    // - MARK: Home Screen BottomSheet
+    let homeScreenBottomSheetTitle = NSLocalizedString("home.screen.bottom.sheet.title", comment: "")
+    let homeScreenBottomSheetAddHouseButtonTitle = NSLocalizedString("home.screen.bottom.sheet.add.home.button", comment: "")
+    
+    // - MARK: Home Screen Nav Bar plus button alert
+    let homePlusButtonAlertNewScene = NSLocalizedString("home.screen.new.scene.alert", comment: "")
+    let homePlusButtonAlertNewDevice = NSLocalizedString("home.screen.new.device.alert", comment: "")
+    let homePlusButtonAlertNewHouse = NSLocalizedString("home.screen.new.house.alert", comment: "")
+    
+    // - MARK: Add New Device Screen (supported types)
+    let newDeviceVcTitle = NSLocalizedString("new.device.controller.title", comment: "")
 }
