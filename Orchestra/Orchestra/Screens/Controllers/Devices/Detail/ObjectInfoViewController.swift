@@ -25,7 +25,7 @@ class ObjectInfoViewController: UIViewController {
     let colorUtils = ColorUtils.shared
     
     // MARK: - Local data
-    var objectData: ObjectDto?
+    var deviceData: HubAccessoryConfigurationDto?
     var disposeBag = DisposeBag()
     let favClicStream = PublishSubject<String>()
     var collectionView: UICollectionView!
@@ -52,7 +52,7 @@ class ObjectInfoViewController: UIViewController {
     }
     
     private func setUpNavBar(){
-        let isObjectFavourite = self.objectData?.isFav
+        let isObjectFavourite = self.deviceData?.isFav
         let favIcon = isObjectFavourite ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
         
@@ -60,13 +60,13 @@ class ObjectInfoViewController: UIViewController {
         favButton = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: nil)
         
         self.navigationItem.rightBarButtonItems = [okButton!, favButton!]
-        guard let objectName = self.objectData?.name else {
+        guard let objectName = self.deviceData?.name else {
             return
         }
         
         self.navigationItem.title = objectName
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : self.colorUtils.hexStringToUIColor(hex: (self.objectData?.backgroundColor)!)]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : self.colorUtils.hexStringToUIColor(hex: (self.deviceData?.backgroundColor)!)]
     }
     
     
@@ -91,7 +91,7 @@ class ObjectInfoViewController: UIViewController {
         // These 2 lines trigger the handler of the first item without opening the floaty items menu
         floatingActionButton.handleFirstItemDirectly = true
         floatingActionButton.addItem(title: "") { (flb) in
-            guard let isOn = self.objectData?.isOn else{
+            guard let isOn = self.deviceData?.isOn else{
                 return
             }
             floatingActionButton.buttonColor = !isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
@@ -102,14 +102,14 @@ class ObjectInfoViewController: UIViewController {
             }else{
                 print("Object deactivated")
             }
-            self.objectData?.isOn = !isOn
+            self.deviceData?.isOn = !isOn
         }
         
         self.view.addSubview(floatingActionButton)
     }
     
     private func setUpLabels(){
-        self.locationLabel.text = self.objectData?.roomName
+        self.locationLabel.text = self.deviceData?.roomName
         self.locationTitleLabel.text = self.localizeLabels.objectRoomNameTitleLabelText
         self.tableViewTitleLabel.text = self.localizeLabels.objectCaracteristicsTitleLabelText
     }
@@ -120,17 +120,17 @@ class ObjectInfoViewController: UIViewController {
         let modeleLabel = self.localizerUtils.objectInfoModeleLabelText
         let versionLabel = self.localizerUtils.objectInfoVersionLabelText
         let reachabilityLabel = self.localizerUtils.objectCellReachabilityLabelText
-        let reachableStatus = (self.objectData?.isReachable ?? false) ?
+        let reachableStatus = (self.deviceData?.isReachable ?? false) ?
                                 self.localizerUtils.objectCellReachabilityStatusOkLabelText :
                                 self.localizerUtils.objectCellReachabilityStatusKoLabelText
         
         self.objectInfoNames = [manufacturerLabel, serialNumberLabel,
                                 modeleLabel, versionLabel, reachabilityLabel]
         
-        self.objectInfoKeyValue[manufacturerLabel] = self.objectData?.manufacturer
-        self.objectInfoKeyValue[serialNumberLabel] = self.objectData?.serialNumber
-        self.objectInfoKeyValue[modeleLabel] = self.objectData?.model
-        self.objectInfoKeyValue[versionLabel] = self.objectData?.version
+        self.objectInfoKeyValue[manufacturerLabel] = self.deviceData?.manufacturer
+        self.objectInfoKeyValue[serialNumberLabel] = self.deviceData?.serialNumber
+        self.objectInfoKeyValue[modeleLabel] = self.deviceData?.model
+        self.objectInfoKeyValue[versionLabel] = self.deviceData?.version
         self.objectInfoKeyValue[reachabilityLabel] = reachableStatus
     }
     
@@ -139,14 +139,14 @@ class ObjectInfoViewController: UIViewController {
         self.favButton?
             .rx
             .tap.bind{
-                guard let isFav = self.objectData?.isFav else{
+                guard let isFav = self.deviceData?.isFav else{
                     return
                 }
                 
                 let isFavIcon = !isFav ?
                     UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
                 self.favButton?.image = isFavIcon
-                self.favClicStream.onNext(self.objectData?.id ?? "")
+                self.favClicStream.onNext(self.deviceData?.id ?? "")
             }.disposed(by: self.disposeBag)
         
         self.okButton?

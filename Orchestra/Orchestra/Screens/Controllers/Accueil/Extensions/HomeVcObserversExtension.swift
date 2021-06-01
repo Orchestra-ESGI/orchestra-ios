@@ -9,21 +9,18 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-extension ScenesListViewController{
+extension HomeViewController{
     
     func setObjectStreamObserver(){
         // Listen to object stream and show them in TV
-        self.objectVM.fakeObjectsWS
-            .objectStream
-            .subscribe { (objects) in
-                self.homeObjects = objects
-                self.homeObjects.sort { (object1, object2) in
-                    return object1.isFav! && !object2.isFav!
-                }
-        } onError: { (err) in
-            self.notificationUtils
-                .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
-        }.disposed(by: self.disposeBag)
+        _ = self.objectVM
+            .hubConfigWs
+            .configurationStream
+            .subscribe { hubConfig in
+                self.hubDevices = hubConfig
+        } onError: { err in
+            print("Error while fetching hub configuration")
+        }
     }
     
     func setScenesStreamObserver(){

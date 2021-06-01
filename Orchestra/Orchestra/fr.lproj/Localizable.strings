@@ -79,7 +79,7 @@
 "signup.vc.name.label.text" = "Nom";
 
 // - MARK: Home Labels and texts
-"home.collection.header.objects" = "Mes objects";
+"home.collection.header.objects" = "Mes objets";
 "home.collection.header.scenes" = "Mes scènes";
 "home.object.cell.reachability.label.text" = "Disponnibilité";
 "home.object.cell.reachability.status.ok.label.text" = "Disponible";
@@ -145,4 +145,4 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ajouter un appareil";
-"progress.notification.config.finished.title" = "Chargement de la configuration terminée";
+"progress.notification.config.finished.title" = "Chargement de la configuration terminé";

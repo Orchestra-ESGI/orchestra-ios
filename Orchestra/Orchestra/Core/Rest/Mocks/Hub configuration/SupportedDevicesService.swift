@@ -1,5 +1,5 @@
 //
-//  DeviceConfigService.swift
+//  SupportedDevicesService.swift
 //  Orchestra
 //
 //  Created by Ramzy Kermad on 28/05/2021.
@@ -10,9 +10,9 @@ import ObjectMapper
 import RxSwift
 import RxCocoa
 
-class DeviceConfigService{
-    static var shared = DeviceConfigService()
-    var configStream = PublishSubject<[SupportedAccessoriesDto]>()
+class SupportedDevicesService{
+    static var shared = SupportedDevicesService()
+    var accessoriesStream = PublishSubject<[SupportedAccessoriesDto]>()
     
     func getCurrentAccessoriesConfig(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -25,10 +25,10 @@ class DeviceConfigService{
                         for accessory in accessories {
                             mappedAccessories.append(Mapper<SupportedAccessoriesDto>().map(JSON: (accessory as? [String: Any])!)!)
                         }
-                        self.configStream.onNext(mappedAccessories)
+                        self.accessoriesStream.onNext(mappedAccessories)
                     }
               } catch {
-                self.configStream.onError(error)
+                self.accessoriesStream.onError(error)
               }
             }
         }

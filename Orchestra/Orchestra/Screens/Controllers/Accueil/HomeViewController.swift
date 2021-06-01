@@ -1,5 +1,5 @@
 //
-//  ScenesListViewController.swift
+//  HomeViewController.swift
 //  Orchestra
 //
 //  Created by Ramzy Kermad on 04/04/2021.
@@ -11,7 +11,7 @@ import RxCocoa
 import Floaty
 import FittedSheets
 
-class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, SendBackDataProtocol {
+class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SendBackDataProtocol {
     
     // - MARK: UI
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,17 +32,17 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     var userLoggedInData: UserDto?
     var isCellsShaking = false
     var objectVM = HomeViewModel()
-    var objectsToRemove: [ObjectDto] = []
+    var objectsToRemove: [HubAccessoryConfigurationDto] = []
     var scenesToRemove: [SceneDto] = []
-    
-    var homeObjects: [ObjectDto] = [] {
+
+    var hubDevices: [HubAccessoryConfigurationDto] = [] {
         didSet {
-            self.collectionView.reloadData()
+            //self.collectionView.reloadData()
         }
     }
     var homeScenes: [SceneDto] = [] {
         didSet {
-            self.collectionView.reloadData()
+            //self.collectionView.reloadData()
         }
     }
     let disposeBag = DisposeBag()
@@ -60,8 +60,25 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
         self.bindClickToButtons()
         self.setUpObservers()
         // Fetch data
-        self.objectVM.fakeObjectsWS.getAllObjects(for: "")
-        self.objectVM.fakeScenesWS.getAllScenes(for: "")
+        self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+        let hubConfObservable = self.objectVM.hubConfigWs.getCurrentAccessoriesConfig()
+        let allScenesObservable = self.objectVM.fakeScenesWS.getAllScenes(for: "")
+        
+        Observable.combineLatest(hubConfObservable, allScenesObservable){ (obs1, obs2) -> Bool in
+            return obs1 && obs2
+        }.subscribe { (finished) in
+            if(finished.element!){
+                self.hubDevices.sort { (object1, object2) in
+                    return object1.isFav! && !object2.isFav!
+                }
+                self.collectionView.reloadData()
+                self.progressUtils.dismiss()
+                self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.progressUtils.dismiss()
+                }
+            }
+        }
     }
     
     override func didMove(toParent parent: UIViewController?) {
@@ -85,19 +102,19 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     }
     
     // MARK: Internal functions
-    func showInfoDetailAboutObject(for indexPath: IndexPath){
+    func showInfoDetailAboutHubAccessory(for indexPath: IndexPath){
         // Object clicked on
         // Show more about the object
         let objectVC =  ObjectInfoViewController()
-        objectVC.objectData = self.homeObjects[indexPath.row]
+        objectVC.deviceData = self.hubDevices[indexPath.row]
         _ = objectVC.favClicStream
             .subscribe(onNext: { (objId) in
-            let objectToUpdate = self.homeObjects.compactMap { (object) in
+            let objectToUpdate = self.hubDevices.compactMap { (object) in
                 return object.id == objId ? object : nil
             }
             objectToUpdate[0].isFav = !objectToUpdate[0].isFav!
             // Sort objects to show fav at the top
-            self.homeObjects.sort { (object1, object2) in
+            self.hubDevices.sort { (object1, object2) in
                 return object1.isFav! && !object2.isFav!
             }
             self.collectionView.reloadData()
@@ -208,7 +225,7 @@ class ScenesListViewController: UIViewController, UIGestureRecognizerDelegate, S
     }
     
     private func deleteSelectedObjects(){
-        self.homeObjects = self.homeObjects.filter { (object) -> Bool in
+        self.hubDevices = self.hubDevices.filter { (object) -> Bool in
             return !self.objectsToRemove.contains(object)
         }
         self.objectsToRemove.removeAll()

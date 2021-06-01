@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import PopMenu
 
-extension ScenesListViewController{
+extension HomeViewController{
     func setAddSceneOrDeviceButtonBinding(){
         self.addSceneAppbarButon?.rx
             .tap

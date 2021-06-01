@@ -10,12 +10,12 @@ import RxSwift
 import RxCocoa
 
 class DeviceViewModel{
-    let hubAccessoriesConfig = DeviceConfigService.shared
+    let hubAccessoriesConfig = SupportedDevicesService.shared
     let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>()
     
     
     func getSupportedAccessories(){
-        _ = self.hubAccessoriesConfig.configStream.subscribe { accesories in
+        _ = self.hubAccessoriesConfig.accessoriesStream.subscribe { accesories in
             self.supportedAccessoriesStrem.onNext(accesories)
         } onError: { err in
             self.supportedAccessoriesStrem.onError(err)

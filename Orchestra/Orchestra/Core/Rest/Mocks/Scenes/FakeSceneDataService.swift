@@ -15,21 +15,28 @@ class FakeSceneDataService{
     var sceneStream = PublishSubject<[SceneDto]>()
     
     
-    func getAllScenes(for userId: String){
-        if let path = Bundle.main.path(forResource: "Scenes", ofType: "json") {
-            do {
-              let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-              let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let scenes = jsonResult["scenes"] as? [Any] {
-                    var mappedScenes: [SceneDto] = []
-                    for scene in scenes {
-                        mappedScenes.append(Mapper<SceneDto>().map(JSON: (scene as? [String: Any])!)!)
-                    }
-                    sceneStream.onNext(mappedScenes)
+    func getAllScenes(for userId: String) -> Observable<Bool>{
+        return Observable<Bool>.create { observer in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                if let path = Bundle.main.path(forResource: "Scenes", ofType: "json") {
+                    do {
+                      let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                      let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                        if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let scenes = jsonResult["scenes"] as? [Any] {
+                            var mappedScenes: [SceneDto] = []
+                            for scene in scenes {
+                                mappedScenes.append(Mapper<SceneDto>().map(JSON: (scene as? [String: Any])!)!)
+                            }
+                            self.sceneStream.onNext(mappedScenes)
+                        }
+                  } catch {
+                    self.sceneStream.onError(error)
+                    observer.onNext(false)
+                  }
+                    observer.onNext(true)
                 }
-          } catch {
-            sceneStream.onError(error)
-          }
+            }
+            return Disposables.create()
         }
     }
     

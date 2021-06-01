@@ -143,7 +143,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
                 self.notificationUtils
                     .showFloatingNotificationBanner(title: self.notificationLocalize.okNotificationTitle, subtitle: self.notificationLocalize.okNotificationSubtitle, position: .top, style: .success)
                 
-                let sceneVC = ScenesListViewController()
+                let sceneVC = HomeViewController()
                 sceneVC.userLoggedInData = user
                 self.navigationController?.pushViewController(sceneVC, animated: true)
             }, onError: { (err) in

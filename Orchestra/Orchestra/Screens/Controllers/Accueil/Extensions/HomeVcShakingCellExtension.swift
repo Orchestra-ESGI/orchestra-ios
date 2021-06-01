@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension ScenesListViewController{
+extension HomeViewController{
     func addWiggleAnimationToCell(cell: UICollectionViewCell) {
         CATransaction.begin()
         CATransaction.setDisableActions(false)

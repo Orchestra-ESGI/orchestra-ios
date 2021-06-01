@@ -14,6 +14,7 @@ class HomeViewModel{
     // - MARK: Services
     let fakeObjectsWS = FakeObjectsDataService.shared
     let fakeScenesWS = FakeSceneDataService.shared
+    let hubConfigWs = DeviceConfigurationService.shared
     
     // - MARK: Data
     let disposeBag = DisposeBag()

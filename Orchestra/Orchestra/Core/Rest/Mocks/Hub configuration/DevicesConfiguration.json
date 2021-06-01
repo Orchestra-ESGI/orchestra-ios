@@ -1,0 +1,180 @@
+{
+    "bridge": {
+        "name": "Homebridge 7268",
+        "username": "0E:2C:64:E5:72:68",
+        "port": 52776,
+        "pin": "031-45-154"
+    },
+    "accessories": [
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Lampe Salon / TV",
+            "topics": {
+                "getOn": "zigbee2mqtt/0x0017880108b7cd64/get",
+                "setOn": "zigbee2mqtt/0x0017880108b7cd64/set"
+            },
+            "integerValue": "false",
+            "onValue": "on",
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd999",
+            "roomName": "Salon",
+            "backgroundColor": "00AB22",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": false,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Lampe Salon Foued",
+            "topics": {
+                "getOn": "zigbee2mqtt/0x0017880106e3b7df/get",
+                "setOn": "zigbee2mqtt/0x0017880106e3b7df/set"
+            },
+            "integerValue": "false",
+            "onValue": "on",
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd99a",
+            "roomName": "Chambre",
+            "backgroundColor": "318A91",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": true,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "lightbulb",
+            "name": "Lampe Bureau Ramzy",
+            "topics": {
+                "getOn": "zigbee2mqtt/0x0017880108b7c0df/get",
+                "setOn": "zigbee2mqtt/0x0017880108b7c0df/set"
+            },
+            "integerValue": "false",
+            "onValue": "on",
+            "offValue": "off",
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd99b",
+            "roomName": "Chambre",
+            "backgroundColor": "004091",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": true,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "statelessProgrammableSwitch",
+            "name": "Switch - Bureau",
+            "topics": {
+                "getSwitch": {
+                    "topic": "zigbee2mqtt/0x00124b0022689624",
+                    "apply": "return JSON.parse(message).action"
+                }
+            },
+            "switchValues": [
+                "single",
+                "double",
+                "long"
+            ],
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd99c",
+            "roomName": "Bureau",
+            "backgroundColor": "A4A770",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": false,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "statelessProgrammableSwitch",
+            "name": "Switch - Chevet",
+            "topics": {
+                "getSwitch": {
+                    "topic": "zigbee2mqtt/0x00124b0022658991",
+                    "apply": "return JSON.parse(message).action"
+                }
+            },
+            "switchValues": [
+                "single",
+                "double",
+                "long"
+            ],
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd99d",
+            "roomName": "Chambre",
+            "backgroundColor": "8BAAFF",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": true,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "occupancySensor",
+            "name": "Move sensor 1",
+            "topics": {
+                "getOccupancyDetected": "zigbee2mqtt/0x00124b0022e9f86d"
+            },
+            "integerValue": "true",
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd99e",
+            "roomName": "Hall",
+            "backgroundColor": "E9AA7F",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": false,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        },
+        {
+            "accessory": "mqttthing",
+            "type": "contactSensor",
+            "name": "Door open sensor 1",
+            "topics": {
+                "getContactSensorState": "zigbee2mqtt/0x00124b0022cd2aa4"
+            },
+            "integerValue": "false",
+            "onValue": "true",
+            "offValue": "false",
+            "offValue": "off",
+            "id": "6071aafe079b743b5a0cd99f",
+            "roomName": "Entrée",
+            "backgroundColor": "00AB22",
+            "serialNumber": "AXPIY63",
+            "manufacturer": "Xiaomi",
+            "isOn": true,
+            "isFav": true,
+            "isReachable": true,
+            "model": "Lampe",
+            "version": "5.4.22"
+        }
+    ],
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8581,
+            "platform": "config"
+        }
+    ]
+}

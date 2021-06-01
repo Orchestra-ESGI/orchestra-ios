@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Floaty
 
-extension ScenesListViewController{
+extension HomeViewController{
     
     // - MARK: UI
     func setClickableTitle() {

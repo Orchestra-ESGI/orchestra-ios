@@ -158,7 +158,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         self.progressUtils.dismiss()
-                        let sceneVC = ScenesListViewController()
+                        let sceneVC = HomeViewController()
                         sceneVC.userLoggedInData = userCredentials[0]
                         self.navigationController?.pushViewController(sceneVC, animated: true)
                     }

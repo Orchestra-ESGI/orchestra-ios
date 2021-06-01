@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -31,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         } else {
             let isFirstOpening = preferences.bool(forKey: showPager)
-            rootController = isFirstOpening ?  UINavigationController(rootViewController: ScenesListViewController()) : OrchestraPager()
+            rootController = isFirstOpening ?  UINavigationController(rootViewController: HomeViewController()) : OrchestraPager()
         }
         window?.rootViewController = rootController
         window?.makeKeyAndVisible()
