@@ -33,4 +33,13 @@ class ColorUtils{
             alpha: CGFloat(1.0)
         )
     }
+    
+    func generatesBackGroundColor(colorArray: inout [UIColor], size: Int){
+        for _ in 0..<size{
+            colorArray.append(UIColor(red: .random(in: 0.2...1),
+                                green: .random(in: 0.2...1),
+                                blue: .random(in: 0.2...1),
+                                alpha: 1.0))
+        }
+    }
 }

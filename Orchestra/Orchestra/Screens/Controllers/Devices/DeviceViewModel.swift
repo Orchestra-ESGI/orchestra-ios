@@ -11,8 +11,8 @@ import RxCocoa
 
 class DeviceViewModel{
     let hubAccessoriesConfig = SupportedDevicesService.shared
-    let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>()
-    
+    let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>() 
+    let deviceFormCompleted = PublishSubject<Bool>()
     
     func getSupportedAccessories(){
         _ = self.hubAccessoriesConfig.accessoriesStream.subscribe { accesories in

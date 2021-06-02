@@ -20,6 +20,6 @@ class SupportedDevicesDto: NSObject, Mappable{
     func mapping(map: Map) {
         self.name <- map["name"]
         self.image <- map["image"]
-        self.doc_url <- map["doc_url"]
+        self.doc_url <- map["documentation"]
     }
 }

@@ -11,7 +11,8 @@ import RxCocoa
 import Floaty
 import FittedSheets
 
-class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SendBackDataProtocol {
+class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
+                          SendBackDataProtocol, SendDeviceProtocol {
     
     // - MARK: UI
     @IBOutlet weak var collectionView: UICollectionView!
@@ -252,6 +253,14 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate, SendBac
         }
         self.homeScenes.insert(scene, at: index)
         self.homeScenes.remove(at: index + 1)
+    }
+    
+    func save(device: HubAccessoryConfigurationDto) {
+        self.hubDevices.append(device)
+        self.hubDevices.sort { (object1, object2) in
+            return object1.isFav! && !object2.isFav!
+        }
+        self.collectionView.reloadData()
     }
 
     // - MARK: Observers

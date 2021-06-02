@@ -59,6 +59,19 @@ class NewDevicePairingViewController: UIViewController {
         }
 
     }
+    
+    private func getAccessoryType(confType: String) -> HubAccessoryType {
+        switch confType {
+        case "lightbulb":
+            return .LightBulb
+        case "statelessProgrammableSwitch":
+            return .LightBulb
+        case "occupancySensor":
+            return .OccupancySensor
+        default:
+            return .Unknown
+        }
+    }
 
 }
 
@@ -73,7 +86,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACCESSORY_ROW")!
-        cell.textLabel?.text = self.accessories[indexPath.row].type
+        cell.textLabel?.text = self.accessories[indexPath.row].category
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -83,6 +96,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
         tableView.cellForRow(at: indexPath)?.isSelected = false
         let devicesVc = DevicesViewController()
         devicesVc.devices = self.accessories[indexPath.row].devices
+        devicesVc.accessoryCategory = self.accessories[indexPath.row].category
         devicesVc.accessoryType = self.accessories[indexPath.row].type
         self.navigationController?.pushViewController(devicesVc, animated: true)
     }

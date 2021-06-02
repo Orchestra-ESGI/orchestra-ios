@@ -10,6 +10,7 @@ import ObjectMapper
 
 class SupportedAccessoriesDto: NSObject, Mappable{
     var type: String = ""
+    var category: String = ""
     var devices: [SupportedDevicesDto] = []
        
     required init?(map: Map) {
@@ -18,6 +19,7 @@ class SupportedAccessoriesDto: NSObject, Mappable{
     
     func mapping(map: Map) {
         self.type <- map["type"]
+        self.category <- map["category"]
         self.devices <- map["devices"]
     }
 }

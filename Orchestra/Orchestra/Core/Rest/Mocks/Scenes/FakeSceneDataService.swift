@@ -17,7 +17,7 @@ class FakeSceneDataService{
     
     func getAllScenes(for userId: String) -> Observable<Bool>{
         return Observable<Bool>.create { observer in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if let path = Bundle.main.path(forResource: "Scenes", ofType: "json") {
                     do {
                       let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)

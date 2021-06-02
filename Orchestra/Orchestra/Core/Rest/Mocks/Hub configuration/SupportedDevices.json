@@ -1,7 +1,8 @@
 {
   "accessories": [
     {
-      "type": "Bulb",
+      "category": "Light bulb",
+      "type": "lightbulb",
       "devices": [
           {
             "name": "Philips Hue White",
@@ -21,7 +22,8 @@
        ]
     },
     {
-      "type": "Switch",
+      "category": "Switch",
+      "type": "statelessProgrammableSwitch",
       "devices": [
           {
             "name": "SONOFF Switch",
@@ -36,7 +38,8 @@
        ]
     },
     {
-      "type": "Motion sensor",
+      "category": "Motion sensor",
+      "type": "occupancySensor",
       "devices": [
           {
             "name": "SONOFF Motion Sensor",

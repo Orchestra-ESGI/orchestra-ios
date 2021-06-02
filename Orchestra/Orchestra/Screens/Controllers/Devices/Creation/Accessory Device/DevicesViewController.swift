@@ -13,7 +13,8 @@ class DevicesViewController: UIViewController {
     // MARK: - Local data
     let deviceVM = DeviceViewModel()
     var devices: [SupportedDevicesDto] = []
-    var accessoryType = ""
+    var accessoryType = "" // Accessory type: LightBulb etc.
+    var accessoryCategory = "" // Name of the category of the device ex "Light Bulb"
     
     // MARK: - Utils
     let notificationsUtils = NotificationsUtils.shared
@@ -28,7 +29,7 @@ class DevicesViewController: UIViewController {
     }
     
     private func setupUI(){
-        self.title = self.accessoryType
+        self.title = self.accessoryCategory
     }
     
     private func setUpTableView(){
@@ -67,6 +68,10 @@ extension DevicesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
         print("Selected device: \(self.devices[indexPath.row].name)")
+        let deviceCreationFormVC = DeviceCreationFormViewController()
+        deviceCreationFormVC.accessoryType = self.accessoryType
+        deviceCreationFormVC.isDeviceDocumented = !(self.devices[indexPath.row].doc_url == nil)
+        self.navigationController?.pushViewController(deviceCreationFormVC, animated: true)
     }
     
 }

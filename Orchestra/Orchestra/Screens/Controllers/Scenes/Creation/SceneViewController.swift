@@ -147,7 +147,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: Local functions
-    
     private func generatesBackGroundColor(){
         var colorsSize = 5
         if(self.sceneToEdit != nil){
@@ -155,14 +154,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         }else{
             colorsSize = 6
         }
-        for _ in 0..<colorsSize{
-            self.sceneColors
-                .append(UIColor(red: .random(in: 0.2...1),
-                                green: .random(in: 0.2...1),
-                                blue: .random(in: 0.2...1),
-                                alpha: 1.0)
-                )
-        }
+        ColorUtils.shared.generatesBackGroundColor(colorArray: &self.sceneColors, size: colorsSize)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
