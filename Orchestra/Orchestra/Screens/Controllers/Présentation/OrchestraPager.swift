@@ -133,10 +133,8 @@ class OrchestraPager: UIViewController {
 }
 
 extension OrchestraPager: UIScrollViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(floorf((Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))
-        if pageControl.currentPage == self.slides.count - 1 {
-            self.floatingActionButton.isHidden = false
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        pageControl.currentPage = Int(floorf((Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))
+//
+//    }
 }

@@ -31,6 +31,10 @@
 		633E7E742610D6660094B148 /* HouseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E732610D6660094B148 /* HouseDto.swift */; };
 		633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E792610D67B0094B148 /* SceneDto.swift */; };
 		633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E7E812610D7460094B148 /* ActionsSceneDto.swift */; };
+		63460F7026695B6E00DECD35 /* DevicePhysicalConfigurationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63460F6E26695B6E00DECD35 /* DevicePhysicalConfigurationVC.swift */; };
+		63460F7126695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63460F6F26695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib */; };
+		63460F752669797900DECD35 /* SearchDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63460F732669797900DECD35 /* SearchDeviceViewController.swift */; };
+		63460F762669797900DECD35 /* SearchDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63460F742669797900DECD35 /* SearchDeviceViewController.xib */; };
 		634AF63D2622061300F6CBBE /* ObjectInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634AF63B2622061300F6CBBE /* ObjectInfoTableViewCell.swift */; };
 		634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634AF63C2622061300F6CBBE /* ObjectInfoTableViewCell.xib */; };
 		634C259E262224E30034A7A1 /* FakeSceneDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634C259D262224E30034A7A1 /* FakeSceneDataService.swift */; };
@@ -86,8 +90,6 @@
 		63B4352E26680CA2004D12A7 /* DeviceCreationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */; };
 		63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */; };
 		63B435322668133A004D12A7 /* DeviceFormTvActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */; };
-		63B4353526681BD8004D12A7 /* DevicePysicalConfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4353326681BD8004D12A7 /* DevicePysicalConfViewController.swift */; };
-		63B4353626681BD8004D12A7 /* DevicePysicalConfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4353426681BD8004D12A7 /* DevicePysicalConfViewController.xib */; };
 		63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */; };
 		63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A94B2661680300DEDB96 /* SupportedDevices.json */; };
 		63D1A94E2661684800DEDB96 /* SupportedAccessoriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */; };
@@ -207,6 +209,10 @@
 		633E7E732610D6660094B148 /* HouseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDto.swift; sourceTree = "<group>"; };
 		633E7E792610D67B0094B148 /* SceneDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDto.swift; sourceTree = "<group>"; };
 		633E7E812610D7460094B148 /* ActionsSceneDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsSceneDto.swift; sourceTree = "<group>"; };
+		63460F6E26695B6E00DECD35 /* DevicePhysicalConfigurationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePhysicalConfigurationVC.swift; sourceTree = "<group>"; };
+		63460F6F26695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicePhysicalConfigurationVC.xib; sourceTree = "<group>"; };
+		63460F732669797900DECD35 /* SearchDeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeviceViewController.swift; sourceTree = "<group>"; };
+		63460F742669797900DECD35 /* SearchDeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDeviceViewController.xib; sourceTree = "<group>"; };
 		6346F07F2615D095008ACED9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6346F0802615D095008ACED9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Interface.strings; sourceTree = "<group>"; };
 		6346F0812615D09A008ACED9 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -279,8 +285,6 @@
 		63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCreationFormViewController.swift; sourceTree = "<group>"; };
 		63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceCreationFormViewController.xib; sourceTree = "<group>"; };
 		63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFormTvActionsExtension.swift; sourceTree = "<group>"; };
-		63B4353326681BD8004D12A7 /* DevicePysicalConfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePysicalConfViewController.swift; sourceTree = "<group>"; };
-		63B4353426681BD8004D12A7 /* DevicePysicalConfViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicePysicalConfViewController.xib; sourceTree = "<group>"; };
 		63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldsExtensions.swift; sourceTree = "<group>"; };
 		63BB149A2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63BB149B2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Interface.strings"; sourceTree = "<group>"; };
@@ -517,6 +521,34 @@
 				63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */,
 			);
 			path = Dto;
+			sourceTree = "<group>";
+		};
+		63460F612669447D00DECD35 /* New Device Form */ = {
+			isa = PBXGroup;
+			children = (
+				63B435302668131A004D12A7 /* Extensions */,
+				63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */,
+				63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */,
+			);
+			path = "New Device Form";
+			sourceTree = "<group>";
+		};
+		63460F622669449900DECD35 /* Device Conf */ = {
+			isa = PBXGroup;
+			children = (
+				63460F6E26695B6E00DECD35 /* DevicePhysicalConfigurationVC.swift */,
+				63460F6F26695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib */,
+			);
+			path = "Device Conf";
+			sourceTree = "<group>";
+		};
+		63460F722669794100DECD35 /* Search Device */ = {
+			isa = PBXGroup;
+			children = (
+				63460F732669797900DECD35 /* SearchDeviceViewController.swift */,
+				63460F742669797900DECD35 /* SearchDeviceViewController.xib */,
+			);
+			path = "Search Device";
 			sourceTree = "<group>";
 		};
 		634AF6292622042800F6CBBE /* Detail */ = {
@@ -777,8 +809,11 @@
 		63D1A95C2661723F00DEDB96 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
-				63D1A9632661834500DEDB96 /* Accessory Device */,
 				63D1A9622661833600DEDB96 /* Accessory Type */,
+				63D1A9632661834500DEDB96 /* Accessory Device */,
+				63460F612669447D00DECD35 /* New Device Form */,
+				63460F622669449900DECD35 /* Device Conf */,
+				63460F722669794100DECD35 /* Search Device */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -804,13 +839,8 @@
 		63D1A9632661834500DEDB96 /* Accessory Device */ = {
 			isa = PBXGroup;
 			children = (
-				63B435302668131A004D12A7 /* Extensions */,
 				63D1A9642661837000DEDB96 /* DevicesViewController.swift */,
 				63D1A9652661837000DEDB96 /* DevicesViewController.xib */,
-				63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */,
-				63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */,
-				63B4353326681BD8004D12A7 /* DevicePysicalConfViewController.swift */,
-				63B4353426681BD8004D12A7 /* DevicePysicalConfViewController.xib */,
 			);
 			path = "Accessory Device";
 			sourceTree = "<group>";
@@ -999,7 +1029,9 @@
 				630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */,
 				634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */,
 				634F9587261B67A80092C269 /* SceneCollectionViewCell.xib in Resources */,
+				63460F7126695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib in Resources */,
 				63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */,
+				63460F762669797900DECD35 /* SearchDeviceViewController.xib in Resources */,
 				635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */,
 				635DD4A826188041001D1EFC /* Houses.json in Resources */,
 				634F9575261B42FD0092C269 /* AppSettingsViewController.xib in Resources */,
@@ -1021,7 +1053,6 @@
 				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
 				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
 				63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */,
-				63B4353626681BD8004D12A7 /* DevicePysicalConfViewController.xib in Resources */,
 				630B1018261E2DDC00B41804 /* ObjectInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1167,19 +1198,20 @@
 				630B1010261E2A9900B41804 /* SceneViewController.swift in Sources */,
 				636F4706260A5F8B001D8196 /* ViewController.swift in Sources */,
 				63D1A94E2661684800DEDB96 /* SupportedAccessoriesDto.swift in Sources */,
+				63460F7026695B6E00DECD35 /* DevicePhysicalConfigurationVC.swift in Sources */,
 				63885706262851DE002354FB /* HomeVcCollectionViewExtension.swift in Sources */,
 				63065A23263DAA0C00CBE30D /* SceneViewModel.swift in Sources */,
 				633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */,
 				633E7E542610D1400094B148 /* UserDto.swift in Sources */,
 				634C259E262224E30034A7A1 /* FakeSceneDataService.swift in Sources */,
 				638856E6262769B9002354FB /* SceneVcColorsCvExtension.swift in Sources */,
-				63B4353526681BD8004D12A7 /* DevicePysicalConfViewController.swift in Sources */,
 				63503FF32666D9B600C336E2 /* HomeVcCellSetupExtension.swift in Sources */,
 				637FB6792615BFA200790735 /* ProgressUtils.swift in Sources */,
 				63F116182621DF0900B93A33 /* ObjectDto.swift in Sources */,
 				63E84FC0262B821100AA9558 /* UIColorExtensions.swift in Sources */,
 				634F9574261B42FD0092C269 /* AppSettingsViewController.swift in Sources */,
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
+				63460F752669797900DECD35 /* SearchDeviceViewController.swift in Sources */,
 				63D235EA2639CCA700D2485F /* HomeVcObserversExtension.swift in Sources */,
 				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
 				63D1A950266168BA00DEDB96 /* SupportedDevicesDto.swift in Sources */,

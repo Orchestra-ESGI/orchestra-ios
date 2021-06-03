@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class Slide: UIView {
+class Slide: UIView {
 
     @IBOutlet weak var slideImage: UIImageView!
     @IBOutlet weak var slideTitle: UILabel!

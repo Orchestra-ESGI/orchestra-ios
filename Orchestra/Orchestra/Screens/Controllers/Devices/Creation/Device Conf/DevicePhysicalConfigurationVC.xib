@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DevicePhysicalConfigurationVC" customModule="Orchestra" customModuleProvider="target">
+            <connections>
+                <outlet property="firstStepTv" destination="VhL-b4-0xx" id="BJX-pU-Lw3"/>
+                <outlet property="indicationLabelText" destination="D01-YD-aBW" id="LTN-jz-HEk"/>
+                <outlet property="secondStepScreenShot" destination="fP3-vw-ZY0" id="vc6-oE-DrJ"/>
+                <outlet property="secondStepTv" destination="lnH-K0-5gR" id="l47-LX-d8w"/>
+                <outlet property="thirdStepTv" destination="xdc-4P-Kq3" id="Tcp-up-1KF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="1. Suivez le lien suivant: https://www.google.fr" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VhL-b4-0xx">
+                    <rect key="frame" x="10" y="90" width="300" height="80"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Zz8-e5-P5B"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                </textView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="2. Allez dans la section #Pairing" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lnH-K0-5gR">
+                    <rect key="frame" x="10" y="185" width="300" height="40"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="KFx-51-w4L"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fP3-vw-ZY0">
+                    <rect key="frame" x="20" y="250" width="280" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="UHH-qa-Akj"/>
+                    </constraints>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="3. Suivez les instructions pour  reinitialiser votre objet" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-4P-Kq3">
+                    <rect key="frame" x="20" y="395" width="280" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="ETS-fN-Jm9"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suivez ces étapes pour configurer votre objet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D01-YD-aBW">
+                    <rect key="frame" x="10" y="25" width="300" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="rbu-4v-S3B"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fP3-vw-ZY0" secondAttribute="trailing" constant="20" id="6cX-ah-YxU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xdc-4P-Kq3" secondAttribute="trailing" constant="20" id="Egv-o8-yGd"/>
+                <constraint firstItem="VhL-b4-0xx" firstAttribute="top" secondItem="D01-YD-aBW" secondAttribute="bottom" constant="20" id="Qfc-2e-zYM"/>
+                <constraint firstItem="D01-YD-aBW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="Sf8-CE-6Tj"/>
+                <constraint firstItem="fP3-vw-ZY0" firstAttribute="top" secondItem="lnH-K0-5gR" secondAttribute="bottom" constant="25" id="UhT-Pd-acD"/>
+                <constraint firstItem="D01-YD-aBW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Uvo-If-j2e"/>
+                <constraint firstItem="xdc-4P-Kq3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="V3r-V4-1iO"/>
+                <constraint firstAttribute="trailing" secondItem="D01-YD-aBW" secondAttribute="trailing" constant="10" id="VFP-bG-yD5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lnH-K0-5gR" secondAttribute="trailing" constant="10" id="VMj-hY-ezi"/>
+                <constraint firstItem="lnH-K0-5gR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="fgC-DT-pGI"/>
+                <constraint firstItem="lnH-K0-5gR" firstAttribute="top" secondItem="VhL-b4-0xx" secondAttribute="bottom" constant="15" id="idz-Iy-3h2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VhL-b4-0xx" secondAttribute="trailing" constant="10" id="kWg-g1-1hZ"/>
+                <constraint firstItem="VhL-b4-0xx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="mYQ-OC-HN6"/>
+                <constraint firstItem="xdc-4P-Kq3" firstAttribute="top" secondItem="fP3-vw-ZY0" secondAttribute="bottom" constant="25" id="sPz-cK-DlY"/>
+                <constraint firstItem="fP3-vw-ZY0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="uaD-RJ-mJV"/>
+            </constraints>
+            <point key="canvasLocation" x="24.637681159420293" y="55.580357142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

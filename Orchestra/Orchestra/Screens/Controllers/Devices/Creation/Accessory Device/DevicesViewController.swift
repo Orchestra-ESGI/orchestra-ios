@@ -70,7 +70,10 @@ extension DevicesViewController: UITableViewDataSource{
         print("Selected device: \(self.devices[indexPath.row].name)")
         let deviceCreationFormVC = DeviceCreationFormViewController()
         deviceCreationFormVC.accessoryType = self.accessoryType
-        deviceCreationFormVC.isDeviceDocumented = !(self.devices[indexPath.row].doc_url == nil)
+        if let documentationUrl = self.devices[indexPath.row].doc_url {
+            deviceCreationFormVC.isDeviceDocumented = true
+            deviceCreationFormVC.accessoryDocUrl = documentationUrl
+        }
         self.navigationController?.pushViewController(deviceCreationFormVC, animated: true)
     }
     

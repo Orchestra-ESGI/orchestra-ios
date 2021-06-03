@@ -30,10 +30,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Local data
     var deviceFavState = false
     var accessoryType: String = ""
+    var accessoryDocUrl: String = ""
     var deviceBackgrounds: [UIColor] = []
     var selectedColor = 0
     let disposebag = DisposeBag()
-    var isDeviceDocumented = true // Depending on the field 'documentation' in the conf
+    var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
     let deviceViewModel = DeviceViewModel()
     
     override func viewDidLoad() {
@@ -58,15 +59,19 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setUpclickObservers(){
         _ = self.validateFormAppBarBtn!.rx.tap.bind{
-//            if(self.isDeviceDocumented){
-//                let deviceConfVC = DevicePysicalConfViewController()
-//                self.navigationController?.pushViewController(deviceConfVC, animated: true)
-//            }
-            self.saveDeviceDelegate?.save(device: self.createDevice())
-            for _ in 1...2{
-                self.navigationController?.viewControllers.remove(at: 1)
+            if(self.isDeviceDocumented){
+                let deviceConfVC = DevicePhysicalConfigurationVC()
+                deviceConfVC.deviceDocumentationUrl = self.accessoryDocUrl
+                self.navigationController?.pushViewController(deviceConfVC, animated: true)
+            }else{
+                let searchVC = SearchDeviceViewController()
+                self.navigationController?.pushViewController(searchVC, animated: true)
             }
-            self.navigationController?.popViewController(animated: true)
+//            self.saveDeviceDelegate?.save(device: self.createDevice())
+//            for _ in 1...2{
+//                self.navigationController?.viewControllers.remove(at: 1)
+//            }
+//            self.navigationController?.popViewController(animated: true)
         }.disposed(by: self.disposebag)
     }
     
