@@ -6,6 +6,8 @@
   
 */
 
+// MARK: - TODO CHECK LOCALIZATION OF THE APP
+
 // - MARK: Permissions
 "permissions.alert.header.title" = "DEMANDE DE PERMISSIONS";
 "permissions.alert.title" = "Orchestra a besoin de ces autorisations";

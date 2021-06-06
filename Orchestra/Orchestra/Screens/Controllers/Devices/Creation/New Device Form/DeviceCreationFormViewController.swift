@@ -25,7 +25,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var favDeviceSwitch: UISwitch!
     
     var validateFormAppBarBtn: UIBarButtonItem?
-    var saveDeviceDelegate: SendDeviceProtocol?
     
     // MARK: - Local data
     var deviceFavState = false
@@ -35,17 +34,16 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var selectedColor = 0
     let disposebag = DisposeBag()
     var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
-    let deviceViewModel = DeviceViewModel()
+    var deviceViewModel: DeviceViewModel?
+    var deviceInfo: SupportedDevicesInformationsDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.deviceViewModel = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.setTopBar()
         self.setUpTextFields()
         self.setUpclickObservers()
         self.setColorsCollectionView()
-        let homeViewController = self.navigationController?.viewControllers[0] as? HomeViewController
-        self.saveDeviceDelegate = homeViewController
     }
     
     private func setTopBar(){
@@ -59,24 +57,23 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setUpclickObservers(){
         _ = self.validateFormAppBarBtn!.rx.tap.bind{
+            let deviceData = self.createDevice()
             if(self.isDeviceDocumented){
                 let deviceConfVC = DevicePhysicalConfigurationVC()
                 deviceConfVC.deviceDocumentationUrl = self.accessoryDocUrl
+                deviceConfVC.deviceData = deviceData
                 self.navigationController?.pushViewController(deviceConfVC, animated: true)
             }else{
                 let searchVC = SearchDeviceViewController()
+                searchVC.deviceData = deviceData
+                searchVC.isSuccessfulyAdded = true
                 self.navigationController?.pushViewController(searchVC, animated: true)
             }
-//            self.saveDeviceDelegate?.save(device: self.createDevice())
-//            for _ in 1...2{
-//                self.navigationController?.viewControllers.remove(at: 1)
-//            }
-//            self.navigationController?.popViewController(animated: true)
         }.disposed(by: self.disposebag)
     }
     
     private func setUpStreamsObserver(){
-        _ = self.deviceViewModel
+        _ = self.deviceViewModel!
             .deviceFormCompleted
             .subscribe { isValid in
                 if isValid {
@@ -152,16 +149,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         let newDeviceMap: [String: Any] = [
             "type": self.accessoryType,
             "name": self.deviceNameTextField.text!,
-            "roomName": self.roomNameTextField.text!,
-            "backgroundColor": self.deviceBackgrounds[selectedColor].toHexString(),
-            "manufacturer": "",
-            "model": "",
-            "isOn": false,
-            "isFav": self.deviceFavState,
-            "isReachable": false,
-            "version": "",
-            "actions": [],
-            "friendlyName": ""
+            "room_name": self.roomNameTextField.text!,
+            "background_color": self.deviceBackgrounds[selectedColor].toHexString(),
+            "manufacturer": self.deviceInfo?.manufacturer as! String,
+            "model": self.deviceInfo?.model as! String,
+            "is_fav": self.deviceFavState
         ]
         
         return Mapper<HubAccessoryConfigurationDto>().map(JSON: newDeviceMap)!

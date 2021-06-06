@@ -31,7 +31,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL", for: indexPath)
-        cell.textLabel?.text = self.sceneActions[indexPath.row].title
+        cell.textLabel?.text = self.sceneActions[indexPath.row].actionTitle
         return cell
     }
     

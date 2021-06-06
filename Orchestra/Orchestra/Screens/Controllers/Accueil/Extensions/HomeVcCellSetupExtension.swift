@@ -32,7 +32,7 @@ extension HomeViewController{
         if self.traitCollection.userInterfaceStyle == .dark {
             objectCell.objectImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }else{
-            objectCell.objectImageView.tintColor = .black
+            objectCell.objectImageView.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         }
         let currentCellPos = indexPath.row
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressed))

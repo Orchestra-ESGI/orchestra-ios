@@ -11,7 +11,7 @@ class NewDevicePairingViewController: UIViewController {
     @IBOutlet weak var accessoriesTableView: UITableView!
     
     // MARK: - Local data
-    let deviceVM = DeviceViewModel()
+    var deviceVM: DeviceViewModel?
     var accessories: [SupportedAccessoriesDto] = []
     
     // MARK: - Utils
@@ -22,6 +22,7 @@ class NewDevicePairingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         
         self.setupUI()
         self.setUpTableView()
@@ -29,7 +30,7 @@ class NewDevicePairingViewController: UIViewController {
         // listen on VM response
         self.accessoriesConfigObserve()
         // Listen to api call back with config
-        self.deviceVM.getSupportedAccessories()
+        self.deviceVM!.getSupportedAccessories()
         self.progressUtils.displayIndeterminateProgeress(title: self.localizeNotifications.undeterminedProgressViewTitle, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
     }
     
@@ -45,7 +46,7 @@ class NewDevicePairingViewController: UIViewController {
     }
     
     private func accessoriesConfigObserve(){
-        _ = self.deviceVM.supportedAccessoriesStrem
+        _ = self.deviceVM!.supportedAccessoriesStrem
             .subscribe { accessories in
                 self.accessories = accessories
                 self.progressUtils.dismiss()
@@ -92,7 +93,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected accessory at position: \(indexPath.row)")
+        print("Selected accessory type at position: \(indexPath.row)")
         tableView.cellForRow(at: indexPath)?.isSelected = false
         let devicesVc = DevicesViewController()
         devicesVc.devices = self.accessories[indexPath.row].devices

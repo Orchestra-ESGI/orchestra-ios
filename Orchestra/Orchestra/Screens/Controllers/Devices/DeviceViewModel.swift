@@ -10,9 +10,21 @@ import RxSwift
 import RxCocoa
 
 class DeviceViewModel{
+    let deviceConfig = DeviceConfigurationService.shared
     let hubAccessoriesConfig = SupportedDevicesService.shared
-    let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>() 
+    
+    let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>()
     let deviceFormCompleted = PublishSubject<Bool>()
+    
+    private var saveDeviceDelegate: SendDeviceProtocol?
+    private var navCtrl: UINavigationController?
+    private let homeService = HomeService()
+    
+    init(navigationCtrl: UINavigationController) {
+        self.navCtrl = navigationCtrl
+        let homeViewController = self.navCtrl!.viewControllers[0] as? HomeViewController
+        self.saveDeviceDelegate = homeViewController
+    }
     
     func getSupportedAccessories(){
         _ = self.hubAccessoriesConfig.accessoriesStream.subscribe { accesories in
@@ -21,5 +33,18 @@ class DeviceViewModel{
             self.supportedAccessoriesStrem.onError(err)
         }
         self.hubAccessoriesConfig.getCurrentAccessoriesConfig()
+    }
+    
+    func sendDeviceAction(body: [String: Any]){
+        self.homeService.sendDeviceAction(body)
+    }
+    
+    func saveDevice(deviceData: HubAccessoryConfigurationDto){
+        //self.deviceConfig.saveDevice(device: deviceData)
+        self.saveDeviceDelegate?.save(device: deviceData)
+        for _ in 1...4{
+            self.navCtrl!.viewControllers.remove(at: 1)
+        }
+        self.navCtrl!.popViewController(animated: true)
     }
 }

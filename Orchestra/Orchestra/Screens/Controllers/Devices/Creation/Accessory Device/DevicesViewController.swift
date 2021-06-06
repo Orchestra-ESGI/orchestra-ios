@@ -11,8 +11,8 @@ class DevicesViewController: UIViewController {
     @IBOutlet weak var devicesTableView: UITableView!
     
     // MARK: - Local data
-    let deviceVM = DeviceViewModel()
-    var devices: [SupportedDevicesDto] = []
+    var deviceVM: DeviceViewModel?
+    var devices: [SupportedDevicesInformationsDto] = []
     var accessoryType = "" // Accessory type: LightBulb etc.
     var accessoryCategory = "" // Name of the category of the device ex "Light Bulb"
     
@@ -23,7 +23,7 @@ class DevicesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.setupUI()
         self.setUpTableView()
     }
@@ -74,6 +74,7 @@ extension DevicesViewController: UITableViewDataSource{
             deviceCreationFormVC.isDeviceDocumented = true
             deviceCreationFormVC.accessoryDocUrl = documentationUrl
         }
+        deviceCreationFormVC.deviceInfo = self.devices[indexPath.row]
         self.navigationController?.pushViewController(deviceCreationFormVC, animated: true)
     }
     

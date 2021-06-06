@@ -11,6 +11,17 @@ import RxCocoa
 
 extension HomeViewController{
     
+    func observeAllDevices(){
+        _ = self.objectVM
+            .homeService
+            .devicesStream
+            .subscribe { devices in
+                self.hubDevices = devices
+            } onError: { err in
+                print("error while fetching data")
+            }
+    }
+    
     func setObjectStreamObserver(){
         // Listen to object stream and show them in TV
         _ = self.objectVM

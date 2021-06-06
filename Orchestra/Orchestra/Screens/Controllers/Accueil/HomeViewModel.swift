@@ -14,6 +14,8 @@ class HomeViewModel{
     // - MARK: Services
     let fakeObjectsWS = FakeObjectsDataService.shared
     let fakeScenesWS = FakeSceneDataService.shared
+    
+    let homeService: HomeService = HomeService()
     let hubConfigWs = DeviceConfigurationService.shared
     
     // - MARK: Data
@@ -54,4 +56,8 @@ class HomeViewModel{
         }
     }
     
+    
+    func getAllDevices(){
+        _ = self.homeService.getAllDevices()
+    }
 }

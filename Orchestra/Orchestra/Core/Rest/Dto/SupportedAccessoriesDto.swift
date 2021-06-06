@@ -11,7 +11,7 @@ import ObjectMapper
 class SupportedAccessoriesDto: NSObject, Mappable{
     var type: String = ""
     var category: String = ""
-    var devices: [SupportedDevicesDto] = []
+    var devices: [SupportedDevicesInformationsDto] = []
        
     required init?(map: Map) {
         super.init()

@@ -1,5 +1,5 @@
 //
-//  ObjectInfoViewController.swift
+//  DeviceInfoViewController.swift
 //  Orchestra
 //
 //  Created by Ramzy Kermad on 07/04/2021.
@@ -9,8 +9,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 import Floaty
+import ColorSlider
 
-class ObjectInfoViewController: UIViewController {
+class DeviceInfoViewController: UIViewController {
     
     // MARK: - UI
     @IBOutlet weak var tableViewContainer: UIView!
@@ -18,6 +19,9 @@ class ObjectInfoViewController: UIViewController {
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var tableViewTitleLabel: UILabel!
     @IBOutlet weak var caracteristicsTableView: UITableView!
+    
+    @IBOutlet weak var dynamicViewContainer: UIView!
+    
     
     // MARK: - Utils
     let localizerUtils = ScreensLabelLocalizableUtils.shared
@@ -32,16 +36,31 @@ class ObjectInfoViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<HeaderItem, ListItem>!
     var objectInfoKeyValue: [String: String] = [:]
     var objectInfoNames: [String] = []
+    var deviceVM: DeviceViewModel?
+    
+    var actionToSend: [String: Any] = [:]
+    var devicesActionsValues: [String: Any] = [:]
     
     var favButton: UIBarButtonItem?
     var okButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.actionToSend["friendly_name"] = self.deviceData!.friendlyName
+        self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
+        // MARK: - TODO Put everything inside Scroll view
         self.setUpUI()
         self.setUpData()
         self.setUpClickObservers()
+        
+        self.insertSlierComponent(forType: .BrightnessSlider, xPos: CGFloat(15), yPos: CGFloat(20))
+        self.insertColorComponent(yPos: CGFloat(100))
+        self.insertSlierComponent(forType: .ColorTempSlider, xPos: CGFloat(15), yPos: CGFloat(220))
+        
+        NSLayoutConstraint.activate([
+            // OK
+            self.dynamicViewContainer.heightAnchor.constraint(equalToConstant: 300)
+        ])
     }
 
     private func setUpUI(){
@@ -49,6 +68,34 @@ class ObjectInfoViewController: UIViewController {
         self.setUpFAB()
         self.setUpTableView()
         self.setUpLabels()
+    }
+    
+    @objc func sliderDidChange(_ sender: UISlider){
+        if( sender.tag == 0){
+            print("Brightness slider value changed to value: \(sender.value)")
+            self.deviceData?.actions?.brightness?.currentState = Int(sender.value)
+        }else{
+            print("Color temp slider value changed to value: \(sender.value)")
+            self.deviceData?.actions?.colorTemp?.currentState = Int(sender.value)
+        }
+        self.updateDeviceActions()
+    }
+    
+    @objc func changedColor(_ slider: ColorSlider) {
+        var color = slider.color
+        self.deviceData?.actions?.color?.currentState = color.toHexString()
+        self.updateDeviceActions()
+    }
+    
+    private func updateDeviceActions(){
+        devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
+        if(self.deviceData!.actions!.colorTemp!.currentState != 0){
+            devicesActionsValues["color_temp"] = self.deviceData!.actions!.colorTemp!.currentState
+        }else{
+            devicesActionsValues["color"] = ["hex": self.deviceData!.actions!.color!.currentState]
+        }
+        actionToSend["actions"] = devicesActionsValues
+        self.deviceVM?.sendDeviceAction(body: actionToSend)
     }
     
     private func setUpNavBar(){
@@ -97,11 +144,6 @@ class ObjectInfoViewController: UIViewController {
             floatingActionButton.buttonColor = !isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
             floatingActionButton.buttonImage = !isOn ? UIImage(systemName: "play.fill") : UIImage(systemName: "stop.fill")
             
-            if isOn {
-                print("Object activated")
-            }else{
-                print("Object deactivated")
-            }
             self.deviceData?.isOn = !isOn
         }
         
@@ -116,21 +158,21 @@ class ObjectInfoViewController: UIViewController {
     
     private func setUpData(){
         let manufacturerLabel = self.localizerUtils.objectInfoManufacturerLabelText
-        let serialNumberLabel = self.localizerUtils.objectInfoSerialNumberLabelText
+        
+        // MARK: - Remove from localize files
+        //let serialNumberLabel = self.localizerUtils.objectInfoSerialNumberLabelText
+        //let versionLabel = self.localizerUtils.objectInfoVersionLabelText
         let modeleLabel = self.localizerUtils.objectInfoModeleLabelText
-        let versionLabel = self.localizerUtils.objectInfoVersionLabelText
         let reachabilityLabel = self.localizerUtils.objectCellReachabilityLabelText
         let reachableStatus = (self.deviceData?.isReachable ?? false) ?
                                 self.localizerUtils.objectCellReachabilityStatusOkLabelText :
                                 self.localizerUtils.objectCellReachabilityStatusKoLabelText
         
-        self.objectInfoNames = [manufacturerLabel, serialNumberLabel,
-                                modeleLabel, versionLabel, reachabilityLabel]
+        self.objectInfoNames = [manufacturerLabel,
+                                modeleLabel, reachabilityLabel]
         
         self.objectInfoKeyValue[manufacturerLabel] = self.deviceData?.manufacturer
-        self.objectInfoKeyValue[serialNumberLabel] = self.deviceData?.serialNumber
         self.objectInfoKeyValue[modeleLabel] = self.deviceData?.model
-        self.objectInfoKeyValue[versionLabel] = self.deviceData?.version
         self.objectInfoKeyValue[reachabilityLabel] = reachableStatus
     }
     
@@ -146,7 +188,7 @@ class ObjectInfoViewController: UIViewController {
                 let isFavIcon = !isFav ?
                     UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
                 self.favButton?.image = isFavIcon
-                self.favClicStream.onNext(self.deviceData?.id ?? "")
+                self.favClicStream.onNext(self.deviceData?.friendlyName ?? "")
             }.disposed(by: self.disposeBag)
         
         self.okButton?
@@ -165,13 +207,13 @@ class ObjectInfoViewController: UIViewController {
 }
 
 
-extension ObjectInfoViewController: UITableViewDelegate{
+extension DeviceInfoViewController: UITableViewDelegate{
     
 }
 
-extension ObjectInfoViewController: UITableViewDataSource{
+extension DeviceInfoViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

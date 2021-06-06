@@ -62,10 +62,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.setUpObservers()
         // Fetch data
         self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
-        let hubConfObservable = self.objectVM.hubConfigWs.getCurrentAccessoriesConfig()
+        let hubConfObservable = self.objectVM.homeService.getAllDevices() //self.objectVM.hubConfigWs.getCurrentAccessoriesConfig()
         let allScenesObservable = self.objectVM.fakeScenesWS.getAllScenes(for: "")
         
-        Observable.combineLatest(hubConfObservable, allScenesObservable){ (obs1, obs2) -> Bool in
+        _ = Observable.combineLatest(hubConfObservable, allScenesObservable){ (obs1, obs2) -> Bool in
             return obs1 && obs2
         }.subscribe { (finished) in
             if(finished.element!){
@@ -106,12 +106,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     func showInfoDetailAboutHubAccessory(for indexPath: IndexPath){
         // Object clicked on
         // Show more about the object
-        let objectVC =  ObjectInfoViewController()
+        let objectVC =  DeviceInfoViewController()
         objectVC.deviceData = self.hubDevices[indexPath.row]
         _ = objectVC.favClicStream
-            .subscribe(onNext: { (objId) in
+            .subscribe(onNext: { (friendlyName) in
             let objectToUpdate = self.hubDevices.compactMap { (object) in
-                return object.id == objId ? object : nil
+                return object.friendlyName == friendlyName ? object : nil
             }
             objectToUpdate[0].isFav = !objectToUpdate[0].isFav!
             // Sort objects to show fav at the top
@@ -271,6 +271,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     private func setUpObservers(){
+        self.observeAllDevices()
         self.setObjectStreamObserver()
         self.setScenesStreamObserver()
         self.setEditModeObserver()

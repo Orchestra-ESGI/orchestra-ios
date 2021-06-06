@@ -9,19 +9,16 @@ import Foundation
 import ObjectMapper
 
 class HubAccessoryConfigurationDto: NSObject, Mappable{
-    var id: String?
     var name: String?
     var roomName: String?
     var backgroundColor: String?
     var manufacturer: String?
-    var serialNumber: String?
     var model: String?
     var isOn: Bool?
     var isFav: Bool?
     var isReachable: Bool?
-    var version: String?
     var type: HubAccessoryType = .Unknown
-    var actions: [ActionSceneDto] = []
+    var actions: Actions?
     var friendlyName: String = ""
     
     
@@ -43,18 +40,41 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         }
         self.actions <- map["actions"]
         self.friendlyName <- map["friendly_name"]
-        self.id <- map["id"]
-        self.roomName <- map["roomName"]
-        self.backgroundColor <- map["backgroundColor"]
+
+        self.roomName <- map["room_name"]
+        self.backgroundColor <- map["background_color"]
         self.manufacturer <- map["manufacturer"]
-        self.serialNumber <- map["serialNumber"]
         self.model <- map["model"]
-        self.isOn <- map["isOn"]
-        self.isFav <- map["isFav"]
-        self.isReachable <- map["isReachable"]
-        self.version <- map["version"]
+        self.isOn <- map["is_on"]
+        self.isFav <- map["is_fav"]
+        self.isReachable <- map["is_reachable"]
     }
     
-    
+    func toMap() -> [String: Any]{
+        var map: [String: Any] = [:]
+        
+        map["name"] = self.name
+        switch self.type  {
+            case .LightBulb:
+                map["type"] = "lightbulb"
+            case .StatelessProgrammableSwitch:
+                map["type"] = "statelessProgrammableSwitch"
+            case .OccupancySensor:
+                map["type"] = "occupancySensor"
+            default:
+                self.type = .Unknown
+        }
+        map["actions"] = self.actions // fake
+        map["friendly_name"] = StringUtils.shared.generateFakeId(length: 10) // fake
+        map["room_name"] = self.roomName
+        map["background_color"] = self.backgroundColor
+        map["manufacturer"] = self.manufacturer
+        map["model"] = self.model
+        map["is_on"] = true // fake
+        map["is_fav"] = self.isFav
+        map["is_reachable"] = true // fake
+        
+        return map
+    }
     
 }

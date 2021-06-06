@@ -19,6 +19,7 @@ class DevicePhysicalConfigurationVC: UIViewController {
     var continueAppBarButton: UIBarButtonItem?
     
     var deviceDocumentationUrl: String = ""
+    var deviceData: HubAccessoryConfigurationDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,18 +51,10 @@ class DevicePhysicalConfigurationVC: UIViewController {
     }
 
     @objc func searchDevice(){
-        let searchController = SearchDeviceViewController()
-        self.navigationController?.pushViewController(searchController, animated: true)
+        let searchVC = SearchDeviceViewController()
+        searchVC.deviceData = deviceData
+        searchVC.isSuccessfulyAdded = false
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

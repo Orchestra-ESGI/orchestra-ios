@@ -31,32 +31,28 @@ class DeviceConfigurationService{
                                 var accessoryMap : [String: Any] = [:]
                                 guard let name = accessory["name"] as? String,
                                       let type = accessory["type"] as? String,
-                                      let topics = accessory["topics"] as? [String: Any],
-                                      let id = accessory["id"] as? String,
-                                      let roomName = accessory["roomName"] as? String,
-                                      let backgroundColor = accessory["backgroundColor"] as? String,
-                                      let serialNumber = accessory["serialNumber"] as? String ,
+                                      let topics = accessory["actions"] as? [String: Any],
+                                      let roomName = accessory["room_name"] as? String,
+                                      let backgroundColor = accessory["background_color"] as? String,
                                       let manufacturer = accessory["manufacturer"] as? String,
-                                      let isOn = accessory["isOn"] as? Bool,
-                                      let isFav = accessory["isFav"] as? Bool,
-                                      let isReachable = accessory["isReachable"] as? Bool,
+                                      let isOn = accessory["is_on"] as? Bool,
+                                      let isFav = accessory["is_fav"] as? Bool,
+                                      let isReachable = accessory["is_reachable"] as? Bool,
                                       let model = accessory["model"] as? String,
-                                      let version = accessory["version"] as? String else{
+                                      let friendlyName = accessory["friendly_name"] as? String else{
                                     return
                                 }
                                 
                                 accessoryMap["name"] = name
                                 accessoryMap["type"] = type
-                                accessoryMap["id"] = id
-                                accessoryMap["roomName"] = roomName
-                                accessoryMap["backgroundColor"] = backgroundColor
-                                accessoryMap["serialNumber"] = serialNumber
+                                accessoryMap["room_name"] = roomName
+                                accessoryMap["background_color"] = backgroundColor
                                 accessoryMap["manufacturer"] = manufacturer
-                                accessoryMap["isOn"] = isOn
-                                accessoryMap["isFav"] = isFav
-                                accessoryMap["isReachable"] = isReachable
+                                accessoryMap["is_on"] = isOn
+                                accessoryMap["is_fav"] = isFav
+                                accessoryMap["is_reachable"] = isReachable
                                 accessoryMap["model"] = model
-                                accessoryMap["version"] = version
+                                accessoryMap["friendly_name"] = friendlyName
                                 
                                 switch type {
                                 case "lightbulb":
@@ -89,15 +85,14 @@ class DeviceConfigurationService{
         var lightBulbConf: HubAccessoryConfigurationDto?
         
         print("Light")
-        let getOnTopic = topics["getOn"] as! String
-        let setOnTopic = topics["setOn"] as! String
-        let friendlyName = getOnTopic.split(separator: "/")[1].description
-        accessoryMap["actions"] = [
-            ["title": getOnTopic],
-            ["title": setOnTopic]
-        ]
-        accessoryMap["friendly_name"] = friendlyName
-        
+//        let getOnTopic = topics["getOn"] as! String
+//        let setOnTopic = topics["setOn"] as! String
+//        let friendlyName = getOnTopic.split(separator: "/")[1].description
+//        accessoryMap["actions"] = [
+//            ["title": getOnTopic],
+//            ["title": setOnTopic]
+//        ]
+        accessoryMap["actions"] = topics
         
         
         lightBulbConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)!
@@ -131,5 +126,44 @@ class DeviceConfigurationService{
         let occupancySensorConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)
         
         return occupancySensorConf!
+    }
+    
+    func saveDevice(device: HubAccessoryConfigurationDto){
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//        if let path = Bundle.main.path(forResource: "DevicesConfiguration", ofType: "json") {
+//            do {
+//                var finalDevicesMapString = ""
+//                var deviceMapped: [String: Any] = [:]
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+//                
+//                guard let result = jsonResult as? [String: Any],
+//                      var currentAccessories = result["accessories"] as? [[String: Any]] else{
+//                    return
+//                }
+//                currentAccessories.append(device.toMap())
+//                print(currentAccessories)
+//                deviceMapped["accessories"] = currentAccessories
+//                finalDevicesMapString += "{"
+//                finalDevicesMapString += deviceMapped.description
+//                finalDevicesMapString += "}"
+//                
+//                if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+//                                                                    in: .userDomainMask).first {
+//                    let pathWithFilename = documentDirectory.appendingPathComponent("DevicesConfiguration.json")
+//                    do {
+//                        try finalDevicesMapString.write(to: pathWithFilename, atomically: true, encoding: .utf8)
+//                    } catch {
+//                        // Handle error
+//                        print("Error while writing data")
+//                    }
+//                }
+//            } catch  {
+//                print("Error while fetchin data")
+//            }
+//        }
+//        
+//        }
     }
 }

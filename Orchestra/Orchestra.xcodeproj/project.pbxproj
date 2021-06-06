@@ -14,10 +14,9 @@
 		63065A2F263DFC5800CBE30D /* OrchestraPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63065A2E263DFC5800CBE30D /* OrchestraPager.swift */; };
 		630B1010261E2A9900B41804 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B100E261E2A9900B41804 /* SceneViewController.swift */; };
 		630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B100F261E2A9900B41804 /* SceneViewController.xib */; };
-		630B1017261E2DDC00B41804 /* ObjectInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */; };
-		630B1018261E2DDC00B41804 /* ObjectInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B1016261E2DDC00B41804 /* ObjectInfoViewController.xib */; };
+		630B1017261E2DDC00B41804 /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */; };
+		630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B1016261E2DDC00B41804 /* DeviceInfoViewController.xib */; };
 		630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE209261479B300F88DB2 /* RaspberryService.swift */; };
-		630BE20F261479FF00F88DB2 /* HomeAssistantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE20E261479FF00F88DB2 /* HomeAssistantService.swift */; };
 		630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE21426147A4A00F88DB2 /* UserServices.swift */; };
 		631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB1C2610EA38003F65F9 /* StringUtils.swift */; };
 		631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB212610EA8E003F65F9 /* FileUtils.swift */; };
@@ -50,6 +49,9 @@
 		634F958D261B6B260092C269 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F958B261B6B260092C269 /* HeaderCollectionViewCell.swift */; };
 		634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634F958C261B6B260092C269 /* HeaderCollectionViewCell.xib */; };
 		63503FF32666D9B600C336E2 /* HomeVcCellSetupExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */; };
+		635984BD266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */; };
+		635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 635984BF266BDB6700F7A076 /* Device-Creation.json */; };
+		635984C2266D489100F7A076 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984C1266D489000F7A076 /* HomeService.swift */; };
 		635DD49E26188025001D1EFC /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD49D26188025001D1EFC /* Users.json */; };
 		635DD4A326188034001D1EFC /* Scenes.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4A226188034001D1EFC /* Scenes.json */; };
 		635DD4A826188041001D1EFC /* Houses.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4A726188041001D1EFC /* Houses.json */; };
@@ -181,10 +183,9 @@
 		63065A2E263DFC5800CBE30D /* OrchestraPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestraPager.swift; sourceTree = "<group>"; };
 		630B100E261E2A9900B41804 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		630B100F261E2A9900B41804 /* SceneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneViewController.xib; sourceTree = "<group>"; };
-		630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectInfoViewController.swift; sourceTree = "<group>"; };
-		630B1016261E2DDC00B41804 /* ObjectInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ObjectInfoViewController.xib; sourceTree = "<group>"; };
+		630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
+		630B1016261E2DDC00B41804 /* DeviceInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceInfoViewController.xib; sourceTree = "<group>"; };
 		630BE209261479B300F88DB2 /* RaspberryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaspberryService.swift; sourceTree = "<group>"; };
-		630BE20E261479FF00F88DB2 /* HomeAssistantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssistantService.swift; sourceTree = "<group>"; };
 		630BE21426147A4A00F88DB2 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		630E84A62615CFC4005CE9A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		630E84A72615CFC4005CE9A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
@@ -235,6 +236,9 @@
 		634F958B261B6B260092C269 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		634F958C261B6B260092C269 /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcCellSetupExtension.swift; sourceTree = "<group>"; };
+		635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDynamicActionsUIExtension.swift; sourceTree = "<group>"; };
+		635984BF266BDB6700F7A076 /* Device-Creation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Device-Creation.json"; sourceTree = "<group>"; };
+		635984C1266D489000F7A076 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		635DD49D26188025001D1EFC /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		635DD4A226188034001D1EFC /* Scenes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenes.json; sourceTree = "<group>"; };
 		635DD4A726188041001D1EFC /* Houses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Houses.json; sourceTree = "<group>"; };
@@ -499,10 +503,10 @@
 			children = (
 				633E7E4B2610D12D0094B148 /* RootApiService.swift */,
 				630BE209261479B300F88DB2 /* RaspberryService.swift */,
-				630BE20E261479FF00F88DB2 /* HomeAssistantService.swift */,
 				630BE21426147A4A00F88DB2 /* UserServices.swift */,
 				638AB8E5261494510020EE75 /* SceneServices.swift */,
 				638AB8EA261495EB0020EE75 /* HouseServices.swift */,
+				635984C1266D489000F7A076 /* HomeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -510,6 +514,7 @@
 		633E7E482610D1010094B148 /* Dto */ = {
 			isa = PBXGroup;
 			children = (
+				635984BA266AAA0E00F7A076 /* Actions */,
 				63EF45A5266588630051BC96 /* Hub configuration */,
 				633E7E532610D1400094B148 /* UserDto.swift */,
 				633E7E732610D6660094B148 /* HouseDto.swift */,
@@ -545,6 +550,7 @@
 		63460F722669794100DECD35 /* Search Device */ = {
 			isa = PBXGroup;
 			children = (
+				635984BE266BDB3E00F7A076 /* Lottie files */,
 				63460F732669797900DECD35 /* SearchDeviceViewController.swift */,
 				63460F742669797900DECD35 /* SearchDeviceViewController.xib */,
 			);
@@ -554,9 +560,10 @@
 		634AF6292622042800F6CBBE /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				635984BB266B88C100F7A076 /* Extensions */,
 				634AF6342622046500F6CBBE /* Cell */,
-				630B1015261E2DDC00B41804 /* ObjectInfoViewController.swift */,
-				630B1016261E2DDC00B41804 /* ObjectInfoViewController.xib */,
+				630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */,
+				630B1016261E2DDC00B41804 /* DeviceInfoViewController.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -619,6 +626,29 @@
 				634F9585261B67A80092C269 /* SceneCollectionViewCell.xib */,
 			);
 			path = Xib;
+			sourceTree = "<group>";
+		};
+		635984BA266AAA0E00F7A076 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		635984BB266B88C100F7A076 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		635984BE266BDB3E00F7A076 /* Lottie files */ = {
+			isa = PBXGroup;
+			children = (
+				635984BF266BDB6700F7A076 /* Device-Creation.json */,
+			);
+			path = "Lottie files";
 			sourceTree = "<group>";
 		};
 		635DD4AC26188660001D1EFC /* Login */ = {
@@ -1029,6 +1059,7 @@
 				630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */,
 				634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */,
 				634F9587261B67A80092C269 /* SceneCollectionViewCell.xib in Resources */,
+				635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */,
 				63460F7126695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib in Resources */,
 				63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */,
 				63460F762669797900DECD35 /* SearchDeviceViewController.xib in Resources */,
@@ -1053,7 +1084,7 @@
 				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
 				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
 				63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */,
-				630B1018261E2DDC00B41804 /* ObjectInfoViewController.xib in Resources */,
+				630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,6 +1241,7 @@
 				63F116182621DF0900B93A33 /* ObjectDto.swift in Sources */,
 				63E84FC0262B821100AA9558 /* UIColorExtensions.swift in Sources */,
 				634F9574261B42FD0092C269 /* AppSettingsViewController.swift in Sources */,
+				635984C2266D489100F7A076 /* HomeService.swift in Sources */,
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
 				63460F752669797900DECD35 /* SearchDeviceViewController.swift in Sources */,
 				63D235EA2639CCA700D2485F /* HomeVcObserversExtension.swift in Sources */,
@@ -1231,7 +1263,6 @@
 				637FB62C2615125000790735 /* UsersViewModel.swift in Sources */,
 				635DD4B02618867E001D1EFC /* LoginViewController.swift in Sources */,
 				63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */,
-				630BE20F261479FF00F88DB2 /* HomeAssistantService.swift in Sources */,
 				63065A21263DA82000CBE30D /* LoginViewRxBindingExtension.swift in Sources */,
 				634F958D261B6B260092C269 /* HeaderCollectionViewCell.swift in Sources */,
 				63D235E62639C81500D2485F /* HomeVcUiExtension.swift in Sources */,
@@ -1257,8 +1288,9 @@
 				633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */,
 				637FB6712615BE8000790735 /* UserLocalizableUtils.swift in Sources */,
 				63D5B2982610FB35004573D7 /* ErrorDto.swift in Sources */,
+				635984BD266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift in Sources */,
 				636F4704260A5F8B001D8196 /* SceneDelegate.swift in Sources */,
-				630B1017261E2DDC00B41804 /* ObjectInfoViewController.swift in Sources */,
+				630B1017261E2DDC00B41804 /* DeviceInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

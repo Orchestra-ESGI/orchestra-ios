@@ -133,8 +133,8 @@ class OrchestraPager: UIViewController {
 }
 
 extension OrchestraPager: UIScrollViewDelegate{
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        pageControl.currentPage = Int(floorf((Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))
-//
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(floorf((Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))
+
+    }
 }

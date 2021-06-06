@@ -17,7 +17,7 @@ class FakeSceneDataService{
     
     func getAllScenes(for userId: String) -> Observable<Bool>{
         return Observable<Bool>.create { observer in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            //DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if let path = Bundle.main.path(forResource: "Scenes", ofType: "json") {
                     do {
                       let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -35,7 +35,7 @@ class FakeSceneDataService{
                   }
                     observer.onNext(true)
                 }
-            }
+           // }
             return Disposables.create()
         }
     }
@@ -46,7 +46,7 @@ class FakeSceneDataService{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                 var sceneActions: [[String: Any]] = []
                 for action in actions{
-                    let item = ["title": action.title]
+                    let item = ["title": action.actionTitle]
                     sceneActions.append(item)
                 }
                 
