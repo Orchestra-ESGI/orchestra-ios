@@ -20,6 +20,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
     var type: HubAccessoryType = .Unknown
     var actions: Actions?
     var friendlyName: String = ""
+    var reset: Bool = false
     
     
     required init?(map: Map) {
@@ -50,7 +51,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         self.isReachable <- map["is_reachable"]
     }
     
-    func toMap() -> [String: Any]{
+    func toMap(needsReset: Bool) -> [String: Any]{
         var map: [String: Any] = [:]
         
         map["name"] = self.name
@@ -73,7 +74,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         map["is_on"] = true // fake
         map["is_fav"] = self.isFav
         map["is_reachable"] = true // fake
-        
+        map["reset"] = needsReset
         return map
     }
     

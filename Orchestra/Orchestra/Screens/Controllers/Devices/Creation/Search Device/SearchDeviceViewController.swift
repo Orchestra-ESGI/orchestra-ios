@@ -35,10 +35,11 @@ class SearchDeviceViewController: UIViewController {
     
     @IBAction func returnHome(_ sender: Any) {
         if(self.isSuccessfulyAdded){
-            //self.navigationController?.pushViewController(HomeViewController(), animated: false)
-            self.deviceData?.friendlyName = StringUtils.shared.generateFakeId(length: 20)
-            self.deviceData?.isReachable = true
-            self.deviceVM!.saveDevice(deviceData: self.deviceData!)
+            self.navigationController?.pushViewController(HomeViewController(), animated: false)
+//            self.deviceData?.friendlyName = StringUtils.shared.generateFakeId(length: 20)
+//            self.deviceData?.isReachable = true
+//            self.deviceVM!.saveDevice(deviceData: self.deviceData!)
+            
         }else{
             // do something to retry adding device
             self.progressUtil.displayIndeterminateProgeress(title: "Veuillez patienter...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)

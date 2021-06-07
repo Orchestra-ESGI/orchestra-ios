@@ -52,6 +52,7 @@
 		635984BD266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */; };
 		635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 635984BF266BDB6700F7A076 /* Device-Creation.json */; };
 		635984C2266D489100F7A076 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984C1266D489000F7A076 /* HomeService.swift */; };
+		635984C4266D673700F7A076 /* DeviceServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984C3266D673700F7A076 /* DeviceServices.swift */; };
 		635DD49E26188025001D1EFC /* Users.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD49D26188025001D1EFC /* Users.json */; };
 		635DD4A326188034001D1EFC /* Scenes.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4A226188034001D1EFC /* Scenes.json */; };
 		635DD4A826188041001D1EFC /* Houses.json in Resources */ = {isa = PBXBuildFile; fileRef = 635DD4A726188041001D1EFC /* Houses.json */; };
@@ -239,6 +240,7 @@
 		635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDynamicActionsUIExtension.swift; sourceTree = "<group>"; };
 		635984BF266BDB6700F7A076 /* Device-Creation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Device-Creation.json"; sourceTree = "<group>"; };
 		635984C1266D489000F7A076 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		635984C3266D673700F7A076 /* DeviceServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceServices.swift; sourceTree = "<group>"; };
 		635DD49D26188025001D1EFC /* Users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Users.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		635DD4A226188034001D1EFC /* Scenes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Scenes.json; sourceTree = "<group>"; };
 		635DD4A726188041001D1EFC /* Houses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Houses.json; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				638AB8E5261494510020EE75 /* SceneServices.swift */,
 				638AB8EA261495EB0020EE75 /* HouseServices.swift */,
 				635984C1266D489000F7A076 /* HomeService.swift */,
+				635984C3266D673700F7A076 /* DeviceServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1273,6 +1276,7 @@
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
 				63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */,
+				635984C4266D673700F7A076 /* DeviceServices.swift in Sources */,
 				63D1A9662661837000DEDB96 /* DevicesViewController.swift in Sources */,
 				63EF45A4266586CF0051BC96 /* DeviceConfigurationService.swift in Sources */,
 				6388571126288BDE002354FB /* HomeVcShakingCellExtension.swift in Sources */,

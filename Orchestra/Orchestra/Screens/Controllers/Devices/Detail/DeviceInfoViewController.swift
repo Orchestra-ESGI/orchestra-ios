@@ -89,7 +89,7 @@ class DeviceInfoViewController: UIViewController {
     
     private func updateDeviceActions(){
         devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
-        if(self.deviceData!.actions!.colorTemp!.currentState != 0){
+        if(self.deviceData!.actions!.colorTemp!.currentState == 150){
             devicesActionsValues["color_temp"] = self.deviceData!.actions!.colorTemp!.currentState
         }else{
             devicesActionsValues["color"] = ["hex": self.deviceData!.actions!.color!.currentState]

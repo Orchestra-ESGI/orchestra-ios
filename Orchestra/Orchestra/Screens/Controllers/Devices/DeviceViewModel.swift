@@ -13,6 +13,8 @@ class DeviceViewModel{
     let deviceConfig = DeviceConfigurationService.shared
     let hubAccessoriesConfig = SupportedDevicesService.shared
     
+    let deviceService = DeviceServices()
+    
     let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>()
     let deviceFormCompleted = PublishSubject<Bool>()
     
@@ -39,12 +41,13 @@ class DeviceViewModel{
         self.homeService.sendDeviceAction(body)
     }
     
-    func saveDevice(deviceData: HubAccessoryConfigurationDto){
+    func saveDevice(deviceData: HubAccessoryConfigurationDto, reset: Bool){
         //self.deviceConfig.saveDevice(device: deviceData)
-        self.saveDeviceDelegate?.save(device: deviceData)
-        for _ in 1...4{
-            self.navCtrl!.viewControllers.remove(at: 1)
-        }
-        self.navCtrl!.popViewController(animated: true)
+//        self.saveDeviceDelegate?.save(device: deviceData)
+//        for _ in 1...4{
+//            self.navCtrl!.viewControllers.remove(at: 1)
+//        }
+//        self.navCtrl!.popViewController(animated: true)
+        self.deviceService.saveDevice(deviceData.toMap(needsReset: reset))
     }
 }

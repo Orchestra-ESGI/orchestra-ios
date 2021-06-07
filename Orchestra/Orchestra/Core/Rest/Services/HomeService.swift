@@ -16,7 +16,7 @@ class HomeService: RootApiService{
     
     func getAllDevices() -> Observable<Bool> {
         return Observable<Bool>.create { observer in
-            AF.request("http://192.168.1.81:3000/device/all", method: .get, parameters: nil, headers: self.headers)
+            AF.request("http://192.168.1.33:3000/device/all", method: .get, parameters: nil, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                 switch response.result {
@@ -49,7 +49,7 @@ class HomeService: RootApiService{
     
     
     func sendDeviceAction(_ body: [String: Any]) {
-        AF.request("http://192.168.1.81:3000/device/action", method: .post, parameters: body, encoding: JSONEncoding.default, headers: headers)
+        AF.request("http://192.168.1.33:3000/device/action", method: .post, parameters: body, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {

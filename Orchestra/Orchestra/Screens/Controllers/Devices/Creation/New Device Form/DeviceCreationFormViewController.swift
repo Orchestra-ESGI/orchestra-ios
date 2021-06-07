@@ -64,6 +64,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                 deviceConfVC.deviceData = deviceData
                 self.navigationController?.pushViewController(deviceConfVC, animated: true)
             }else{
+                self.deviceViewModel?.saveDevice(deviceData: deviceData, reset: true)
                 let searchVC = SearchDeviceViewController()
                 searchVC.deviceData = deviceData
                 searchVC.isSuccessfulyAdded = true
