@@ -24,7 +24,7 @@ class HubPairingViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Utils
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
-    let screenLabelLocalize = ScreensLabelLocalizableUtils()
+    let screenLabelLocalize = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     
     

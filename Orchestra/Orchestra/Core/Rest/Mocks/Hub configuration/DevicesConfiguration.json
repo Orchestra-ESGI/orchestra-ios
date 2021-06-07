@@ -1,0 +1,33 @@
+{
+    "accessories": [
+        {
+            "friendly_name": "0x0017880108b21761",
+            "type": "lightbulb",
+            "name": "Lampe Bureau Ramzy",
+            "actions": {
+                "state": "TOGGLE",
+                "brightness": {
+                    "current_state": 50,
+                    "min_val": 0,
+                    "max_val": 100
+                },
+                "color_temp": {
+                    "current_state": 300,
+                    "min_val": 150,
+                    "max_val": 500
+                },
+                "color": {
+                    "current_state": "#0000FF",
+                    "hex": "#FF0000"
+                }
+            },
+            "room_name": "Chambre",
+            "background_color": "#004091",
+            "manufacturer": "Xiaomi",
+            "is_on": true,
+            "is_fav": true,
+            "is_reachable": true,
+            "model": "9290022166"
+        }
+    ]
+}

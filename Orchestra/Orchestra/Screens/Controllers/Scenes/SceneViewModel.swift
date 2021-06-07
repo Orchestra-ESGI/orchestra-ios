@@ -13,7 +13,7 @@ class SceneViewModel{
     let sceneWS = FakeSceneDataService.shared
     
     // MARK: Utils
-    let localizeUtils = ScreensLabelLocalizableUtils()
+    let localizeUtils = ScreensLabelLocalizableUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     

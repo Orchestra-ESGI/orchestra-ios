@@ -9,7 +9,7 @@ import UIKit
 
 class AddHouseTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellText: UIView!
+    @IBOutlet weak var cellText: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

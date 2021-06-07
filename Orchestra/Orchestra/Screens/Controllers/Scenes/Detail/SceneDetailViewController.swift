@@ -24,7 +24,7 @@ class SceneDetailViewController: UIViewController {
     // MARK: Utils
     let colorUtils = ColorUtils.shared
     let progressUtils = ProgressUtils.shared
-    let localizeLabels = ScreensLabelLocalizableUtils()
+    let localizeLabels = ScreensLabelLocalizableUtils.shared
     
     // MARK: Local data
     var sceneData: SceneDto?
@@ -120,7 +120,7 @@ extension SceneDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL")
         let currentAction = self.sceneData?.actions[indexPath.row]
-        cell?.textLabel?.text = currentAction?.title
+        cell?.textLabel?.text = currentAction?.actionTitle
         
         return cell!
     }

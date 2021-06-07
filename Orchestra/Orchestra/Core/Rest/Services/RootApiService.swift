@@ -16,7 +16,7 @@ public class RootApiService{
     
     static var shared = RootApiService()
     
-    var ROOT_PATH = ApiUtils.shared.getDomain()
+    var ROOT_PATH = "http://" //
     var stringUtils = StringUtils.shared
     var fileUtils = FileUtils.shared
 

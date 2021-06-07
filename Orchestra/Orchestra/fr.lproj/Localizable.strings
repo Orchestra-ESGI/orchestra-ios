@@ -6,6 +6,8 @@
   
 */
 
+// MARK: - TODO CHECK LOCALIZATION OF THE APP
+
 // - MARK: Permissions
 "permissions.alert.header.title" = "DEMANDE DE PERMISSIONS";
 "permissions.alert.title" = "Orchestra a besoin de ces autorisations";
@@ -79,7 +81,7 @@
 "signup.vc.name.label.text" = "Nom";
 
 // - MARK: Home Labels and texts
-"home.collection.header.objects" = "Mes objects";
+"home.collection.header.objects" = "Mes objets";
 "home.collection.header.scenes" = "Mes scènes";
 "home.object.cell.reachability.label.text" = "Disponnibilité";
 "home.object.cell.reachability.status.ok.label.text" = "Disponible";
@@ -133,3 +135,16 @@
 "hub.pairing.progress.alert.title" = "Appairage en cours, patientez...";
 "hub.pairing.vc.code.label" = "Entrez le code d'appairage";
 "hub.pairing.vc.reachable.hub" = "Hub disponibles";
+
+// - MARK: Home Screen Bottom Sheet
+"home.screen.bottom.sheet.title" = "Vos domiciles";
+"home.screen.bottom.sheet.add.home.button" = "Nouveau domicile";
+
+// - MARK: Home Screen Nav Bar plus button alert
+"home.screen.new.scene.alert" = "Ajouter une scène";
+"home.screen.new.device.alert" = "Ajouter un objet";
+"home.screen.new.house.alert" = "Ajouter un domicile";
+
+// - MARK: Add New Device Screen (supported types)
+"new.device.controller.title" = "Ajouter un appareil";
+"progress.notification.config.finished.title" = "Chargement de la configuration terminé";

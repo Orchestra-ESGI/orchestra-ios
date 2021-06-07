@@ -1,0 +1,108 @@
+{
+  "objects": [
+    {
+      "id": "6071aafe079b743b5a0cd999",
+      "name": "Détécteur de CO",
+      "roomName": "Cuisine",
+      "backgroundColor": "00AB22",
+      "serialNumber": "AXPIY63",
+      "manufacturer": "Xiaomi",
+      "is_on": true,
+      "is_fav": true,
+      "is_reachable": true,
+      "model": "Lampe",
+      "version": "5.4.22"
+    },
+    {
+      "id": "6071aafe509f9aaa91f0eec4",
+      "name": "Detecteur de fumée",
+      "roomName": "Chambre étage",
+      "backgroundColor": "8BAAFF",
+      "serialNumber": "XEHD87E",
+      "manufacturer": "Xiaomi",
+      "is_on": true,
+      "is_fav": true,
+      "is_reachable": true,
+      "model": "Alarme",
+      "version": "5.4.22"
+    },
+    {
+      "id": "6071aafe43ebd3421cd5c060",
+      "name": "Lampe Philips Hue",
+      "roomName": "Chambre parents",
+      "backgroundColor": "E9AA7F",
+      "serialNumber": "AXPIY63",
+      "manufacturer": "Philips",
+      "is_on": true,
+      "is_fav": false,
+      "is_reachable": true,
+      "model": "Lampe",
+      "version": "1.1.0"
+    },
+    {
+      "id": "6071aafefe69e4afb9622733",
+      "name": "Détécteur de CO",
+      "roomName": "Salle de bain",
+      "backgroundColor": "E9597F",
+      "serialNumber": "XEHD87E",
+      "manufacturer": "Ikea",
+      "is_on": true,
+      "is_fav": false,
+      "is_reachable": true,
+      "model": "Détecteur",
+      "version": "1.1.0"
+    },
+    {
+      "id": "6071aafe2b7fe6d526864e17",
+      "name": "Rideaux éléctriques",
+      "roomName": "Garage",
+      "backgroundColor": "318A91",
+      "serialNumber": "AXPIY63",
+      "manufacturer": "Somfy",
+      "is_on": true,
+      "is_fav": false,
+      "is_reachable": true,
+      "model": "Autre",
+      "version": "1.12.5"
+    },
+    {
+      "id": "6071aafec96f563cf1286e83",
+      "name": "Lampe chambre 2",
+      "roomName": "Cuisine",
+      "backgroundColor": "314091",
+      "serialNumber": "YZ00TRTE",
+      "manufacturer": "Xiaomi",
+      "is_on": true,
+      "is_fav": true,
+      "is_reachable": true,
+      "model": "Lampe",
+      "version": "1.12.5"
+    },
+    {
+      "id": "6071aafeba6af72827b6f4a4",
+      "name": "Éclairage jardin",
+      "roomName": "Jardin",
+      "backgroundColor": "004091",
+      "serialNumber": "AXPIY63",
+      "manufacturer": "Amazon",
+      "is_on": true,
+      "is_fav": false,
+      "is_reachable": true,
+      "model": "Lampe",
+      "version": "1.1.0"
+    },
+    {
+      "id": "6071abb3a2886f8bc1610b39",
+      "name": "Lampe Philips Hue",
+      "roomName": "Garage",
+      "backgroundColor": "A4A770",
+      "serialNumber": "AXPIY63",
+      "manufacturer": "Philips Hue",
+      "is_on": true,
+      "is_fav": false,
+      "is_reachable": true,
+      "model": "Lampe",
+      "version": "1.1.0"
+    }
+  ]
+}

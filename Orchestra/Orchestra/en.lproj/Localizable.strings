@@ -132,3 +132,16 @@
 "hub.pairing.progress.alert.title" = "Pairing in progress, please wait...";
 "hub.pairing.vc.code.label" = "Enter the pairing code";
 "hub.pairing.vc.reachable.hub" = "Hubs available";
+
+// - MARK: Home Screen Bottom Sheet
+"home.screen.bottom.sheet.title" = "Your homes";
+"home.screen.bottom.sheet.add.home.button" = "New house";
+
+// - MARK: Home Screen Nav Bar plus button alert
+"home.screen.new.scene.alert" = "Add a scene";
+"home.screen.new.device.alert" = "Add a device";
+"home.screen.new.house.alert" = "Add a house";
+
+// - MARK: Add New Device Screen (supported types)
+"new.device.controller.title" = "Add a device";
+"progress.notification.config.finished.title" = "Configuration loaded successfully";

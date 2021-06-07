@@ -132,3 +132,16 @@
 "hub.pairing.progress.alert.title" = "配对中，请稍等... ...";
 "hub.pairing.vc.code.label" = "输入配对代码";
 "hub.pairing.vc.reachable.hub" = "可用的枢纽";
+
+// - MARK: Home Screen Bottom Sheet
+"home.screen.bottom.sheet.title" = "你的家园";
+"home.screen.bottom.sheet.add.home.button" = "新家";
+
+// - MARK: Home Screen Nav Bar plus button alert
+"home.screen.new.scene.alert" = "添加一个场景";
+"home.screen.new.device.alert" = "添加一个对象";
+"home.screen.new.house.alert" = "添加一个家庭";
+
+// - MARK: Add New Device Screen (supported types)
+"new.device.controller.title" = "添加一个场景";
+"progress.notification.config.finished.title" = "加载完成的配置";

@@ -132,3 +132,16 @@
 "hub.pairing.progress.alert.title" = "Koppeling bezig, even wachten...";
 "hub.pairing.vc.code.label" = "Voer de koppelingscode in";
 "hub.pairing.vc.reachable.hub" = "Beschikbare hubs";
+
+// - MARK: Home Screen Bottom Sheet
+"home.screen.bottom.sheet.title" = "Uw huizen";
+"home.screen.bottom.sheet.add.home.button" = "Nieuw huis";
+
+// - MARK: Home Screen Nav Bar plus button alert
+"home.screen.new.scene.alert" = "een scène toevoegen";
+"home.screen.new.device.alert" = "Een apparaat toevoegen";
+"home.screen.new.house.alert" = "Een huis toevoegen";
+
+// - MARK: Add New Device Screen (supported types)
+"new.device.controller.title" = "Een apparaat toevoegen";
+"progress.notification.config.finished.title" = "Laden van de voltooide configuratie";
