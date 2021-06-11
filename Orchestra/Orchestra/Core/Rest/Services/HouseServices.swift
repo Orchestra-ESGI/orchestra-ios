@@ -18,7 +18,7 @@ class HouseServices: RootApiService{
         body["id_user"] = idUser
         
         return Observable<[HouseDto]>.create({observer in
-            AF.request("\(self.ROOT_PATH)/houses/get/all", method: .get, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/houses/get/all", method: .get, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -52,7 +52,7 @@ class HouseServices: RootApiService{
         
         
         return Observable<[HouseDto]>.create({observer in
-            AF.request("\(self.ROOT_PATH)/houses/remove/group", method: .delete, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/houses/remove/group", method: .delete, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {

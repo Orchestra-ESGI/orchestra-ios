@@ -12,31 +12,33 @@ import RxCocoa
 extension HomeViewController{
     
     func observeAllDevices(){
-        _ = self.objectVM
-            .homeService
-            .devicesStream
+        _ = self.homeVM!
+            .deviceStream
             .subscribe { devices in
                 self.hubDevices = devices
+                self.hubDevices.sort { (object1, object2) in
+                    return object1.isFav! && !object2.isFav!
+                }
             } onError: { err in
                 print("error while fetching data")
             }
     }
     
-    func setObjectStreamObserver(){
-        // Listen to object stream and show them in TV
-        _ = self.objectVM
-            .hubConfigWs
-            .configurationStream
-            .subscribe { hubConfig in
-                self.hubDevices = hubConfig
-        } onError: { err in
-            print("Error while fetching hub configuration")
-        }
-    }
+//    func setObjectStreamObserver(){
+//        // Listen to object stream and show them in TV
+//        _ = self.homeVM!
+//            .hubConfigWs
+//            .configurationStream
+//            .subscribe { hubConfig in
+//                self.hubDevices = hubConfig
+//        } onError: { err in
+//            print("Error while fetching hub configuration")
+//        }
+//    }
     
     func setScenesStreamObserver(){
         // Listen to scene stream and show them in TV
-        self.objectVM.fakeScenesWS
+        self.homeVM!
             .sceneStream
             .subscribe { (scenes) in
                 self.homeScenes = scenes

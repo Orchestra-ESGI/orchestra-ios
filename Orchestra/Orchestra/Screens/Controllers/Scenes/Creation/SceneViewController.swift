@@ -34,7 +34,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     let notificationLocalize = NotificationLocalizableUtils.shared
     
     // MARK: Service
-    let sceneWS = FakeSceneDataService.shared
     let sceneVM = SceneViewModel()
     
     // MARK: - Local data
@@ -108,7 +107,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: Observers Setup
-    
     private func clickObservers(){
         _ = self.addSceneAppbarButon?
             .rx
@@ -140,8 +138,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
                         self.progressUtils.dismiss()
                         self.navigationController?.popViewController(animated: true)
                     }
-
-
         }
     }
     

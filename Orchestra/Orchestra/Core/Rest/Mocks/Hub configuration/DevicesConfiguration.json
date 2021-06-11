@@ -19,7 +19,8 @@
                 "color": {
                     "current_state": "#0000FF",
                     "hex": "#FF0000"
-                }
+                },
+                "toggleAction": []
             },
             "room_name": "Chambre",
             "background_color": "#004091",
@@ -28,6 +29,28 @@
             "is_fav": true,
             "is_reachable": true,
             "model": "9290022166"
+        },
+        {
+            "friendly_name": "0x0017880108b21762",
+            "type": "statelessProgrammableSwitch",
+            "name": "Switch Bureau Ramzy",
+            "actions": {
+                "state": "TOGGLE",
+                "brightness": null,
+                "color_temp": null,
+                "color": null,
+                "toggleAction": [
+                    "on",
+                    "off"
+                ]
+            },
+            "room_name": "Bureau",
+            "background_color": "#001031",
+            "manufacturer": "ONOFF",
+            "is_on": true,
+            "is_fav": false,
+            "is_reachable": true,
+            "model": "7293829382"
         }
     ]
 }

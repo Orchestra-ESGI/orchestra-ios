@@ -50,22 +50,28 @@ class DeviceInfoViewController: UIViewController {
         self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         // MARK: - TODO Put everything inside Scroll view
         self.setUpUI()
+        self.addDynamicComponents()
+//        self.insertBrightnessContainer(xPos: 0, yPos: 0, width: UIScreen.main.bounds.width, height: 100)
+//        self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: 100, width: UIScreen.main.bounds.width, height: 100)
+//        self.insertNoActionContainer(xPos: 0, yPos: 200, width: UIScreen.main.bounds.width, height: 100)
+//        NSLayoutConstraint.activate([
+//            // OK
+//            self.dynamicViewContainer.heightAnchor.constraint(equalToConstant: 300)
+//        ])
         self.setUpData()
         self.setUpClickObservers()
-        
-        self.insertSlierComponent(forType: .BrightnessSlider, xPos: CGFloat(15), yPos: CGFloat(20))
-        self.insertColorComponent(yPos: CGFloat(100))
-        self.insertSlierComponent(forType: .ColorTempSlider, xPos: CGFloat(15), yPos: CGFloat(220))
-        
-        NSLayoutConstraint.activate([
-            // OK
-            self.dynamicViewContainer.heightAnchor.constraint(equalToConstant: 300)
-        ])
+    }
+    
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            print("Current state is Color")
+        }else{
+            print("Current state is Temp")
+        }
     }
 
     private func setUpUI(){
         self.setUpNavBar()
-        self.setUpFAB()
         self.setUpTableView()
         self.setUpLabels()
     }
@@ -82,8 +88,7 @@ class DeviceInfoViewController: UIViewController {
     }
     
     @objc func changedColor(_ slider: ColorSlider) {
-        var color = slider.color
-        self.deviceData?.actions?.color?.currentState = color.toHexString()
+        self.deviceData?.actions?.color?.currentState = slider.color.toHexString()
         self.updateDeviceActions()
     }
     
@@ -126,28 +131,6 @@ class DeviceInfoViewController: UIViewController {
         
         self.tableViewContainer.layer.cornerRadius = 12.0
         self.tableViewContainer.layer.masksToBounds = true
-    }
-    
-    private func setUpFAB(){
-        
-        let floatingActionButton = Floaty()
-        floatingActionButton.buttonImage = UIImage(systemName: "play.fill")
-        floatingActionButton.size = CGFloat(60.0)
-        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        // These 2 lines trigger the handler of the first item without opening the floaty items menu
-        floatingActionButton.handleFirstItemDirectly = true
-        floatingActionButton.addItem(title: "") { (flb) in
-            guard let isOn = self.deviceData?.isOn else{
-                return
-            }
-            floatingActionButton.buttonColor = !isOn ? #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) : #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
-            floatingActionButton.buttonImage = !isOn ? UIImage(systemName: "play.fill") : UIImage(systemName: "stop.fill")
-            
-            self.deviceData?.isOn = !isOn
-        }
-        
-        self.view.addSubview(floatingActionButton)
     }
     
     private func setUpLabels(){

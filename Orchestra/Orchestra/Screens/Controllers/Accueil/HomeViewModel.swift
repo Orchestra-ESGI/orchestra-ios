@@ -15,15 +15,62 @@ class HomeViewModel{
     let fakeObjectsWS = FakeObjectsDataService.shared
     let fakeScenesWS = FakeSceneDataService.shared
     
+    // - MARK: Data
+    let disposeBag = DisposeBag()
+    let navigationController: UINavigationController?
+    
     let homeService: HomeService = HomeService()
     let hubConfigWs = DeviceConfigurationService.shared
     
-    // - MARK: Data
-    let disposeBag = DisposeBag()
+    let deviceVM: DeviceViewModel?
+    let deviceStream = PublishSubject<[HubAccessoryConfigurationDto]>()
     
-    init(){
-        
+    let sceneVm: SceneViewModel?
+    let sceneStream = PublishSubject<[SceneDto]>()
+    
+    init(navCtrl: UINavigationController){
+        self.navigationController = navCtrl
+        self.deviceVM = DeviceViewModel(navigationCtrl: navCtrl)
+        self.sceneVm = SceneViewModel()
     }
+    
+    func loadAllDevicesAndScenes(completion: @escaping (Bool) -> Void){
+        _ = Observable.combineLatest(self.loadAllScenes(),
+                                     self.loadAllDevices())
+        { (obs1, obs2) -> Bool in
+            return obs1 && obs2
+        }.subscribe { (finished) in
+            completion(finished.element!)
+        }
+    }
+    
+    private func loadAllDevices() -> Observable<Bool>{
+        _ = self.deviceVM!
+            .deviceConfig
+            .configurationStream
+            .subscribe { devices in
+                self.deviceStream.onNext(devices)
+        } onError: { err in
+            self.deviceStream.onError(err)
+        }
+        return self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig() //---> Fake data
+//        _ = self.deviceVM?.devicesStream.subscribe { devices in
+//            self.deviceStream.onNext(devices)
+//        } onError: { err in
+//            self.deviceStream.onError(err)
+//        }
+        //return self.deviceVM!.getAllDevices() //---> Real data
+    }
+    
+    private func loadAllScenes() -> Observable<Bool>{
+        _ = self.sceneVm?.scenesStream.subscribe { scenes in
+            self.sceneStream.onNext(scenes)
+        } onError: { err in
+            self.sceneStream.onError(err)
+        }
+        return self.sceneVm!.getAllScenes()
+    }
+    
     
     func clearObjectSelected(completion: @escaping ()->()) -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in
@@ -54,10 +101,5 @@ class HomeViewModel{
                     }.disposed(by: self.disposeBag)
                 return Disposables.create()
         }
-    }
-    
-    
-    func getAllDevices(){
-        _ = self.homeService.getAllDevices()
     }
 }

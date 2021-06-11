@@ -20,14 +20,20 @@ class SupportedDevicesService{
                 do {
                   let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                   let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                    if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let accessories = jsonResult["accessories"] as? [Any] {
+                    if let jsonResult = jsonResult as? [[String: Any]] {
                         var mappedAccessories: [SupportedAccessoriesDto] = []
-                        for accessory in accessories {
-                            mappedAccessories.append(Mapper<SupportedAccessoriesDto>().map(JSON: (accessory as? [String: Any])!)!)
+                        for accessory in jsonResult {
+                            mappedAccessories.append(Mapper<SupportedAccessoriesDto>().map(JSON: accessory)!)
                         }
                         self.accessoriesStream.onNext(mappedAccessories)
                     }
               } catch {
+//                guard let errorJson =  response.error,
+//                      let error = errorJson.underlyingError else {
+//                    return
+//                }
+//                
+//                print("Error - SupportedDevicesService - getCurrentAccessoriesConfig()")
                 self.accessoriesStream.onError(error)
               }
             }

@@ -15,7 +15,7 @@ class FakeSceneDataService{
     var sceneStream = PublishSubject<[SceneDto]>()
     
     
-    func getAllScenes(for userId: String) -> Observable<Bool>{
+    func getAllScenes() -> Observable<Bool>{
         return Observable<Bool>.create { observer in
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if let path = Bundle.main.path(forResource: "Scenes", ofType: "json") {

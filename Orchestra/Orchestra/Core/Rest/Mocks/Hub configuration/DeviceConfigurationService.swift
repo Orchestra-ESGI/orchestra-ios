@@ -83,17 +83,8 @@ class DeviceConfigurationService{
     
     private func getLightBulbConf(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> HubAccessoryConfigurationDto{
         var lightBulbConf: HubAccessoryConfigurationDto?
-        
         print("Light")
-//        let getOnTopic = topics["getOn"] as! String
-//        let setOnTopic = topics["setOn"] as! String
-//        let friendlyName = getOnTopic.split(separator: "/")[1].description
-//        accessoryMap["actions"] = [
-//            ["title": getOnTopic],
-//            ["title": setOnTopic]
-//        ]
         accessoryMap["actions"] = topics
-        
         
         lightBulbConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)!
         
@@ -104,11 +95,9 @@ class DeviceConfigurationService{
     private func getOccupancySensorConf(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> HubAccessoryConfigurationDto{
         print("Occupancy Sensor")
         let getOccupancyDetected = topics["getOccupancyDetected"] as! String
-        let friendlyName = getOccupancyDetected.split(separator: "/")[1].description
         accessoryMap["actions"] = [
             ["title": getOccupancyDetected]
         ]
-        accessoryMap["friendly_name"] = friendlyName
         let occupancySensorConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)
         
         return occupancySensorConf!
@@ -116,54 +105,11 @@ class DeviceConfigurationService{
     
     private func getStatelessProgrammableSwitch(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> HubAccessoryConfigurationDto{
         print("Stateless programmable switch")
-        let getOccupancyDetected = topics["getSwitch"] as! [String: Any]
-        let topic = getOccupancyDetected["topic"] as! String
-        let friendlyName = topic.split(separator: "/")[1].description
-        accessoryMap["actions"] = [
-            ["title": topic]
-        ]
-        accessoryMap["friendly_name"] = friendlyName
+        accessoryMap["toggleAction"] = topics["toggleAction"]
+        
         let occupancySensorConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)
         
         return occupancySensorConf!
     }
     
-    func saveDevice(device: HubAccessoryConfigurationDto){
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//        if let path = Bundle.main.path(forResource: "DevicesConfiguration", ofType: "json") {
-//            do {
-//                var finalDevicesMapString = ""
-//                var deviceMapped: [String: Any] = [:]
-//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-//                
-//                guard let result = jsonResult as? [String: Any],
-//                      var currentAccessories = result["accessories"] as? [[String: Any]] else{
-//                    return
-//                }
-//                currentAccessories.append(device.toMap())
-//                print(currentAccessories)
-//                deviceMapped["accessories"] = currentAccessories
-//                finalDevicesMapString += "{"
-//                finalDevicesMapString += deviceMapped.description
-//                finalDevicesMapString += "}"
-//                
-//                if let documentDirectory = FileManager.default.urls(for: .documentDirectory,
-//                                                                    in: .userDomainMask).first {
-//                    let pathWithFilename = documentDirectory.appendingPathComponent("DevicesConfiguration.json")
-//                    do {
-//                        try finalDevicesMapString.write(to: pathWithFilename, atomically: true, encoding: .utf8)
-//                    } catch {
-//                        // Handle error
-//                        print("Error while writing data")
-//                    }
-//                }
-//            } catch  {
-//                print("Error while fetchin data")
-//            }
-//        }
-//        
-//        }
-    }
 }

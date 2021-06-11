@@ -15,7 +15,7 @@ class UserServices: RootApiService{
     
     func getAllUsers() -> Observable<[UserDto]>? {
         return Observable<[UserDto]>.create({observer in
-            AF.request("\(self.ROOT_PATH)/users/get/all", method: .get, parameters: nil, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .get, parameters: nil, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -50,7 +50,7 @@ class UserServices: RootApiService{
         
         
         return Observable<[String]>.create({observer in
-            AF.request("\(self.ROOT_PATH)/users/get/all", method: .delete, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .delete, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -101,7 +101,7 @@ class UserServices: RootApiService{
         
         
         return Observable<UserDto>.create({observer in
-            AF.request("\(self.ROOT_PATH)/users/update/\(credentialName)", method: .put, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/update/\(credentialName)", method: .put, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -131,7 +131,7 @@ class UserServices: RootApiService{
         body["password"] = password
         
         return Observable<UserDto>.create({observer in
-            AF.request("\(self.ROOT_PATH)/users/account/login", method: .post, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/account/login", method: .post, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -162,7 +162,7 @@ class UserServices: RootApiService{
         body["password"] = password
         
         return Observable<UserDto>.create({observer in
-            AF.request("\(self.ROOT_PATH)/users/account/singin", method: .post, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/account/singin", method: .post, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {

@@ -10,7 +10,8 @@ import RxSwift
 import RxCocoa
 
 class SceneViewModel{
-    let sceneWS = FakeSceneDataService.shared
+    let sceneService = FakeSceneDataService.shared
+    let scenesStream = PublishSubject<[SceneDto]>()
     
     // MARK: Utils
     let localizeUtils = ScreensLabelLocalizableUtils.shared
@@ -21,7 +22,7 @@ class SceneViewModel{
     
     func createNewScene(name: String, description: String, color: String, actions: [ActionSceneDto]) -> Observable<SceneDto>{
         return Observable<SceneDto>.create { observer in
-            self.sceneWS
+            self.sceneService
             .createNewScene(name: name,description: description, color: color, actions: actions)
             .subscribe { (createdScene) in
                 observer.onNext(createdScene)
@@ -35,5 +36,15 @@ class SceneViewModel{
             
             return Disposables.create()
         }
+    }
+    
+    func getAllScenes() -> Observable<Bool>{
+        _ = self.sceneService.sceneStream.subscribe { scenes in
+            self.scenesStream.onNext(scenes)
+        } onError: { err in
+            self.scenesStream.onError(err)
+        }
+
+        return self.sceneService.getAllScenes()
     }
 }

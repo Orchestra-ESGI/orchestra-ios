@@ -74,47 +74,47 @@ extension HomeViewController{
         self.collectionView.reloadData()
     }
     
-    func setUpFAB(){
-        let floatingActionButton = Floaty()
-        floatingActionButton.buttonImage = UIImage(systemName: "gearshape.fill")
-        floatingActionButton.size = CGFloat(60.0)
-        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-        floatingActionButton.openAnimationType = .slideUp
-        
-        let pairPhoneButton = setUpFloatyItem()
-        pairPhoneButton.title = self.screenLabelLocalize.floatyButtonPairingButtonTitle
-        pairPhoneButton.icon =  UIImage(named: "hub")!
-        pairPhoneButton.handler = { item in
-            self.showPairingVc()
-            floatingActionButton.close()
-        }
-        
-        let shareAppButton = setUpFloatyItem()
-        shareAppButton.icon =  UIImage(systemName: "square.and.arrow.up")
-        shareAppButton.title = self.screenLabelLocalize.floatyButtonShareButtonTitle
-        shareAppButton.handler = { item in
-            self.showRatemarks()
-            floatingActionButton.close()
-        }
-        
-
-        let rateAppButton = setUpFloatyItem()
-        rateAppButton.icon =  UIImage(systemName: "star")
-        rateAppButton.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        rateAppButton.title = self.screenLabelLocalize.floatyButtonRateButtonTitle
-        rateAppButton.handler = { item in
-            self.showShareBottomSheet()
-            floatingActionButton.close()
-        }
-
-
-        floatingActionButton.addItem(item: pairPhoneButton)
-        floatingActionButton.addItem(item: shareAppButton)
-        floatingActionButton.addItem(item: rateAppButton)
-        
-        self.view.addSubview(floatingActionButton)
-    }
+//    func setUpFAB(){
+//        let floatingActionButton = Floaty()
+//        floatingActionButton.buttonImage = UIImage(systemName: "gearshape.fill")
+//        floatingActionButton.size = CGFloat(60.0)
+//        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//        floatingActionButton.buttonColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
+//        floatingActionButton.openAnimationType = .slideUp
+//        
+//        let pairPhoneButton = setUpFloatyItem()
+//        pairPhoneButton.title = self.screenLabelLocalize.floatyButtonPairingButtonTitle
+//        pairPhoneButton.icon =  UIImage(named: "hub")!
+//        pairPhoneButton.handler = { item in
+//            self.showPairingVc()
+//            floatingActionButton.close()
+//        }
+//        
+//        let shareAppButton = setUpFloatyItem()
+//        shareAppButton.icon =  UIImage(systemName: "square.and.arrow.up")
+//        shareAppButton.title = self.screenLabelLocalize.floatyButtonShareButtonTitle
+//        shareAppButton.handler = { item in
+//            self.showRatemarks()
+//            floatingActionButton.close()
+//        }
+//        
+//
+//        let rateAppButton = setUpFloatyItem()
+//        rateAppButton.icon =  UIImage(systemName: "star")
+//        rateAppButton.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+//        rateAppButton.title = self.screenLabelLocalize.floatyButtonRateButtonTitle
+//        rateAppButton.handler = { item in
+//            self.showShareBottomSheet()
+//            floatingActionButton.close()
+//        }
+//
+//
+//        floatingActionButton.addItem(item: pairPhoneButton)
+//        floatingActionButton.addItem(item: shareAppButton)
+//        floatingActionButton.addItem(item: rateAppButton)
+//        
+//        self.view.addSubview(floatingActionButton)
+//    }
     
     private func setUpFloatyItem() -> FloatyItem{
         let floaty = FloatyItem()

@@ -16,7 +16,7 @@ class ActionSceneDto: NSObject, Mappable{
     }
     
     func mapping(map: Map) {
-        self.actionTitle <- map["actionTitle"]
+        self.actionTitle <- map["title"]
     }
     
 }
@@ -76,6 +76,7 @@ class Actions: NSObject, Mappable{
     var brightness: SliderAction?
     var color: ColorAction?
     var colorTemp: SliderAction?
+    var toggleAction: [String] = []
     var state: DeviceState?
     
     required init?(map: Map) {
@@ -91,6 +92,9 @@ class Actions: NSObject, Mappable{
         }
         if(map["brightness"].currentValue != nil){
             self.brightness <- map["brightness"]
+        }
+        if(map["toggleAction"].currentValue != nil){
+            self.toggleAction <- map["toggleAction"]
         }
         switch map["state"].currentValue as? String {
             case "ON":

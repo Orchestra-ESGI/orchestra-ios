@@ -9,11 +9,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
 class DeviceViewModel{
     let deviceConfig = DeviceConfigurationService.shared
     let hubAccessoriesConfig = SupportedDevicesService.shared
     
+    // Device layer conv data
     let deviceService = DeviceServices()
+    let devicesStream = PublishSubject<[HubAccessoryConfigurationDto]>()
     
     let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>()
     let deviceFormCompleted = PublishSubject<Bool>()
@@ -28,6 +31,15 @@ class DeviceViewModel{
         self.saveDeviceDelegate = homeViewController
     }
     
+    func getAllDevices() -> Observable<Bool>{
+        _ = self.deviceService.devicesStream.subscribe{ devices in
+            self.devicesStream.onNext(devices)
+        } onError: { err in
+            self.devicesStream.onError(err)
+        }
+        return self.deviceService.getAllDeviceList()
+    }
+    
     func getSupportedAccessories(){
         _ = self.hubAccessoriesConfig.accessoriesStream.subscribe { accesories in
             self.supportedAccessoriesStrem.onNext(accesories)
@@ -38,7 +50,7 @@ class DeviceViewModel{
     }
     
     func sendDeviceAction(body: [String: Any]){
-        self.homeService.sendDeviceAction(body)
+        self.deviceService.sendDeviceAction(body)
     }
     
     func saveDevice(deviceData: HubAccessoryConfigurationDto, reset: Bool){

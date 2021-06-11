@@ -12,6 +12,7 @@ class NewDevicePairingViewController: UIViewController {
     
     // MARK: - Local data
     var deviceVM: DeviceViewModel?
+    
     var accessories: [SupportedAccessoriesDto] = []
     
     // MARK: - Utils

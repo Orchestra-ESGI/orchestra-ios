@@ -41,7 +41,6 @@ class SceneDetailViewController: UIViewController {
     private func setUpUI(){
         self.setUpTopBar()
         self.setUpLabels()
-        self.setUpFAB()
         
         self.descriptionTextView.layer.borderWidth = 0.5
         self.descriptionTextView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -65,28 +64,6 @@ class SceneDetailViewController: UIViewController {
         editSceneButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
         self.navigationItem.rightBarButtonItems = [editSceneButton!]
     }
-    
-    private func setUpFAB(){
-        
-        let floatingActionButton = Floaty()
-        floatingActionButton.buttonImage = UIImage(systemName: "play.fill")
-        floatingActionButton.size = CGFloat(60.0)
-        floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        // These 2 lines trigger the handler of the first item without opening the floaty items menu
-        floatingActionButton.handleFirstItemDirectly = true
-        floatingActionButton.addItem(title: "") { (flb) in
-            floatingActionButton.close()
-            let alertTitle = self.localizeLabels.sceneInfoStartingSceneProgressAlertTitle
-            self.progressUtils.displayIndeterminateProgeress(title: alertTitle, view: self.view)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.progressUtils.dismiss()
-            }
-        }
-        
-        self.view.addSubview(floatingActionButton)
-    }
-    
     
     // MARK: Setup Observers
     

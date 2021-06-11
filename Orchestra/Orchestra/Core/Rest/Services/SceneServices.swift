@@ -13,12 +13,12 @@ import RxCocoa
 
 class SceneServices: RootApiService{
     
-    func getAllScenes(idHouse: String) -> Observable<[SceneDto]>? {
+    func getAllScenes(idHouse: String) -> Observable<[SceneDto]>? { // mu
         var body: [String: Any] = [:]
         body["id_house"] = idHouse
         
         return Observable<[SceneDto]>.create({observer in
-            AF.request("\(self.ROOT_PATH)/scenes/get/all", method: .get, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scenes/get/all", method: .get, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -52,7 +52,7 @@ class SceneServices: RootApiService{
         
         
         return Observable<[SceneDto]>.create({observer in
-            AF.request("\(self.ROOT_PATH)/scenes/remove/group", method: .delete, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scenes/remove/group", method: .delete, parameters: body, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {

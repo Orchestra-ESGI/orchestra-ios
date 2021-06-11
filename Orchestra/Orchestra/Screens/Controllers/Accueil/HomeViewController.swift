@@ -30,54 +30,48 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     
     
     // - MARK: Data
+    let disposeBag = DisposeBag()
     var userLoggedInData: UserDto?
     var isCellsShaking = false
-    var objectVM = HomeViewModel()
+    
+    var homeVM: HomeViewModel?
+    
     var objectsToRemove: [HubAccessoryConfigurationDto] = []
     var scenesToRemove: [SceneDto] = []
 
-    var hubDevices: [HubAccessoryConfigurationDto] = [] {
-        didSet {
-            //self.collectionView.reloadData()
-        }
-    }
-    var homeScenes: [SceneDto] = [] {
-        didSet {
-            //self.collectionView.reloadData()
-        }
-    }
-    let disposeBag = DisposeBag()
+    var hubDevices: [HubAccessoryConfigurationDto] = []
+    var homeScenes: [SceneDto] = []
+
     let isSchakingStream = PublishSubject<Bool>()
     let elementsToRemoveStream = PublishSubject<Bool>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.homeVM = HomeViewModel(navCtrl: self.navigationController!)
         // Setup UI
         self.setUpTopBar()
         self.setUpCollectionView()
-        self.setUpFAB()
         // Binding click with buttons
         self.bindClickToButtons()
         self.setUpObservers()
         // Fetch data
+        self.loadData()
+    }
+    
+    private func loadData(){
         self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
-        let hubConfObservable = self.objectVM.homeService.getAllDevices() //self.objectVM.hubConfigWs.getCurrentAccessoriesConfig()
-        let allScenesObservable = self.objectVM.fakeScenesWS.getAllScenes(for: "")
-        
-        _ = Observable.combineLatest(hubConfObservable, allScenesObservable){ (obs1, obs2) -> Bool in
-            return obs1 && obs2
-        }.subscribe { (finished) in
-            if(finished.element!){
-                self.hubDevices.sort { (object1, object2) in
-                    return object1.isFav! && !object2.isFav!
-                }
-                self.collectionView.reloadData()
+        self.homeVM!.loadAllDevicesAndScenes { successLoad in
+            self.refreshHome(successLoad)
+        }
+    }
+    
+    private func refreshHome(_ loadSuccessfull: Bool){
+        self.collectionView.reloadData()
+        self.progressUtils.dismiss()
+        if(loadSuccessfull){
+            self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.progressUtils.dismiss()
-                self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    self.progressUtils.dismiss()
-                }
             }
         }
     }
@@ -203,10 +197,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         let progressAlertTitle = self.notificationLocalize.editingHomeProgressViewTitle
         let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
-        let removedObjectObservable = self.objectVM.clearObjectSelected {
+        let removedObjectObservable = self.homeVM!.clearObjectSelected {
             self.deleteSelectedObjects()
         }
-        let removedSceneObservable = self.objectVM.clearScenesSelected{
+        let removedSceneObservable = self.homeVM!.clearScenesSelected{
             self.deleteSelectedScenes()
         }
         
@@ -244,6 +238,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     func saveScene(scene: SceneDto) {
         self.notificationUtils.showFloatingNotificationBanner(title: self.notificationLocalize.successfullyAddedNotificationTitle, subtitle: self.notificationLocalize.successfullyAddedNotificationSubtitle, position: .top, style: .success)
         self.homeScenes.append(scene)
+        self.collectionView.reloadData()
     }
     
     // To move to VM
@@ -272,7 +267,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     
     private func setUpObservers(){
         self.observeAllDevices()
-        self.setObjectStreamObserver()
+        //self.setObjectStreamObserver()
         self.setScenesStreamObserver()
         self.setEditModeObserver()
         self.editingTableViewObserver()

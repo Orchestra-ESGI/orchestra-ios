@@ -11,6 +11,7 @@ import RxCocoa
 
 class UsersViewModel{
     let realUserWS = UserServices()
+    let userDataStream = PublishSubject<UserDto>()
     let fakeUserWS = FakeUserServices.shared
     
     let disposeBag = DisposeBag()
