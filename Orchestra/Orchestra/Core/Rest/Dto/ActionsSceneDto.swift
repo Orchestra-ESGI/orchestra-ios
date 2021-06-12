@@ -77,7 +77,7 @@ class Actions: NSObject, Mappable{
     var color: ColorAction?
     var colorTemp: SliderAction?
     var toggleAction: [String] = []
-    var state: String = ""
+    var state: String?
     
     required init?(map: Map) {
         

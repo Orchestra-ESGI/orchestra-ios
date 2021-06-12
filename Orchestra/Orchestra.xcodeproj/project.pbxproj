@@ -128,6 +128,10 @@
 		63F116222621E45B00B93A33 /* FakeObjectsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F116212621E45B00B93A33 /* FakeObjectsDataService.swift */; };
 		63F854DF2643108F00983044 /* OrchestraPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F854DE2643108F00983044 /* OrchestraPermissions.swift */; };
 		63FFB0F62674ED3E0040B4FC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB0F52674ED3E0040B4FC /* UIImageViewExtension.swift */; };
+		63FFB0FA267510850040B4FC /* DevicesAvailableForSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB0F8267510850040B4FC /* DevicesAvailableForSceneViewController.swift */; };
+		63FFB0FB267510850040B4FC /* DevicesAvailableForSceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB0F9267510850040B4FC /* DevicesAvailableForSceneViewController.xib */; };
+		63FFB0FF26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB0FD26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift */; };
+		63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */; };
 		C67299E1D5F71C15FEB27D07 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32753411773669EA6697FAF /* Pods_Orchestra_WatchKit_App.framework */; };
 		CD3F1B248012ED1F706A515E /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634958F86E28083F464EDB87 /* Pods_Orchestra.framework */; };
 /* End PBXBuildFile section */
@@ -330,6 +334,10 @@
 		63F116212621E45B00B93A33 /* FakeObjectsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeObjectsDataService.swift; sourceTree = "<group>"; };
 		63F854DE2643108F00983044 /* OrchestraPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestraPermissions.swift; sourceTree = "<group>"; };
 		63FFB0F52674ED3E0040B4FC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		63FFB0F8267510850040B4FC /* DevicesAvailableForSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesAvailableForSceneViewController.swift; sourceTree = "<group>"; };
+		63FFB0F9267510850040B4FC /* DevicesAvailableForSceneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicesAvailableForSceneViewController.xib; sourceTree = "<group>"; };
+		63FFB0FD26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsForDeviceAvailableViewController.swift; sourceTree = "<group>"; };
+		63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsForDeviceAvailableViewController.xib; sourceTree = "<group>"; };
 		8B4BAE5A5F7587E1BFCF6FB3 /* Pods_Orchestra_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9202AB9FD53B6CE1AE2C0EBD /* Pods-Orchestra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.release.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.release.xcconfig"; sourceTree = "<group>"; };
 		A32753411773669EA6697FAF /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -424,6 +432,8 @@
 		630B100D261E2A4E00B41804 /* Creation */ = {
 			isa = PBXGroup;
 			children = (
+				63FFB0FC26751B5F0040B4FC /* Actions Available */,
+				63FFB0F726750F840040B4FC /* Devices available */,
 				638856E426276984002354FB /* Extensions */,
 				630B100E261E2A9900B41804 /* SceneViewController.swift */,
 				630B100F261E2A9900B41804 /* SceneViewController.xib */,
@@ -938,6 +948,24 @@
 			path = Permissions;
 			sourceTree = "<group>";
 		};
+		63FFB0F726750F840040B4FC /* Devices available */ = {
+			isa = PBXGroup;
+			children = (
+				63FFB0F8267510850040B4FC /* DevicesAvailableForSceneViewController.swift */,
+				63FFB0F9267510850040B4FC /* DevicesAvailableForSceneViewController.xib */,
+			);
+			path = "Devices available";
+			sourceTree = "<group>";
+		};
+		63FFB0FC26751B5F0040B4FC /* Actions Available */ = {
+			isa = PBXGroup;
+			children = (
+				63FFB0FD26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift */,
+				63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */,
+			);
+			path = "Actions Available";
+			sourceTree = "<group>";
+		};
 		C355AABC4AA64D1EB72C91A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,6 +1100,7 @@
 				63460F7126695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib in Resources */,
 				63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */,
 				63460F762669797900DECD35 /* SearchDeviceViewController.xib in Resources */,
+				63FFB0FB267510850040B4FC /* DevicesAvailableForSceneViewController.xib in Resources */,
 				635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */,
 				635DD4A826188041001D1EFC /* Houses.json in Resources */,
 				634F9575261B42FD0092C269 /* AppSettingsViewController.xib in Resources */,
@@ -1091,6 +1120,7 @@
 				632268382645A2170037672D /* AddHouseTableViewCell.xib in Resources */,
 				634F957D261B65920092C269 /* ObjectCollectionViewCell.xib in Resources */,
 				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
+				63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */,
 				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
 				63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */,
 				630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */,
@@ -1239,6 +1269,7 @@
 				636F4706260A5F8B001D8196 /* ViewController.swift in Sources */,
 				63D1A94E2661684800DEDB96 /* SupportedAccessoriesDto.swift in Sources */,
 				63460F7026695B6E00DECD35 /* DevicePhysicalConfigurationVC.swift in Sources */,
+				63FFB0FA267510850040B4FC /* DevicesAvailableForSceneViewController.swift in Sources */,
 				63885706262851DE002354FB /* HomeVcCollectionViewExtension.swift in Sources */,
 				63065A23263DAA0C00CBE30D /* SceneViewModel.swift in Sources */,
 				633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */,
@@ -1292,6 +1323,7 @@
 				63065A2F263DFC5800CBE30D /* OrchestraPager.swift in Sources */,
 				63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */,
 				63FFB0F62674ED3E0040B4FC /* UIImageViewExtension.swift in Sources */,
+				63FFB0FF26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift in Sources */,
 				635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */,
 				63D235E82639CC2200D2485F /* HomeVcUiBindingExtension.swift in Sources */,
 				63D1A96026617F9800DEDB96 /* DeviceTableViewCell.swift in Sources */,

@@ -107,7 +107,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func addActionToScene(_ sender: Any) {
-        print("OUHOO")
+        let deviceAvailableVC = DevicesAvailableForSceneViewController()
+        self.navigationController?.pushViewController(deviceAvailableVC, animated: true)
     }
     
     // MARK: Observers Setup
