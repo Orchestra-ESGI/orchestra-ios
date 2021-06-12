@@ -16,7 +16,7 @@ public class RootApiService{
     
     static var shared = RootApiService()
     
-    static var BASE_API_URL = "http://192.168.1.33:3000" //
+    static var BASE_API_URL = "http://nassimpi.local:3000" //
     var stringUtils = StringUtils.shared
     var fileUtils = FileUtils.shared
 

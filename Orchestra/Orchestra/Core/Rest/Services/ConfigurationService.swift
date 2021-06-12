@@ -14,9 +14,10 @@ import RxSwift
 import ObjectMapper
 
 class ConfigurationService: RootApiService{
+    var confStream = PublishSubject<[SupportedAccessoriesDto]>()
     
-    func getCurrentAccessoriesConfig(_ confStream: PublishSubject<[SupportedAccessoriesDto]>) {
-        AF.request("\(RootApiService.BASE_API_URL)/configuration", method: .get, encoding: JSONEncoding.default, headers: headers)
+    func getCurrentAccessoriesConfig() {
+        AF.request("\(RootApiService.BASE_API_URL)/device/supported", method: .get, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
@@ -29,9 +30,16 @@ class ConfigurationService: RootApiService{
                     for accessory in dataResponse {
                         mappedAccessories.append(Mapper<SupportedAccessoriesDto>().map(JSON: accessory)!)
                     }
-                    confStream.onNext(mappedAccessories)
+                    self.confStream.onNext(mappedAccessories)
                 case .failure(_):
                     print("ko")
+                    guard let errorJson =  response.error,
+                          let error = errorJson.underlyingError else {
+                        return
+                    }
+                    
+                    print("Error - ConfigurationService - getCurrentAccessoriesConfig()")
+                    self.confStream.onError(error)
             }
         }
     }

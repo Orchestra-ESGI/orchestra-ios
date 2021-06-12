@@ -69,6 +69,15 @@ class DeviceInfoViewController: UIViewController {
             print("Current state is Temp")
         }
     }
+    
+    @objc func onOnffToggled(_ sender: UISegmentedControl){
+        if(sender.selectedSegmentIndex == 0){
+            self.deviceData?.actions?.state = "on"
+        }else{
+            self.deviceData?.actions?.state = "off"
+        }
+        self.updateDeviceActions()
+    }
 
     private func setUpUI(){
         self.setUpNavBar()
@@ -94,6 +103,7 @@ class DeviceInfoViewController: UIViewController {
     
     private func updateDeviceActions(){
         devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
+        devicesActionsValues["state"] = self.deviceData!.actions!.state
         if(self.deviceData!.actions!.colorTemp!.currentState == 150){
             devicesActionsValues["color_temp"] = self.deviceData!.actions!.colorTemp!.currentState
         }else{

@@ -77,7 +77,7 @@ class Actions: NSObject, Mappable{
     var color: ColorAction?
     var colorTemp: SliderAction?
     var toggleAction: [String] = []
-    var state: DeviceState?
+    var state: String = ""
     
     required init?(map: Map) {
         
@@ -98,11 +98,11 @@ class Actions: NSObject, Mappable{
         }
         switch map["state"].currentValue as? String {
             case "ON":
-                self.state = .ON
+                self.state = "on"
             case "OFF":
-                self.state = .OFF
+                self.state = "off"
             default:
-                self.state = .ON
+                self.state = "on"
         }
     }
 }

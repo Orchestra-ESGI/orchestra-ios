@@ -233,7 +233,15 @@ extension DeviceInfoViewController{
                                                        height: onOffViewHeight))
         segmentedView.insertSegment(withTitle: "ON", at: 0, animated: true)
         segmentedView.insertSegment(withTitle: "OFF", at: 1, animated: true)
-        segmentedView.selectedSegmentIndex = 0
+        
+        segmentedView.addTarget(self,
+                                action: #selector(onOnffToggled(_:)),
+                                for: .valueChanged)
+        if(self.deviceData?.actions?.state == "on"){
+            segmentedView.selectedSegmentIndex = 0
+        }else{
+            segmentedView.selectedSegmentIndex = 1
+        }
         
         onOffViewContainer.addSubview(segmentedView)
         

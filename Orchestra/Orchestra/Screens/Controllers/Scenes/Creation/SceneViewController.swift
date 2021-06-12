@@ -106,6 +106,10 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func addActionToScene(_ sender: Any) {
+        print("OUHOO")
+    }
+    
     // MARK: Observers Setup
     private func clickObservers(){
         _ = self.addSceneAppbarButon?

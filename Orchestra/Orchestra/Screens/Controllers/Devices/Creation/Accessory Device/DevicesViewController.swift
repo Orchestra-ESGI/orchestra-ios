@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
 
 class DevicesViewController: UIViewController {
     @IBOutlet weak var devicesTableView: UITableView!
@@ -23,7 +26,7 @@ class DevicesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
+        //self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.setupUI()
         self.setUpTableView()
     }
@@ -54,14 +57,17 @@ extension DevicesViewController: UITableViewDataSource{
         let currentDevice = self.devices[indexPath.row]
         cell.accessoryImageView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cell.accessoryNameLabel.text = currentDevice.name
-        do {
-            let url = URL(string: currentDevice.image)!
-            let data = try Data(contentsOf: url)
-            cell.accessoryImageView.image = UIImage(data: data)
-        }
-        catch{
-            print(error)
-        }
+        
+        _ = cell.accessoryImageView
+            .imageFromServerURL(currentDevice.image, placeHolder: UIImage(named: ""))
+            .subscribe { finished in
+                if(finished){
+                    print("finished loading of the image")
+                }
+            } onError: { err in
+                print("Error occured while fetching image for the cell at position: \(indexPath.row)")
+            }
+
         return cell
     }
     
@@ -78,5 +84,5 @@ extension DevicesViewController: UITableViewDataSource{
         self.navigationController?.pushViewController(deviceCreationFormVC, animated: true)
     }
     
+    
 }
-

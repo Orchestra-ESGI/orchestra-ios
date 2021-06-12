@@ -12,7 +12,7 @@ import RxCocoa
 
 class DeviceViewModel{
     let deviceConfig = DeviceConfigurationService.shared
-    let hubAccessoriesConfig = SupportedDevicesService.shared
+    let hubAccessoriesConfig = ConfigurationService()
     
     // Device layer conv data
     let deviceService = DeviceServices()
@@ -41,7 +41,7 @@ class DeviceViewModel{
     }
     
     func getSupportedAccessories(){
-        _ = self.hubAccessoriesConfig.accessoriesStream.subscribe { accesories in
+        _ = self.hubAccessoriesConfig.confStream.subscribe { accesories in
             self.supportedAccessoriesStrem.onNext(accesories)
         } onError: { err in
             self.supportedAccessoriesStrem.onError(err)

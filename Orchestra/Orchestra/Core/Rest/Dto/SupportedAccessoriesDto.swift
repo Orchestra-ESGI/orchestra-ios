@@ -19,7 +19,17 @@ class SupportedAccessoriesDto: NSObject, Mappable{
     
     func mapping(map: Map) {
         self.type <- map["type"]
-        self.category <- map["category"]
         self.devices <- map["devices"]
+        
+        switch map["type"].currentValue as? String {
+            case "lightbulb":
+                self.category = "Light bulb"
+            case "statelessProgrammableSwitch":
+                self.category = "Switch"
+            case "occupancySensor":
+                self.category = "Motion sensor"
+            default:
+                self.category = "Type inconnu"
+        }
     }
 }

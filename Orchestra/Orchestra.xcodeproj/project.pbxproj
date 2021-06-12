@@ -127,6 +127,7 @@
 		63F1161D2621E02000B93A33 /* Objects.json in Resources */ = {isa = PBXBuildFile; fileRef = 63F1161C2621E02000B93A33 /* Objects.json */; };
 		63F116222621E45B00B93A33 /* FakeObjectsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F116212621E45B00B93A33 /* FakeObjectsDataService.swift */; };
 		63F854DF2643108F00983044 /* OrchestraPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F854DE2643108F00983044 /* OrchestraPermissions.swift */; };
+		63FFB0F62674ED3E0040B4FC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB0F52674ED3E0040B4FC /* UIImageViewExtension.swift */; };
 		C67299E1D5F71C15FEB27D07 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32753411773669EA6697FAF /* Pods_Orchestra_WatchKit_App.framework */; };
 		CD3F1B248012ED1F706A515E /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634958F86E28083F464EDB87 /* Pods_Orchestra.framework */; };
 /* End PBXBuildFile section */
@@ -328,6 +329,7 @@
 		63F1161C2621E02000B93A33 /* Objects.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Objects.json; sourceTree = "<group>"; };
 		63F116212621E45B00B93A33 /* FakeObjectsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeObjectsDataService.swift; sourceTree = "<group>"; };
 		63F854DE2643108F00983044 /* OrchestraPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestraPermissions.swift; sourceTree = "<group>"; };
+		63FFB0F52674ED3E0040B4FC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		8B4BAE5A5F7587E1BFCF6FB3 /* Pods_Orchestra_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9202AB9FD53B6CE1AE2C0EBD /* Pods-Orchestra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.release.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.release.xcconfig"; sourceTree = "<group>"; };
 		A32753411773669EA6697FAF /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -807,6 +809,7 @@
 			children = (
 				63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */,
 				63E84FBF262B821100AA9558 /* UIColorExtensions.swift */,
+				63FFB0F52674ED3E0040B4FC /* UIImageViewExtension.swift */,
 			);
 			path = "Global Extensions";
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 				63D1A95B2661722400DEDB96 /* DeviceViewModel.swift in Sources */,
 				63065A2F263DFC5800CBE30D /* OrchestraPager.swift in Sources */,
 				63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */,
+				63FFB0F62674ED3E0040B4FC /* UIImageViewExtension.swift in Sources */,
 				635DD4F8261A0BDC001D1EFC /* AppError.swift in Sources */,
 				63D235E82639CC2200D2485F /* HomeVcUiBindingExtension.swift in Sources */,
 				63D1A96026617F9800DEDB96 /* DeviceTableViewCell.swift in Sources */,

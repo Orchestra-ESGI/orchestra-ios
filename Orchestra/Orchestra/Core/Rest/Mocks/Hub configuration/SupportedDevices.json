@@ -1,6 +1,5 @@
  [
     {
-      "category": "Light bulb",
       "type": "lightbulb",
       "devices": [
           {
@@ -27,7 +26,6 @@
        ]
     },
     {
-      "category": "Switch",
       "type": "statelessProgrammableSwitch",
       "devices": [
           {
@@ -47,7 +45,6 @@
        ]
     },
     {
-      "category": "Motion sensor",
       "type": "occupancySensor",
       "devices": [
           {
