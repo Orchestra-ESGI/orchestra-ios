@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     var cancelButton: UIBarButtonItem?
     var trashButton: UIBarButtonItem?
     var userSettingsAppbarButton: UIBarButtonItem?
+    var refreshHome: UIBarButtonItem?
     
     // - MARK: Utils
     let notificationUtils = NotificationsUtils.shared
@@ -44,6 +45,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     let isSchakingStream = PublishSubject<Bool>()
     let elementsToRemoveStream = PublishSubject<Bool>()
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +58,22 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.setUpObservers()
         // Fetch data
         self.loadData()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+
+        self.collectionView.addSubview(refreshControl)
     }
     
-    private func loadData(){
+    
+    @objc func didPullToRefresh() {
+        print("refreshed")
+        self.loadData()
+    }
+    
+    func loadData(){
         self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         self.homeVM!.loadAllDevicesAndScenes { successLoad in
             self.refreshHome(successLoad)
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -106,11 +118,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             .subscribe(onNext: { (friendlyName) in
             let objectToUpdate = self.hubDevices.compactMap { (object) in
                 return object.friendlyName == friendlyName ? object : nil
-            }
-            objectToUpdate[0].isFav = !objectToUpdate[0].isFav!
-            // Sort objects to show fav at the top
-            self.hubDevices.sort { (object1, object2) in
-                return object1.isFav! && !object2.isFav!
             }
             self.collectionView.reloadData()
         }, onError: { (err) in
@@ -198,7 +205,14 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
         let removedObjectObservable = self.homeVM!.clearObjectSelected {
-            self.deleteSelectedObjects()
+            _ = self.homeVM?.removeDevices(friendlyName: self.objectsToRemove[0].friendlyName).subscribe{ finished in
+                if(finished){
+                    print("Element deleted")
+                }
+            } onError: { err in
+                print("Err when removing device")
+            }
+            //self.deleteSelectedObjects()
         }
         let removedSceneObservable = self.homeVM!.clearScenesSelected{
             self.deleteSelectedScenes()
@@ -252,9 +266,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     
     func save(device: HubAccessoryConfigurationDto) {
         self.hubDevices.append(device)
-        self.hubDevices.sort { (object1, object2) in
-            return object1.isFav! && !object2.isFav!
-        }
         self.collectionView.reloadData()
     }
 
@@ -263,6 +274,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         setAddSceneOrDeviceButtonBinding()
         setUserSettingButtonBinding()
         setTrashButtonBinding()
+        refreshButtonBinging()
     }
     
     private func setUpObservers(){

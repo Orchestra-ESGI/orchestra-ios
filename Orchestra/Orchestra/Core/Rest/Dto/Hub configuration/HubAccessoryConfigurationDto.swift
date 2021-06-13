@@ -14,13 +14,10 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
     var backgroundColor: String?
     var manufacturer: String?
     var model: String?
-    var isOn: Bool?
-    var isFav: Bool?
     var isReachable: Bool?
     var type: HubAccessoryType = .Unknown
     var actions: Actions?
     var friendlyName: String = ""
-    var reset: Bool = false
     
     
     required init?(map: Map) {
@@ -46,12 +43,10 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         self.backgroundColor <- map["background_color"]
         self.manufacturer <- map["manufacturer"]
         self.model <- map["model"]
-        self.isOn <- map["is_on"]
-        self.isFav <- map["is_fav"]
         self.isReachable <- map["is_reachable"]
     }
     
-    func toMap(needsReset: Bool) -> [String: Any]{
+    func toMap() -> [String: Any]{
         var map: [String: Any] = [:]
         
         map["name"] = self.name
@@ -66,15 +61,11 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
                 self.type = .Unknown
         }
         map["actions"] = self.actions // fake
-        map["friendly_name"] = StringUtils.shared.generateFakeId(length: 10) // fake
+        map["friendly_name"] = self.friendlyName
         map["room_name"] = self.roomName
         map["background_color"] = self.backgroundColor
         map["manufacturer"] = self.manufacturer
         map["model"] = self.model
-        map["is_on"] = true // fake
-        map["is_fav"] = self.isFav
-        map["is_reachable"] = true // fake
-        map["reset"] = needsReset
         return map
     }
     

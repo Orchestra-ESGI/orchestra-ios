@@ -22,10 +22,11 @@ class DevicesViewController: UIViewController {
     let notificationsUtils = NotificationsUtils.shared
     let localizeNotifications = NotificationLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
+    var device: HubAccessoryConfigurationDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
+        self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.setupUI()
         self.setUpTableView()
     }
@@ -73,15 +74,31 @@ extension DevicesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
         print("Selected device: \(self.devices[indexPath.row].name)")
-        let deviceCreationFormVC = DeviceCreationFormViewController()
-        deviceCreationFormVC.accessoryType = self.devices[indexPath.row].type
-        deviceCreationFormVC.brand = self.brand
-        if let documentationUrl = self.devices[indexPath.row].doc_url {
-            deviceCreationFormVC.isDeviceDocumented = true
-            deviceCreationFormVC.accessoryDocUrl = documentationUrl
+        if(self.device == nil){
+            if let documentationUrl = self.devices[indexPath.row].doc_url {
+                let deviceConfVC = DevicePhysicalConfigurationVC()
+                deviceConfVC.deviceDocumentationUrl = documentationUrl
+                self.navigationController?.pushViewController(deviceConfVC, animated: true)
+            }else{
+                let alert = UIAlertController(title: "Important", message: "Nous allons reinitialiser votre objet, afain de l'appairer et de l'ajotuer à votre domicile", preferredStyle: .alert)
+                let resetAction = UIAlertAction(title: "Reinitialiser", style: .cancel) { action in
+                    self.deviceVM?.resetDevice()
+                }
+                alert.addAction(resetAction)
+                self.present(alert, animated: true)
+            }
+        }else{
+            let deviceCreationFormVC = DeviceCreationFormViewController()
+            deviceCreationFormVC.device = self.device
+            deviceCreationFormVC.accessoryType = self.devices[indexPath.row].type
+            deviceCreationFormVC.brand = self.brand
+            if let documentationUrl = self.devices[indexPath.row].doc_url {
+                deviceCreationFormVC.isDeviceDocumented = true
+                deviceCreationFormVC.accessoryDocUrl = documentationUrl
+            }
+            deviceCreationFormVC.deviceInfo = self.devices[indexPath.row]
+            self.navigationController?.pushViewController(deviceCreationFormVC, animated: true)
         }
-        deviceCreationFormVC.deviceInfo = self.devices[indexPath.row]
-        self.navigationController?.pushViewController(deviceCreationFormVC, animated: true)
     }
     
     

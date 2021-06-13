@@ -80,4 +80,12 @@ extension HomeViewController{
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func refreshButtonBinging(){
+        _ = refreshHome?
+            .rx
+            .tap.bind{
+                self.loadData()
+        }
+    }
 }

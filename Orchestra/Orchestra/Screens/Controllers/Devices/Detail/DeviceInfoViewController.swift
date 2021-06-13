@@ -43,6 +43,7 @@ class DeviceInfoViewController: UIViewController {
     
     var favButton: UIBarButtonItem?
     var okButton: UIBarButtonItem?
+    var setupWarningButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +52,6 @@ class DeviceInfoViewController: UIViewController {
         // MARK: - TODO Put everything inside Scroll view
         self.setUpUI()
         self.addDynamicComponents()
-//        self.insertBrightnessContainer(xPos: 0, yPos: 0, width: UIScreen.main.bounds.width, height: 100)
-//        self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: 100, width: UIScreen.main.bounds.width, height: 100)
-//        self.insertNoActionContainer(xPos: 0, yPos: 200, width: UIScreen.main.bounds.width, height: 100)
-//        NSLayoutConstraint.activate([
-//            // OK
-//            self.dynamicViewContainer.heightAnchor.constraint(equalToConstant: 300)
-//        ])
         self.setUpData()
         self.setUpClickObservers()
     }
@@ -114,14 +108,20 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func setUpNavBar(){
-        let isObjectFavourite = self.deviceData?.isFav
-        let favIcon = isObjectFavourite ?? false ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        let warningIcon = UIImage(systemName: "exclamationmark.triangle.fill")
+        
         let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
         
         okButton = UIBarButtonItem(title: okButtonText , style: .plain, target: self, action: nil)
-        favButton = UIBarButtonItem(image: favIcon, style: .plain, target: self, action: nil)
         
-        self.navigationItem.rightBarButtonItems = [okButton!, favButton!]
+        if(deviceData?.type == .Unknown){
+            setupWarningButton = UIBarButtonItem(image: warningIcon, style: .plain, target: self, action: nil)
+            setupWarningButton?.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+            self.navigationItem.leftBarButtonItem = setupWarningButton
+        }
+        
+        self.navigationItem.rightBarButtonItem = okButton!
+        
         guard let objectName = self.deviceData?.name else {
             return
         }
@@ -171,23 +171,28 @@ class DeviceInfoViewController: UIViewController {
     
     private func setUpClickObservers(){
         
-        self.favButton?
-            .rx
-            .tap.bind{
-                guard let isFav = self.deviceData?.isFav else{
-                    return
-                }
-                
-                let isFavIcon = !isFav ?
-                    UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
-                self.favButton?.image = isFavIcon
-                self.favClicStream.onNext(self.deviceData?.friendlyName ?? "")
-            }.disposed(by: self.disposeBag)
-        
         self.okButton?
             .rx
             .tap.bind{
                 self.dismiss(animated: true, completion: nil)
+        }.disposed(by: self.disposeBag)
+        
+        self.setupWarningButton?
+            .rx
+            .tap.bind{
+                let alert = UIAlertController(title: "Configuration demandée!", message: "Pour pouvoir utiliser pleinement cet appraeil, une configuration supplémentaire est obligatoire. Si cette configuration n'est pas faite, l'objet ne peut pas fonctionner! ", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Plus tard", style: .cancel, handler: { action in
+                })
+                
+                let goAction = UIAlertAction(title: "Allons-y", style: .default, handler: { action in
+                    let configVc = NewDevicePairingViewController()
+                    configVc.device = self.deviceData
+                    self.navigationController?.pushViewController(configVc, animated: true)
+                })
+                
+                alert.addAction(goAction)
+                alert.addAction(cancelAction)
+                self.present(alert, animated: true)
         }.disposed(by: self.disposeBag)
 
     }

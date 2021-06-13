@@ -42,6 +42,7 @@ class NewDevicePairingViewController: UIViewController {
             self.title = self.localizeLabel.newDeviceVcTitle
         }else{
             // Set config title
+            self.title = "Configurer un appareil"
         }
     }
     
@@ -105,6 +106,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
         let devicesVc = DevicesViewController()
         devicesVc.devices = self.accessories[indexPath.row].devices
         devicesVc.brand = self.accessories[indexPath.row].brand
+        devicesVc.device = self.device
         self.navigationController?.pushViewController(devicesVc, animated: true)
     }
     

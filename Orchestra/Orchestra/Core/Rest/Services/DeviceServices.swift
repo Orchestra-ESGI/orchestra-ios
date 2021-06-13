@@ -79,6 +79,33 @@ class DeviceServices: RootApiService{
         }
     }
     
+    func removeDevices(friendlyName: String) -> Observable<Bool>{
+        let manager = Alamofire.Session.default
+        manager.session.configuration.timeoutIntervalForRequest = 3
+        return Observable<Bool>.create { observer in
+            
+            manager.request("\(RootApiService.BASE_API_URL)/device/\(friendlyName)", method: .delete, parameters: nil, headers: self.headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                switch response.result {
+                    case .success( _):
+                        observer.onNext(true)
+                    case .failure(_):
+                        //((response.error as! AFError).underlyingError as! Error)
+                        guard let errorJson =  response.error,
+                              let error = errorJson.underlyingError else {
+                            return
+                        }
+                        
+                        print("Error - SceneServices - getAllScenes()")
+                        observer.onNext(false)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     
     func getAllDeviceList() -> Observable<Bool> { // Works
         //let manager = Alamofire.SessionManager.default
@@ -168,6 +195,19 @@ class DeviceServices: RootApiService{
                     print("OK - Saved device")
                 case .failure(_):
                     print("KO - Saved device")
+            }
+        }
+    }
+    
+    func resetDevice() {
+        AF.request("\(RootApiService.BASE_API_URL)/device/reset", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+            switch response.result {
+                case .success( _):
+                    print("OK - Reset device")
+                case .failure(_):
+                    print("KO - Reset device")
             }
         }
     }

@@ -16,9 +16,6 @@ extension HomeViewController{
             .deviceStream
             .subscribe { devices in
                 self.hubDevices = devices
-                self.hubDevices.sort { (object1, object2) in
-                    return object1.isFav! && !object2.isFav!
-                }
             } onError: { err in
                 print("error while fetching data")
             }

@@ -43,8 +43,6 @@ extension HomeViewController{
         objectCell.objectPlaceNameLabel.text = self.hubDevices[currentCellPos].name
         objectCell.objectNameLabel.text = self.hubDevices[currentCellPos].roomName
         objectCell.objectStatusLabel.text = reachableStatus
-        objectCell.favIcon.image = self.hubDevices[currentCellPos].isFav! ? UIImage(systemName: "heart.fill") : UIImage(systemName: "")
-        objectCell.favIcon.tintColor = #colorLiteral(red: 0.8078431487, green: 0.03080267302, blue: 0.112645736, alpha: 1)
         
         objectCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: currentObject.backgroundColor!) //self.generatesBackGroundColor()
         objectCell.contentView.layer.cornerRadius = 8.0

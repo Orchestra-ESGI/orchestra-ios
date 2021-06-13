@@ -40,6 +40,10 @@ class DeviceViewModel{
         return self.deviceService.getAllDeviceList()
     }
     
+    func removeDevices(friendlyName: String) -> Observable<Bool>{
+        return self.deviceService.removeDevices(friendlyName: friendlyName)
+    }
+    
     func getSupportedAccessories(){
         _ = self.hubAccessoriesConfig.confStream.subscribe { accesories in
             self.supportedAccessoriesStrem.onNext(accesories)
@@ -53,13 +57,17 @@ class DeviceViewModel{
         self.deviceService.sendDeviceAction(body)
     }
     
-    func saveDevice(deviceData: HubAccessoryConfigurationDto, reset: Bool){
+    func saveDevice(deviceData: HubAccessoryConfigurationDto){
         //self.deviceConfig.saveDevice(device: deviceData)
 //        self.saveDeviceDelegate?.save(device: deviceData)
 //        for _ in 1...4{
 //            self.navCtrl!.viewControllers.remove(at: 1)
 //        }
 //        self.navCtrl!.popViewController(animated: true)
-        self.deviceService.saveDevice(deviceData.toMap(needsReset: reset))
+        self.deviceService.saveDevice(deviceData.toMap())
+    }
+    
+    func resetDevice(){
+        self.deviceService.resetDevice()
     }
 }

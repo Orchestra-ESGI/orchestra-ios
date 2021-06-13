@@ -45,21 +45,21 @@ class HomeViewModel{
     }
     
     private func loadAllDevices() -> Observable<Bool>{
-        _ = self.deviceVM!
-            .deviceConfig
-            .configurationStream
-            .subscribe { devices in
-                self.deviceStream.onNext(devices)
-        } onError: { err in
-            self.deviceStream.onError(err)
-        }
-        return self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig() //---> Fake data
-//        _ = self.deviceVM?.devicesStream.subscribe { devices in
-//            self.deviceStream.onNext(devices)
+//        _ = self.deviceVM!
+//            .deviceConfig
+//            .configurationStream
+//            .subscribe { devices in
+//                self.deviceStream.onNext(devices)
 //        } onError: { err in
 //            self.deviceStream.onError(err)
 //        }
-//        return self.deviceVM!.getAllDevices() //---> Real data
+//        return self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig() //---> Fake data
+        _ = self.deviceVM?.devicesStream.subscribe { devices in
+            self.deviceStream.onNext(devices)
+        } onError: { err in
+            self.deviceStream.onError(err)
+        }
+        return self.deviceVM!.getAllDevices() //---> Real data
     }
     
     private func loadAllScenes() -> Observable<Bool>{
@@ -70,6 +70,12 @@ class HomeViewModel{
         }
         return self.sceneVm!.getAllScenes()
     }
+    
+    func removeDevices(friendlyName: String) -> Observable<Bool>{
+        return self.deviceVM!.removeDevices(friendlyName: friendlyName)
+    }
+    
+    
     
     
     func clearObjectSelected(completion: @escaping ()->()) -> Observable<Bool>{
@@ -102,4 +108,5 @@ class HomeViewModel{
                 return Disposables.create()
         }
     }
+    
 }

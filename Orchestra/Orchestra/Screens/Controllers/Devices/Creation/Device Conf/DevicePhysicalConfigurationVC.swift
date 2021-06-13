@@ -19,7 +19,6 @@ class DevicePhysicalConfigurationVC: UIViewController {
     var continueAppBarButton: UIBarButtonItem?
     
     var deviceDocumentationUrl: String = ""
-    var deviceData: HubAccessoryConfigurationDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +50,7 @@ class DevicePhysicalConfigurationVC: UIViewController {
     }
 
     @objc func searchDevice(){
-        let searchVC = SearchDeviceViewController()
-        searchVC.deviceData = deviceData
-        searchVC.isSuccessfulyAdded = false
-        self.navigationController?.pushViewController(searchVC, animated: true)
+        
     }
 
 }

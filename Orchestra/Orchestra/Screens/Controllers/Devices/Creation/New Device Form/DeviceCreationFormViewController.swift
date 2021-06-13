@@ -37,6 +37,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
     var deviceViewModel: DeviceViewModel?
     var deviceInfo: SupportedDevicesInformationsDto?
+    var device: HubAccessoryConfigurationDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,10 +63,9 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
             if(self.isDeviceDocumented){
                 let deviceConfVC = DevicePhysicalConfigurationVC()
                 deviceConfVC.deviceDocumentationUrl = self.accessoryDocUrl
-                deviceConfVC.deviceData = deviceData
                 self.navigationController?.pushViewController(deviceConfVC, animated: true)
             }else{
-                self.deviceViewModel?.saveDevice(deviceData: deviceData, reset: true)
+                self.deviceViewModel?.saveDevice(deviceData: deviceData)
                 let searchVC = SearchDeviceViewController()
                 searchVC.deviceData = deviceData
                 searchVC.isSuccessfulyAdded = true
@@ -151,12 +151,14 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         let newDeviceMap: [String: Any] = [
             "type": self.accessoryType,
             "name": self.deviceNameTextField.text!,
-            "manufacturer": self.brand,
+            "manufacturer": self.device?.manufacturer,
             "room_name": self.roomNameTextField.text!,
             "background_color": self.deviceBackgrounds[selectedColor].toHexString(),
-            "model": self.deviceInfo?.model as! String,
-            "is_fav": self.deviceFavState
+            "model": self.device?.model,
+            "friendly_name": self.device?.friendlyName
         ]
+        
+        
         
         return Mapper<HubAccessoryConfigurationDto>().map(JSON: newDeviceMap)!
     }
