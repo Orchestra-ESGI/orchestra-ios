@@ -13,7 +13,7 @@ class SupportedDevicesInformationsDto: NSObject, Mappable{
     var image: String = ""
     var doc_url: String?
     var model: String? = ""
-    var manufacturer: String? = ""
+    var type: String = ""
    
     required init?(map: Map) {
         super.init()
@@ -24,6 +24,6 @@ class SupportedDevicesInformationsDto: NSObject, Mappable{
         self.image <- map["image"]
         self.doc_url <- map["documentation"]
         self.model <- map["model"]
-        self.manufacturer <- map["manufacturer"]
+        self.type <- map["type"]
     }
 }

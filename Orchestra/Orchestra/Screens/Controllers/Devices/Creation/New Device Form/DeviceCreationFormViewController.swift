@@ -30,6 +30,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var deviceFavState = false
     var accessoryType: String = ""
     var accessoryDocUrl: String = ""
+    var brand: String = ""
     var deviceBackgrounds: [UIColor] = []
     var selectedColor = 0
     let disposebag = DisposeBag()
@@ -150,9 +151,9 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         let newDeviceMap: [String: Any] = [
             "type": self.accessoryType,
             "name": self.deviceNameTextField.text!,
+            "manufacturer": self.brand,
             "room_name": self.roomNameTextField.text!,
             "background_color": self.deviceBackgrounds[selectedColor].toHexString(),
-            "manufacturer": self.deviceInfo?.manufacturer as! String,
             "model": self.deviceInfo?.model as! String,
             "is_fav": self.deviceFavState
         ]

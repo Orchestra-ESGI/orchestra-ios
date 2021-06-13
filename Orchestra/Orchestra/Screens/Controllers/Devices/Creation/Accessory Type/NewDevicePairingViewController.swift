@@ -21,6 +21,8 @@ class NewDevicePairingViewController: UIViewController {
     let localizeLabel = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     
+    var device: HubAccessoryConfigurationDto?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
@@ -36,7 +38,11 @@ class NewDevicePairingViewController: UIViewController {
     }
     
     private func setupUI(){
-        self.title = self.localizeLabel.newDeviceVcTitle
+        if(self.device == nil){
+            self.title = self.localizeLabel.newDeviceVcTitle
+        }else{
+            // Set config title
+        }
     }
     
     private func setUpTableView(){
@@ -88,7 +94,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACCESSORY_ROW")!
-        cell.textLabel?.text = self.accessories[indexPath.row].category
+        cell.textLabel?.text = self.accessories[indexPath.row].brand
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -98,8 +104,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
         tableView.cellForRow(at: indexPath)?.isSelected = false
         let devicesVc = DevicesViewController()
         devicesVc.devices = self.accessories[indexPath.row].devices
-        devicesVc.accessoryCategory = self.accessories[indexPath.row].category
-        devicesVc.accessoryType = self.accessories[indexPath.row].type
+        devicesVc.brand = self.accessories[indexPath.row].brand
         self.navigationController?.pushViewController(devicesVc, animated: true)
     }
     

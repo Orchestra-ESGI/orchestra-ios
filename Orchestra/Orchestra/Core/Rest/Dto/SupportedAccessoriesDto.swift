@@ -9,8 +9,7 @@ import Foundation
 import ObjectMapper
 
 class SupportedAccessoriesDto: NSObject, Mappable{
-    var type: String = ""
-    var category: String = ""
+    var brand: String = ""
     var devices: [SupportedDevicesInformationsDto] = []
        
     required init?(map: Map) {
@@ -18,18 +17,8 @@ class SupportedAccessoriesDto: NSObject, Mappable{
     }
     
     func mapping(map: Map) {
-        self.type <- map["type"]
+        self.brand <- map["brand"]
         self.devices <- map["devices"]
-        
-        switch map["type"].currentValue as? String {
-            case "lightbulb":
-                self.category = "Light bulb"
-            case "statelessProgrammableSwitch":
-                self.category = "Switch"
-            case "occupancySensor":
-                self.category = "Motion sensor"
-            default:
-                self.category = "Type inconnu"
-        }
+
     }
 }
