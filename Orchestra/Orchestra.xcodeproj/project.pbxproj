@@ -132,6 +132,8 @@
 		63FFB0FB267510850040B4FC /* DevicesAvailableForSceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB0F9267510850040B4FC /* DevicesAvailableForSceneViewController.xib */; };
 		63FFB0FF26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB0FD26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift */; };
 		63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */; };
+		63FFB10226753FD60040B4FC /* DevicesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB10126753FD60040B4FC /* DevicesAlert.xib */; };
+		63FFB104267543840040B4FC /* DevicesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB103267543840040B4FC /* DevicesAlert.swift */; };
 		C67299E1D5F71C15FEB27D07 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A32753411773669EA6697FAF /* Pods_Orchestra_WatchKit_App.framework */; };
 		CD3F1B248012ED1F706A515E /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634958F86E28083F464EDB87 /* Pods_Orchestra.framework */; };
 /* End PBXBuildFile section */
@@ -338,6 +340,8 @@
 		63FFB0F9267510850040B4FC /* DevicesAvailableForSceneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicesAvailableForSceneViewController.xib; sourceTree = "<group>"; };
 		63FFB0FD26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsForDeviceAvailableViewController.swift; sourceTree = "<group>"; };
 		63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsForDeviceAvailableViewController.xib; sourceTree = "<group>"; };
+		63FFB10126753FD60040B4FC /* DevicesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicesAlert.xib; sourceTree = "<group>"; };
+		63FFB103267543840040B4FC /* DevicesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesAlert.swift; sourceTree = "<group>"; };
 		8B4BAE5A5F7587E1BFCF6FB3 /* Pods_Orchestra_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9202AB9FD53B6CE1AE2C0EBD /* Pods-Orchestra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.release.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.release.xcconfig"; sourceTree = "<group>"; };
 		A32753411773669EA6697FAF /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -437,6 +441,8 @@
 				638856E426276984002354FB /* Extensions */,
 				630B100E261E2A9900B41804 /* SceneViewController.swift */,
 				630B100F261E2A9900B41804 /* SceneViewController.xib */,
+				63FFB10126753FD60040B4FC /* DevicesAlert.xib */,
+				63FFB103267543840040B4FC /* DevicesAlert.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -1094,6 +1100,7 @@
 				6322682726458FB70037672D /* InfoPlist.strings in Resources */,
 				63D1A959266171EC00DEDB96 /* NewDevicePairingViewController.xib in Resources */,
 				630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */,
+				63FFB10226753FD60040B4FC /* DevicesAlert.xib in Resources */,
 				634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */,
 				634F9587261B67A80092C269 /* SceneCollectionViewCell.xib in Resources */,
 				635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */,
@@ -1284,6 +1291,7 @@
 				635984C2266D489100F7A076 /* HomeService.swift in Sources */,
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
 				63460F752669797900DECD35 /* SearchDeviceViewController.swift in Sources */,
+				63FFB104267543840040B4FC /* DevicesAlert.swift in Sources */,
 				63D235EA2639CCA700D2485F /* HomeVcObserversExtension.swift in Sources */,
 				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
 				63252A44266E94E500179CFB /* ConfigurationService.swift in Sources */,

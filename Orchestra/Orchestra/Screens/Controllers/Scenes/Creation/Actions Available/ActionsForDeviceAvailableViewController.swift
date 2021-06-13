@@ -18,7 +18,7 @@ class ActionsForDeviceAvailableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.hintLabel.text)
+        self.hintLabel.text = self.hintLabel.text! + " \(deviceName)"
         self.setUpTableView()
         self.parseDeviceActionToGetName()
         
@@ -38,6 +38,7 @@ class ActionsForDeviceAvailableViewController: UIViewController {
             self.actionsName.append("Éteindre l'appareil")
             self.actionsName.append("Basculer")
         }
+        
         if(self.actions?.brightness != nil){
             self.actionsName.append("Régler la luminosité à 25%")
             self.actionsName.append("Régler la luminosité à 50%")

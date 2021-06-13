@@ -35,18 +35,47 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Service
     let sceneVM = SceneViewModel()
+    var deviceVM: DeviceViewModel?
     
     // MARK: - Local data
     var dataDelegate: SendBackDataProtocol?
     var isUpdating: Bool = false
     var sceneToEdit: SceneDto?
     var sceneColors: [UIColor] = []
-    var sceneActions: [ActionSceneDto] = []
+    var sceneActions: [[String: Any]] = []
     var selectedColor = 0
     let disposebag = DisposeBag()
     
+    var isPopUpVisible = false
+    var popUpType = 0 // 0 ---> Device , 1 ---> Actions
+    var actionsName: [String] = []
+    var alertDevice: DevicesAlert?
+    
+    // All available devices
+    var devices : [HubAccessoryConfigurationDto] = []
+    //
+    var deviceDict: [[String: Any]] = []
+    
+    /*
+     [
+        [
+            "friendly_name": "azoiejoaiz",
+            "name": "pzoieazie",
+            "actions": [
+                 "Allumer",
+                 "Allumer",
+                 "Allumer",
+                 "Allumer",
+                 "Allumer"
+            ]
+     
+     
+     ]
+     */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         
         self.localizeLabels()
         self.setUpUI()
@@ -99,6 +128,14 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         self.actionsTableView.tableFooterView = UIView()
     }
     
+    func setUpDevicesTableView(deviceAlert: DevicesAlert){
+        deviceAlert.tableView.delegate = self
+        deviceAlert.tableView.dataSource = self
+        deviceAlert.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "POP_UP_CELL")
+        
+        deviceAlert.tableView.tableFooterView = UIView()
+    }
+    
     @IBAction func shuffleColors(_ sender: Any) {
         self.sceneColors.removeAll()
         self.generatesBackGroundColor()
@@ -107,8 +144,90 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func addActionToScene(_ sender: Any) {
-        let deviceAvailableVC = DevicesAvailableForSceneViewController()
-        self.navigationController?.pushViewController(deviceAvailableVC, animated: true)
+//        let deviceAvailableVC = DevicesAvailableForSceneViewController()
+//        self.navigationController?.present(deviceAvailableVC, animated: true)
+        self.progressUtils.displayIndeterminateProgeress(title: "Récupération de vos appareils", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+        
+        _ = self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig().subscribe { finished in
+            print("fini")
+        } onError: { err in
+            print("ko")
+        }
+        self.isPopUpVisible = true
+        self.popUpType = 0
+        _ = self.deviceVM!
+            .deviceConfig
+            .configurationStream
+            .subscribe { devices in
+                if(devices.count == 0){
+                    self.isPopUpVisible = false
+                }else{
+                    self.devices = devices
+                    self.progressUtils.dismiss()
+                    if(self.view.subviews.count == 1){
+                        self.alertDevice = DevicesAlert()
+                        self.view.addSubview(self.alertDevice!.parentView)
+                        self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
+                        self.alertDevice!.tableView.reloadData()
+                    }
+                }
+        } onError: { err in
+            print("error while fetching devices for scene")
+        }.disposed(by: self.disposebag)
+    }
+    
+    func hidePopUp(){
+        let alertView = self.view.subviews[1].subviews[0].subviews
+        for view in alertView{
+            view.removeFromSuperview()
+        }
+        self.view.subviews[1].subviews[0].removeFromSuperview()
+        
+        let alertViewParent = self.view.subviews[1].subviews
+        for view in alertViewParent{
+            view.removeFromSuperview()
+        }
+        self.view.subviews[1].removeFromSuperview()
+        
+        if(self.actionsName.count > 0){
+            self.actionsName.removeAll()
+        }
+        //alert.removeFromSuperview()
+    }
+    
+    func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
+        if device.actions?.state != nil {
+            self.actionsName.append("Allumer l'appareil")
+            self.actionsName.append("Éteindre l'appareil")
+            self.actionsName.append("Basculer")
+        }
+        
+        if(device.actions?.brightness != nil){
+            self.actionsName.append("Régler la luminosité à 25%")
+            self.actionsName.append("Régler la luminosité à 50%")
+            self.actionsName.append("Régler la luminosité à 100%")
+        }
+        
+        if(device.actions?.color != nil){
+            self.actionsName.append("Choisir une couleur")
+        }
+        
+        if(device.actions?.colorTemp != nil){
+            self.actionsName.append("Choisir la température")
+        }
+    }
+    
+    func appendDevices(device: HubAccessoryConfigurationDto){
+        let deviceFeriendlyName = device.friendlyName
+        let deviceName = device.name
+        //let deviceActions = self.parseDeviceActionToGetName(device: device)
+        var deviceMap: [String: Any] = [:]
+        
+        deviceMap["name"] = deviceName
+        deviceMap["friendly_name"] = deviceFeriendlyName
+        deviceMap["actions"] = []
+        self.deviceDict.append(deviceMap)
+        print(deviceDict)
     }
     
     // MARK: Observers Setup
