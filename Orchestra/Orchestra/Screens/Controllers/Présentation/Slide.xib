@@ -39,10 +39,10 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-41-5ik">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="couple-couch-slide-1" translatesAutoresizingMaskIntoConstraints="NO" id="TK9-R8-5qC">
-                            <rect key="frame" x="0.0" y="200" width="414" height="200"/>
+                            <rect key="frame" x="0.0" y="175" width="414" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="DWD-G8-1cJ"/>
                             </constraints>
@@ -50,7 +50,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.89853173490000005" green="0.93259006739999994" blue="0.98825174569999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="600" id="5ld-mV-vSL"/>
+                        <constraint firstAttribute="height" constant="550" id="5ld-mV-vSL"/>
                         <constraint firstAttribute="trailing" secondItem="TK9-R8-5qC" secondAttribute="trailing" id="Dqf-me-G1g"/>
                         <constraint firstItem="TK9-R8-5qC" firstAttribute="centerX" secondItem="Xqj-41-5ik" secondAttribute="centerX" id="JbR-wB-UC3"/>
                         <constraint firstItem="TK9-R8-5qC" firstAttribute="centerY" secondItem="Xqj-41-5ik" secondAttribute="centerY" id="ZMx-Vn-JY6"/>

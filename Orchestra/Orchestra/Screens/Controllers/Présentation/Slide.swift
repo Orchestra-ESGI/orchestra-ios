@@ -51,7 +51,7 @@ extension UIView{
         bezierPath.move(to: CGPoint(x:0, y:0))
         bezierPath.addLine(to: CGPoint(x:self.bounds.size.width, y:0))
         bezierPath.addLine(to: CGPoint(x:self.bounds.size.width,
-                                       y:self.bounds.size.height - (self.bounds.size.height * 0.335)))
+                                       y:self.bounds.size.height - (self.bounds.size.height * 0.36)))
         bezierPath.addQuadCurve(to: CGPoint(x:0, y: self.bounds.size.height - (self.bounds.size.height * 0.3)),
                                 controlPoint: CGPoint(x:self.bounds.size.width/2, y:self.bounds.size.height))
         bezierPath.addLine(to: CGPoint(x:0, y:0))
