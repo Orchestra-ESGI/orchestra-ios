@@ -18,24 +18,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
   
-        var rootController: UIViewController?
+      //  var rootController: UIViewController?
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        let preferences = UserDefaults.standard
-        let showPager = "showAppPager"
-
-        if preferences.object(forKey: showPager) == nil {
-            rootController = OrchestraPager()
-            preferences.set(true, forKey: showPager)
-            let didSave = preferences.synchronize()
-            if !didSave {
-                NSLog("Error while saving user data in shared preferences")
-            }
-        } else {
-            let isFirstOpening = preferences.bool(forKey: showPager)
-            rootController = isFirstOpening ?  UINavigationController(rootViewController: HomeViewController()) : OrchestraPager()
-        }
-        window?.rootViewController = rootController
+//        let preferences = UserDefaults.standard
+//        let showPager = "showAppPager"
+//
+//        if preferences.object(forKey: showPager) == nil {
+//            rootController = OrchestraPager()
+//            preferences.set(true, forKey: showPager)
+//            let didSave = preferences.synchronize()
+//            if !didSave {
+//                NSLog("Error while saving user data in shared preferences")
+//            }
+//        } else {
+//            let isFirstOpening = preferences.bool(forKey: showPager)
+//            rootController = isFirstOpening ?  UINavigationController(rootViewController: HomeViewController()) : OrchestraPager()
+//        }
+        window?.rootViewController = UINavigationController(rootViewController: OrchestraPager()) //rootController
         window?.makeKeyAndVisible()
     }
 

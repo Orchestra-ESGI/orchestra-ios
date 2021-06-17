@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,43 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-icon-orchestra" translatesAutoresizingMaskIntoConstraints="NO" id="7yw-uy-azq">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="91R-iu-wyf"/>
-                                    <constraint firstAttribute="width" constant="300" id="ACT-it-Y1N"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBl-2h-op6">
-                                <rect key="frame" x="191.5" y="781.5" width="31" height="14.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NRV Inc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beI-Gh-3Yl">
-                                <rect key="frame" x="147.5" y="806" width="119" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from NRV Inc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beI-Gh-3Yl">
+                                <rect key="frame" x="139.33333333333331" y="816.66666666666663" width="135.33333333333331" height="25.333333333333371"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app-icon-orchestra" translatesAutoresizingMaskIntoConstraints="NO" id="I9P-lh-CbX">
+                                <rect key="frame" x="0.0" y="198" width="414" height="500"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orchestra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyy-aq-iZL">
-                                <rect key="frame" x="86" y="238" width="242" height="60"/>
+                                <rect key="frame" x="86" y="548" width="242" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.090660788120000002" green="0.1170567647" blue="0.1568694115" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="beI-Gh-3Yl" firstAttribute="top" secondItem="VBl-2h-op6" secondAttribute="bottom" constant="10" id="0OK-vB-fHz"/>
-                            <constraint firstItem="7yw-uy-azq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5ZJ-ff-oKs"/>
-                            <constraint firstItem="VBl-2h-op6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OfQ-es-Zgb"/>
-                            <constraint firstItem="7yw-uy-azq" firstAttribute="top" secondItem="tyy-aq-iZL" secondAttribute="bottom" id="PZ3-w1-XUL"/>
+                            <constraint firstItem="tyy-aq-iZL" firstAttribute="top" secondItem="I9P-lh-CbX" secondAttribute="bottom" constant="-150" id="GvN-6o-LLA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I9P-lh-CbX" secondAttribute="trailing" id="X9n-ZV-yzO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="beI-Gh-3Yl" secondAttribute="bottom" constant="20" id="ZSV-OM-Hki"/>
                             <constraint firstItem="tyy-aq-iZL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Zbj-3U-8Io"/>
+                            <constraint firstItem="I9P-lh-CbX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bPm-70-GO1"/>
+                            <constraint firstItem="I9P-lh-CbX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fXh-jQ-JLc"/>
                             <constraint firstItem="beI-Gh-3Yl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pXk-a7-FDY"/>
-                            <constraint firstItem="7yw-uy-azq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qhw-dA-4cQ"/>
+                            <constraint firstItem="I9P-lh-CbX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ub2-Mc-h0y"/>
                         </constraints>
                     </view>
                 </viewController>

@@ -80,7 +80,7 @@ extension DevicesViewController: UITableViewDataSource{
                 deviceConfVC.deviceDocumentationUrl = documentationUrl
                 self.navigationController?.pushViewController(deviceConfVC, animated: true)
             }else{
-                let alert = UIAlertController(title: "Important", message: "Nous allons reinitialiser votre objet, afain de l'appairer et de l'ajotuer à votre domicile", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Important", message: "Nous allons reinitialiser votre objet, afain de l'appairer et de l'ajouter à votre domicile", preferredStyle: .alert)
                 let resetAction = UIAlertAction(title: "Reinitialiser", style: .cancel) { action in
                     self.deviceVM?.resetDevice()
                 }
