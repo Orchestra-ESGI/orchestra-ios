@@ -16,11 +16,13 @@ extension HomeViewController{
         let currentObject =  self.hubDevices[indexPath.row]
         
         switch currentObject.type {
+        case.Switch:
+            objectCell.objectImageView.image = UIImage(systemName: "switch.2")
         case .LightBulb:
             objectCell.objectImageView.image = UIImage(systemName: "lightbulb.fill")
         case .StatelessProgrammableSwitch:
             objectCell.objectImageView.image = UIImage(systemName: "switch.2")
-        case .OccupancySensor:
+        case .Sensor:
             objectCell.objectImageView.image = UIImage(systemName: "figure.walk")
         default:
             objectCell.objectImageView.image = UIImage(systemName: "questionmark")
@@ -75,8 +77,8 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         sceneCell.addGestureRecognizer(longPressRecognizer)
         
-        sceneCell.sceneDescription .text = self.homeScenes[currentCellPos].title
-        let cellColor = self.homeScenes[currentCellPos].backgroundColor
+        sceneCell.sceneDescription .text = self.homeScenes[currentCellPos].name
+        let cellColor = self.homeScenes[currentCellPos].color
         sceneCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: cellColor!)
         sceneCell.contentView.layer.cornerRadius = 8.0
         sceneCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

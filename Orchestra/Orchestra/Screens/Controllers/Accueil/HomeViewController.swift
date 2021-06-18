@@ -133,6 +133,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         // Scene clicked on
         // Start actionsn of the scene
         print("Strating actions...")
+        self.homeVM?.sceneVm?.playScene(id: self.homeScenes[indexPath.row].id)
     }
     
     func shakeCells(){

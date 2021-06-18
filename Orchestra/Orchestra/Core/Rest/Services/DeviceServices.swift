@@ -91,12 +91,6 @@ class DeviceServices: RootApiService{
                     case .success( _):
                         observer.onNext(true)
                     case .failure(_):
-                        //((response.error as! AFError).underlyingError as! Error)
-                        guard let errorJson =  response.error,
-                              let error = errorJson.underlyingError else {
-                            return
-                        }
-                        
                         print("Error - SceneServices - getAllScenes()")
                         observer.onNext(false)
                 }
@@ -110,7 +104,7 @@ class DeviceServices: RootApiService{
     func getAllDeviceList() -> Observable<Bool> { // Works
         //let manager = Alamofire.SessionManager.default
         let manager = Alamofire.Session.default
-        manager.session.configuration.timeoutIntervalForRequest = 3
+        //manager.session.configuration.timeoutIntervalForRequest = 3
         
         return Observable<Bool>.create { observer in
             
@@ -122,6 +116,9 @@ class DeviceServices: RootApiService{
                     case .success( _):
                         guard let responseData =  response.value as? [String: Any],
                           let devices = responseData["devices"] as? [[String: Any]] else {
+                            
+                            self.devicesStream.onNext([])
+                            observer.onNext(false)
                             return
                         }
                         var allMappedDevices: [HubAccessoryConfigurationDto] = []

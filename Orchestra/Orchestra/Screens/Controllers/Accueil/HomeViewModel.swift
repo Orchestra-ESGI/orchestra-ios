@@ -35,26 +35,23 @@ class HomeViewModel{
     }
     
     func loadAllDevicesAndScenes(completion: @escaping (Bool) -> Void){
+//        self.loadAllScenes()
+//        self.loadAllDevices()
         _ = Observable.combineLatest(self.loadAllScenes(),
                                      self.loadAllDevices())
         { (obs1, obs2) -> Bool in
             return obs1 && obs2
         }.subscribe { (finished) in
-            completion(finished.element!)
+            if(finished.element != nil){
+                completion(finished.element!)
+            }else{
+                completion(true)
+            }
         }
     }
     
     private func loadAllDevices() -> Observable<Bool>{
-//        _ = self.deviceVM!
-//            .deviceConfig
-//            .configurationStream
-//            .subscribe { devices in
-//                self.deviceStream.onNext(devices)
-//        } onError: { err in
-//            self.deviceStream.onError(err)
-//        }
-//        return self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig() //---> Fake data
-        _ = self.deviceVM?.devicesStream.subscribe { devices in
+        _ = self.deviceVM!.devicesStream.subscribe { devices in
             self.deviceStream.onNext(devices)
         } onError: { err in
             self.deviceStream.onError(err)
@@ -63,7 +60,7 @@ class HomeViewModel{
     }
     
     private func loadAllScenes() -> Observable<Bool>{
-        _ = self.sceneVm?.scenesStream.subscribe { scenes in
+        _ = self.sceneVm!.scenesStream.subscribe { scenes in
             self.sceneStream.onNext(scenes)
         } onError: { err in
             self.sceneStream.onError(err)
@@ -75,8 +72,9 @@ class HomeViewModel{
         return self.deviceVM!.removeDevices(friendlyName: friendlyName)
     }
     
-    
-    
+    func removeScenes(id: String) -> Observable<Bool> {
+        return self.sceneVm!.removeScenes(id: id)
+    }
     
     func clearObjectSelected(completion: @escaping ()->()) -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in

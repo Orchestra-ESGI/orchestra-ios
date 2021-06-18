@@ -23,6 +23,7 @@ extension HomeViewController{
                 let addSceneLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewScene
                 let addScene = PopMenuDefaultAction(title: addSceneLabelText, image: UIImage(systemName: "timer"), didSelect: { action in
                     let sceneVc = SceneViewController()
+                    sceneVc.devices = self!.hubDevices
                     sceneVc.dataDelegate = self
                     self?.navigationController?.pushViewController(sceneVc, animated: true)
                 })
