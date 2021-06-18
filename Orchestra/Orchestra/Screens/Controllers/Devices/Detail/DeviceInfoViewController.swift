@@ -96,13 +96,23 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func updateDeviceActions(){
-        devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
-        devicesActionsValues["state"] = self.deviceData!.actions!.state
-        if(self.deviceData!.actions!.colorTemp!.currentState == 150){
-            devicesActionsValues["color_temp"] = self.deviceData!.actions!.colorTemp!.currentState
-        }else{
-            devicesActionsValues["color"] = ["hex": self.deviceData!.actions!.color!.currentState]
+        switch self.deviceData?.type {
+        case .LightBulb:
+            devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
+            devicesActionsValues["state"] = self.deviceData!.actions!.state
+            if(self.deviceData!.actions!.colorTemp!.currentState == 150){
+                devicesActionsValues["color_temp"] = self.deviceData!.actions!.colorTemp!.currentState
+            }else{
+                devicesActionsValues["color"] = ["hex": self.deviceData!.actions!.color!.currentState]
+            }
+            break
+        case .Switch:
+            devicesActionsValues["state"] = self.deviceData!.actions!.state
+            break
+        default:
+            break
         }
+        
         actionToSend["actions"] = devicesActionsValues
         self.deviceVM?.sendDeviceAction(body: actionToSend)
     }

@@ -76,7 +76,7 @@ class NewDevicePairingViewController: UIViewController {
         case "statelessProgrammableSwitch":
             return .LightBulb
         case "occupancySensor":
-            return .OccupancySensor
+            return .Sensor
         default:
             return .Unknown
         }

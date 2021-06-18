@@ -15,6 +15,7 @@ extension DeviceInfoViewController{
         let brightness = self.deviceData?.actions?.brightness
         let color =  self.deviceData?.actions?.color
         let colorTemp = self.deviceData?.actions?.colorTemp
+        let state = self.deviceData?.actions?.state
         
         var lastElementInsertedYpos = CGFloat(0)
 
@@ -30,7 +31,10 @@ extension DeviceInfoViewController{
                 self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: lastElementInsertedYpos)
                 lastElementInsertedYpos += 100
             }
-        } else {
+        } else if(state != nil){
+            self.insertOnOffContainer(xPos: 0, yPos: lastElementInsertedYpos)
+            lastElementInsertedYpos += 100
+        }else{
             self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
             lastElementInsertedYpos += 120
         }
