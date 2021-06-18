@@ -72,6 +72,20 @@ class ColorAction: NSObject, Mappable{
     
 }
 
+class SceneAction: NSObject, Mappable{
+    var friendlyName: String = ""
+    var actions: Actions?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        self.friendlyName <- map["friendly_name"]
+        self.actions <- map["actions"]
+    }
+}
+
 class Actions: NSObject, Mappable{
     var brightness: SliderAction?
     var color: ColorAction?
@@ -97,9 +111,9 @@ class Actions: NSObject, Mappable{
             self.toggleAction <- map["toggleAction"]
         }
         switch map["state"].currentValue as? String {
-            case "ON":
+            case "on":
                 self.state = "on"
-            case "OFF":
+            case "off":
                 self.state = "off"
             default:
                 self.state = "on"

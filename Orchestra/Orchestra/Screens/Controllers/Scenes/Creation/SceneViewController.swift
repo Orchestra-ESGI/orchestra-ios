@@ -243,36 +243,19 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
                         "actions": actions
                     ]
                 })
-                
-                
-                let sceneToCreate = Mapper<SceneDto>().map(JSON: newSceneMap)!
                 let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
-                print(sceneToCreate)
-                self.progressUtils.displayIndeterminateProgeress(title: "Enregistrement de votre scène", view: uiscreenWindow)
-                
-                _ = self.sceneVM.newScene(body: sceneToCreate).subscribe(onNext: { scene in
+
+                _ = self.sceneVM.newScene(body: newSceneMap).subscribe(onNext: { succeeded in
+                    self.progressUtils.dismiss()
                     self.progressUtils.displayCheckMark(title: "Succès", view: uiscreenWindow)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.progressUtils.dismiss()
+                        self.navigationController?.popViewController(animated: true)
                     }
-                    print("C4EST  KAREY")
                 }, onError: { err in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.progressUtils.dismiss()
-                    }
-                    print("C'EST PAS KAREY")
+                    self.progressUtils.dismiss()
+                    self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un erreur est survenue lors de l'enregistrement de votre scène, veuillez reéssayer", position: .top, style: .danger)
                 })
-                
-                //_ = self.sceneVM.newScene(body: <#T##SceneDto#>)
-                
-                /*
-                     guard let createdScene = scene.element else{
-                         return
-                     }
-                     self.dataDelegate?.saveScene(scene: createdScene)
-                     self.progressUtils.dismiss()
-                     self.navigationController?.popViewController(animated: true)
-                */
         }
     }
     

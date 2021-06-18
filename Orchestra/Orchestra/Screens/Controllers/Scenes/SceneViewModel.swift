@@ -24,11 +24,11 @@ class SceneViewModel{
         return self.sceneService.removeScene(idScene: id)
     }
     
-    func newScene(body: SceneDto) -> Observable<SceneDto>{
+    func newScene(body: [String: Any]) -> Observable<Bool>{
         return self.sceneService.createNewScene(scene: body)
     }
     
-    func getAllScenes() -> Observable<Bool>{
+    func getAllScenes() -> Observable<Bool> {
         _ = self.sceneService.sceneStream.subscribe { scenes in
             self.scenesStream.onNext(scenes)
         } onError: { err in

@@ -10,23 +10,22 @@ import ObjectMapper
 
 class SceneDto: NSObject, Mappable{
     var id: String = ""
-    var title: String = ""
+    var name: String = ""
     var sceneDescription: String = ""
-    var backgroundColor: String?
-    var idUser: String = ""
-    var actions: [ActionSceneDto] = []
+    var color: String?
+    var devices: [SceneAction] = []
+   
     
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        self.id <- map["id"]
-        self.title <- map["title"]
-        self.sceneDescription <- map["sceneDescription"]
-        self.backgroundColor <- map["backgroundColor"]
-        self.idUser <- map["idUser"]
-        self.actions <- map["actions"]
+        self.id <- map["_id"]
+        self.name <- map["name"]
+        self.sceneDescription <- map["description"]
+        self.color <- map["color"]
+        self.devices <- map["devices"]
     }
     
     

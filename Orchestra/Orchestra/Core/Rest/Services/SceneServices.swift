@@ -72,34 +72,14 @@ class SceneServices: RootApiService{
         })
     }
     
-    func createNewScene(scene: SceneDto) -> Observable<SceneDto>{
-        var body: [String: Any] = [:]
-        body["name"] = scene.name
-        body["color"] = scene.color
-        body["description"] = scene.sceneDescription
-        
-        
-        return Observable<SceneDto>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .post, parameters: body, encoding: JSONEncoding.default,  headers: self.headers)
+    func createNewScene(scene: [String: Any]) -> Observable<Bool>{
+        return Observable<Bool>.create({observer in
+            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .post, parameters: scene, encoding: JSONEncoding.default,  headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
                         case .success( _):
-                            guard let jsonRes = response.value as? [String: Any],
-                                  let sceneName = jsonRes["name"] as? String,
-                                  let sceneDesc = jsonRes["description"] as? String,
-                                  let sceneColor = jsonRes["color"] as? String,
-                                  let sceneActions = jsonRes["actions"] as? [Actions] else{
-                                return
-                            }
-                            var newSceneMap: [String: Any] = [:]
-                            newSceneMap["name"] = sceneName
-                            newSceneMap["description"] = sceneDesc
-                            newSceneMap["color"] = sceneColor
-                            newSceneMap["actions"] = sceneActions
-                            
-                            let newScene = Mapper<SceneDto>().map(JSONObject: newSceneMap)!
-                            observer.onNext(newScene)
+                            observer.onNext(true)
                         case .failure(_):
                             guard let errorJson =  response.error,
                                   let error = errorJson.underlyingError else {

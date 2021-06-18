@@ -10,6 +10,7 @@ import Foundation
 enum HubAccessoryType {
     case LightBulb
     case StatelessProgrammableSwitch
-    case OccupancySensor
+    case Sensor
+    case Switch
     case Unknown
 }

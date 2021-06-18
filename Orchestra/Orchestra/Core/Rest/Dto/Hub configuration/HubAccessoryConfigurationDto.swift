@@ -29,10 +29,12 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         switch map["type"].currentValue as? String {
             case "lightbulb":
                 self.type = .LightBulb
+            case "switch":
+                self.type = .Switch
             case "statelessProgrammableSwitch":
                 self.type = .StatelessProgrammableSwitch
-            case "occupancySensor":
-                self.type = .OccupancySensor
+            case "sensor":
+                self.type = .Sensor
             default:
                 self.type = .Unknown
         }
@@ -51,11 +53,13 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         
         map["name"] = self.name
         switch self.type  {
+            case .Switch:
+                map["type"] = "switch"
             case .LightBulb:
                 map["type"] = "lightbulb"
             case .StatelessProgrammableSwitch:
                 map["type"] = "statelessProgrammableSwitch"
-            case .OccupancySensor:
+            case .Sensor:
                 map["type"] = "occupancySensor"
             default:
                 self.type = .Unknown

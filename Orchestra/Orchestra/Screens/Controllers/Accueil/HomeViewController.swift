@@ -57,12 +57,15 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.bindClickToButtons()
         self.setUpObservers()
         // Fetch data
-        self.loadData()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
         self.collectionView.addSubview(refreshControl)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadData()
+    }
     
     @objc func didPullToRefresh() {
         print("refreshed")
@@ -78,8 +81,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     private func refreshHome(_ loadSuccessfull: Bool){
-        self.collectionView.reloadData()
         self.progressUtils.dismiss()
+        self.collectionView.reloadData()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.collectionView.alpha = 1
+        })
         if(loadSuccessfull){
             self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

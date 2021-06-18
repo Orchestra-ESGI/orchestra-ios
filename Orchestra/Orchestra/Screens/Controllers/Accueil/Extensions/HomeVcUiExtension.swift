@@ -51,6 +51,7 @@ extension HomeViewController{
     }
     
     func setUpCollectionView(){
+        self.collectionView.alpha = 0
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         

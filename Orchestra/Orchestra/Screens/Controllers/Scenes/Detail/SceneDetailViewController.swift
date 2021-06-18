@@ -93,7 +93,7 @@ class SceneDetailViewController: UIViewController {
 
 extension SceneDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sceneData?.device .count ?? 0
+        return self.sceneData?.devices .count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
