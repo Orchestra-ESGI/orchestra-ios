@@ -49,10 +49,10 @@ class SceneDetailViewController: UIViewController {
     
     private func setUpTopBar(){
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : self.colorUtils.hexStringToUIColor(hex: (self.sceneData?.backgroundColor)!)]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : self.colorUtils.hexStringToUIColor(hex: (self.sceneData?.color)!)]
 
-        self.navigationController?.navigationBar.barTintColor = self.colorUtils.hexStringToUIColor(hex: (self.sceneData?.backgroundColor)!)
-        self.title = self.sceneData?.title
+        self.navigationController?.navigationBar.barTintColor = self.colorUtils.hexStringToUIColor(hex: (self.sceneData?.color)!)
+        self.title = self.sceneData?.name
         
         //editSceneButton = UIBarButtonItem(title: "Éditer", style: .done, target: self, action: nil)
         if #available(iOS 14.0, *) {
@@ -87,17 +87,19 @@ class SceneDetailViewController: UIViewController {
         self.actionsTableView.tableFooterView = UIView()
     }
     
+    
+    
 }
 
 extension SceneDetailViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sceneData?.actions.count ?? 0
+        return self.sceneData?.device .count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL")
-        let currentAction = self.sceneData?.actions[indexPath.row]
-        cell?.textLabel?.text = currentAction?.actionTitle
+        //let currentAction = self.sceneData?.device[indexPath.row].
+        //cell?.textLabel?.text = currentAction?.actionTitle
         
         return cell!
     }

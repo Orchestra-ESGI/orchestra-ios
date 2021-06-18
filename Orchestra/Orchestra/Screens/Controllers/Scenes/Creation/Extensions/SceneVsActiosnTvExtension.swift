@@ -49,11 +49,13 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 return self.devices.count
             }else {
                 // Number of cells in Action table view pop up
-                return self.actionsName.count
+                return (self.deviceDict[section]["possible_actions"] as? [SceneActionsName])!.count
             }
         }
         // Number of cells in scene vc actions table view
-        return ((self.deviceDict[section]["actions"] as? [String])?.count ?? 0) + 1
+        let actionForDevice = (self.deviceDict[section]["selected_actions"] as? [SceneActionsName])
+        
+        return (actionForDevice?.count ?? 0 ) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,17 +65,19 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             if(self.popUpType == 0){
                 cell.textLabel?.text = self.devices[indexPath.row].name
             }else{
-                cell.textLabel?.text = self.actionsName[indexPath.row]
+                let devicePossibleActions = self.deviceDict[indexPath.section]["possible_actions"] as? [SceneActionsName]
+                cell.textLabel?.text = devicePossibleActions![indexPath.row].key
             }
             return cell
         }else{
-            let actionsOfDevice = (self.deviceDict[indexPath.section]["actions"] as? [String])!
+            let deviceSelectedActions = self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName]
             let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL", for: indexPath)
-            if(indexPath.row > actionsOfDevice.count - 1){
-                cell.tag = -1
+            if (deviceSelectedActions != nil && indexPath.row < deviceSelectedActions!.count) {
+                cell.isUserInteractionEnabled = false
+                cell.textLabel?.text = deviceSelectedActions![indexPath.row].key
+            } else {
+                cell.isUserInteractionEnabled = true
                 cell.textLabel?.text = "Ajouter une action"
-            }else{
-                cell.textLabel?.text = actionsOfDevice[indexPath.row]
             }
             return cell
         }
@@ -85,11 +89,35 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             if(self.popUpType == 0){
                 self.appendDevices(device: self.devices[indexPath.row])
             }else{
-                if(self.actionsName.count > 0){
-                    var actionsOfDevice = self.deviceDict[(self.alertDevice?.deviceSelectedSection)!]["actions"] as? [String]
-                    actionsOfDevice?.append(self.actionsName[indexPath.row])
-                    self.deviceDict[(self.alertDevice?.deviceSelectedSection)!]["actions"] = actionsOfDevice
-                    print("Action: \(self.actionsName[indexPath.row])")
+                let allActions = self.deviceDict[indexPath.section]["possible_actions"] as! [SceneActionsName]
+                if(allActions.count > 0){
+                    let actionSection = self.alertDevice!.deviceSelectedSection!
+                    let selectedAction = allActions[indexPath.row]
+                    var currentSelectedActions = self.deviceDict[actionSection]["selected_actions"] as? [SceneActionsName]
+                    
+                    
+                    var actionJson = self.deviceDict[indexPath.section]["actions"] as? [String: Any]
+                    
+                    if(actionJson == nil){
+                        actionJson = [:]
+                    }
+                    if(selectedAction.type == "color"){
+                        actionJson![selectedAction.type] = ["hex": selectedAction.value]
+                    }else{
+                        actionJson![selectedAction.type] = selectedAction.value
+                    }
+                    self.deviceDict[indexPath.section]["actions"] = actionJson
+                    
+                    
+                    if( currentSelectedActions == nil){
+                        let selectedActions = [selectedAction]
+                        self.deviceDict[actionSection]["selected_actions"] = selectedActions
+                    }else{
+                        currentSelectedActions!.append(selectedAction)
+                        self.deviceDict[actionSection]["selected_actions"] = currentSelectedActions
+                    }
+                    
+                    print("Action: \(self.deviceDict[actionSection]["possible_actions"])")
                 }
             }
             self.hidePopUp()
@@ -97,13 +125,8 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             self.actionsTableView.reloadData()
         }else{
             print("Selected action from scene actions at row: \(indexPath.section)")
-            if(tableView.cellForRow(at: indexPath)?.tag == -1){
-                // add action
-                let deviceSelected = self.devices.filter { device in
-                    return device.name == self.deviceDict[indexPath.section]["name"] as? String
-                }
-                self.parseDeviceActionToGetName(device: deviceSelected[0])
-                if(self.actionsName.count > 0){
+            let allActions = self.deviceDict[indexPath.section]["possible_actions"] as! [SceneActionsName]
+                if(allActions.count > 0){
                     self.isPopUpVisible = true
                     self.popUpType = 1
                     
@@ -113,7 +136,6 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
                     self.alertDevice!.tableView.reloadData()
                 }
-            }
         }
     }
     

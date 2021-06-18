@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 class SceneViewModel{
-    let sceneService = FakeSceneDataService.shared
+    let sceneService = SceneServices()
     let scenesStream = PublishSubject<[SceneDto]>()
     
     // MARK: Utils
@@ -20,22 +20,12 @@ class SceneViewModel{
     
     let disposeBag = DisposeBag()
     
-    func createNewScene(name: String, description: String, color: String, actions: [ActionSceneDto]) -> Observable<SceneDto>{
-        return Observable<SceneDto>.create { observer in
-            self.sceneService
-            .createNewScene(name: name,description: description, color: color, actions: actions)
-            .subscribe { (createdScene) in
-                observer.onNext(createdScene)
-            } onError: { (err) in
-                self.notificationUtils
-                    .showFloatingNotificationBanner(
-                        title: self.notificationLocalize.loginCredentialsWrongNotificationTitle,
-                        subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle,
-                        position: .top, style: .warning)
-            }.disposed(by: self.disposeBag)
-            
-            return Disposables.create()
-        }
+    func removeScenes(id: String) -> Observable<Bool>{
+        return self.sceneService.removeScene(idScene: id)
+    }
+    
+    func newScene(body: SceneDto) -> Observable<SceneDto>{
+        return self.sceneService.createNewScene(scene: body)
     }
     
     func getAllScenes() -> Observable<Bool>{
@@ -46,5 +36,9 @@ class SceneViewModel{
         }
 
         return self.sceneService.getAllScenes()
+    }
+    
+    func playScene(id: String){
+        self.sceneService.launchScene(id: id)
     }
 }

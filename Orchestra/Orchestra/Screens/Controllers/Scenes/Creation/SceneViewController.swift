@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import ObjectMapper
 
 class SceneViewController: UIViewController, UITextFieldDelegate {
 
@@ -48,30 +49,14 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     var isPopUpVisible = false
     var popUpType = 0 // 0 ---> Device , 1 ---> Actions
-    var actionsName: [String] = []
+    var actionsName: [SceneActionsName] = []
     var alertDevice: DevicesAlert?
     
     // All available devices
     var devices : [HubAccessoryConfigurationDto] = []
     //
-    var deviceDict: [[String: Any]] = []
-    
-    /*
-     [
-        [
-            "friendly_name": "azoiejoaiz",
-            "name": "pzoieazie",
-            "actions": [
-                 "Allumer",
-                 "Allumer",
-                 "Allumer",
-                 "Allumer",
-                 "Allumer"
-            ]
-     
-     
-     ]
-     */
+    var deviceDict: [[String:Any]] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,36 +129,24 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func addActionToScene(_ sender: Any) {
-//        let deviceAvailableVC = DevicesAvailableForSceneViewController()
-//        self.navigationController?.present(deviceAvailableVC, animated: true)
-        self.progressUtils.displayIndeterminateProgeress(title: "Récupération de vos appareils", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
-        
-        _ = self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig().subscribe { finished in
-            print("fini")
-        } onError: { err in
-            print("ko")
-        }
         self.isPopUpVisible = true
         self.popUpType = 0
-        _ = self.deviceVM!
-            .deviceConfig
-            .configurationStream
-            .subscribe { devices in
-                if(devices.count == 0){
-                    self.isPopUpVisible = false
-                }else{
-                    self.devices = devices
-                    self.progressUtils.dismiss()
-                    if(self.view.subviews.count == 1){
-                        self.alertDevice = DevicesAlert()
-                        self.view.addSubview(self.alertDevice!.parentView)
-                        self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
-                        self.alertDevice!.tableView.reloadData()
-                    }
-                }
-        } onError: { err in
-            print("error while fetching devices for scene")
-        }.disposed(by: self.disposebag)
+        if(devices.count == 0){
+            self.isPopUpVisible = false
+        }else{
+            let devicenameInScene = self.deviceDict.map { dict -> String in
+                return dict["name"] as! String
+            }
+        
+            self.devices = devices.filter { !devicenameInScene.contains($0.name!) }
+            self.progressUtils.dismiss()
+            if(self.view.subviews.count == 1){
+                self.alertDevice = DevicesAlert()
+                self.view.addSubview(self.alertDevice!.parentView)
+                self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
+                self.alertDevice!.tableView.reloadData()
+            }
+        }
     }
     
     func hidePopUp(){
@@ -196,24 +169,42 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     }
     
     func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
+        var actions: [String] = []
+        var values: [String] = []
         if device.actions?.state != nil {
-            self.actionsName.append("Allumer l'appareil")
-            self.actionsName.append("Éteindre l'appareil")
-            self.actionsName.append("Basculer")
+            actions = ["Allumer l'appareil", "Éteindre l'appareil", "Basculer"]
+            values = ["on", "off", "toggle"]
+            for index in 0..<actions.count{
+                let action = SceneActionsName(key: actions[index], val: values[index], type: "state")
+                self.actionsName.append(action)
+            }
         }
         
         if(device.actions?.brightness != nil){
-            self.actionsName.append("Régler la luminosité à 25%")
-            self.actionsName.append("Régler la luminosité à 50%")
-            self.actionsName.append("Régler la luminosité à 100%")
+            actions = ["Régler la luminosité à 25%", "Régler la luminosité à 50%", "Régler la luminosité à 100%"]
+            values = ["25", "50", "100"]
+            for index in 0..<actions.count{
+                let action = SceneActionsName(key: actions[index], val: values[index], type: "brightness")
+                self.actionsName.append(action)
+            }
         }
         
         if(device.actions?.color != nil){
-            self.actionsName.append("Choisir une couleur")
+            actions = ["Choisir une couleur"]
+            values = ["#FF0000"]
+            for index in 0..<actions.count{
+                let action = SceneActionsName(key: actions[index], val: values[index], type: "color")
+                self.actionsName.append(action)
+            }
         }
         
         if(device.actions?.colorTemp != nil){
-            self.actionsName.append("Choisir la température")
+            actions = ["Choisir la température"]
+            values = ["200"]
+            for index in 0..<actions.count{
+                let action = SceneActionsName(key: actions[index], val: values[index], type: "color_temp")
+                self.actionsName.append(action)
+            }
         }
     }
     
@@ -221,11 +212,12 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         let deviceFeriendlyName = device.friendlyName
         let deviceName = device.name
         //let deviceActions = self.parseDeviceActionToGetName(device: device)
+        self.parseDeviceActionToGetName(device: device)
         var deviceMap: [String: Any] = [:]
         
         deviceMap["name"] = deviceName
         deviceMap["friendly_name"] = deviceFeriendlyName
-        deviceMap["actions"] = []
+        deviceMap["possible_actions"] = self.actionsName
         self.deviceDict.append(deviceMap)
         print(deviceDict)
     }
@@ -238,30 +230,49 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
             .bind{
                 self.addSceneAppbarButon?.isEnabled = false
                 self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
-                let actions = [
-                    ActionSceneDto(JSON: ["title": "Allumer les lampes"])!,
-                    ActionSceneDto(JSON: ["title": "Allumer les lampes"])!,
-                    ActionSceneDto(JSON: ["title": "Allumer les lampes"])!,
-                    ActionSceneDto(JSON: ["title": "Allumer les lampes"])!,
-                    ActionSceneDto(JSON: ["title": "Allumer les lampes"])!
-                ]
-                let sceneName = self.sceneNameTf.text!
-                let sceneDescription = self.sceneDescriptionTf.text!
-                let sceneBackGroundColor = self.sceneColors[self.selectedColor].toHexString()
+                
+                var newSceneMap: [String: Any] = [:]
+                newSceneMap["name"] = self.sceneNameTf.text!
+                newSceneMap["color"] = self.sceneColors[self.selectedColor].toHexString()
+                newSceneMap["description"] = self.sceneDescriptionTf.text!
+                newSceneMap["devices"] = self.deviceDict.map({ device -> [String: Any] in
+                    let friendlyName = device["friendly_name"]!
+                    let actions = device["actions"]!
+                    return [
+                        "friendly_name": friendlyName,
+                        "actions": actions
+                    ]
+                })
                 
                 
-                _ = self.sceneVM
-                    .createNewScene(name: sceneName,
-                                    description: sceneDescription,
-                                    color: sceneBackGroundColor, actions: actions)
-                    .subscribe { scene in
-                        guard let createdScene = scene.element else{
-                            return
-                        }
-                        self.dataDelegate?.saveScene(scene: createdScene)
+                let sceneToCreate = Mapper<SceneDto>().map(JSON: newSceneMap)!
+                let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
+                print(sceneToCreate)
+                self.progressUtils.displayIndeterminateProgeress(title: "Enregistrement de votre scène", view: uiscreenWindow)
+                
+                _ = self.sceneVM.newScene(body: sceneToCreate).subscribe(onNext: { scene in
+                    self.progressUtils.displayCheckMark(title: "Succès", view: uiscreenWindow)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.progressUtils.dismiss()
-                        self.navigationController?.popViewController(animated: true)
                     }
+                    print("C4EST  KAREY")
+                }, onError: { err in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.progressUtils.dismiss()
+                    }
+                    print("C'EST PAS KAREY")
+                })
+                
+                //_ = self.sceneVM.newScene(body: <#T##SceneDto#>)
+                
+                /*
+                     guard let createdScene = scene.element else{
+                         return
+                     }
+                     self.dataDelegate?.saveScene(scene: createdScene)
+                     self.progressUtils.dismiss()
+                     self.navigationController?.popViewController(animated: true)
+                */
         }
     }
     
@@ -283,8 +294,20 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-
 protocol SendBackDataProtocol {
     func saveScene(scene: SceneDto)
     func updateScene(scene: SceneDto)
+}
+
+class SceneActionsName {
+    var key: String = ""
+    var value: String = ""
+    var type: String = ""
+    
+    
+    init(key: String, val: String, type: String) {
+        self.key = key
+        self.value = val
+        self.type = type
+    }
 }
