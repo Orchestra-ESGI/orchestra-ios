@@ -16,9 +16,6 @@
 // Location
 "permissions.location.alert.title" = "地点";
 "permissions.location.alert.description" = "通知你重要信息";
-// Bluetooth
-"permissions.bluetooth.alert.title" = "蓝牙";
-"permissions.bluetooth.alert.description" = "要使用该集线器";
 
 "permission.alert.footer.title" = "我们不会跟踪或出售您的数据，上述授权将使我们能够为您提供最佳服务。";
 
@@ -56,7 +53,7 @@
 "progress.notification.undetermined.title" = "请等待...";
 
 // - MARK: Login Labels and texts
-"login.vc.welcome.text" = "欢迎回到Orchestra!";
+"login.vc.welcome.text" = "欢迎回到<a>Orchestra !<a>";
 "login.vc.email.label.text" = "电子邮件";
 "login.vc.email.label.hint" = "例：toto@gmail.com";
 "login.vc.password.label.text" = "密码";

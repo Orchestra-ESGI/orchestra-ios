@@ -27,8 +27,6 @@ class OrchestraPermissions{
             break
         case 9:
             cell =  self.setLocationPermissionCell()
-        case 13:
-            cell =  self.setBluetoothPermissionCell()
         case 2:
             cell =  self.setNotificationPermissionCell()
         default:
@@ -53,25 +51,6 @@ class OrchestraPermissions{
         let locationIcon = UIImage(systemName: "location.fill")!
         locationIcon.withTintColor(.blue)
         self.cell!.set(locationIcon)
-        return self.cell!
-    }
-    
-    func setBluetoothPermissionCell() -> SPPermissionTableViewCell {
-        
-        self.cell!.permissionTitleLabel.text = self.labelLocalize.permissionsBluetoothAlertTitle
-        self.cell!.permissionDescriptionLabel.text = self.labelLocalize.permissionsBluetoothAlertDescription
-        self.cell!.button.allowTitle = self.labelLocalize.permissionAlertAllowButtonText
-        self.cell!.button.allowedTitle = self.labelLocalize.permissionAlertAllowedButtonText
-
-        // Colors
-        self.cell!.iconView.color = .systemBlue
-        self.cell!.button.allowedBackgroundColor = .systemBlue
-        self.cell!.button.allowTitleColor = .systemBlue
-
-        // If you want set custom image.
-        let bluetoothIcon = UIImage(named: "bluetooth")!
-        bluetoothIcon.withTintColor(.blue)
-        self.cell!.set(bluetoothIcon)
         return self.cell!
     }
     

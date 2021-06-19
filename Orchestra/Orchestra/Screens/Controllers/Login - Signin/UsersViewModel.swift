@@ -87,13 +87,39 @@ class UsersViewModel{
     }
     
     func checkLoginForm(emailTf: UITextField, passwordTf: UITextField){
-        var isValid = false
-        
-        if(emailTf.text != nil && passwordTf.text != nil){
-            // do some checking here
-            isValid = true
-        }
+        let isValid = isFormFilled(emailTf: emailTf, passwordTf: passwordTf)
         self.isLoginFormValid.onNext(isValid)
+    }
+    
+    private func isFormFilled(emailTf: UITextField, passwordTf: UITextField) -> Bool {
+        guard let emailText = emailTf.text,
+            let passwordText = passwordTf.text else {
+                return false
+        }
+        
+        if (emailText.count > 0 && passwordText.count > 0 && emailText.isEmailValid() && passwordText.isPasswordValid()) {
+            return true
+        } else {
+            checkOnWichTextFieldIsError(emailTf: emailTf, passwordTf: passwordTf)
+        }
+        
+        return false
+    }
+    
+    private func checkOnWichTextFieldIsError(emailTf: UITextField, passwordTf: UITextField){
+        if (emailTf.text!.count == 0 || !emailTf.text!.isEmailValid()) {
+            emailTf.isError(numberOfShakes: 3.0, revert: true)
+            emailTf.setBottomLayer(color: ColorUtils.ORCHESTRA_RED_COLOR)
+        } else {
+            emailTf.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        }
+        
+        if (passwordTf.text!.count == 0 || !passwordTf.text!.isPasswordValid()) {
+            passwordTf.isError(numberOfShakes: 3.0, revert: true)
+            passwordTf.setBottomLayer(color: ColorUtils.ORCHESTRA_RED_COLOR)
+        } else {
+            passwordTf.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        }
     }
     
     func checkSignupForm(){

@@ -56,25 +56,25 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUpUI(){
-        self.emailTF.setUpLeftIcon(iconName: "envelope.fill")
+        self.emailTF.setUpRightIcon(iconName: "envelope.fill")
         self.emailTF.layer.borderWidth = 0.5
         self.emailTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.emailTF.layer.cornerRadius = 15.0
         self.emailTF.clipsToBounds = true
          
-        self.passwordTF.setUpLeftIcon(iconName: "lock.fill")
+        self.passwordTF.setUpRightIcon(iconName: "lock.fill")
         self.passwordTF.layer.borderWidth = 0.5
         self.passwordTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.passwordTF.layer.cornerRadius = 15.0
         self.passwordTF.clipsToBounds = true
          
-        self.confirmPasswordTF.setUpLeftIcon(iconName: "lock.fill")
+        self.confirmPasswordTF.setUpRightIcon(iconName: "lock.fill")
         self.confirmPasswordTF.layer.borderWidth = 0.5
         self.confirmPasswordTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.confirmPasswordTF.layer.cornerRadius = 15.0
         self.confirmPasswordTF.clipsToBounds = true
          
-        self.nameTF.setUpLeftIcon(iconName: "person.fill")
+        self.nameTF.setUpRightIcon(iconName: "person.fill")
         self.nameTF.layer.borderWidth = 0.5
         self.nameTF.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.nameTF.layer.cornerRadius = 15.0

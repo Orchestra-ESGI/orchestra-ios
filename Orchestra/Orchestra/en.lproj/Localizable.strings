@@ -16,9 +16,6 @@
 // Location
 "permissions.location.alert.title" = "Location";
 "permissions.location.alert.description" = "To notify you of important information";
-// Bluetooth
-"permissions.bluetooth.alert.title" = "Bluetooth";
-"permissions.bluetooth.alert.description" = "To use the Hub";
 
 "permission.alert.footer.title" = "We do not track or sell your data, the above permissions will enable us to provide you with the best possible service.";
 
@@ -55,7 +52,7 @@
 "progress.notification.undetermined.title" = "Please wait...";
 
 // - MARK: Login Labels and texts
-"login.vc.welcome.text" = "Welcome back to Orchestra!";
+"login.vc.welcome.text" = "Welcome back to <a>Orchestra !<a>";
 "login.vc.email.label.text" = "Email";
 "login.vc.email.label.hint" = "ex: toto@gmail.com";
 "login.vc.password.label.text" = "Password";

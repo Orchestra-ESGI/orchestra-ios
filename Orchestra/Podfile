@@ -15,8 +15,6 @@ target 'Orchestra' do
   
   #Permissions
   pod 'SPPermissions/Notification' # https://github.com/ivanvorobei/SPPermissions
-  pod 'SPPermissions/Bluetooth'
-  pod 'SPPermissions/PhotoLibrary'
   pod 'SPPermissions/Location'
 
   # REST
