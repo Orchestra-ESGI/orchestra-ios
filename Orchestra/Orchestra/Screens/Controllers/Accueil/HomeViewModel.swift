@@ -35,8 +35,6 @@ class HomeViewModel{
     }
     
     func loadAllDevicesAndScenes(completion: @escaping (Bool) -> Void){
-//        self.loadAllScenes()
-//        self.loadAllDevices()
         _ = Observable.combineLatest(self.loadAllScenes(),
                                      self.loadAllDevices())
         { (obs1, obs2) -> Bool in

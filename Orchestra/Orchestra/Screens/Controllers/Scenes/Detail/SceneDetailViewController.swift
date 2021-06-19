@@ -28,6 +28,9 @@ class SceneDetailViewController: UIViewController {
     
     // MARK: Local data
     var sceneData: SceneDto?
+    let sceneVM = SceneViewModel()
+    var sceneActionsName: [String: [String]] = [:]
+    var devices: [[String: String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ class SceneDetailViewController: UIViewController {
         self.setUpUI()
         self.setUpClickObserver()
         self.setUpTableView()
+        self.getActionsNameFromJson()
     }
     
     // MARK: UI setup
@@ -87,21 +91,73 @@ class SceneDetailViewController: UIViewController {
         self.actionsTableView.tableFooterView = UIView()
     }
     
+    private func getActionsNameFromJson(){
+        guard let sceneDevices = self.sceneData?.devices else{
+            return
+        }
+        
+        for device in sceneDevices {
+            let deviceFriendlyName = device.friendlyName
+            let deviceName = self.devices.map { device -> String in
+                if(Array(device.keys)[0] == deviceFriendlyName){
+                    return device[deviceFriendlyName]!
+                }
+                return ""
+            }.filter{ $0 != ""}[0]
+            
+            var actions: [String] = []
+            for action in device.actions{
+                let actionType = action.key
+                var actionValue = ""
+                if action.value is [String: Any]{
+                    actionValue = "color"
+                }else{
+                    switch actionType {
+                    case "state":
+                        actionValue = action.value as! String
+                    default:
+                        actionValue = (action.value as! Int).description
+                    }
+                }
+                
+                
+                if let action = self.sceneVM.getSceneActionName(key: actionType, value: actionValue){
+                    actions.append(action)
+                }
+            }
+
+            self.sceneActionsName[deviceName] = actions
+        }
+    }
     
+    func getNumberOfRowsInSection(header: String) -> Int{
+        
+        return self.sceneActionsName[header]!.count
+    }
     
 }
 
 extension SceneDetailViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sceneData?.devices .count ?? 0
-    }
+    
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return Array(self.sceneActionsName.keys)[section]
+     }
+     
+     func numberOfSections(in tableView: UITableView) -> Int {
+         return self.sceneActionsName.count
+     }
+     
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.getNumberOfRowsInSection(header: Array(self.sceneActionsName.keys)[section])
+     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL")
-        //let currentAction = self.sceneData?.device[indexPath.row].
-        //cell?.textLabel?.text = currentAction?.actionTitle
-        
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL")!
+        let sectionHeader = Array(self.sceneActionsName.keys)[indexPath.section]
+        let actions = self.sceneActionsName[sectionHeader]!
+        cell.textLabel?.text = actions[indexPath.row]
+        return cell
     }
     
     

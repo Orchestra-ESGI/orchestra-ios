@@ -28,19 +28,6 @@ class SceneServices: RootApiService{
                                 observer.onNext(false)
                                 return
                             }
-                            var scenesDevices: [SceneAction] = []
-                            
-                            scenesDevices = responseData
-                                .filter { $0["devices"] != nil }
-                                .map({ json in
-                                    let devicesJson = json["devices"] as! [[String : Any]]
-                                    for deviceJson in devicesJson{
-                                        return Mapper<SceneAction>().map(JSON: deviceJson)!
-                                    }
-                                return SceneAction(JSON: [:])!
-                            })
-                            
-                            print(scenesDevices)
                             
                             var allMappedScenes: [SceneDto] = []
                             for sceneJson in responseData {

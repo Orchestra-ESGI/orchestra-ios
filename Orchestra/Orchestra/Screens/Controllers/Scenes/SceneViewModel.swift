@@ -20,6 +20,38 @@ class SceneViewModel{
     
     let disposeBag = DisposeBag()
     
+    private let scenesActions: [String:[String: String]] = [
+        "state": [
+            "on": "Allumer l'appareil",
+            "off": "Éteindre l'appareil",
+            "toggle": "Basculer l'appareil"
+        ],
+        "brightness": [
+            "25": "Mettre la luminosité de l'appareil à 25%",
+            "50": "Mettre la luminosité de l'appareil à 50%",
+            "75": "Mettre la luminosité de l'appareil à 75%",
+            "100": "Mettre la luminosité de l'appareil à 100%"
+        ],
+        "color": [
+            "color": "Changer la couleur de l'appareil"
+        ],
+        "color_temp": [
+            "25": "Mettre la température de l'appareil à 25%",
+            "50": "Mettre la température de l'appareil à 50%",
+            "75": "Mettre la température de l'appareil à 75%",
+            "100": "Mettre la température de l'appareil à 100%"
+        ]
+    ]
+    
+    func getSceneActionName(key: String, value: String) -> String? {
+        if let actionType = scenesActions[key] {
+            if let actionName = actionType[value] {
+                return actionName
+            }
+        }
+        return nil
+    }
+    
     func removeScenes(ids: [String]) -> Observable<Bool>{
         return self.sceneService.removeScene(idsScene: ids)
     }
