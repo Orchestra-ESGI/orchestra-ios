@@ -21,9 +21,6 @@ class ScreensLabelLocalizableUtils{
     let permissionsLocationAlertTitle = NSLocalizedString("permissions.location.alert.title", comment: "")
     let permissionsLocationAlertDescription = NSLocalizedString("permissions.location.alert.description", comment: "")
     
-    let permissionsBluetoothAlertTitle = NSLocalizedString("permissions.bluetooth.alert.title", comment: "")
-    let permissionsBluetoothAlertDescription = NSLocalizedString("permissions.bluetooth.alert.description", comment: "")
-    
     let permissionAlertFooterTitle = NSLocalizedString("permission.alert.footer.title", comment: "")
     
     let permissionAlertAllowButtonText = NSLocalizedString("permission.button.allow.text", comment: "")

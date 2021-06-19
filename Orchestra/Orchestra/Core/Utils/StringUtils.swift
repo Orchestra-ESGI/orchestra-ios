@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 class StringUtils {
     
     static var shared = StringUtils()
@@ -13,5 +14,36 @@ class StringUtils {
     func generateFakeId(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
           return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    func colorText(text: String, color: UIColor, alpha: CGFloat = 1) -> NSMutableAttributedString {
+        let policyString = NSMutableAttributedString(string: text)
+        policyString.addAttribute(.foregroundColor, value: color.withAlphaComponent(alpha), range: NSMakeRange(0, policyString.length))
+        
+        return policyString
+    }
+    
+    func colorTextWithOptions(text: String, color: UIColor, linkColor: UIColor, shouldBold: Bool = false, shouldUnderline: Bool = false, fontSize: CGFloat) -> NSMutableAttributedString {
+        
+        let listItems = text.components(separatedBy: "<a>")
+        let policyString = NSMutableAttributedString()
+        var tempString = NSMutableAttributedString()
+        for (i, str) in listItems.enumerated() {
+            tempString = NSMutableAttributedString(string: str)
+            let range = NSMakeRange(0, tempString.length)
+            tempString.addAttribute(.foregroundColor, value: (i==0) ? color : linkColor, range: range)
+            if (i == 1) {
+                if shouldUnderline {
+                    tempString.addAttribute(.underlineStyle, value: 1, range: range)
+                }
+                
+                if shouldBold {
+                    tempString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: fontSize), range: range)
+                }
+            }
+            
+            policyString.append(tempString)
+        }
+        return policyString;
     }
 }

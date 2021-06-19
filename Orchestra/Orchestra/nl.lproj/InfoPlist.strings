@@ -6,6 +6,5 @@
   
 */
 "NSLocationWhenInUseUsageDescription" = "We hebben uw locatie nodig om de automatisering te plannen";
-"NSBluetoothUsageDescription" = "We moeten de bluetooth gebruiken om de apparaten om je heen te scannen en een hub te vinden";
 "NSNotificatitonUsageDescription" = "Onze meldingen zullen altijd relevant zijn en u attent maken op belangrijke informatie";
 "NSMediaUsageDescription" = "Als u een geautomatiseerd systeem wilt aanpassen, hebben we toegang tot uw foto's nodig.";

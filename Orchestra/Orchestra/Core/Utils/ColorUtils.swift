@@ -11,6 +11,9 @@ import UIKit
 class ColorUtils{
     static let shared = ColorUtils()
     
+    static let ORCHESTRA_BLUE_COLOR: UIColor = shared.hexStringToUIColor(hex: "161E29")
+    static let ORCHESTRA_RED_COLOR: UIColor = shared.hexStringToUIColor(hex: "D12B31")
+    static let ORCHESTRA_WHITE_COLOR: UIColor = shared.hexStringToUIColor(hex: "E3EEFE")
     
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

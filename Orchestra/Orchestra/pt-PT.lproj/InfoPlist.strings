@@ -5,7 +5,6 @@
   Created by Ramzy Kermad on 07/05/2021.
   
 */
-"NSLocationWhenInUseUsageDescription" = "Precisamos usar o bluetooth para escanear os dispositivos ao seu redor e encontrar um hub";
-"NSBluetoothUsageDescription" = "Precisamos usar o bluetooth para escanear os dispositivos ao seu redor e encontrar um hub";
+"NSLocationWhenInUseUsageDescription" = "Precisamos de utilizar a sua localização para digitalizar os dispositivos circundantes e encontrar um centro.";
 "NSNotificatitonUsageDescription" = "Nossas notificações serão sempre relevantes e o alertarão sobre informações importantes";
 "NSMediaUsageDescription" = "Precisamos de acesso às suas fotos se quiser personalizar uma automatização";

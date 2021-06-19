@@ -24,13 +24,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordForgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signinButton: UIButton!
-    @IBOutlet weak var noAccountLabel: UILabel!
     
     // - MARK : View models
     let userVm = UsersViewModel()
     
     
     // - MARK : Utils
+    let stringUtils = StringUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     let screenLocalize = ScreensLabelLocalizableUtils.shared
@@ -43,13 +43,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.getPermissionsUser()
         self.setUpTextFields()
         self.setUpUI()
-        self.localizeUI()
         self.setUpUiBindings()
         self.setUpObservers()
     }
     
     private func getPermissionsUser(){
-        let controller = SPPermissions.dialog([.notification, .bluetooth, .locationWhenInUse])
+        let controller = SPPermissions.dialog([.notification, .locationWhenInUse])
 
         // Overide texts in controller
         controller.titleText = self.screenLocalize.permissionsAlertTitle
@@ -65,34 +64,71 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK: Localization
     private func localizeUI(){
-        self.bigTitle.text = self.screenLocalize.loginBigText
+        self.bigTitle.attributedText = stringUtils.colorTextWithOptions(text: self.screenLocalize.loginBigText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, linkColor: ColorUtils.ORCHESTRA_WHITE_COLOR, shouldBold: true, fontSize: self.bigTitle.font.pointSize)
         self.emailLabel.text = self.screenLocalize.loginEmailLabelText
         self.passwordLabel.text = self.screenLocalize.loginPasswordLabelText
         self.passwordForgotButton.setTitle(self.screenLocalize.loginPasswordForgotButtonText, for: .normal)
-        self.loginButton.setTitle(self.screenLocalize.loginConnexionButtonText, for: .normal)
-        self.signinButton.setTitle(self.screenLocalize.loginSigupbButtonText.uppercased(), for: .normal)
-        self.noAccountLabel.text = self.screenLocalize.noAccountLabelText
+        self.loginButton.setTitle(self.screenLocalize.loginConnexionButtonText.uppercased(), for: .normal)
+        
+        let attr = NSMutableAttributedString(string: self.screenLocalize.noAccountLabelText)
+        attr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, attr.length))
+        self.signinButton.setAttributedTitle(attr, for: .normal)
     }
     
     private func setUpUI(){
-        self.emailTextField.setUpLeftIcon(iconName: "envelope.fill")
-        self.emailTextField.layer.borderWidth = 0.5
-        self.emailTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        self.emailTextField.layer.cornerRadius = 30.0
+        self.navigationController?.navigationBar.isHidden = true
+        
+        self.emailTextField.setUpRightIcon(iconName: "envelope.fill")
+        self.emailTextField.setUpBlankLeftView()
+        self.emailTextField.borderStyle = .none
+        self.emailTextField.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        self.emailTextField.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginEmailLabelHint, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.emailTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.emailTextField.clipsToBounds = true
 
-        self.passwordTextField.setUpLeftIcon(iconName: "lock.fill")
-        self.passwordTextField.layer.borderWidth = 0.5
-        self.passwordTextField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        self.passwordTextField.layer.cornerRadius = 30.0
+        self.passwordTextField.setUpRightIcon(iconName: "lock.fill")
+        self.passwordTextField.setUpBlankLeftView()
+        self.passwordTextField.borderStyle = .none
+        self.passwordTextField.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        self.passwordTextField.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.passwordTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.passwordTextField.clipsToBounds = true
-
-        self.loginButton.layer.borderWidth = 0.5
-        self.loginButton.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        self.loginButton.layer.cornerRadius = 30.0
+        
+        self.loginButton.layer.borderWidth = 3
+        self.loginButton.layer.borderColor = ColorUtils.ORCHESTRA_BLUE_COLOR.cgColor
+        self.loginButton.backgroundColor = ColorUtils.ORCHESTRA_RED_COLOR
+        self.loginButton.layer.cornerRadius = 25.0
         self.loginButton.clipsToBounds = true
+        
+        self.setupFonts()
+        self.setupLabelColors()
+        self.localizeUI()
     }
-
+    
+    private func setupLabelColors() {
+        self.emailLabel.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
+        self.emailTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
+        self.passwordLabel.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
+        self.passwordTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
+        
+        self.passwordForgotButton.setTitleColor(ColorUtils.ORCHESTRA_RED_COLOR, for: .normal)
+        self.loginButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
+        
+        self.signinButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
+    }
+    
+    private func setupFonts() {
+        self.bigTitle.font = Font.Regular(self.bigTitle.font.pointSize)
+        self.emailLabel.font = Font.Regular(self.emailLabel.font.pointSize)
+        self.emailTextField.font = Font.Regular(self.emailTextField.font?.pointSize ?? 19)
+        self.passwordLabel.font = Font.Regular(self.passwordLabel.font.pointSize)
+        self.passwordTextField.font = Font.Regular(self.passwordTextField.font?.pointSize ?? 19)
+        self.passwordForgotButton.titleLabel?.font = Font.Regular(self.passwordForgotButton.titleLabel?.font.pointSize ?? 15)
+        self.loginButton.titleLabel?.font = Font.Bold(self.loginButton.titleLabel?.font.pointSize ?? 20)
+        self.passwordForgotButton.titleLabel?.font = Font.Bold(self.passwordForgotButton.titleLabel?.font.pointSize ?? 17)
+        self.signinButton.titleLabel?.font = Font.Bold(self.signinButton.titleLabel?.font.pointSize ?? 15)
+    }
+    
     // - MARK: Observers
     private func setUpObservers(){
         // Login form
@@ -103,7 +139,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
                     self.userVm.fakeUserWS.getAllFakeUsers()
                 }else{
-                    self.notificationUtils.showBadCredentialsNotification()
                     self.progressUtils.dismiss()
                 }
             } onError: { (err) in
@@ -158,9 +193,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         self.progressUtils.dismiss()
-                        let sceneVC = HomeViewController()
-                        sceneVC.userLoggedInData = userCredentials[0]
-                        self.navigationController?.pushViewController(sceneVC, animated: true)
+                        let homeVC = HomeViewController()
+                        homeVC.userLoggedInData = userCredentials[0]
+                        self.navigationController?.pushViewController(homeVC, animated: true)
                     }
                 }else{
                     self.notificationUtils.showBadCredentialsNotification()
