@@ -74,7 +74,7 @@ class ColorAction: NSObject, Mappable{
 
 class SceneAction: NSObject, Mappable{
     var friendlyName: String = ""
-    var actions: Actions?
+    var actions: [String: Any] = [:]
     
     required init?(map: Map) {
         

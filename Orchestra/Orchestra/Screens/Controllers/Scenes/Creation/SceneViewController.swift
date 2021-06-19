@@ -170,7 +170,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
     
     func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
         var actions: [String] = []
-        var values: [String] = []
+        var values: [Any] = []
         if device.actions?.state != nil {
             actions = ["Allumer l'appareil", "Éteindre l'appareil", "Basculer"]
             values = ["on", "off", "toggle"]
@@ -182,7 +182,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         
         if(device.actions?.brightness != nil){
             actions = ["Régler la luminosité à 25%", "Régler la luminosité à 50%", "Régler la luminosité à 100%"]
-            values = ["25", "50", "100"]
+            values = [25, 50, 100]
             for index in 0..<actions.count{
                 let action = SceneActionsName(key: actions[index], val: values[index], type: "brightness")
                 self.actionsName.append(action)
@@ -200,7 +200,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         
         if(device.actions?.colorTemp != nil){
             actions = ["Choisir la température"]
-            values = ["200"]
+            values = [200]
             for index in 0..<actions.count{
                 let action = SceneActionsName(key: actions[index], val: values[index], type: "color_temp")
                 self.actionsName.append(action)
@@ -236,6 +236,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
                 newSceneMap["color"] = self.sceneColors[self.selectedColor].toHexString()
                 newSceneMap["description"] = self.sceneDescriptionTf.text!
                 newSceneMap["devices"] = self.deviceDict.map({ device -> [String: Any] in
+                    
                     let friendlyName = device["friendly_name"]!
                     let actions = device["actions"]!
                     return [
@@ -284,11 +285,11 @@ protocol SendBackDataProtocol {
 
 class SceneActionsName {
     var key: String = ""
-    var value: String = ""
+    var value: Any?
     var type: String = ""
     
     
-    init(key: String, val: String, type: String) {
+    init(key: String, val: Any, type: String) {
         self.key = key
         self.value = val
         self.type = type

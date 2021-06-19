@@ -49,7 +49,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 return self.devices.count
             }else {
                 // Number of cells in Action table view pop up
-                return (self.deviceDict[section]["possible_actions"] as? [SceneActionsName])!.count
+                return (self.deviceDict[self.alertDevice!.deviceSelectedSection!]["possible_actions"] as? [SceneActionsName])!.count
             }
         }
         // Number of cells in scene vc actions table view
@@ -89,14 +89,14 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             if(self.popUpType == 0){
                 self.appendDevices(device: self.devices[indexPath.row])
             }else{
-                let allActions = self.deviceDict[indexPath.section]["possible_actions"] as! [SceneActionsName]
+                let actionSection = self.alertDevice!.deviceSelectedSection!
+                let allActions = self.deviceDict[actionSection]["possible_actions"] as! [SceneActionsName]
                 if(allActions.count > 0){
-                    let actionSection = self.alertDevice!.deviceSelectedSection!
                     let selectedAction = allActions[indexPath.row]
                     var currentSelectedActions = self.deviceDict[actionSection]["selected_actions"] as? [SceneActionsName]
                     
                     
-                    var actionJson = self.deviceDict[indexPath.section]["actions"] as? [String: Any]
+                    var actionJson = self.deviceDict[actionSection]["actions"] as? [String: Any]
                     
                     if(actionJson == nil){
                         actionJson = [:]
@@ -106,7 +106,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     }else{
                         actionJson![selectedAction.type] = selectedAction.value
                     }
-                    self.deviceDict[indexPath.section]["actions"] = actionJson
+                    self.deviceDict[actionSection]["actions"] = actionJson
                     
                     
                     if( currentSelectedActions == nil){
@@ -117,7 +117,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                         self.deviceDict[actionSection]["selected_actions"] = currentSelectedActions
                     }
                     
-                    print("Action: \(self.deviceDict[actionSection]["possible_actions"])")
+                    print("Action: \(self.deviceDict[actionSection]["actions"])")
                 }
             }
             self.hidePopUp()

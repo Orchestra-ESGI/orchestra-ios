@@ -23,7 +23,8 @@ public class RootApiService{
     let disposeBag = DisposeBag()
     var headers: HTTPHeaders = [
         "Content-Type":"application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "App-Key": "orchestra"
     ]
 
     

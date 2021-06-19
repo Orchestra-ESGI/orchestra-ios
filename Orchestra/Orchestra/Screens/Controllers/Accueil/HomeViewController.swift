@@ -189,6 +189,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         let navigationCtr = UINavigationController(rootViewController: sceneDetailVc)
         let sceneData = self.homeScenes[sceneSelected]
         sceneDetailVc.sceneData = sceneData
+        let deviceInfoMap = self.hubDevices.map({ device  in
+            return [device.friendlyName : device.name!]
+        })
+        sceneDetailVc.devices = deviceInfoMap
         self.navigationController?.present(navigationCtr, animated: true, completion: nil)
     }
     
