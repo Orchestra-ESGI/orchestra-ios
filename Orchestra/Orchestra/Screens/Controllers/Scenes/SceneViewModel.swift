@@ -20,8 +20,8 @@ class SceneViewModel{
     
     let disposeBag = DisposeBag()
     
-    func removeScenes(id: String) -> Observable<Bool>{
-        return self.sceneService.removeScene(idScene: id)
+    func removeScenes(ids: [String]) -> Observable<Bool>{
+        return self.sceneService.removeScene(idsScene: ids)
     }
     
     func newScene(body: [String: Any]) -> Observable<Bool>{

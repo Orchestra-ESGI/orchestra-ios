@@ -17,6 +17,8 @@ extension HomeViewController{
             .subscribe { devices in
                 self.hubDevices = devices
             } onError: { err in
+                self.progressUtils.dismiss()
+                self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème est survenu lors du chargement de votre domicile", position: .top, style: .danger)
                 print("error while fetching data")
             }
     }
@@ -42,6 +44,7 @@ extension HomeViewController{
         } onError: { (err) in
             self.notificationUtils
                 .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
+            self.progressUtils.dismiss()
         }.disposed(by: self.disposeBag)
     }
     

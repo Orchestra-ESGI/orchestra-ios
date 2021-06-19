@@ -28,6 +28,20 @@ class SceneServices: RootApiService{
                                 observer.onNext(false)
                                 return
                             }
+                            var scenesDevices: [SceneAction] = []
+                            
+                            scenesDevices = responseData
+                                .filter { $0["devices"] != nil }
+                                .map({ json in
+                                    let devicesJson = json["devices"] as! [[String : Any]]
+                                    for deviceJson in devicesJson{
+                                        return Mapper<SceneAction>().map(JSON: deviceJson)!
+                                    }
+                                return SceneAction(JSON: [:])!
+                            })
+                            
+                            print(scenesDevices)
+                            
                             var allMappedScenes: [SceneDto] = []
                             for sceneJson in responseData {
                                 allMappedScenes.append(Mapper<SceneDto>().map(JSONObject: sceneJson)!)
@@ -51,13 +65,10 @@ class SceneServices: RootApiService{
         })
     }
     
-    func removeScene(idScene: String) -> Observable<Bool>{
-        var body: [String: Any] = [:]
-        body["id_scene"] = idScene
-        
-        
+    func removeScene(idsScene: [String]) -> Observable<Bool>{
+
         return Observable<Bool>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/scene/remove", method: .delete, parameters: body, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .delete, parameters: ["ids": idsScene], encoding: JSONEncoding.default, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {

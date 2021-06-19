@@ -91,6 +91,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.progressUtils.dismiss()
             }
+        }else{
+            self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème survenu lors du chargement de votre domicile", position: .top, style: .danger)
         }
     }
     
@@ -122,7 +124,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         objectVC.deviceData = self.hubDevices[indexPath.row]
         _ = objectVC.favClicStream
             .subscribe(onNext: { (friendlyName) in
-            let objectToUpdate = self.hubDevices.compactMap { (object) in
+                _ = self.hubDevices.compactMap { (object) in
                 return object.friendlyName == friendlyName ? object : nil
             }
             self.collectionView.reloadData()
@@ -211,31 +213,71 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         let progressAlertTitle = self.notificationLocalize.editingHomeProgressViewTitle
         let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
-        let removedObjectObservable = self.homeVM!.clearObjectSelected {
-            _ = self.homeVM?.removeDevices(friendlyName: self.objectsToRemove[0].friendlyName).subscribe{ finished in
-                if(finished){
-                    print("Element deleted")
+        
+        let removedObjectObservable = self.homeVM!.clearScenesSelected { observer in
+            if(self.objectsToRemove.count > 0){
+                let deviceRemovedFriendlyNames = self.objectsToRemove.map { device -> String in
+                    return device.friendlyName
                 }
-            } onError: { err in
-                print("Err when removing device")
+                _ = self.homeVM?
+                    .removeDevices(friendlyNames: deviceRemovedFriendlyNames)
+                    .subscribe{ finished in
+                    if(finished){
+                        self.deleteSelectedObjects()
+                        print("Device deleted")
+                        observer.onNext(true)
+                    }else{
+                        observer.onNext(false)
+                    }
+                } onError: { err in
+                    self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
+                    print("Err when removing device")
+                    observer.onNext(false)
+                }
+            }else{
+                observer.onNext(true)
             }
-            //self.deleteSelectedObjects()
         }
-        let removedSceneObservable = self.homeVM!.clearScenesSelected{
-            self.deleteSelectedScenes()
+
+        
+        let removedSceneObservable = self.homeVM!.clearScenesSelected { observer in
+            if(self.scenesToRemove.count > 0){
+                let sceneRemovedids = self.scenesToRemove.map { scene -> String in
+                    return scene.id
+                }
+                _ = self.homeVM!
+                    .removeScenes(ids: sceneRemovedids)
+                    .subscribe{ finished in
+                    if(finished){
+                        self.deleteSelectedObjects()
+                        print("Scene deleted")
+                        observer.onNext(true)
+                    }else{
+                        observer.onNext(false)
+                    }
+                } onError: { err in
+                    self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
+                    print("Err when removing device")
+                    observer.onNext(false)
+                }
+            }else{
+                observer.onNext(true)
+            }
         }
         
         _ = Observable.combineLatest(removedObjectObservable, removedSceneObservable){ (obs1, obs2) -> Bool in
             return obs1 && obs2
         }.subscribe { (finished) in
+            self.stopCellsShake()
+            self.isCellsShaking = !self.isCellsShaking
+            self.progressUtils.dismiss()
             if(finished.element!){
-                self.stopCellsShake()
-                self.isCellsShaking = !self.isCellsShaking
-                self.progressUtils.dismiss()
                 self.progressUtils.displayCheckMark(title: finishProgressAlertTitle, view: self.view)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     self.progressUtils.dismiss()
                 }
+            }else{
+                self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
             }
         }
     }

@@ -107,14 +107,16 @@ class Actions: NSObject, Mappable{
         if(map["brightness"].currentValue != nil){
             self.brightness <- map["brightness"]
         }
-        if(map["toggleAction"].currentValue != nil){
-            self.toggleAction <- map["toggleAction"]
+        if(map["toggle_action"].currentValue != nil){
+            self.toggleAction <- map["toggle_action"]
         }
         switch map["state"].currentValue as? String {
             case "on":
                 self.state = "on"
             case "off":
                 self.state = "off"
+            case "toggle":
+                self.state = "toggle"
             default:
                 self.state = "on"
         }

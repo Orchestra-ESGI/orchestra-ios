@@ -79,19 +79,19 @@ class DeviceServices: RootApiService{
         }
     }
     
-    func removeDevices(friendlyName: String) -> Observable<Bool>{
+    func removeDevices(friendlyNames: [String]) -> Observable<Bool>{
         let manager = Alamofire.Session.default
         manager.session.configuration.timeoutIntervalForRequest = 3
         return Observable<Bool>.create { observer in
             
-            manager.request("\(RootApiService.BASE_API_URL)/device/\(friendlyName)", method: .delete, parameters: nil, headers: self.headers)
+            manager.request("\(RootApiService.BASE_API_URL)/device", method: .delete, parameters: ["friendly_names": friendlyNames], encoding: JSONEncoding.default, headers: self.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                 switch response.result {
                     case .success( _):
                         observer.onNext(true)
                     case .failure(_):
-                        print("Error - SceneServices - getAllScenes()")
+                        print("Error - DeviceServices - removeDevices()")
                         observer.onNext(false)
                 }
             }

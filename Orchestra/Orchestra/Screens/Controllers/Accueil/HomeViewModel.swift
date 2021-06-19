@@ -45,7 +45,7 @@ class HomeViewModel{
             if(finished.element != nil){
                 completion(finished.element!)
             }else{
-                completion(true)
+                completion(false)
             }
         }
     }
@@ -68,42 +68,25 @@ class HomeViewModel{
         return self.sceneVm!.getAllScenes()
     }
     
-    func removeDevices(friendlyName: String) -> Observable<Bool>{
-        return self.deviceVM!.removeDevices(friendlyName: friendlyName)
+    func removeDevices(friendlyNames: [String]) -> Observable<Bool>{
+        return self.deviceVM!.removeDevices(friendlyNames: friendlyNames)
     }
     
-    func removeScenes(id: String) -> Observable<Bool> {
-        return self.sceneVm!.removeScenes(id: id)
+    func removeScenes(ids: [String]) -> Observable<Bool> {
+        return self.sceneVm!.removeScenes(ids: ids)
     }
     
     func clearObjectSelected(completion: @escaping ()->()) -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in
-                _ = self.fakeObjectsWS
-                    .removeObject()
-                    .subscribe(onNext: { (objectRemoved) in
-                        completion()
-                        observer.onNext(true)
-                    }, onError: { (err) in
-                        observer.onError(err)
-                        print("err")
-                    })
-                    .disposed(by: self.disposeBag)
-                return Disposables.create()
+                completion()
+            return Disposables.create()
         }
     }
     
-    func clearScenesSelected(completion: @escaping ()->()) -> Observable<Bool>{
+    func clearScenesSelected(completion: @escaping (AnyObserver<Bool>)->()) -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in
-                _ = self.fakeScenesWS
-                    .removeScene()
-                    .subscribe { (sceneRemoved) in
-                        completion()
-                        observer.onNext(true)
-                    } onError: { (err) in
-                        observer.onError(err)
-                        print("err")
-                    }.disposed(by: self.disposeBag)
-                return Disposables.create()
+                completion(observer)
+            return Disposables.create()
         }
     }
     

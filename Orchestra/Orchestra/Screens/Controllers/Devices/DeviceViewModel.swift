@@ -40,8 +40,8 @@ class DeviceViewModel{
         return self.deviceService.getAllDeviceList()
     }
     
-    func removeDevices(friendlyName: String) -> Observable<Bool>{
-        return self.deviceService.removeDevices(friendlyName: friendlyName)
+    func removeDevices(friendlyNames: [String]) -> Observable<Bool>{
+        return self.deviceService.removeDevices(friendlyNames: friendlyNames)
     }
     
     func getSupportedAccessories(){
