@@ -150,7 +150,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             .subscribe { (isValid) in
                 if isValid {
                     self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
-                    self.userVm.fakeUserWS.getAllFakeUsers()
+                    self.sendLogin()
                 }else{
                     self.progressUtils.dismiss()
                 }
@@ -158,10 +158,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 // Show some error in screen
                 self.notificationUtils.showBadCredentialsNotification()
             }.disposed(by: self.disposeBag)
-        
-        self.observeFakeLoginUserEvent()
-        
-        //self.observeLoginUserEvent()
     }
     
     
@@ -175,47 +171,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     // - MARK: Real Data
-    private func observeLoginUserEvent(){
+    private func sendLogin(){
         _ = self.userVm
             .login(email: self.emailTextField.text!, password: self.passwordTextField.text!, on: self)
             .subscribe { (userLogged) in
-            print(userLogged)
-            //let scenesVC = AppPresentationPagerViewController()
-            // scenesVC.user = userLogged
-            //self.navigationController?.pushViewController(scenesVC, animated: true)
+                let welcomeNotificationTitle = self.notificationLocalize.loginWelcomeNotificatiionTitle + userLogged.name
+                let welcomeNotificationSubtitle = self.notificationLocalize.loginWelcomeNotificationSubtitle
+                let checkMarkTitle = self.notificationLocalize.loginCompleteCheckmarkTitle
+                self.notificationUtils
+                    .showFloatingNotificationBanner(title: welcomeNotificationTitle, subtitle: welcomeNotificationSubtitle, position: .top, style: .success)
+                self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.progressUtils.dismiss()
+                    let homeVC = HomeViewController()
+                    homeVC.userLoggedInData = userLogged
+                    self.navigationController?.pushViewController(homeVC, animated: true)
+                }
         } onError: { (err) in
             print(err)
-        }.disposed(by: self.disposeBag)
-    }
-    
-    // - MARK: Fake Data
-    private func observeFakeLoginUserEvent(){
-        _ = self.userVm.fakeUserWS
-            .userStream
-            .subscribe { (users) in
-                let userCredentials = users.filter { (user) -> Bool in
-                    return user.email == self.emailTextField.text
-                        && user.password == self.passwordTextField.text
-                }
-                if userCredentials.count == 1 {
-                    let welcomeNotificationTitle = self.notificationLocalize.loginWelcomeNotificatiionTitle + userCredentials[0].name
-                    let welcomeNotificationSubtitle = self.notificationLocalize.loginWelcomeNotificationSubtitle
-                    let checkMarkTitle = self.notificationLocalize.loginCompleteCheckmarkTitle
-                    self.notificationUtils
-                        .showFloatingNotificationBanner(title: welcomeNotificationTitle, subtitle: welcomeNotificationSubtitle, position: .top, style: .success)
-                    self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.progressUtils.dismiss()
-                        let homeVC = HomeViewController()
-                        homeVC.userLoggedInData = userCredentials[0]
-                        self.navigationController?.pushViewController(homeVC, animated: true)
-                    }
-                }else{
-                    self.notificationUtils.showBadCredentialsNotification()
-                    self.progressUtils.dismiss()
-                }
-        } onError: { (err) in
             self.notificationUtils.showBadCredentialsNotification()
+            self.progressUtils.dismiss()
         }.disposed(by: self.disposeBag)
     }
     

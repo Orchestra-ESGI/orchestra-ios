@@ -10,9 +10,8 @@ import RxSwift
 import RxCocoa
 
 class UsersViewModel{
-    let realUserWS = UserServices()
+    let userWS = UserServices()
     let userDataStream = PublishSubject<UserDto>()
-    let fakeUserWS = FakeUserServices.shared
     
     let disposeBag = DisposeBag()
     let progressUtils = ProgressUtils.shared
@@ -25,41 +24,36 @@ class UsersViewModel{
     
     func login(email: String, password: String, on vewController: UIViewController) -> Observable<UserDto>{
         return Observable<UserDto>.create { (observer) -> Disposable in
-            _ = self.realUserWS
+            _ = self.userWS
                 .login(email: email, password: password)
-                .subscribe { (user) in
+                .subscribe(onNext: { user in
                     self.responseHandle(status: .OK, on: vewController)
-                    self.saveUsreCredentials()
-                    observer.onNext(user)
-                } onError: { (err) in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        observer.onNext(user)
+                    }
+                }, onError: { err in
                     self.responseHandle(status: .KOAPI, on: vewController)
-                    observer.onError(err)
-                }.disposed(by: self.disposeBag)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        observer.onError(err)
+                    }
+                })
             
             return Disposables.create()
         }
 
     }
     
-    func signin(name: String, email: String, pwd: String) -> Observable<UserDto>{
-        return realUserWS.signin(name: name, email: email, password: pwd)
+    func signup(name: String, email: String, pwd: String) -> Observable<UserDto>{
+        return self.userWS.signup(name: name, email: email, password: pwd)
     }
     
-    func deleteAccount(usersId: [String]) -> Observable<[String]>{
-        return realUserWS.removeUser(usersId: usersId)
-    }
+//    func deleteAccount(usersId: [String]) -> Observable<[String]>{
+//        return realUserWS.removeUser(usersId: usersId)
+//    }
     
-    func updateUser(credentialName: String, id: String, credentialValue: String) -> Observable<UserDto>{
-        return realUserWS.updateUser(credentialName, id, credentialValue)
-    }
-    
-    func saveUsreCredentials(){
-        // Save user credentials in shared pref or local storage
-    }
-    
-    func updateUserCredentials(){
-        // Update saved user credentials in shared pref or local storage
-    }
+//    func updateUser(credentialName: String, id: String, credentialValue: String) -> Observable<UserDto>{
+//        return realUserWS.updateUser(credentialName, id, credentialValue)
+//    }
     
     func responseHandle(status: StatusInsert, on viewController: UIViewController) {
         self.progressUtils.dismiss()

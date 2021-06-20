@@ -16,17 +16,21 @@ public class RootApiService{
     
     static var shared = RootApiService()
     
-    static var BASE_API_URL = "http://192.168.1.33:3000" // //"http://nassimpi.local:3000"
+    static var BASE_API_URL = "http://192.168.1.33:3000" //"http://nassimpi.local:3000"
     var stringUtils = StringUtils.shared
     var fileUtils = FileUtils.shared
 
     let disposeBag = DisposeBag()
+    
     var headers: HTTPHeaders = [
         "Content-Type":"application/json",
         "Accept": "application/json",
         "App-Key": "orchestra"
     ]
 
+    func setHeaderToken(for token: String){
+        self.headers["Authorization"] = token
+    }
     
     init() {
         

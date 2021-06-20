@@ -184,7 +184,7 @@ class DeviceServices: RootApiService{
     }
     
     func saveDevice(_ body: [String: Any]) {
-        AF.request("\(RootApiService.BASE_API_URL)/device/add", method: .post, parameters: body, encoding: JSONEncoding.default, headers: headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/add", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
@@ -197,7 +197,7 @@ class DeviceServices: RootApiService{
     }
     
     func resetDevice() {
-        AF.request("\(RootApiService.BASE_API_URL)/device/reset", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/reset", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: self.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
@@ -210,7 +210,7 @@ class DeviceServices: RootApiService{
     }
     
     func sendDeviceAction(_ body: [String: Any]) {
-        AF.request("\(RootApiService.BASE_API_URL)/device/action", method: .post, parameters: body, encoding: JSONEncoding.default, headers: headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/action", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
