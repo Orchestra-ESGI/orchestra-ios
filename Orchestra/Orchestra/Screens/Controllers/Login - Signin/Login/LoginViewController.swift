@@ -178,13 +178,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let checkMarkTitle = self.notificationLocalize.loginCompleteCheckmarkTitle
                 self.progressUtils.dismiss()
                 self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     self.progressUtils.dismiss()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        let homeVC = HomeViewController()
-                        homeVC.userLoggedInData = userLogged
-                        self.navigationController?.pushViewController(homeVC, animated: true)
-                    }
+                    let homeVC = HomeViewController()
+                    homeVC.userLoggedInData = userLogged
+                    self.navigationController?.pushViewController(homeVC, animated: true)
                 }
         } onError: { (err) in
             self.notificationUtils.handleErrorResponseNotification(err as! ServerError)

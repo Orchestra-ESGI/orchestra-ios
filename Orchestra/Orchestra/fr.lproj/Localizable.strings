@@ -51,6 +51,26 @@
 "login.notification.credantials.wrong.title" = "Informations éronnées";
 "login.notification.credantials.wrong.subtitle" = "Modifiez les information et reéssayez";
 
+// 400
+"badRequest.notification.title" = "Erreur";
+"badRequest.notification.subitle" = "Une erreur est surevenue";
+
+// 401
+"unauthorized.notification.title" = "Accès interdit";
+"unauthorized.notification.subitle" = "Veuillez verifier votre email et reéssayer ensuite";
+
+// 401
+"forbidden.notification.title" = "Accès interdit";
+"forbidden.notification.subitle" = "Veuillez verifier votre email et reéssayer ensuite";
+
+// 404
+"unknown.notification.title" = "Erreur";
+"unknown.notification.subitle" = "Une erreur est surevenue";
+
+// 500 & 503
+"server.error.notification.title" = "Erreur";
+"server.error.notification.subitle" = "Une erreur est surevenue";
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Veuillez patienter...";
 
@@ -77,6 +97,8 @@
 "signup.vc.password.second.label.text" = "Confirmez le mot de passe";
 "signup.vc.name.label.text" = "Nom";
 "signup.vc.button.text" = "Créer un compte";
+"signup.progress.title" = "Création de votre compte en cours...";
+"signup.progress.finished.title" = "Succès";
 
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mes objets";

@@ -29,6 +29,28 @@ public class NotificationLocalizableUtils {
     let loginWelcomeNotificatiionTitle = NSLocalizedString("login.welcome.notification.title", comment: "")
     let loginWelcomeNotificationSubtitle = NSLocalizedString("login.welcome.notification.subtitle", comment: "")
     let loginCompleteCheckmarkTitle = NSLocalizedString("login.complete.checkmark.title", comment: "")
+    let signupCompleteCheckmarkTitle = NSLocalizedString("signup.progress.finished.title", comment: "")
+    let signupProgressCheckmarkTitle = NSLocalizedString("signup.progress.title", comment: "")
+    
+    // 400
+    let badRequestCallNotificationTitle = NSLocalizedString("badRequest.notification.title", comment: "")
+    let badRequestCallNotificationSubitle = NSLocalizedString("badRequest.notification.subitle", comment: "")
+    
+    // 401
+    let unauthorizedCallNotificationTitle = NSLocalizedString("unauthorized.notification.title", comment: "")
+    let unauthorizedCallNotificationSubitle = NSLocalizedString("unauthorized.notification.subitle", comment: "")
+    
+    // 403
+    let forbiddenCallNotificationTitle = NSLocalizedString("forbidden.notification.title", comment: "")
+    let forbiddenCallNotificationSubitle = NSLocalizedString("forbidden.notification.subitle", comment: "")
+    
+    // 404
+    let unknownEndpointCallNotificationTitle = NSLocalizedString("unknown.notification.title", comment: "")
+    let unknownEndpointCallNotificationSubitle = NSLocalizedString("unknown.notification.subitle", comment: "")
+    
+    // 500 & 503
+    let serverErrorCallNotificationTitle = NSLocalizedString("server.error.notification.title", comment: "")
+    let serverErrorCallNotificationSubitle = NSLocalizedString("server.error.notification.subitle", comment: "")
     
     
     // - MARK: Progress notifications

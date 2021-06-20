@@ -100,6 +100,30 @@ class NotificationsUtils {
         showFloatingNotificationBanner(title: self.notificationLocalizatiton.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalizatiton.loginCredentialsWrongNotificationSubtitle, position: .top, style: .danger)
     }
     
+    func handleErrorResponseNotification(_ error: ServerError){
+        var notificationTitle = ""
+        var notificationSubtitle = ""
+        
+        switch error{
+        case .BadRequest:
+            notificationTitle = self.notificationLocalizatiton.badRequestCallNotificationTitle
+            notificationSubtitle = self.notificationLocalizatiton.badRequestCallNotificationSubitle
+        case .Unauthorized:
+            notificationTitle = self.notificationLocalizatiton.unauthorizedCallNotificationTitle
+            notificationSubtitle = self.notificationLocalizatiton.unauthorizedCallNotificationSubitle
+        case .UnkownEndpoint:
+            notificationTitle = self.notificationLocalizatiton.unknownEndpointCallNotificationTitle
+            notificationSubtitle = self.notificationLocalizatiton.unknownEndpointCallNotificationSubitle
+        case .ServerError:
+            notificationTitle = self.notificationLocalizatiton.serverErrorCallNotificationTitle
+            notificationSubtitle = self.notificationLocalizatiton.serverErrorCallNotificationSubitle
+        case .Forbidden:
+            notificationTitle = self.notificationLocalizatiton.forbiddenCallNotificationTitle
+            notificationSubtitle = self.notificationLocalizatiton.forbiddenCallNotificationSubitle
+        }
+        showFloatingNotificationBanner(title: notificationTitle, subtitle: notificationSubtitle, position: .top, style: .danger)
+    }
+    
     func setImageViewToBanner(type: String, title: String, subtitle: String, style: BannerStyle) -> BaseNotificationBanner{
         var notificationSideViewImage: UIImageView?
         switch style {
