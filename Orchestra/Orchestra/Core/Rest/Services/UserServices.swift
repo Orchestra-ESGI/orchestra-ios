@@ -137,9 +137,8 @@ class UserServices: RootApiService{
         })
     }
     
-    func signup(name: String, email: String, password: String) -> Observable<UserDto>{
+    func signup(email: String, password: String) -> Observable<UserDto>{
         var body: [String: Any] = [:]
-        body["name"] = email
         body["email"] = email
         body["password"] = password
         

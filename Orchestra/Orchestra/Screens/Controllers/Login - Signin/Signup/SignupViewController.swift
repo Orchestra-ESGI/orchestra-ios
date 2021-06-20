@@ -47,6 +47,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.setUpUI()
         self.localizeUI()
         self.setUpView()
+        self.setUpClickObserver()
         self.setUpUiBindings()
     }
     
@@ -60,9 +61,59 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.removeObserver()
     }
     
+    private func setUpClickObserver(){
+        self.setupSignupButtonBindings()
+    }
+    
     // - MARK: RX binding
     private func setUpUiBindings(){
-        self.setupSignupButtonBindings()
+        self.self.userVM
+            .isSignupFormValid
+            .subscribe { (isValid) in
+                if isValid {
+                    self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
+                    self.sendSignup()
+                }else{
+                    self.progressUtils.dismiss()
+                }
+            } onError: { (err) in
+                // Show some error in screen
+                self.notificationUtils.showBadCredentialsNotification()
+            }.disposed(by: self.disposeBag)
+        
+    }
+    
+    private func sendSignup(){
+        _ = self.userVM
+            .signup(email: self.emailTF.text!,
+                    password: self.passwordTF.text!)
+            .subscribe { (userLogged) in
+                let checkMarkTitle = self.notificationLocalize.signupCompleteCheckmarkTitle
+                self.progressUtils.dismiss()
+                self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.progressUtils.dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.showInfoAlert()
+                    }
+                }
+        } onError: { (err) in
+            self.notificationUtils.handleErrorResponseNotification(err as! ServerError)
+            self.progressUtils.dismiss()
+        }.disposed(by: self.disposeBag)
+
+    }
+    
+    private func showInfoAlert(){
+        let alertTitle = "Information"
+        let alertMessage = "Nous vous avons envoyé un lien de conformation de votre compte, verifiez vos mail et spam"
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "C'est noté", style: .cancel) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: {})
     }
     
     // - MARK: Localization

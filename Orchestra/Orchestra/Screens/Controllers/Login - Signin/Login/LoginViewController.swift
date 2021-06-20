@@ -180,8 +180,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.progressUtils.dismiss()
-                    self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         let homeVC = HomeViewController()
                         homeVC.userLoggedInData = userLogged
                         self.navigationController?.pushViewController(homeVC, animated: true)

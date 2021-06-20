@@ -44,6 +44,9 @@ public class RootApiService{
         case 401:
             print("")
             observer.onError(ServerError.Unauthorized)
+        case 403:
+            print("")
+            observer.onError(ServerError.Forbidden)
         case 404:
             print("")
             observer.onError(ServerError.UnkownEndpoint)
@@ -65,6 +68,7 @@ public class RootApiService{
 enum ServerError: Error {
     case BadRequest //400
     case Unauthorized //401
+    case Forbidden //403
     case UnkownEndpoint //404
     case ServerError //500
 }

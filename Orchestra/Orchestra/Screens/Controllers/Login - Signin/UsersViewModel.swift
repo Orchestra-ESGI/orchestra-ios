@@ -37,8 +37,8 @@ class UsersViewModel{
 
     }
     
-    func signup(name: String, email: String, pwd: String) -> Observable<UserDto>{
-        return self.userWS.signup(name: name, email: email, password: pwd)
+    func signup(email: String, password: String) -> Observable<UserDto>{
+        return self.userWS.signup(email: email, password: password)
     }
     
 //    func deleteAccount(usersId: [String]) -> Observable<[String]>{
