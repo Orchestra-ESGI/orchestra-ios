@@ -16,6 +16,11 @@
 // Location
 "permissions.location.alert.title" = "Kennisgevingen";
 "permissions.location.alert.description" = "Om u op de hoogte te brengen van belangrijke informatie";
+// Camera
+"permissions.camera.alert.title" = "Camera";
+"permissions.camera.alert.description" = "Om de QR-code te scannen (nodig om een ​​account aan te maken)";
+"permission.camera.alert.error.title" = "Je hebt de cameratoestemming geweigerd.";
+"permission.camera.alert.error.description" = "Probeer het toe te staan ​​via de app-instellingen";
 
 "permission.alert.footer.title" = "Wij traceren of verkopen uw gegevens niet, de bovenstaande toelatingen zullen ons toelaten u een optimale service te verlenen";
 

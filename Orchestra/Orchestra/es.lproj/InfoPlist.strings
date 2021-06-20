@@ -8,3 +8,4 @@
 "NSLocationWhenInUseUsageDescription" = "Necesitamos su ubicación para programar la automatización";
 "NSNotificatitonUsageDescription" = "Nuestras notificaciones serán siempre relevantes y le avisarán de información importante";
 "NSMediaUsageDescription" = "Necesitamos acceder a tus fotos si quieres personalizar una automatización";
+"NSCameraUsageDescription" = "Necesitamos acceder a su cámara para escanear el código QR";

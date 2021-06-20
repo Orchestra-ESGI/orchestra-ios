@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passwordForgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
     
     // - MARK : View models
     let userVm = UsersViewModel()
@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func getPermissionsUser(){
-        let controller = SPPermissions.dialog([.notification, .locationWhenInUse])
+        let controller = SPPermissions.dialog([.notification, .locationWhenInUse, .camera])
 
         // Overide texts in controller
         controller.titleText = self.screenLocalize.permissionsAlertTitle
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let attr = NSMutableAttributedString(string: self.screenLocalize.noAccountLabelText)
         attr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, attr.length))
-        self.signinButton.setAttributedTitle(attr, for: .normal)
+        self.signupButton.setAttributedTitle(attr, for: .normal)
     }
     
     private func setUpUI(){
@@ -127,7 +127,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordForgotButton.setTitleColor(ColorUtils.ORCHESTRA_RED_COLOR, for: .normal)
         self.loginButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
         
-        self.signinButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
+        self.signupButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
     }
     
     private func setupFonts() {
@@ -139,7 +139,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordForgotButton.titleLabel?.font = Font.Regular(self.passwordForgotButton.titleLabel?.font.pointSize ?? 15)
         self.loginButton.titleLabel?.font = Font.Bold(self.loginButton.titleLabel?.font.pointSize ?? 20)
         self.passwordForgotButton.titleLabel?.font = Font.Bold(self.passwordForgotButton.titleLabel?.font.pointSize ?? 17)
-        self.signinButton.titleLabel?.font = Font.Bold(self.signinButton.titleLabel?.font.pointSize ?? 15)
+        self.signupButton.titleLabel?.font = Font.Bold(self.signupButton.titleLabel?.font.pointSize ?? 15)
     }
     
     // - MARK: Observers

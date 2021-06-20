@@ -16,6 +16,7 @@ target 'Orchestra' do
   #Permissions
   pod 'SPPermissions/Notification' # https://github.com/ivanvorobei/SPPermissions
   pod 'SPPermissions/Location'
+  pod 'SPPermissions/Camera'
 
   # REST
   pod 'Alamofire' # https://github.com/Alamofire/Alamofire

@@ -110,7 +110,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "C'est noté", style: .cancel) { action in
-            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: {})

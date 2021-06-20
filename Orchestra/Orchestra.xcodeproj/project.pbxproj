@@ -16,6 +16,8 @@
 		5E0E7768267E6A35005F2264 /* Gilroy-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E0E7762267E6A35005F2264 /* Gilroy-ExtraBold.otf */; };
 		5E0E776D267E741A005F2264 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E776C267E741A005F2264 /* StringExtension.swift */; };
 		5E0E776E267E741A005F2264 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E776C267E741A005F2264 /* StringExtension.swift */; };
+		5E1A1789267FA9820084FB9F /* QRCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */; };
+		5E1A178B267FC55D0084FB9F /* QRCodeReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */; };
 		5E2B10E4267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */; };
 		6304590D2629B20000FA7F40 /* HubPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304590B2629B20000FA7F40 /* HubPairingViewController.swift */; };
 		6304590E2629B20000FA7F40 /* HubPairingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6304590C2629B20000FA7F40 /* HubPairingViewController.xib */; };
@@ -155,6 +157,8 @@
 		63FFB10226753FD60040B4FC /* DevicesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB10126753FD60040B4FC /* DevicesAlert.xib */; };
 		63FFB104267543840040B4FC /* DevicesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB103267543840040B4FC /* DevicesAlert.swift */; };
 		675071DF64A6045C7D54CB55 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B830D1061199514EB8C6BE /* Pods_Orchestra_WatchKit_Extension.framework */; };
+		C5EC397C9BD64F45D1FE1085 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34BB1D24F993C5F39C12311C /* Pods_Orchestra_WatchKit_App.framework */; };
+		D30DB4B30E1C8CAAAE2EFCFD /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8659C3B0BC12B66BD60527DF /* Pods_Orchestra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +211,8 @@
 		5E0E7761267E6A34005F2264 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		5E0E7762267E6A35005F2264 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		5E0E776C267E741A005F2264 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewController.swift; sourceTree = "<group>"; };
+		5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderOverlay.swift; sourceTree = "<group>"; };
 		5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerRxBindingExtension.swift; sourceTree = "<group>"; };
 		6304590B2629B20000FA7F40 /* HubPairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubPairingViewController.swift; sourceTree = "<group>"; };
 		6304590C2629B20000FA7F40 /* HubPairingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HubPairingViewController.xib; sourceTree = "<group>"; };
@@ -391,7 +397,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EBE3FD8DCE1D3F70B2EB5CA /* Pods_Orchestra_WatchKit_App.framework in Frameworks */,
+				C5EC397C9BD64F45D1FE1085 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +405,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61BC803001B9C7B8A362AB22 /* Pods_Orchestra.framework in Frameworks */,
+				D30DB4B30E1C8CAAAE2EFCFD /* Pods_Orchestra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +452,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
+			isa = PBXGroup;
+			children = (
+				5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */,
+				5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */,
+			);
+			path = "QRCode-Reader";
+			sourceTree = "<group>";
+		};
 		5E2B10E2267F7F55003595CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +481,7 @@
 		630459152629B67E00FA7F40 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E1A1787267FA96B0084FB9F /* QRCode-Reader */,
 				63D1A95326616B2C00DEDB96 /* Login - Signin */,
 				635DD50E261A177F001D1EFC /* Présentation Pager */,
 				634F9541261A33E80092C269 /* Accueil */,
@@ -1410,6 +1426,7 @@
 				63D1A95226616A0F00DEDB96 /* SupportedDevicesService.swift in Sources */,
 				637FB6422615BCB900790735 /* NotificationUtils.swift in Sources */,
 				634F954D261A41240092C269 /* ScreensLabelLocalizableUtils.swift in Sources */,
+				5E1A1789267FA9820084FB9F /* QRCodeReaderViewController.swift in Sources */,
 				63EF45A9266588DC0051BC96 /* HubAccessoryType.swift in Sources */,
 				63E84FBB262B81AC00AA9558 /* ColorUtils.swift in Sources */,
 				638856EB262769D1002354FB /* SceneVsActiosnTvExtension.swift in Sources */,
@@ -1439,6 +1456,7 @@
 				631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */,
 				63460F752669797900DECD35 /* SearchDeviceViewController.swift in Sources */,
 				63FFB104267543840040B4FC /* DevicesAlert.swift in Sources */,
+				5E1A178B267FC55D0084FB9F /* QRCodeReaderOverlay.swift in Sources */,
 				63D235EA2639CCA700D2485F /* HomeVcObserversExtension.swift in Sources */,
 				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
 				63252A44266E94E500179CFB /* ConfigurationService.swift in Sources */,
