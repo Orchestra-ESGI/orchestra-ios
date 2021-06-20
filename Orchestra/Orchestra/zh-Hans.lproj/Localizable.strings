@@ -16,6 +16,11 @@
 // Location
 "permissions.location.alert.title" = "地点";
 "permissions.location.alert.description" = "通知你重要信息";
+// Camera
+"permissions.camera.alert.title" = "相机";
+"permissions.camera.alert.description" = "扫描二维码（需要创建账户）";
+"permission.camera.alert.error.title" = "您拒绝了摄像头许可。";
+"permission.camera.alert.error.description" = "尝试通过应用设置允许它";
 
 "permission.alert.footer.title" = "我们不会跟踪或出售您的数据，上述授权将使我们能够为您提供最佳服务。";
 

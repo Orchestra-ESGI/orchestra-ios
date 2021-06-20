@@ -22,6 +22,8 @@ class OrchestraPermissions{
     func setPermissionCell() -> SPPermissionTableViewCell {
         var cell: SPPermissionTableViewCell?
         switch self.category {
+        case 0:
+            cell = self.setCameraPermissionCell()
         case 1:
             //cell = self.setLibraryPermissionCell()
             break
@@ -49,6 +51,25 @@ class OrchestraPermissions{
 
         // If you want set custom image.
         let locationIcon = UIImage(systemName: "location.fill")!
+        locationIcon.withTintColor(.blue)
+        self.cell!.set(locationIcon)
+        return self.cell!
+    }
+    
+    func setCameraPermissionCell() -> SPPermissionTableViewCell {
+        
+        self.cell!.permissionTitleLabel.text = self.labelLocalize.permissionsCameraAlertTitle
+        self.cell!.permissionDescriptionLabel.text = self.labelLocalize.permissionsCameraAlertDescription
+        self.cell!.button.allowTitle = self.labelLocalize.permissionAlertAllowButtonText
+        self.cell!.button.allowedTitle = self.labelLocalize.permissionAlertAllowedButtonText
+
+        // Colors
+        self.cell!.iconView.color = .systemBlue
+        self.cell!.button.allowedBackgroundColor = .systemBlue
+        self.cell!.button.allowTitleColor = .systemBlue
+
+        // If you want set custom image.
+        let locationIcon = UIImage(systemName: "camera.fill")!
         locationIcon.withTintColor(.blue)
         self.cell!.set(locationIcon)
         return self.cell!

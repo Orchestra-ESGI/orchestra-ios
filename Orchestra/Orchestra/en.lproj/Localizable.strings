@@ -16,6 +16,11 @@
 // Location
 "permissions.location.alert.title" = "Location";
 "permissions.location.alert.description" = "To notify you of important information";
+// Camera
+"permissions.camera.alert.title" = "Camera";
+"permissions.camera.alert.description" = "To scan the QR code (needed to create an accout)";
+"permission.camera.alert.error.title" = "You've refused the camera permission.";
+"permission.camera.alert.error.description" = "Try to allow it via the app settings";
 
 "permission.alert.footer.title" = "We do not track or sell your data, the above permissions will enable us to provide you with the best possible service.";
 

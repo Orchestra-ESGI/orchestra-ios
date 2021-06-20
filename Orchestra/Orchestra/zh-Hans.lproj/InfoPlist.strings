@@ -8,3 +8,4 @@
 "NSLocationWhenInUseUsageDescription" = "我们需要你的位置来安排自动化";
 "NSNotificatitonUsageDescription" = "我们的通知将始终是相关的，并提醒你注意重要的信息";
 "NSMediaUsageDescription" = "如果你想定制一个自动化系统，我们需要访问你的照片。";
+"NSCameraUsageDescription" = "我们需要访问您的相机才能扫描二维码";

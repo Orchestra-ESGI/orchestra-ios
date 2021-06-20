@@ -18,6 +18,11 @@
 // Location
 "permissions.location.alert.title" = "Notifications";
 "permissions.location.alert.description" = "Pour vous notifier d'informations importantes";
+// Camera
+"permissions.camera.alert.title" = "Caméra";
+"permissions.camera.alert.description" = "Pour scanner le code QR (nécessaire pour créer un compte)";
+"permission.camera.alert.error.title" = "Vous avez refusé l'autorisation de la caméra.";
+"permission.camera.alert.error.description" = "Essayez de l'autoriser via les paramètres de l'application";
 
 "permission.alert.footer.title" = "Nous ne vous traquons pas et nous ne vendons pas vos données, les autorisation ci-dessus nous permettrons de vous fournir un service optimal";
 

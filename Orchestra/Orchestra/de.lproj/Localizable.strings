@@ -16,6 +16,11 @@
 // Location
 "permissions.location.alert.title" = "BenachrichtigungenLocalisation";
 "permissions.location.alert.description" = "Um Sie über wichtige Informationen zu informieren";
+// Camera
+"permissions.camera.alert.title" = "Kamera";
+"permissions.camera.alert.description" = "Zum Scannen des QR-Codes (erforderlich, um einen Account zu erstellen)";
+"permission.camera.alert.error.title" = "Sie haben die Kameraberechtigung verweigert.";
+"permission.camera.alert.error.description" = "Versuchen Sie, dies über die App-Einstellungen zuzulassen";
 
 "permission.alert.footer.title" = "Wir verfolgen oder verkaufen Ihre Daten nicht, die oben genannten Berechtigungen ermöglichen es uns, Ihnen einen optimalen Service zu bieten";
 

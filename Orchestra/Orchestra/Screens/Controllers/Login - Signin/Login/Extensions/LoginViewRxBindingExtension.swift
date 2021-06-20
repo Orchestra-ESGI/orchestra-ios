@@ -30,11 +30,11 @@ extension LoginViewController{
     }
     
     func setUpSigninButtonBindings(){
-        self.signinButton
+        self.signupButton
             .rx.tap
             .bind { [weak self] in
-                let signinVC = SignupViewController()
-                self?.navigationController?.pushViewController(signinVC, animated: true)
+                let QRCodeReaderNavController = UINavigationController(rootViewController: QRCodeReaderViewController())
+                self?.present(QRCodeReaderNavController, animated: true, completion: nil)
             }
             .disposed(by: self.disposeBag)
     }

@@ -16,6 +16,11 @@
 // Location
 "permissions.location.alert.title" = "Notificações";
 "permissions.location.alert.description" = "Para notificá-lo de informações importantes";
+// Camera
+"permissions.camera.alert.title" = "Câmera";
+"permissions.camera.alert.description" = "Para ler o código QR (necessário para criar uma conta)";
+"permission.camera.alert.error.title" = "Você recusou a permissão da câmera.";
+"permission.camera.alert.error.description" = "Tente permitir através das configurações do aplicativo";
 
 "permission.alert.footer.title" = "Para usar o Hub";
 
