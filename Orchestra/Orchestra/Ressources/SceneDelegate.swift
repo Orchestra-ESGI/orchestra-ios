@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
   
-      //  var rootController: UIViewController?
+       var rootController: UIViewController?
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         let preferences = UserDefaults.standard
