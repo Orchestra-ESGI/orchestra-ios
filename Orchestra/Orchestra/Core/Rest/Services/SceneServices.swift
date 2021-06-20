@@ -79,13 +79,9 @@ class SceneServices: RootApiService{
                         case .success( _):
                             observer.onNext(true)
                         case .failure(_):
-                            guard let errorJson =  response.error,
-                                  let error = errorJson.underlyingError else {
-                                return
-                            }
-                            
                             print("Error - SceneServices - createNewScene()")
-                            observer.onError(error)
+                            let error = response.response!.statusCode
+                            self.handleErrorResponse(observer: observer, status: error)
                     }
                 }
             return Disposables.create();
@@ -100,12 +96,8 @@ class SceneServices: RootApiService{
                     case .success( _):
                         print("Scene correctly launched")
                     case .failure(_):
-                        guard let errorJson =  response.error,
-                              let error = errorJson.underlyingError else {
-                            return
-                        }
-                        
                         print("Error - SceneServices - launchScene()")
+                        
                 }
             }
     }

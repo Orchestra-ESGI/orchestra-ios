@@ -73,6 +73,8 @@ class DeviceServices: RootApiService{
                         devicesStream.onNext(hubAccessoriesMapped)
                     case .failure(_):
                         print("ko")
+                        let error = response.response!.statusCode
+                        self.handleErrorResponse(observer: observer, status: error)
                 }
             }
             return Disposables.create()

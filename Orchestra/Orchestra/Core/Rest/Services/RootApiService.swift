@@ -35,5 +35,36 @@ public class RootApiService{
     init() {
         
     }
+    
+    func handleErrorResponse<T: Any>(observer: AnyObserver<T>, status: Int){
+        switch status {
+        case 400:
+            print("")
+            observer.onError(ServerError.BadRequest)
+        case 401:
+            print("")
+            observer.onError(ServerError.Unauthorized)
+        case 404:
+            print("")
+            observer.onError(ServerError.UnkownEndpoint)
+        case 500:
+            print("")
+            observer.onError(ServerError.ServerError)
+        case 503:
+            print("")
+            observer.onError(ServerError.ServerError)
+        default:
+            print("")
+            observer.onError(ServerError.ServerError)
+        }
+        
+    }
 
+}
+
+enum ServerError: Error {
+    case BadRequest //400
+    case Unauthorized //401
+    case UnkownEndpoint //404
+    case ServerError //500
 }

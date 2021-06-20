@@ -29,13 +29,8 @@ class UserServices: RootApiService{
                             }
                             observer.onNext(allMappedUsers)
                         case .failure(_):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - UserServices - getAllUsers()")
-                            observer.onError(errorDto!)
+                            let error = response.response!.statusCode
+                            self.handleErrorResponse(observer: observer, status: error)
                     }
                 }
 
@@ -62,13 +57,8 @@ class UserServices: RootApiService{
                             }
                             observer.onNext(usersIds)
                         case .failure(_):
-                                guard let errorJson =  response.value  else {
-                                    return observer.onCompleted()
-                                }
-                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                                
-                                print("Error - UserServices - removeUser()")
-                                observer.onError(errorDto!)
+                            let error = response.response!.statusCode
+                            self.handleErrorResponse(observer: observer, status: error)
                     }
                 }
             return Disposables.create();
@@ -112,13 +102,8 @@ class UserServices: RootApiService{
                             let updatedUser = Mapper<UserDto>().map(JSONObject: responseData)!
                             observer.onNext(updatedUser)
                         case .failure( _):
-                                guard let errorJson =  response.value  else {
-                                    return observer.onCompleted()
-                                }
-                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                                
-                                print("Error - UserServices - updateUser()")
-                                observer.onError(errorDto!)
+                            let error = response.response!.statusCode
+                            self.handleErrorResponse(observer: observer, status: error)
                     }
                 }
             return Disposables.create();
@@ -144,13 +129,8 @@ class UserServices: RootApiService{
                             
                             observer.onNext(user)
                         case .failure( _):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - UserServices - login()")
-                            observer.onError(errorDto!)
+                            let error = response.response!.statusCode
+                            self.handleErrorResponse(observer: observer, status: error)
                     }
                 }
             return Disposables.create();
@@ -175,13 +155,8 @@ class UserServices: RootApiService{
                             let signedUser = Mapper<UserDto>().map(JSONObject: responseData)!
                             observer.onNext(signedUser)
                         case .failure( _):
-                                guard let errorJson =  response.value  else {
-                                    return observer.onCompleted()
-                                }
-                                let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                                
-                                print("Error - UserServices - singin()")
-                                observer.onError(errorDto!)
+                            let error = response.response!.statusCode
+                            self.handleErrorResponse(observer: observer, status: error)
                         }
                 }
             return Disposables.create();
