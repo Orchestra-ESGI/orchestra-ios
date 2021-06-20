@@ -22,21 +22,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         let preferences = UserDefaults.standard
-        let showPager = "showAppPager"
-
-        if preferences.object(forKey: showPager) == nil {
-            rootController = OrchestraPager()
-            preferences.set(true, forKey: showPager)
-            let didSave = preferences.synchronize()
-            if !didSave {
-                NSLog("Error while saving user data in shared preferences")
+        
+        if(preferences.object(forKey: "bearer-token") == nil){
+            if preferences.object(forKey: "showAppPager") == nil {
+                preferences.set(true, forKey: "showAppPager")
+                let didSave = preferences.synchronize()
+                if !didSave {
+                    NSLog("Error while saving user data in shared preferences")
+                }
+            } else {
+                rootController = LoginViewController()
             }
-        } else {
-            let isFirstOpening = preferences.bool(forKey: showPager)
-            rootController = UINavigationController(rootViewController: isFirstOpening ? LoginViewController() : HomeViewController())
+        }else{
+            rootController = HomeViewController()
         }
         
-        window?.rootViewController = rootController
+        window?.rootViewController = UINavigationController(rootViewController:rootController)
         window?.makeKeyAndVisible()
     }
 
