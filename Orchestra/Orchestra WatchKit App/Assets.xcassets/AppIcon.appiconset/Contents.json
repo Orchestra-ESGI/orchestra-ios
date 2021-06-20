@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "orchestra-icon.jpg",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -8,6 +9,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "orchestra-icon-1.jpg",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -15,18 +17,21 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "orchestra-icon-2.jpg",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "orchestra-icon-3.jpg",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "orchestra-icon-4.jpg",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -34,6 +39,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "orchestra-icon-5.jpg",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -41,6 +47,7 @@
       "subtype" : "40mm"
     },
     {
+      "filename" : "orchestra-icon-6.jpg",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -48,6 +55,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "orchestra-icon-7.jpg",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -55,6 +63,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "orchestra-icon-8.jpg",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -62,6 +71,7 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "orchestra-icon-9.jpg",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -69,6 +79,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "orchestra-icon-10.jpg",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

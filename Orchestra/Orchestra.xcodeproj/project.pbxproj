@@ -27,8 +27,14 @@
 		630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B1016261E2DDC00B41804 /* DeviceInfoViewController.xib */; };
 		630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE209261479B300F88DB2 /* RaspberryService.swift */; };
 		630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE21426147A4A00F88DB2 /* UserServices.swift */; };
+		6311C1EB265A9E7B00C7EC68 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311C1EA265A9E7B00C7EC68 /* Scene.swift */; };
 		631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB1C2610EA38003F65F9 /* StringUtils.swift */; };
 		631BAB222610EA8E003F65F9 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB212610EA8E003F65F9 /* FileUtils.swift */; };
+		631BB2EA265AA4F8005240DB /* SceneRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB2E9265AA4F8005240DB /* SceneRow.swift */; };
+		631BB2F0265AAB2F005240DB /* ScenesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB2EF265AAB2F005240DB /* ScenesController.swift */; };
+		631BB2F2265AABA3005240DB /* DomoticDevicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB2F1265AABA3005240DB /* DomoticDevicesController.swift */; };
+		631BB2F4265ABEDC005240DB /* DeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB2F3265ABEDC005240DB /* DeviceRow.swift */; };
+		631BB2F7265ABF3C005240DB /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BB2F6265ABF3C005240DB /* Device.swift */; };
 		6322682726458FB70037672D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6322682926458FB70037672D /* InfoPlist.strings */; };
 		6322683326459B5A0037672D /* UserHousesBottomSheetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6322683226459B5A0037672D /* UserHousesBottomSheetTableViewController.swift */; };
 		632268372645A2170037672D /* AddHouseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632268352645A2170037672D /* AddHouseTableViewCell.swift */; };
@@ -100,6 +106,11 @@
 		638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB8EA261495EB0020EE75 /* HouseServices.swift */; };
 		639E43A2263F031D0042951E /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639E43A1263F031D0042951E /* Slide.xib */; };
 		639E43A4263F03450042951E /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E43A3263F03450042951E /* Slide.swift */; };
+		63A8F50D265ACEA200BA02C8 /* DeviceActionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */; };
+		63A8F510265ADB0100BA02C8 /* ListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F50F265ADB0100BA02C8 /* ListUtil.swift */; };
+		63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */; };
+		63A8F514265ADEE700BA02C8 /* RootRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F513265ADEE700BA02C8 /* RootRowController.swift */; };
+		63A8F517265AE4A100BA02C8 /* LaunchSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */; };
 		63B4352E26680CA2004D12A7 /* DeviceCreationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */; };
 		63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */; };
 		63B435322668133A004D12A7 /* DeviceFormTvActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */; };
@@ -211,8 +222,14 @@
 		630BE21426147A4A00F88DB2 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		630E84A62615CFC4005CE9A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		630E84A72615CFC4005CE9A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		6311C1EA265A9E7B00C7EC68 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		631BAB1C2610EA38003F65F9 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		631BAB212610EA8E003F65F9 /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		631BB2E9265AA4F8005240DB /* SceneRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRow.swift; sourceTree = "<group>"; };
+		631BB2EF265AAB2F005240DB /* ScenesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesController.swift; sourceTree = "<group>"; };
+		631BB2F1265AABA3005240DB /* DomoticDevicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomoticDevicesController.swift; sourceTree = "<group>"; };
+		631BB2F3265ABEDC005240DB /* DeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRow.swift; sourceTree = "<group>"; };
+		631BB2F6265ABF3C005240DB /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		6322682826458FB70037672D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6322682A26458FBC0037672D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		6322682B26458FBD0037672D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -310,6 +327,11 @@
 		638AB8EA261495EB0020EE75 /* HouseServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseServices.swift; sourceTree = "<group>"; };
 		639E43A1263F031D0042951E /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		639E43A3263F03450042951E /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActionsController.swift; sourceTree = "<group>"; };
+		63A8F50F265ADB0100BA02C8 /* ListUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUtil.swift; sourceTree = "<group>"; };
+		63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WkListDelegate.swift; sourceTree = "<group>"; };
+		63A8F513265ADEE700BA02C8 /* RootRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRowController.swift; sourceTree = "<group>"; };
+		63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneDelegate.swift; sourceTree = "<group>"; };
 		63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCreationFormViewController.swift; sourceTree = "<group>"; };
 		63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceCreationFormViewController.xib; sourceTree = "<group>"; };
 		63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFormTvActionsExtension.swift; sourceTree = "<group>"; };
@@ -467,6 +489,70 @@
 				63FFB103267543840040B4FC /* DevicesAlert.swift */,
 			);
 			path = Creation;
+			sourceTree = "<group>";
+		};
+		6311C1EC265A9EAC00C7EC68 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				631BB2E9265AA4F8005240DB /* SceneRow.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		6311C1ED265A9EBA00C7EC68 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				631BB2F3265ABEDC005240DB /* DeviceRow.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		631BB2ED265AAA8E005240DB /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				631BB2EF265AAB2F005240DB /* ScenesController.swift */,
+				631BB2F9265AC42E005240DB /* Model */,
+				6311C1EC265A9EAC00C7EC68 /* Rows */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		631BB2EE265AAA96005240DB /* Domotics device */ = {
+			isa = PBXGroup;
+			children = (
+				631BB2F1265AABA3005240DB /* DomoticDevicesController.swift */,
+				631BB2F8265AC428005240DB /* Model */,
+				6311C1ED265A9EBA00C7EC68 /* Rows */,
+				63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */,
+			);
+			path = "Domotics device";
+			sourceTree = "<group>";
+		};
+		631BB2F5265ABEFB005240DB /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				63A8F513265ADEE700BA02C8 /* RootRowController.swift */,
+				636F4726260A5F91001D8196 /* InterfaceController.swift */,
+				631BB2EE265AAA96005240DB /* Domotics device */,
+				631BB2ED265AAA8E005240DB /* Scene */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		631BB2F8265AC428005240DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				631BB2F6265ABF3C005240DB /* Device.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		631BB2F9265AC42E005240DB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6311C1EA265A9E7B00C7EC68 /* Scene.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		6322683126459B140037672D /* HousesBottomSheet */ = {
@@ -777,7 +863,9 @@
 		636F4725260A5F91001D8196 /* Orchestra WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				636F4726260A5F91001D8196 /* InterfaceController.swift */,
+				63A8F515265AE2B900BA02C8 /* Protocols */,
+				63A8F50E265ADAF200BA02C8 /* Utils */,
+				631BB2F5265ABEFB005240DB /* Screens */,
 				636F4728260A5F91001D8196 /* ExtensionDelegate.swift */,
 				636F472A260A5F91001D8196 /* NotificationController.swift */,
 				636F472C260A5F91001D8196 /* ComplicationController.swift */,
@@ -842,6 +930,23 @@
 				63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		63A8F50E265ADAF200BA02C8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				63A8F50F265ADB0100BA02C8 /* ListUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		63A8F515265AE2B900BA02C8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */,
+				63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		63B97CB9262B36D600F50E12 /* Global Extensions */ = {
@@ -1383,11 +1488,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A8F517265AE4A100BA02C8 /* LaunchSceneDelegate.swift in Sources */,
+				63A8F510265ADB0100BA02C8 /* ListUtil.swift in Sources */,
+				631BB2F7265ABF3C005240DB /* Device.swift in Sources */,
 				636F472B260A5F91001D8196 /* NotificationController.swift in Sources */,
 				636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */,
+				6311C1EB265A9E7B00C7EC68 /* Scene.swift in Sources */,
 				5E0E776E267E741A005F2264 /* StringExtension.swift in Sources */,
 				636F4729260A5F91001D8196 /* ExtensionDelegate.swift in Sources */,
+				63A8F50D265ACEA200BA02C8 /* DeviceActionsController.swift in Sources */,
+				631BB2F4265ABEDC005240DB /* DeviceRow.swift in Sources */,
+				63A8F514265ADEE700BA02C8 /* RootRowController.swift in Sources */,
 				636F4727260A5F91001D8196 /* InterfaceController.swift in Sources */,
+				63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */,
+				631BB2F0265AAB2F005240DB /* ScenesController.swift in Sources */,
+				631BB2EA265AA4F8005240DB /* SceneRow.swift in Sources */,
+				631BB2F2265AABA3005240DB /* DomoticDevicesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
