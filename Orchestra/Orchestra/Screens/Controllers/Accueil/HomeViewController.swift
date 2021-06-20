@@ -64,6 +64,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
         self.loadData()
     }
     
@@ -73,7 +74,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     func loadData(){
-        self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         self.homeVM!.loadAllDevicesAndScenes { successLoad in
             self.refreshHome(successLoad)
             self.refreshControl.endRefreshing()

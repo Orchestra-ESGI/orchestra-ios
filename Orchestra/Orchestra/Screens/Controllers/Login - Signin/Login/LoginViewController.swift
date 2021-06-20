@@ -175,21 +175,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         _ = self.userVm
             .login(email: self.emailTextField.text!, password: self.passwordTextField.text!, on: self)
             .subscribe { (userLogged) in
-                let welcomeNotificationTitle = self.notificationLocalize.loginWelcomeNotificatiionTitle + userLogged.name
-                let welcomeNotificationSubtitle = self.notificationLocalize.loginWelcomeNotificationSubtitle
                 let checkMarkTitle = self.notificationLocalize.loginCompleteCheckmarkTitle
-                self.notificationUtils
-                    .showFloatingNotificationBanner(title: welcomeNotificationTitle, subtitle: welcomeNotificationSubtitle, position: .top, style: .success)
+                self.progressUtils.dismiss()
                 self.progressUtils.displayCheckMark(title: checkMarkTitle, view: self.view)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.progressUtils.dismiss()
-                    let homeVC = HomeViewController()
-                    homeVC.userLoggedInData = userLogged
-                    self.navigationController?.pushViewController(homeVC, animated: true)
+                    self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        let homeVC = HomeViewController()
+                        homeVC.userLoggedInData = userLogged
+                        self.navigationController?.pushViewController(homeVC, animated: true)
+                    }
                 }
         } onError: { (err) in
-            print(err)
-            self.notificationUtils.showBadCredentialsNotification()
+            self.notificationUtils.handleErrorResponseNotification(err as! ServerError)
             self.progressUtils.dismiss()
         }.disposed(by: self.disposeBag)
     }

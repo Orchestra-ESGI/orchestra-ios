@@ -27,15 +27,9 @@ class UsersViewModel{
             _ = self.userWS
                 .login(email: email, password: password)
                 .subscribe(onNext: { user in
-                    self.responseHandle(status: .OK, on: vewController)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        observer.onNext(user)
-                    }
+                    observer.onNext(user)
                 }, onError: { err in
-                    self.responseHandle(status: .KOAPI, on: vewController)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        observer.onError(err)
-                    }
+                    observer.onError(err)
                 })
             
             return Disposables.create()
