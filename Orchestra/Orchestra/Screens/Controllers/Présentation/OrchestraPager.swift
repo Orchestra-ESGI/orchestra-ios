@@ -14,7 +14,7 @@ class OrchestraPager: UIViewController {
     private let pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.numberOfPages = 5
-        pc.currentPageIndicatorTintColor = .purple
+        pc.currentPageIndicatorTintColor = .red
         return pc
     }()
     
@@ -28,11 +28,12 @@ class OrchestraPager: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.slides = createSlides()
         scrollView.delegate = self
         pageControl.addTarget(self,
                               action: #selector(self.pageControlDidChanged(_:)),
                               for: .valueChanged)
+        self.configureScrollView()
+        self.slides = createSlides()
         scrollView.backgroundColor = .black
         view.addSubview(pageControl)
         view.addSubview(scrollView)
@@ -40,7 +41,15 @@ class OrchestraPager: UIViewController {
         self.setUpFAB()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     @objc private func pageControlDidChanged(_ sender: UIPageControl){
         let current = sender.currentPage
@@ -51,7 +60,6 @@ class OrchestraPager: UIViewController {
         super.viewDidLayoutSubviews()
         
         pageControl.frame = CGRect(x: 10, y: view.frame.size.height - 100, width: view.frame.size.width - 20, height: 70)
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         
         if scrollView.subviews.count == 2{
             configureScrollView()
@@ -89,8 +97,8 @@ class OrchestraPager: UIViewController {
     }
     
     private func configureScrollView(){
-        scrollView.contentSize = CGSize(width: view.frame.size.width * 5, height: scrollView.frame.size.height
-        )
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        scrollView.contentSize = CGSize(width: view.frame.size.width * 5, height: 100)
         scrollView.isPagingEnabled = true
         
         for x in 0..<self.slides.count {
@@ -105,7 +113,7 @@ class OrchestraPager: UIViewController {
         floatingActionButton.buttonImage = UIImage(systemName: "arrow.forward")
         floatingActionButton.size = CGFloat(60.0)
         floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        floatingActionButton.buttonColor = .purple
+        floatingActionButton.buttonColor = .red
         // These 2 lines trigger the handler of the first item without opening the floaty items menu
         floatingActionButton.handleFirstItemDirectly = true
         floatingActionButton.addItem(title: "") { (flb) in
@@ -134,7 +142,11 @@ class OrchestraPager: UIViewController {
 
 extension OrchestraPager: UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(floorf((Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))
-
+        if(scrollView.frame.size.width > 0){
+            pageControl.currentPage = Int(floorf((Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))
+            if pageControl.currentPage == self.slides.count - 1 {
+                self.floatingActionButton.isHidden = false
+            }
+        }
     }
 }
