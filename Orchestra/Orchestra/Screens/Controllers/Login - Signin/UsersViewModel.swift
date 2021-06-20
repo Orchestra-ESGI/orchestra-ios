@@ -86,27 +86,50 @@ class UsersViewModel{
     func redirect(){
     }
     
-    func checkLoginForm(emailTf: UITextField, passwordTf: UITextField){
-        let isValid = isFormFilled(emailTf: emailTf, passwordTf: passwordTf)
-        self.isLoginFormValid.onNext(isValid)
+    func checkForm(emailTf: UITextField, passwordTf: UITextField, confirmPasswordTf: UITextField? = nil){
+        let isValid = isFormFilled(emailTf: emailTf, passwordTf: passwordTf, confirmPasswordTf: confirmPasswordTf)
+        if (confirmPasswordTf == nil) {
+            self.isLoginFormValid.onNext(isValid)
+        } else {
+            self.isSignupFormValid.onNext(isValid)
+        }
+        
     }
     
-    private func isFormFilled(emailTf: UITextField, passwordTf: UITextField) -> Bool {
+    private func isFormFilled(emailTf: UITextField, passwordTf: UITextField, confirmPasswordTf: UITextField? = nil) -> Bool {
         guard let emailText = emailTf.text,
             let passwordText = passwordTf.text else {
                 return false
         }
         
+        
         if (emailText.count > 0 && passwordText.count > 0 && emailText.isEmailValid() && passwordText.isPasswordValid()) {
+            if let confirmPassword = confirmPasswordTf {
+                if (confirmPassword.text != passwordText) {
+                    checkOnWichTextFieldIsError(emailTf: emailTf, passwordTf: passwordTf, confirmPasswordTf: confirmPasswordTf)
+                    return false
+                }
+            }
+            
+            resetTextFields(emailTf: emailTf, passwordTf: passwordTf, confirmPasswordTf: confirmPasswordTf)
             return true
         } else {
-            checkOnWichTextFieldIsError(emailTf: emailTf, passwordTf: passwordTf)
+            checkOnWichTextFieldIsError(emailTf: emailTf, passwordTf: passwordTf, confirmPasswordTf: confirmPasswordTf)
         }
         
         return false
     }
     
-    private func checkOnWichTextFieldIsError(emailTf: UITextField, passwordTf: UITextField){
+    private func resetTextFields(emailTf: UITextField, passwordTf: UITextField, confirmPasswordTf: UITextField? = nil) {
+        
+        emailTf.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        passwordTf.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        if let confirmPassword = confirmPasswordTf {
+            confirmPassword.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        }
+    }
+    
+    private func checkOnWichTextFieldIsError(emailTf: UITextField, passwordTf: UITextField, confirmPasswordTf: UITextField? = nil){
         if (emailTf.text!.count == 0 || !emailTf.text!.isEmailValid()) {
             emailTf.isError(numberOfShakes: 3.0, revert: true)
             emailTf.setBottomLayer(color: ColorUtils.ORCHESTRA_RED_COLOR)
@@ -119,6 +142,15 @@ class UsersViewModel{
             passwordTf.setBottomLayer(color: ColorUtils.ORCHESTRA_RED_COLOR)
         } else {
             passwordTf.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+        }
+        
+        if let confirmPassword = confirmPasswordTf {
+            if (confirmPassword.text!.count == 0 || !confirmPassword.text!.isPasswordValid() || confirmPassword.text != passwordTf.text) {
+                confirmPassword.isError(numberOfShakes: 3.0, revert: true)
+                confirmPassword.setBottomLayer(color: ColorUtils.ORCHESTRA_RED_COLOR)
+            } else {
+                confirmPassword.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
+            }
         }
     }
     

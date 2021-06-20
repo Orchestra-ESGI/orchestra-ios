@@ -68,11 +68,12 @@
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Account creation";
 "signup.vc.appbar.send.form" = "Continue";
-"signup.vc.welcome.text" = "Create an account to synchronise all your information";
+"signup.vc.welcome.text" = "Create an account to synchronise all your <a>information<a>";
 "signup.vc.email.label.text" = "Email";
 "signup.vc.password.label.text" = "Password";
 "signup.vc.password.second.label.text" = "Confirm your password";
 "signup.vc.name.label.text" = "Name";
+"signup.vc.button.text" = "Create account";
 
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "My items";

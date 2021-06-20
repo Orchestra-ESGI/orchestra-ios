@@ -69,11 +69,12 @@
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "创建一个账户";
 "signup.vc.appbar.send.form" = "继续";
-"signup.vc.welcome.text" = "创建一个账户来同步您的所有信息";
+"signup.vc.welcome.text" = "创建一个账户来同步您的所有信<a>息<a>";
 "signup.vc.email.label.text" = "电子邮件";
 "signup.vc.password.label.text" = "密码";
 "signup.vc.password.second.label.text" = "确认密码";
 "signup.vc.name.label.text" = "名称";
+"signup.vc.button.text" = "创建账户";
 
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "我的对象";

@@ -69,11 +69,12 @@
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Criar uma conta";
 "signup.vc.appbar.send.form" = "Contador";
-"signup.vc.welcome.text" = "Crie uma conta para sincronizar toda a sua informação";
+"signup.vc.welcome.text" = "Crie uma conta para sincronizar toda a sua <a>informação<a>";
 "signup.vc.email.label.text" = "Email";
 "signup.vc.password.label.text" = "Palavra-passe";
 "signup.vc.password.second.label.text" = "Confirmar palavra-passe";
 "signup.vc.name.label.text" = "Nome";
+"signup.vc.button.text" = "Criar Conta";
 
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Os meus objectos";

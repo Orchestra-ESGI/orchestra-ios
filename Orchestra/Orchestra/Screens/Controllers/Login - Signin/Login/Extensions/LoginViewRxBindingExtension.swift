@@ -14,7 +14,7 @@ extension LoginViewController{
         self.loginButton
             .rx.tap
             .bind {
-                self.userVm.checkLoginForm(emailTf: (self.emailTextField)!, passwordTf: (self.passwordTextField)!)
+                self.userVm.checkForm(emailTf: self.emailTextField, passwordTf: self.passwordTextField)
             }
             .disposed(by: self.disposeBag)
     }
@@ -33,7 +33,7 @@ extension LoginViewController{
         self.signinButton
             .rx.tap
             .bind { [weak self] in
-                let signinVC = SigninViewController()
+                let signinVC = SignupViewController()
                 self?.navigationController?.pushViewController(signinVC, animated: true)
             }
             .disposed(by: self.disposeBag)

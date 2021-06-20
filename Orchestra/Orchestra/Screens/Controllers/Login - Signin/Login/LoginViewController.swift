@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var passwordForgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signinButton: UIButton!
@@ -45,6 +47,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.setUpUI()
         self.setUpUiBindings()
         self.setUpObservers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.addObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeObserver()
     }
     
     private func getPermissionsUser(){
@@ -92,6 +104,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
         self.passwordTextField.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
         self.passwordTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
+        self.passwordTextField.autocorrectionType = .no
         self.passwordTextField.clipsToBounds = true
         
         self.loginButton.layer.borderWidth = 3
@@ -209,11 +222,51 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func setUpTextFields(){
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
+        
+        self.emailTextField.returnKeyType = .next
+        self.passwordTextField.returnKeyType = .done
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return false
+        
+        switch textField {
+        case self.emailTextField:
+            self.passwordTextField.becomeFirstResponder()
+            break
+        case self.passwordTextField:
+            self.passwordTextField.resignFirstResponder()
+            break
+        default:
+            break
+        }
+        return true
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { notification in
+            self.keyboardWillHide(notification: notification)
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { notification in
+            self.keyboardWillShow(notification: notification)
+        }
+    }
+    
+    func removeObserver() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+            let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+                return
+        }
+        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height + 20, right: 0)
+        self.scrollView.contentInset = contentInset
+    }
+    
+    func keyboardWillHide(notification: Notification) {
+        self.scrollView.contentInset = UIEdgeInsets.zero
     }
 
 }

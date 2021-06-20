@@ -18,6 +18,7 @@
                 <outlet property="passwordForgotButton" destination="or7-K4-mpN" id="jNa-uz-bWY"/>
                 <outlet property="passwordLabel" destination="V1t-QJ-W2W" id="LGr-VG-6L7"/>
                 <outlet property="passwordTextField" destination="Uw1-No-Byv" id="mw1-B7-XIl"/>
+                <outlet property="scrollView" destination="eeJ-Rl-1r2" id="93j-2O-4zU"/>
                 <outlet property="signinButton" destination="nGY-Y3-cgv" id="MfN-S8-zfh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -47,7 +48,6 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="VBb-OS-HB1"/>
                                     </constraints>
-                                    <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>

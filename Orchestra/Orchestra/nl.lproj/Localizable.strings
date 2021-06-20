@@ -69,11 +69,12 @@
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Maak een account aan";
 "signup.vc.appbar.send.form" = "Ga door";
-"signup.vc.welcome.text" = "Maak een account aan om al uw informatie te synchroniseren";
+"signup.vc.welcome.text" = "Maak een account aan om al uw informatie te <a>synchroniseren<a>";
 "signup.vc.email.label.text" = "E-mail";
 "signup.vc.password.label.text" = "Wachtwoord";
 "signup.vc.password.second.label.text" = "Bevestig wachtwoord";
 "signup.vc.name.label.text" = "Naam";
+"signup.vc.button.text" = "Maak account aan";
 
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mijn objecten";

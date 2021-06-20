@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         } else {
             let isFirstOpening = preferences.bool(forKey: showPager)
-            rootController = isFirstOpening ?  UINavigationController(rootViewController: HomeViewController()) : OrchestraPager()
+            rootController = UINavigationController(rootViewController: isFirstOpening ? LoginViewController() : HomeViewController())
         }
         
         window?.rootViewController = rootController

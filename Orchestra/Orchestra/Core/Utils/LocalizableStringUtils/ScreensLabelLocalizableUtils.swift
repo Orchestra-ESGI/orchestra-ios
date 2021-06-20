@@ -58,6 +58,7 @@ class ScreensLabelLocalizableUtils{
     let signupVcPasswordLabelText = NSLocalizedString("signup.vc.password.label.text", comment: "")
     let signupVcPasswordVerificationLabelText = NSLocalizedString("signup.vc.password.second.label.text", comment: "")
     let signnupVcNameLabelText = NSLocalizedString("signup.vc.name.label.text", comment: "")
+    let signupVcButtonText = NSLocalizedString("signup.vc.button.text", comment: "")
     
     // - MARK: Home Labels & text
     let homeHeaderObjectsText = NSLocalizedString("home.collection.header.objects", comment: "")
