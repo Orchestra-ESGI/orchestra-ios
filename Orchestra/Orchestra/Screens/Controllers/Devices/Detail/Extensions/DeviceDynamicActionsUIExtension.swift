@@ -29,7 +29,7 @@ extension DeviceInfoViewController{
             if( color != nil && colorTemp != nil){
                 // show segmentedView controller
                 self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: lastElementInsertedYpos)
-                lastElementInsertedYpos += 100
+                lastElementInsertedYpos += 130
             }
         } else if(state != nil){
             self.insertOnOffContainer(xPos: 0, yPos: lastElementInsertedYpos)
@@ -113,6 +113,7 @@ extension DeviceInfoViewController{
         sliderWithImageContainer.addSubview(rightSliderView)
         
         let slider = UISlider()
+        slider.isContinuous = false
         slider.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         slider.frame = CGRect(x: sliderIconsHeight,
                               y: 5,
@@ -146,7 +147,7 @@ extension DeviceInfoViewController{
         let colorAndtempContainerView = UIView(frame: CGRect(x: xPos,
                                                              y: yPos,
                                                              width: containerWidth,
-                                                             height: 100))
+                                                             height: 130))
         
         let xPos = CGFloat(15)
         
@@ -169,32 +170,66 @@ extension DeviceInfoViewController{
                                 for: .valueChanged)
         colorAndtempContainerView.addSubview(segmentedView)
         
-        let actionLabel = UILabel()
-        actionLabel.text = "Couleur"
-        actionLabel.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
-        actionLabel.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
-        if self.traitCollection.userInterfaceStyle == .dark {
-            actionLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }else{
-            actionLabel.textColor = .black
-        }
-        actionLabel.numberOfLines = 4
-        actionLabel.textAlignment = .left
-        actionLabel.frame = CGRect(x: 15,
-                                 y: segmentedView.frame.height + segmentedView.frame.origin.y,
+        self.dynamicColorContainerLabel = UILabel()
+        dynamicColorContainerLabel!.text = "Couleur"
+        dynamicColorContainerLabel!.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
+        dynamicColorContainerLabel!.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
+        dynamicColorContainerLabel!.numberOfLines = 1
+        dynamicColorContainerLabel!.textAlignment = .left
+        dynamicColorContainerLabel!.frame = CGRect(x: 15,
+                                 y: 25 + segmentedView.frame.height + segmentedView.frame.origin.y,
                                  width: containerWidth,
                                  height: 25)
+        self.dynamicColorContainerLabel!.isHidden = false
         
-        let colorSlider = ColorSlider(orientation: .horizontal, previewSide: .top)
-        colorSlider.frame = CGRect(x: 15,
-                                   y: actionLabel.frame.height + actionLabel.frame.origin.y + 15,
+        self.dynamicTemperatureContainerLabel = UILabel()
+        self.dynamicTemperatureContainerLabel!.text = "Température"
+        self.dynamicTemperatureContainerLabel!.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
+        self.dynamicTemperatureContainerLabel!.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
+        self.dynamicTemperatureContainerLabel!.numberOfLines = 1
+        self.dynamicTemperatureContainerLabel!.textAlignment = .left
+        self.dynamicTemperatureContainerLabel!.frame = CGRect(x: 15,
+                                 y: 25 + segmentedView.frame.height + segmentedView.frame.origin.y,
+                                 width: containerWidth,
+                                 height: 25)
+        self.dynamicTemperatureContainerLabel!.isHidden = true
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            dynamicColorContainerLabel!.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            self.dynamicTemperatureContainerLabel!.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }else{
+            dynamicColorContainerLabel!.textColor = .black
+            self.dynamicTemperatureContainerLabel!.textColor = .black
+        }
+
+        self.dynamicColorContainerSlider = ColorSlider(orientation: .horizontal, previewSide: .top)
+        self.dynamicColorContainerSlider!.addTarget(self,
+                                                    action: #selector(changedColor(_:event:)),
+                                                    for: .allTouchEvents)
+        self.dynamicColorContainerSlider!.frame = CGRect(x: 15,
+                                   y: dynamicColorContainerLabel!.frame.height + dynamicColorContainerLabel!.frame.origin.y + 15,
                                     width: colorSliderWidth,
                                     height: colorSliderHeight)
+        self.dynamicColorContainerSlider!.isHidden = false
+        self.dynamicColorContainerSlider!.isEnabled = true
         
-        colorSlider.addTarget(self, action: #selector(changedColor(_:)), for: .valueChanged)
+        self.dynamicTemperatureContainerSlider = UISlider()
+        self.dynamicTemperatureContainerSlider!.tintColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        self.dynamicTemperatureContainerSlider!.isContinuous = false
+        self.dynamicTemperatureContainerSlider!.frame = CGRect(x: 15,
+                                         y: self.dynamicTemperatureContainerLabel!.frame.height + self.dynamicTemperatureContainerLabel!.frame.origin.y + 15,
+                                          width: colorSliderWidth,
+                                          height: colorSliderHeight)
+        self.dynamicTemperatureContainerSlider!.addTarget(self, action: #selector(self.sliderDidChange(_:)), for: .valueChanged)
+        self.dynamicTemperatureContainerSlider!.isHidden = true
+        self.dynamicTemperatureContainerSlider!.isEnabled = false
+        
+        self.dynamicTemperatureContainerSlider!.addTarget(self, action: #selector(sliderDidChange(_:)), for: .valueChanged)
 
-        colorAndtempContainerView.addSubview(actionLabel)
-        colorAndtempContainerView.addSubview(colorSlider)
+        colorAndtempContainerView.addSubview(dynamicColorContainerLabel!)
+        colorAndtempContainerView.addSubview(self.dynamicTemperatureContainerLabel!)
+        colorAndtempContainerView.addSubview(self.dynamicColorContainerSlider!)
+        colorAndtempContainerView.addSubview(self.dynamicTemperatureContainerSlider!)
         
         self.dynamicViewContainer.addSubview(colorAndtempContainerView)
     }

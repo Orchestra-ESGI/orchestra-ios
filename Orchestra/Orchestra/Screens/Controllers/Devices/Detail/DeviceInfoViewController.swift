@@ -40,6 +40,10 @@ class DeviceInfoViewController: UIViewController {
     
     var actionToSend: [String: Any] = [:]
     var devicesActionsValues: [String: Any] = [:]
+    var dynamicColorContainerLabel: UILabel?
+    var dynamicColorContainerSlider: ColorSlider?
+    var dynamicTemperatureContainerLabel: UILabel?
+    var dynamicTemperatureContainerSlider: UISlider?
     
     var favButton: UIBarButtonItem?
     var okButton: UIBarButtonItem?
@@ -59,8 +63,24 @@ class DeviceInfoViewController: UIViewController {
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             print("Current state is Color")
+            self.dynamicColorContainerLabel?.isHidden = false
+            self.dynamicTemperatureContainerLabel?.isHidden = true
+            
+            self.dynamicColorContainerSlider?.isHidden = false
+            self.dynamicColorContainerSlider?.isEnabled = true
+            
+            self.dynamicTemperatureContainerSlider?.isHidden = true
+            self.dynamicTemperatureContainerSlider?.isEnabled = false
         }else{
             print("Current state is Temp")
+            self.dynamicColorContainerLabel?.isHidden = true
+            self.dynamicTemperatureContainerLabel?.isHidden = false
+            
+            self.dynamicColorContainerSlider?.isHidden = true
+            self.dynamicColorContainerSlider?.isEnabled = false
+            
+            self.dynamicTemperatureContainerSlider?.isHidden = false
+            self.dynamicTemperatureContainerSlider?.isEnabled = true
         }
     }
     
@@ -81,18 +101,23 @@ class DeviceInfoViewController: UIViewController {
     
     @objc func sliderDidChange(_ sender: UISlider){
         if( sender.tag == 0){
-            print("Brightness slider value changed to value: \(sender.value)")
             self.deviceData?.actions?.brightness?.currentState = Int(sender.value)
         }else{
-            print("Color temp slider value changed to value: \(sender.value)")
             self.deviceData?.actions?.colorTemp?.currentState = Int(sender.value)
         }
         self.updateDeviceActions()
     }
     
-    @objc func changedColor(_ slider: ColorSlider) {
-        self.deviceData?.actions?.color?.currentState = slider.color.toHexString()
-        self.updateDeviceActions()
+    @objc func changedColor(_ slider: ColorSlider, event: UIEvent) {
+        if let touchEvent = event.allTouches?.first {
+            switch touchEvent.phase {
+            case .ended:
+                self.deviceData?.actions?.color?.currentState = slider.color.toHexString()
+                self.updateDeviceActions()
+            default:
+                break
+            }
+        }
     }
     
     private func updateDeviceActions(){
