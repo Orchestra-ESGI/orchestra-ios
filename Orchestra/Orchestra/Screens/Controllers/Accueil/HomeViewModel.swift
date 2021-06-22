@@ -53,7 +53,10 @@ class HomeViewModel{
             self.deviceStream.onNext(devices)
         } onError: { err in
             self.deviceStream.onError(err)
-        }
+        } onCompleted: {
+            self.deviceStream.onCompleted()
+        }.disposed(by: self.disposeBag)
+        
         return self.deviceVM!.getAllDevices() //---> Real data
     }
     
@@ -62,7 +65,10 @@ class HomeViewModel{
             self.sceneStream.onNext(scenes)
         } onError: { err in
             self.sceneStream.onError(err)
-        }
+        } onCompleted: {
+            self.deviceStream.onCompleted()
+        }.disposed(by: self.disposeBag)
+        
         return self.sceneVm!.getAllScenes()
     }
     

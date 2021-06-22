@@ -23,17 +23,7 @@ class UsersViewModel{
     let currentUser = PublishSubject<UserDto>()
     
     func login(email: String, password: String, on vewController: UIViewController) -> Observable<UserDto>{
-        return Observable<UserDto>.create { (observer) -> Disposable in
-            _ = self.userWS
-                .login(email: email, password: password)
-                .subscribe(onNext: { user in
-                    observer.onNext(user)
-                }, onError: { err in
-                    observer.onError(err)
-                })
-            
-            return Disposables.create()
-        }
+        return self.userWS.login(email: email, password: password)
 
     }
     

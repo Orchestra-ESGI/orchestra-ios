@@ -11,13 +11,14 @@ import ObjectMapper
 import RxSwift
 import RxCocoa
 
-class SceneServices: RootApiService{
+class SceneServices{
+    let rootApiService = RootApiService.shared
     var sceneStream = PublishSubject<[SceneDto]>()
     
     func getAllScenes() -> Observable<Bool>{
         
         return Observable<Bool>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/scene/all", method: .get, parameters: nil, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scene/all", method: .get, parameters: nil, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -37,15 +38,11 @@ class SceneServices: RootApiService{
                             self.sceneStream.onNext(allMappedScenes)
                             observer.onNext(true)
                         case .failure(_):
-                            guard let errorJson =  response.value  else {
-                                return
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
-                            print("Error - SceneServices - getAllScenes()")
-                            
-                            self.sceneStream.onError(errorDto!)
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(stream: self.sceneStream,
+                                                                    response: callResponse)
                             observer.onNext(false)
+                            print("Error - SceneServices - getAllScenes()")
                     }
                 }
             return Disposables.create()
@@ -55,7 +52,7 @@ class SceneServices: RootApiService{
     func removeScene(idsScene: [String]) -> Observable<Bool>{
 
         return Observable<Bool>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .delete, parameters: ["ids": idsScene], encoding: JSONEncoding.default, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .delete, parameters: ["ids": idsScene], encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -72,16 +69,16 @@ class SceneServices: RootApiService{
     
     func createNewScene(scene: [String: Any]) -> Observable<Bool>{
         return Observable<Bool>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .post, parameters: scene, encoding: JSONEncoding.default,  headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .post, parameters: scene, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
                         case .success( _):
                             observer.onNext(true)
                         case .failure(_):
+                            let callReponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callReponse)
                             print("Error - SceneServices - createNewScene()")
-                            let error = response.response!.statusCode
-                            self.handleErrorResponse(observer: observer, status: error)
                     }
                 }
             return Disposables.create();
@@ -89,7 +86,7 @@ class SceneServices: RootApiService{
     }
     
     func launchScene(id: String){
-        _ = AF.request("\(RootApiService.BASE_API_URL)/scene/\(id)", method: .post, parameters: nil, encoding: JSONEncoding.default,  headers: self.headers)
+        _ = AF.request("\(RootApiService.BASE_API_URL)/scene/\(id)", method: .post, parameters: nil, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {

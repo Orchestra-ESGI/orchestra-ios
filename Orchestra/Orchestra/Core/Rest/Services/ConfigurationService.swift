@@ -13,11 +13,12 @@ import RxCocoa
 import RxSwift
 import ObjectMapper
 
-class ConfigurationService: RootApiService{
+class ConfigurationService{
+    let rootApiService = RootApiService.shared
     var confStream = PublishSubject<[SupportedAccessoriesDto]>()
     
     func getCurrentAccessoriesConfig() {
-        AF.request("\(RootApiService.BASE_API_URL)/device/supported", method: .get, encoding: JSONEncoding.default, headers: headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/supported", method: .get, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
@@ -35,6 +36,7 @@ class ConfigurationService: RootApiService{
                     print("ko")
                     guard let errorJson =  response.error,
                           let error = errorJson.underlyingError else {
+                        self.confStream.onCompleted()
                         return
                     }
                     

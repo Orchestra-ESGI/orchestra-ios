@@ -11,14 +11,15 @@ import RxCocoa
 import RxSwift
 import ObjectMapper
 
-class DeviceServices: RootApiService{
+class DeviceServices{
+    let rootApiService = RootApiService.shared
     let devicesStream = PublishSubject<[HubAccessoryConfigurationDto]>()
     
     func getAllDevices(_ devicesStream: PublishSubject<[HubAccessoryConfigurationDto]>) -> Observable<Bool>{
         return Observable<Bool>.create { observer in
             var hubAccessoriesMapped : [HubAccessoryConfigurationDto] = []
             
-            AF.request("\(RootApiService.BASE_API_URL)/device/all", method: .get, encoding: JSONEncoding.default, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/device/all", method: .get, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                 switch response.result {
@@ -73,8 +74,8 @@ class DeviceServices: RootApiService{
                         devicesStream.onNext(hubAccessoriesMapped)
                     case .failure(_):
                         print("ko")
-                        let error = response.response!.statusCode
-                        self.handleErrorResponse(observer: observer, status: error)
+                        let callResponse = response.response
+                        self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                 }
             }
             return Disposables.create()
@@ -86,7 +87,7 @@ class DeviceServices: RootApiService{
         manager.session.configuration.timeoutIntervalForRequest = 3
         return Observable<Bool>.create { observer in
             
-            manager.request("\(RootApiService.BASE_API_URL)/device", method: .delete, parameters: ["friendly_names": friendlyNames], encoding: JSONEncoding.default, headers: self.headers)
+            manager.request("\(RootApiService.BASE_API_URL)/device", method: .delete, parameters: ["friendly_names": friendlyNames], encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                 switch response.result {
@@ -103,15 +104,13 @@ class DeviceServices: RootApiService{
     }
     
     
-    func getAllDeviceList() -> Observable<Bool> { // Works
-        //let manager = Alamofire.SessionManager.default
+    func getAllDeviceList() -> Observable<Bool> {
         let manager = Alamofire.Session.default
-        //manager.session.configuration.timeoutIntervalForRequest = 3
         
         return Observable<Bool>.create { observer in
             
             //AF.request
-            manager.request("\(RootApiService.BASE_API_URL)/device/all", method: .get, parameters: nil, headers: self.headers)
+            manager.request("\(RootApiService.BASE_API_URL)/device/all", method: .get, parameters: nil, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                 switch response.result {
@@ -130,14 +129,9 @@ class DeviceServices: RootApiService{
                         self.devicesStream.onNext(allMappedDevices)
                         observer.onNext(true)
                     case .failure(_):
-                        //((response.error as! AFError).underlyingError as! Error)
-                        guard let errorJson =  response.error,
-                              let error = errorJson.underlyingError else {
-                            return
-                        }
-                        
-                        print("Error - SceneServices - getAllScenes()")
-                        self.devicesStream.onError(error)
+                        print("Error - DeviceServices - getAllDeviceList()")
+                        let callResponse = response.response
+                        self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                         observer.onNext(false)
                 }
             }
@@ -186,7 +180,7 @@ class DeviceServices: RootApiService{
     }
     
     func saveDevice(_ body: [String: Any]) {
-        AF.request("\(RootApiService.BASE_API_URL)/device/add", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/add", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
@@ -199,7 +193,7 @@ class DeviceServices: RootApiService{
     }
     
     func resetDevice() {
-        AF.request("\(RootApiService.BASE_API_URL)/device/reset", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: self.headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/reset", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {
@@ -212,7 +206,7 @@ class DeviceServices: RootApiService{
     }
     
     func sendDeviceAction(_ body: [String: Any]) {
-        AF.request("\(RootApiService.BASE_API_URL)/device/action", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
+        AF.request("\(RootApiService.BASE_API_URL)/device/action", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {

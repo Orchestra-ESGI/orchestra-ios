@@ -20,6 +20,7 @@ class NewDevicePairingViewController: UIViewController {
     let localizeNotifications = NotificationLocalizableUtils.shared
     let localizeLabel = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
+    let alertUtils = AlertUtils.shared
     
     var device: HubAccessoryConfigurationDto?
     
@@ -65,6 +66,10 @@ class NewDevicePairingViewController: UIViewController {
                 }
         } onError: { err in
             self.notificationsUtils.showBasicBanner(title: "Une erreur est survenue", subtitle: "Impossible de récupérer la configartion actuelle du Hub", position: .top, style: .danger)
+        } onCompleted: {
+            self.progressUtils.dismiss()
+            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         }
 
     }

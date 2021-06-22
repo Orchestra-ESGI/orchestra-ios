@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 
 class HouseServices: RootApiService{
+    let rootApiService = RootApiService.shared
     
     func getAllHouses(idUser: String) -> Observable<[HouseDto]>? {
         var body: [String: Any] = [:]
@@ -65,14 +66,10 @@ class HouseServices: RootApiService{
                                 removedHouses.append(Mapper<HouseDto>().map(JSONObject: houseJson)!)
                             }
                             observer.onNext(removedHouses)
-                    case .failure(_):
-                            guard let errorJson =  response.value  else {
-                                return observer.onCompleted()
-                            }
-                            let errorDto = Mapper<ErrorDto>().map(JSONObject: errorJson)
-                            
+                        case .failure(_):
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                             print("Error - HouseServices - removeScene()")
-                            observer.onError(errorDto!)
                     }
                 }
             return Disposables.create();

@@ -11,11 +11,12 @@ import ObjectMapper
 import RxSwift
 import RxCocoa
 
-class UserServices: RootApiService{
+class UserServices{
+    let rootApiService = RootApiService.shared
     
     func getAllUsers() -> Observable<[UserDto]>? {
         return Observable<[UserDto]>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .get, parameters: nil, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .get, parameters: nil, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -29,8 +30,8 @@ class UserServices: RootApiService{
                             }
                             observer.onNext(allMappedUsers)
                         case .failure(_):
-                            let error = response.response!.statusCode
-                            self.handleErrorResponse(observer: observer, status: error)
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                     }
                 }
 
@@ -45,7 +46,7 @@ class UserServices: RootApiService{
         
         
         return Observable<[String]>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .delete, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .delete, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -57,8 +58,8 @@ class UserServices: RootApiService{
                             }
                             observer.onNext(usersIds)
                         case .failure(_):
-                            let error = response.response!.statusCode
-                            self.handleErrorResponse(observer: observer, status: error)
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                     }
                 }
             return Disposables.create();
@@ -91,7 +92,7 @@ class UserServices: RootApiService{
         
         
         return Observable<UserDto>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/users/update/\(credentialName)", method: .put, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/users/update/\(credentialName)", method: .put, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -102,8 +103,8 @@ class UserServices: RootApiService{
                             let updatedUser = Mapper<UserDto>().map(JSONObject: responseData)!
                             observer.onNext(updatedUser)
                         case .failure( _):
-                            let error = response.response!.statusCode
-                            self.handleErrorResponse(observer: observer, status: error)
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                     }
                 }
             return Disposables.create();
@@ -116,7 +117,7 @@ class UserServices: RootApiService{
         body["password"] = password
         
         return Observable<UserDto>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/user/login", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/user/login", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -129,8 +130,8 @@ class UserServices: RootApiService{
                             
                             observer.onNext(user)
                         case .failure( _):
-                            let error = response.response!.statusCode
-                            self.handleErrorResponse(observer: observer, status: error)
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                     }
                 }
             return Disposables.create();
@@ -143,7 +144,7 @@ class UserServices: RootApiService{
         body["password"] = password
         
         return Observable<UserDto>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/user/signup", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/user/signup", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -154,8 +155,8 @@ class UserServices: RootApiService{
                             let signedUser = Mapper<UserDto>().map(JSONObject: responseData)!
                             observer.onNext(signedUser)
                         case .failure( _):
-                            let error = response.response!.statusCode
-                            self.handleErrorResponse(observer: observer, status: error)
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                         }
                 }
             return Disposables.create();
@@ -170,7 +171,7 @@ class UserServices: RootApiService{
         let preferences = UserDefaults.standard
         if preferences.object(forKey: "bearer-token") == nil {
             preferences.set(token, forKey: "bearer-token")
-            self.setHeaderToken(for: token)
+            self.rootApiService.setHeaderToken(for: token)
             let didSave = preferences.synchronize()
             if !didSave {
                 NSLog("Error while saving user data in shared preferences")

@@ -11,7 +11,9 @@ import RxSwift
 import ObjectMapper
 import Alamofire
 
-class HomeService: RootApiService{
+class HomeService{
+    let rootApiService = RootApiService.shared
+    
     let deviceService = DeviceServices()
     let sceneService = FakeSceneDataService() //SceneServices()
     let configurationService = ConfigurationService()

@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     let screenLabelLocalize = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     let colorUtils = ColorUtils.shared
+    let alertUtils = AlertUtils.shared
     
     
     // - MARK: Data
@@ -238,6 +239,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
                     print("Err when removing device")
                     observer.onNext(false)
+                } onCompleted: {
+                    print("onCompleted() called in setScenesStreamObserver()")
+                    self.progressUtils.dismiss()
+                    let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+                    self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{
                 observer.onNext(true)
@@ -264,6 +270,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
                     print("Err when removing device")
                     observer.onNext(false)
+                } onCompleted: {
+                    print("onCompleted() called in setScenesStreamObserver()")
+                    self.progressUtils.dismiss()
+                    let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+                    self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{
                 observer.onNext(true)

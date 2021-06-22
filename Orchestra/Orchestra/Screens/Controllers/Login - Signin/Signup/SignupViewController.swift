@@ -32,6 +32,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     let notificationLocalize = NotificationLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     let screenLocalize = ScreensLabelLocalizableUtils.shared
+    let alertUtils = AlertUtils.shared
     
     let disposeBag = DisposeBag()
     
@@ -100,13 +101,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         } onError: { (err) in
             self.notificationUtils.handleErrorResponseNotification(err as! ServerError)
             self.progressUtils.dismiss()
-        }.disposed(by: self.disposeBag)
+        } onCompleted: {
+            self.progressUtils.dismiss()
+            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
+        } .disposed(by: self.disposeBag)
 
     }
     
     private func showInfoAlert(){
         let alertTitle = "Information"
-        let alertMessage = "Nous vous avons envoyé un lien de conformation de votre compte, verifiez vos mail et spam"
+        let alertMessage = "Nous vous avons envoyé un lien de confirmation de votre compte, verifiez vos mails et spams"
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "C'est noté", style: .cancel) { action in

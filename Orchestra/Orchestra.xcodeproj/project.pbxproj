@@ -28,7 +28,6 @@
 		630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B100F261E2A9900B41804 /* SceneViewController.xib */; };
 		630B1017261E2DDC00B41804 /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */; };
 		630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B1016261E2DDC00B41804 /* DeviceInfoViewController.xib */; };
-		630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE209261479B300F88DB2 /* RaspberryService.swift */; };
 		630BE21526147A4A00F88DB2 /* UserServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630BE21426147A4A00F88DB2 /* UserServices.swift */; };
 		6311C1EB265A9E7B00C7EC68 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6311C1EA265A9E7B00C7EC68 /* Scene.swift */; };
 		631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631BAB1C2610EA38003F65F9 /* StringUtils.swift */; };
@@ -118,6 +117,7 @@
 		63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */; };
 		63B435322668133A004D12A7 /* DeviceFormTvActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */; };
 		63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */; };
+		63C6C43B26827113007BC8B5 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C43A26827113007BC8B5 /* AlertUtils.swift */; };
 		63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A94B2661680300DEDB96 /* SupportedDevices.json */; };
 		63D1A94E2661684800DEDB96 /* SupportedAccessoriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */; };
 		63D1A950266168BA00DEDB96 /* SupportedDevicesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */; };
@@ -223,7 +223,6 @@
 		630B100F261E2A9900B41804 /* SceneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneViewController.xib; sourceTree = "<group>"; };
 		630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
 		630B1016261E2DDC00B41804 /* DeviceInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceInfoViewController.xib; sourceTree = "<group>"; };
-		630BE209261479B300F88DB2 /* RaspberryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaspberryService.swift; sourceTree = "<group>"; };
 		630BE21426147A4A00F88DB2 /* UserServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServices.swift; sourceTree = "<group>"; };
 		630E84A62615CFC4005CE9A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		630E84A72615CFC4005CE9A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
@@ -344,6 +343,7 @@
 		63BB149A2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63BB149B2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Interface.strings"; sourceTree = "<group>"; };
 		63BB149C2615CEF7001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		63C6C43A26827113007BC8B5 /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
 		63D1A94B2661680300DEDB96 /* SupportedDevices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SupportedDevices.json; sourceTree = "<group>"; };
 		63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedAccessoriesDto.swift; sourceTree = "<group>"; };
 		63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedDevicesDto.swift; sourceTree = "<group>"; };
@@ -452,7 +452,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
 			isa = PBXGroup;
 			children = (
 				5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */,
@@ -460,7 +459,7 @@
 			);
 			path = "QRCode-Reader";
 			sourceTree = "<group>";
-		};
+		5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
 		5E2B10E2267F7F55003595CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,7 +482,7 @@
 			children = (
 				5E1A1787267FA96B0084FB9F /* QRCode-Reader */,
 				63D1A95326616B2C00DEDB96 /* Login - Signin */,
-				635DD50E261A177F001D1EFC /* Présentation Pager */,
+				635DD50E261A177F001D1EFC /* Présentation Pager */,
 				634F9541261A33E80092C269 /* Accueil */,
 				630B100C261E2A2600B41804 /* Scenes */,
 				63D1A955266170E700DEDB96 /* Devices */,
@@ -656,7 +655,6 @@
 			isa = PBXGroup;
 			children = (
 				633E7E4B2610D12D0094B148 /* RootApiService.swift */,
-				630BE209261479B300F88DB2 /* RaspberryService.swift */,
 				630BE21426147A4A00F88DB2 /* UserServices.swift */,
 				638AB8E5261494510020EE75 /* SceneServices.swift */,
 				638AB8EA261495EB0020EE75 /* HouseServices.swift */,
@@ -827,7 +825,7 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
-		635DD50E261A177F001D1EFC /* Présentation Pager */ = {
+		635DD50E261A177F001D1EFC /* Présentation Pager */ = {
 			isa = PBXGroup;
 			children = (
 				63065A2E263DFC5800CBE30D /* OrchestraPager.swift */,
@@ -933,6 +931,7 @@
 				635DD4F7261A0BDC001D1EFC /* AppError.swift */,
 				63E84FBA262B81AC00AA9558 /* ColorUtils.swift */,
 				5E0E7756267E60CD005F2264 /* Font.swift */,
+				63C6C43A26827113007BC8B5 /* AlertUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1458,7 +1457,6 @@
 				63FFB104267543840040B4FC /* DevicesAlert.swift in Sources */,
 				5E1A178B267FC55D0084FB9F /* QRCodeReaderOverlay.swift in Sources */,
 				63D235EA2639CCA700D2485F /* HomeVcObserversExtension.swift in Sources */,
-				630BE20A261479B300F88DB2 /* RaspberryService.swift in Sources */,
 				63252A44266E94E500179CFB /* ConfigurationService.swift in Sources */,
 				63D1A950266168BA00DEDB96 /* SupportedDevicesDto.swift in Sources */,
 				638AB8EB261495EB0020EE75 /* HouseServices.swift in Sources */,
@@ -1475,6 +1473,7 @@
 				63D1A958266171EC00DEDB96 /* NewDevicePairingViewController.swift in Sources */,
 				63F854DF2643108F00983044 /* OrchestraPermissions.swift in Sources */,
 				637FB6BB2615CBAE00790735 /* NotificationLocalizableUtils.swift in Sources */,
+				63C6C43B26827113007BC8B5 /* AlertUtils.swift in Sources */,
 				637FB62C2615125000790735 /* UsersViewModel.swift in Sources */,
 				635DD4B02618867E001D1EFC /* LoginViewController.swift in Sources */,
 				63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */,
@@ -1735,14 +1734,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9SKDF3Q9A6;
+				DEVELOPMENT_TEAM = X5HDSJGV3Z;
 				INFOPLIST_FILE = "Orchestra WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nassim.Orchestra.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1784,10 +1783,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9SKDF3Q9A6;
+				DEVELOPMENT_TEAM = X5HDSJGV3Z;
 				IBSC_MODULE = Orchestra_WatchKit_Extension;
 				INFOPLIST_FILE = "Orchestra WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nassim.Orchestra.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1808,7 +1807,7 @@
 				DEVELOPMENT_TEAM = 9SKDF3Q9A6;
 				IBSC_MODULE = Orchestra_WatchKit_Extension;
 				INFOPLIST_FILE = "Orchestra WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nassim.Orchestra.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1828,14 +1827,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9SKDF3Q9A6;
+				DEVELOPMENT_TEAM = X5HDSJGV3Z;
 				INFOPLIST_FILE = Orchestra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nassim.Orchestra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -1852,14 +1851,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9SKDF3Q9A6;
+				DEVELOPMENT_TEAM = X5HDSJGV3Z;
 				INFOPLIST_FILE = Orchestra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nassim.Orchestra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

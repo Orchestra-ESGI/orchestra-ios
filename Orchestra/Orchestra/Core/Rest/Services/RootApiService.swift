@@ -15,8 +15,11 @@ public class RootApiService{
     /// Les fonctions globale de gestion du routing de l'app se fait ici
     
     static var shared = RootApiService()
+    static let RAMZYPI_IP = "192.168.1.118"
+    static let NASSIMPI_IP = "192.168.1.33"
+    static let LOCAL_IP = "192.168.1.105"
     
-    static var BASE_API_URL = "http://192.168.1.33:3000" //"http://nassimpi.local:3000"
+    static var BASE_API_URL = "http://\(LOCAL_IP):3000"
     var stringUtils = StringUtils.shared
     var fileUtils = FileUtils.shared
 
@@ -29,40 +32,64 @@ public class RootApiService{
     ]
 
     func setHeaderToken(for token: String){
-        self.headers["Authorization"] = token
+        self.headers["Authorization"] = "Bearer \(token)"
+        print(self.headers)
     }
     
-    init() {
-        
+    func replaceHeaderToken(for token: String){
+        if(headers["Authorization"] != nil){
+            setHeaderToken(for: token)
+        }
     }
     
-    func handleErrorResponse<T: Any>(observer: AnyObserver<T>, status: Int){
-        switch status {
-        case 400:
-            print("")
-            observer.onError(ServerError.BadRequest)
-        case 401:
-            print("")
-            observer.onError(ServerError.Unauthorized)
-        case 403:
-            print("")
-            observer.onError(ServerError.Forbidden)
-        case 404:
-            print("")
-            observer.onError(ServerError.UnkownEndpoint)
-        case 500:
-            print("")
-            observer.onError(ServerError.ServerError)
-        case 503:
-            print("")
-            observer.onError(ServerError.ServerError)
-        default:
-            print("")
-            observer.onError(ServerError.ServerError)
+    private init() {
+        let preferences = UserDefaults.standard
+        let token = preferences.string(forKey: "bearer-token")
+        if token != nil {
+            setHeaderToken(for: token!)
         }
         
     }
-
+    
+    func handleErrorResponse<T: Any>(observer: AnyObserver<T>? = nil, stream: PublishSubject<T>? = nil, response: HTTPURLResponse?){
+        if(response == nil){
+            print("no fckn response")
+            observer?.onCompleted()
+            stream?.onCompleted()
+        }else{
+            let status = response!.statusCode
+            switch status {
+            case 400:
+                print("")
+                observer?.onError(ServerError.BadRequest)
+                stream?.onError(ServerError.BadRequest)
+            case 401:
+                print("")
+                observer?.onError(ServerError.Unauthorized)
+                stream?.onError(ServerError.Unauthorized)
+            case 403:
+                print("")
+                observer?.onError(ServerError.Forbidden)
+                stream?.onError(ServerError.Forbidden)
+            case 404:
+                print("")
+                observer?.onError(ServerError.UnkownEndpoint)
+                stream?.onError(ServerError.UnkownEndpoint)
+            case 500:
+                print("")
+                observer?.onError(ServerError.ServerError)
+                stream?.onError(ServerError.ServerError)
+            case 503:
+                print("")
+                observer?.onError(ServerError.ServerError)
+                stream?.onError(ServerError.ServerError)
+            default:
+                print("")
+                observer?.onError(ServerError.ServerError)
+                stream?.onError(ServerError.ServerError)
+            }
+        }
+    }
 }
 
 enum ServerError: Error {

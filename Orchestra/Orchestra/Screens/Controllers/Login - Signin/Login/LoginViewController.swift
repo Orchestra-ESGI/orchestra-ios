@@ -37,6 +37,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let notificationLocalize = NotificationLocalizableUtils.shared
     let screenLocalize = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
+    let labelLocalize = ScreensLabelLocalizableUtils.shared
+    let alertUtils = AlertUtils.shared
     
     let disposeBag = DisposeBag()
 
@@ -187,7 +189,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } onError: { (err) in
             self.notificationUtils.handleErrorResponseNotification(err as! ServerError)
             self.progressUtils.dismiss()
-        }.disposed(by: self.disposeBag)
+        } onCompleted: {
+            self.progressUtils.dismiss()
+            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
+        } .disposed(by: self.disposeBag)
     }
     
     private func setUpTextFields(){

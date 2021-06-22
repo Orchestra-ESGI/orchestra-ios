@@ -49,6 +49,8 @@ class DeviceViewModel{
             self.supportedAccessoriesStrem.onNext(accesories)
         } onError: { err in
             self.supportedAccessoriesStrem.onError(err)
+        }onCompleted: {
+            self.supportedAccessoriesStrem.onCompleted()
         }
         self.hubAccessoriesConfig.getCurrentAccessoriesConfig()
     }

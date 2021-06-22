@@ -15,6 +15,7 @@ class DevicesAvailableForSceneViewController: UIViewController {
     
     var devicesAvailable : [HubAccessoryConfigurationDto] = []
     var deviceVM: DeviceViewModel?
+    let alertUtils = AlertUtils.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,11 @@ class DevicesAvailableForSceneViewController: UIViewController {
                 self.devicesAvailableTableView.reloadData()
         } onError: { err in
             print("error while fetching devices for scene")
+        } onCompleted: {
+            print("onCompleted() called in setScenesStreamObserver()")
+            self.progressUtils.dismiss()
+            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         }
         
         

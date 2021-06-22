@@ -20,20 +20,13 @@ extension HomeViewController{
                 self.progressUtils.dismiss()
                 self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème est survenu lors du chargement de votre domicile", position: .top, style: .danger)
                 print("error while fetching data")
+            } onCompleted: {
+                print("onCompleted() called in observeAllDevices()")
+                self.progressUtils.dismiss()
+                let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+                self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
             }
     }
-    
-//    func setObjectStreamObserver(){
-//        // Listen to object stream and show them in TV
-//        _ = self.homeVM!
-//            .hubConfigWs
-//            .configurationStream
-//            .subscribe { hubConfig in
-//                self.hubDevices = hubConfig
-//        } onError: { err in
-//            print("Error while fetching hub configuration")
-//        }
-//    }
     
     func setScenesStreamObserver(){
         // Listen to scene stream and show them in TV
@@ -45,7 +38,12 @@ extension HomeViewController{
             self.notificationUtils
                 .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
             self.progressUtils.dismiss()
-        }.disposed(by: self.disposeBag)
+        } onCompleted: {
+            print("onCompleted() called in setScenesStreamObserver()")
+            self.progressUtils.dismiss()
+            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
+        }
     }
     
     func setEditModeObserver(){

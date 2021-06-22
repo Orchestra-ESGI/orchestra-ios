@@ -65,6 +65,8 @@ class SceneViewModel{
             self.scenesStream.onNext(scenes)
         } onError: { err in
             self.scenesStream.onError(err)
+        } onCompleted: {
+            self.scenesStream.onCompleted()
         }
 
         return self.sceneService.getAllScenes()
