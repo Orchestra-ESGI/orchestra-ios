@@ -103,6 +103,7 @@ class NotificationsUtils {
     func handleErrorResponseNotification(_ error: ServerError){
         var notificationTitle = ""
         var notificationSubtitle = ""
+        var notificationStyle: BannerStyle = .danger
         
         switch error{
         case .BadRequest:
@@ -120,8 +121,15 @@ class NotificationsUtils {
         case .Forbidden:
             notificationTitle = self.notificationLocalizatiton.forbiddenCallNotificationTitle
             notificationSubtitle = self.notificationLocalizatiton.forbiddenCallNotificationSubitle
+        case .Conflict:
+            notificationTitle = self.notificationLocalizatiton.conflictEndpointCallNotificationTitle
+            notificationSubtitle = self.notificationLocalizatiton.conflictEndpointCallNotificationSubitle
+            notificationStyle = .warning
         }
-        showFloatingNotificationBanner(title: notificationTitle, subtitle: notificationSubtitle, position: .top, style: .danger)
+        showFloatingNotificationBanner(title: notificationTitle,
+                                       subtitle: notificationSubtitle,
+                                       position: .top,
+                                       style: notificationStyle)
     }
     
     func setImageViewToBanner(type: String, title: String, subtitle: String, style: BannerStyle) -> BaseNotificationBanner{

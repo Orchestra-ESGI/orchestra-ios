@@ -60,31 +60,27 @@ public class RootApiService{
             let status = response!.statusCode
             switch status {
             case 400:
-                print("")
                 observer?.onError(ServerError.BadRequest)
                 stream?.onError(ServerError.BadRequest)
             case 401:
-                print("")
                 observer?.onError(ServerError.Unauthorized)
                 stream?.onError(ServerError.Unauthorized)
             case 403:
-                print("")
                 observer?.onError(ServerError.Forbidden)
                 stream?.onError(ServerError.Forbidden)
             case 404:
-                print("")
                 observer?.onError(ServerError.UnkownEndpoint)
                 stream?.onError(ServerError.UnkownEndpoint)
+            case 409:
+                observer?.onError(ServerError.Conflict)
+                stream?.onError(ServerError.Conflict)
             case 500:
-                print("")
                 observer?.onError(ServerError.ServerError)
                 stream?.onError(ServerError.ServerError)
             case 503:
-                print("")
                 observer?.onError(ServerError.ServerError)
                 stream?.onError(ServerError.ServerError)
             default:
-                print("")
                 observer?.onError(ServerError.ServerError)
                 stream?.onError(ServerError.ServerError)
             }
@@ -97,5 +93,6 @@ enum ServerError: Error {
     case Unauthorized //401
     case Forbidden //403
     case UnkownEndpoint //404
+    case Conflict // 409 --> email déja existant
     case ServerError //500
 }

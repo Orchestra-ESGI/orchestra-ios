@@ -452,6 +452,7 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+        5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
 			isa = PBXGroup;
 			children = (
 				5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */,
@@ -459,7 +460,7 @@
 			);
 			path = "QRCode-Reader";
 			sourceTree = "<group>";
-		5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
+        };
 		5E2B10E2267F7F55003595CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (

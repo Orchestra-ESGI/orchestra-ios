@@ -72,6 +72,9 @@
 "unknown.notification.title" = "Erreur";
 "unknown.notification.subitle" = "Une erreur est surevenue";
 
+"conflict.notification.title" = "Conflit";
+"conflict.notification.subitle" = "Cet email est déja utilisé";
+
 // 500 & 503
 "server.error.notification.title" = "Erreur";
 "server.error.notification.subitle" = "Une erreur est surevenue";

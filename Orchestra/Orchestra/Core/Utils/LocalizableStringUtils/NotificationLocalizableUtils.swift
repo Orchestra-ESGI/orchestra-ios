@@ -48,6 +48,10 @@ public class NotificationLocalizableUtils {
     let unknownEndpointCallNotificationTitle = NSLocalizedString("unknown.notification.title", comment: "")
     let unknownEndpointCallNotificationSubitle = NSLocalizedString("unknown.notification.subitle", comment: "")
     
+    // 404
+    let conflictEndpointCallNotificationTitle = NSLocalizedString("conflict.notification.title", comment: "")
+    let conflictEndpointCallNotificationSubitle = NSLocalizedString("conflict.notification.subitle", comment: "")
+    
     // 500 & 503
     let serverErrorCallNotificationTitle = NSLocalizedString("server.error.notification.title", comment: "")
     let serverErrorCallNotificationSubitle = NSLocalizedString("server.error.notification.subitle", comment: "")
