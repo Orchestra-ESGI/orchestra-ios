@@ -1,0 +1,106 @@
+fastlane_require "dotenv"
+
+before_all do
+  Dotenv.load ".env.secret"
+end
+
+default_platform(:ios)
+
+lane :create_app do
+	create_app_online  # produce
+end
+
+platform :ios do
+  before_all do
+  	Dotenv.load ".env.ios"
+  end
+
+  desc "Sync signing"
+  lane :signing do
+    sync_code_signing # match
+
+    mapping = Actions.lanecontext[
+    	SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING
+    ]
+    update_code_signing_settings(
+     profile_name:  mapping[ENV['MATCH_APP_IDENTIFIER']]
+    )
+  end
+
+  desc "Build binary"
+  lane :build do
+    signing
+    build_ios_app # gym
+  end
+
+  desc "Release binary"
+  lane :release_appstore 
+  	ensure_git_status_clean
+  	ensure_git_branch
+
+    build
+    upload_to_app_store
+
+    reset_git_repo
+  end
+
+  desc "Build & Deploy to TestFlight"
+  lane :release_testflight do |options|
+
+    # run this : chmod +x ./scripts/upgrade_buildNumber.sh
+    sh("../scripts/upgrade_buildNumber.sh", options[:version])
+    
+    # Update Info plist Bundle ID
+    update_app_identifier(
+      xcodeproj: "Orchestra.xcodeproj", # Optional path to xcodeproj, will use the first .xcodeproj if not set
+      plist_path: "./Orchestra/Info.plist", # Path to info plist file, relative to xcodeproj
+      app_identifier: ENV["PRODUCE_APP_IDENTIFIER"] # The App Identifier
+    )
+
+    # Update Info plist AppName
+    update_info_plist( # Change the Display Name of your app
+      plist_path: "./Orchestra/Info.plist",
+      display_name: ENV["PRODUCE_APP_NAME"]
+    )
+
+    # download and use certificate
+    match(type: "appstore", readonly: is_ci)
+
+    # Use gym to archive your app
+    gym(
+      silent: true,
+      output_directory: "./fastlane/builds",
+      # xcargs: "-allowProvisioningUpdates",
+      scheme: ENV["SCHEME"]
+    )
+
+    # Use pilot to upload your app to testflight
+    pilot(
+      app_identifier: ENV["APP_ID"],
+      distribute_external: false,
+    )
+    
+    # clean
+  end
+
+  desc "clean project"
+  lane :clean do |options|
+    # Update Info plist Bundle ID
+    update_app_identifier(
+      xcodeproj: "carto-sdk-ios.xcodeproj", # Optional path to xcodeproj, will use the first .xcodeproj if not set
+      plist_path: "./Orchestra/Info.plist", # Path to info plist file, relative to xcodeproj
+      app_identifier: ENV['PRODUCE_APP_IDENTIFIER'] # The App Identifier
+    )
+
+    # Update Info plist AppName
+    update_info_plist( # Change the Display Name of your app
+      plist_path: "./Orchestra/Info.plist",
+      display_name: "Orchestra"
+    )
+
+    sh "rm -rf builds/**.zip"
+    #sh "rm -rf builds/carto-sdk-ios.xcarchive"
+    #sh "rm -rf builds/carto-sdk-ios.ipa"
+    #sh "rm -rf builds/carto-sdk-ios.app.dSYM.zip"
+  end
+end
