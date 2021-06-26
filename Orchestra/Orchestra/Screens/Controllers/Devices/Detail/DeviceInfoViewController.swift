@@ -125,9 +125,12 @@ class DeviceInfoViewController: UIViewController {
         case .LightBulb:
             devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
             devicesActionsValues["state"] = self.deviceData!.actions!.state
-            if(self.deviceData!.actions!.colorTemp!.currentState == 150){
+            
+            if let temperatureSlider = self.dynamicTemperatureContainerSlider, !temperatureSlider.isHidden{
                 devicesActionsValues["color_temp"] = self.deviceData!.actions!.colorTemp!.currentState
-            }else{
+            }
+            
+            if let colorSlider = self.dynamicColorContainerSlider, !colorSlider.isHidden{
                 devicesActionsValues["color"] = ["hex": self.deviceData!.actions!.color!.currentState]
             }
             break

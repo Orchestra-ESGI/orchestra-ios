@@ -66,7 +66,7 @@ extension UIView{
         arrowPath.addLine(to: CGPoint(x:0, y:0))
         arrowPath.close()
         */
-        
+
         maskLayer.path = bezierPath.cgPath
         maskLayer.frame = self.bounds
         maskLayer.masksToBounds = true
