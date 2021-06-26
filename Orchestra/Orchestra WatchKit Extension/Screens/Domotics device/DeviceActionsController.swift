@@ -15,6 +15,7 @@ class DeviceActionsController: WKInterfaceController{
     var objectColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     var actions: [String] = []
     var currentActionIndex = 0
+    let watchLocalization = WatchLabelLocalizableUtils.shared
     
     
     // MARK: - Outlets
@@ -24,6 +25,7 @@ class DeviceActionsController: WKInterfaceController{
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        self.localizeScreen()
         guard let domoticData = context as? DomoticDevicesController else{
             return
         }
@@ -32,6 +34,10 @@ class DeviceActionsController: WKInterfaceController{
         self.objectColor = currentDevice.deviceColor
         self.actions = domoticData.actions
         self.setUpUI()
+    }
+    
+    private func localizeScreen(){
+        self.setTitle(self.watchLocalization.deviceDetailTitle)
     }
     
     private func setUpUI(){
@@ -46,7 +52,7 @@ class DeviceActionsController: WKInterfaceController{
         for action in self.actions{
             let pickerItem = WKPickerItem()
             pickerItem.title = action
-            pickerItem.caption = "Choisissez une action"
+            pickerItem.caption = self.watchLocalization.deviceSelectActionLabelTitle
             pickerItems.append(pickerItem)
         }
         self.actionPicker.setItems(pickerItems)

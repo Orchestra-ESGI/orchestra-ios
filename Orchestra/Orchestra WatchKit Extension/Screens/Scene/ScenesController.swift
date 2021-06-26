@@ -14,6 +14,7 @@ class ScenesController: WKInterfaceController, LaunchSceneDelegate{
     let watchSessionManager = WatchSessionManager.shared
     var sessionConnectivity: WCSession?
     let listUtils = ListUtil.shared
+    let watchLocalization = WatchLabelLocalizableUtils.shared
     
     var scenes:  [Scene] = []
     private var loadingTimer = Timer()
@@ -24,10 +25,8 @@ class ScenesController: WKInterfaceController, LaunchSceneDelegate{
     
     @IBOutlet weak var sceneNameLabel: WKInterfaceLabel!
     
-    
-    
     override func awake(withContext context: Any?) {
-        self.setTitle("Mes scènes")
+        self.localizeScreen()
         if WCSession.isSupported(){
             watchSessionManager.sessionConnectivity?.delegate = self
             self.sessionConnectivity = watchSessionManager.sessionConnectivity
@@ -39,6 +38,10 @@ class ScenesController: WKInterfaceController, LaunchSceneDelegate{
             }
         }
         self.startProgressIndicator()
+    }
+    
+    private func localizeScreen(){
+        self.setTitle(watchLocalization.myScenesScreenTitle)
     }
     
     func startProgressIndicator() {
@@ -53,7 +56,7 @@ class ScenesController: WKInterfaceController, LaunchSceneDelegate{
     }
 
     @objc private func updateProgress() {
-        let loadingText = "Récupération des scènes"
+        let loadingText = watchLocalization.myScenesScreenLoaderLabelTitle
         switch progressTracker {
         case 1:
             loadingLabel.setText("\(loadingText)..")
@@ -117,7 +120,8 @@ class ScenesController: WKInterfaceController, LaunchSceneDelegate{
                 self.parsedataFromPhone(reply)
             }else{
                 self.stopProgressIndicator()
-                self.loadingLabel.setText("Vous n'avez encore créé aucune scène")
+                let emptyLabel = self.watchLocalization.emptyScenesLabel
+                self.loadingLabel.setText(emptyLabel)
             }
         } errorHandler: { (err) in
             print("errorHandler: \(err)")

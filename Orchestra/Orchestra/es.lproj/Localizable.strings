@@ -149,3 +149,39 @@
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Añadir un dispositivo";
 "progress.notification.config.finished.title" = "Carga de la configuración completada";
+
+
+
+
+// - MARK: Watch
+// - MARK: Root View Controller
+"watch.home.screen.myscenes" = "Mis escenas";
+"watch.home.screen.mydevices" = "Mis artículos";
+
+// - MARK: Watch Scenes Screen
+"watch.myscenes.screen.title" = "Mis escenas";
+
+// - MARK: Watch Devices Screen
+"watch.mydevices.screen.title" = "Mis artículos";
+
+
+// - MARK: Watch Device Actions Screen
+"watch.deviceaction.hint.label.title" = "Elija una acción";
+
+// - MARK: Watch Device Action Name
+"watch.deviceaction.title" = "Detalle";
+"watch.deviceaction.turn.on" = "Encender";
+"watch.deviceaction.turn.off" = "Apagar";
+"watch.deviceaction.blink" = "Intermitente";
+"watch.deviceaction.brightness.100" = "Ajustado al 100%.";
+"watch.deviceaction.brightness.75" = "Ajustado al 75%.";
+"watch.deviceaction.brightness.50" = "Ajustado al 50%.";
+"watch.deviceaction.brightness.25" = "Ajustado al 25%.";
+
+// - MARK: Watch Loaders Label
+"watch.myscenes.loader.label.title" = "Recuperación de la escena";
+"watch.mydevices.loader.label.title" = "Recuperación de objetos";
+
+// - MARK: Watch Empty Screens Label
+"watch.myscenes.empty.label.title" = "No has creado ninguna escena";
+"watch.mydevices.empty.label.title" = "No has añadido ningún objeto";

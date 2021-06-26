@@ -11,11 +11,21 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
     
+    @IBOutlet weak var myScenesSectionLabel: WKInterfaceLabel!
+    @IBOutlet weak var myDevicesSectionLabel: WKInterfaceLabel!
+    
+    let watchLocalization = WatchLabelLocalizableUtils.shared
+    
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
         self.setTitle("Orchestra")
+        self.localizeScreen()
     }
     
+    private func localizeScreen(){
+        myScenesSectionLabel.setText(watchLocalization.homeScreenMyScenesLabelTitle)
+        myDevicesSectionLabel.setText(watchLocalization.homeScreenMyDevicesLabelTitle)
+    }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible

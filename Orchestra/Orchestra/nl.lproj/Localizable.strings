@@ -148,3 +148,39 @@
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Een apparaat toevoegen";
 "progress.notification.config.finished.title" = "Laden van de voltooide configuratie";
+
+
+
+
+// - MARK: Watch
+// - MARK: Root View Controller
+"watch.home.screen.myscenes" = "Mijn scenes";
+"watch.home.screen.mydevices" = "Mijn spullen";
+
+// - MARK: Watch Scenes Screen
+"watch.myscenes.screen.title" = "Mijn scènes";
+
+// - MARK: Watch Devices Screen
+"watch.mydevices.screen.title" = "Mijn spullen";
+
+
+// - MARK: Watch Device Actions Screen
+"watch.deviceaction.hint.label.title" = "Kies een actie";
+
+// - MARK: Watch Device Action Name
+"watch.deviceaction.title" = "Detail";
+"watch.deviceaction.turn.on" = "Zet aan.";
+"watch.deviceaction.turn.off" = "Zet uit.";
+"watch.deviceaction.blink" = "Knipperend";
+"watch.deviceaction.brightness.100" = "Zet op 100%.";
+"watch.deviceaction.brightness.75" = "Zet op 50%.";
+"watch.deviceaction.brightness.50" = "Zet op 75%.";
+"watch.deviceaction.brightness.25" = "Zet op 25%.";
+
+// - MARK: Watch Loaders Label
+"watch.myscenes.loader.label.title" = "Scene herstel";
+"watch.mydevices.loader.label.title" = "Terughalen van voorwerpen";
+
+// - MARK: Watch Empty Screens Label
+"watch.myscenes.empty.label.title" = "Je hebt geen scènes gecreëerd";
+"watch.mydevices.empty.label.title" = "U heeft geen objecten toegevoegd";

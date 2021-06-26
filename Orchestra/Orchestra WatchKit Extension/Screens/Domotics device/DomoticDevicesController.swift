@@ -14,29 +14,24 @@ class DomoticDevicesController: WKInterfaceController{
     var sessionConnectivity: WCSession?
     let watchSessionManager = WatchSessionManager.shared
     let listUtils = ListUtil.shared
+    let watchLocalization = WatchLabelLocalizableUtils.shared
     
     private var loadingTimer = Timer()
     private var progressTracker = 1
     var selectedDeviceIndex = 0
     
-    var devices:  [Device] = []
+    var devices:  [Device] = [
+        Device(position: 1, name: "Test", color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), room: "Chambre")
+    ]
     
-    var actions: [String] = [
-        "Allumer",
-        "Éteindre",
-        "Faire clignoter",
-        "Mettre à 100%",
-        "Mettre à 75%",
-        "Mettre à 50%",
-        "Mettre à 25%"
-    ] // There will be real data, for now it just fake
+    var actions: [String] = [] // There will be real data, for now it just fake
     
     @IBOutlet weak var loadingLabel: WKInterfaceLabel!
     
     @IBOutlet weak var devicesList: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
-        self.setTitle("Mes objets")
+        self.localizeScreen()
         if WCSession.isSupported(){
             watchSessionManager.sessionConnectivity?.delegate = self
             self.sessionConnectivity = watchSessionManager.sessionConnectivity
@@ -48,6 +43,17 @@ class DomoticDevicesController: WKInterfaceController{
             }
         }
         self.startProgressIndicator()
+    }
+    
+    private func localizeScreen(){
+        self.setTitle(watchLocalization.myDevicesScreenTitle)
+        self.actions.append(self.watchLocalization.deviceActionTurnOn)
+        self.actions.append(self.watchLocalization.deviceActionTurnOff)
+        self.actions.append(self.watchLocalization.deviceActionBlink)
+        self.actions.append(self.watchLocalization.deviceActionBrightness100)
+        self.actions.append(self.watchLocalization.deviceActionBrightness75)
+        self.actions.append(self.watchLocalization.deviceActionBrightness50)
+        self.actions.append(self.watchLocalization.deviceActionBrightness25)
     }
     
     override func didDeactivate() {
@@ -67,7 +73,7 @@ class DomoticDevicesController: WKInterfaceController{
     }
 
     @objc private func updateProgress() {
-        let loadingText = "Récupération des objets"
+        let loadingText = watchLocalization.myDevicesScreenLoaderLabelTitle
         switch progressTracker {
         case 1:
             loadingLabel.setText("\(loadingText)..")
@@ -99,7 +105,7 @@ class DomoticDevicesController: WKInterfaceController{
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         self.selectedDeviceIndex = rowIndex
-        self.presentController(withName: "device_actions", context: self)
+        self.pushController(withName: "device_actions", context: self)
     }
     
     private func syncDevicesList(){
@@ -112,9 +118,11 @@ class DomoticDevicesController: WKInterfaceController{
             if(reply.count > 0){
                 self.parsedataFromPhone(reply)
             }else{
-                self.stopProgressIndicator()
-                self.loadingLabel.setText("Vous n'avez encore aucun objet dans votre domicile")
-                self.loadingLabel.setHidden(false)
+                self.reloadTable()
+//                self.stopProgressIndicator()
+//                let emptyLabel = self.watchLocalization.emptyDevicesLabel
+//                self.loadingLabel.setText(emptyLabel)
+//                self.loadingLabel.setHidden(false)
             }
         } errorHandler: { (err) in
             print("errorHandler: \(err)")

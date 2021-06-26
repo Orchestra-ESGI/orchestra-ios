@@ -148,3 +148,38 @@
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "添加一个场景";
 "progress.notification.config.finished.title" = "加载完成的配置";
+
+
+
+// - MARK: Watch
+// - MARK: Root View Controller
+"watch.home.screen.myscenes" = "我的场景";
+"watch.home.screen.mydevices" = "我的项目";
+
+// - MARK: Watch Scenes Screen
+"watch.myscenes.screen.title" = "我的场景";
+
+// - MARK: Watch Devices Screen
+"watch.mydevices.screen.title" = "我的项目";
+
+
+// - MARK: Watch Device Actions Screen
+"watch.deviceaction.hint.label.title" = "选择一个行动";
+
+// - MARK: Watch Device Action Name
+"watch.deviceaction.title" = "详情";
+"watch.deviceaction.turn.on" = "开启";
+"watch.deviceaction.turn.off" = "关掉";
+"watch.deviceaction.blink" = "闪烁";
+"watch.deviceaction.brightness.100" = "设置为100%。";
+"watch.deviceaction.brightness.75" = "设置为75%。";
+"watch.deviceaction.brightness.50" = "设置为50%。";
+"watch.deviceaction.brightness.25" = "设置为25%。";
+
+// - MARK: Watch Loaders Label
+"watch.myscenes.loader.label.title" = "场景恢复";
+"watch.mydevices.loader.label.title" = "恢复物体";
+
+// - MARK: Watch Empty Screens Label
+"watch.myscenes.empty.label.title" = "你没有创造任何场景";
+"watch.mydevices.empty.label.title" = "你没有添加任何对象";

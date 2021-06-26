@@ -41,6 +41,10 @@
                             </items>
                         </group>
                     </items>
+                    <connections>
+                        <outlet property="myDevicesSectionLabel" destination="uPY-R4-LCl" id="0xH-V7-eU9"/>
+                        <outlet property="myScenesSectionLabel" destination="EGK-jw-8yD" id="oqY-H3-6oa"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="219.52173913043478" y="14.040178571428571"/>
@@ -52,7 +56,7 @@
                     <items>
                         <group width="1" alignment="center" layout="vertical" id="SLM-Zk-v1M">
                             <items>
-                                <label height="200" alignment="center" text="Récupération de vos objets.." textAlignment="center" numberOfLines="3" id="VTh-yf-Yrh">
+                                <label height="200" alignment="center" textAlignment="center" numberOfLines="3" id="VTh-yf-Yrh">
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                 </label>
                                 <table alignment="left" id="jeB-Aa-6Fg">
@@ -135,7 +139,7 @@
                     <items>
                         <group width="1" alignment="left" layout="vertical" id="lsJ-lB-uEz">
                             <items>
-                                <label height="182" alignment="center" text="Récupération des scènes.." textAlignment="center" numberOfLines="2" id="Jyo-Ff-lQR">
+                                <label height="182" alignment="center" textAlignment="center" numberOfLines="2" id="Jyo-Ff-lQR">
                                     <fontDescription key="font" type="boldSystem" pointSize="15"/>
                                 </label>
                                 <table alignment="left" id="mOB-Vg-f2Q">

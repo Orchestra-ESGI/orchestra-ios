@@ -69,6 +69,9 @@
 		63503FF32666D9B600C336E2 /* HomeVcCellSetupExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */; };
 		63526479268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63526478268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift */; };
 		6352647B26875E9F0018F5F6 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352647A26875E9F0018F5F6 /* WatchSessionManager.swift */; };
+		6352647C268793760018F5F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 637FB6D12615CEA600790735 /* Localizable.strings */; };
+		6352647D2687938C0018F5F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 637FB6D12615CEA600790735 /* Localizable.strings */; };
+		63526480268794470018F5F6 /* WatchLabelLocalizableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352647E268794160018F5F6 /* WatchLabelLocalizableUtils.swift */; };
 		635984BD266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */; };
 		635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 635984BF266BDB6700F7A076 /* Device-Creation.json */; };
 		635984C2266D489100F7A076 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984C1266D489000F7A076 /* HomeService.swift */; };
@@ -284,6 +287,7 @@
 		63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcCellSetupExtension.swift; sourceTree = "<group>"; };
 		63526478268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcWatchConnectivityExtension.swift; sourceTree = "<group>"; };
 		6352647A26875E9F0018F5F6 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		6352647E268794160018F5F6 /* WatchLabelLocalizableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLabelLocalizableUtils.swift; sourceTree = "<group>"; };
 		635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDynamicActionsUIExtension.swift; sourceTree = "<group>"; };
 		635984BF266BDB6700F7A076 /* Device-Creation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Device-Creation.json"; sourceTree = "<group>"; };
 		635984C1266D489000F7A076 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
@@ -921,6 +925,7 @@
 				637FB6702615BE8000790735 /* UserLocalizableUtils.swift */,
 				637FB6BA2615CBAE00790735 /* NotificationLocalizableUtils.swift */,
 				634F954C261A41240092C269 /* ScreensLabelLocalizableUtils.swift */,
+				6352647E268794160018F5F6 /* WatchLabelLocalizableUtils.swift */,
 			);
 			path = LocalizableStringUtils;
 			sourceTree = "<group>";
@@ -1301,6 +1306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6352647C268793760018F5F6 /* Localizable.strings in Resources */,
 				636F471B260A5F91001D8196 /* Assets.xcassets in Resources */,
 				636F4719260A5F8F001D8196 /* Interface.storyboard in Resources */,
 				5E0E7764267E6A35005F2264 /* Gilroy-Light.otf in Resources */,
@@ -1313,6 +1319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0E7765267E6A35005F2264 /* Gilroy-Light.otf in Resources */,
+				6352647D2687938C0018F5F6 /* Localizable.strings in Resources */,
 				636F472F260A5F93001D8196 /* Assets.xcassets in Resources */,
 				5E0E7768267E6A35005F2264 /* Gilroy-ExtraBold.otf in Resources */,
 			);
@@ -1539,6 +1546,7 @@
 				63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */,
 				631BB2F0265AAB2F005240DB /* ScenesController.swift in Sources */,
 				631BB2EA265AA4F8005240DB /* SceneRow.swift in Sources */,
+				63526480268794470018F5F6 /* WatchLabelLocalizableUtils.swift in Sources */,
 				631BB2F2265AABA3005240DB /* DomoticDevicesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
