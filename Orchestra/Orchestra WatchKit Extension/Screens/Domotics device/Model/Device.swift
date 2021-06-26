@@ -12,14 +12,12 @@ class Device {
     var position: Int
     var deviceName: String
     var deviceColor: UIColor
-    var deviceReachability: String
-    var isFav: Bool
+    var deviceRoom: String
     
-    init(position: Int,name: String, color: UIColor, reachable: Bool, isFav: Bool ) {
+    init(position: Int,name: String, color: UIColor, room: String) {
         self.position = position
         self.deviceName = name
         self.deviceColor = color
-        self.deviceReachability = reachable ? "Disponible" : "Indisponible"
-        self.isFav = isFav
+        self.deviceRoom = room
     }
 }

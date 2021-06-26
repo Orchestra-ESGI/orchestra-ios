@@ -34,12 +34,12 @@ extension HomeViewController{
                     self?.navigationController?.pushViewController(newDeviceVc, animated: true)
                 })
                 
-                let addHouseLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewHouse
-                let addHouse = PopMenuDefaultAction(title: addHouseLabelText,image: UIImage(systemName: "house.fill"), didSelect: { action in
-                    self!.showHousesnBottomSheet()
-                })
+//                let addHouseLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewHouse
+//                let addHouse = PopMenuDefaultAction(title: addHouseLabelText,image: UIImage(systemName: "house.fill"), didSelect: { action in
+//                    self!.showHousesnBottomSheet()
+//                })
                 
-                let menuViewController = PopMenuViewController(actions: [addScene, addDevice, addHouse])
+                let menuViewController = PopMenuViewController(actions: [addScene, addDevice])
                 menuViewController.appearance.popMenuBackgroundStyle = .blurred(.regular)
                 self!.present(menuViewController, animated: true, completion: nil)
         }.disposed(by: self.disposeBag)

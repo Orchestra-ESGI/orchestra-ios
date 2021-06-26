@@ -22,9 +22,7 @@ extension HomeViewController{
         titleView.frame = CGRect(origin:CGPoint.zero, size:CGSize(width: width, height: 60))
         self.navigationItem.titleView = titleView
 
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.showHousesnBottomSheet))
         titleView.isUserInteractionEnabled = true
-        titleView.addGestureRecognizer(recognizer)
     }
     
     func setUpTopBar(){

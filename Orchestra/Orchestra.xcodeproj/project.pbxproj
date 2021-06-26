@@ -67,6 +67,8 @@
 		634F958D261B6B260092C269 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634F958B261B6B260092C269 /* HeaderCollectionViewCell.swift */; };
 		634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 634F958C261B6B260092C269 /* HeaderCollectionViewCell.xib */; };
 		63503FF32666D9B600C336E2 /* HomeVcCellSetupExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */; };
+		63526479268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63526478268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift */; };
+		6352647B26875E9F0018F5F6 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352647A26875E9F0018F5F6 /* WatchSessionManager.swift */; };
 		635984BD266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */; };
 		635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 635984BF266BDB6700F7A076 /* Device-Creation.json */; };
 		635984C2266D489100F7A076 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984C1266D489000F7A076 /* HomeService.swift */; };
@@ -280,6 +282,8 @@
 		634F958B261B6B260092C269 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		634F958C261B6B260092C269 /* HeaderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionViewCell.xib; sourceTree = "<group>"; };
 		63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcCellSetupExtension.swift; sourceTree = "<group>"; };
+		63526478268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcWatchConnectivityExtension.swift; sourceTree = "<group>"; };
+		6352647A26875E9F0018F5F6 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDynamicActionsUIExtension.swift; sourceTree = "<group>"; };
 		635984BF266BDB6700F7A076 /* Device-Creation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Device-Creation.json"; sourceTree = "<group>"; };
 		635984C1266D489000F7A076 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
@@ -452,7 +456,7 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-        5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
+		5E1A1787267FA96B0084FB9F /* QRCode-Reader */ = {
 			isa = PBXGroup;
 			children = (
 				5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */,
@@ -460,7 +464,7 @@
 			);
 			path = "QRCode-Reader";
 			sourceTree = "<group>";
-        };
+		};
 		5E2B10E2267F7F55003595CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,9 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				631BB2F1265AABA3005240DB /* DomoticDevicesController.swift */,
+				63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */,
 				631BB2F8265AC428005240DB /* Model */,
 				6311C1ED265A9EBA00C7EC68 /* Rows */,
-				63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */,
 			);
 			path = "Domotics device";
 			sourceTree = "<group>";
@@ -906,6 +910,7 @@
 				636F472E260A5F93001D8196 /* Assets.xcassets */,
 				636F4730260A5F93001D8196 /* Info.plist */,
 				636F4731260A5F93001D8196 /* PushNotificationPayload.apns */,
+				6352647A26875E9F0018F5F6 /* WatchSessionManager.swift */,
 			);
 			path = "Orchestra WatchKit Extension";
 			sourceTree = "<group>";
@@ -955,6 +960,7 @@
 				63D235E72639CC2200D2485F /* HomeVcUiBindingExtension.swift */,
 				63D235E92639CCA700D2485F /* HomeVcObserversExtension.swift */,
 				63503FF22666D9B600C336E2 /* HomeVcCellSetupExtension.swift */,
+				63526478268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1484,6 +1490,7 @@
 				6304590D2629B20000FA7F40 /* HubPairingViewController.swift in Sources */,
 				63DB1C132645AA6D008B29D2 /* CurrentHouseTableViewCell.swift in Sources */,
 				635DD4E7261A0640001D1EFC /* SignupViewController.swift in Sources */,
+				63526479268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift in Sources */,
 				639E43A4263F03450042951E /* Slide.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
@@ -1518,6 +1525,7 @@
 			files = (
 				63A8F517265AE4A100BA02C8 /* LaunchSceneDelegate.swift in Sources */,
 				63A8F510265ADB0100BA02C8 /* ListUtil.swift in Sources */,
+				6352647B26875E9F0018F5F6 /* WatchSessionManager.swift in Sources */,
 				631BB2F7265ABF3C005240DB /* Device.swift in Sources */,
 				636F472B260A5F91001D8196 /* NotificationController.swift in Sources */,
 				636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */,

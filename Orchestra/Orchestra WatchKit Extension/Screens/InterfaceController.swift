@@ -7,18 +7,15 @@
 
 import WatchKit
 import Foundation
-
+import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
-
+    
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
         self.setTitle("Orchestra")
     }
     
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-    }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
@@ -32,5 +29,4 @@ class InterfaceController: WKInterfaceController {
     @IBAction func showDevicesController() {
         self.pushController(withName: "devices_controller", context: nil)
     }
-    
 }

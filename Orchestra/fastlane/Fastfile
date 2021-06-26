@@ -34,7 +34,7 @@ platform :ios do
   end
 
   desc "Release binary"
-  lane :release_appstore 
+  lane :release_appstore
   	ensure_git_status_clean
   	ensure_git_branch
 
@@ -79,7 +79,7 @@ platform :ios do
       app_identifier: ENV["APP_ID"],
       distribute_external: false,
     )
-    
+
     # clean
   end
 

@@ -31,6 +31,7 @@ class SceneRow: RootRowController{
         guard let scenePosition = sceneToLaunch?.position else{
             return
         }
-        self.delegate?.launchSceneAt(scenePosition)
+        
+        self.delegate?.launchSceneAt(scenePosition - 1)
     }
 }

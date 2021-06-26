@@ -30,7 +30,7 @@ extension HomeViewController{
     
     func setScenesStreamObserver(){
         // Listen to scene stream and show them in TV
-        self.homeVM!
+        _ = self.homeVM!
             .sceneStream
             .subscribe { (scenes) in
                 self.homeScenes = scenes

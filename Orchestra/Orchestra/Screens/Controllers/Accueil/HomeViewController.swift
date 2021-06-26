@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Floaty
-import FittedSheets
+import WatchConnectivity
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                           SendBackDataProtocol, SendDeviceProtocol {
@@ -48,8 +48,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     let elementsToRemoveStream = PublishSubject<Bool>()
     let refreshControl = UIRefreshControl()
     
+    var sessionConnectivity: WCSession?
+    var dataToTranferToWatch: [String: Any] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.manageWatchConnection()
         self.navigationController?.navigationBar.isHidden = false
         self.homeVM = HomeViewModel(navCtrl: self.navigationController!)
         // Setup UI
@@ -74,6 +78,56 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.loadData()
     }
     
+    private func manageWatchConnection(){
+        if WCSession.isSupported(){
+            let session = WCSession.default
+            session.delegate = self
+            if(session.activationState == .notActivated){
+                session.activate()
+            }
+            self.sessionConnectivity = session
+        }
+    }
+    
+    func playAllActionsOf(for index: IndexPath){
+        self.startSceneActions(for: index)
+    }
+    
+    func syncWatchScenes(){
+        guard WCSession.default.isReachable else{
+            return
+        }
+
+        WCSession.default.sendMessage(dataToTranferToWatch) { (reply) in
+            print("responseHandler: \(reply)")
+        } errorHandler: { (err) in
+            print("errorHandler: \(err)")
+        }
+        dataToTranferToWatch.removeAll()
+    }
+    
+    func parseScenesForWatch(){
+        var sceneCount = 0
+        for scene in self.homeScenes {
+            let sceneKey = (sceneCount).description
+            self.dataToTranferToWatch[sceneKey] = scene.mapSceneToString(position: sceneCount + 1)
+            
+            print(scene)
+            sceneCount += 1
+        }
+    }
+    
+    func parseDevicesForWatch(){
+        var deviceCount = 0
+        for device in self.hubDevices {
+            let deviceKey = (deviceCount).description
+            self.dataToTranferToWatch[deviceKey] = device.mapDeviceToString(position: deviceCount + 1)
+            
+            print(device)
+            deviceCount += 1
+        }
+    }
+    
     func loadData(){
         self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         self.homeVM!.loadAllDevicesAndScenes { successLoad in
@@ -85,11 +139,16 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     private func refreshHome(_ loadSuccessfull: Bool){
         self.progressUtils.dismiss()
         self.collectionView.reloadData()
+        self.parseDevicesForWatch()
+        self.parseScenesForWatch()
+        self.syncWatchScenes()
+
         UIView.animate(withDuration: 0.5, animations: {
             self.collectionView.alpha = 1
         })
         if(loadSuccessfull){
-            self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+            let view = (UIApplication.shared.windows[0].rootViewController?.view)!
+            self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: view)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.progressUtils.dismiss()
             }
@@ -106,17 +165,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         }
     }    
 
-    @objc func showHousesnBottomSheet() {
-        let housesBottomSheet = UserHousesBottomSheetTableViewController()
-        let options = SheetOptions(
-            useInlineMode: true
-        )
-        let sheetController = SheetViewController(controller: housesBottomSheet, sizes: [.percent(0.4), .percent(0.6)], options: options)
-        sheetController.allowGestureThroughOverlay = true
-
-        // animate in
-        sheetController.animateIn(to: view, in: self)
-    }
+//    Implement here whatever you want to add to menu that appears when top right + button is clicked
+//    @objc func showHousesnBottomSheet() {
+//      
+//    }
     
     // MARK: Internal functions
     func showInfoDetailAboutHubAccessory(for indexPath: IndexPath){

@@ -50,50 +50,54 @@
             <objects>
                 <controller identifier="devices_controller" alwaysBounce="YES" id="9mi-kF-hhd" customClass="DomoticDevicesController" customModule="Orchestra_WatchKit_Extension">
                     <items>
-                        <table alignment="left" id="jeB-Aa-6Fg">
+                        <group width="1" alignment="center" layout="vertical" id="SLM-Zk-v1M">
                             <items>
-                                <tableRow identifier="Device_Row" id="rqp-YX-3JE" customClass="DeviceRow" customModule="Orchestra_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="75" alignment="left" layout="vertical" id="2Dn-LZ-d1o">
-                                        <items>
-                                            <group width="1" height="29" alignment="left" id="cIN-cG-uwr">
+                                <label height="200" alignment="center" text="Récupération de vos objets.." textAlignment="center" numberOfLines="3" id="VTh-yf-Yrh">
+                                    <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                </label>
+                                <table alignment="left" id="jeB-Aa-6Fg">
+                                    <items>
+                                        <tableRow identifier="Device_Row" id="rqp-YX-3JE" customClass="DeviceRow" customModule="Orchestra_WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="75" alignment="left" layout="vertical" id="2Dn-LZ-d1o">
                                                 <items>
-                                                    <imageView width="20" height="20" alignment="left" verticalAlignment="center" image="homepod.2.fill" catalog="system" id="Ldd-VV-VWV">
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </imageView>
-                                                    <imageView width="20" height="17" alignment="right" verticalAlignment="center" image="heart.fill" catalog="system" id="91e-3u-8Gq">
-                                                        <color key="tintColor" red="1" green="0.23252488766913215" blue="0.26859942355438748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </imageView>
+                                                    <group width="1" height="29" alignment="left" id="cIN-cG-uwr">
+                                                        <items>
+                                                            <imageView width="20" height="20" alignment="left" verticalAlignment="center" image="homepod.2.fill" catalog="system" id="Ldd-VV-VWV">
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </imageView>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" alignment="left" layout="vertical" id="JEn-El-IPH">
+                                                        <items>
+                                                            <label alignment="left" text="Device name" id="aYP-Ey-X2I">
+                                                                <fontDescription key="font" type="boldSystem" pointSize="20"/>
+                                                            </label>
+                                                            <label alignment="left" text="disponible" id="uy6-oR-MSn">
+                                                                <fontDescription key="font" type="system" weight="semibold" pointSize="11"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
                                                 </items>
+                                                <color key="backgroundColor" red="0.24364811180000001" green="0.55288416149999997" blue="0.96867817639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </group>
-                                            <group width="1" alignment="left" layout="vertical" id="JEn-El-IPH">
-                                                <items>
-                                                    <label alignment="left" text="Device name" id="aYP-Ey-X2I">
-                                                        <fontDescription key="font" type="boldSystem" pointSize="20"/>
-                                                    </label>
-                                                    <label alignment="left" text="disponible" id="uy6-oR-MSn">
-                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="11"/>
-                                                    </label>
-                                                </items>
-                                            </group>
-                                        </items>
-                                        <color key="backgroundColor" red="0.24364811180000001" green="0.55288416149999997" blue="0.96867817639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </group>
-                                    <connections>
-                                        <outlet property="favIcon" destination="91e-3u-8Gq" id="DxI-CZ-87W"/>
-                                        <outlet property="nameLabel" destination="aYP-Ey-X2I" id="hJX-tf-y25"/>
-                                        <outlet property="reachabilityLabel" destination="uy6-oR-MSn" id="huJ-Ce-m5j"/>
-                                        <outlet property="rowGroup" destination="2Dn-LZ-d1o" id="GAR-yk-udw"/>
-                                    </connections>
-                                </tableRow>
+                                            <connections>
+                                                <outlet property="nameLabel" destination="aYP-Ey-X2I" id="hJX-tf-y25"/>
+                                                <outlet property="reachabilityLabel" destination="uy6-oR-MSn" id="huJ-Ce-m5j"/>
+                                                <outlet property="rowGroup" destination="2Dn-LZ-d1o" id="GAR-yk-udw"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
                             </items>
-                        </table>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="devicesList" destination="jeB-Aa-6Fg" id="TBU-VC-xKs"/>
+                        <outlet property="loadingLabel" destination="VTh-yf-Yrh" id="BlB-iz-VO3"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="467.86956521739125" y="13.660714285714286"/>
+            <point key="canvasLocation" x="467.86956521739125" y="13.28125"/>
         </scene>
         <!--device_actions-->
         <scene sceneID="ixV-JE-xoy">
@@ -129,46 +133,59 @@
             <objects>
                 <controller identifier="scenes_controller" id="AgC-eL-Hgc" customClass="ScenesController" customModule="Orchestra_WatchKit_Extension">
                     <items>
-                        <table alignment="left" id="mOB-Vg-f2Q">
+                        <group width="1" alignment="left" layout="vertical" id="lsJ-lB-uEz">
                             <items>
-                                <tableRow identifier="Scene_Row" selectable="NO" id="9ch-5Z-lq5" customClass="SceneRow" customModule="Orchestra_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="75" alignment="left" layout="vertical" id="IdU-3v-TQa">
-                                        <items>
-                                            <group width="1" height="30" alignment="left" id="Md6-0A-LaZ">
+                                <label height="182" alignment="center" text="Récupération des scènes.." textAlignment="center" numberOfLines="2" id="Jyo-Ff-lQR">
+                                    <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                                </label>
+                                <table alignment="left" id="mOB-Vg-f2Q">
+                                    <items>
+                                        <tableRow identifier="Scene_Row" selectable="NO" id="9ch-5Z-lq5" customClass="SceneRow" customModule="Orchestra_WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="57" alignment="left" layout="vertical" id="IdU-3v-TQa">
                                                 <items>
-                                                    <imageView width="25" height="25" alignment="left" verticalAlignment="bottom" image="house.circle.fill" catalog="system" id="jNe-wz-XVZ">
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </imageView>
-                                                    <button width="20" height="20" alignment="right" verticalAlignment="bottom" backgroundImage="play.fill" catalog="system" id="cgA-5a-cuO">
-                                                        <color key="backgroundColor" red="0.84585735873488932" green="0.94994817109218987" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <connections>
-                                                            <action selector="playScene" destination="9ch-5Z-lq5" id="Rjw-RF-g77"/>
-                                                        </connections>
-                                                    </button>
+                                                    <group width="1" alignment="left" id="3k2-sE-FsD">
+                                                        <items>
+                                                            <button width="25" height="25" alignment="right" verticalAlignment="center" backgroundImage="play.fill" catalog="system" id="cgA-5a-cuO">
+                                                                <color key="backgroundColor" red="0.84585735873488932" green="0.94994817109218987" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <connections>
+                                                                    <action selector="playScene" destination="9ch-5Z-lq5" id="Rjw-RF-g77"/>
+                                                                </connections>
+                                                            </button>
+                                                            <group alignment="left" layout="vertical" id="Md6-0A-LaZ">
+                                                                <items>
+                                                                    <group width="1" height="2" alignment="left" id="uRf-DZ-p0E"/>
+                                                                    <imageView width="26" height="26" alignment="left" verticalAlignment="center" image="house.circle.fill" catalog="system" id="jNe-wz-XVZ">
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </imageView>
+                                                                    <label alignment="left" verticalAlignment="bottom" text="Scène name" textAlignment="left" numberOfLines="2" id="qh0-KC-Sfi">
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                                    </label>
+                                                                </items>
+                                                            </group>
+                                                        </items>
+                                                    </group>
                                                 </items>
+                                                <color key="backgroundColor" red="0.34509803919999998" green="0.25299202739999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </group>
-                                            <label alignment="left" verticalAlignment="center" text="azijazoijeoiazjeoiazje" textAlignment="left" numberOfLines="2" id="qh0-KC-Sfi">
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
-                                        </items>
-                                        <color key="backgroundColor" red="0.34509803919999998" green="0.25299202739999999" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </group>
-                                    <connections>
-                                        <outlet property="playSceneButton" destination="cgA-5a-cuO" id="FhK-J4-Q3Y"/>
-                                        <outlet property="rowGroup" destination="IdU-3v-TQa" id="zP8-ec-K5y"/>
-                                        <outlet property="sceneNameLabel" destination="qh0-KC-Sfi" id="YKU-R3-dOU"/>
-                                    </connections>
-                                </tableRow>
+                                            <connections>
+                                                <outlet property="playSceneButton" destination="cgA-5a-cuO" id="FhK-J4-Q3Y"/>
+                                                <outlet property="rowGroup" destination="IdU-3v-TQa" id="zP8-ec-K5y"/>
+                                                <outlet property="sceneNameLabel" destination="qh0-KC-Sfi" id="U0c-8k-x8n"/>
+                                            </connections>
+                                        </tableRow>
+                                    </items>
+                                </table>
                             </items>
-                        </table>
+                        </group>
                     </items>
                     <connections>
+                        <outlet property="loadingLabel" destination="Jyo-Ff-lQR" id="BL5-dT-J8a"/>
                         <outlet property="scenesList" destination="mOB-Vg-f2Q" id="VE9-hf-aoS"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="-308"/>
+            <point key="canvasLocation" x="467.86956521739125" y="-295.22321428571428"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -204,7 +221,6 @@
     </scenes>
     <resources>
         <image name="domotic_devices" width="512" height="512"/>
-        <image name="heart.fill" catalog="system" width="128" height="105"/>
         <image name="homepod.2.fill" catalog="system" width="128" height="114"/>
         <image name="house.circle.fill" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="115" height="128"/>

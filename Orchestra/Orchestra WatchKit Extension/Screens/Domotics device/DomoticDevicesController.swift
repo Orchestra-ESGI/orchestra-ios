@@ -11,17 +11,16 @@ import WatchConnectivity
 
 
 class DomoticDevicesController: WKInterfaceController{
-    let listUtils = ListUtil.shared
-    var selectedDeviceIndex = 0
     var sessionConnectivity: WCSession?
+    let watchSessionManager = WatchSessionManager.shared
+    let listUtils = ListUtil.shared
     
-    var devices:  [Device] = [
-        Device(position: 0, name: "Détecteur de mouvements", color: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), reachable: true, isFav: false),
-        Device(position: 1, name: "Lampe salon", color: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), reachable: false, isFav: false),
-        Device(position: 2, name: "Éclairage Jardin", color: #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), reachable: false, isFav: true),
-        Device(position: 3, name: "Smart button bureau", color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), reachable: true, isFav: true),
-        Device(position: 4, name: "Verrou porte", color: #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1), reachable: true, isFav: true)
-    ]
+    private var loadingTimer = Timer()
+    private var progressTracker = 1
+    var selectedDeviceIndex = 0
+    
+    var devices:  [Device] = []
+    
     var actions: [String] = [
         "Allumer",
         "Éteindre",
@@ -32,29 +31,136 @@ class DomoticDevicesController: WKInterfaceController{
         "Mettre à 25%"
     ] // There will be real data, for now it just fake
     
+    @IBOutlet weak var loadingLabel: WKInterfaceLabel!
+    
     @IBOutlet weak var devicesList: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
         self.setTitle("Mes objets")
-        self.reloadTable()
-    }
-    
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+        if WCSession.isSupported(){
+            watchSessionManager.sessionConnectivity?.delegate = self
+            self.sessionConnectivity = watchSessionManager.sessionConnectivity
+            if self.sessionConnectivity?.activationState == .notActivated{
+                self.sessionConnectivity?.activate()
+            }else{
+                // Session already activated
+                self.syncDevicesList()
+            }
+        }
+        self.startProgressIndicator()
     }
     
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+        self.stopProgressIndicator()
+    }
+    
+    func startProgressIndicator() {
+        // Reset progress and timer.
+        progressTracker = 1
+        loadingTimer.invalidate()
+
+        // Schedule timer.
+        loadingTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
+
+        loadingLabel.setHidden(false)
+    }
+
+    @objc private func updateProgress() {
+        let loadingText = "Récupération des objets"
+        switch progressTracker {
+        case 1:
+            loadingLabel.setText("\(loadingText)..")
+            progressTracker = 2
+        case 2:
+            loadingLabel.setText("\(loadingText)...")
+            progressTracker = 3
+        case 3:
+            loadingLabel.setText("\(loadingText).")
+            progressTracker = 1
+        default:
+            break
+        }
+    }
+
+    func stopProgressIndicator() {
+        loadingTimer.invalidate()
+        loadingLabel.setHidden(true)
+    }
+    override func willActivate() {
+        // This method is called when watch view controller is about to be visible to user
     }
     
     private func reloadTable(){
         listUtils.setUpList(wkTable: devicesList, modelList: devices,
                             rowId: "Device_Row", type: DeviceRow.self)
+        self.stopProgressIndicator()
     }
     
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         self.selectedDeviceIndex = rowIndex
         self.presentController(withName: "device_actions", context: self)
     }
+    
+    private func syncDevicesList(){
+        guard self.sessionConnectivity!.isReachable else{
+            return
+        }
+
+        self.sessionConnectivity!.sendMessage(["devices": "sync"]) { (reply) in
+            print("responseHandler: \(reply)")
+            if(reply.count > 0){
+                self.parsedataFromPhone(reply)
+            }else{
+                self.stopProgressIndicator()
+                self.loadingLabel.setText("Vous n'avez encore aucun objet dans votre domicile")
+                self.loadingLabel.setHidden(false)
+            }
+        } errorHandler: { (err) in
+            print("errorHandler: \(err)")
+        }
+    }
+    
+    private func parsedataFromPhone(_ message: [String: Any]){
+        self.devices.removeAll()
+        for element in message.values {
+            guard let deviceDict = element as? Dictionary<String, Any>,
+                    let devicePosition = deviceDict["position"] as? Int,
+                    let deviceName = deviceDict["name"] as? String,
+                    let deviceRoom = deviceDict["room"] as? String,
+                    let deviceColorComponent1 = deviceDict["color_component1"] as? Double,
+                    let deviceColorComponent2 = deviceDict["color_component2"] as? Double,
+                    let deviceColorComponent3 = deviceDict["color_component3"] as? Double else{
+                return
+            }
+            let deviceBackground = UIColor(red: CGFloat(deviceColorComponent1), green: CGFloat(deviceColorComponent2), blue: CGFloat(deviceColorComponent3), alpha: 1.0)
+            
+            let device = Device(position: devicePosition, name: deviceName, color: deviceBackground, room: deviceRoom)
+            self.devices.append(device)
+        }
+        
+        self.devices.sort { (device1 , device2) -> Bool in
+            return device1.position < device2.position
+        }
+        
+        self.reloadTable()
+    }
 }
 
+extension DomoticDevicesController: WCSessionDelegate{
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
+        print("Activation complete on watch")
+        syncDevicesList()
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]){
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        print("Received all devices from phone: \(message)")
+        self.parsedataFromPhone(message)
+        replyHandler([
+            "response": "Data received and parsed correctly"
+        ])
+    }
+}

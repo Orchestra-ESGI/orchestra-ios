@@ -73,4 +73,17 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         return map
     }
     
+    func mapDeviceToString(position: Int) -> [String: Any]{
+        let colorComponent1 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![0]
+        let colorComponent2 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![1]
+        let colorComponent3 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![2]
+        return [
+            "position": position,
+            "name":  self.name,
+            "room": self.roomName,
+            "color_component1": colorComponent1,
+            "color_component2": colorComponent2,
+            "color_component3": colorComponent3,
+        ]
+    }
 }
