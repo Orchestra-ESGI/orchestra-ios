@@ -272,7 +272,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
         
-        let removedObjectObservable = self.homeVM!.clearScenesSelected { observer in
+        let removedDeviceObservable = self.homeVM!.clearObjectSelected { observer in
             if(self.objectsToRemove.count > 0){
                 let deviceRemovedFriendlyNames = self.objectsToRemove.map { device -> String in
                     return device.friendlyName
@@ -284,6 +284,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                         self.deleteSelectedObjects()
                         print("Device deleted")
                         observer.onNext(true)
+                        self.parseDevicesForWatch()
+                        self.syncWatchScenes()
                     }else{
                         observer.onNext(false)
                     }
@@ -312,9 +314,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     .removeScenes(ids: sceneRemovedids)
                     .subscribe{ finished in
                     if(finished){
-                        self.deleteSelectedObjects()
+                        self.deleteSelectedScenes()
                         print("Scene deleted")
                         observer.onNext(true)
+                        self.parseScenesForWatch()
+                        self.syncWatchScenes()
                     }else{
                         observer.onNext(false)
                     }
@@ -333,12 +337,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             }
         }
         
-        _ = Observable.combineLatest(removedObjectObservable, removedSceneObservable){ (obs1, obs2) -> Bool in
+        _ = Observable.combineLatest(removedDeviceObservable, removedSceneObservable){ (obs1, obs2) -> Bool in
             return obs1 && obs2
         }.subscribe { (finished) in
-            self.stopCellsShake()
             self.isCellsShaking = !self.isCellsShaking
             self.progressUtils.dismiss()
+            self.stopCellsShake()
             if(finished.element!){
                 self.progressUtils.displayCheckMark(title: finishProgressAlertTitle, view: self.view)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {

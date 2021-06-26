@@ -80,9 +80,9 @@ class HomeViewModel{
         return self.sceneVm!.removeScenes(ids: ids)
     }
     
-    func clearObjectSelected(completion: @escaping ()->()) -> Observable<Bool>{
+    func clearObjectSelected(completion: @escaping (AnyObserver<Bool>)->()) -> Observable<Bool>{
         return Observable<Bool>.create { (observer) -> Disposable in
-                completion()
+                completion(observer)
             return Disposables.create()
         }
     }
