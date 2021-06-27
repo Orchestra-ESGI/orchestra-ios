@@ -79,8 +79,8 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         let colorComponent3 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![2]
         return [
             "position": position,
-            "name":  self.name,
-            "room": self.roomName,
+            "name":  self.name ?? NSLocalizedString("undefined.value.dto", comment: ""),
+            "room": self.roomName ?? NSLocalizedString("undefined.value.dto", comment: ""),
             "color_component1": colorComponent1,
             "color_component2": colorComponent2,
             "color_component3": colorComponent3,

@@ -88,6 +88,8 @@ class ScreensLabelLocalizableUtils{
     
     // - MARK: Scene info Labels & text
     let sceneInfoStartingSceneProgressAlertTitle = NSLocalizedString("scene.info.startnig.progress.alert.title", comment: "")
+    let sceneInfoDesciptionLabel = NSLocalizedString("scene.info.descritpion.label", comment: "")
+    let sceneInfoActionListTitleLabel = NSLocalizedString("scene.info.action.list.title.label", comment: "")
     
     // - MARK: New scene Labels & text
     let newSceneVcTitle = NSLocalizedString("new.scene.vc.title", comment: "")
@@ -99,7 +101,9 @@ class ScreensLabelLocalizableUtils{
     let sceneFormDescriptionLabel = NSLocalizedString("scene.form.description.label.text", comment: "")
     let sceneFormDescriptionTf = NSLocalizedString("scene.form.description.tf.text", comment: "")
     let addActionButtonnText = NSLocalizedString("scene.form.add.action.button", comment: "")
-    
+    let newSceneCustomAlertCloseButtonTitle = NSLocalizedString("new.scene.close.custom.view.button.title", comment: "")
+    let newSceneDeviceCustomViewTitle = NSLocalizedString("new.scene.device.custom.view.title", comment: "")
+    let newSceneActionCustomViewTitle = NSLocalizedString("new.scene.action.custom.view.title", comment: "")
     
     // -  MARK: Pairing to hub Labels & text
     let hubPairingVcTitle = NSLocalizedString("hub.pairing.vc.topbar.title", comment: "")
@@ -122,4 +126,85 @@ class ScreensLabelLocalizableUtils{
     
     // - MARK: Add New Device Screen (supported types)
     let newDeviceVcTitle = NSLocalizedString("new.device.controller.title", comment: "")
+    let configDeviceVcTitle = NSLocalizedString("config.device.controller.title", comment: "")
+    
+    // - MARK: Signup Local Network Auth
+    let localNetworkAuthAlertTitle = NSLocalizedString("signup.local.network.auth.alert.title", comment: "")
+    let localNetworkAuthAlertMessage = NSLocalizedString("signup.local.network.auth.alert.message", comment: "")
+    let localNetworkAuthAlertActionTitle = NSLocalizedString("signup.local.network.auth.alert.action.title.label", comment: "")
+    
+    // - MARK: Signup Information email sent Alert
+    let signupEmailSentAlertTitle = NSLocalizedString("signup.local.email.sent.alert.title", comment: "")
+    let signupEmailSentAlertMessage = NSLocalizedString("signup.local.email.sent.alert.message", comment: "")
+    let signupEmailSentAlertAction = NSLocalizedString("signup.local.email.sent.alert.action", comment: "")
+    
+    // - MARK: Configuration Reset Alert
+    let resetDeviceAlertTitle = NSLocalizedString("reset.device.alert.title", comment: "")
+    let resetDeviceAlertMessage = NSLocalizedString("reset.device.alert.message", comment: "")
+    let resetDeviceAlertActionTitle = NSLocalizedString("reset.device.alert.main.action.title", comment: "")
+    
+    // - MARK: Login Local Network Auth
+    let loginLocalNetworkAuthAlertTitle = NSLocalizedString("login.local.network.auth.alert.title", comment: "")
+    
+    // - MARK: Home Loading Home Alert
+    let homeScreenProgressAlertTitle = NSLocalizedString("home.screen.progress.alert.title", comment: "")
+    let homeScreenProgressFinishedAlertTitle = NSLocalizedString("home.screen.progress.finished.alert.title", comment: "")
+    
+    // - MARK: Device Available Screen
+    let deviceAvailableScreenTitle = NSLocalizedString("device.available.screen.title", comment: "")
+    
+    // - MARK: New Scene actions for scene
+    let loadingDeviceForSceneProgressAlertTitle = NSLocalizedString("device.for.new.scene.progress.title", comment: "")
+    let addActionOnDeviceNewSceneButtonTitle = NSLocalizedString("scene.new.action.for.device.button.title", comment: "")
+    let newSceneSuccessCreationAlertTitle = NSLocalizedString("new.scene.saved.successfully.alert.title", comment: "")
+    
+    let deviceActionStateOn = NSLocalizedString("device.action.state.on", comment: "")
+    let deviceActionStateOff = NSLocalizedString("device.action.state.off", comment: "")
+    let deviceActionStateToggle = NSLocalizedString("device.action.state.toggle", comment: "")
+    let deviceActionBrightness100 = NSLocalizedString("device.action.brightness.100", comment: "")
+    let deviceActionBrightness75 = NSLocalizedString("device.action.brightness.75", comment: "")
+    let deviceActionBrightness50 = NSLocalizedString("device.action.brightness.50", comment: "")
+    let deviceActionBrightness25 = NSLocalizedString("device.action.brightness.25", comment: "")
+    let deviceActionColor = NSLocalizedString("device.action.color", comment: "")
+    let deviceActionTemp100 = NSLocalizedString("device.action.color_temp.100", comment: "")
+    let deviceActionTemp75 = NSLocalizedString("device.action.color_temp.75", comment: "")
+    let deviceActionTemp50 = NSLocalizedString("device.action.color_temp.50", comment: "")
+    let deviceActionTemp25 = NSLocalizedString("device.action.color_temp.25", comment: "")
+    
+    
+    // - MARK: Device Deatil Screen Actions
+    let deviceActionBrightnessActionName = NSLocalizedString("device.actions.brightness.label.title", comment: "")
+    let deviceActionColorActionName = NSLocalizedString("device.actions.color.label.title", comment: "")
+    let deviceActionTemperatureActionName = NSLocalizedString("device.actions.temperature.label.title", comment: "")
+    let deviceActionOnActionName = NSLocalizedString("device.actions.on.label.title", comment: "")
+    let deviceActionOffActionName = NSLocalizedString("device.actions.off.label.title", comment: "")
+    let deviceActionNoActionName = NSLocalizedString("device.actions.noaction.label.title", comment: "")
+    
+    let deviceConfigurationNeededAlertTitle = NSLocalizedString("device.detail.configuration.needed.alert.title", comment: "")
+    let deviceConfigurationNeededAlertMessage = NSLocalizedString("device.detail.configuration.needed.alert.message", comment: "")
+    let deviceConfigurationNeededAlertCancelAction = NSLocalizedString("device.detail.configuration.needed.alert.cancel.action", comment: "")
+    let deviceConfigurationNeededAlertGoAction = NSLocalizedString("device.detail.configuration.needed.alert.go.action", comment: "")
+    
+    // - MARK: Configuration Error
+    let configurationCallErrorAlertTitle = NSLocalizedString("configuration.error.alert.title", comment: "")
+    let configurationCallErrorAlertMessage = NSLocalizedString("configuration.error.alert.message", comment: "")
+    
+    let noResponseFromServerActionTitle = NSLocalizedString("no.response.server.action.title", comment: "")
+    
+    // - MARK: Device Form
+    let deviceFormVcTitle = NSLocalizedString("device.form.screen.title", comment: "")
+    let deviceFormVcDeviceName = NSLocalizedString("device.form.screen.device.name.label", comment: "")
+    let deviceFormVcRoomName = NSLocalizedString("device.form.screen.device.name.label", comment: "")
+    
+    // - MARK: Configuration Tutorial Screen
+    let configurationScreenTitle = NSLocalizedString("configuration.screen.title", comment: "")
+    let configurationScreenContinueButton = NSLocalizedString("configuration.screen.nav.bar.continue.right.button", comment: "")
+    let configurationScreenHeaderText = NSLocalizedString("configuration.screen.header.text", comment: "")
+    let configurationScreenStep1Text = NSLocalizedString("configuration.screen.step.1.text", comment: "")
+    let configurationScreenStep2Text = NSLocalizedString("configuration.screen.step.2.text", comment: "")
+    let configurationScreenStep3Text = NSLocalizedString("configuration.screen.step.3.text", comment: "")
+    
+    let configurationScreenAlertTitle = NSLocalizedString("configuration.screen.alert.title", comment: "")
+    let configurationScreenAlertMessage = NSLocalizedString("configuration.screen.alert.message", comment: "")
+    let configurationScreenAlertActionTitle = NSLocalizedString("configuration.screen.alert.action.title", comment: "")
 }

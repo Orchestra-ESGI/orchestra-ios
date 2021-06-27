@@ -54,6 +54,30 @@
 "login.notification.credantials.wrong.title" = "错误的信息";
 "login.notification.credantials.wrong.subtitle" = "更改信息后再试";
 
+// 400
+"badRequest.notification.title" = "错误";
+"badRequest.notification.subitle" = "发生了错误";
+
+// 401
+"unauthorized.notification.title" = "禁止访问!";
+"unauthorized.notification.subitle" = "请检查您的电子邮件并重试";
+
+// 401
+"forbidden.notification.title" = "禁止访问!";
+"forbidden.notification.subitle" = "请检查您的电子邮件并重试";
+
+// 404
+"unknown.notification.title" = "错误";
+"unknown.notification.subitle" = "发生了错误";
+
+"conflict.notification.title" = "冲突";
+"conflict.notification.subitle" = "此电子邮件已被使用";
+
+// 500 & 503
+"server.error.notification.title" = "错误";
+"server.error.notification.subitle" = "发生了错误";
+
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "请等待...";
 
@@ -118,6 +142,23 @@
 "new.scene.successfully.created.subtitle" = "场景已经添加了!";
 "new.scene.unsuccessfully.created.title" = "不能加！";
 "new.scene.unsuccessfully.created.subtitle" = "场景还未添加，请再试一次!";
+"new.scene.close.custom.view.button.title" = "关闭";
+"new.scene.device.custom.view.title" = "选择设备";
+"new.scene.action.custom.view.title" = "选择一个动作";
+
+// - MARK: Actions
+"device.action.state.on" = "打开设备";
+"device.action.state.off" = "关闭设备";
+"device.action.state.toggle" = "切换设备";
+"device.action.brightness.100" = "亮度 100%";
+"device.action.brightness.75" = "亮度 75%";
+"device.action.brightness.50" = "亮度 50%";
+"device.action.brightness.25" = "亮度 25%";
+"device.action.color" = "换颜色";
+"device.action.color_temp.100" = "温度 100%";
+"device.action.color_temp.75" = "温度 75%";
+"device.action.color_temp.50" = "温度 50%";
+"device.action.color_temp.25" = "温度 25%";
 
 "scene.info.startnig.progress.alert.title" = "跑步，请等一下...";
 
@@ -147,9 +188,8 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "添加一个场景";
+"config.device.controller.title" = "Configurer un appareil";
 "progress.notification.config.finished.title" = "加载完成的配置";
-
-
 
 // - MARK: Watch
 // - MARK: Root View Controller
@@ -183,3 +223,82 @@
 // - MARK: Watch Empty Screens Label
 "watch.myscenes.empty.label.title" = "你没有创造任何场景";
 "watch.mydevices.empty.label.title" = "你没有添加任何对象";
+
+"reset.device.alert.title" = "重要的";
+"reset.device.alert.message" = "我们将重置您的对象，以便配对并将其添加到您的家中。";
+"reset.device.alert.main.action.title" = "重启";
+
+// - MARK: Signup Network Auth Alert
+"signup.local.network.auth.alert.title" = "需要采取的行动";
+"signup.local.network.auth.alert.message" = "发生了一个错误，这可能来自两个方面：1）检查你的Orchestra Hub是否正确连接到你的盒子上。2) 检查您是否在设置中给予Orchestra访问本地网络的许可。然后再试一次";
+"signup.local.network.auth.alert.action.title.label" = "转到参数";
+
+
+// - MARK: Signup Information email sent Alert
+"signup.local.email.sent.alert.title" = "信息";
+"signup.local.email.sent.alert.message" = "我们已经向您发送了一个链接，以确认您的帐户，检查您的电子邮件和垃圾邮件。";
+"signup.local.email.sent.alert.action" = "据悉";
+
+// - MARK: Login Network Auth Alert
+"login.local.network.auth.alert.title" = "需要采取的行动";
+
+// - MARK: Home Progress Alert Title
+"home.screen.progress.alert.title" = "装载你的家...";
+"home.screen.progress.finished.alert.title" = "家里装满了!";
+
+// - MARK: Device Available Screen
+"device.available.screen.title" = "可用的设备";
+
+// - MARK: New Scene Save Error
+"device.save.error.notification.title" = "误差";
+"device.save.error.notification.subtitle" = "在录制您的场景时发生了错误，请再试一次";
+
+// - MARK: New Scene actions for scene
+"device.for.new.scene.progress.title" = "恢复你的设备";
+"scene.new.action.for.device.button.title" = "添加一个行动";
+"new.scene.saved.successfully.alert.title" = "成功";
+
+// - MARK: Device Actions Labels
+"device.actions.brightness.label.title" = "亮度";
+"device.actions.color.label.title" = "Couleur";
+"device.actions.temperature.label.title" = "颜色";
+"device.actions.on.label.title" = "开启";
+"device.actions.off.label.title" = "关掉";
+"device.actions.noaction.label.title" = "对这个对象不可能有任何行动，但你可以用它来创建场景";
+
+"device.detail.configuration.needed.alert.title" = "要求配置!";
+"device.detail.configuration.needed.alert.message" = "为了能够充分使用这个应用程序，必须要有一个额外的配置。如果不做这种配置，该对象就不能工作 ";
+"device.detail.configuration.needed.alert.cancel.action" = "后来";
+"device.detail.configuration.needed.alert.go.action" = "我们走吧!";
+
+// - MARK: Default actions
+"default.success" = "成功";
+"default.ok" = "认可";
+
+"configuration.error.alert.title" = "发生了一个错误";
+"configuration.error.alert.message" = "无法检索到当前的Hub配置";
+
+"no.response.server.action.title" = "关闭";
+"undefined.value.dto" = "未定义";
+
+// - MARK: Scene Info
+"scene.info.descritpion.label" = "描述";
+"scene.info.action.list.title.label" = "行动";
+
+// - MARK: Device Form
+"device.form.screen.title" = "你的主题";
+"device.form.invalid.form.notification.title" = "不可能的动作！";
+"device.form.invalid.form.notification.subtitle" = "您必须填写表格的所有字段！";
+"device.form.screen.device.name.label" = "设备名称";
+"device.form.screen.device.name.label" = "在哪个房间？";
+
+// - MARK: Configuration tuto Screen
+"configuration.screen.title" = "配置";
+"configuration.screen.nav.bar.continue.right.button" = "继续";
+"configuration.screen.header.text" = "按照以下步骤配置您的对象";
+"configuration.screen.step.1.text" = "1. 按照以下链接： ";
+"configuration.screen.step.2.text" = "2.进入栏目 #Pairing";
+"configuration.screen.step.3.text" = "3. 按照说明配对您的对象";
+"configuration.screen.alert.title" = "信息";
+"configuration.screen.alert.message" = "如果该项目正确响应重置过程，它应该很快添加到您的家中，尝试在 20 - 30 秒内刷新您的屏幕";
+"configuration.screen.alert.action.title" = "好的";

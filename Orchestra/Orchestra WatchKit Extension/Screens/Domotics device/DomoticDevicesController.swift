@@ -118,14 +118,15 @@ class DomoticDevicesController: WKInterfaceController{
             if(reply.count > 0){
                 self.parsedataFromPhone(reply)
             }else{
-                self.reloadTable()
-//                self.stopProgressIndicator()
-//                let emptyLabel = self.watchLocalization.emptyDevicesLabel
-//                self.loadingLabel.setText(emptyLabel)
-//                self.loadingLabel.setHidden(false)
+                self.stopProgressIndicator()
+                let emptyLabel = self.watchLocalization.emptyDevicesLabel
+                self.loadingLabel.setText(emptyLabel)
+                self.loadingLabel.setHidden(false)
             }
         } errorHandler: { (err) in
             print("errorHandler: \(err)")
+            self.stopProgressIndicator()
+            self.pop()
         }
     }
     

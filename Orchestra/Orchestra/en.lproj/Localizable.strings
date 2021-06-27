@@ -53,6 +53,29 @@
 "login.notification.credantials.wrong.title" = "Erroneous information";
 "login.notification.credantials.wrong.subtitle" = "Change the information and try again";
 
+// 400
+"badRequest.notification.title" = "Error";
+"badRequest.notification.subitle" = "An error occured";
+
+// 401
+"unauthorized.notification.title" = "Access forbidden!";
+"unauthorized.notification.subitle" = "Please check your email and try again";
+
+// 401
+"forbidden.notification.title" = "Access forbidden!";
+"forbidden.notification.subitle" = "Please check your email and try again";
+
+// 404
+"unknown.notification.title" = "Error";
+"unknown.notification.subitle" = "An error occured";
+
+"conflict.notification.title" = "Conflict";
+"conflict.notification.subitle" = "This email is already in use";
+
+// 500 & 503
+"server.error.notification.title" = "Error";
+"server.error.notification.subitle" = "An error occured";
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Please wait...";
 
@@ -118,6 +141,23 @@
 "new.scene.successfully.created.subtitle" = "The scene has been added!";
 "new.scene.unsuccessfully.created.title" = "Cannot be added!";
 "new.scene.unsuccessfully.created.subtitle" = "The scene has not been added, try again!";
+"new.scene.close.custom.view.button.title" = "Close";
+"new.scene.device.custom.view.title" = "Choose a device";
+"new.scene.action.custom.view.title" = "Choose an action";
+
+// - MARK: Actions
+"device.action.state.on" = "Turn device on";
+"device.action.state.off" = "Turn device off";
+"device.action.state.toggle" = "Toggle device";
+"device.action.brightness.100" = "Brightness 100%";
+"device.action.brightness.75" = "Brightness 75%";
+"device.action.brightness.50" = "Brightness 50%";
+"device.action.brightness.25" = "Brightness 25%";
+"device.action.color" = "Change color";
+"device.action.color_temp.100" = "Temperature 100%";
+"device.action.color_temp.75" = "Temperature 75%";
+"device.action.color_temp.50" = "Temperature 50%";
+"device.action.color_temp.25" = "Temperature 25%";
 
 "scene.info.startnig.progress.alert.title" = "Running, please wait...";
 
@@ -147,8 +187,8 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Add a device";
+"config.device.controller.title" = "Configurer un appareil";
 "progress.notification.config.finished.title" = "Configuration loaded successfully";
-
 
 
 // - MARK: Watch
@@ -183,3 +223,82 @@
 // - MARK: Watch Empty Screens Label
 "watch.myscenes.empty.label.title" = "You have not created any scenes";
 "watch.mydevices.empty.label.title" = "You have not added any objects yet";
+
+"reset.device.alert.title" = "Important";
+"reset.device.alert.message" = "We will reset your object, in order to pair it and add it to your home";
+"reset.device.alert.main.action.title" = "Reset";
+
+// - MARK: Signup Network Auth Alert
+"signup.local.network.auth.alert.title" = "Action needed";
+"signup.local.network.auth.alert.message" = "An error has occurred, this can be due to two things: 1) Check that your Orchestra Hub is correctly connected to your box. 2) Check that you have given Orchestra permission to access your local network in the settings. Then try again";
+"signup.local.network.auth.alert.action.title.label" = "Go to parameters";
+
+
+// - MARK: Signup Information email sent Alert
+"signup.local.email.sent.alert.title" = "Information";
+"signup.local.email.sent.alert.message" = "We have sent you a confirmation link for your account, check your emails and spam";
+"signup.local.email.sent.alert.action" = "Alright";
+
+// - MARK: Login Network Auth Alert
+"login.local.network.auth.alert.title" = "Action needed";
+
+// - MARK: Home Progress Alert Title
+"home.screen.progress.alert.title" = "Loading your home...";
+"home.screen.progress.finished.alert.title" = "Home loaded!";
+
+// - MARK: Device Available Screen
+"device.available.screen.title" = "Available equipment";
+
+// - MARK: New Scene Save Error
+"device.save.error.notification.title" = "Error";
+"device.save.error.notification.subtitle" = "An error occurred while recording your scene, please try again";
+
+// - MARK: New Scene actions for scene
+"device.for.new.scene.progress.title" = "Recovery of your devices";
+"scene.new.action.for.device.button.title" = "Add an action";
+"new.scene.saved.successfully.alert.title" = "Success";
+
+// - MARK: Device Actions Labels
+"device.actions.brightness.label.title" = "Brightness";
+"device.actions.color.label.title" = "Color";
+"device.actions.temperature.label.title" = "Temperature";
+"device.actions.on.label.title" = "Turn on";
+"device.actions.off.label.title" = "Turn off";
+"device.actions.noaction.label.title" = "No action is possible on this object, but you can use it to create scenes";
+
+"device.detail.configuration.needed.alert.title" = "Configuration requested!";
+"device.detail.configuration.needed.alert.message" = "To be able to fully use this device, an additional configuration is required. If this configuration is not done, the object cannot work!";
+"device.detail.configuration.needed.alert.cancel.action" = "Later";
+"device.detail.configuration.needed.alert.go.action" = "Let's go!";
+
+// - MARK: Default actions
+"default.success" = "Success";
+"default.ok" = "OK";
+
+"configuration.error.alert.title" = "An error occured";
+"configuration.error.alert.message" = "Unable to retrieve the current Hub configuration";
+
+"no.response.server.action.title" = "Close";
+"undefined.value.dto" = "Undefined";
+
+// - MARK: Scene Info
+"scene.info.descritpion.label" = "Description";
+"scene.info.action.list.title.label" = "Actions";
+
+// - MARK: Device Form
+"device.form.screen.title" = "Your object";
+"device.form.invalid.form.notification.title" = "Impossible action!";
+"device.form.invalid.form.notification.subtitle" = "You must fill in all the fields of the form!";
+"device.form.screen.device.name.label" = "Device name";
+"device.form.screen.device.name.label" = "In which room ?";
+
+// - MARK: Configuration tuto Screen
+"configuration.screen.title" = "Configuration";
+"configuration.screen.nav.bar.continue.right.button" = "Continue";
+"configuration.screen.header.text" = "Follow these steps to configure your object";
+"configuration.screen.step.1.text" = "1. Follow the following link: ";
+"configuration.screen.step.2.text" = "2. Go to the section #Pairing";
+"configuration.screen.step.3.text" = "3. Follow the instructions to pair your object";
+"configuration.screen.alert.title" = "Information";
+"configuration.screen.alert.message" = "If the item correctly responds to the reset process, it should be added to your home shortly, try refreshing your screen within 20 - 30 seconds";
+"configuration.screen.alert.action.title" = "Okay";

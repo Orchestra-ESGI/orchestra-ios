@@ -23,7 +23,7 @@ extension HomeViewController{
             } onCompleted: {
                 print("onCompleted() called in observeAllDevices()")
                 self.progressUtils.dismiss()
-                let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+                let alertMessage = self.screenLabelLocalize.localNetworkAuthAlertMessage
                 self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
             }
     }
@@ -41,7 +41,7 @@ extension HomeViewController{
         } onCompleted: {
             print("onCompleted() called in setScenesStreamObserver()")
             self.progressUtils.dismiss()
-            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            let alertMessage = self.screenLabelLocalize.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         }
     }

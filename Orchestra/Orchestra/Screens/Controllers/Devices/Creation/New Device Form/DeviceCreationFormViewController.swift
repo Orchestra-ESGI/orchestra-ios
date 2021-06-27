@@ -38,14 +38,19 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var deviceViewModel: DeviceViewModel?
     var deviceInfo: SupportedDevicesInformationsDto?
     var device: HubAccessoryConfigurationDto?
+    let labelLocalize = ScreensLabelLocalizableUtils.shared
+    let notificationLocalization = NotificationLocalizableUtils.shared
+    let notificationUtils = NotificationsUtils.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.deviceViewModel = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.setTopBar()
         self.setUpTextFields()
+        self.setUpStreamsObserver()
         self.setUpclickObservers()
         self.setColorsCollectionView()
+        self.localizeUI()
     }
     
     private func setTopBar(){
@@ -55,6 +60,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         validateFormAppBarBtn?.isEnabled = true
         self.navigationItem.rightBarButtonItem = validateFormAppBarBtn
         
+    }
+    
+    private func localizeUI(){
+        self.deviceNameLabel.text = self.labelLocalize.deviceFormVcDeviceName
+        self.roomNameLabel.text = self.labelLocalize.deviceFormVcRoomName
     }
     
     private func setUpclickObservers(){
@@ -84,7 +94,12 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                     self.validateFormAppBarBtn?.isEnabled = false
                 }
             } onError: { err in
-                print("Form not valid, cannot submit it")
+                let notificationTitle = self.notificationLocalization.deviceFormInvalidFormNotificationTitle
+                let notificationSubtitle = self.notificationLocalization.deviceFormInvalidFormNotificationSubtitle
+                self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                      subtitle: notificationSubtitle,
+                                                                      position: .top,
+                                                                      style: .warning)
             }
     }
     
@@ -97,18 +112,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setTitle(){
-        var controllerTitle = "Ajouter "
-        switch self.accessoryType {
-        case "lightbulb":
-            controllerTitle += "une lampe"
-        case "statelessProgrammableSwitch":
-            controllerTitle += "un boutton"
-        case "occupancySensor":
-            controllerTitle += "un détecteur"
-        default:
-            controllerTitle += ""
-        }
-        self.title = controllerTitle
+        self.title = self.labelLocalize.deviceFormVcTitle
     }
     
     private func setUpTextFields(){

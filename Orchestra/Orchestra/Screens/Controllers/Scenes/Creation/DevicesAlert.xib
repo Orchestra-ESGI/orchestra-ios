@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DevicesAlert" customModule="Orchestra" customModuleProvider="target">
             <connections>
                 <outlet property="alertView" destination="8QY-ch-q6A" id="34a-68-6gW"/>
+                <outlet property="closeViewButton" destination="1tf-b1-Yky" id="jgc-MH-MeD"/>
                 <outlet property="parentView" destination="iN0-l3-epB" id="NhH-L8-FOd"/>
                 <outlet property="tableView" destination="NiM-gj-537" id="MeZ-kC-wTO"/>
                 <outlet property="titleLabel" destination="NWu-88-5ix" id="UZj-Aq-soa"/>
@@ -39,9 +40,11 @@
                             </constraints>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tf-b1-Yky">
-                            <rect key="frame" x="106" y="310" width="58" height="35"/>
+                            <rect key="frame" x="120" y="310" width="30" height="35"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <state key="normal" title="Valider"/>
+                            <connections>
+                                <action selector="Closealert:" destination="-1" eventType="touchUpInside" id="Jtx-q2-sYw"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

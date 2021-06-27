@@ -16,6 +16,7 @@ class DevicesAvailableForSceneViewController: UIViewController {
     var devicesAvailable : [HubAccessoryConfigurationDto] = []
     var deviceVM: DeviceViewModel?
     let alertUtils = AlertUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,8 @@ class DevicesAvailableForSceneViewController: UIViewController {
         self.setUpTableView()
         
         self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
-        self.progressUtils.displayIndeterminateProgeress(title: "Récupération de vos appareils", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+        let progressTitle = self.labelLocalization.loadingDeviceForSceneProgressAlertTitle
+        self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         
         
         _ = self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig().subscribe { finished in
@@ -44,12 +46,12 @@ class DevicesAvailableForSceneViewController: UIViewController {
         } onCompleted: {
             print("onCompleted() called in setScenesStreamObserver()")
             self.progressUtils.dismiss()
-            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         }
         
         
-        self.title = "Appareils disponibles"
+        self.title = self.labelLocalization.deviceAvailableScreenTitle
     }
 
     private func setUpTableView(){

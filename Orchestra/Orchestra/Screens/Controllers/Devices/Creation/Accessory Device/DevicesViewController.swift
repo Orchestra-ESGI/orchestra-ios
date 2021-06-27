@@ -21,6 +21,7 @@ class DevicesViewController: UIViewController {
     // MARK: - Utils
     let notificationsUtils = NotificationsUtils.shared
     let localizeNotifications = NotificationLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     var device: HubAccessoryConfigurationDto?
     
@@ -80,14 +81,17 @@ extension DevicesViewController: UITableViewDataSource{
                 deviceConfVC.deviceDocumentationUrl = documentationUrl
                 self.navigationController?.pushViewController(deviceConfVC, animated: true)
             }else{
-                let alert = UIAlertController(title: "Important", message: "Nous allons reinitialiser votre objet, afain de l'appairer et de l'ajouter à votre domicile", preferredStyle: .alert)
-                let resetAction = UIAlertAction(title: "Reinitialiser", style: .cancel) { action in
+                let alertTitle = self.labelLocalization.resetDeviceAlertTitle
+                let alertMessage = self.labelLocalization.resetDeviceAlertMessage
+                let alertResetActionString = self.labelLocalization.resetDeviceAlertActionTitle
+                let alert = UIAlertController(title: alertTitle, message:alertMessage, preferredStyle: .alert)
+                let resetAction = UIAlertAction(title: alertResetActionString, style: .cancel) { action in
                     self.deviceVM?.resetDevice()
                 }
                 alert.addAction(resetAction)
                 self.present(alert, animated: true)
             }
-        }else{
+        } else {
             let deviceCreationFormVC = DeviceCreationFormViewController()
             deviceCreationFormVC.device = self.device
             deviceCreationFormVC.accessoryType = self.devices[indexPath.row].type

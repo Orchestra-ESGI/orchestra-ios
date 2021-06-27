@@ -54,6 +54,30 @@
 "login.notification.credantials.wrong.title" = "Fehlerhafte Informationen";
 "login.notification.credantials.wrong.subtitle" = "Ändern Sie die Informationen und versuchen Sie es erneut";
 
+// 400
+"badRequest.notification.title" = "Fehler";
+"badRequest.notification.subitle" = "Ein Fehler ist aufgetreten";
+
+// 401
+"unauthorized.notification.title" = "Zugang verboten!";
+"unauthorized.notification.subitle" = "Bitte überprüfen Sie Ihre E-Mail und versuchen Sie es erneut";
+
+// 401
+"forbidden.notification.title" = "Zugang verboten!";
+"forbidden.notification.subitle" = "Bitte überprüfen Sie Ihre E-Mail und versuchen Sie es erneut";
+
+// 404
+"unknown.notification.title" = "Fehler";
+"unknown.notification.subitle" = "Ein Fehler ist aufgetreten";
+
+"conflict.notification.title" = "Konflikt";
+"conflict.notification.subitle" = "Diese E-Mail-Adresse wird schon verwendet";
+
+// 500 & 503
+"server.error.notification.title" = "Fehler";
+"server.error.notification.subitle" = "Ein Fehler ist aufgetreten";
+
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Bitte warten...";
 
@@ -118,6 +142,23 @@
 "new.scene.successfully.created.subtitle" = "Die Szene wurde hinzugefügt!";
 "new.scene.unsuccessfully.created.title" = "Kann nicht addieren!";
 "new.scene.unsuccessfully.created.subtitle" = "Die Szene wurde nicht hinzugefügt, versuchen Sie es erneut!";
+"new.scene.close.custom.view.button.title" = "Schließen";
+"new.scene.device.custom.view.title" = "Wähle ein Gerät";
+"new.scene.action.custom.view.title" = "Wähle eine Aktion";
+
+// - MARK: Actions
+"device.action.state.on" = "Gerät einschalten";
+"device.action.state.off" = "Gerät ausschalten";
+"device.action.state.toggle" = "Schalten Sie das Gerät um";
+"device.action.brightness.100" = "Helligkeit 100%";
+"device.action.brightness.75" = "Helligkeit 75%";
+"device.action.brightness.50" = "Helligkeit 50%";
+"device.action.brightness.25" = "Helligkeit 25%";
+"device.action.color" = "Farbe ändern";
+"device.action.color_temp.100" = "Temperatur 100%";
+"device.action.color_temp.75" = "Temperatur 75%";
+"device.action.color_temp.50" = "Temperatur 50%";
+"device.action.color_temp.25" = "Temperatur 25%";
 
 "scene.info.startnig.progress.alert.title" = "Läuft, bitte warten...";
 
@@ -147,10 +188,8 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ein Objekt hinzufügen";
+"config.device.controller.title" = "Configurer un appareil";
 "progress.notification.config.finished.title" = "Laden der fertigen Konfiguration";
-
-
-
 
 // - MARK: Watch
 // - MARK: Root View Controller
@@ -184,3 +223,82 @@
 // - MARK: Watch Empty Screens Label
 "watch.myscenes.empty.label.title" = "Sie haben keine Szenen erstellt";
 "watch.mydevices.empty.label.title" = "Sie haben keine Objekte hinzugefügt";
+
+"reset.device.alert.title" = "Importante";
+"reset.device.alert.message" = "Iremos redefinir o seu objeto para emparelhá-lo e adicioná-lo à sua casa";
+"reset.device.alert.main.action.title" = "Redefinir";
+
+// - MARK: Signup Network Auth Alert
+"signup.local.network.auth.alert.title" = "Aktion erforderlich";
+"signup.local.network.auth.alert.message" = "Es ist ein Fehler aufgetreten, der zwei Ursachen haben kann: 1) Überprüfen Sie, ob Ihr Orchestra Hub korrekt mit Ihrer Box verbunden ist. 2) Prüfen Sie, ob Sie Orchestra in den Einstellungen die Erlaubnis erteilt haben, auf Ihr lokales Netzwerk zuzugreifen. Dann versuchen Sie es erneut";
+"signup.local.network.auth.alert.action.title.label" = "Zu den Parametern gehen";
+
+
+// - MARK: Signup Information email sent Alert
+"signup.local.email.sent.alert.title" = "Informationen";
+"signup.local.email.sent.alert.message" = "Wir haben Ihnen einen Link geschickt, um Ihr Konto zu bestätigen, überprüfen Sie Ihre E-Mails und Spams";
+"signup.local.email.sent.alert.action" = "Es wird angemerkt";
+
+// - MARK: Login Network Auth Alert
+"login.local.network.auth.alert.title" = "Aktion erforderlich";
+
+// - MARK: Home Progress Alert Title
+"home.screen.progress.alert.title" = "Laden Sie Ihr Zuhause...";
+"home.screen.progress.finished.alert.title" = "Haus geladen!";
+
+// - MARK: Device Available Screen
+"device.available.screen.title" = "Verfügbare Geräte";
+
+// - MARK: New Scene Save Error
+"device.save.error.notification.title" = "Fehler";
+"device.save.error.notification.subtitle" = "Bei der Aufnahme Ihrer Szene ist ein Fehler aufgetreten, bitte versuchen Sie es erneut";
+
+// - MARK: New Scene actions for scene
+"device.for.new.scene.progress.title" = "Wiederherstellung Ihrer Geräte";
+"scene.new.action.for.device.button.title" = "Hinzufügen einer Aktion";
+"new.scene.saved.successfully.alert.title" = "Erfolg";
+
+// - MARK: Device Actions Labels
+"device.actions.brightness.label.title" = "Helligkeit";
+"device.actions.color.label.title" = "Farbe";
+"device.actions.temperature.label.title" = "Temperatur";
+"device.actions.on.label.title" = "Einschalten";
+"device.actions.off.label.title" = "Ausschalten";
+"device.actions.noaction.label.title" = "Auf dieses Objekt ist keine Aktion möglich, aber Sie können es zum Erstellen von Szenen verwenden";
+
+"device.detail.configuration.needed.alert.title" = "Configuration demandée!";
+"device.detail.configuration.needed.alert.message" = "Um dieses Apprail vollständig nutzen zu können, ist eine zusätzliche Konfiguration erforderlich. Wenn diese Konfiguration nicht vorgenommen wird, kann das Objekt nicht funktionieren! ";
+"device.detail.configuration.needed.alert.cancel.action" = "Später";
+"device.detail.configuration.needed.alert.go.action" = "Los geht's!";
+
+// - MARK: Default actions
+"default.success" = "Erfolg";
+"default.ok" = "ok";
+
+"configuration.error.alert.title" = "Ein Fehler ist aufgetreten";
+"configuration.error.alert.message" = "Die aktuelle Hub-Konfiguration kann nicht abgerufen werden";
+
+"no.response.server.action.title" = "Schließen";
+"undefined.value.dto" = "Undefiniert";
+
+// - MARK: Scene Info
+"scene.info.descritpion.label" = "Beschreibung";
+"scene.info.action.list.title.label" = "Aktionen";
+
+// - MARK: Device Form
+"device.form.screen.title" = "Dein Fach";
+"device.form.invalid.form.notification.title" = "Unmögliche Aktion!";
+"device.form.invalid.form.notification.subtitle" = "Sie müssen alle Felder des Formulars ausfüllen!";
+"device.form.screen.device.name.label" = "Name des Geräts";
+"device.form.screen.device.name.label" = "In welchem ​​Raum?";
+
+// - MARK: Configuration tuto Screen
+"configuration.screen.title" = "Aufbau";
+"configuration.screen.nav.bar.continue.right.button" = "Fortfahren";
+"configuration.screen.header.text" = "Befolgen Sie diese Schritte, um Ihr Objekt zu konfigurieren";
+"configuration.screen.step.1.text" = "1. Folgen Sie dem folgenden Link: ";
+"configuration.screen.step.2.text" = "2. Gehen Sie zum Abschnitt #Pairing";
+"configuration.screen.step.3.text" = "3. Folgen Sie den Anweisungen, um Ihr Objekt zu koppeln";
+"configuration.screen.alert.title" = "Information";
+"configuration.screen.alert.message" = "Wenn das Element korrekt auf den Reset-Vorgang reagiert, sollte es in Kürze zu Ihrem Zuhause hinzugefügt werden. Versuchen Sie, Ihren Bildschirm innerhalb von 20 - 30 Sekunden zu aktualisieren";
+"configuration.screen.alert.action.title" = "Okay";

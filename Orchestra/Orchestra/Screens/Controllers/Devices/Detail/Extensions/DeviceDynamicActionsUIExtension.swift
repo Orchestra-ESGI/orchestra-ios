@@ -68,7 +68,8 @@ extension DeviceInfoViewController{
         // Add label on top of the slider
         let sliderLabel = UILabel()
         // MARK: - TODO Text color not adapting to dark mode
-        sliderLabel.text = "Luminosité"
+        let brightnessActionLabel = self.localizeLabels.deviceActionBrightnessActionName
+        sliderLabel.text = brightnessActionLabel
         
         sliderLabel.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
         sliderLabel.numberOfLines = 4
@@ -156,14 +157,16 @@ extension DeviceInfoViewController{
         
         
         self.dynamicViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        let temperatureActionLabel = self.localizeLabels.deviceActionTemperatureActionName
+        let colorActionLabel = self.localizeLabels.deviceActionColorActionName
         
         let segmentedView = UISegmentedControl(frame:
                                                 CGRect(x: (CGFloat(UIScreen.main.bounds.width) - 200) / 2,
                                                        y: 0 ,
                                                        width: 200,
                                                        height: 25))
-        segmentedView.insertSegment(withTitle: "Couleur", at: 0, animated: true)
-        segmentedView.insertSegment(withTitle: "Température", at: 1, animated: true)
+        segmentedView.insertSegment(withTitle: colorActionLabel, at: 0, animated: true)
+        segmentedView.insertSegment(withTitle: temperatureActionLabel, at: 1, animated: true)
         segmentedView.selectedSegmentIndex = 0
         segmentedView.addTarget(self,
                                 action: #selector(segmentedControlValueChanged(_:)),
@@ -171,7 +174,7 @@ extension DeviceInfoViewController{
         colorAndtempContainerView.addSubview(segmentedView)
         
         self.dynamicColorContainerLabel = UILabel()
-        dynamicColorContainerLabel!.text = "Couleur"
+        dynamicColorContainerLabel!.text = colorActionLabel
         dynamicColorContainerLabel!.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
         dynamicColorContainerLabel!.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
         dynamicColorContainerLabel!.numberOfLines = 1
@@ -183,7 +186,7 @@ extension DeviceInfoViewController{
         self.dynamicColorContainerLabel!.isHidden = false
         
         self.dynamicTemperatureContainerLabel = UILabel()
-        self.dynamicTemperatureContainerLabel!.text = "Température"
+        self.dynamicTemperatureContainerLabel!.text = temperatureActionLabel
         self.dynamicTemperatureContainerLabel!.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
         self.dynamicTemperatureContainerLabel!.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
         self.dynamicTemperatureContainerLabel!.numberOfLines = 1
@@ -239,7 +242,7 @@ extension DeviceInfoViewController{
         self.dynamicViewContainer.translatesAutoresizingMaskIntoConstraints = false
         let containerWidth = UIScreen.main.bounds.width
         let noActionLabel = UILabel()
-        noActionLabel.text = "Aucune action n'est possible sur cet objet, vous pouvez cependant l'utiliser pour créer des scènes"
+        noActionLabel.text = self.localizeLabels.deviceActionNoActionName//"Aucune action n'est possible sur cet objet, vous pouvez cependant l'utiliser pour créer des scènes"
         noActionLabel.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
         noActionLabel.font = UIFont(name: "Avenir-Medium", size: 20)
         noActionLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -270,8 +273,10 @@ extension DeviceInfoViewController{
                                                        y: (onOffContainerHeight - onOffViewHeight) / 2,
                                                        width: onOffViewWidth,
                                                        height: onOffViewHeight))
-        segmentedView.insertSegment(withTitle: "ON", at: 0, animated: true)
-        segmentedView.insertSegment(withTitle: "OFF", at: 1, animated: true)
+        let onActionTitle = self.localizeLabels.deviceActionOnActionName
+        let offActionTitle = self.localizeLabels.deviceActionOffActionName
+        segmentedView.insertSegment(withTitle: onActionTitle.capitalized, at: 0, animated: true)
+        segmentedView.insertSegment(withTitle: offActionTitle.capitalized, at: 1, animated: true)
         
         segmentedView.addTarget(self,
                                 action: #selector(onOnffToggled(_:)),

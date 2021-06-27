@@ -20,28 +20,34 @@ class SceneViewModel{
     
     let disposeBag = DisposeBag()
     
-    private let scenesActions: [String:[String: String]] = [
-        "state": [
-            "on": "Allumer l'appareil",
-            "off": "Éteindre l'appareil",
-            "toggle": "Basculer l'appareil"
-        ],
-        "brightness": [
-            "25": "Mettre la luminosité de l'appareil à 25%",
-            "50": "Mettre la luminosité de l'appareil à 50%",
-            "75": "Mettre la luminosité de l'appareil à 75%",
-            "100": "Mettre la luminosité de l'appareil à 100%"
-        ],
-        "color": [
-            "color": "Changer la couleur de l'appareil"
-        ],
-        "color_temp": [
-            "25": "Mettre la température de l'appareil à 25%",
-            "50": "Mettre la température de l'appareil à 50%",
-            "75": "Mettre la température de l'appareil à 75%",
-            "100": "Mettre la température de l'appareil à 100%"
+    init() {
+        self.fillsceneActions()
+    }
+    
+    private var scenesActions: [String:[String: String]] = [:]
+    
+    private func fillsceneActions(){
+        self.scenesActions["state"] = [
+            "on": self.localizeUtils.deviceActionStateOn,
+            "off": self.localizeUtils.deviceActionStateOff,
+            "toggle": self.localizeUtils.deviceActionStateToggle
         ]
-    ]
+        self.scenesActions["brightness"] = [
+            "25": self.localizeUtils.deviceActionBrightness25,
+            "50": self.localizeUtils.deviceActionBrightness50,
+            "75": self.localizeUtils.deviceActionBrightness75,
+            "100": self.localizeUtils.deviceActionBrightness100
+        ]
+        self.scenesActions["color"] = [
+            "color": self.localizeUtils.deviceActionColor
+        ]
+        self.scenesActions["color_temp"] = [
+            "25": self.localizeUtils.deviceActionTemp25,
+            "50": self.localizeUtils.deviceActionTemp50,
+            "75": self.localizeUtils.deviceActionTemp75,
+            "100": self.localizeUtils.deviceActionTemp100
+        ]
+    }
     
     func getSceneActionName(key: String, value: String) -> String? {
         if let actionType = scenesActions[key] {

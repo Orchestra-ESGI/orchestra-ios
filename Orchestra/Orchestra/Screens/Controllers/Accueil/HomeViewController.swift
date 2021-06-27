@@ -53,6 +53,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(self.navigationController?.viewControllers.count ?? 0 > 1){
+            self.clearControllerStack()
+        }
         self.manageWatchConnection()
         self.navigationController?.navigationBar.isHidden = false
         self.homeVM = HomeViewModel(navCtrl: self.navigationController!)
@@ -71,6 +74,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadData()
+    }
+    
+    private func clearControllerStack(){
+        
+        for _ in 0..<(self.navigationController?.viewControllers.count)! - 1{
+            self.self.navigationController?.viewControllers.remove(at: 0)
+        }
     }
     
     @objc func didPullToRefresh() {
@@ -129,7 +139,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     func loadData(){
-        self.progressUtils.displayIndeterminateProgeress(title: "Chargement de votre domicile...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)
+        let loadingString = self.screenLabelLocalize.homeScreenProgressAlertTitle
+        self.progressUtils.displayIndeterminateProgeress(title: loadingString, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         self.homeVM!.loadAllDevicesAndScenes { successLoad in
             self.refreshHome(successLoad)
             self.refreshControl.endRefreshing()
@@ -139,21 +150,32 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     private func refreshHome(_ loadSuccessfull: Bool){
         self.progressUtils.dismiss()
         self.collectionView.reloadData()
-        self.parseDevicesForWatch()
-        self.parseScenesForWatch()
-        self.syncWatchScenes()
-
+        
+        if let watchConnectivity = self.sessionConnectivity,
+           watchConnectivity.isWatchAppInstalled,
+           watchConnectivity.isPaired,
+           watchConnectivity.isReachable{
+            self.parseDevicesForWatch()
+            self.parseScenesForWatch()
+            self.syncWatchScenes()
+        }
         UIView.animate(withDuration: 0.5, animations: {
             self.collectionView.alpha = 1
         })
         if(loadSuccessfull){
             let view = (UIApplication.shared.windows[0].rootViewController?.view)!
-            self.progressUtils.displayCheckMark(title: "Domicile chargé !", view: view)
+            let loadingFinishedString = self.screenLabelLocalize.homeScreenProgressAlertTitle
+            self.progressUtils.displayCheckMark(title: loadingFinishedString, view: view)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.progressUtils.dismiss()
             }
         }else{
-            self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème survenu lors du chargement de votre domicile", position: .top, style: .danger)
+            let errorNotificationTitle = self.notificationLocalize.homeLoadingErrorNotificationTitle
+            let errorNotificationSubtitle = self.notificationLocalize.homeLoadingErrorNotificationSubtitle
+            self.notificationUtils.showFloatingNotificationBanner(title: errorNotificationTitle,
+                                                                  subtitle: errorNotificationSubtitle,
+                                                                  position: .top,
+                                                                  style: .danger)
         }
     }
     
@@ -187,7 +209,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         }).disposed(by: self.disposeBag)
 
         self.navigationController?.present(UINavigationController(rootViewController: objectVC), animated: true, completion: {
-            print("Detail about object presented")
         })
     }
     
@@ -284,19 +305,29 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                         self.deleteSelectedObjects()
                         print("Device deleted")
                         observer.onNext(true)
-                        self.parseDevicesForWatch()
-                        self.syncWatchScenes()
+                        if let watchConnectivity = self.sessionConnectivity,
+                           watchConnectivity.isWatchAppInstalled,
+                           watchConnectivity.isPaired,
+                           watchConnectivity.isReachable{
+                            self.parseDevicesForWatch()
+                            self.syncWatchScenes()
+                        }
                     }else{
                         observer.onNext(false)
                     }
                 } onError: { err in
-                    self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
+                    let deleteDeviceErreurTitle = self.notificationLocalize.deleteDeviceErrorNotificationTitle
+                    let deleteDeviceErreurSubtitle = self.notificationLocalize.deleteDeviceErrorNotificationSubtitle
+                    self.notificationUtils.showFloatingNotificationBanner(title: deleteDeviceErreurTitle,
+                                                                          subtitle: deleteDeviceErreurSubtitle,
+                                                                          position: .top,
+                                                                          style: .danger)
                     print("Err when removing device")
                     observer.onNext(false)
                 } onCompleted: {
                     print("onCompleted() called in setScenesStreamObserver()")
                     self.progressUtils.dismiss()
-                    let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+                    let alertMessage = self.screenLabelLocalize.localNetworkAuthAlertMessage
                     self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{
@@ -317,19 +348,28 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                         self.deleteSelectedScenes()
                         print("Scene deleted")
                         observer.onNext(true)
-                        self.parseScenesForWatch()
-                        self.syncWatchScenes()
+                        if let watchConnectivity = self.sessionConnectivity,
+                           watchConnectivity.isWatchAppInstalled,
+                           watchConnectivity.isPaired,
+                           watchConnectivity.isReachable{
+                            self.parseScenesForWatch()
+                            self.syncWatchScenes()
+                        }
                     }else{
                         observer.onNext(false)
                     }
                 } onError: { err in
-                    self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
+                    let errorDeletNotificationTitle = self.notificationLocalize.deleteDeviceErrorNotificationTitle
+                    let errorDeletNotificationSubtitle = self.notificationLocalize.deleteDeviceErrorNotificationSubtitle
+                    self.notificationUtils.showFloatingNotificationBanner(title: errorDeletNotificationTitle,
+                                                                          subtitle: errorDeletNotificationSubtitle,
+                                                                          position: .top, style: .danger)
                     print("Err when removing device")
                     observer.onNext(false)
                 } onCompleted: {
                     print("onCompleted() called in setScenesStreamObserver()")
                     self.progressUtils.dismiss()
-                    let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+                    let alertMessage = self.screenLabelLocalize.localNetworkAuthAlertMessage
                     self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{
@@ -349,7 +389,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     self.progressUtils.dismiss()
                 }
             }else{
-                self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Une erreur est survenue lors de la suppression, veuillez reéssayer", position: .top, style: .danger)
+                let errorDeletNotificationTitle = self.notificationLocalize.deleteDeviceErrorNotificationTitle
+                let errorDeletNotificationSubtitle = self.notificationLocalize.deleteDeviceErrorNotificationSubtitle
+                self.notificationUtils.showFloatingNotificationBanner(title: errorDeletNotificationTitle,
+                                                                      subtitle: errorDeletNotificationSubtitle,
+                                                                      position: .top, style: .danger)
             }
         }
     }

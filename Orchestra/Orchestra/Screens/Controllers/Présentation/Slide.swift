@@ -57,16 +57,6 @@ extension UIView{
         bezierPath.addLine(to: CGPoint(x:0, y:0))
         bezierPath.close()
         
-        /*
-        arrowPath.move(to: CGPoint(x:0, y:0))
-        arrowPath.addLine(to: CGPoint(x:givenView.bounds.size.width, y:0))
-        arrowPath.addLine(to: CGPoint(x:givenView.bounds.size.width, y:givenView.bounds.size.height - (givenView.bounds.size.height*curvedPercent)))
-        arrowPath.addQuadCurve(to: CGPoint(x:0, y:givenView.bounds.size.height - (givenView.bounds.size.height*curvedPercent)),
-                               controlPoint: CGPoint(x:givenView.bounds.size.width/2, y:givenView.bounds.size.height))
-        arrowPath.addLine(to: CGPoint(x:0, y:0))
-        arrowPath.close()
-        */
-
         maskLayer.path = bezierPath.cgPath
         maskLayer.frame = self.bounds
         maskLayer.masksToBounds = true

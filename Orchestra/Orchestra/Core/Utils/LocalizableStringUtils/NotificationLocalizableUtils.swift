@@ -56,6 +56,14 @@ public class NotificationLocalizableUtils {
     let serverErrorCallNotificationTitle = NSLocalizedString("server.error.notification.title", comment: "")
     let serverErrorCallNotificationSubitle = NSLocalizedString("server.error.notification.subitle", comment: "")
     
+    let homeLoadingErrorNotificationTitle = NSLocalizedString("home.loading.error.notification.title", comment: "")
+    let homeLoadingErrorNotificationSubtitle = NSLocalizedString("home.loading.error.notification.subitle", comment: "")
+    
+    let deleteDeviceErrorNotificationTitle = NSLocalizedString("device.delete.error.notification.title", comment: "")
+    let deleteDeviceErrorNotificationSubtitle = NSLocalizedString("device.delete.error.notification.subitle", comment: "")
+    
+    let saveSceneErrorNotificationTitle = NSLocalizedString("device.save.error.notification.title", comment: "")
+    let saveSceneErrorNotificationSubtitle = NSLocalizedString("device.save.error.notification.subtitle", comment: "")
     
     // - MARK: Progress notifications
     let undeterminedProgressViewTitle = NSLocalizedString("progress.notification.undetermined.title", comment: "")
@@ -77,6 +85,9 @@ public class NotificationLocalizableUtils {
     let removeDataAlertSubtitle = NSLocalizedString("home.vc.remove.alert.subtitle", comment: "")
     let removeDataAlertCancelButtonText = NSLocalizedString("home.vc.remove.alert.cancel.button.text", comment: "")
     let removeDataAlertDeleteButtonText = NSLocalizedString("home.vc.remove.alert.delete.button.text", comment: "")
+    
+    let deviceFormInvalidFormNotificationTitle = NSLocalizedString("device.form.invalid.form.notification.title", comment: "")
+    let deviceFormInvalidFormNotificationSubtitle = NSLocalizedString("device.form.invalid.form.notification.subtitle", comment: "")
         
     
     init() {

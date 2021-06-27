@@ -42,8 +42,7 @@ class NewDevicePairingViewController: UIViewController {
         if(self.device == nil){
             self.title = self.localizeLabel.newDeviceVcTitle
         }else{
-            // Set config title
-            self.title = "Configurer un appareil"
+            self.title = self.localizeLabel.configDeviceVcTitle
         }
     }
     
@@ -65,10 +64,14 @@ class NewDevicePairingViewController: UIViewController {
                     self.accessoriesTableView.reloadData()
                 }
         } onError: { err in
-            self.notificationsUtils.showBasicBanner(title: "Une erreur est survenue", subtitle: "Impossible de récupérer la configartion actuelle du Hub", position: .top, style: .danger)
+            let alertTitle = self.localizeLabel.configurationCallErrorAlertTitle
+            let alertSubtitle = self.localizeLabel.configurationCallErrorAlertMessage
+            self.notificationsUtils.showBasicBanner(title: alertTitle,
+                                                    subtitle: alertSubtitle,
+                                                    position: .top, style: .danger)
         } onCompleted: {
             self.progressUtils.dismiss()
-            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            let alertMessage = self.localizeLabel.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         }
 
@@ -86,7 +89,6 @@ class NewDevicePairingViewController: UIViewController {
             return .Unknown
         }
     }
-
 }
 
 extension NewDevicePairingViewController: UITableViewDelegate{

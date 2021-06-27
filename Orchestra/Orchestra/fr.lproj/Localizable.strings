@@ -21,17 +21,17 @@
 // Camera
 "permissions.camera.alert.title" = "Caméra";
 "permissions.camera.alert.description" = "Pour scanner le code QR (nécessaire pour créer un compte)";
-"permission.camera.alert.error.title" = "Vous avez refusé l'autorisation de la caméra.";
+"permission.camera.alert.error.title" = "Vous avez refusé l'autorisation d'accès à la caméra.";
 "permission.camera.alert.error.description" = "Essayez de l'autoriser via les paramètres de l'application";
 
-"permission.alert.footer.title" = "Nous ne vous traquons pas et nous ne vendons pas vos données, les autorisation ci-dessus nous permettrons de vous fournir un service optimal";
+"permission.alert.footer.title" = "Nous ne vous traquons pas et nous ne vendons pas vos données, les autorisations ci-dessus nous permettront de vous fournir un service optimal";
 
 "permission.button.allow.text" = "Accepter";
 "permission.button.allowed.text" = "Acceptée";
 
 
 // - MARK: Pager
-"pager.slide.1.label.text" = "Gérez votre ou vos domicile & vos objets connectés le tout depuis la même application et simplifiez-vous la vie";
+"pager.slide.1.label.text" = "Gérez votre & vos objets connectés depuis la même application et simplifiez-vous la vie";
 "pager.slide.2.label.text" = "Gérez tout votre docmilice depuis Orchestra simplement et rapidement";
 "pager.slide.3.label.text" = "Trop de fils ? Trop de Hub ? Trop d'applications ? Trop de chose pour gérer  votre domotique, avec Orchestra, débarassez vous du surplus, et gardez uniquement l'essentiel";
 "pager.slide.4.label.text" = "Vous décidez de changez de téléphone ou de marque? Pas d'inquiétude, réinstallez Orchestra sur votre nouvel appareil, on se charge de tout synchroniser pour vous";
@@ -40,13 +40,13 @@
 "pager.slide.1.title.label.text" = "Simplicité";
 "pager.slide.2.title.label.text" = "Efficacité";
 "pager.slide.3.title.label.text" = "Clarté";
-"pager.slide.4.title.label.text" = "Sychronnisation";
+"pager.slide.4.title.label.text" = "Sychronisation";
 "pager.slide.5.title.label.text" = "C'est parti !";
 
 // - MARK: Login Notifications
 
 "login.notification.unreachable.title" = "Réseau indisponible!";
-"login.notification.unreachable.subtitle" = "Veuillez vérifier votre connexion à internet et réessayer";
+"login.notification.unreachable.subtitle" = "Veuillez vérifier votre connexion à internet puis réessayer";
 "login.notification.ok.title" = "Connexion réussie";
 "login.notification.ok.subtitle" = "";
 "login.notification.ko.title" = "Un problème est survenu!";
@@ -54,7 +54,7 @@
 "login.notification.koapi.title" = "Connexion impossible!";
 "login.notification.koapi.subtitle" = "Vous devez renseigner tous les champs!";
 "login.notification.credantials.wrong.title" = "Informations éronnées";
-"login.notification.credantials.wrong.subtitle" = "Modifiez les information et reéssayez";
+"login.notification.credantials.wrong.subtitle" = "Modifiez les informations et reéssayez";
 
 // 400
 "badRequest.notification.title" = "Erreur";
@@ -111,7 +111,7 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mes objets";
 "home.collection.header.scenes" = "Mes scènes";
-"home.object.cell.reachability.label.text" = "Disponnibilité";
+"home.object.cell.reachability.label.text" = "Disponibilité";
 "home.object.cell.reachability.status.ok.label.text" = "Disponible";
 "home.object.cell.reachability.status.ko.label.text" = "Indisponible";
 "home.edit.progress.title.text" = "Suppression en cours, veuillez patienter...";
@@ -139,12 +139,29 @@
 "scene.form.bg.color.label.text" = "Choisissez une couleur";
 "scene.form.description.label.text" = "Description";
 "scene.form.description.tf.text" = "\"Allumer les lampes si il fait nuit\"";
-"scene.form.add.action.button" = "Ajouter des actions";
+"scene.form.add.action.button" = "Ajouter";
 
 "new.scene.successfully.created.title" = "Ajout effecuté!";
 "new.scene.successfully.created.subtitle" = "La scène a été ajoutée!";
 "new.scene.unsuccessfully.created.title" = "Ajout impossible!";
 "new.scene.unsuccessfully.created.subtitle" = "La scène n'a pa été ajoutée, reéssayez !";
+"new.scene.close.custom.view.button.title" = "Fermer";
+"new.scene.device.custom.view.title" = "Choisissez un appareil";
+"new.scene.action.custom.view.title" = "Choisissez une action";
+
+// - MARK: Actions
+"device.action.state.on" = "Allumer l'appareil";
+"device.action.state.off" = "Éteindre l'appareil";
+"device.action.state.toggle" = "Basculer l'appareil";
+"device.action.brightness.100" = "Luminosité 100%";
+"device.action.brightness.75" = "Luminosité 75%";
+"device.action.brightness.50" = "Luminosité 50%";
+"device.action.brightness.25" = "Luminosité 25%";
+"device.action.color" = "Changer la couleur de l'appareil";
+"device.action.color_temp.100" = "Température 100%";
+"device.action.color_temp.75" = "Température 75%";
+"device.action.color_temp.50" = "Température 50%";
+"device.action.color_temp.25" = "Température 25%";
 
 "scene.info.startnig.progress.alert.title" = "Exécution en cours, patientez...";
 
@@ -175,8 +192,8 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ajouter un appareil";
+"config.device.controller.title" = "Configurer un appareil";
 "progress.notification.config.finished.title" = "Chargement de la configuration terminé";
-
 
 
 // - MARK: Watch
@@ -211,3 +228,82 @@
 // - MARK: Watch Empty Screens Label
 "watch.myscenes.empty.label.title" = "Vous n'avez créé aucune scène";
 "watch.mydevices.empty.label.title" = "Vous n'avez ajouté aucun objet";
+
+"reset.device.alert.title" = "Important";
+"reset.device.alert.message" = "Nous allons reinitialiser votre objet, afin de l'appairer et de l'ajouter à votre domicile";
+"reset.device.alert.main.action.title" = "Reinitialiser";
+
+// - MARK: Signup Network Auth Alert
+"signup.local.network.auth.alert.title" = "Action requise";
+"signup.local.network.auth.alert.message" = "Une erreur est survenue, cela peut venir de deux choses possibles: 1) Vérifiez que votre Hub Orchestra est correctement connecté à votre box. 2) verifiez que vous avez donné l'autorisation à Orchestra d'accéder à votre réseau local dans les paramètres. Réessayez ensuite";
+"signup.local.network.auth.alert.action.title.label" = "Aller au paramètres";
+
+
+// - MARK: Signup Information email sent Alert
+"signup.local.email.sent.alert.title" = "Information";
+"signup.local.email.sent.alert.message" = "Nous vous avons envoyé un lien de confirmation de votre compte, verifiez vos mails et spams";
+"signup.local.email.sent.alert.action" = "C'est noté";
+
+// - MARK: Login Network Auth Alert
+"login.local.network.auth.alert.title" = "Action requise";
+
+// - MARK: Home Progress Alert Title
+"home.screen.progress.alert.title" = "Chargement de votre domicile...";
+"home.screen.progress.finished.alert.title" = "Domicile chargé !";
+
+// - MARK: Device Available Screen
+"device.available.screen.title" = "Appareils disponibles";
+
+// - MARK: New Scene Save Error
+"device.save.error.notification.title" = "Erreur";
+"device.save.error.notification.subtitle" = "Une erreur est survenue lors de l'enregistrement de votre scène, veuillez reéssayer";
+
+// - MARK: New Scene actions for scene
+"device.for.new.scene.progress.title" = "Récupération de vos appareils";
+"scene.new.action.for.device.button.title" = "Ajouter une action";
+"new.scene.saved.successfully.alert.title" = "Succès";
+
+// - MARK: Device Actions Labels
+"device.actions.brightness.label.title" = "Luminosité";
+"device.actions.color.label.title" = "Couleur";
+"device.actions.temperature.label.title" = "Température";
+"device.actions.on.label.title" = "Allumer";
+"device.actions.off.label.title" = "Éteindre";
+"device.actions.noaction.label.title" = "Aucune action n'est possible sur cet objet, vous pouvez cependant l'utiliser pour créer des scènes";
+
+"device.detail.configuration.needed.alert.title" = "Configuration demandée!";
+"device.detail.configuration.needed.alert.message" = "Pour pouvoir utiliser pleinement cet appraeil, une configuration supplémentaire est obligatoire. Si cette configuration n'est pas faite, l'objet ne peut pas fonctionner! ";
+"device.detail.configuration.needed.alert.cancel.action" = "Plus tard";
+"device.detail.configuration.needed.alert.go.action" = "Allons-y!";
+
+// - MARK: Default actions
+"default.success" = "Succès";
+"default.ok" = "ok";
+
+"configuration.error.alert.title" = "Une erreur est survenue";
+"configuration.error.alert.message" = "Impossible de récupérer la configartion actuelle du Hub";
+
+"no.response.server.action.title" = "Fermer";
+"undefined.value.dto" = "Indefini";
+
+// - MARK: Scene Info
+"scene.info.descritpion.label" = "Description";
+"scene.info.action.list.title.label" = "Actions";
+
+// - MARK: Device Form
+"device.form.screen.title" = "Votre objet";
+"device.form.invalid.form.notification.title" = "Action impossible";
+"device.form.invalid.form.notification.subtitle" = "Vous devez remplir tous les champs du formulaire!";
+"device.form.screen.device.name.label" = "Nom de l'appareil";
+"device.form.screen.device.name.label" = "Dans quelle pièce ?";
+
+// - MARK: Configuration tuto Screen
+"configuration.screen.title" = "Configuration";
+"configuration.screen.nav.bar.continue.right.button" = "Continuer";
+"configuration.screen.header.text" = "Suivez ces étapes pour configurer votre objet";
+"configuration.screen.step.1.text" = "1. Suivez le lien suivant: ";
+"configuration.screen.step.2.text" = "2. Allez dans la section #Pairing";
+"configuration.screen.step.3.text" = "3. Suivez les instructions pour appairer votre objet";
+"configuration.screen.alert.title" = "Information";
+"configuration.screen.alert.message" = "Si l'objet correctement réagit au processus de réinitialisation, il devrait être ajouté à votre domicile d'ici peu, essayer de rafraichir votre écran d'ici 20 - 30 secondes";
+"configuration.screen.alert.action.title" = "D'accord";

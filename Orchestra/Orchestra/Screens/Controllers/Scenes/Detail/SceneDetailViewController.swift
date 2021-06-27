@@ -35,6 +35,7 @@ class SceneDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.localizeUI()
         self.setUpUI()
         self.setUpClickObserver()
         self.setUpTableView()
@@ -49,6 +50,11 @@ class SceneDetailViewController: UIViewController {
         self.descriptionTextView.layer.borderWidth = 0.5
         self.descriptionTextView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.descriptionTextView.layer.cornerRadius = 8.0
+    }
+    
+    private func localizeUI(){
+        self.descriptionLabel.text = self.localizeLabels.sceneInfoDesciptionLabel
+        self.actionsLabel.text = self.localizeLabels.sceneInfoActionListTitleLabel
     }
     
     private func setUpTopBar(){

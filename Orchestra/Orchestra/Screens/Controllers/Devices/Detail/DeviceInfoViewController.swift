@@ -218,11 +218,17 @@ class DeviceInfoViewController: UIViewController {
         self.setupWarningButton?
             .rx
             .tap.bind{
-                let alert = UIAlertController(title: "Configuration demandée!", message: "Pour pouvoir utiliser pleinement cet appraeil, une configuration supplémentaire est obligatoire. Si cette configuration n'est pas faite, l'objet ne peut pas fonctionner! ", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Plus tard", style: .cancel, handler: { action in
+                let alertTitle = self.localizeLabels.deviceConfigurationNeededAlertTitle
+                let alertMessage = self.localizeLabels.deviceConfigurationNeededAlertMessage
+                let alertCancelAction = self.localizeLabels.deviceConfigurationNeededAlertCancelAction
+                let alertGoAction = self.localizeLabels.deviceConfigurationNeededAlertGoAction
+                let alert = UIAlertController(title: alertTitle,
+                                              message: alertMessage, preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: alertCancelAction, style: .cancel, handler: { action in
                 })
                 
-                let goAction = UIAlertAction(title: "Allons-y", style: .default, handler: { action in
+                let goAction = UIAlertAction(title: alertGoAction, style: .default, handler: { action in
                     let configVc = NewDevicePairingViewController()
                     configVc.device = self.deviceData
                     self.navigationController?.pushViewController(configVc, animated: true)

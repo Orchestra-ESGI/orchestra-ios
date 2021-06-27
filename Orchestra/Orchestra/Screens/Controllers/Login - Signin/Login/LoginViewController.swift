@@ -191,7 +191,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.progressUtils.dismiss()
         } onCompleted: {
             self.progressUtils.dismiss()
-            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            let alertMessage = self.screenLocalize.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         } .disposed(by: self.disposeBag)
     }

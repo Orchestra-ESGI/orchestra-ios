@@ -45,7 +45,6 @@ extension HomeViewController: WCSessionDelegate{
             self.dataToTranferToWatch.removeAll() // clean the array for the next transfert
         case "devices":
             // Syncroniser la montre et le tél sur la liste de scène
-            var sceneCount = 0
             self.parseDevicesForWatch()
             replyHandler(self.dataToTranferToWatch)
             self.dataToTranferToWatch.removeAll() // clean the array for the next transfert

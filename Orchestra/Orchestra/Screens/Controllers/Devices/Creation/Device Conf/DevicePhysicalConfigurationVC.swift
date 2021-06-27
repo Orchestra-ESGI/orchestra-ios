@@ -17,26 +17,35 @@ class DevicePhysicalConfigurationVC: UIViewController {
     @IBOutlet weak var thirdStepTv: UITextView!
     
     var continueAppBarButton: UIBarButtonItem?
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     var deviceDocumentationUrl: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.indicationLabelText.text = self.labelLocalization.configurationScreenHeaderText
         self.setUpTopBar()
         self.setUpSteps()
     }
     
     private func setUpTopBar(){
-        self.title = "Configuration"
-        continueAppBarButton = UIBarButtonItem(title: "Continuer", style: .done, target: self, action: #selector(self.searchDevice))
+        let screenTitle = self.labelLocalization.configurationScreenTitle
+        let continueButtonTitle = self.labelLocalization.configurationScreenContinueButton
+        
+        self.title = screenTitle
+        continueAppBarButton = UIBarButtonItem(title: continueButtonTitle, style: .done, target: self, action: #selector(self.searchDevice))
         self.navigationItem.rightBarButtonItem = continueAppBarButton
     }
     
     private func setUpSteps(){
-        self.firstStepTv.text = "1. Suivez le lien suivant: " + self.deviceDocumentationUrl
-        self.secondStepTv.text = "2. Allez dans la section #Pairing "
-        self.thirdStepTv.text = "3. Suivez les instructions pour appairer votre objet"
+        let step1Text = self.labelLocalization.configurationScreenStep1Text
+        let step2Text = self.labelLocalization.configurationScreenStep2Text
+        let step3Text = self.labelLocalization.configurationScreenStep3Text
+        
+        self.firstStepTv.text = step1Text + self.deviceDocumentationUrl
+        self.secondStepTv.text = step2Text
+        self.thirdStepTv.text = step3Text
         
         self.secondStepScreenShot.contentMode = .scaleAspectFill
         self.secondStepScreenShot.layer.borderWidth = 1.0
@@ -50,7 +59,19 @@ class DevicePhysicalConfigurationVC: UIViewController {
     }
 
     @objc func searchDevice(){
+        let alertTitle = self.labelLocalization.configurationScreenAlertTitle
+        let alertMessage = self.labelLocalization.configurationScreenAlertMessage
+        let alertActionText = self.labelLocalization.configurationScreenAlertActionTitle
         
+        let alert = UIAlertController(title: alertTitle,
+                                      message: alertMessage,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: alertActionText, style: .cancel) { action in
+            self.navigationController?.pushViewController(HomeViewController(), animated: false)
+        }
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

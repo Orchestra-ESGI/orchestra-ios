@@ -77,7 +77,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.textLabel?.text = deviceSelectedActions![indexPath.row].key
             } else {
                 cell.isUserInteractionEnabled = true
-                cell.textLabel?.text = "Ajouter une action"
+                cell.textLabel?.text = self.localizeUtils.addActionOnDeviceNewSceneButtonTitle
             }
             return cell
         }
@@ -131,7 +131,9 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     self.popUpType = 1
                     
                     self.alertDevice = DevicesAlert()
+                    self.alertDevice?.delegate = self
                     self.alertDevice?.deviceSelectedSection = indexPath.section
+                    self.alertDevice?.titleLabel.text = self.localizeUtils.newSceneActionCustomViewTitle
                     self.view.addSubview(self.alertDevice!.parentView)
                     self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
                     self.alertDevice!.tableView.reloadData()

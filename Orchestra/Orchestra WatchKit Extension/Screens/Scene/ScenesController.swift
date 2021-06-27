@@ -122,6 +122,7 @@ class ScenesController: WKInterfaceController, LaunchSceneDelegate{
                 self.stopProgressIndicator()
                 let emptyLabel = self.watchLocalization.emptyScenesLabel
                 self.loadingLabel.setText(emptyLabel)
+                self.loadingLabel.setHidden(false)
             }
         } errorHandler: { (err) in
             print("errorHandler: \(err)")

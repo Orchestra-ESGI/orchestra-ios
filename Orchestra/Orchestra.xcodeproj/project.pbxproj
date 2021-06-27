@@ -643,7 +643,6 @@
 			children = (
 				633E7E482610D1010094B148 /* Dto */,
 				633E7E3F2610D0720094B148 /* Services */,
-				633E7E3E2610D0610094B148 /* Mocks */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -685,6 +684,7 @@
 				633E7E812610D7460094B148 /* ActionsSceneDto.swift */,
 				63D5B2972610FB35004573D7 /* ErrorDto.swift */,
 				63F116172621DF0900B93A33 /* ObjectDto.swift */,
+				633E7E3E2610D0610094B148 /* Mocks */,
 				63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */,
 				63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */,
 			);
@@ -1751,14 +1751,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5HDSJGV3Z;
+				DEVELOPMENT_TEAM = PS454LZVNR;
 				INFOPLIST_FILE = "Orchestra WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nrv.orchestra.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1774,14 +1774,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5HDSJGV3Z;
+				DEVELOPMENT_TEAM = PS454LZVNR;
 				INFOPLIST_FILE = "Orchestra WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.NRV.Orchestra.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nrv.orchestra.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1800,10 +1800,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5HDSJGV3Z;
+				DEVELOPMENT_TEAM = PS454LZVNR;
 				IBSC_MODULE = Orchestra_WatchKit_Extension;
 				INFOPLIST_FILE = "Orchestra WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nrv.orchestra.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1821,10 +1821,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9SKDF3Q9A6;
+				DEVELOPMENT_TEAM = PS454LZVNR;
 				IBSC_MODULE = Orchestra_WatchKit_Extension;
 				INFOPLIST_FILE = "Orchestra WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nrv.orchestra.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1844,14 +1844,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5HDSJGV3Z;
+				DEVELOPMENT_TEAM = PS454LZVNR;
 				INFOPLIST_FILE = Orchestra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nrv.orchestra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -1868,14 +1868,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X5HDSJGV3Z;
+				DEVELOPMENT_TEAM = PS454LZVNR;
 				INFOPLIST_FILE = Orchestra/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ramzy.Orchestra;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nrv.orchestra;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;

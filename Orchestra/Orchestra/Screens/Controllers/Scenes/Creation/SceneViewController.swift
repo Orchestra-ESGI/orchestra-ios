@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import ObjectMapper
 
-class SceneViewController: UIViewController, UITextFieldDelegate {
+class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomViewProtocol {
 
     // MARK: - UI
     @IBOutlet weak var sceneNameLabel: UILabel!
@@ -142,6 +142,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
             self.progressUtils.dismiss()
             if(self.view.subviews.count == 1){
                 self.alertDevice = DevicesAlert()
+                self.alertDevice?.delegate = self
+                self.alertDevice?.titleLabel.text = self.localizeUtils.newSceneDeviceCustomViewTitle
                 self.view.addSubview(self.alertDevice!.parentView)
                 self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
                 self.alertDevice!.tableView.reloadData()
@@ -168,11 +170,19 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         //alert.removeFromSuperview()
     }
     
+    func popOffView() {
+        self.hidePopUp()
+        self.isPopUpVisible = false
+    }
+    
     func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
         var actions: [String] = []
         var values: [Any] = []
         if device.actions?.state != nil {
-            actions = ["Allumer l'appareil", "Éteindre l'appareil", "Basculer"]
+            let onAction = self.localizeUtils.deviceActionStateOn
+            let offAction = self.localizeUtils.deviceActionStateOff
+            let toggleAction = self.localizeUtils.deviceActionStateToggle
+            actions = [onAction, offAction, toggleAction]
             values = ["on", "off", "toggle"]
             for index in 0..<actions.count{
                 let action = SceneActionsName(key: actions[index], val: values[index], type: "state")
@@ -181,8 +191,12 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         }
         
         if(device.actions?.brightness != nil){
-            actions = ["Régler la luminosité à 25%", "Régler la luminosité à 50%", "Régler la luminosité à 100%"]
-            values = [25, 50, 100]
+            let brightnessAction100 = self.localizeUtils.deviceActionBrightness100
+            let brightnessAction50 = self.localizeUtils.deviceActionBrightness50
+            let brightnessAction25 = self.localizeUtils.deviceActionBrightness25
+            let deviceBrightness = device.actions!.brightness!.maxVal
+            actions = [brightnessAction25, brightnessAction50, brightnessAction100]
+            values = [deviceBrightness/4, deviceBrightness/2, deviceBrightness]
             for index in 0..<actions.count{
                 let action = SceneActionsName(key: actions[index], val: values[index], type: "brightness")
                 self.actionsName.append(action)
@@ -190,7 +204,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         }
         
         if(device.actions?.color != nil){
-            actions = ["Choisir une couleur"]
+            let colorAction = self.localizeUtils.deviceActionColor
+            actions = [colorAction]
             values = ["#FF0000"]
             for index in 0..<actions.count{
                 let action = SceneActionsName(key: actions[index], val: values[index], type: "color")
@@ -199,8 +214,12 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
         }
         
         if(device.actions?.colorTemp != nil){
-            actions = ["Choisir la température"]
-            values = [200]
+            let temperatureAction100 = self.localizeUtils.deviceActionTemp100
+            let temperatureAction50 = self.localizeUtils.deviceActionTemp50
+            let temperaturection25 = self.localizeUtils.deviceActionTemp25
+            let deviceMaxValue = device.actions!.colorTemp!.maxVal
+            actions = [temperatureAction100, temperatureAction50, temperaturection25]
+            values = [deviceMaxValue, deviceMaxValue/2, deviceMaxValue/4]
             for index in 0..<actions.count{
                 let action = SceneActionsName(key: actions[index], val: values[index], type: "color_temp")
                 self.actionsName.append(action)
@@ -248,14 +267,19 @@ class SceneViewController: UIViewController, UITextFieldDelegate {
 
                 _ = self.sceneVM.newScene(body: newSceneMap).subscribe(onNext: { succeeded in
                     self.progressUtils.dismiss()
-                    self.progressUtils.displayCheckMark(title: "Succès", view: uiscreenWindow)
+                    let successAlertTitle = self.localizeUtils.newSceneSuccessCreationAlertTitle
+                    self.progressUtils.displayCheckMark(title: successAlertTitle, view: uiscreenWindow)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.progressUtils.dismiss()
                         self.navigationController?.popViewController(animated: true)
                     }
                 }, onError: { err in
                     self.progressUtils.dismiss()
-                    self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un erreur est survenue lors de l'enregistrement de votre scène, veuillez reéssayer", position: .top, style: .danger)
+                    let alertTitle = self.notificationLocalize.saveSceneErrorNotificationTitle
+                    let alertMessage = self.notificationLocalize.saveSceneErrorNotificationSubtitle
+                    self.notificationUtils.showFloatingNotificationBanner(title: alertTitle,
+                                                                          subtitle:alertMessage,
+                                                                          position: .top, style: .danger)
                 })
         }
     }
@@ -294,4 +318,8 @@ class SceneActionsName {
         self.value = val
         self.type = type
     }
+}
+
+protocol CloseCustomViewProtocol {
+    func popOffView()
 }

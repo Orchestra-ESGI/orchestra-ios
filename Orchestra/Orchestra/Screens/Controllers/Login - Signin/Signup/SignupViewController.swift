@@ -103,18 +103,19 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.progressUtils.dismiss()
         } onCompleted: {
             self.progressUtils.dismiss()
-            let alertMessage = "Vous devez autoriser Orchestra à accéder à votre réseau local pour pouvoir communiquer correctement avec votre Hub"
+            let alertMessage = self.screenLocalize.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         } .disposed(by: self.disposeBag)
 
     }
     
     private func showInfoAlert(){
-        let alertTitle = "Information"
-        let alertMessage = "Nous vous avons envoyé un lien de confirmation de votre compte, verifiez vos mails et spams"
+        let alertTitle = self.screenLocalize.signupEmailSentAlertTitle
+        let alertMessage = self.screenLocalize.signupEmailSentAlertMessage
+        let alertActionString = self.screenLocalize.signupEmailSentAlertAction
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "C'est noté", style: .cancel) { action in
+        let okAction = UIAlertAction(title: alertActionString, style: .cancel) { action in
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(okAction)

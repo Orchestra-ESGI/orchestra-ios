@@ -54,6 +54,30 @@
 "login.notification.credantials.wrong.title" = "Foutieve informatie";
 "login.notification.credantials.wrong.subtitle" = "Verander de informatie en probeer opnieuw";
 
+// 400
+"badRequest.notification.title" = "Vergissing";
+"badRequest.notification.subitle" = "er is een fout opgetreden";
+
+// 401
+"unauthorized.notification.title" = "Toegang verboden!";
+"unauthorized.notification.subitle" = "Controleer uw e-mail en probeer het opnieuw";
+
+// 401
+"forbidden.notification.title" = "Toegang verboden!";
+"forbidden.notification.subitle" = "Controleer uw e-mail en probeer het opnieuw";
+
+// 404
+"unknown.notification.title" = "Vergissing";
+"unknown.notification.subitle" = "er is een fout opgetreden";
+
+"conflict.notification.title" = "Conflict";
+"conflict.notification.subitle" = "deze email is al in gebruik";
+
+// 500 & 503
+"server.error.notification.title" = "Vergissing";
+"server.error.notification.subitle" = "er is een fout opgetreden";
+
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Wacht alstublieft...";
 
@@ -118,6 +142,23 @@
 "new.scene.successfully.created.subtitle" = "De scène is toegevoegd!";
 "new.scene.unsuccessfully.created.title" = "Ajout impossible!";
 "new.scene.unsuccessfully.created.subtitle" = "De scène is niet toegevoegd, probeer het opnieuw!";
+"new.scene.close.custom.view.button.title" = "Sluiten";
+"new.scene.device.custom.view.title" = "Kies een apparaat";
+"new.scene.action.custom.view.title" = "Kies een actie";
+
+// - MARK: Actions
+"device.action.state.on" = "Schakel het apparaat in";
+"device.action.state.off" = "Schakel het apparaat uit";
+"device.action.state.toggle" = "Schakel het apparaat";
+"device.action.brightness.100" = "Helderheid 100%";
+"device.action.brightness.75" = "Helderheid 75%";
+"device.action.brightness.50" = "Helderheid 50%";
+"device.action.brightness.25" = "Helderheid 25%";
+"device.action.color" = "Verander kleur";
+"device.action.color_temp.100" = "Temperatuur 100%";
+"device.action.color_temp.75" = "Temperatuur 75%";
+"device.action.color_temp.50" = "Temperatuur 50%";
+"device.action.color_temp.25" = "Temperatuur 25%";
 
 "scene.info.startnig.progress.alert.title" = "Lopen, even wachten...";
 
@@ -147,10 +188,8 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Een apparaat toevoegen";
+"config.device.controller.title" = "Configurer un appareil";
 "progress.notification.config.finished.title" = "Laden van de voltooide configuratie";
-
-
-
 
 // - MARK: Watch
 // - MARK: Root View Controller
@@ -184,3 +223,82 @@
 // - MARK: Watch Empty Screens Label
 "watch.myscenes.empty.label.title" = "Je hebt geen scènes gecreëerd";
 "watch.mydevices.empty.label.title" = "U heeft geen objecten toegevoegd";
+
+"reset.device.alert.title" = "Belangrijk";
+"reset.device.alert.message" = "We zullen uw object resetten, om het te koppelen en toe te voegen aan uw huis.";
+"reset.device.alert.main.action.title" = "Resetten";
+
+// - MARK: Signup Network Auth Alert
+"signup.local.network.auth.alert.title" = "Actie vereist";
+"signup.local.network.auth.alert.message" = "Er is een fout opgetreden, dit kan door twee dingen komen: 1) Controleer of uw Orchestra Hub correct op uw box is aangesloten. 2) Controleer of u Orchestra in de instellingen toestemming hebt gegeven voor toegang tot uw lokale netwerk. Probeer het dan opnieuw.";
+"signup.local.network.auth.alert.action.title.label" = "Ga naar parameters";
+
+
+// - MARK: Signup Information email sent Alert
+"signup.local.email.sent.alert.title" = "Informatie";
+"signup.local.email.sent.alert.message" = "Wij hebben u een link gestuurd om uw account te bevestigen, controleer uw e-mails en spams";
+"signup.local.email.sent.alert.action" = "Er wordt opgemerkt";
+
+// - MARK: Login Network Auth Alert
+"login.local.network.auth.alert.title" = "Actie vereist";
+
+// - MARK: Home Progress Alert Title
+"home.screen.progress.alert.title" = "Uw huis laden...";
+"home.screen.progress.finished.alert.title" = "Huis geladen!";
+
+// - MARK: Device Available Screen
+"device.available.screen.title" = "Beschikbare apparaten";
+
+// - MARK: New Scene Save Error
+"device.save.error.notification.title" = "Fout";
+"device.save.error.notification.subtitle" = "Er is een fout opgetreden tijdens het opnemen van uw scène, probeer het opnieuw";
+
+// - MARK: New Scene actions for scene
+"device.for.new.scene.progress.title" = "Herstel van uw apparaten";
+"scene.new.action.for.device.button.title" = "Een actie toevoegen";
+"new.scene.saved.successfully.alert.title" = "Succes";
+
+// - MARK: Device Actions Labels
+"device.actions.brightness.label.title" = "Helderheid";
+"device.actions.color.label.title" = "Kleur";
+"device.actions.temperature.label.title" = "Temperatuur";
+"device.actions.on.label.title" = "Zet aan";
+"device.actions.off.label.title" = "Zet uit";
+"device.actions.noaction.label.title" = "Er is geen actie mogelijk op dit object, maar je kunt het gebruiken om scènes te maken";
+
+"device.detail.configuration.needed.alert.title" = "Configuratie gevraagd!";
+"device.detail.configuration.needed.alert.message" = "Om deze apprail volledig te kunnen gebruiken, is een extra configuratie verplicht. Als deze configuratie niet wordt uitgevoerd, kan het object niet werken! ";
+"device.detail.configuration.needed.alert.cancel.action" = "Later";
+"device.detail.configuration.needed.alert.go.action" = "Laten we gaan!";
+
+// - MARK: Default actions
+"default.success" = "Succes";
+"default.ok" = "OK";
+
+"configuration.error.alert.title" = "Er is een fout opgetreden";
+"configuration.error.alert.message" = "Kan de huidige Hub-configuratie niet ophalen";
+
+"no.response.server.action.title" = "Sluiten";
+"undefined.value.dto" = "Ongedefinieerd";
+
+// - MARK: Scene Info
+"scene.info.descritpion.label" = "Beschrijving";
+"scene.info.action.list.title.label" = "Acties";
+
+// - MARK: Device Form
+"device.form.screen.title" = "Jouw onderwerp";
+"device.form.invalid.form.notification.title" = "Onmogelijke actie!";
+"device.form.invalid.form.notification.subtitle" = "U moet alle velden van het formulier invullen!";
+"device.form.screen.device.name.label" = "Naam van het apparaat";
+"device.form.screen.device.name.label" = "In welke kamer?";
+
+// - MARK: Configuration tuto Screen
+"configuration.screen.title" = "Configuratie";
+"configuration.screen.nav.bar.continue.right.button" = "Doorgaan";
+"configuration.screen.header.text" = "Volg deze stappen om uw object te configureren";
+"configuration.screen.step.1.text" = "1. Volg de volgende link: ";
+"configuration.screen.step.2.text" = "2. Ga naar de sectie #Pairing";
+"configuration.screen.step.3.text" = "3. Volg de instructies om je object te koppelen";
+"configuration.screen.alert.title" = "Informatie";
+"configuration.screen.alert.message" = "Als het item correct reageert op het resetproces, zou het binnenkort aan je huis moeten worden toegevoegd, probeer je scherm binnen 20 - 30 seconden te vernieuwen";
+"configuration.screen.alert.action.title" = "Oke";

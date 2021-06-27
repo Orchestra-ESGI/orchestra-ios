@@ -18,8 +18,9 @@ public class RootApiService{
     static let RAMZYPI_IP = "192.168.1.118"
     static let NASSIMPI_IP = "192.168.1.33"
     static let LOCAL_IP = "192.168.1.105"
+    static let ORCHESTRA_HUB_IP = "orchestra.local"
     
-    static var BASE_API_URL = "http://\(LOCAL_IP):3000"
+    static var BASE_API_URL = "http://\(ORCHESTRA_HUB_IP):3000"
     var stringUtils = StringUtils.shared
     var fileUtils = FileUtils.shared
 

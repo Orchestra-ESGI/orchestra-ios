@@ -13,13 +13,18 @@ class DevicesAlert: UIView{
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeViewButton: UIButton!
+    
     var deviceSelectedSection: Int?
+    var delegate: CloseCustomViewProtocol?
+    let localizeLabels = ScreensLabelLocalizableUtils.shared
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         Bundle.main.loadNibNamed("DevicesAlert", owner: self, options: nil)
         self.commonInit()
+        self.localizeCustomView()
     }
     
     required init?(coder: NSCoder) {
@@ -34,9 +39,13 @@ class DevicesAlert: UIView{
                                        height: UIScreen.main.bounds.height)
     }
     
-    func showAlert(title: String){
-        self.titleLabel.text = title
+    private func localizeCustomView(){
+        let closeButtonString = self.localizeLabels.newSceneCustomAlertCloseButtonTitle
+        
+        self.closeViewButton.setTitle(closeButtonString, for: .normal)
     }
     
-    
+    @IBAction func Closealert(_ sender: Any) {
+        self.delegate?.popOffView()
+    }
 }
