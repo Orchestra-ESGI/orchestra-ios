@@ -13,7 +13,7 @@ import RxCocoa
 
 public class RootApiService{
     /// Les fonctions globale de gestion du routing de l'app se fait ici
-    
+
     static var shared = RootApiService()
     static let RAMZYPI_IP = "192.168.1.118"
     static let NASSIMPI_IP = "192.168.1.33"
@@ -25,7 +25,7 @@ public class RootApiService{
     var fileUtils = FileUtils.shared
 
     let disposeBag = DisposeBag()
-    
+
     var headers: HTTPHeaders = [
         "Content-Type":"application/json",
         "Accept": "application/json",
@@ -36,22 +36,22 @@ public class RootApiService{
         self.headers["Authorization"] = "Bearer \(token)"
         print(self.headers)
     }
-    
+
     func replaceHeaderToken(for token: String){
         if(headers["Authorization"] != nil){
             setHeaderToken(for: token)
         }
     }
-    
+
     private init() {
         let preferences = UserDefaults.standard
         let token = preferences.string(forKey: "bearer-token")
         if token != nil {
             setHeaderToken(for: token!)
         }
-        
+
     }
-    
+
     func handleErrorResponse<T: Any>(observer: AnyObserver<T>? = nil, stream: PublishSubject<T>? = nil, response: HTTPURLResponse?){
         if(response == nil){
             print("no fckn response")

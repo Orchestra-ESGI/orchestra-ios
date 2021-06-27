@@ -28,7 +28,7 @@ extension HomeViewController{
     func setUpTopBar(){
         self.navigationItem.hidesBackButton = true
         self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: nil)
         cancelButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .done, target: self, action: nil)
