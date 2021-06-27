@@ -26,6 +26,10 @@ target 'Orchestra' do
   pod 'RxAlamofire' # https://github.com/RxSwiftCommunity/RxAlamofire
   pod 'ObjectMapper' # https://github.com/tristanhimmelman/ObjectMapper
 
+  # Google (Firebase & Push notifications)
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
+
   # Material
   pod 'MaterialComponents/Chips'
   pod 'NotificationBannerSwift', :git => 'https://github.com/Daltron/NotificationBanner.git', :branch => 'master'
