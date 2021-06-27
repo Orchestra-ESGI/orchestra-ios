@@ -307,3 +307,7 @@
 "configuration.screen.alert.title" = "Information";
 "configuration.screen.alert.message" = "Si l'objet correctement réagit au processus de réinitialisation, il devrait être ajouté à votre domicile d'ici peu, essayer de rafraichir votre écran d'ici 20 - 30 secondes";
 "configuration.screen.alert.action.title" = "D'accord";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "Cet objet n'est pas encore pris en charge, faites-nous en part ci-dessous";
+"unknown.device.label.button.title" = "Envoyer une demande";

@@ -302,3 +302,7 @@
 "configuration.screen.alert.title" = "信息";
 "configuration.screen.alert.message" = "如果该项目正确响应重置过程，它应该很快添加到您的家中，尝试在 20 - 30 秒内刷新您的屏幕";
 "configuration.screen.alert.action.title" = "好的";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "此项目尚不支持，请在下面告诉我们";
+"unknown.device.label.button.title" = "发送请求";

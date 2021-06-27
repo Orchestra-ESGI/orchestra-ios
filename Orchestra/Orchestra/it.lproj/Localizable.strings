@@ -304,3 +304,7 @@
 "configuration.screen.alert.title" = "Informazione";
 "configuration.screen.alert.message" = "Se l'elemento risponde correttamente al processo di ripristino, dovrebbe essere aggiunto a casa a breve, prova ad aggiornare lo schermo entro 20 - 30 secondi";
 "configuration.screen.alert.action.title" = "Va bene";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "Questo elemento non è ancora supportato, faccelo sapere di seguito";
+"unknown.device.label.button.title" = "Invia una richiesta";

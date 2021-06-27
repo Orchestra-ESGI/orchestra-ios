@@ -303,3 +303,7 @@
 "configuration.screen.alert.title" = "Información";
 "configuration.screen.alert.message" = "Si el artículo responde correctamente al proceso de reinicio, debe agregarse a su hogar en breve, intente actualizar su pantalla dentro de 20 a 30 segundos";
 "configuration.screen.alert.action.title" = "Correcto";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "Este artículo aún no es compatible, háganoslo saber a continuación";
+"unknown.device.label.button.title" = "Enviar una solicitud";

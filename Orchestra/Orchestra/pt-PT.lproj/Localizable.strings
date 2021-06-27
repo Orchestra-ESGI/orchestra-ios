@@ -302,3 +302,7 @@
 "configuration.screen.alert.title" = "Em formação";
 "configuration.screen.alert.message" = "Se o item responder corretamente ao processo de redefinição, ele deve ser adicionado à sua casa em breve, tente atualizar a tela em 20 a 30 segundos";
 "configuration.screen.alert.action.title" = "OK";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "Este item ainda não é compatível, avise-nos abaixo";
+"unknown.device.label.button.title" = "Enviar um pedido";

@@ -19,24 +19,29 @@ extension DeviceInfoViewController{
         
         var lastElementInsertedYpos = CGFloat(0)
 
-        if ( brightness != nil || color != nil || colorTemp != nil) {
-            if brightness != nil{
+        if(self.deviceData?.type == .Unknown){
+            self.insertContactUsButton(xPos: 0, yPos: lastElementInsertedYpos)
+            lastElementInsertedYpos += 120
+        }else{
+            if ( brightness != nil || color != nil || colorTemp != nil) {
+                if brightness != nil{
+                    self.insertOnOffContainer(xPos: 0, yPos: lastElementInsertedYpos)
+                    lastElementInsertedYpos += 100
+                    self.insertBrightnessContainer(xPos: 0, yPos: lastElementInsertedYpos)
+                    lastElementInsertedYpos += 100
+                }
+                if( color != nil && colorTemp != nil){
+                    // show segmentedView controller
+                    self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: lastElementInsertedYpos)
+                    lastElementInsertedYpos += 130
+                }
+            } else if(state != nil){
                 self.insertOnOffContainer(xPos: 0, yPos: lastElementInsertedYpos)
                 lastElementInsertedYpos += 100
-                self.insertBrightnessContainer(xPos: 0, yPos: lastElementInsertedYpos)
-                lastElementInsertedYpos += 100
+            }else{
+                self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
+                lastElementInsertedYpos += 120
             }
-            if( color != nil && colorTemp != nil){
-                // show segmentedView controller
-                self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: lastElementInsertedYpos)
-                lastElementInsertedYpos += 130
-            }
-        } else if(state != nil){
-            self.insertOnOffContainer(xPos: 0, yPos: lastElementInsertedYpos)
-            lastElementInsertedYpos += 100
-        }else{
-            self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
-            lastElementInsertedYpos += 120
         }
         
         NSLayoutConstraint.activate([
@@ -46,7 +51,6 @@ extension DeviceInfoViewController{
     }
     
     
-    // OK
     func insertBrightnessContainer(xPos: CGFloat, yPos: CGFloat){
         let containerWidth = UIScreen.main.bounds.width
         let brightNessContainerView = UIView(frame: CGRect(x: xPos,
@@ -142,7 +146,7 @@ extension DeviceInfoViewController{
         self.dynamicViewContainer.addSubview(brightNessContainerView)
     }
     
-    // OK
+    
     func insertColorAndTempContainer(mainSlider: Int, xPos: CGFloat, yPos: CGFloat){
         let containerWidth = UIScreen.main.bounds.width
         let colorAndtempContainerView = UIView(frame: CGRect(x: xPos,
@@ -237,7 +241,38 @@ extension DeviceInfoViewController{
         self.dynamicViewContainer.addSubview(colorAndtempContainerView)
     }
     
-    // OK
+    func insertContactUsButton(xPos: CGFloat, yPos: CGFloat){
+        self.dynamicViewContainer.translatesAutoresizingMaskIntoConstraints = false
+        let containerWidth = UIScreen.main.bounds.width
+        
+        let deviceNotSupportedLabel = UILabel()
+        deviceNotSupportedLabel.text = self.localizeLabels.unknownDeviceLabel
+        deviceNotSupportedLabel.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
+        deviceNotSupportedLabel.font = Font.Regular(20.0)
+        deviceNotSupportedLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        deviceNotSupportedLabel.numberOfLines = 4
+        deviceNotSupportedLabel.textAlignment = .center
+        deviceNotSupportedLabel.frame = CGRect(x: xPos + 20, y: yPos, width: containerWidth - 40, height: 50)
+        
+        let contactUsButton = UIButton()
+        contactUsButton.backgroundColor = .systemBlue
+        contactUsButton.setTitle(self.localizeLabels.unknownDeviceButtonTitle, for: .normal)
+        contactUsButton.setTitleColor(.white, for: .normal)
+        contactUsButton.titleLabel?.font = Font.Bold(20.0)
+        contactUsButton.layer.cornerRadius = 12.0
+        contactUsButton.frame = CGRect(x: xPos + 60,
+                                       y: yPos + deviceNotSupportedLabel.frame.height + 15,
+                                       width: containerWidth - 120, height: 50)
+        contactUsButton.setImage(UIImage(systemName: "paperplane.fill"), for: .normal)
+        contactUsButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 30)
+        contactUsButton.tintColor = .white
+        contactUsButton.addTarget(self, action: #selector(self.sendEmailRequest), for: .touchUpInside)
+        
+        
+        self.dynamicViewContainer.addSubview(deviceNotSupportedLabel)
+        self.dynamicViewContainer.addSubview(contactUsButton)
+    }
+    
     func insertNoActionContainer(xPos: CGFloat, yPos: CGFloat){
         self.dynamicViewContainer.translatesAutoresizingMaskIntoConstraints = false
         let containerWidth = UIScreen.main.bounds.width

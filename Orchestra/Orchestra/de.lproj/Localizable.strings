@@ -194,13 +194,13 @@
 // - MARK: Watch
 // - MARK: Root View Controller
 "watch.home.screen.myscenes" = "Meine Szenen";
-"watch.home.screen.mydevices" = "Meine Artikel";
+"watch.home.screen.mydevices" = "Meine Objekte";
 
 // - MARK: Watch Scenes Screen
 "watch.myscenes.screen.title" = "Meine Szenen";
 
 // - MARK: Watch Devices Screen
-"watch.mydevices.screen.title" = "Meine Artikel";
+"watch.mydevices.screen.title" = "Meine Objekte";
 
 
 // - MARK: Watch Device Actions Screen
@@ -302,3 +302,7 @@
 "configuration.screen.alert.title" = "Information";
 "configuration.screen.alert.message" = "Wenn das Element korrekt auf den Reset-Vorgang reagiert, sollte es in Kürze zu Ihrem Zuhause hinzugefügt werden. Versuchen Sie, Ihren Bildschirm innerhalb von 20 - 30 Sekunden zu aktualisieren";
 "configuration.screen.alert.action.title" = "Okay";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "Dieser Objekte wird noch nicht unterstützt, lass es uns unten wissen";
+"unknown.device.label.button.title" = "Eine Anfrage senden";

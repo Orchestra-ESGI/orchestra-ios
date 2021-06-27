@@ -207,4 +207,8 @@ class ScreensLabelLocalizableUtils{
     let configurationScreenAlertTitle = NSLocalizedString("configuration.screen.alert.title", comment: "")
     let configurationScreenAlertMessage = NSLocalizedString("configuration.screen.alert.message", comment: "")
     let configurationScreenAlertActionTitle = NSLocalizedString("configuration.screen.alert.action.title", comment: "")
+    
+    // - MARK: Unknown device detail
+    let unknownDeviceLabel = NSLocalizedString("unknown.device.label", comment: "")
+    let unknownDeviceButtonTitle = NSLocalizedString("unknown.device.label.button.title", comment: "")
 }

@@ -302,3 +302,7 @@
 "configuration.screen.alert.title" = "Information";
 "configuration.screen.alert.message" = "If the item correctly responds to the reset process, it should be added to your home shortly, try refreshing your screen within 20 - 30 seconds";
 "configuration.screen.alert.action.title" = "Okay";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "This item is not yet supported, let us know below";
+"unknown.device.label.button.title" = "Send a request";

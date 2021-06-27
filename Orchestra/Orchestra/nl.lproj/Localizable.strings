@@ -302,3 +302,7 @@
 "configuration.screen.alert.title" = "Informatie";
 "configuration.screen.alert.message" = "Als het item correct reageert op het resetproces, zou het binnenkort aan je huis moeten worden toegevoegd, probeer je scherm binnen 20 - 30 seconden te vernieuwen";
 "configuration.screen.alert.action.title" = "Oke";
+
+// - MARK: Unknown device detail
+"unknown.device.label" = "Dit item wordt nog niet ondersteund, laat het ons hieronder weten";
+"unknown.device.label.button.title" = "Stuur een verzoek";
