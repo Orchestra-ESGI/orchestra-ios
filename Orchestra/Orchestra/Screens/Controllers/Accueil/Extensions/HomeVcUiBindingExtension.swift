@@ -45,23 +45,6 @@ extension HomeViewController{
         }.disposed(by: self.disposeBag)
     }
     
-    func setUserSettingButtonBinding(){
-        self.userSettingsAppbarButton?.rx
-            .tap
-            .bind { [weak self] in
-                if((self!.isCellsShaking)){
-                    self?.stopCellsShake()
-                    self?.isCellsShaking = !self!.isCellsShaking
-                }
-                self?.navigationController?.pushViewController(AppSettingsViewController(), animated: true)
-        }.disposed(by: self.disposeBag)
-        
-        _ = cancelButton?.rx.tap.bind{
-            self.stopCellsShake()
-            self.isCellsShaking = !self.isCellsShaking
-        }
-    }
-    
     func setTrashButtonBinding(){
         _ = trashButton?
             .rx
@@ -82,11 +65,11 @@ extension HomeViewController{
         }
     }
     
-    func refreshButtonBinging(){
-        _ = refreshHome?
+    func menuButtonBinding(){
+        _ = menuButton?
             .rx
             .tap.bind{
-                self.loadData()
+                self.goToMenu()
         }
     }
 }

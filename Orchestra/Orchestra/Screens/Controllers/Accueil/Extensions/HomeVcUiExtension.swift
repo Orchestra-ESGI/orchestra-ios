@@ -35,7 +35,7 @@ extension HomeViewController{
         trashButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .done, target: self, action: nil)
         //userSettingsAppbarButton = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .done, target: self, action: nil)
         
-        refreshHome = UIBarButtonItem(image: UIImage(systemName: "arrow.counterclockwise"), style: .done, target: self, action: nil)
+        menuButton = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: nil)
         
         cancelButton?.isEnabled = false
         cancelButton?.tintColor = .clear
@@ -45,7 +45,7 @@ extension HomeViewController{
         //userSettingsAppbarButton!.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
         
         self.navigationItem.rightBarButtonItems = [addSceneAppbarButon!, trashButton!, cancelButton!]
-        self.navigationItem.leftBarButtonItem = refreshHome //userSettingsAppbarButton!
+        self.navigationItem.leftBarButtonItem = menuButton //userSettingsAppbarButton!
     }
     
     func setUpCollectionView(){

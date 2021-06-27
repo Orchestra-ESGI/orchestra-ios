@@ -36,7 +36,6 @@ class DeviceInfoViewController: UIViewController {
     var disposeBag = DisposeBag()
     let favClicStream = PublishSubject<String>()
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<HeaderItem, ListItem>!
     var objectInfoKeyValue: [String: String] = [:]
     var objectInfoNames: [String] = []
     var deviceVM: DeviceViewModel?

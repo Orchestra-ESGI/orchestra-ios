@@ -39,25 +39,25 @@ class UserServices{
         })
     }
     
-    /// Removes 1 or many users
-    func removeUser(usersId: [String]) -> Observable<[String]>{
+    func removeUser(_ email: String) -> Observable<Bool>{
         var body: [String: Any] = [:]
-        body["id_user"] = usersId
+        body["email"] = email
         
-        
-        return Observable<[String]>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/users/get/all", method: .delete, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
+        return Observable<Bool>.create({ observer in
+            AF.request("\(RootApiService.BASE_API_URL)/user", method: .delete, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
                         case .success( _):
-                            guard let responseData =  response.value as? [String: Any],
-                                  let usersIds = responseData["users_id"] as? [String] else {
-                                observer.onNext([])
-                                return
+                            guard let responseData =  response.value as? [String: Any] else {
+                                return observer.onCompleted()
                             }
-                            observer.onNext(usersIds)
-                        case .failure(_):
+                            if let _ = responseData["error"] as? String {
+                                observer.onNext(false)
+                            } else {
+                                observer.onNext(true)
+                            }
+                        case .failure( _):
                             let callResponse = response.response
                             self.rootApiService.handleErrorResponse(observer: observer, response: callResponse)
                     }
@@ -126,7 +126,7 @@ class UserServices{
                                 return observer.onCompleted()
                             }
                             let user = Mapper<UserDto>().map(JSONObject: responseData)!
-                            self.saveUsreCredentials(response: responseData)
+                            self.saveUserCredentials(response: responseData)
                             
                             observer.onNext(user)
                         case .failure( _):
@@ -163,19 +163,19 @@ class UserServices{
         })
     }
     
-    func saveUsreCredentials(response: [String: Any]){
+    func saveUserCredentials(response: [String: Any]){
         // Save user credentials in shared pref or local storage
-        guard let token = response["token"] as? String else {
+        guard let token = response["token"] as? String,
+              let email = response["email"] as? String else {
             return
         }
         let preferences = UserDefaults.standard
-        if preferences.object(forKey: "bearer-token") == nil {
-            preferences.set(token, forKey: "bearer-token")
-            self.rootApiService.setHeaderToken(for: token)
-            let didSave = preferences.synchronize()
-            if !didSave {
-                NSLog("Error while saving user data in shared preferences")
-            }
+        preferences.set(token, forKey: "bearer-token")
+        preferences.set(email, forKey: "email")
+        self.rootApiService.setHeaderToken(for: token)
+        let didSave = preferences.synchronize()
+        if !didSave {
+            NSLog("Error while saving user data in shared preferences")
         }
     }
     

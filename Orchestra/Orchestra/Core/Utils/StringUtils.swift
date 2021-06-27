@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FontAwesome_swift
+
 class StringUtils {
     
     static var shared = StringUtils()
@@ -14,6 +16,29 @@ class StringUtils {
     func generateFakeId(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
           return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    func setFontAwesomeIcon(text: String, icon: FontAwesome, style: FontAwesomeStyle, spaceNumber: Int, font: UIFont) -> NSMutableAttributedString {
+        var spaces = ""
+        for _ in 0..<spaceNumber {
+            spaces += " "
+        }
+        let concatenedString = "\(text)\(spaces)<font>\(String.fontAwesomeIcon(name: icon))<font>"
+        let listItems = concatenedString.components(separatedBy: "<font>")
+        let policyString = NSMutableAttributedString()
+        var tempString = NSMutableAttributedString()
+        for (i, str) in listItems.enumerated() {
+            tempString = NSMutableAttributedString(string: str)
+            let range = NSMakeRange(0, tempString.length)
+            if (i == 1) {
+                tempString.addAttribute(.font, value: UIFont.fontAwesome(ofSize: font.pointSize, style: style), range: range)
+            } else {
+                tempString.addAttribute(.font, value: font, range: range)
+            }
+            
+            policyString.append(tempString)
+        }
+        return policyString
     }
     
     func colorText(text: String, color: UIColor, alpha: CGFloat = 1) -> NSMutableAttributedString {

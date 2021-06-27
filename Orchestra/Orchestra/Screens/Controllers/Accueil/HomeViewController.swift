@@ -20,7 +20,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     var cancelButton: UIBarButtonItem?
     var trashButton: UIBarButtonItem?
     var userSettingsAppbarButton: UIBarButtonItem?
-    var refreshHome: UIBarButtonItem?
+    var menuButton: UIBarButtonItem?
 
     // - MARK: Utils
     let notificationUtils = NotificationsUtils.shared
@@ -226,6 +226,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             self.refreshHome(successLoad)
             self.refreshControl.endRefreshing()
         }
+    }
+
+    func goToMenu() {
+        self.navigationController?.pushViewController(MenuTableViewController(), animated: true)
     }
 
     private func refreshHome(_ loadSuccessfull: Bool){
@@ -517,9 +521,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     // - MARK: Observers
     private func bindClickToButtons(){
         setAddSceneOrDeviceButtonBinding()
-        setUserSettingButtonBinding()
         setTrashButtonBinding()
-        refreshButtonBinging()
+        menuButtonBinding()
     }
 
     private func setUpObservers(){
