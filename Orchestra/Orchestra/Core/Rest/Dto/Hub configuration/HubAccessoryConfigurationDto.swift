@@ -10,7 +10,7 @@ import ObjectMapper
 
 class HubAccessoryConfigurationDto: NSObject, Mappable{
     var name: String?
-    var roomName: String?
+    var room: RoomDto?
     var backgroundColor: String?
     var manufacturer: String?
     var model: String?
@@ -41,7 +41,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         self.actions <- map["actions"]
         self.friendlyName <- map["friendly_name"]
 
-        self.roomName <- map["room_name"]
+        self.room <- map["room"]
         self.backgroundColor <- map["background_color"]
         self.manufacturer <- map["manufacturer"]
         self.model <- map["model"]
@@ -66,7 +66,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         }
         map["actions"] = self.actions // fake
         map["friendly_name"] = self.friendlyName
-        map["room_name"] = self.roomName
+        map["room_name"] = self.room
         map["background_color"] = self.backgroundColor
         map["manufacturer"] = self.manufacturer
         map["model"] = self.model
@@ -94,7 +94,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         return [
             "position": position,
             "name":  self.name ?? NSLocalizedString("undefined.value.dto", comment: ""),
-            "room": self.roomName ?? NSLocalizedString("undefined.value.dto", comment: ""),
+            "room": self.room ?? NSLocalizedString("undefined.value.dto", comment: ""),
             "color_component1": colorComponent1,
             "color_component2": colorComponent2,
             "color_component3": colorComponent3,

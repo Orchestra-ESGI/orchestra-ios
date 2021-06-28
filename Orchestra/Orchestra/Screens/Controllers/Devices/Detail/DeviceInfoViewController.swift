@@ -188,7 +188,8 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func setUpLabels(){
-        self.locationLabel.text = self.deviceData?.roomName
+        let roomNameLocalize = NSLocalizedString(self.deviceData?.room?.name ?? "", comment: "")
+        self.locationLabel.text = roomNameLocalize
         self.locationTitleLabel.text = self.localizeLabels.objectRoomNameTitleLabelText
         self.tableViewTitleLabel.text = self.localizeLabels.objectCaracteristicsTitleLabelText
     }

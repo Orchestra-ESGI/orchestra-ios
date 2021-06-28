@@ -56,11 +56,13 @@ public class NotificationLocalizableUtils {
     let serverErrorCallNotificationTitle = NSLocalizedString("server.error.notification.title", comment: "")
     let serverErrorCallNotificationSubitle = NSLocalizedString("server.error.notification.subitle", comment: "")
     
+    // Retraduire
     let homeLoadingErrorNotificationTitle = NSLocalizedString("home.loading.error.notification.title", comment: "")
     let homeLoadingErrorNotificationSubtitle = NSLocalizedString("home.loading.error.notification.subitle", comment: "")
     
     let deleteDeviceErrorNotificationTitle = NSLocalizedString("device.delete.error.notification.title", comment: "")
     let deleteDeviceErrorNotificationSubtitle = NSLocalizedString("device.delete.error.notification.subitle", comment: "")
+    // Jusqu'ici
     
     let saveSceneErrorNotificationTitle = NSLocalizedString("device.save.error.notification.title", comment: "")
     let saveSceneErrorNotificationSubtitle = NSLocalizedString("device.save.error.notification.subtitle", comment: "")

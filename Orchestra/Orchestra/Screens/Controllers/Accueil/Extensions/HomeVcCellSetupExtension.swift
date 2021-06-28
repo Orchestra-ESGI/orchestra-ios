@@ -43,7 +43,8 @@ extension HomeViewController{
         objectCell.addGestureRecognizer(longPressRecognizer)
         
         objectCell.objectPlaceNameLabel.text = self.hubDevices[currentCellPos].name
-        objectCell.objectNameLabel.text = self.hubDevices[currentCellPos].roomName
+        let roomNameLocalize = NSLocalizedString(self.hubDevices[currentCellPos].room?.name ?? "", comment: "")
+        objectCell.objectNameLabel.text = roomNameLocalize
         objectCell.objectStatusLabel.text = reachableStatus
         
         objectCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: currentObject.backgroundColor!) //self.generatesBackGroundColor()

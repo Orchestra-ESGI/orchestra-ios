@@ -215,11 +215,4 @@ class ScreensLabelLocalizableUtils{
     
     // - MARK: Device Update Screen
     let deviceUpdateScreenPickerViewTitle = NSLocalizedString("device.update.screen.pickerview.title", comment: "")
-    
-    let deviceUpdatePickerViewLivingRoom = NSLocalizedString("Living room", comment: "")
-    let deviceUpdatePickerViewLobby = NSLocalizedString("Lobby", comment: "")
-    let deviceUpdatePickerViewBedroom = NSLocalizedString("Bedroom", comment: "")
-    let deviceUpdatePickerViewKitchen = NSLocalizedString("Kitchen", comment: "")
-    let deviceUpdatePickerViewBathroom = NSLocalizedString("Bathroom", comment: "")
-    let deviceUpdatePickerViewGarage = NSLocalizedString("Garage", comment: "")
 }

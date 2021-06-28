@@ -244,7 +244,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
             "type": self.accessoryType,
             "name": self.deviceNameTextField.text!,
             "manufacturer": self.device?.manufacturer,
-            "room_name": self.roomNameTextField.text!,
+            "room": self.device?.room,
             "background_color": self.deviceBackgrounds[selectedColor].toHexString(),
             "model": self.device?.model,
             "friendly_name": self.device?.friendlyName
