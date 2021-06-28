@@ -179,8 +179,8 @@ class DeviceServices{
         return occupancySensorConf!
     }
     
-    func saveDevice(_ body: [String: Any]) {
-        AF.request("\(RootApiService.BASE_API_URL)/device/add", method: .post, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
+    func updateDevice(_ body: [String: Any]) {
+        AF.request("\(RootApiService.BASE_API_URL)/device", method: .patch, parameters: body, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
             switch response.result {

@@ -25,6 +25,7 @@ class WatchLabelLocalizableUtils{
     // - MARK: Watch Device Actions Screen
     let deviceDetailTitle = NSLocalizedString("watch.deviceaction.title", comment: "")
     let deviceSelectActionLabelTitle = NSLocalizedString("watch.deviceaction.hint.label.title", comment: "")
+    let deviceNoActionLabelTitle = NSLocalizedString("watch.deviceaction.empty.label.title", comment: "")
     
     
     // - MARK: Watch Device Actions Name

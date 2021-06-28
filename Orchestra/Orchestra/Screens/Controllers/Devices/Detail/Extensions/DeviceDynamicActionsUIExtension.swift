@@ -131,9 +131,10 @@ extension DeviceInfoViewController{
             self.deviceData?.actions?.brightness?.maxVal == nil {
             return
         }
+        
         slider.minimumValue = Float((self.deviceData?.actions?.brightness?.minVal)!)
         slider.maximumValue = Float((deviceData?.actions?.brightness?.maxVal)!)
-        slider.value = Float((deviceData?.actions?.brightness?.currentState)!)
+        slider.value = Float(deviceData?.actions?.brightness?.currentState ?? Int(slider.maximumValue) / 2)
         
         slider.addTarget(self, action: #selector(self.sliderDidChange(_:)), for: .valueChanged)
 
@@ -234,7 +235,7 @@ extension DeviceInfoViewController{
         }
         self.dynamicTemperatureContainerSlider!.minimumValue = Float((deviceData?.actions?.colorTemp?.minVal)!)
         self.dynamicTemperatureContainerSlider!.maximumValue = Float((deviceData?.actions?.colorTemp?.maxVal)!)
-        self.dynamicTemperatureContainerSlider!.value = Float((deviceData?.actions?.colorTemp?.currentState)!)
+        self.dynamicTemperatureContainerSlider!.value = Float(deviceData?.actions?.colorTemp?.currentState ?? Int(self.dynamicTemperatureContainerSlider!.maximumValue / 2))
         
         self.dynamicTemperatureContainerSlider!.isHidden = true
         //self.dynamicTemperatureContainerSlider!.isEnabled = true

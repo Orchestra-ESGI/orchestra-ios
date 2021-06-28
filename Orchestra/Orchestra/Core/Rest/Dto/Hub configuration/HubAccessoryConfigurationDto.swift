@@ -77,13 +77,28 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         let colorComponent1 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![0]
         let colorComponent2 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![1]
         let colorComponent3 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![2]
+        var type: String = "";
+        switch self.type  {
+            case .Switch:
+                type = "switch"
+            case .LightBulb:
+                type = "lightbulb"
+            case .StatelessProgrammableSwitch:
+                type = "statelessProgrammableSwitch"
+            case .Sensor:
+                type = "occupancySensor"
+            default:
+                type = "Unknown"
+        }
+        
         return [
             "position": position,
             "name":  self.name ?? NSLocalizedString("undefined.value.dto", comment: ""),
             "room": self.roomName ?? NSLocalizedString("undefined.value.dto", comment: ""),
             "color_component1": colorComponent1,
             "color_component2": colorComponent2,
-            "color_component3": colorComponent3
+            "color_component3": colorComponent3,
+            "type": type
         ]
     }
 }

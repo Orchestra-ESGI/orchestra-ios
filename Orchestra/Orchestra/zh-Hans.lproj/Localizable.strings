@@ -205,6 +205,7 @@
 
 // - MARK: Watch Device Actions Screen
 "watch.deviceaction.hint.label.title" = "选择一个行动";
+"watch.deviceaction.empty.label.title" = "无法采取行动";
 
 // - MARK: Watch Device Action Name
 "watch.deviceaction.title" = "详情";
@@ -287,10 +288,11 @@
 
 // - MARK: Device Form
 "device.form.screen.title" = "你的主题";
+"device.form.screen.update.title" = "修改";
 "device.form.invalid.form.notification.title" = "不可能的动作！";
 "device.form.invalid.form.notification.subtitle" = "您必须填写表格的所有字段！";
 "device.form.screen.device.name.label" = "设备名称";
-"device.form.screen.device.name.label" = "在哪个房间？";
+"device.form.screen.device.room.name.label" = "在哪个房间？";
 
 // - MARK: Configuration tuto Screen
 "configuration.screen.title" = "配置";
@@ -306,3 +308,12 @@
 // - MARK: Unknown device detail
 "unknown.device.label" = "此项目尚不支持，请在下面告诉我们";
 "unknown.device.label.button.title" = "发送请求";
+
+// - MARK: Update Device Screen
+"device.update.screen.pickerview.title" = "选择一个动作";
+"Living room" = "客厅";
+"Lobby" = "大堂";
+"Bedroom" = "卧室";
+"Kitchen" = "煮熟的";
+"Bathroom" = "浴室";
+"Garage" = "车库";

@@ -60,7 +60,11 @@ class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
     
     private func setUpUI(){
         self.setUpList()
-        self.listHeaderLabel.setText(self.watchLocalization.deviceSelectActionLabelTitle)
+        if(actionsDict.count > 0){
+            self.listHeaderLabel.setText(self.watchLocalization.deviceSelectActionLabelTitle)
+        }else{
+            self.listHeaderLabel.setText(self.watchLocalization.deviceNoActionLabelTitle)
+        }
         self.objectNameLabel.setTextColor(self.objectColor)
         self.objectNameLabel.setText(self.controllerTitle)
     }

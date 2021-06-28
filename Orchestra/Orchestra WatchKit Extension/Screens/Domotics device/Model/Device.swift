@@ -13,13 +13,15 @@ class Device {
     var deviceName: String
     var deviceColor: UIColor
     var deviceRoom: String
+    var type: String
     var actions: [[String: Any]] = []
     
-    init(position: Int,name: String, actions: [[String: Any]], color: UIColor, room: String) {
+    init(position: Int,name: String, type: String, actions: [[String: Any]], color: UIColor, room: String) {
         self.position = position
         self.deviceName = name
         self.deviceColor = color
         self.deviceRoom = room
         self.actions = actions
+        self.type = type
     }
 }

@@ -14,6 +14,8 @@ class SearchDeviceViewController: UIViewController {
     @IBOutlet weak var successImageView: UIImageView!
     @IBOutlet weak var returnHomeBtn: UIButton!
     
+    var onDoneBlock : (() -> Void)?
+    
     var deviceData: HubAccessoryConfigurationDto?
     var deviceVM: DeviceViewModel?
     let progressUtil = ProgressUtils.shared
@@ -35,11 +37,9 @@ class SearchDeviceViewController: UIViewController {
     
     @IBAction func returnHome(_ sender: Any) {
         if(self.isSuccessfulyAdded){
-            self.navigationController?.pushViewController(HomeViewController(), animated: false)
-//            self.deviceData?.friendlyName = StringUtils.shared.generateFakeId(length: 20)
-//            self.deviceData?.isReachable = true
-//            self.deviceVM!.saveDevice(deviceData: self.deviceData!)
-            
+            self.dismiss(animated: true) {
+                self.onDoneBlock!()
+            }
         }else{
             // do something to retry adding device
             self.progressUtil.displayIndeterminateProgeress(title: "Veuillez patienter...", view: (UIApplication.shared.windows[0].rootViewController?.view)!)

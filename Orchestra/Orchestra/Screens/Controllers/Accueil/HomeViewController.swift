@@ -77,10 +77,17 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.loadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isBeingDismissed {
+            print("dismissed")
+        }
+    }
+
     private func clearControllerStack(){
         
         for _ in 0..<(self.navigationController?.viewControllers.count)! - 1{
-            self.self.navigationController?.viewControllers.remove(at: 0)
+            self.navigationController?.viewControllers.remove(at: 0)
         }
     }
     
@@ -264,26 +271,25 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     func showInfoDetailAboutHubAccessory(for indexPath: IndexPath){
         // Object clicked on
         // Show more about the object
-        let objectVC =  DeviceInfoViewController()
-        objectVC.deviceData = self.hubDevices[indexPath.row]
-        _ = objectVC.favClicStream
+        let deviceInfoVC =  DeviceInfoViewController()
+        deviceInfoVC.deviceData = self.hubDevices[indexPath.row]
+        deviceInfoVC.onDoneBlock = {
+            self.loadData()
+        }
+        _ = deviceInfoVC.favClicStream
             .subscribe(onNext: { (friendlyName) in
-                _ = self.hubDevices.compactMap { (object) in
-                return object.friendlyName == friendlyName ? object : nil
+                _ = self.hubDevices.compactMap { (device) in
+                return device.friendlyName == friendlyName ? device : nil
             }
             self.collectionView.reloadData()
-        }, onError: { (err) in
-            print("err")
         }).disposed(by: self.disposeBag)
 
-        self.navigationController?.present(UINavigationController(rootViewController: objectVC), animated: true, completion: {
+        self.navigationController?.present(UINavigationController(rootViewController: deviceInfoVC), animated: true, completion: {
         })
     }
     
     func startSceneActions(for indexPath: IndexPath){
-        // Scene clicked on
-        // Start actionsn of the scene
-        print("Strating actions...")
+        print("Starting actions...")
         self.homeVM?.sceneVm?.playScene(id: self.homeScenes[indexPath.row].id)
     }
     
