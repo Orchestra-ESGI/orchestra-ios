@@ -20,18 +20,13 @@ class DomoticDevicesController: WKInterfaceController{
     private var progressTracker = 1
     var selectedDeviceIndex = 0
     
-    var devices:  [Device] = [
-        Device(position: 1, name: "Test", color: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), room: "Chambre")
-    ]
-    
-    var actions: [String] = [] // There will be real data, for now it just fake
+    var devices: [Device] = []
     
     @IBOutlet weak var loadingLabel: WKInterfaceLabel!
     
     @IBOutlet weak var devicesList: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
-        self.localizeScreen()
         if WCSession.isSupported(){
             watchSessionManager.sessionConnectivity?.delegate = self
             self.sessionConnectivity = watchSessionManager.sessionConnectivity
@@ -43,17 +38,6 @@ class DomoticDevicesController: WKInterfaceController{
             }
         }
         self.startProgressIndicator()
-    }
-    
-    private func localizeScreen(){
-        self.setTitle(watchLocalization.myDevicesScreenTitle)
-        self.actions.append(self.watchLocalization.deviceActionTurnOn)
-        self.actions.append(self.watchLocalization.deviceActionTurnOff)
-        self.actions.append(self.watchLocalization.deviceActionBlink)
-        self.actions.append(self.watchLocalization.deviceActionBrightness100)
-        self.actions.append(self.watchLocalization.deviceActionBrightness75)
-        self.actions.append(self.watchLocalization.deviceActionBrightness50)
-        self.actions.append(self.watchLocalization.deviceActionBrightness25)
     }
     
     override func didDeactivate() {
@@ -139,12 +123,15 @@ class DomoticDevicesController: WKInterfaceController{
                     let deviceRoom = deviceDict["room"] as? String,
                     let deviceColorComponent1 = deviceDict["color_component1"] as? Double,
                     let deviceColorComponent2 = deviceDict["color_component2"] as? Double,
-                    let deviceColorComponent3 = deviceDict["color_component3"] as? Double else{
+                    let deviceColorComponent3 = deviceDict["color_component3"] as? Double,
+                    let actions = deviceDict["actions"] as? [[String: Any]] else{
                 return
             }
             let deviceBackground = UIColor(red: CGFloat(deviceColorComponent1), green: CGFloat(deviceColorComponent2), blue: CGFloat(deviceColorComponent3), alpha: 1.0)
             
-            let device = Device(position: devicePosition, name: deviceName, color: deviceBackground, room: deviceRoom)
+            let device = Device(position: devicePosition, name: deviceName,
+                                actions: actions,
+                                color: deviceBackground, room: deviceRoom)
             self.devices.append(device)
         }
         

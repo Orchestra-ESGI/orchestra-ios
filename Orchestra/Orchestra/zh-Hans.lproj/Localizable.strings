@@ -188,7 +188,7 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "添加一个场景";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "配置设备";
 "progress.notification.config.finished.title" = "加载完成的配置";
 
 // - MARK: Watch
@@ -260,7 +260,7 @@
 
 // - MARK: Device Actions Labels
 "device.actions.brightness.label.title" = "亮度";
-"device.actions.color.label.title" = "Couleur";
+"device.actions.color.label.title" = "颜色";
 "device.actions.temperature.label.title" = "颜色";
 "device.actions.on.label.title" = "开启";
 "device.actions.off.label.title" = "关掉";

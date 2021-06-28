@@ -9,30 +9,42 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class DeviceActionsController: WKInterfaceController{
+class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
     // MARK: - Local data
-    var controllerTitle = ""
-    var objectColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    var actions: [String] = []
-    var currentActionIndex = 0
-    let watchLocalization = WatchLabelLocalizableUtils.shared
-    
+    private var controllerTitle = ""
+    private var objectColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    private var actionsDict: [[String: Any]] = []
+    private var actionsList: [String] = []
+    private var currentActionIndex = 0
+    private var selectedDeviceIndex = 0
+    private let watchLocalization = WatchLabelLocalizableUtils.shared
+    private let watchSessionManager = WatchSessionManager.shared
+    private var sessionConnectivity: WCSession?
+    private let listUtils = ListUtil.shared
     
     // MARK: - Outlets
     @IBOutlet weak var objectNameLabel: WKInterfaceLabel!
-    @IBOutlet weak var actionPicker: WKInterfacePicker!
-    @IBOutlet weak var playActionButton: WKInterfaceButton!
+    @IBOutlet weak var actionsTable: WKInterfaceTable!
+    @IBOutlet weak var listHeaderLabel: WKInterfaceLabel!
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         self.localizeScreen()
+        if WCSession.isSupported(){
+            watchSessionManager.sessionConnectivity?.delegate = self
+            self.sessionConnectivity = watchSessionManager.sessionConnectivity
+            if self.sessionConnectivity?.activationState == .notActivated{
+                self.sessionConnectivity?.activate()
+            }
+        }
         guard let domoticData = context as? DomoticDevicesController else{
             return
         }
+        selectedDeviceIndex = domoticData.selectedDeviceIndex
         let currentDevice = domoticData.devices[domoticData.selectedDeviceIndex]
         self.controllerTitle = currentDevice.deviceName
         self.objectColor = currentDevice.deviceColor
-        self.actions = domoticData.actions
+        self.actionsDict = domoticData.devices[selectedDeviceIndex].actions
         self.setUpUI()
     }
     
@@ -40,40 +52,64 @@ class DeviceActionsController: WKInterfaceController{
         self.setTitle(self.watchLocalization.deviceDetailTitle)
     }
     
+    private func reloadTable(){
+        listUtils.setUpList(wkTable: actionsTable, modelList: self.actionsList,
+                            rowId: "Device_Action_Row", type: DeviceActionRow.self,
+                            delegate: self)
+    }
+    
     private func setUpUI(){
-        self.setUpPicker()
+        self.setUpList()
+        self.listHeaderLabel.setText(self.watchLocalization.deviceSelectActionLabelTitle)
         self.objectNameLabel.setTextColor(self.objectColor)
         self.objectNameLabel.setText(self.controllerTitle)
     }
     
-    private func setUpPicker(){
-        self.actionPicker.focus()
-        var pickerItems: [WKPickerItem] = []
-        for action in self.actions{
-            let pickerItem = WKPickerItem()
-            pickerItem.title = action
-            pickerItem.caption = self.watchLocalization.deviceSelectActionLabelTitle
-            pickerItems.append(pickerItem)
+    private func setUpList(){
+        for action in self.actionsDict{
+            self.actionsList.append(action["key"] as! String)
         }
-        self.actionPicker.setItems(pickerItems)
+        self.reloadTable()
     }
     
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+    func launchSceneAt(_ position: Int) {
+        self.currentActionIndex = position
+        playAction()
     }
     
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
+    private func playAction() {
+        let actionType = self.actionsDict[currentActionIndex]["type"] as! String
+        let actionValue = self.actionsDict[currentActionIndex]["val"]
+        let actions: [String: Any] = [
+            actionType: actionValue
+        ]
+        let data: [String: Any] = [
+            "index": selectedDeviceIndex,
+            "actions": actions
+        ]
+        self.sendSceneDataToPhone(data: ["device_action":data])
     }
     
-    @IBAction func currentPickerItem(_ value: Int) {
-        self.currentActionIndex = value
-        print(value)
+    private func sendSceneDataToPhone(data: [String: Any]){
+        guard self.sessionConnectivity!.isReachable else{
+            return
+        }
+
+        self.sessionConnectivity!.sendMessage(data) { (reply) in
+            print("responseHandler: \(reply)")
+        } errorHandler: { (err) in
+            print("errorHandler: \(err)")
+        }
+    }
+}
+
+extension DeviceActionsController: WCSessionDelegate{
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
     }
     
-    @IBAction func playAction() {
-        let playingAction = self.actions[currentActionIndex]
-        print("Playing \"\(playingAction)...\"")
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]){
     }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+    }
 }

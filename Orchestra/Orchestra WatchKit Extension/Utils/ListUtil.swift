@@ -22,6 +22,11 @@ class ListUtil{
                 let sceneRow = controller as? SceneRow
                 sceneRow?.delegate = delegate
             }
+            if(T.self == DeviceActionRow.self){
+                let deviceActionRow = controller as? DeviceActionRow
+                deviceActionRow?.rowPosition = i
+                deviceActionRow?.delagate = delegate
+            }
         }
     }
 }

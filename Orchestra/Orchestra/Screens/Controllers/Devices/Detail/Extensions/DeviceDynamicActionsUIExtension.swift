@@ -227,10 +227,18 @@ extension DeviceInfoViewController{
                                          y: self.dynamicTemperatureContainerLabel!.frame.height + self.dynamicTemperatureContainerLabel!.frame.origin.y + 15,
                                           width: colorSliderWidth,
                                           height: colorSliderHeight)
-        self.dynamicTemperatureContainerSlider!.addTarget(self, action: #selector(self.sliderDidChange(_:)), for: .valueChanged)
-        self.dynamicTemperatureContainerSlider!.isHidden = true
-        self.dynamicTemperatureContainerSlider!.isEnabled = false
+        if self.deviceData?.actions?.colorTemp == nil ||
+            self.deviceData?.actions?.colorTemp?.minVal == nil ||
+            self.deviceData?.actions?.colorTemp?.maxVal == nil {
+            return
+        }
+        self.dynamicTemperatureContainerSlider!.minimumValue = Float((deviceData?.actions?.colorTemp?.minVal)!)
+        self.dynamicTemperatureContainerSlider!.maximumValue = Float((deviceData?.actions?.colorTemp?.maxVal)!)
+        self.dynamicTemperatureContainerSlider!.value = Float((deviceData?.actions?.colorTemp?.currentState)!)
         
+        self.dynamicTemperatureContainerSlider!.isHidden = true
+        //self.dynamicTemperatureContainerSlider!.isEnabled = true
+        self.dynamicTemperatureContainerSlider!.tag = 1
         self.dynamicTemperatureContainerSlider!.addTarget(self, action: #selector(sliderDidChange(_:)), for: .valueChanged)
 
         colorAndtempContainerView.addSubview(dynamicColorContainerLabel!)

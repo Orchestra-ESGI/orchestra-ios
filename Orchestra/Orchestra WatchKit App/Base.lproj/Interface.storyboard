@@ -111,22 +111,36 @@
                         <label width="1" alignment="left" text="Object Name" numberOfLines="2" id="d7A-lH-3lk">
                             <fontDescription key="font" type="boldSystem" pointSize="23"/>
                         </label>
-                        <picker height="69" alignment="left" focusStyle="sequence" indicatorMode="shownWhileFocused" id="pjE-K0-YaU">
-                            <connections>
-                                <action selector="currentPickerItem:" destination="Tpy-Qg-Nbo" id="W54-i7-li2"/>
-                            </connections>
-                        </picker>
-                        <button width="60" height="62" alignment="center" verticalAlignment="center" backgroundImage="play.fill" catalog="system" id="jec-5O-LX6">
-                            <color key="backgroundColor" red="0.33935970069999999" green="0.62411719560000001" blue="0.17125037309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="playAction" destination="Tpy-Qg-Nbo" id="61P-4j-Bja"/>
-                            </connections>
-                        </button>
+                        <label width="1" height="40" alignment="left" numberOfLines="6" id="kXW-AI-3hL"/>
+                        <table alignment="left" id="dLA-cJ-Rvf">
+                            <items>
+                                <tableRow identifier="Device_Action_Row" id="dej-JV-J3y" customClass="DeviceActionRow" customModule="Orchestra_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="XMP-I6-dUS">
+                                        <items>
+                                            <label width="136" height="1" alignment="left" verticalAlignment="center" textAlignment="left" numberOfLines="3" id="SD3-TD-vQF">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                            </label>
+                                            <button width="20" height="20" alignment="right" verticalAlignment="center" backgroundImage="play" catalog="system" id="ol3-Ua-da5">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.29111556890000001" green="0.87413865329999996" blue="0.10483576059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="playDeviceAction" destination="dej-JV-J3y" id="wiJ-Mi-zSb"/>
+                                                </connections>
+                                            </button>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="actionNameLabel" destination="SD3-TD-vQF" id="Vcs-ne-U4g"/>
+                                        <outlet property="playActionBtn" destination="ol3-Ua-da5" id="UzR-n5-OOH"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
-                        <outlet property="actionPicker" destination="pjE-K0-YaU" id="e2l-Pw-K80"/>
+                        <outlet property="actionsTable" destination="dLA-cJ-Rvf" id="Jqz-TH-IHN"/>
+                        <outlet property="listHeaderLabel" destination="kXW-AI-3hL" id="2Qs-ym-Leq"/>
                         <outlet property="objectNameLabel" destination="d7A-lH-3lk" id="A6S-e2-LLi"/>
-                        <outlet property="playActionButton" destination="jec-5O-LX6" id="FfZ-7X-xDE"/>
                     </connections>
                 </controller>
             </objects>
@@ -227,6 +241,7 @@
         <image name="domotic_devices" width="512" height="512"/>
         <image name="homepod.2.fill" catalog="system" width="128" height="114"/>
         <image name="house.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="play" catalog="system" width="119" height="128"/>
         <image name="play.fill" catalog="system" width="115" height="128"/>
         <image name="scenes" width="512" height="512"/>
     </resources>

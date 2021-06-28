@@ -72,6 +72,8 @@
 		6352647C268793760018F5F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 637FB6D12615CEA600790735 /* Localizable.strings */; };
 		6352647D2687938C0018F5F6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 637FB6D12615CEA600790735 /* Localizable.strings */; };
 		63526480268794470018F5F6 /* WatchLabelLocalizableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6352647E268794160018F5F6 /* WatchLabelLocalizableUtils.swift */; };
+		63526482268918380018F5F6 /* RootRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63526481268918380018F5F6 /* RootRowController.swift */; };
+		63526485268A011C0018F5F6 /* DeviceActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63526484268A011B0018F5F6 /* DeviceActionRow.swift */; };
 		635984BD266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */; };
 		635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 635984BF266BDB6700F7A076 /* Device-Creation.json */; };
 		635984C2266D489100F7A076 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635984C1266D489000F7A076 /* HomeService.swift */; };
@@ -116,7 +118,6 @@
 		63A8F50D265ACEA200BA02C8 /* DeviceActionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */; };
 		63A8F510265ADB0100BA02C8 /* ListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F50F265ADB0100BA02C8 /* ListUtil.swift */; };
 		63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */; };
-		63A8F514265ADEE700BA02C8 /* RootRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F513265ADEE700BA02C8 /* RootRowController.swift */; };
 		63A8F517265AE4A100BA02C8 /* LaunchSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */; };
 		63B4352E26680CA2004D12A7 /* DeviceCreationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */; };
 		63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */; };
@@ -288,6 +289,8 @@
 		63526478268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcWatchConnectivityExtension.swift; sourceTree = "<group>"; };
 		6352647A26875E9F0018F5F6 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		6352647E268794160018F5F6 /* WatchLabelLocalizableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLabelLocalizableUtils.swift; sourceTree = "<group>"; };
+		63526481268918380018F5F6 /* RootRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootRowController.swift; path = "Orchestra WatchKit Extension/RootRowController.swift"; sourceTree = SOURCE_ROOT; };
+		63526484268A011B0018F5F6 /* DeviceActionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActionRow.swift; sourceTree = "<group>"; };
 		635984BC266B88E800F7A076 /* DeviceDynamicActionsUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDynamicActionsUIExtension.swift; sourceTree = "<group>"; };
 		635984BF266BDB6700F7A076 /* Device-Creation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Device-Creation.json"; sourceTree = "<group>"; };
 		635984C1266D489000F7A076 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
@@ -342,7 +345,6 @@
 		63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActionsController.swift; sourceTree = "<group>"; };
 		63A8F50F265ADB0100BA02C8 /* ListUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUtil.swift; sourceTree = "<group>"; };
 		63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WkListDelegate.swift; sourceTree = "<group>"; };
-		63A8F513265ADEE700BA02C8 /* RootRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRowController.swift; sourceTree = "<group>"; };
 		63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneDelegate.swift; sourceTree = "<group>"; };
 		63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCreationFormViewController.swift; sourceTree = "<group>"; };
 		63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceCreationFormViewController.xib; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 			isa = PBXGroup;
 			children = (
 				631BB2F3265ABEDC005240DB /* DeviceRow.swift */,
+				63526484268A011B0018F5F6 /* DeviceActionRow.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
@@ -573,7 +576,7 @@
 		631BB2F5265ABEFB005240DB /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				63A8F513265ADEE700BA02C8 /* RootRowController.swift */,
+				63526481268918380018F5F6 /* RootRowController.swift */,
 				636F4726260A5F91001D8196 /* InterfaceController.swift */,
 				631BB2EE265AAA96005240DB /* Domotics device */,
 				631BB2ED265AAA8E005240DB /* Scene */,
@@ -1541,8 +1544,9 @@
 				636F4729260A5F91001D8196 /* ExtensionDelegate.swift in Sources */,
 				63A8F50D265ACEA200BA02C8 /* DeviceActionsController.swift in Sources */,
 				631BB2F4265ABEDC005240DB /* DeviceRow.swift in Sources */,
-				63A8F514265ADEE700BA02C8 /* RootRowController.swift in Sources */,
 				636F4727260A5F91001D8196 /* InterfaceController.swift in Sources */,
+				63526482268918380018F5F6 /* RootRowController.swift in Sources */,
+				63526485268A011C0018F5F6 /* DeviceActionRow.swift in Sources */,
 				63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */,
 				631BB2F0265AAB2F005240DB /* ScenesController.swift in Sources */,
 				631BB2EA265AA4F8005240DB /* SceneRow.swift in Sources */,

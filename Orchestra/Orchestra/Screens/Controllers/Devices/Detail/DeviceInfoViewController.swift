@@ -63,24 +63,28 @@ class DeviceInfoViewController: UIViewController {
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             print("Current state is Color")
+            
+            // Slider Label
             self.dynamicColorContainerLabel?.isHidden = false
             self.dynamicTemperatureContainerLabel?.isHidden = true
             
+            // Color Slider State + Visibility
             self.dynamicColorContainerSlider?.isHidden = false
-            self.dynamicColorContainerSlider?.isEnabled = true
+            //self.dynamicColorContainerSlider?.isEnabled = true
             
+            // Temperature Slider State + Visibility
             self.dynamicTemperatureContainerSlider?.isHidden = true
-            self.dynamicTemperatureContainerSlider?.isEnabled = false
+            //self.dynamicTemperatureContainerSlider?.isEnabled = false
         }else{
             print("Current state is Temp")
             self.dynamicColorContainerLabel?.isHidden = true
             self.dynamicTemperatureContainerLabel?.isHidden = false
             
             self.dynamicColorContainerSlider?.isHidden = true
-            self.dynamicColorContainerSlider?.isEnabled = false
+            //self.dynamicColorContainerSlider?.isEnabled = false
             
             self.dynamicTemperatureContainerSlider?.isHidden = false
-            self.dynamicTemperatureContainerSlider?.isEnabled = true
+            //self.dynamicTemperatureContainerSlider?.isEnabled = true
         }
     }
     
@@ -100,7 +104,7 @@ class DeviceInfoViewController: UIViewController {
     }
     
     @objc func sliderDidChange(_ sender: UISlider){
-        if( sender.tag == 0){
+        if(sender.tag == 0){
             self.deviceData?.actions?.brightness?.currentState = Int(sender.value)
         }else{
             self.deviceData?.actions?.colorTemp?.currentState = Int(sender.value)
@@ -121,6 +125,7 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func updateDeviceActions(){
+        self.devicesActionsValues.removeAll()
         switch self.deviceData?.type {
         case .LightBulb:
             devicesActionsValues["brightness"] = self.deviceData!.actions!.brightness!.currentState
@@ -150,7 +155,7 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func setUpNavBar(){
-        let warningIcon = UIImage(systemName: "exclamationmark.triangle.fill")
+//        let warningIcon = UIImage(systemName: "exclamationmark.triangle.fill")
         
         let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
         

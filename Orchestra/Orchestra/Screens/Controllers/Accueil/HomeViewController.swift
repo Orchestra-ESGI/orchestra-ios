@@ -50,6 +50,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     
     var sessionConnectivity: WCSession?
     var dataToTranferToWatch: [String: Any] = [:]
+    var actionsName: [[String: Any]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,11 +132,78 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         var deviceCount = 0
         for device in self.hubDevices {
             let deviceKey = (deviceCount).description
-            self.dataToTranferToWatch[deviceKey] = device.mapDeviceToString(position: deviceCount + 1)
+            var deviceDict = device.mapDeviceToString(position: deviceCount + 1)
+            self.parseDeviceActionToGetName(device: device)
+            deviceDict["actions"] = self.actionsName
+            self.dataToTranferToWatch[deviceKey] = deviceDict
             
             print(device)
             deviceCount += 1
         }
+    }
+    
+    private func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
+        var actions: [String] = []
+        var values: [Any] = []
+        self.actionsName.removeAll()
+        if device.actions?.state != nil {
+            let onAction = self.screenLabelLocalize.deviceActionStateOn
+            let offAction = self.screenLabelLocalize.deviceActionStateOff
+            let toggleAction = self.screenLabelLocalize.deviceActionStateToggle
+            actions = [onAction, offAction, toggleAction]
+            values = ["on", "off", "toggle"]
+            for index in 0..<actions.count{
+                let action = [
+                    "key": actions[index],
+                    "val": values[index],
+                    "type": "state"
+                ] //SceneActionsName(key: actions[index], val: values[index], type: "state")
+                self.actionsName.append(action)
+            }
+        }
+        
+        if(device.actions?.brightness != nil){
+            let brightnessAction100 = self.screenLabelLocalize.deviceActionBrightness100
+            let brightnessAction50 = self.screenLabelLocalize.deviceActionBrightness50
+            let brightnessAction25 = self.screenLabelLocalize.deviceActionBrightness25
+            let deviceBrightness = device.actions!.brightness!.maxVal
+            actions = [brightnessAction25, brightnessAction50, brightnessAction100]
+            values = [deviceBrightness/4, deviceBrightness/2, deviceBrightness]
+            for index in 0..<actions.count{
+                let action = [
+                    "key": actions[index],
+                    "val": values[index],
+                    "type": "brightness"
+                ]
+                    //SceneActionsName(key: actions[index], val: values[index], type: "brightness")
+                self.actionsName.append(action)
+            }
+        }
+        
+        if(device.actions?.colorTemp != nil){
+            let temperatureAction100 = self.screenLabelLocalize.deviceActionTemp100
+            let temperatureAction50 = self.screenLabelLocalize.deviceActionTemp50
+            let temperaturection25 = self.screenLabelLocalize.deviceActionTemp25
+            let deviceMaxValue = device.actions!.colorTemp!.maxVal
+            actions = [temperatureAction100, temperatureAction50, temperaturection25]
+            values = [deviceMaxValue, deviceMaxValue/2, deviceMaxValue/4]
+            for index in 0..<actions.count{
+                let action = [
+                    "key": actions[index],
+                    "val": values[index],
+                    "type": "color_temp"
+                ]
+                    //SceneActionsName(key: actions[index], val: values[index], type: "color_temp")
+                self.actionsName.append(action)
+            }
+        }
+    }
+    
+    func playActionOnDevice(index devicePos: Int, action value: [String: Any]){
+        var actionToSend: [String: Any] = [:]
+        actionToSend["friendly_name"] = self.hubDevices[devicePos].friendlyName
+        actionToSend["actions"] = value
+        self.homeVM?.sendActionOnDevice(action: actionToSend)
     }
     
     func loadData(){

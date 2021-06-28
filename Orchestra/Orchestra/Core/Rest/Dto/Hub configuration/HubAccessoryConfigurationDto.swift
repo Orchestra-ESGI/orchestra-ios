@@ -83,7 +83,7 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
             "room": self.roomName ?? NSLocalizedString("undefined.value.dto", comment: ""),
             "color_component1": colorComponent1,
             "color_component2": colorComponent2,
-            "color_component3": colorComponent3,
+            "color_component3": colorComponent3
         ]
     }
 }

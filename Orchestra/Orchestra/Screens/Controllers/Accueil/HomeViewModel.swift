@@ -72,6 +72,10 @@ class HomeViewModel{
         return self.sceneVm!.getAllScenes()
     }
     
+    func sendActionOnDevice(action: [String: Any]){
+        self.deviceVM?.sendDeviceAction(body: action)
+    }
+    
     func removeDevices(friendlyNames: [String]) -> Observable<Bool>{
         return self.deviceVM!.removeDevices(friendlyNames: friendlyNames)
     }
