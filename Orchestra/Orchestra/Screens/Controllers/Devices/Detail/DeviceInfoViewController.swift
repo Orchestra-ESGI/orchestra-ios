@@ -19,8 +19,10 @@ class DeviceInfoViewController: UIViewController {
     @IBOutlet weak var locationTitleLabel: UILabel!
     @IBOutlet weak var tableViewTitleLabel: UILabel!
     @IBOutlet weak var caracteristicsTableView: UITableView!
-    
     @IBOutlet weak var dynamicViewContainer: UIView!
+    
+    @IBOutlet weak var dynamicContainerHeight: NSLayoutConstraint!
+    
     
     var onDoneBlock : (() -> Void)?
     

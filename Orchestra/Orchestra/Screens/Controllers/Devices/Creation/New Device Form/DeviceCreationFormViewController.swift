@@ -80,12 +80,12 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func fillLocalizedRooms(){
-        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewLivingRoom)
-        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewLobby)
-        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewBedroom)
-        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewKitchen)
-        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewBathroom)
-        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewGarage)
+        self.rooms.append("Salon")
+        self.rooms.append("Salon")
+        self.rooms.append("Salon")
+        self.rooms.append("Salon")
+        self.rooms.append("Salon")
+        self.rooms.append("Salon")
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

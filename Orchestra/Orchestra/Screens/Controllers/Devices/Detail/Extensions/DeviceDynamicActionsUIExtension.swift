@@ -43,11 +43,7 @@ extension DeviceInfoViewController{
                 lastElementInsertedYpos += 120
             }
         }
-        
-        NSLayoutConstraint.activate([
-            // OK
-            self.dynamicViewContainer.heightAnchor.constraint(equalToConstant: lastElementInsertedYpos)
-        ])
+        self.dynamicContainerHeight.constant = lastElementInsertedYpos
     }
     
     

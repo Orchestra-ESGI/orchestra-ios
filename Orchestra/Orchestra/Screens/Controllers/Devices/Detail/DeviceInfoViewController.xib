@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceInfoViewController" customModule="Orchestra" customModuleProvider="target">
             <connections>
                 <outlet property="caracteristicsTableView" destination="x7Y-7h-JaF" id="R0y-LE-krn"/>
+                <outlet property="dynamicContainerHeight" destination="fRi-34-Qmk" id="ImI-fF-gIm"/>
                 <outlet property="dynamicViewContainer" destination="8d9-OT-8Nh" id="xcL-I4-P0Z"/>
                 <outlet property="locationLabel" destination="aiv-Zi-KKu" id="JKK-Hs-Tz6"/>
                 <outlet property="locationTitleLabel" destination="vSU-ZJ-fd7" id="SO4-rb-vJh"/>
