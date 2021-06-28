@@ -95,7 +95,6 @@ extension DevicesViewController: UITableViewDataSource{
             let deviceCreationFormVC = DeviceCreationFormViewController()
             deviceCreationFormVC.device = self.device
             deviceCreationFormVC.accessoryType = self.devices[indexPath.row].type
-            deviceCreationFormVC.brand = self.brand
             if let documentationUrl = self.devices[indexPath.row].doc_url {
                 deviceCreationFormVC.isDeviceDocumented = true
                 deviceCreationFormVC.accessoryDocUrl = documentationUrl

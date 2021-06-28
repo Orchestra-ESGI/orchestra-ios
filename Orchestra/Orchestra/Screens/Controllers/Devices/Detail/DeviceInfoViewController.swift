@@ -22,6 +22,7 @@ class DeviceInfoViewController: UIViewController {
     
     @IBOutlet weak var dynamicViewContainer: UIView!
     
+    var onDoneBlock : (() -> Void)?
     
     // MARK: - Utils
     let localizerUtils = ScreensLabelLocalizableUtils.shared
@@ -45,9 +46,7 @@ class DeviceInfoViewController: UIViewController {
     var dynamicTemperatureContainerLabel: UILabel?
     var dynamicTemperatureContainerSlider: UISlider?
     
-    var favButton: UIBarButtonItem?
-    var okButton: UIBarButtonItem?
-//    var setupWarningButton: UIBarButtonItem?
+    var editSceneButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,19 +154,17 @@ class DeviceInfoViewController: UIViewController {
     }
     
     private func setUpNavBar(){
-//        let warningIcon = UIImage(systemName: "exclamationmark.triangle.fill")
+        if #available(iOS 14.0, *) {
+            editSceneButton = UIBarButtonItem(systemItem: .edit)
+        } else {
+            // Fallback on earlier versions
+            editSceneButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+        }
+        editSceneButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
         
-        let okButtonText = self.localizerUtils.objectInfoOkButtonLabelText
-        
-        okButton = UIBarButtonItem(title: okButtonText , style: .plain, target: self, action: nil)
-        
-//        if(deviceData?.type == .Unknown){
-//            setupWarningButton = UIBarButtonItem(image: warningIcon, style: .plain, target: self, action: nil)
-//            setupWarningButton?.tintColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-//            self.navigationItem.leftBarButtonItem = setupWarningButton
-//        }
-        
-        self.navigationItem.rightBarButtonItem = okButton!
+        if(self.deviceData?.type != .Unknown){
+            self.navigationItem.rightBarButtonItem = editSceneButton
+        }
         
         guard let objectName = self.deviceData?.name else {
             return
@@ -218,37 +215,15 @@ class DeviceInfoViewController: UIViewController {
     
     private func setUpClickObservers(){
         
-        self.okButton?
+        self.editSceneButton?
             .rx
             .tap.bind{
-                self.dismiss(animated: true, completion: nil)
+                let deviceForm = DeviceCreationFormViewController()
+                deviceForm.onDoneBlock = self.onDoneBlock
+                deviceForm.isDeviceUpdate = true
+                deviceForm.device = self.deviceData
+                self.navigationController?.pushViewController(deviceForm, animated: true)
         }.disposed(by: self.disposeBag)
-        
-        /*
-        self.setupWarningButton?
-            .rx
-            .tap.bind{
-                let alertTitle = self.localizeLabels.deviceConfigurationNeededAlertTitle
-                let alertMessage = self.localizeLabels.deviceConfigurationNeededAlertMessage
-                let alertCancelAction = self.localizeLabels.deviceConfigurationNeededAlertCancelAction
-                let alertGoAction = self.localizeLabels.deviceConfigurationNeededAlertGoAction
-                let alert = UIAlertController(title: alertTitle,
-                                              message: alertMessage, preferredStyle: .alert)
-                
-                let cancelAction = UIAlertAction(title: alertCancelAction, style: .cancel, handler: { action in
-                })
-                
-                let goAction = UIAlertAction(title: alertGoAction, style: .default, handler: { action in
-                    let configVc = NewDevicePairingViewController()
-                    configVc.device = self.deviceData
-                    self.navigationController?.pushViewController(configVc, animated: true)
-                })
-                
-                alert.addAction(goAction)
-                alert.addAction(cancelAction)
-                self.present(alert, animated: true)
-        }.disposed(by: self.disposeBag)
-        */
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -23,27 +23,52 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var addDeviceToFavLabel: UILabel!
     @IBOutlet weak var favDeviceSwitch: UISwitch!
+    var onDoneBlock : (() -> Void)?
     
     var validateFormAppBarBtn: UIBarButtonItem?
     
     // MARK: - Local data
-    var deviceFavState = false
+    let disposebag = DisposeBag()
+    
     var accessoryType: String = ""
     var accessoryDocUrl: String = ""
-    var brand: String = ""
     var deviceBackgrounds: [UIColor] = []
     var selectedColor = 0
-    let disposebag = DisposeBag()
     var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
+    private var slectedRoom = PublishSubject<String>()
+    
     var deviceViewModel: DeviceViewModel?
-    var deviceInfo: SupportedDevicesInformationsDto?
-    var device: HubAccessoryConfigurationDto?
+    
     let labelLocalize = ScreensLabelLocalizableUtils.shared
     let notificationLocalization = NotificationLocalizableUtils.shared
     let notificationUtils = NotificationsUtils.shared
     
+    var deviceInfo: SupportedDevicesInformationsDto?
+    var device: HubAccessoryConfigurationDto?
+    var isDeviceUpdate = false
+    var rooms: [String] = []
+    
+    private lazy var pickerViewPresenter: PickerViewPresenter = {
+        let pickerViewPresenter = PickerViewPresenter()
+        pickerViewPresenter.items = self.rooms
+        pickerViewPresenter.didSelectItem = { [weak self] item in
+            self?.slectedRoom.onNext(item)
+        }
+        return pickerViewPresenter
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fillLocalizedRooms()
+        self.roomNameTextField.text = self.rooms[0]
+        self.view.addSubview(pickerViewPresenter)
+        
+        roomNameTextField.rightViewMode = .always
+        let rightTextFieldImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let rightChevronImage = UIImage(systemName: "chevron.down")
+        rightTextFieldImageView.image = rightChevronImage
+        roomNameTextField.rightView = rightTextFieldImageView
+        
         self.deviceViewModel = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.setTopBar()
         self.setUpTextFields()
@@ -51,6 +76,26 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         self.setUpclickObservers()
         self.setColorsCollectionView()
         self.localizeUI()
+        self.validateFormAppBarBtn?.isEnabled = false
+    }
+    
+    private func fillLocalizedRooms(){
+        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewLivingRoom)
+        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewLobby)
+        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewBedroom)
+        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewKitchen)
+        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewBathroom)
+        self.rooms.append(self.labelLocalize.deviceUpdatePickerViewGarage)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if(textField == self.deviceNameTextField){
+            return true
+        }else if(textField == self.roomNameTextField){
+            pickerViewPresenter.showPicker()
+            return false
+        }
+        return true
     }
     
     private func setTopBar(){
@@ -62,25 +107,39 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @objc private func showPickerView() {
+        pickerViewPresenter.showPicker()
+    }
+    
     private func localizeUI(){
         self.deviceNameLabel.text = self.labelLocalize.deviceFormVcDeviceName
         self.roomNameLabel.text = self.labelLocalize.deviceFormVcRoomName
     }
     
     private func setUpclickObservers(){
-        _ = self.validateFormAppBarBtn!.rx.tap.bind{
-            let deviceData = self.createDevice()
-            if(self.isDeviceDocumented){
-                let deviceConfVC = DevicePhysicalConfigurationVC()
-                deviceConfVC.deviceDocumentationUrl = self.accessoryDocUrl
-                self.navigationController?.pushViewController(deviceConfVC, animated: true)
-            }else{
-                self.deviceViewModel?.saveDevice(deviceData: deviceData)
-                let searchVC = SearchDeviceViewController()
-                searchVC.deviceData = deviceData
-                searchVC.isSuccessfulyAdded = true
-                self.navigationController?.pushViewController(searchVC, animated: true)
-            }
+        _ = self.slectedRoom.subscribe { roomName in
+            self.roomNameTextField.text = roomName
+        }
+        
+        _ = self.validateFormAppBarBtn!
+            .rx
+            .tap.bind{
+                let deviceData = self.createDevice()
+                if(self.isDeviceDocumented){
+                    let deviceConfVC = DevicePhysicalConfigurationVC()
+                    deviceConfVC.deviceDocumentationUrl = self.accessoryDocUrl
+                    self.navigationController?.pushViewController(deviceConfVC, animated: true)
+                }else{
+                    if(self.isDeviceUpdate){
+                        // Update device
+                        self.deviceViewModel?.updateDevice(deviceData: deviceData)
+                        let searchVC = SearchDeviceViewController()
+                        searchVC.onDoneBlock = self.onDoneBlock
+                        searchVC.deviceData = deviceData
+                        searchVC.isSuccessfulyAdded = true
+                        self.navigationController?.pushViewController(searchVC, animated: true)
+                    }
+                }
         }.disposed(by: self.disposebag)
     }
     
@@ -88,11 +147,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         _ = self.deviceViewModel!
             .deviceFormCompleted
             .subscribe { isValid in
-                if isValid {
-                    self.validateFormAppBarBtn?.isEnabled = true
-                }else{
-                    self.validateFormAppBarBtn?.isEnabled = false
-                }
+                self.validateFormAppBarBtn?.isEnabled = isValid
             } onError: { err in
                 let notificationTitle = self.notificationLocalization.deviceFormInvalidFormNotificationTitle
                 let notificationSubtitle = self.notificationLocalization.deviceFormInvalidFormNotificationSubtitle
@@ -101,7 +156,40 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                                                                       position: .top,
                                                                       style: .warning)
             }
+        
+        _ = self.deviceNameTextField
+            .rx
+            .controlEvent([.editingChanged])
+            .asObservable().subscribe({ [unowned self] _ in
+                if(!(roomNameTextField.text?.trimmingCharacters(in: .whitespaces).isEmpty)!){
+                    let deviceNameLength = self.deviceNameTextField.text?.count ?? 0
+                    let roomNameLength = self.roomNameTextField.text?.count ?? 0
+                    if(roomNameLength > 0 && deviceNameLength > 0){
+                        self.deviceViewModel?.deviceFormCompleted.onNext(true)
+                    }else{
+                        self.deviceViewModel?.deviceFormCompleted.onNext(false)
+                    }
+                }
+            })
+        
+//        _ = self.roomNameTextField
+//            .rx
+//            .controlEvent([.valueChanged])
+//            .asObservable().subscribe({ [unowned self] _ in
+//                if(!(roomNameTextField.text?.trimmingCharacters(in: .whitespaces).isEmpty)!){
+//                    let deviceNameLength = self.deviceNameTextField.text?.count ?? 0
+//                    let roomNameLength = self.roomNameTextField.text?.count ?? 0
+//                    if(roomNameLength > 0 && deviceNameLength > 0){
+//                        self.deviceViewModel?.deviceFormCompleted.onNext(true)
+//                    }else{
+//                        self.deviceViewModel?.deviceFormCompleted.onNext(false)
+//                    }
+//                }else{
+//                    self.deviceViewModel?.deviceFormCompleted.onError(FormValidationError.roomNameMissing)
+//                }
+//            })
     }
+    
     
     private func setColorsCollectionView(){
         self.deviceBackgroundColorsCollectionView.delegate = self
@@ -112,7 +200,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setTitle(){
-        self.title = self.labelLocalize.deviceFormVcTitle
+        if(self.isDeviceUpdate){
+            self.title = self.labelLocalize.deviceFormVcUpdateTitle
+        }else{
+            self.title = self.labelLocalize.deviceFormVcTitle
+        }
     }
     
     private func setUpTextFields(){
@@ -124,10 +216,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         self.deviceBackgrounds.removeAll()
         self.generatesBackGroundColor()
         self.deviceBackgroundColorsCollectionView.reloadData()
-    }
-    
-    @IBAction func switchFavState(_ sender: Any) {
-        self.deviceFavState = ((sender as? UISwitch)?.isOn)!
     }
     
     private func generatesBackGroundColor(){
@@ -171,4 +259,9 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
 
 protocol SendDeviceProtocol {
     func save(device: HubAccessoryConfigurationDto)
+}
+
+enum FormValidationError: Error{
+    case deviceNameMissing
+    case roomNameMissing
 }

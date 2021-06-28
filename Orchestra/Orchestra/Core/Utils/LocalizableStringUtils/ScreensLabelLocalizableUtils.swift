@@ -193,8 +193,9 @@ class ScreensLabelLocalizableUtils{
     
     // - MARK: Device Form
     let deviceFormVcTitle = NSLocalizedString("device.form.screen.title", comment: "")
+    let deviceFormVcUpdateTitle = NSLocalizedString("device.form.screen.update.title", comment: "")
     let deviceFormVcDeviceName = NSLocalizedString("device.form.screen.device.name.label", comment: "")
-    let deviceFormVcRoomName = NSLocalizedString("device.form.screen.device.name.label", comment: "")
+    let deviceFormVcRoomName = NSLocalizedString("device.form.screen.device.room.name.label", comment: "")
     
     // - MARK: Configuration Tutorial Screen
     let configurationScreenTitle = NSLocalizedString("configuration.screen.title", comment: "")
@@ -211,4 +212,14 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Unknown device detail
     let unknownDeviceLabel = NSLocalizedString("unknown.device.label", comment: "")
     let unknownDeviceButtonTitle = NSLocalizedString("unknown.device.label.button.title", comment: "")
+    
+    // - MARK: Device Update Screen
+    let deviceUpdateScreenPickerViewTitle = NSLocalizedString("device.update.screen.pickerview.title", comment: "")
+    
+    let deviceUpdatePickerViewLivingRoom = NSLocalizedString("Living room", comment: "")
+    let deviceUpdatePickerViewLobby = NSLocalizedString("Lobby", comment: "")
+    let deviceUpdatePickerViewBedroom = NSLocalizedString("Bedroom", comment: "")
+    let deviceUpdatePickerViewKitchen = NSLocalizedString("Kitchen", comment: "")
+    let deviceUpdatePickerViewBathroom = NSLocalizedString("Bathroom", comment: "")
+    let deviceUpdatePickerViewGarage = NSLocalizedString("Garage", comment: "")
 }

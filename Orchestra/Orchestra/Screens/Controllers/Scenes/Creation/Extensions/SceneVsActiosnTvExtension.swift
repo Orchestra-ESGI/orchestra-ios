@@ -131,7 +131,6 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     self.popUpType = 1
                     
                     self.alertDevice = DevicesAlert()
-                    self.alertDevice?.delegate = self
                     self.alertDevice?.deviceSelectedSection = indexPath.section
                     self.alertDevice?.titleLabel.text = self.localizeUtils.newSceneActionCustomViewTitle
                     self.view.addSubview(self.alertDevice!.parentView)

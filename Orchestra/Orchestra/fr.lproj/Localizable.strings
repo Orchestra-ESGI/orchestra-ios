@@ -210,6 +210,7 @@
 
 // - MARK: Watch Device Actions Screen
 "watch.deviceaction.hint.label.title" = "Choisissez une action";
+"watch.deviceaction.empty.label.title" = "Aucune action possible";
 
 // - MARK: Watch Device Action Name
 "watch.deviceaction.title" = "Détail";
@@ -292,10 +293,11 @@
 
 // - MARK: Device Form
 "device.form.screen.title" = "Votre objet";
+"device.form.screen.update.title" = "Modification";
 "device.form.invalid.form.notification.title" = "Action impossible";
 "device.form.invalid.form.notification.subtitle" = "Vous devez remplir tous les champs du formulaire!";
 "device.form.screen.device.name.label" = "Nom de l'appareil";
-"device.form.screen.device.name.label" = "Dans quelle pièce ?";
+"device.form.screen.device.room.name.label" = "Dans quelle pièce ?";
 
 // - MARK: Configuration tuto Screen
 "configuration.screen.title" = "Configuration";
@@ -311,3 +313,12 @@
 // - MARK: Unknown device detail
 "unknown.device.label" = "Cet objet n'est pas encore pris en charge, faites-nous en part ci-dessous";
 "unknown.device.label.button.title" = "Envoyer une demande";
+
+// - MARK: Update Device Screen
+"device.update.screen.pickerview.title" = "Choisissez une action";
+"Living room" = "Salon";
+"Lobby" = "Hall";
+"Bedroom" = "Chambre";
+"Kitchen" = "Cuisine";
+"Bathroom" = "Salle de bain";
+"Garage" = "Garage";

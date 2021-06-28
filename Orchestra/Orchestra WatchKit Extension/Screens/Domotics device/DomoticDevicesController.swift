@@ -27,6 +27,7 @@ class DomoticDevicesController: WKInterfaceController{
     @IBOutlet weak var devicesList: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
+        self.localizeScreen()
         if WCSession.isSupported(){
             watchSessionManager.sessionConnectivity?.delegate = self
             self.sessionConnectivity = watchSessionManager.sessionConnectivity
@@ -51,25 +52,29 @@ class DomoticDevicesController: WKInterfaceController{
         loadingTimer.invalidate()
 
         // Schedule timer.
-        loadingTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
-
+        DispatchQueue.main.async {[weak self] in
+            self!.loadingTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self!, selector: #selector(self!.updateProgress), userInfo: nil, repeats: true)
+        }
+        
         loadingLabel.setHidden(false)
     }
 
     @objc private func updateProgress() {
-        let loadingText = watchLocalization.myDevicesScreenLoaderLabelTitle
-        switch progressTracker {
-        case 1:
-            loadingLabel.setText("\(loadingText)..")
-            progressTracker = 2
-        case 2:
-            loadingLabel.setText("\(loadingText)...")
-            progressTracker = 3
-        case 3:
-            loadingLabel.setText("\(loadingText).")
-            progressTracker = 1
-        default:
-            break
+        if(loadingTimer.isValid){
+            let loadingText = watchLocalization.myDevicesScreenLoaderLabelTitle
+            switch progressTracker {
+            case 1:
+                loadingLabel.setText("\(loadingText)..")
+                progressTracker = 2
+            case 2:
+                loadingLabel.setText("\(loadingText)...")
+                progressTracker = 3
+            case 3:
+                loadingLabel.setText("\(loadingText).")
+                progressTracker = 1
+            default:
+                break
+            }
         }
     }
 
@@ -77,8 +82,9 @@ class DomoticDevicesController: WKInterfaceController{
         loadingTimer.invalidate()
         loadingLabel.setHidden(true)
     }
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
+    
+    private func localizeScreen(){
+        self.setTitle(watchLocalization.myDevicesScreenTitle)
     }
     
     private func reloadTable(){
@@ -121,6 +127,7 @@ class DomoticDevicesController: WKInterfaceController{
                     let devicePosition = deviceDict["position"] as? Int,
                     let deviceName = deviceDict["name"] as? String,
                     let deviceRoom = deviceDict["room"] as? String,
+                    let deviceType = deviceDict["type"] as? String,
                     let deviceColorComponent1 = deviceDict["color_component1"] as? Double,
                     let deviceColorComponent2 = deviceDict["color_component2"] as? Double,
                     let deviceColorComponent3 = deviceDict["color_component3"] as? Double,
@@ -130,6 +137,7 @@ class DomoticDevicesController: WKInterfaceController{
             let deviceBackground = UIColor(red: CGFloat(deviceColorComponent1), green: CGFloat(deviceColorComponent2), blue: CGFloat(deviceColorComponent3), alpha: 1.0)
             
             let device = Device(position: devicePosition, name: deviceName,
+                                type: deviceType,
                                 actions: actions,
                                 color: deviceBackground, room: deviceRoom)
             self.devices.append(device)

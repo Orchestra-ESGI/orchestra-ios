@@ -59,8 +59,9 @@ class DeviceViewModel{
         self.deviceService.sendDeviceAction(body)
     }
     
-    func saveDevice(deviceData: HubAccessoryConfigurationDto){
-        self.deviceService.saveDevice(deviceData.toMap())
+    
+    func updateDevice(deviceData: HubAccessoryConfigurationDto){
+        self.deviceService.updateDevice(deviceData.toMap())
     }
     
     func resetDevice(){

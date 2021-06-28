@@ -12,11 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeviceCreationFormViewController" customModule="Orchestra" customModuleProvider="target">
             <connections>
-                <outlet property="addDeviceToFavLabel" destination="RKf-UC-Yky" id="vy3-E6-ZRm"/>
                 <outlet property="deviceBackgroundColorsCollectionView" destination="BNI-nK-x97" id="1ht-Jj-HR9"/>
                 <outlet property="deviceNameLabel" destination="QdI-hn-WtJ" id="mbW-gw-y5B"/>
                 <outlet property="deviceNameTextField" destination="yvo-FZ-7z6" id="8eI-ur-Pwe"/>
-                <outlet property="favDeviceSwitch" destination="IKo-8t-g2S" id="aTy-rm-mDP"/>
                 <outlet property="roomNameLabel" destination="2L8-6x-owR" id="GX5-6p-B6m"/>
                 <outlet property="roomNameTextField" destination="LtZ-sc-FX6" id="Pq7-im-Auh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -68,19 +66,6 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ajouter aux favoris ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKf-UC-Yky">
-                    <rect key="frame" x="15" y="430" width="194" height="25.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IKo-8t-g2S">
-                    <rect key="frame" x="350" y="430" width="51" height="31"/>
-                    <color key="onTintColor" red="1" green="0.23252488769999999" blue="0.2685994236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <connections>
-                        <action selector="switchFavState:" destination="-1" eventType="valueChanged" id="Zp8-WT-yks"/>
-                    </connections>
-                </switch>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIh-BF-wqu">
                     <rect key="frame" x="359" y="304" width="25" height="25"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -97,14 +82,10 @@
             <constraints>
                 <constraint firstItem="QdI-hn-WtJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="1B1-3m-gGW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yvo-FZ-7z6" secondAttribute="trailing" constant="15" id="67k-ow-sMi"/>
-                <constraint firstItem="RKf-UC-Yky" firstAttribute="top" secondItem="BNI-nK-x97" secondAttribute="bottom" constant="25" id="CPp-Ld-rqK"/>
                 <constraint firstItem="BNI-nK-x97" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="D9C-AL-Fgf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BNI-nK-x97" secondAttribute="trailing" constant="20" id="Fro-sA-soC"/>
-                <constraint firstItem="RKf-UC-Yky" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="G1u-iF-Z8e"/>
-                <constraint firstItem="IKo-8t-g2S" firstAttribute="top" secondItem="BNI-nK-x97" secondAttribute="bottom" constant="25" id="GD0-pI-RRA"/>
                 <constraint firstItem="LtZ-sc-FX6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="Roj-48-tJr"/>
                 <constraint firstItem="BNI-nK-x97" firstAttribute="top" secondItem="vIh-BF-wqu" secondAttribute="bottom" constant="6" id="Sjz-Z6-qrN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IKo-8t-g2S" secondAttribute="trailing" constant="15" id="bT7-QX-feS"/>
                 <constraint firstItem="LtZ-sc-FX6" firstAttribute="top" secondItem="2L8-6x-owR" secondAttribute="bottom" constant="15" id="hIK-bz-aIL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LtZ-sc-FX6" secondAttribute="trailing" constant="15" id="kEY-9Q-VpD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vIh-BF-wqu" secondAttribute="trailing" constant="30" id="ojH-mm-Ya0"/>

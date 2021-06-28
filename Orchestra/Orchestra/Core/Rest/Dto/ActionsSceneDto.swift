@@ -26,7 +26,7 @@ class ActionSceneDto: NSObject, Mappable{
 class SliderAction: NSObject, Mappable{
     var minVal: Int = 100
     var maxVal: Int = 500
-    var currentState: Int = 0
+    var currentState: Int?
     var type: SliderType = .BrightnessSlider
     var state: DeviceState?
     
