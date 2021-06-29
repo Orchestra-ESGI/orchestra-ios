@@ -31,9 +31,9 @@ class UsersViewModel{
         return self.userWS.signup(email: email, password: password)
     }
     
-//    func deleteAccount(usersId: [String]) -> Observable<[String]>{
-//        return realUserWS.removeUser(usersId: usersId)
-//    }
+    func deleteAccount(email: String) -> Observable<Bool>{
+        return self.userWS.removeUser(email)
+    }
     
 //    func updateUser(credentialName: String, id: String, credentialValue: String) -> Observable<UserDto>{
 //        return realUserWS.updateUser(credentialName, id, credentialValue)

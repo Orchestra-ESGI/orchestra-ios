@@ -18,6 +18,9 @@ target 'Orchestra' do
   pod 'SPPermissions/Location'
   pod 'SPPermissions/Camera'
 
+  #Font-Awesome
+  pod 'FontAwesome.swift'
+
   # REST
   pod 'Alamofire' # https://github.com/Alamofire/Alamofire
   pod 'RxAlamofire' # https://github.com/RxSwiftCommunity/RxAlamofire

@@ -1,9 +1,9 @@
-/* 
+/*
   Localizable.strings
   Orchestra
 
   Created by Ramzy Kermad on 01/04/2021.
-  
+
 */
 
 // - MARK: Permissions
@@ -318,3 +318,25 @@
 "Kitchen" = "Cocido";
 "Bathroom" = "Cuarto de baño";
 "Garage" = "Garaje";
+
+// - MARK: Settings
+"settings.title" = "Ajustes";
+"settings.rate" = "Nos califica";
+"settings.share" = "Comparte la aplicación";
+"settings.about" = "Sobre nosotros";
+"settings.contact" = "Contacto";
+"settings.libraries" = "Bibliotecas que usamos";
+"settings.privacy" = "Privacy policy";
+"settings.tou" = "Condiciones de uso";
+"settings.signout" = "Desconectar";
+"settings.delete" = "Borra tu cuenta";
+"settings.share.title" = "¡Oye, descubre Orchestra!";
+"settings.alert.signout.message" = "¿Estás seguro de que quieres cerrar sesión?";
+"settings.alert.signout.action.title" = "Desconectar";
+"settings.alert.delete.action.message" = "¿Estás seguro de que quieres eliminar tu cuenta?";
+"settings.alert.delete.action.title" = "Borrar";
+"settings.alert.cancel.title" = "Cancelar";
+
+// - MARK: Mail
+"mail.error.configuration" = "Su teléfono no está configurado actualmente para enviar correo.";
+"mail.settings.subject" = "Feedback - Orchestra iOS App";
