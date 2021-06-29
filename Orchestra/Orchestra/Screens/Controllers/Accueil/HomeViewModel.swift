@@ -48,6 +48,10 @@ class HomeViewModel{
         }
     }
     
+    func getAllRooms() -> Observable<[RoomDto]> {
+        return homeService.getAllRooms()
+    }
+    
     private func loadAllDevices() -> Observable<Bool>{
         _ = self.deviceVM!.devicesStream.subscribe { devices in
             self.deviceStream.onNext(devices)

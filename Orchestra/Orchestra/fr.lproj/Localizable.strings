@@ -344,3 +344,11 @@
 // - MARK: Mail
 "mail.error.configuration" = "Votre téléphone n'est actuellement pas configuré pour envoyer un courriel.";
 "mail.settings.subject" = "Feedback - Orchestra iOS App";
+
+// - Add device State Screen
+"add.device.screen.state.success.title" = "C'est fait!";
+"add.device.screen.state.failure.title" = "Oops!";
+"add.device.screen.state.success.description" = "Votre objet a été correctement mis à jour!";
+"add.device.screen.state.failure.description" = "Un problème est survenu durant la mise à jour!";
+"add.device.screen.state.success.button" = "Revenir à l'accueil";
+"add.device.screen.state.failure.button" = "Reéssayer";

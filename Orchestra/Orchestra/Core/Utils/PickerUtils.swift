@@ -44,10 +44,10 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
         return pickerView
     }()
 
-    var items: [String] = []
-    var didSelectItem: ((String) -> Void)?
+    var items: [RoomDto] = []
+    var didSelectItem: ((RoomDto) -> Void)?
 
-    private var selectedItem: String?
+    private var selectedItem: RoomDto?
 
     init() {
         super.init(frame: .zero)
@@ -83,7 +83,7 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return items[row]
+        return NSLocalizedString(items[row].name ?? "", comment: "")
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

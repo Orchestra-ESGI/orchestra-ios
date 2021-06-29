@@ -36,7 +36,7 @@ class DeviceServices{
                             guard let name = accessory["name"] as? String,
                                   let type = accessory["type"] as? String,
                                   let topics = accessory["actions"] as? [String: Any],
-                                  let roomName = accessory["room_name"] as? String,
+                                  let room = accessory["room"] as? [String: Any],
                                   let backgroundColor = accessory["background_color"] as? String,
                                   let manufacturer = accessory["manufacturer"] as? String,
                                   let isOn = accessory["is_on"] as? Bool,
@@ -48,7 +48,7 @@ class DeviceServices{
                             }
                             accessoryMap["name"] = name
                             accessoryMap["type"] = type
-                            accessoryMap["room_name"] = roomName
+                            accessoryMap["room"] = room
                             accessoryMap["background_color"] = backgroundColor
                             accessoryMap["manufacturer"] = manufacturer
                             accessoryMap["is_on"] = isOn

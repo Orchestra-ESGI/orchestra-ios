@@ -35,9 +35,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var deviceBackgrounds: [UIColor] = []
     var selectedColor = 0
     var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
-    private var slectedRoom = PublishSubject<String>()
+    private var selectedRoom = PublishSubject<RoomDto>()
+    private var currentRoom : RoomDto?
     
     var deviceViewModel: DeviceViewModel?
+    var homeViewModel: HomeViewModel?
     
     let labelLocalize = ScreensLabelLocalizableUtils.shared
     let notificationLocalization = NotificationLocalizableUtils.shared
@@ -46,22 +48,21 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var deviceInfo: SupportedDevicesInformationsDto?
     var device: HubAccessoryConfigurationDto?
     var isDeviceUpdate = false
-    var rooms: [String] = []
+    var rooms: [RoomDto] = []
     
     private lazy var pickerViewPresenter: PickerViewPresenter = {
         let pickerViewPresenter = PickerViewPresenter()
         pickerViewPresenter.items = self.rooms
         pickerViewPresenter.didSelectItem = { [weak self] item in
-            self?.slectedRoom.onNext(item)
+            self?.selectedRoom.onNext(item)
         }
         return pickerViewPresenter
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fillLocalizedRooms()
-        self.roomNameTextField.text = self.rooms[0]
-        self.view.addSubview(pickerViewPresenter)
+        self.homeViewModel = HomeViewModel(navCtrl: self.navigationController!)
+        self.deviceViewModel = DeviceViewModel(navigationCtrl: self.navigationController!)
         
         roomNameTextField.rightViewMode = .always
         let rightTextFieldImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -69,7 +70,8 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         rightTextFieldImageView.image = rightChevronImage
         roomNameTextField.rightView = rightTextFieldImageView
         
-        self.deviceViewModel = DeviceViewModel(navigationCtrl: self.navigationController!)
+        self.getHubRooms()
+        
         self.setTopBar()
         self.setUpTextFields()
         self.setUpStreamsObserver()
@@ -78,14 +80,16 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         self.localizeUI()
         self.validateFormAppBarBtn?.isEnabled = false
     }
-    
-    private func fillLocalizedRooms(){
-        self.rooms.append("Salon")
-        self.rooms.append("Salon")
-        self.rooms.append("Salon")
-        self.rooms.append("Salon")
-        self.rooms.append("Salon")
-        self.rooms.append("Salon")
+
+    private func getHubRooms(){
+        _ = self.homeViewModel!.getAllRooms().subscribe { rooms in
+            self.rooms = rooms
+            self.currentRoom = rooms[0]
+            self.roomNameTextField.text = NSLocalizedString(rooms[0].name ?? "", comment: "")
+            self.view.addSubview(self.pickerViewPresenter)
+        } onError: { err in
+            print("err")
+        }
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -117,8 +121,10 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUpclickObservers(){
-        _ = self.slectedRoom.subscribe { roomName in
-            self.roomNameTextField.text = roomName
+        _ = self.selectedRoom.subscribe { roomDto in
+            self.currentRoom = roomDto.element
+            let roomNameLocalized = NSLocalizedString(roomDto.element?.name ?? "", comment: "")
+            self.roomNameTextField.text = roomNameLocalized
         }
         
         _ = self.validateFormAppBarBtn!
@@ -135,7 +141,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                         self.deviceViewModel?.updateDevice(deviceData: deviceData)
                         let searchVC = SearchDeviceViewController()
                         searchVC.onDoneBlock = self.onDoneBlock
-                        searchVC.deviceData = deviceData
                         searchVC.isSuccessfulyAdded = true
                         self.navigationController?.pushViewController(searchVC, animated: true)
                     }
@@ -171,23 +176,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             })
-        
-//        _ = self.roomNameTextField
-//            .rx
-//            .controlEvent([.valueChanged])
-//            .asObservable().subscribe({ [unowned self] _ in
-//                if(!(roomNameTextField.text?.trimmingCharacters(in: .whitespaces).isEmpty)!){
-//                    let deviceNameLength = self.deviceNameTextField.text?.count ?? 0
-//                    let roomNameLength = self.roomNameTextField.text?.count ?? 0
-//                    if(roomNameLength > 0 && deviceNameLength > 0){
-//                        self.deviceViewModel?.deviceFormCompleted.onNext(true)
-//                    }else{
-//                        self.deviceViewModel?.deviceFormCompleted.onNext(false)
-//                    }
-//                }else{
-//                    self.deviceViewModel?.deviceFormCompleted.onError(FormValidationError.roomNameMissing)
-//                }
-//            })
     }
     
     
@@ -239,20 +227,23 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Never call this func before checking all the form
-    private func createDevice() -> HubAccessoryConfigurationDto{
+    private func createDevice() -> [String: Any]{
         let newDeviceMap: [String: Any] = [
             "type": self.accessoryType,
             "name": self.deviceNameTextField.text!,
-            "manufacturer": self.device?.manufacturer,
-            "room": self.device?.room,
+            "manufacturer": self.device?.manufacturer ?? "",
+            "room": [
+                "_id": self.currentRoom?.id ?? "",
+                "name": self.currentRoom?.name ?? ""
+            ],
             "background_color": self.deviceBackgrounds[selectedColor].toHexString(),
-            "model": self.device?.model,
-            "friendly_name": self.device?.friendlyName
+            "model": self.device?.model ?? "",
+            "friendly_name": self.device?.friendlyName ?? ""
         ]
         
         
         
-        return Mapper<HubAccessoryConfigurationDto>().map(JSON: newDeviceMap)!
+        return newDeviceMap
     }
 }
 

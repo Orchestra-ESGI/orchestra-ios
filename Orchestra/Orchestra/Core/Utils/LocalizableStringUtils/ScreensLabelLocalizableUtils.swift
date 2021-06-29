@@ -217,6 +217,7 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Device Update Screen
     let deviceUpdateScreenPickerViewTitle = NSLocalizedString("device.update.screen.pickerview.title", comment: "")
 
+
     // - MARK: Settings Localization
     let settingsTitle = NSLocalizedString("settings.title", comment: "")
     let settingsRateUs = NSLocalizedString("settings.rate", comment: "")
@@ -239,4 +240,13 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Mail
     let mailSettingsSubject = NSLocalizedString("mail.settings.subject", comment: "")
     let mailErrorConfiguration = NSLocalizedString("mail.error.configuration", comment: "")
+
+    
+    // - Add device State Screen
+    let addingDeviceStateScreenSuccessTitle = NSLocalizedString("add.device.screen.state.success.title", comment: "")
+    let addingDeviceStateScreenFailureTitle = NSLocalizedString("add.device.screen.state.failure.title", comment: "")
+    let addingDeviceStateScreenSuccessDescription = NSLocalizedString("add.device.screen.state.success.description", comment: "")
+    let addingDeviceStateScreenFailureDescription = NSLocalizedString("add.device.screen.state.failure.description", comment: "")
+    let addingDeviceStateScreenSuccessButton = NSLocalizedString("add.device.screen.state.success.button", comment: "")
+    let addingDeviceStateScreenFailureButton = NSLocalizedString("add.device.screen.state.failure.button", comment: "")
 }

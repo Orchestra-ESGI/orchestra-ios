@@ -341,3 +341,11 @@
 // - MARK: Mail
 "mail.error.configuration" = "Il tuo telefono non è attualmente configurato per inviare posta.";
 "mail.settings.subject" = "Feedback - Orchestra iOS App";
+
+// - Add device State Screen
+"add.device.screen.state.success.title" = "È fatta!";
+"add.device.screen.state.failure.title" = "Oops!";
+"add.device.screen.state.success.description" = "Il tuo articolo è stato aggiornato correttamente!";
+"add.device.screen.state.failure.description" = "Qualcosa è andato storto durante l'aggiornamento!";
+"add.device.screen.state.success.button" = "Torna alla home page";
+"add.device.screen.state.failure.button" = "Riprova";

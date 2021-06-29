@@ -60,8 +60,8 @@ class DeviceViewModel{
     }
     
     
-    func updateDevice(deviceData: HubAccessoryConfigurationDto){
-        self.deviceService.updateDevice(deviceData.toMap())
+    func updateDevice(deviceData: [String: Any]){
+        self.deviceService.updateDevice(deviceData)
     }
     
     func resetDevice(){

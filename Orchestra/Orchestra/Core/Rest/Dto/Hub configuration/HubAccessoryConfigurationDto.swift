@@ -66,7 +66,10 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         }
         map["actions"] = self.actions // fake
         map["friendly_name"] = self.friendlyName
-        map["room_name"] = self.room
+        map["room"] = [
+            "_id": self.room?.id,
+            "name": self.room?.name
+        ]
         map["background_color"] = self.backgroundColor
         map["manufacturer"] = self.manufacturer
         map["model"] = self.model

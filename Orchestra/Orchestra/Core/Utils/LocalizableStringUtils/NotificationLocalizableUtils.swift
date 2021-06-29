@@ -72,6 +72,7 @@ public class NotificationLocalizableUtils {
     let configFinishedProgressViewTitle = NSLocalizedString("progress.notification.config.finished.title", comment: "")
     let editingHomeProgressViewTitle = NSLocalizedString("home.edit.progress.title.text", comment: "")
     let finishEditingHomeProgressViewTitle = NSLocalizedString("home.finish.edit.progress.title.text", comment: "")
+    let checkMarkSuccessTitle = NSLocalizedString("default.success", comment: "")
     
     // - MARK: Signup Notifications
     

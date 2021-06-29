@@ -339,3 +339,11 @@
 // - MARK: Mail
 "mail.error.configuration" = "您的电话当前未配置为发送邮件。";
 "mail.settings.subject" = "反馈 - Orchestra iOS App";
+
+// - Add device State Screen
+"add.device.screen.state.success.title" = "重试";
+"add.device.screen.state.failure.title" = "哎呀！";
+"add.device.screen.state.success.description" = "您的项目已正确更新！";
+"add.device.screen.state.failure.description" = "更新过程中出了点问题！";
+"add.device.screen.state.success.button" = "回家";
+"add.device.screen.state.failure.button" = "重试";

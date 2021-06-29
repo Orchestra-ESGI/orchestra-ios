@@ -13,7 +13,7 @@ class RoomDto: NSObject, Mappable {
     var name: String?
     
     required init?(map: Map) {
-        
+        super.init()
     }
     
     func mapping(map: Map) {

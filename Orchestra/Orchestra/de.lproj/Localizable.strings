@@ -339,3 +339,12 @@
 // - MARK: Mail
 "mail.error.configuration" = "Ihr Telefon ist derzeit nicht zum Senden von E-Mails konfiguriert.";
 "mail.settings.subject" = "Feedback - Orchestra iOS App";
+
+// - Add device State Screen
+"add.device.screen.state.success.title" = "Es ist vollbracht!";
+"add.device.screen.state.failure.title" = "Hoppla!";
+"add.device.screen.state.success.description" = "Ihr Artikel wurde korrekt aktualisiert!";
+"add.device.screen.state.failure.description" = "Beim Update ist etwas schief gelaufen!";
+"add.device.screen.state.success.button" = "Nach Hause zurückkehren";
+"add.device.screen.state.failure.button" = "Wiederholen";
+>>>>>>> 6dacb42 (Device add state screen localization + update device screen bug fix)
