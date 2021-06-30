@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Orchestra" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="5TR-He-pgt" id="5Xa-kG-P03"/>
+                <outlet property="roomsCollectionView" destination="uDa-xG-HXr" id="DZ2-6K-UOf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5TR-He-pgt">
-                    <rect key="frame" x="0.0" y="64" width="414" height="798"/>
+                    <rect key="frame" x="0.0" y="119" width="414" height="743"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T2f-90-yUR">
                         <size key="itemSize" width="128" height="128"/>
@@ -30,16 +31,32 @@
                         <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="30"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uDa-xG-HXr">
+                    <rect key="frame" x="0.0" y="44" width="414" height="70"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="T64-Kd-Tmm"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vIt-d7-qrd">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="uDa-xG-HXr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="350-3Q-qcY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5TR-He-pgt" secondAttribute="bottom" id="Ds4-2g-4jR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uDa-xG-HXr" secondAttribute="trailing" id="MUB-fz-q7C"/>
                 <constraint firstItem="5TR-He-pgt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QIQ-ik-hWz"/>
+                <constraint firstItem="uDa-xG-HXr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Sf7-KF-3PU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5TR-He-pgt" secondAttribute="trailing" id="Ss0-zu-ah7"/>
-                <constraint firstItem="5TR-He-pgt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="lTQ-sD-lHD"/>
+                <constraint firstItem="5TR-He-pgt" firstAttribute="top" secondItem="uDa-xG-HXr" secondAttribute="bottom" constant="5" id="knp-BB-h6L"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="109"/>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
         </view>
     </objects>
     <resources>

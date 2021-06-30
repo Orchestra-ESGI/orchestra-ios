@@ -16,6 +16,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     // - MARK: UI
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var roomsCollectionView: UICollectionView!
+    
     var addSceneAppbarButon: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     var trashButton: UIBarButtonItem?
@@ -42,8 +45,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     var scenesToRemove: [SceneDto] = []
 
     var hubDevices: [HubAccessoryConfigurationDto] = []
+    var filtereHubDevices: [HubAccessoryConfigurationDto] = []
     var homeScenes: [SceneDto] = []
-
+    var filteredHomeScenes: [SceneDto] = []
+    
     let isSchakingStream = PublishSubject<Bool>()
     let elementsToRemoveStream = PublishSubject<Bool>()
     let refreshControl = UIRefreshControl()
@@ -51,9 +56,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     var sessionConnectivity: WCSession?
     var dataToTranferToWatch: [String: Any] = [:]
     var actionsName: [[String: Any]] = []
+    
+    var rooms: [String] = []
+    var selectedRoomIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if(self.navigationController?.viewControllers.count ?? 0 > 1){
             self.clearControllerStack()
         }
@@ -62,6 +71,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.homeVM = HomeViewModel(navCtrl: self.navigationController!)
         // Setup UI
         self.setUpTopBar()
+        self.setupRoomCollectionView()
         self.setUpCollectionView()
         // Binding click with buttons
         self.bindClickToButtons()
@@ -549,6 +559,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     // - MARK: Observers
     private func bindClickToButtons(){
         setAddButtonBinding()
+        setCancelButtonBinding()
         setTrashButtonBinding()
         menuButtonBinding()
     }

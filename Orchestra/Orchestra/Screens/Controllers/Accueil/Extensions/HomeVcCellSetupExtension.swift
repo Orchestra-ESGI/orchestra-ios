@@ -13,7 +13,7 @@ extension HomeViewController{
                                      _ collectionView: UICollectionView) -> ObjectCollectionViewCell{
         let objectCell = collectionView.dequeueReusableCell(withReuseIdentifier: "OBJECT", for: indexPath) as! ObjectCollectionViewCell
         
-        let currentObject =  self.hubDevices[indexPath.row]
+        let currentObject =  self.filtereHubDevices[indexPath.row]
         
         switch currentObject.type {
         case.Switch:
@@ -42,8 +42,8 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         objectCell.addGestureRecognizer(longPressRecognizer)
         
-        objectCell.objectPlaceNameLabel.text = self.hubDevices[currentCellPos].name
-        let roomNameLocalize = NSLocalizedString(self.hubDevices[currentCellPos].room?.name ?? "", comment: "")
+        objectCell.objectPlaceNameLabel.text = self.filtereHubDevices[currentCellPos].name
+        let roomNameLocalize = NSLocalizedString(self.filtereHubDevices[currentCellPos].room?.name ?? "", comment: "")
         objectCell.objectNameLabel.text = roomNameLocalize
         objectCell.objectStatusLabel.text = reachableStatus
         
@@ -78,8 +78,8 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         sceneCell.addGestureRecognizer(longPressRecognizer)
         
-        sceneCell.sceneDescription .text = self.homeScenes[currentCellPos].name
-        let cellColor = self.homeScenes[currentCellPos].color
+        sceneCell.sceneDescription .text = self.filteredHomeScenes[currentCellPos].name
+        let cellColor = self.filteredHomeScenes[currentCellPos].color
         sceneCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: cellColor!)
         sceneCell.contentView.layer.cornerRadius = 8.0
         sceneCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -103,7 +103,7 @@ extension HomeViewController{
         
         // Scene cell selected
         let sceneCellSelected = collectionView.cellForItem(at: indexPath) as! SceneCollectionViewCell
-        let sceneCellDtoSelected = self.homeScenes[indexPath.row]
+        let sceneCellDtoSelected = self.filteredHomeScenes[indexPath.row]
         if(self.scenesToRemove.contains(sceneCellDtoSelected)){
             // Unselect cell
             let index = self.scenesToRemove.firstIndex(of: sceneCellDtoSelected)!

@@ -16,6 +16,9 @@ extension HomeViewController{
             .deviceStream
             .subscribe { devices in
                 self.hubDevices = devices
+                self.filtereHubDevices = devices
+                self.rooms = ["Toutes" ,"Salon", "Bureau", "Chambre", "Cuisine", "Salle de bain", "Ceci est une pièce avec un nom trop long"]
+                self.roomsCollectionView.reloadData()
             } onError: { err in
                 self.progressUtils.dismiss()
                 self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème est survenu lors du chargement de votre domicile", position: .top, style: .danger)
@@ -34,6 +37,7 @@ extension HomeViewController{
             .sceneStream
             .subscribe { (scenes) in
                 self.homeScenes = scenes
+                self.filteredHomeScenes = scenes
         } onError: { (err) in
             self.notificationUtils
                 .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)

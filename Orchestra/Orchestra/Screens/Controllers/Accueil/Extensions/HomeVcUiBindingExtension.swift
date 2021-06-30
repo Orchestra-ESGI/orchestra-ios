@@ -55,6 +55,14 @@ extension HomeViewController{
         }.disposed(by: self.disposeBag)
     }
     
+    func setCancelButtonBinding(){
+        _ = self.cancelButton?
+            .rx.tap.bind{
+                self.isCellsShaking = !self.isCellsShaking
+                self.stopCellsShake()
+            }
+    }
+    
     func setTrashButtonBinding(){
         _ = trashButton?
             .rx

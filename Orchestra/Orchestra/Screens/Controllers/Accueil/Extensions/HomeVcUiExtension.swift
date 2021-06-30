@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Floaty
+import MaterialComponents.MaterialChips
 
 extension HomeViewController{
     
@@ -46,6 +47,13 @@ extension HomeViewController{
         
         self.navigationItem.rightBarButtonItems = [addSceneAppbarButon!, trashButton!, cancelButton!]
         self.navigationItem.leftBarButtonItem = menuButton //userSettingsAppbarButton!
+    }
+    
+    func setupRoomCollectionView(){
+        self.roomsCollectionView.showsHorizontalScrollIndicator = false
+        self.roomsCollectionView.register(MDCChipCollectionViewCell.self, forCellWithReuseIdentifier: "identifier")
+        self.roomsCollectionView.delegate = self
+        self.roomsCollectionView.dataSource = self
     }
     
     func setUpCollectionView(){
