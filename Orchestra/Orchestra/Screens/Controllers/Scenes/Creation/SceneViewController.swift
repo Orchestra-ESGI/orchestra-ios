@@ -83,8 +83,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParent {
-        }
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     // MARK: Controller Setup

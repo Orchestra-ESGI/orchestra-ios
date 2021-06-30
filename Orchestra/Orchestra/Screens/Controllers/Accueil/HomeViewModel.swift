@@ -28,6 +28,8 @@ class HomeViewModel{
     let sceneVm: SceneViewModel?
     let sceneStream = PublishSubject<[SceneDto]>()
     
+    let roomVm = RoomServices()
+    
     init(navCtrl: UINavigationController){
         self.navigationController = navCtrl
         self.deviceVM = DeviceViewModel(navigationCtrl: navCtrl)
@@ -86,6 +88,10 @@ class HomeViewModel{
     
     func removeScenes(ids: [String]) -> Observable<Bool> {
         return self.sceneVm!.removeScenes(ids: ids)
+    }
+    
+    func creatRoom(body: [String: Any]) -> Observable<Bool> {
+        return self.roomVm.create(body: body)
     }
     
     func clearObjectSelected(completion: @escaping (AnyObserver<Bool>)->()) -> Observable<Bool>{

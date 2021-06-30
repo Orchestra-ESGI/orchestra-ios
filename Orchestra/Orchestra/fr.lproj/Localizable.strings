@@ -210,7 +210,7 @@
 // - MARK: Home Screen Nav Bar plus button alert
 "home.screen.new.scene.alert" = "Ajouter une scène";
 "home.screen.new.device.alert" = "Ajouter un objet";
-"home.screen.new.house.alert" = "Ajouter un domicile";
+"home.screen.new.room.alert" = "Ajouter une pièce";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ajouter un appareil";
@@ -329,7 +329,7 @@
 "configuration.screen.step.2.text" = "2. Allez dans la section #Pairing";
 "configuration.screen.step.3.text" = "3. Suivez les instructions pour appairer votre objet";
 "configuration.screen.alert.title" = "Information";
-"configuration.screen.alert.message" = "Si l'objet correctement réagit au processus de réinitialisation, il devrait être ajouté à votre domicile d'ici peu, essayer de rafraichir votre écran d'ici 20 - 30 secondes";
+"configuration.screen.alert.message" = "Si l'objet a correctement réagit au processus de réinitialisation, il devrait être ajouté à votre domicile d'ici peu, essayer de rafraichir votre écran d'ici 20 - 30 secondes";
 "configuration.screen.alert.action.title" = "D'accord";
 
 // - MARK: Unknown device detail
@@ -375,4 +375,13 @@
 "add.device.screen.state.success.button" = "Revenir à l'accueil";
 "add.device.screen.state.failure.button" = "Reéssayer";
 
-// - MARK: Scene
+// - MARK: Rooms
+"room.creation.ok.notification.title" = "Nouvelle pièce ajoutée!";
+"room.creation.ok.notification.subtitle" = "La pièce a été correctement ajoutée à votre domicile";
+
+"room.creation.ko.notification.title" = "L'ajout a échoué!";
+"room.creation.ko.notification.subtitle" = "La pièce n'a pas pu être correctement ajoutée à votre domicile";
+
+"room.creation.alert.title" = "Nouvelle pièce";
+"room.creation.alert.message" = "Attention: Vous ne pourrez pas changer le nom de la pièce, il faudra le supprimer et en créer une autre";
+"room.creation.alert.action.save" = "Enregistrer";

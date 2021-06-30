@@ -11,7 +11,7 @@ import RxCocoa
 import PopMenu
 
 extension HomeViewController{
-    func setAddSceneOrDeviceButtonBinding(){
+    func setAddButtonBinding(){
         self.addSceneAppbarButon?.rx
             .tap
             .bind { [weak self] in
@@ -20,26 +20,36 @@ extension HomeViewController{
                     self?.isCellsShaking = !self!.isCellsShaking
                 }
                 
-                let addSceneLabelText = self?.labelLocalization.homePlusButtonAlertNewScene
-                let addScene = PopMenuDefaultAction(title: addSceneLabelText, image: UIImage(systemName: "timer"), didSelect: { action in
+                let addSceneLabel = self?.labelLocalization.homePlusButtonAlertNewScene
+                let addScene = PopMenuDefaultAction(title: addSceneLabel, image: UIImage(systemName: "timer"), didSelect: { action in
                     let sceneVc = SceneViewController()
                     sceneVc.devices = self!.hubDevices
                     sceneVc.dataDelegate = self
                     self?.navigationController?.pushViewController(sceneVc, animated: true)
                 })
                 
-                let addDeviceLabelText = self?.labelLocalization.homePlusButtonAlertNewDevice
-                let addDevice = PopMenuDefaultAction(title: addDeviceLabelText,image: UIImage(systemName: "lightbulb.fill"), didSelect: { action in
+                let addDeviceLabel = self?.labelLocalization.homePlusButtonAlertNewDevice
+                let addDevice = PopMenuDefaultAction(title: addDeviceLabel,image: UIImage(systemName: "lightbulb.fill"), didSelect: { action in
                     let newDeviceVc = NewDevicePairingViewController()
                     self?.navigationController?.pushViewController(newDeviceVc, animated: true)
                 })
                 
-//                let addHouseLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewHouse
-//                let addHouse = PopMenuDefaultAction(title: addHouseLabelText,image: UIImage(systemName: "house.fill"), didSelect: { action in
-//                    self!.showHousesnBottomSheet()
-//                })
+                let addRoomLabel = self?.labelLocalization.homePlusButtonAlertNewRoom
+                let addHouse = PopMenuDefaultAction(title: addRoomLabel,image: UIImage(systemName: "house.fill"), didSelect: { action in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                        let alertTitle = self!.notificationLocalize.roomCreationAlertTitle
+                        let alertMessage = self!.notificationLocalize.roomCreationAlertMessage
+                        let alertAction = self!.notificationLocalize.roomCreationAlertTitle
+                        self?.alertUtils.showAlertWithTf(for: self!,
+                                                         title: alertTitle,
+                                                         message: alertMessage,
+                                                         actionName: alertAction,
+                                                         completion: self!.addNewRoom(roomName:))
+                    })
+                })
                 
-                let menuViewController = PopMenuViewController(actions: [addScene, addDevice])
+                
+                let menuViewController = PopMenuViewController(actions: [addScene, addDevice, addHouse])
                 menuViewController.appearance.popMenuBackgroundStyle = .blurred(.regular)
                 self!.present(menuViewController, animated: true, completion: nil)
         }.disposed(by: self.disposeBag)

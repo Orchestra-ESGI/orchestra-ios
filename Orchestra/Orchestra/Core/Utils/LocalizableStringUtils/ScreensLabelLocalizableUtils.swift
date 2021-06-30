@@ -122,7 +122,7 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Home Screen Nav Bar plus button alert
     let homePlusButtonAlertNewScene = NSLocalizedString("home.screen.new.scene.alert", comment: "")
     let homePlusButtonAlertNewDevice = NSLocalizedString("home.screen.new.device.alert", comment: "")
-    let homePlusButtonAlertNewHouse = NSLocalizedString("home.screen.new.house.alert", comment: "")
+    let homePlusButtonAlertNewRoom = NSLocalizedString("home.screen.new.room.alert", comment: "")
 
     // - MARK: Add New Device Screen (supported types)
     let newDeviceVcTitle = NSLocalizedString("new.device.controller.title", comment: "")

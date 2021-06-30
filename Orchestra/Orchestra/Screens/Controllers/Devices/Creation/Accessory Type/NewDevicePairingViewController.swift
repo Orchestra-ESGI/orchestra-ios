@@ -38,6 +38,17 @@ class NewDevicePairingViewController: UIViewController {
         self.progressUtils.displayIndeterminateProgeress(title: self.localizeNotifications.undeterminedProgressViewTitle, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     private func setupUI(){
         if(self.device == nil){
             self.title = self.labelLocalization.newDeviceVcTitle

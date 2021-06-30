@@ -47,4 +47,19 @@ class AlertUtils {
         
         controller.present(alert, animated: true)
     }
+    
+    func showAlertWithTf(for controller: UIViewController, title: String, message: String, actionName: String, style: UIAlertController.Style = .alert, completion: @escaping (String) -> Void){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: actionName, style: .default) { [unowned ac] _ in
+            let textField = ac.textFields![0]
+            completion(textField.text!)
+            // do something interesting with "answer" here
+        }
+        
+        ac.addAction(submitAction)
+        
+        controller.present(ac, animated: true)
+    }
 }
