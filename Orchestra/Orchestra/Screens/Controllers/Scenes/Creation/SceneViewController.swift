@@ -50,18 +50,20 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var isPopUpVisible = false
     var popUpType = 0 // 0 ---> Device , 1 ---> Actions
     var actionsName: [SceneActionsName] = []
+    var filteredActionsName: [SceneActionsName] = []
     var alertDevice: DevicesAlert?
     
     // All available devices
     var devices : [HubAccessoryConfigurationDto] = []
-    //
     var deviceDict: [[String:Any]] = []
+    
+    var onDoneBlock : (() -> Void)?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
-        
+        self.sceneVM.fillsceneActions(devices: self.devices)
         self.localizeLabels()
         self.setUpUI()
         self.setUpTextFields()
@@ -69,6 +71,16 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.setActionsTableView()
         self.generatesBackGroundColor()
         self.clickObservers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     
@@ -111,6 +123,52 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.actionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ACTION_CELL")
         
         self.actionsTableView.tableFooterView = UIView()
+        
+        if(self.isUpdating){
+            var actionJson: [String: Any] = [:]
+            self.sceneNameTf.text = self.sceneToEdit?.name ?? ""
+            self.sceneDescriptionTf.text = self.sceneToEdit?.sceneDescription ?? ""
+            var deviceDictIndex = 0
+            for sceneDevice in (self.sceneToEdit?.devices ?? []){
+                self.devices.filter { hubDevice in
+                    return sceneDevice.friendlyName == hubDevice.friendlyName
+                }.forEach { device in
+                    self.parseDeviceActionToGetName(device: device)
+                    let deviceFeriendlyName = device.friendlyName
+                    let deviceName = device.name
+                    var deviceMap: [String: Any] = [:]
+                    
+                    deviceMap["possible_actions"] = self.actionsName
+                    deviceMap["name"] = deviceName
+                    deviceMap["friendly_name"] = deviceFeriendlyName
+                    var actionArray: [SceneActionsName] = []
+                    for action in sceneDevice.actions{
+                        var actionName = ""
+                        let actionValue = action.value
+                        let actionType = action.key
+                        if(action.key == "brightness" || action.key == "color_temp"){
+                            actionName = self.sceneVM.getSceneActionName(key: action.key, value: ((actionValue as? Int) ?? 0).description) ?? 0.description
+                        }else{
+                            actionName = self.sceneVM.getSceneActionName(key: action.key, value: (actionValue as? String) ?? "") ?? ""
+                        }
+                        let sceneActionName = SceneActionsName(key: actionName,
+                                                               val: actionValue,
+                                                               type: actionType)
+                        if(actionType == "color"){
+                            actionJson[actionType] = ["hex": actionValue]
+                        }else{
+                            actionJson[actionType] = actionValue
+                        }
+                        deviceDictIndex += 1
+                        actionArray.append(sceneActionName)
+                    }
+                    deviceMap["actions"] = actionJson
+                    deviceMap["selected_actions"] = actionArray
+                    self.deviceDict.append(deviceMap)
+                }
+            }
+            print("device dictionnary: \(self.deviceDict)")
+        }
     }
     
     func setUpDevicesTableView(deviceAlert: DevicesAlert){
@@ -263,15 +321,26 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                         "actions": actions
                     ]
                 })
+                if(self.isUpdating){
+                    newSceneMap["_id"] = self.sceneToEdit?.id ?? ""
+                }
+                
                 let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
 
-                _ = self.sceneVM.newScene(body: newSceneMap).subscribe(onNext: { succeeded in
+                _ = self.sceneVM
+                    .sendScene(body: newSceneMap, httpMethode: self.isUpdating ? .Patch : .Post)
+                    .subscribe(onNext: { succeeded in
                     self.progressUtils.dismiss()
                     let successAlertTitle = self.localizeUtils.newSceneSuccessCreationAlertTitle
                     self.progressUtils.displayCheckMark(title: successAlertTitle, view: uiscreenWindow)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self.progressUtils.dismiss()
-                        self.navigationController?.popViewController(animated: true)
+                        if(self.isUpdating){
+                            self.dismiss(animated: true, completion: nil)
+                            self.onDoneBlock!()
+                        }else{
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
                 }, onError: { err in
                     self.progressUtils.dismiss()
@@ -287,12 +356,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     
     // MARK: Local functions
     private func generatesBackGroundColor(){
-        var colorsSize = 5
-        if(self.sceneToEdit != nil){
-            //self.sceneColors.append((sceneToEdit?.backgroundColor)!)
-        }else{
-            colorsSize = 6
-        }
+        var colorsSize = 6
         ColorUtils.shared.generatesBackGroundColor(colorArray: &self.sceneColors, size: colorsSize)
     }
     

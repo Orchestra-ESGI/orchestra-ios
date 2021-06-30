@@ -100,7 +100,7 @@ class OrchestraPager: UIViewController {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         scrollView.contentSize = CGSize(width: view.frame.size.width * 5, height: 100)
         scrollView.isPagingEnabled = true
-        
+        scrollView.showsHorizontalScrollIndicator = false
         for x in 0..<self.slides.count {
             let page = UIView(frame: CGRect(x: CGFloat(x) * view.frame.size.width, y: 0, width: view.frame.size.width, height: view.frame.size.height))
             //page.backgroundColor = self.slidesColor[x]

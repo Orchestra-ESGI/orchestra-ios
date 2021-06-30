@@ -75,6 +75,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.reusableCellName)
         self.tableView.separatorStyle = .singleLine
         self.tableView.backgroundColor = ColorUtils.ORCHESTRA_BLUE_COLOR
+        self.tableView.showsVerticalScrollIndicator = false
     }
     
     func initDataSource() {

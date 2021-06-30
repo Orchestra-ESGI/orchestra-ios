@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Alamofire
 
 class SceneViewModel{
     let sceneService = SceneServices()
@@ -21,32 +22,39 @@ class SceneViewModel{
     let disposeBag = DisposeBag()
     
     init() {
-        self.fillsceneActions()
     }
     
     private var scenesActions: [String:[String: String]] = [:]
     
-    private func fillsceneActions(){
+    func fillsceneActions(devices: [HubAccessoryConfigurationDto]){
         self.scenesActions["state"] = [
             "on": self.localizeUtils.deviceActionStateOn,
             "off": self.localizeUtils.deviceActionStateOff,
             "toggle": self.localizeUtils.deviceActionStateToggle
         ]
-        self.scenesActions["brightness"] = [
-            "25": self.localizeUtils.deviceActionBrightness25,
-            "50": self.localizeUtils.deviceActionBrightness50,
-            "75": self.localizeUtils.deviceActionBrightness75,
-            "100": self.localizeUtils.deviceActionBrightness100
-        ]
+        
         self.scenesActions["color"] = [
             "color": self.localizeUtils.deviceActionColor
         ]
-        self.scenesActions["color_temp"] = [
-            "25": self.localizeUtils.deviceActionTemp25,
-            "50": self.localizeUtils.deviceActionTemp50,
-            "75": self.localizeUtils.deviceActionTemp75,
-            "100": self.localizeUtils.deviceActionTemp100
-        ]
+        
+        for device in devices{
+            if let brightness = device.actions?.brightness {
+                let brightnessMaxVal = brightness.maxVal
+                self.scenesActions["brightness"] = [:]
+                self.scenesActions["brightness"]?[(brightnessMaxVal).description] = self.localizeUtils.deviceActionBrightness100
+                self.scenesActions["brightness"]?[(3 * (brightnessMaxVal/4)).description] = self.localizeUtils.deviceActionBrightness75
+                self.scenesActions["brightness"]?[(brightnessMaxVal/2).description] = self.localizeUtils.deviceActionBrightness50
+                self.scenesActions["brightness"]?[(brightnessMaxVal/4).description] = self.localizeUtils.deviceActionBrightness25
+            }
+            if let colorTemp = device.actions?.colorTemp {
+                let colorTempMaxVal = colorTemp.maxVal
+                self.scenesActions["color_temp"] = [:]
+                self.scenesActions["color_temp"]?[(colorTempMaxVal).description] = self.localizeUtils.deviceActionTemp100
+                self.scenesActions["color_temp"]?[(3 * (colorTempMaxVal/4)).description] = self.localizeUtils.deviceActionTemp75
+                self.scenesActions["color_temp"]?[(colorTempMaxVal/2).description] = self.localizeUtils.deviceActionTemp50
+                self.scenesActions["color_temp"]?[(colorTempMaxVal/4).description] = self.localizeUtils.deviceActionTemp25
+            }
+        }
     }
     
     func getSceneActionName(key: String, value: String) -> String? {
@@ -62,8 +70,13 @@ class SceneViewModel{
         return self.sceneService.removeScene(idsScene: ids)
     }
     
-    func newScene(body: [String: Any]) -> Observable<Bool>{
-        return self.sceneService.createNewScene(scene: body)
+    func sendScene(body: [String: Any], httpMethode: CallMethod) -> Observable<Bool>{
+        switch httpMethode {
+        case .Patch:
+            return self.sceneService.updateScene(scene: body)
+        case .Post:
+            return self.sceneService.createNewScene(scene: body)
+        }
     }
     
     func getAllScenes() -> Observable<Bool> {

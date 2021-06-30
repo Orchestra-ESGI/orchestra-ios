@@ -77,6 +77,11 @@
 "server.error.notification.title" = "Vergissing";
 "server.error.notification.subitle" = "er is een fout opgetreden";
 
+"home.loading.error.notification.title" = "Vergissing";
+"home.loading.error.notification.subitle" = "Kan je huis niet opladen! Probeer het later nog eens";
+
+"device.delete.error.notification.title" = "Vergissing";
+"device.delete.error.notification.subitle" = "Het verwijderen is niet gelukt! Probeer het later nog eens";
 
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Wacht alstublieft...";
@@ -310,7 +315,7 @@
 "unknown.device.label.button.title" = "Stuur een verzoek";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Kies een actie";
+"device.update.screen.pickerview.title" = "Kies een kamer";
 "Living room" = "Woonkamer";
 "Lobby" = "Lobby";
 "Bedroom" = "Slaapkamer";

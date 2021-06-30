@@ -76,6 +76,12 @@
 "server.error.notification.title" = "Error";
 "server.error.notification.subitle" = "An error occured";
 
+"home.loading.error.notification.title" = "Error";
+"home.loading.error.notification.subitle" = "Unable to charge your home! Try again later";
+
+"device.delete.error.notification.title" = "Error";
+"device.delete.error.notification.subitle" = "The deletion was unsuccessful! Try again later";
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Please wait...";
 
@@ -310,7 +316,7 @@
 "unknown.device.label.button.title" = "Send a request";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Choose an action";
+"device.update.screen.pickerview.title" = "Choose a room";
 "Living room" = "Living room";
 "Lobby" = "Lobby";
 "Bedroom" = "Bedroom";

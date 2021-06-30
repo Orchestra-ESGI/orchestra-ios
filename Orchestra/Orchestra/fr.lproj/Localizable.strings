@@ -79,6 +79,12 @@
 "server.error.notification.title" = "Erreur";
 "server.error.notification.subitle" = "Une erreur est surevenue";
 
+"home.loading.error.notification.title" = "Erreur";
+"home.loading.error.notification.subitle" = "Impossible de charger votre domicile! Reéssayez ulterieurement";
+
+"device.delete.error.notification.title" = "Erreur";
+"device.delete.error.notification.subitle" = "La suppression n'a pas abouti! Reéssayez ultérieurement";
+
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "Veuillez patienter...";
 
@@ -315,7 +321,7 @@
 "unknown.device.label.button.title" = "Envoyer une demande";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Choisissez une action";
+"device.update.screen.pickerview.title" = "Choisissez une pièce";
 "Living room" = "Salon";
 "Lobby" = "Hall";
 "Bedroom" = "Chambre";
