@@ -11,17 +11,31 @@ import UIKit
 extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
     // Editing list
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
         if(editingStyle == UITableViewCell.EditingStyle.delete){
-            self.sceneActions.remove(at: indexPath.row)
-            if(self.sceneActions.count == 0){
-                self.actionsTableView.isEditing = false
-                //self.editActionListButton.setTitle(NSLocalizedString("new.scene.vc.edit", comment: ""), for: .normal)
-                //self.editActionListButton.isHidden = true
+            let section = indexPath.section
+            var selectedActions = (self.deviceDict[section]["selected_actions"] as! [SceneActionsName])
+            selectedActions.remove(at: indexPath.row)
+            var newSeneActions: [String: Any] = [:]
+            let oldSceneActions: [String: Any] = self.deviceDict[section]["actions"] as! [String: Any]
+            for selectedAction in selectedActions{
+                newSeneActions[selectedAction.type] = oldSceneActions[selectedAction.type]
             }
+            print(newSeneActions)
+            self.deviceDict[section]["selected_actions"] = selectedActions
+            self.deviceDict[section]["actions"] = newSeneActions
+            tableView.deleteRows(at: [indexPath], with: .fade)
             self.actionsTableView.reloadData()
         }
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        let selectedActions = self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName]
+        if(indexPath.row == (selectedActions ?? []).count){
+            return .none
+        }
+        return .delete
+    }
     
     // Recycle items
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -49,7 +63,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 return self.devices.count
             }else {
                 // Number of cells in Action table view pop up
-                return (self.deviceDict[self.alertDevice!.deviceSelectedSection!]["possible_actions"] as? [SceneActionsName])!.count
+                return self.filteredActionsName.count
             }
         }
         // Number of cells in scene vc actions table view
@@ -65,18 +79,17 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             if(self.popUpType == 0){
                 cell.textLabel?.text = self.devices[indexPath.row].name
             }else{
-                let devicePossibleActions = self.deviceDict[indexPath.section]["possible_actions"] as? [SceneActionsName]
-                cell.textLabel?.text = devicePossibleActions![indexPath.row].key
+                let devicePossibleActions = self.filteredActionsName //self.deviceDict[indexPath.section]["possible_actions"] as? [SceneActionsName]
+                cell.textLabel?.text = devicePossibleActions[indexPath.row].key
             }
             return cell
         }else{
             let deviceSelectedActions = self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName]
             let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL", for: indexPath)
             if (deviceSelectedActions != nil && indexPath.row < deviceSelectedActions!.count) {
-                cell.isUserInteractionEnabled = false
                 cell.textLabel?.text = deviceSelectedActions![indexPath.row].key
+                cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             } else {
-                cell.isUserInteractionEnabled = true
                 cell.textLabel?.text = self.localizeUtils.addActionOnDeviceNewSceneButtonTitle
             }
             return cell
@@ -85,12 +98,14 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
+        // If the last cell of the section is selected
         if(self.isPopUpVisible){
             if(self.popUpType == 0){
                 self.appendDevices(device: self.devices[indexPath.row])
             }else{
                 let actionSection = self.alertDevice!.deviceSelectedSection!
-                let allActions = self.deviceDict[actionSection]["possible_actions"] as! [SceneActionsName]
+                let allActions = self.filteredActionsName
+                //self.deviceDict[actionSection]["possible_actions"] as! [SceneActionsName]
                 if(allActions.count > 0){
                     let selectedAction = allActions[indexPath.row]
                     var currentSelectedActions = self.deviceDict[actionSection]["selected_actions"] as? [SceneActionsName]
@@ -124,19 +139,31 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             self.isPopUpVisible = false
             self.actionsTableView.reloadData()
         }else{
-            print("Selected action from scene actions at row: \(indexPath.section)")
-            let allActions = self.deviceDict[indexPath.section]["possible_actions"] as! [SceneActionsName]
+            if(indexPath.row == (self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName] ?? []).count){
+                print("Selected action from scene actions at row: \(indexPath.section)")
+                let allActions = self.deviceDict[indexPath.section]["possible_actions"] as! [SceneActionsName]
                 if(allActions.count > 0){
                     self.isPopUpVisible = true
                     self.popUpType = 1
                     
+                    if let selectedActions = self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName] {
+                        let deviceActionInScene = (selectedActions).map { dict -> String in
+                            return dict.type
+                        }
+                        self.filteredActionsName = allActions.filter { !deviceActionInScene.contains($0.type)}
+                    }else{
+                        self.filteredActionsName = allActions
+                    }
+                    
                     self.alertDevice = DevicesAlert()
+                    self.alertDevice?.delegate = self
                     self.alertDevice?.deviceSelectedSection = indexPath.section
                     self.alertDevice?.titleLabel.text = self.localizeUtils.newSceneActionCustomViewTitle
                     self.view.addSubview(self.alertDevice!.parentView)
                     self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
                     self.alertDevice!.tableView.reloadData()
                 }
+            }
         }
     }
     

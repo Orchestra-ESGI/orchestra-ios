@@ -67,9 +67,9 @@ class SceneServices{
         })
     }
     
-    func createNewScene(scene: [String: Any]) -> Observable<Bool>{
+    private func sendScene(scene: [String: Any], method: HTTPMethod) -> Observable<Bool>{
         return Observable<Bool>.create({observer in
-            AF.request("\(RootApiService.BASE_API_URL)/scene", method: .post, parameters: scene, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
+            AF.request("\(RootApiService.BASE_API_URL)/scene", method: method, parameters: scene, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     switch response.result {
@@ -83,6 +83,14 @@ class SceneServices{
                 }
             return Disposables.create();
         })
+    }
+    
+    func updateScene(scene: [String: Any]) -> Observable<Bool> {
+        self.sendScene(scene: scene, method: .patch)
+    }
+    
+    func createNewScene(scene: [String: Any]) -> Observable<Bool>{
+        self.sendScene(scene: scene, method: .post)
     }
     
     func launchScene(id: String){

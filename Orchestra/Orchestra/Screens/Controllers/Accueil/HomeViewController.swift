@@ -234,20 +234,22 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     private func refreshHome(_ loadSuccessfull: Bool){
         self.progressUtils.dismiss()
-        self.collectionView.reloadData()
-
-        if let watchConnectivity = self.sessionConnectivity,
-           watchConnectivity.isWatchAppInstalled,
-           watchConnectivity.isPaired,
-           watchConnectivity.isReachable{
-            self.parseDevicesForWatch()
-            self.parseScenesForWatch()
-            self.syncWatchScenes()
-        }
-        UIView.animate(withDuration: 0.5, animations: {
-            self.collectionView.alpha = 1
-        })
+        
         if(loadSuccessfull){
+            self.collectionView.reloadData()
+
+            if let watchConnectivity = self.sessionConnectivity,
+               watchConnectivity.isWatchAppInstalled,
+               watchConnectivity.isPaired,
+               watchConnectivity.isReachable{
+                self.parseDevicesForWatch()
+                self.parseScenesForWatch()
+                self.syncWatchScenes()
+            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.collectionView.alpha = 1
+            })
+            
             let view = (UIApplication.shared.windows[0].rootViewController?.view)!
             let loadingFinishedString = self.screenLabelLocalize.homeScreenProgressAlertTitle
             self.progressUtils.displayCheckMark(title: loadingFinishedString, view: view)
@@ -345,6 +347,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     @objc func showSceneDetail(sender: UIButton){
         let sceneSelected = sender.tag
         let sceneDetailVc = SceneDetailViewController()
+        sceneDetailVc.onDoneBlock = {
+            self.loadData()
+        }
         let navigationCtr = UINavigationController(rootViewController: sceneDetailVc)
         let sceneData = self.homeScenes[sceneSelected]
         sceneDetailVc.sceneData = sceneData
@@ -352,6 +357,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             return [device.friendlyName : device.name!]
         })
         sceneDetailVc.devices = deviceInfoMap
+        sceneDetailVc.sceneDevices = self.hubDevices
         self.navigationController?.present(navigationCtr, animated: true, completion: nil)
     }
 

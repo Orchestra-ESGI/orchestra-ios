@@ -29,12 +29,15 @@ class SceneDetailViewController: UIViewController {
     // MARK: Local data
     var sceneData: SceneDto?
     let sceneVM = SceneViewModel()
+    var sceneDevices: [HubAccessoryConfigurationDto] = []
     var sceneActionsName: [String: [String]] = [:]
     var devices: [[String: String]] = []
     
+    var onDoneBlock : (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.sceneVM.fillsceneActions(devices: sceneDevices)
         self.localizeUI()
         self.setUpUI()
         self.setUpClickObserver()
@@ -50,6 +53,11 @@ class SceneDetailViewController: UIViewController {
         self.descriptionTextView.layer.borderWidth = 0.5
         self.descriptionTextView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.descriptionTextView.layer.cornerRadius = 8.0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func localizeUI(){
@@ -82,7 +90,13 @@ class SceneDetailViewController: UIViewController {
         _ = self.editSceneButton?
                 .rx
                 .tap.bind{
-                print("Editing scene")
+                    let currentScene = self.sceneData
+                    let updateSceneVC = SceneViewController()
+                    updateSceneVC.onDoneBlock = self.onDoneBlock
+                    updateSceneVC.devices = self.sceneDevices
+                    updateSceneVC.sceneToEdit = currentScene
+                    updateSceneVC.isUpdating = true
+                    self.navigationController?.pushViewController(updateSceneVC, animated: true)
             }
     }
     

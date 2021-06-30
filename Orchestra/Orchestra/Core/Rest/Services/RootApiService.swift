@@ -97,3 +97,8 @@ enum ServerError: Error {
     case Conflict // 409 --> email déja existant
     case ServerError //500
 }
+
+enum CallMethod {
+    case Patch
+    case Post
+}

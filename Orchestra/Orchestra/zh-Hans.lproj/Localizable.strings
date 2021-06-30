@@ -77,6 +77,11 @@
 "server.error.notification.title" = "错误";
 "server.error.notification.subitle" = "发生了错误";
 
+"home.loading.error.notification.title" = "错误";
+"home.loading.error.notification.subitle" = "无法为您的家充电！ 稍后再试";
+
+"device.delete.error.notification.title" = "错误";
+"device.delete.error.notification.subitle" = "删除失败！ 稍后再试";
 
 // MARK: Progress labels and texts
 "progress.notification.undetermined.title" = "请等待...";
@@ -310,7 +315,7 @@
 "unknown.device.label.button.title" = "发送请求";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "选择一个动作";
+"device.update.screen.pickerview.title" = "选择房间";
 "Living room" = "客厅";
 "Lobby" = "大堂";
 "Bedroom" = "卧室";
