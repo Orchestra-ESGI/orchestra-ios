@@ -11,7 +11,7 @@ import RxSwift
 import ObjectMapper
 
 class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomViewProtocol {
-
+    
     // MARK: - UI
     @IBOutlet weak var sceneNameLabel: UILabel!
     @IBOutlet weak var sceneNameTf: UITextField!
@@ -29,10 +29,11 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var addSceneAppbarButon: UIBarButtonItem?
     
     // MARK: Utils
-    let localizeUtils = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let progressUtils = ProgressUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
+    let alertUtils = AlertUtils.shared
     
     // MARK: Service
     let sceneVM = SceneViewModel()
@@ -58,12 +59,13 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var deviceDict: [[String:Any]] = []
     
     var onDoneBlock : (() -> Void)?
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         self.sceneVM.fillsceneActions(devices: self.devices)
+        self.setUpStreamsObserver()
         self.localizeLabels()
         self.setUpUI()
         self.setUpTextFields()
@@ -77,21 +79,22 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        if self.isMovingFromParent {
+        }
     }
-    
     
     // MARK: Controller Setup
     private func localizeLabels(){
-        self.sceneNameLabel.text = self.localizeUtils.sceneFormNameLabel
-        self.sceneBackgroundColorLabel.text = self.localizeUtils.sceneFormBackgroundColorLabel
-        self.sceneDescriptionLabel.text = self.localizeUtils.sceneFormDescriptionLabel
-        self.addActionButton.setTitle(self.localizeUtils.addActionButtonnText, for: .normal)
-        self.sceneDescriptionTf.placeholder = self.localizeUtils.sceneFormDescriptionTf
-        self.sceneNameTf.placeholder = self.localizeUtils.sceneFormNameTf
+        self.sceneNameLabel.text = self.labelLocalization.sceneFormNameLabel
+        self.sceneBackgroundColorLabel.text = self.labelLocalization.sceneFormBackgroundColorLabel
+        self.sceneDescriptionLabel.text = self.labelLocalization.sceneFormDescriptionLabel
+        self.addActionButton.setTitle(self.labelLocalization.addActionButtonnText, for: .normal)
+        self.sceneDescriptionTf.placeholder = self.labelLocalization.sceneFormDescriptionTf
+        self.sceneNameTf.placeholder = self.labelLocalization.sceneFormNameTf
         
     }
     
@@ -100,15 +103,98 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.sceneDescriptionTf.delegate = self
     }
     
+    private func setUpStreamsObserver(){
+        _ = self.sceneVM
+            .sceneValidStream
+            .subscribe { isValid in
+                self.addSceneAppbarButon?.isEnabled = isValid
+            } onError: { err in
+                let notificationTitle = self.notificationLocalize.deviceFormInvalidFormNotificationTitle
+                let notificationSubtitle = self.notificationLocalize.deviceFormInvalidFormNotificationSubtitle
+                self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                      subtitle: notificationSubtitle,
+                                                                      position: .top,
+                                                                      style: .warning)
+            }
+        
+        _ = self.sceneNameTf
+            .rx
+            .controlEvent([.editingChanged])
+            .asObservable().subscribe({ [unowned self] _ in
+                if(!(sceneNameTf.text?.trimmingCharacters(in: .whitespaces).isEmpty)!){
+                    let deviceNameLength = self.sceneNameTf.text?.count ?? 0
+                    let roomNameLength = self.sceneDescriptionTf.text?.count ?? 0
+                    if(roomNameLength > 0 && deviceNameLength > 0){
+                        self.sceneVM.sceneValidStream.onNext(true)
+                    }else{
+                        self.sceneVM.sceneValidStream.onNext(false)
+                    }
+                }
+            })
+        
+        _ = self.sceneDescriptionTf
+            .rx
+            .controlEvent([.editingChanged])
+            .asObservable().subscribe({ [unowned self] _ in
+                if(!(sceneDescriptionTf.text?.trimmingCharacters(in: .whitespaces).isEmpty)!){
+                    let deviceNameLength = self.sceneNameTf.text?.count ?? 0
+                    let roomNameLength = self.sceneDescriptionTf.text?.count ?? 0
+                    if(roomNameLength > 0 && deviceNameLength > 0){
+                        self.sceneVM.sceneValidStream.onNext(true)
+                    }else{
+                        self.sceneVM.sceneValidStream.onNext(false)
+                    }
+                }
+            })
+    }
+    
     private func setUpUI(){
-        let newSceneTitle = self.localizeUtils.newSceneVcTitle
-        let updateSceneTitle = self.localizeUtils.updateSceneVcTitle
+        let newSceneTitle = self.labelLocalization.newSceneVcTitle
+        let updateSceneTitle = self.labelLocalization.updateSceneVcTitle
         self.title = self.isUpdating ? updateSceneTitle : newSceneTitle
+        
+        self.navigationItem.hidesBackButton = true
+        let backButtonLabel = self.labelLocalization.sceneBackNavBarButton
+        let newBackButton = UIBarButtonItem(title: backButtonLabel, style: .plain, target: self, action: #selector(handleBackClick(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
         
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "paperplane.fill"), style: .done, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = addSceneAppbarButon
         
+        if(!self.isUpdating){
+            self.addSceneAppbarButon?.isEnabled = false
+        }
+        
         self.viewContainer.frame.size.height = self.view.frame.height + 40
+    }
+    
+    @objc func handleBackClick(sender: UIBarButtonItem) {
+        if(self.isUpdating){
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            let sceneNameLength = self.sceneNameTf.text?.count ?? 0
+            let sceneDescriptionLength = self.sceneDescriptionTf.text?.count ?? 0
+            if( sceneNameLength > 0 || sceneDescriptionLength > 0 || self.deviceDict.count > 0){
+                let alertTitle = self.notificationLocalize.sceneCancelAlertTitle
+                let alertMessage = self.notificationLocalize.sceneCancelAlertMessage
+                let continueActionTitle = self.notificationLocalize.sceneCancelAlertContinueButton
+                let cancelActionTitle = self.notificationLocalize.sceneCancelAlertCancelButton
+                
+                let alertCancelAction = UIAlertAction(title: cancelActionTitle,
+                                                      style: .cancel){ action in
+                }
+                let alertContinuelAction = UIAlertAction(title: continueActionTitle, style: .destructive) { action in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                self.alertUtils.showAlert(for: self,
+                                          title: alertTitle,
+                                          message: alertMessage,
+                                          actions: [alertCancelAction, alertContinuelAction])
+            }else{
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     private func setColorsCollectionView(){
@@ -195,13 +281,13 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             let devicenameInScene = self.deviceDict.map { dict -> String in
                 return dict["name"] as! String
             }
-        
+            
             self.devices = devices.filter { !devicenameInScene.contains($0.name!) }
             self.progressUtils.dismiss()
             if(self.view.subviews.count == 1){
                 self.alertDevice = DevicesAlert()
                 self.alertDevice?.delegate = self
-                self.alertDevice?.titleLabel.text = self.localizeUtils.newSceneDeviceCustomViewTitle
+                self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneDeviceCustomViewTitle
                 self.view.addSubview(self.alertDevice!.parentView)
                 self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
                 self.alertDevice!.tableView.reloadData()
@@ -225,7 +311,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         if(self.actionsName.count > 0){
             self.actionsName.removeAll()
         }
-        //alert.removeFromSuperview()
     }
     
     func popOffView() {
@@ -237,9 +322,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         var actions: [String] = []
         var values: [Any] = []
         if device.actions?.state != nil {
-            let onAction = self.localizeUtils.deviceActionStateOn
-            let offAction = self.localizeUtils.deviceActionStateOff
-            let toggleAction = self.localizeUtils.deviceActionStateToggle
+            let onAction = self.labelLocalization.deviceActionStateOn
+            let offAction = self.labelLocalization.deviceActionStateOff
+            let toggleAction = self.labelLocalization.deviceActionStateToggle
             actions = [onAction, offAction, toggleAction]
             values = ["on", "off", "toggle"]
             for index in 0..<actions.count{
@@ -249,9 +334,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
         
         if(device.actions?.brightness != nil){
-            let brightnessAction100 = self.localizeUtils.deviceActionBrightness100
-            let brightnessAction50 = self.localizeUtils.deviceActionBrightness50
-            let brightnessAction25 = self.localizeUtils.deviceActionBrightness25
+            let brightnessAction100 = self.labelLocalization.deviceActionBrightness100
+            let brightnessAction50 = self.labelLocalization.deviceActionBrightness50
+            let brightnessAction25 = self.labelLocalization.deviceActionBrightness25
             let deviceBrightness = device.actions!.brightness!.maxVal
             actions = [brightnessAction25, brightnessAction50, brightnessAction100]
             values = [deviceBrightness/4, deviceBrightness/2, deviceBrightness]
@@ -262,7 +347,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
         
         if(device.actions?.color != nil){
-            let colorAction = self.localizeUtils.deviceActionColor
+            let colorAction = self.labelLocalization.deviceActionColor
             actions = [colorAction]
             values = ["#FF0000"]
             for index in 0..<actions.count{
@@ -272,9 +357,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
         
         if(device.actions?.colorTemp != nil){
-            let temperatureAction100 = self.localizeUtils.deviceActionTemp100
-            let temperatureAction50 = self.localizeUtils.deviceActionTemp50
-            let temperaturection25 = self.localizeUtils.deviceActionTemp25
+            let temperatureAction100 = self.labelLocalization.deviceActionTemp100
+            let temperatureAction50 = self.labelLocalization.deviceActionTemp50
+            let temperaturection25 = self.labelLocalization.deviceActionTemp25
             let deviceMaxValue = device.actions!.colorTemp!.maxVal
             actions = [temperatureAction100, temperatureAction50, temperaturection25]
             values = [deviceMaxValue, deviceMaxValue/2, deviceMaxValue/4]
@@ -306,58 +391,80 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             .tap
             .bind{
                 self.addSceneAppbarButon?.isEnabled = false
-                self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
-                
-                var newSceneMap: [String: Any] = [:]
-                newSceneMap["name"] = self.sceneNameTf.text!
-                newSceneMap["color"] = self.sceneColors[self.selectedColor].toHexString()
-                newSceneMap["description"] = self.sceneDescriptionTf.text!
-                newSceneMap["devices"] = self.deviceDict.map({ device -> [String: Any] in
+                if(self.deviceDict.count == 0){
+                    let alertTitle = self.notificationLocalize.sceneNoActionAlertTitle
+                    let alertMessage = self.notificationLocalize.sceneNoActionAlertMessage
+                    let cancelActionTitle = self.notificationLocalize.sceneNoActionAlertCancelButton
                     
-                    let friendlyName = device["friendly_name"]!
-                    let actions = device["actions"]!
-                    return [
-                        "friendly_name": friendlyName,
-                        "actions": actions
-                    ]
-                })
-                if(self.isUpdating){
-                    newSceneMap["_id"] = self.sceneToEdit?.id ?? ""
-                }
-                
-                let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
-
-                _ = self.sceneVM
-                    .sendScene(body: newSceneMap, httpMethode: self.isUpdating ? .Patch : .Post)
-                    .subscribe(onNext: { succeeded in
-                    self.progressUtils.dismiss()
-                    let successAlertTitle = self.localizeUtils.newSceneSuccessCreationAlertTitle
-                    self.progressUtils.displayCheckMark(title: successAlertTitle, view: uiscreenWindow)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.progressUtils.dismiss()
-                        if(self.isUpdating){
-                            self.dismiss(animated: true, completion: nil)
-                            self.onDoneBlock!()
-                        }else{
-                            self.navigationController?.popViewController(animated: true)
-                        }
+                    let alertCancelAction = UIAlertAction(title: cancelActionTitle,
+                                                          style: .cancel){ action in
                     }
-                }, onError: { err in
-                    self.progressUtils.dismiss()
-                    let alertTitle = self.notificationLocalize.saveSceneErrorNotificationTitle
-                    let alertMessage = self.notificationLocalize.saveSceneErrorNotificationSubtitle
-                    self.notificationUtils.showFloatingNotificationBanner(title: alertTitle,
-                                                                          subtitle:alertMessage,
-                                                                          position: .top, style: .danger)
-                })
-        }
+                    
+                    self.alertUtils.showAlert(for: self,
+                                              title: alertTitle,
+                                              message: alertMessage,
+                                              actions: [alertCancelAction])
+                }else{
+                    let sceneToSend = self.buildSceneToSend()
+                    self.sendScene(scene: sceneToSend)
+                }
+            }
     }
     
+    private func buildSceneToSend() -> [String: Any]{
+        self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
+        
+        var scene: [String: Any] = [:]
+        scene["name"] = self.sceneNameTf.text!
+        scene["color"] = self.sceneColors[self.selectedColor].toHexString()
+        scene["description"] = self.sceneDescriptionTf.text!
+        scene["devices"] = self.deviceDict.map({ device -> [String: Any] in
+            
+            let friendlyName = device["friendly_name"]!
+            let actions = device["actions"]!
+            return [
+                "friendly_name": friendlyName,
+                "actions": actions
+            ]
+        })
+        if(self.isUpdating){
+            scene["_id"] = self.sceneToEdit?.id ?? ""
+        }
+        
+        return scene
+    }
+    
+    private func sendScene(scene: [String: Any]){
+        let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
+        
+        _ = self.sceneVM
+            .sendScene(body: scene, httpMethode: self.isUpdating ? .Patch : .Post)
+            .subscribe(onNext: { succeeded in
+                self.progressUtils.dismiss()
+                let successAlertTitle = self.labelLocalization.newSceneSuccessCreationAlertTitle
+                self.progressUtils.displayCheckMark(title: successAlertTitle, view: uiscreenWindow)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.progressUtils.dismiss()
+                    if(self.isUpdating){
+                        self.dismiss(animated: true, completion: nil)
+                        self.onDoneBlock!()
+                    }else{
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }, onError: { err in
+                self.progressUtils.dismiss()
+                let alertTitle = self.notificationLocalize.saveSceneErrorNotificationTitle
+                let alertMessage = self.notificationLocalize.saveSceneErrorNotificationSubtitle
+                self.notificationUtils.showFloatingNotificationBanner(title: alertTitle,
+                                                                      subtitle:alertMessage,
+                                                                      position: .top, style: .danger)
+            })
+    }
     
     // MARK: Local functions
     private func generatesBackGroundColor(){
-        var colorsSize = 6
-        ColorUtils.shared.generatesBackGroundColor(colorArray: &self.sceneColors, size: colorsSize)
+        ColorUtils.shared.generatesBackGroundColor(colorArray: &self.sceneColors, size: 6)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

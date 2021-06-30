@@ -13,9 +13,10 @@ import Alamofire
 class SceneViewModel{
     let sceneService = SceneServices()
     let scenesStream = PublishSubject<[SceneDto]>()
+    let sceneValidStream = PublishSubject<Bool>()
     
     // MARK: Utils
-    let localizeUtils = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     
@@ -28,31 +29,31 @@ class SceneViewModel{
     
     func fillsceneActions(devices: [HubAccessoryConfigurationDto]){
         self.scenesActions["state"] = [
-            "on": self.localizeUtils.deviceActionStateOn,
-            "off": self.localizeUtils.deviceActionStateOff,
-            "toggle": self.localizeUtils.deviceActionStateToggle
+            "on": self.labelLocalization.deviceActionStateOn,
+            "off": self.labelLocalization.deviceActionStateOff,
+            "toggle": self.labelLocalization.deviceActionStateToggle
         ]
         
         self.scenesActions["color"] = [
-            "color": self.localizeUtils.deviceActionColor
+            "color": self.labelLocalization.deviceActionColor
         ]
         
         for device in devices{
             if let brightness = device.actions?.brightness {
                 let brightnessMaxVal = brightness.maxVal
                 self.scenesActions["brightness"] = [:]
-                self.scenesActions["brightness"]?[(brightnessMaxVal).description] = self.localizeUtils.deviceActionBrightness100
-                self.scenesActions["brightness"]?[(3 * (brightnessMaxVal/4)).description] = self.localizeUtils.deviceActionBrightness75
-                self.scenesActions["brightness"]?[(brightnessMaxVal/2).description] = self.localizeUtils.deviceActionBrightness50
-                self.scenesActions["brightness"]?[(brightnessMaxVal/4).description] = self.localizeUtils.deviceActionBrightness25
+                self.scenesActions["brightness"]?[(brightnessMaxVal).description] = self.labelLocalization.deviceActionBrightness100
+                self.scenesActions["brightness"]?[(3 * (brightnessMaxVal/4)).description] = self.labelLocalization.deviceActionBrightness75
+                self.scenesActions["brightness"]?[(brightnessMaxVal/2).description] = self.labelLocalization.deviceActionBrightness50
+                self.scenesActions["brightness"]?[(brightnessMaxVal/4).description] = self.labelLocalization.deviceActionBrightness25
             }
             if let colorTemp = device.actions?.colorTemp {
                 let colorTempMaxVal = colorTemp.maxVal
                 self.scenesActions["color_temp"] = [:]
-                self.scenesActions["color_temp"]?[(colorTempMaxVal).description] = self.localizeUtils.deviceActionTemp100
-                self.scenesActions["color_temp"]?[(3 * (colorTempMaxVal/4)).description] = self.localizeUtils.deviceActionTemp75
-                self.scenesActions["color_temp"]?[(colorTempMaxVal/2).description] = self.localizeUtils.deviceActionTemp50
-                self.scenesActions["color_temp"]?[(colorTempMaxVal/4).description] = self.localizeUtils.deviceActionTemp25
+                self.scenesActions["color_temp"]?[(colorTempMaxVal).description] = self.labelLocalization.deviceActionTemp100
+                self.scenesActions["color_temp"]?[(3 * (colorTempMaxVal/4)).description] = self.labelLocalization.deviceActionTemp75
+                self.scenesActions["color_temp"]?[(colorTempMaxVal/2).description] = self.labelLocalization.deviceActionTemp50
+                self.scenesActions["color_temp"]?[(colorTempMaxVal/4).description] = self.labelLocalization.deviceActionTemp25
             }
         }
     }
