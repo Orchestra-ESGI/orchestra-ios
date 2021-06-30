@@ -205,7 +205,7 @@
 // - MARK: Home Screen Nav Bar plus button alert
 "home.screen.new.scene.alert" = "een scène toevoegen";
 "home.screen.new.device.alert" = "Een apparaat toevoegen";
-"home.screen.new.house.alert" = "Een huis toevoegen";
+"home.screen.new.room.alert" = "Voeg een kamer toe";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Een apparaat toevoegen";
@@ -368,3 +368,14 @@
 "add.device.screen.state.failure.description" = "Er is iets misgegaan tijdens de update!";
 "add.device.screen.state.success.button" = "Terugkeren naar huis";
 "add.device.screen.state.failure.button" = "Opnieuw proberen";
+
+// - MARK: Rooms
+"room.creation.ok.notification.title" = "Nieuw onderdeel toegevoegd!";
+"room.creation.ok.notification.subtitle" = "De kamer is succesvol toegevoegd aan je huis";
+
+"room.creation.ko.notification.title" = "Toevoeging mislukt!";
+"room.creation.ko.notification.subtitle" = "De kamer kon niet correct aan je huis worden toegevoegd";
+
+"room.creation.alert.title" = "Nieuw deel";
+"room.creation.alert.message" = "Waarschuwing: u kunt de naam van de kamer niet wijzigen, u moet deze verwijderen en een andere maken";
+"room.creation.alert.action.save" = "Opnemen";

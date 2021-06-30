@@ -78,6 +78,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.loadData()
     }
 
@@ -167,7 +168,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     "key": actions[index],
                     "val": values[index],
                     "type": "state"
-                ] //SceneActionsName(key: actions[index], val: values[index], type: "state")
+                ]
                 self.actionsName.append(action)
             }
         }
@@ -185,7 +186,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     "val": values[index],
                     "type": "brightness"
                 ]
-                    //SceneActionsName(key: actions[index], val: values[index], type: "brightness")
                 self.actionsName.append(action)
             }
         }
@@ -203,10 +203,32 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     "val": values[index],
                     "type": "color_temp"
                 ]
-                    //SceneActionsName(key: actions[index], val: values[index], type: "color_temp")
                 self.actionsName.append(action)
             }
         }
+    }
+    
+    func addNewRoom(roomName: String){
+        print(roomName)
+        let body = [
+            "name": roomName
+        ]
+        _ = self.homeVM?.creatRoom(body: body).subscribe(onNext: { isValid in
+            let notificationTitle = self.notificationLocalize.roomCreationOkNotificationTitle
+            let notificationSubtitle = self.notificationLocalize.roomCreationOkNotificationSubtitle
+            self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                  subtitle: notificationSubtitle, position: .top, style: .success)
+        }, onError: { err in
+            let notificationTitle = self.notificationLocalize.roomCreationKoNotificationTitle
+            let notificationSubtitle = self.notificationLocalize.roomCreationKoNotificationSubtitle
+            self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                  subtitle: notificationSubtitle, position: .top, style: .danger)
+        }, onCompleted: {
+            let notificationTitle = self.notificationLocalize.roomCreationKoNotificationTitle
+            let notificationSubtitle = self.notificationLocalize.roomCreationKoNotificationSubtitle
+            self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                  subtitle: notificationSubtitle, position: .top, style: .danger)
+        })
     }
 
     func playActionOnDevice(index devicePos: Int, action value: [String: Any]){
@@ -526,14 +548,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     // - MARK: Observers
     private func bindClickToButtons(){
-        setAddSceneOrDeviceButtonBinding()
+        setAddButtonBinding()
         setTrashButtonBinding()
         menuButtonBinding()
     }
 
     private func setUpObservers(){
         self.observeAllDevices()
-        //self.setObjectStreamObserver()
         self.setScenesStreamObserver()
         self.setEditModeObserver()
         self.editingTableViewObserver()

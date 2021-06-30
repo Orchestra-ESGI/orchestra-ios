@@ -205,7 +205,7 @@
 // - MARK: Home Screen Nav Bar plus button alert
 "home.screen.new.scene.alert" = "Hinzufügen einer Szene";
 "home.screen.new.device.alert" = "Ein Objekt hinzufügen";
-"home.screen.new.house.alert" = "Hinzufügen einer Wohnung";
+"home.screen.new.room.alert" = "Raum hinzufügen";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ein Objekt hinzufügen";
@@ -368,4 +368,14 @@
 "add.device.screen.state.failure.description" = "Beim Update ist etwas schief gelaufen!";
 "add.device.screen.state.success.button" = "Nach Hause zurückkehren";
 "add.device.screen.state.failure.button" = "Wiederholen";
->>>>>>> 6dacb42 (Device add state screen localization + update device screen bug fix)
+
+// - MARK: Rooms
+"room.creation.ok.notification.title" = "Neues Teil hinzugefügt!";
+"room.creation.ok.notification.subtitle" = "Das Zimmer wurde erfolgreich zu Ihrem Zuhause hinzugefügt";
+
+"room.creation.ko.notification.title" = "Hinzufügen fehlgeschlagen!";
+"room.creation.ko.notification.subtitle" = "Das Zimmer konnte Ihrem Zuhause nicht richtig hinzugefügt werden";
+
+"room.creation.alert.title" = "Neuer Teil";
+"room.creation.alert.message" = "Achtung: Sie können den Namen des Raums nicht ändern, Sie müssen ihn löschen und einen anderen erstellen";
+"room.creation.alert.action.save" = "Aufzeichnung";

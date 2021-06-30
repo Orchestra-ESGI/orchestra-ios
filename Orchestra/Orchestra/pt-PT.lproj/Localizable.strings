@@ -206,7 +206,7 @@
 // - MARK: Home Screen Nav Bar plus button alert
 "home.screen.new.scene.alert" = "Acrescentar uma cena";
 "home.screen.new.device.alert" = "Adicionar um dispositivo";
-"home.screen.new.house.alert" = "Adicionar um lar";
+"home.screen.new.room.alert" = "Adicionar uma sala";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Adicionar um dispositivo";
@@ -368,3 +368,14 @@
 "add.device.screen.state.failure.description" = "Algo deu errado durante a atualização!";
 "add.device.screen.state.success.button" = "Voltar para a página inicial";
 "add.device.screen.state.failure.button" = "Tentar novamente";
+
+// - MARK: Rooms
+"room.creation.ok.notification.title" = "Nova parte adicionada!";
+"room.creation.ok.notification.subtitle" = "A sala foi adicionada com sucesso à sua casa";
+
+"room.creation.ko.notification.title" = "A adição falhou!";
+"room.creation.ko.notification.subtitle" = "O quarto não pode ser adicionado corretamente à sua casa";
+
+"room.creation.alert.title" = "Nova parte";
+"room.creation.alert.message" = "Aviso: Você não poderá alterar o nome da sala, você terá que excluí-la e criar outra";
+"room.creation.alert.action.save" = "Registro";

@@ -205,7 +205,7 @@
 // - MARK: Home Screen Nav Bar plus button alert
 "home.screen.new.scene.alert" = "添加一个场景";
 "home.screen.new.device.alert" = "添加一个对象";
-"home.screen.new.house.alert" = "添加一个家庭";
+"home.screen.new.room.alert" = "添加房间";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "添加一个场景";
@@ -368,3 +368,14 @@
 "add.device.screen.state.failure.description" = "更新过程中出了点问题！";
 "add.device.screen.state.success.button" = "回家";
 "add.device.screen.state.failure.button" = "重试";
+
+// - MARK: Rooms
+"room.creation.ok.notification.title" = "添加了新部分！";
+"room.creation.ok.notification.subtitle" = "房间已成功添加到您的家";
+
+"room.creation.ko.notification.title" = "添加失败！";
+"room.creation.ko.notification.subtitle" = "房间无法正确添加到您的家中";
+
+"room.creation.alert.title" = "新零件";
+"room.creation.alert.message" = "警告：您将无法更改房间的名称，您必须将其删除并创建另一个房间";
+"room.creation.alert.action.save" = "记录";
