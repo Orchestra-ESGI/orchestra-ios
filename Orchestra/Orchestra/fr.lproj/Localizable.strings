@@ -136,7 +136,7 @@
 "floaty.share.item.title" = " Notez nous ";
 "floaty.pairing.rate.title" = " Partagez Orchestra ";
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nouvelle scène";
 "update.scene.vc.title" = "Modification";
 
@@ -154,6 +154,22 @@
 "new.scene.close.custom.view.button.title" = "Fermer";
 "new.scene.device.custom.view.title" = "Choisissez un appareil";
 "new.scene.action.custom.view.title" = "Choisissez une action";
+
+"scene.vc.cancel.alert.title" = "Attention";
+"scene.vc.cancel.alert.message" = "Vous allez perdre toutes vos modifications, cette action est irréversible. Êtes-vous sûr de vouloir coninuer ?";
+"scene.vc.cancel.alert.cancel.button" = "Annuler";
+"scene.vc.cancel.alert.continue.button" = "Continue";
+"scene.vc.back.btn" = "Retour";
+
+"device.form.cancel.alert.title" = "Attention";
+"device.form.cancel.alert.message" = "Vous allez perdre toutes vos modifications, cette action est irréversible. Êtes-vous sûr de vouloir coninuer ?";
+"device.form.cancel.alert.cancel.button" = "Annuler";
+"device.form.cancel.alert.continue.button" = "Continue";
+"device.form.back.btn" = "Retour";
+
+"scene.vc.noaction.alert.title" = "Action impossible!";
+"scene.vc.noaction.alert.message" = "Vous ne pouvez pas créer une scène sans actions";
+"scene.vc.noaction.alert.cancel.button" = "D'accord";
 
 // - MARK: Actions
 "device.action.state.on" = "Allumer l'appareil";
@@ -358,3 +374,5 @@
 "add.device.screen.state.failure.description" = "Un problème est survenu durant la mise à jour!";
 "add.device.screen.state.success.button" = "Revenir à l'accueil";
 "add.device.screen.state.failure.button" = "Reéssayer";
+
+// - MARK: Scene

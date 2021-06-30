@@ -38,7 +38,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     let userVM = UsersViewModel()
     let disposeBag = DisposeBag()
     
-    let screenLocalize = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     init() {
         super.init(style: .grouped)
@@ -67,7 +67,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     }
     
     func initNavigation() {
-        self.navigationItem.title = self.screenLocalize.settingsTitle
+        self.navigationItem.title = self.labelLocalization.settingsTitle
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil)
     }
     
@@ -87,23 +87,23 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         //
         self.data = [
             [
-                [.title: self.screenLocalize.settingsRateUs, .action: MenuActions.rate, .prefix: FontAwesome.star, .style: FontAwesomeStyle.solid],
-                [.title: self.screenLocalize.settingsShare, .action: MenuActions.share, .prefix: FontAwesome.share, .style: FontAwesomeStyle.solid]
+                [.title: self.labelLocalization.settingsRateUs, .action: MenuActions.rate, .prefix: FontAwesome.star, .style: FontAwesomeStyle.solid],
+                [.title: self.labelLocalization.settingsShare, .action: MenuActions.share, .prefix: FontAwesome.share, .style: FontAwesomeStyle.solid]
             ],
             [
-                [ .title: self.screenLocalize.settingsAbout, .action: MenuActions.about, .prefix: FontAwesome.users, .style: FontAwesomeStyle.solid],
-                [ .title: self.screenLocalize.settingsContact, .action: MenuActions.contact, .prefix: FontAwesome.envelope, .style: FontAwesomeStyle.solid]
+                [ .title: self.labelLocalization.settingsAbout, .action: MenuActions.about, .prefix: FontAwesome.users, .style: FontAwesomeStyle.solid],
+                [ .title: self.labelLocalization.settingsContact, .action: MenuActions.contact, .prefix: FontAwesome.envelope, .style: FontAwesomeStyle.solid]
             ],
             [
-                [ .title: self.screenLocalize.settingsLibraries, .action: MenuActions.libs, .prefix: FontAwesome.book, .style: FontAwesomeStyle.solid]
+                [ .title: self.labelLocalization.settingsLibraries, .action: MenuActions.libs, .prefix: FontAwesome.book, .style: FontAwesomeStyle.solid]
             ],
             [
-                [ .title: self.screenLocalize.settingsPrivacy, .action: MenuActions.privacy, .prefix: FontAwesome.userShield, .style: FontAwesomeStyle.solid],
-                [ .title: self.screenLocalize.settingsCgu, .action: MenuActions.cgu, .prefix: FontAwesome.fileContract, .style: FontAwesomeStyle.solid]
+                [ .title: self.labelLocalization.settingsPrivacy, .action: MenuActions.privacy, .prefix: FontAwesome.userShield, .style: FontAwesomeStyle.solid],
+                [ .title: self.labelLocalization.settingsCgu, .action: MenuActions.cgu, .prefix: FontAwesome.fileContract, .style: FontAwesomeStyle.solid]
             ],
             [
-                [ .title: self.screenLocalize.settingsSignout, .action: MenuActions.signout, .prefix: FontAwesome.signOutAlt, .style: FontAwesomeStyle.solid],
-                [ .title: self.screenLocalize.settingsDeleteAccount, .action: MenuActions.delete, .prefix: FontAwesome.trash, .style: FontAwesomeStyle.solid]
+                [ .title: self.labelLocalization.settingsSignout, .action: MenuActions.signout, .prefix: FontAwesome.signOutAlt, .style: FontAwesomeStyle.solid],
+                [ .title: self.labelLocalization.settingsDeleteAccount, .action: MenuActions.delete, .prefix: FontAwesome.trash, .style: FontAwesomeStyle.solid]
             ]
         ]
     }
@@ -118,7 +118,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     }
     
     func shareApp() {
-        let firstActivityItem = self.screenLocalize.settingsShareTitle
+        let firstActivityItem = self.labelLocalization.settingsShareTitle
         let secondActivityItem : NSURL = NSURL(string: "https://www.orchestra-app.com/")!
         
         let image : UIImage = UIImage(named: "app-icon-480")!
@@ -156,7 +156,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             
             MailComposer.setupMailController(
                 mfMailVC: mailController,
-                subject: self.screenLocalize.mailSettingsSubject
+                subject: self.labelLocalization.mailSettingsSubject
             )
 
             present(mailController, animated: true, completion: nil)
@@ -165,10 +165,10 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             // Email is not configured
             let alert = UIAlertController(
                 title: nil,
-                message: self.screenLocalize.mailErrorConfiguration,
+                message: self.labelLocalization.mailErrorConfiguration,
                 preferredStyle: UIAlertController.Style.alert)
 
-            alert.addAction(UIAlertAction.init(title: self.screenLocalize.objectInfoOkButtonLabelText,
+            alert.addAction(UIAlertAction.init(title: self.labelLocalization.objectInfoOkButtonLabelText,
                                                style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -182,15 +182,15 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     func signoutPopup() {
         let alertController = UIAlertController(
             title: nil,
-            message: self.screenLocalize.settingsAlertSignoutMessage,
+            message: self.labelLocalization.settingsAlertSignoutMessage,
             preferredStyle: .alert)
         
-        let signoutAction = UIAlertAction(title: self.screenLocalize.settingsAlertSignoutActionTitle,
+        let signoutAction = UIAlertAction(title: self.labelLocalization.settingsAlertSignoutActionTitle,
                                           style: .default) { _ in
             self.signout()
         }
         
-        let cancelAction = UIAlertAction(title: self.screenLocalize.settingsAlertCancelTitle,
+        let cancelAction = UIAlertAction(title: self.labelLocalization.settingsAlertCancelTitle,
                                          style: .cancel, handler: nil)
         
         alertController.addAction(signoutAction)
@@ -220,16 +220,16 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         //delete account
         let alertController = UIAlertController(
             title: nil,
-            message: self.screenLocalize.settingsAlertDeleteMessage,
+            message: self.labelLocalization.settingsAlertDeleteMessage,
             preferredStyle: .alert)
         
-        let deleteAccountAction = UIAlertAction(title: self.screenLocalize.settingsAlertDeleteActionTitle
+        let deleteAccountAction = UIAlertAction(title: self.labelLocalization.settingsAlertDeleteActionTitle
                                                 , style: .destructive) { _ in
             self.progressUtils.displayV2(view: self.view, title: "", modeView: .MRActivityIndicatorView)
             self.deleteAccount()
         }
         
-        let cancelAction = UIAlertAction(title: self.screenLocalize.settingsAlertCancelTitle, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: self.labelLocalization.settingsAlertCancelTitle, style: .cancel, handler: nil)
         
         alertController.addAction(deleteAccountAction)
         alertController.addAction(cancelAction)

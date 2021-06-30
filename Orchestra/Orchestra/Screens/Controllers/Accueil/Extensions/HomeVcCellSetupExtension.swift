@@ -29,8 +29,8 @@ extension HomeViewController{
         }
         
         let reachableStatus = (currentObject.isReachable ?? false) ?
-                                self.screenLabelLocalize.objectCellReachabilityStatusOkLabelText :
-                                self.screenLabelLocalize.objectCellReachabilityStatusKoLabelText
+                                self.labelLocalization.objectCellReachabilityStatusOkLabelText :
+                                self.labelLocalization.objectCellReachabilityStatusKoLabelText
         if self.traitCollection.userInterfaceStyle == .dark {
             objectCell.objectImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }else{

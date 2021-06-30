@@ -132,7 +132,7 @@
 "floaty.share.item.title" = " Beoordeel ons ";
 "floaty.pairing.rate.title" = " Deel Orchestra ";
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nieuwe scène";
 "update.scene.vc.title" = "Wijziging";
 
@@ -150,6 +150,22 @@
 "new.scene.close.custom.view.button.title" = "Sluiten";
 "new.scene.device.custom.view.title" = "Kies een apparaat";
 "new.scene.action.custom.view.title" = "Kies een actie";
+
+"scene.vc.cancel.alert.title" = "Waarschuwing";
+"scene.vc.cancel.alert.message" = "U verliest al uw wijzigingen, deze actie is onomkeerbaar. Weet je zeker dat je door wilt gaan?";
+"scene.vc.cancel.alert.cancel.button" = "Annuleren";
+"scene.vc.cancel.alert.continue.button" = "Ga door";
+"scene.vc.back.btn" = "Terugkeer";
+
+"device.form.cancel.alert.title" = "Waarschuwing";
+"device.form.cancel.alert.message" = "U verliest al uw wijzigingen, deze actie is onomkeerbaar. Weet je zeker dat je door wilt gaan?";
+"device.form.cancel.alert.cancel.button" = "Annuleren";
+"device.form.cancel.alert.continue.button" = "Ga door";
+"device.form.back.btn" = "Terugkeer";
+
+"scene.vc.noaction.alert.title" = "Onmogelijke actie!";
+"scene.vc.noaction.alert.message" = "U kunt geen scène maken zonder acties";
+"scene.vc.noaction.alert.cancel.button" = "Oke";
 
 // - MARK: Actions
 "device.action.state.on" = "Schakel het apparaat in";

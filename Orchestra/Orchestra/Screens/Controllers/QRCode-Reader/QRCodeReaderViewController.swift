@@ -13,7 +13,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     
     var captureSession: AVCaptureSession!
     
-    private let labelLocalize = ScreensLabelLocalizableUtils.shared
+    private let labelLocalization = ScreensLabelLocalizableUtils.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         
 
         if (SPPermission.camera.isDenied) {
-            let alert = UIAlertController(title: self.labelLocalize.permissionsCameraErrorAlertTitle, message: self.labelLocalize.permissionsCameraErrorAlertDescription, preferredStyle: .alert)
+            let alert = UIAlertController(title: self.labelLocalization.permissionsCameraErrorAlertTitle, message: self.labelLocalization.permissionsCameraErrorAlertDescription, preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { action in
                 self.navigationController?.popViewController(animated: true)
                 if let bundleIdentifier = Bundle.main.bundleIdentifier, let appSettings = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {

@@ -31,7 +31,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
-    let screenLocalize = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let alertUtils = AlertUtils.shared
     
     let disposeBag = DisposeBag()
@@ -103,16 +103,16 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             self.progressUtils.dismiss()
         } onCompleted: {
             self.progressUtils.dismiss()
-            let alertMessage = self.screenLocalize.localNetworkAuthAlertMessage
+            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         } .disposed(by: self.disposeBag)
 
     }
     
     private func showInfoAlert(){
-        let alertTitle = self.screenLocalize.signupEmailSentAlertTitle
-        let alertMessage = self.screenLocalize.signupEmailSentAlertMessage
-        let alertActionString = self.screenLocalize.signupEmailSentAlertAction
+        let alertTitle = self.labelLocalization.signupEmailSentAlertTitle
+        let alertMessage = self.labelLocalization.signupEmailSentAlertMessage
+        let alertActionString = self.labelLocalization.signupEmailSentAlertAction
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: alertActionString, style: .cancel) { action in
@@ -124,11 +124,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK: Localization
     private func localizeUI(){
-        self.explanationLabel.text = self.screenLocalize.signupWelcomText
-        self.emailLabel.text = self.screenLocalize.signupVcEmailLabelText
-        self.passwordLabel.text = self.screenLocalize.signupVcPasswordLabelText
-        self.confirmPasswordLabel.text = self.screenLocalize.signupVcPasswordVerificationLabelText
-        self.signupButton.setTitle(self.screenLocalize.signupVcButtonText, for: .normal)
+        self.explanationLabel.text = self.labelLocalization.signupWelcomText
+        self.emailLabel.text = self.labelLocalization.signupVcEmailLabelText
+        self.passwordLabel.text = self.labelLocalization.signupVcPasswordLabelText
+        self.confirmPasswordLabel.text = self.labelLocalization.signupVcPasswordVerificationLabelText
+        self.signupButton.setTitle(self.labelLocalization.signupVcButtonText, for: .normal)
     }
     
     private func setUpUI(){
@@ -138,7 +138,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.emailTF.setUpBlankLeftView()
         self.emailTF.borderStyle = .none
         self.emailTF.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
-        self.emailTF.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginEmailLabelHint, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.emailTF.attributedPlaceholder = stringUtils.colorText(text: self.labelLocalization.loginEmailLabelHint, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
         self.emailTF.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.emailTF.clipsToBounds = true
          
@@ -146,7 +146,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.passwordTF.setUpBlankLeftView()
         self.passwordTF.borderStyle = .none
         self.passwordTF.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
-        self.passwordTF.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.passwordTF.attributedPlaceholder = stringUtils.colorText(text: self.labelLocalization.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
         self.passwordTF.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.passwordTF.autocorrectionType = .no
         self.passwordTF.clipsToBounds = true
@@ -155,7 +155,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         self.confirmPasswordTF.setUpBlankLeftView()
         self.confirmPasswordTF.borderStyle = .none
         self.confirmPasswordTF.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
-        self.confirmPasswordTF.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.confirmPasswordTF.attributedPlaceholder = stringUtils.colorText(text: self.labelLocalization.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
         self.confirmPasswordTF.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.confirmPasswordTF.autocorrectionType = .no
         self.confirmPasswordTF.clipsToBounds = true
@@ -194,9 +194,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setUpView(){
-        self.title = self.screenLocalize.signupVcTitle
+        self.title = self.labelLocalization.signupVcTitle
         
-        let sendForm = UIBarButtonItem(title: self.screenLocalize.sigupVcAppbarSendFormButtonTitle, style: .plain, target: self, action: nil)
+        let sendForm = UIBarButtonItem(title: self.labelLocalization.sigupVcAppbarSendFormButtonTitle, style: .plain, target: self, action: nil)
 
         sendForm.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
         self.navigationItem.rightBarButtonItems = [sendForm]

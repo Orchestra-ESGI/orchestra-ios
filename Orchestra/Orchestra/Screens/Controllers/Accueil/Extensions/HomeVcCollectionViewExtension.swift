@@ -51,9 +51,9 @@ extension HomeViewController: UICollectionViewDataSource{
         let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SECTION_HEADER", for: indexPath) as! HeaderCollectionViewCell
 
         if(indexPath.section == 0){
-            headerCell.headerTextLabel.text = self.screenLabelLocalize.homeHeaderObjectsText
+            headerCell.headerTextLabel.text = self.labelLocalization.homeHeaderObjectsText
         }else if(indexPath.section == 1){
-            headerCell.headerTextLabel.text = self.screenLabelLocalize.homeHeaderScenesText
+            headerCell.headerTextLabel.text = self.labelLocalization.homeHeaderScenesText
         }
         
         return headerCell

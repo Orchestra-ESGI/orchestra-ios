@@ -133,7 +133,7 @@
 "floaty.pairing.rate.title" = " Condividi Orchestra ";
 
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nuova scena";
 "update.scene.vc.title" = "Modificazione";
 
@@ -151,6 +151,22 @@
 "new.scene.close.custom.view.button.title" = "Chiudere";
 "new.scene.device.custom.view.title" = "Scegli un dispositivo";
 "new.scene.action.custom.view.title" = "Scegli un'azione";
+
+"scene.vc.cancel.alert.title" = "Avvertimento";
+"scene.vc.cancel.alert.message" = "Perderai tutte le modifiche, questa azione è irreversibile. Sei sicuro di voler continuare?";
+"scene.vc.cancel.alert.cancel.button" = "Per cancellare";
+"scene.vc.cancel.alert.continue.button" = "Continua";
+"scene.vc.back.btn" = "Ritorno";
+
+"device.form.cancel.alert.title" = "Avvertimento";
+"device.form.cancel.alert.message" = "Perderai tutte le modifiche, questa azione è irreversibile. Sei sicuro di voler continuare?";
+"device.form.cancel.alert.cancel.button" = "Per cancellare";
+"device.form.cancel.alert.continue.button" = "Continua";
+"device.form.back.btn" = "Ritorno";
+
+"scene.vc.noaction.alert.title" = "Azione impossibile!";
+"scene.vc.noaction.alert.message" = "Non puoi creare una scena senza azioni";
+"scene.vc.noaction.alert.cancel.button" = "Va bene";
 
 // - MARK: Actions
 "device.action.state.on" = "Accendi il dispositivo";

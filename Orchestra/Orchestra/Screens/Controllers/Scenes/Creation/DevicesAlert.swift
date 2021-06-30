@@ -17,7 +17,7 @@ class DevicesAlert: UIView{
     
     var deviceSelectedSection: Int?
     var delegate: CloseCustomViewProtocol?
-    let localizeLabels = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,7 +40,7 @@ class DevicesAlert: UIView{
     }
     
     private func localizeCustomView(){
-        let closeButtonString = self.localizeLabels.newSceneCustomAlertCloseButtonTitle
+        let closeButtonString = self.labelLocalization.newSceneCustomAlertCloseButtonTitle
         
         self.closeViewButton.setTitle(closeButtonString, for: .normal)
     }

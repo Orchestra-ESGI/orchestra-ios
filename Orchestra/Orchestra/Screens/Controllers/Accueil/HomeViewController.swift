@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     // - MARK: Utils
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
-    let screenLabelLocalize = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     let colorUtils = ColorUtils.shared
     let alertUtils = AlertUtils.shared
@@ -157,9 +157,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         var values: [Any] = []
         self.actionsName.removeAll()
         if device.actions?.state != nil {
-            let onAction = self.screenLabelLocalize.deviceActionStateOn
-            let offAction = self.screenLabelLocalize.deviceActionStateOff
-            let toggleAction = self.screenLabelLocalize.deviceActionStateToggle
+            let onAction = self.labelLocalization.deviceActionStateOn
+            let offAction = self.labelLocalization.deviceActionStateOff
+            let toggleAction = self.labelLocalization.deviceActionStateToggle
             actions = [onAction, offAction, toggleAction]
             values = ["on", "off", "toggle"]
             for index in 0..<actions.count{
@@ -173,9 +173,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         }
 
         if(device.actions?.brightness != nil){
-            let brightnessAction100 = self.screenLabelLocalize.deviceActionBrightness100
-            let brightnessAction50 = self.screenLabelLocalize.deviceActionBrightness50
-            let brightnessAction25 = self.screenLabelLocalize.deviceActionBrightness25
+            let brightnessAction100 = self.labelLocalization.deviceActionBrightness100
+            let brightnessAction50 = self.labelLocalization.deviceActionBrightness50
+            let brightnessAction25 = self.labelLocalization.deviceActionBrightness25
             let deviceBrightness = device.actions!.brightness!.maxVal
             actions = [brightnessAction25, brightnessAction50, brightnessAction100]
             values = [deviceBrightness/4, deviceBrightness/2, deviceBrightness]
@@ -191,9 +191,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         }
 
         if(device.actions?.colorTemp != nil){
-            let temperatureAction100 = self.screenLabelLocalize.deviceActionTemp100
-            let temperatureAction50 = self.screenLabelLocalize.deviceActionTemp50
-            let temperaturection25 = self.screenLabelLocalize.deviceActionTemp25
+            let temperatureAction100 = self.labelLocalization.deviceActionTemp100
+            let temperatureAction50 = self.labelLocalization.deviceActionTemp50
+            let temperaturection25 = self.labelLocalization.deviceActionTemp25
             let deviceMaxValue = device.actions!.colorTemp!.maxVal
             actions = [temperatureAction100, temperatureAction50, temperaturection25]
             values = [deviceMaxValue, deviceMaxValue/2, deviceMaxValue/4]
@@ -218,7 +218,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     func loadData(fromPullRefresh: Bool = false){
         if (!fromPullRefresh) {
-            let loadingString = self.screenLabelLocalize.homeScreenProgressAlertTitle
+            let loadingString = self.labelLocalization.homeScreenProgressAlertTitle
             self.progressUtils.displayIndeterminateProgeress(title: loadingString, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         }
 
@@ -251,7 +251,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             })
             
             let view = (UIApplication.shared.windows[0].rootViewController?.view)!
-            let loadingFinishedString = self.screenLabelLocalize.homeScreenProgressAlertTitle
+            let loadingFinishedString = self.labelLocalization.homeScreenProgressAlertTitle
             self.progressUtils.displayCheckMark(title: loadingFinishedString, view: view)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.progressUtils.dismiss()
@@ -417,7 +417,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                 } onCompleted: {
                     print("onCompleted() called in setScenesStreamObserver()")
                     self.progressUtils.dismiss()
-                    let alertMessage = self.screenLabelLocalize.localNetworkAuthAlertMessage
+                    let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
                     self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{
@@ -459,7 +459,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                 } onCompleted: {
                     print("onCompleted() called in setScenesStreamObserver()")
                     self.progressUtils.dismiss()
-                    let alertMessage = self.screenLabelLocalize.localNetworkAuthAlertMessage
+                    let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
                     self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{

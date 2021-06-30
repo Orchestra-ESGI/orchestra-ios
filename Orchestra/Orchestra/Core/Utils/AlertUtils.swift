@@ -36,4 +36,15 @@ class AlertUtils {
         
         controller.present(alert, animated: true)
     }
+    
+    func showAlert(for controller: UIViewController, title: String, message: String,
+                   style: UIAlertController.Style = .alert,
+                   actions: [UIAlertAction]){
+        let alert = UIAlertController(title: title , message: message, preferredStyle: style)
+        for action in actions{
+            alert.addAction(action)
+        }
+        
+        controller.present(alert, animated: true)
+    }
 }

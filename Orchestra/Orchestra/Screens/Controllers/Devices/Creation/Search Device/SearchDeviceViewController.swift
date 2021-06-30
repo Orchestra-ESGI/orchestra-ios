@@ -19,7 +19,7 @@ class SearchDeviceViewController: UIViewController {
     var deviceVM: DeviceViewModel?
     let progressUtil = ProgressUtils.shared
     var isSuccessfulyAdded = false
-    let localizeLabel = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let localizeNotification = NotificationLocalizableUtils.shared
     
     override func viewDidLoad() {
@@ -59,18 +59,18 @@ class SearchDeviceViewController: UIViewController {
     private func setUpViews(){
         if( isSuccessfulyAdded){
             self.successImageView.image = UIImage(named: "check")
-            self.successTitle.text = self.localizeLabel.addingDeviceStateScreenSuccessTitle
+            self.successTitle.text = self.labelLocalization.addingDeviceStateScreenSuccessTitle
             self.successTitle.textColor = #colorLiteral(red: 0.177152276, green: 0.669238627, blue: 0.3678025007, alpha: 1)
-            self.successLabel.text = self.localizeLabel.addingDeviceStateScreenSuccessDescription
+            self.successLabel.text = self.labelLocalization.addingDeviceStateScreenSuccessDescription
             self.returnHomeBtn.backgroundColor = #colorLiteral(red: 0.177152276, green: 0.669238627, blue: 0.3678025007, alpha: 1)
-            self.returnHomeBtn.setTitle(self.localizeLabel.addingDeviceStateScreenSuccessButton, for: .normal)
+            self.returnHomeBtn.setTitle(self.labelLocalization.addingDeviceStateScreenSuccessButton, for: .normal)
         }else{
             self.successImageView.image = UIImage(named: "cancel")
-            self.successTitle.text = self.localizeLabel.addingDeviceStateScreenFailureTitle
+            self.successTitle.text = self.labelLocalization.addingDeviceStateScreenFailureTitle
             self.successTitle.textColor = #colorLiteral(red: 1, green: 0.2390179634, blue: 0.2027955651, alpha: 1)
-            self.successLabel.text = self.localizeLabel.addingDeviceStateScreenFailureDescription
+            self.successLabel.text = self.labelLocalization.addingDeviceStateScreenFailureDescription
             self.returnHomeBtn.backgroundColor = #colorLiteral(red: 1, green: 0.2390179634, blue: 0.2027955651, alpha: 1)
-            self.returnHomeBtn.setTitle(self.localizeLabel.addingDeviceStateScreenFailureButton, for: .normal)
+            self.returnHomeBtn.setTitle(self.labelLocalization.addingDeviceStateScreenFailureButton, for: .normal)
         }
     }
     

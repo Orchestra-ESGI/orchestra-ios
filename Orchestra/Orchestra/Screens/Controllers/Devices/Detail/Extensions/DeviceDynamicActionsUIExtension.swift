@@ -68,7 +68,7 @@ extension DeviceInfoViewController{
         // Add label on top of the slider
         let sliderLabel = UILabel()
         // MARK: - TODO Text color not adapting to dark mode
-        let brightnessActionLabel = self.localizeLabels.deviceActionBrightnessActionName
+        let brightnessActionLabel = self.labelLocalization.deviceActionBrightnessActionName
         sliderLabel.text = brightnessActionLabel
         
         sliderLabel.font = UIFont.systemFont(ofSize: 21, weight: .semibold)
@@ -158,8 +158,8 @@ extension DeviceInfoViewController{
         
         
         self.dynamicViewContainer.translatesAutoresizingMaskIntoConstraints = false
-        let temperatureActionLabel = self.localizeLabels.deviceActionTemperatureActionName
-        let colorActionLabel = self.localizeLabels.deviceActionColorActionName
+        let temperatureActionLabel = self.labelLocalization.deviceActionTemperatureActionName
+        let colorActionLabel = self.labelLocalization.deviceActionColorActionName
         
         let segmentedView = UISegmentedControl(frame:
                                                 CGRect(x: (CGFloat(UIScreen.main.bounds.width) - 200) / 2,
@@ -251,7 +251,7 @@ extension DeviceInfoViewController{
         let containerWidth = UIScreen.main.bounds.width
         
         let deviceNotSupportedLabel = UILabel()
-        deviceNotSupportedLabel.text = self.localizeLabels.unknownDeviceLabel
+        deviceNotSupportedLabel.text = self.labelLocalization.unknownDeviceLabel
         deviceNotSupportedLabel.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
         deviceNotSupportedLabel.font = Font.Regular(20.0)
         deviceNotSupportedLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -261,7 +261,7 @@ extension DeviceInfoViewController{
         
         let contactUsButton = UIButton()
         contactUsButton.backgroundColor = .systemBlue
-        contactUsButton.setTitle(self.localizeLabels.unknownDeviceButtonTitle, for: .normal)
+        contactUsButton.setTitle(self.labelLocalization.unknownDeviceButtonTitle, for: .normal)
         contactUsButton.setTitleColor(.white, for: .normal)
         contactUsButton.titleLabel?.font = Font.Bold(20.0)
         contactUsButton.layer.cornerRadius = 12.0
@@ -282,7 +282,7 @@ extension DeviceInfoViewController{
         self.dynamicViewContainer.translatesAutoresizingMaskIntoConstraints = false
         let containerWidth = UIScreen.main.bounds.width
         let noActionLabel = UILabel()
-        noActionLabel.text = self.localizeLabels.deviceActionNoActionName//"Aucune action n'est possible sur cet objet, vous pouvez cependant l'utiliser pour créer des scènes"
+        noActionLabel.text = self.labelLocalization.deviceActionNoActionName//"Aucune action n'est possible sur cet objet, vous pouvez cependant l'utiliser pour créer des scènes"
         noActionLabel.textColor = #colorLiteral(red: 0.0923493728, green: 0.1022289321, blue: 0.1063905284, alpha: 1)
         noActionLabel.font = UIFont(name: "Avenir-Medium", size: 20)
         noActionLabel.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -313,8 +313,8 @@ extension DeviceInfoViewController{
                                                        y: (onOffContainerHeight - onOffViewHeight) / 2,
                                                        width: onOffViewWidth,
                                                        height: onOffViewHeight))
-        let onActionTitle = self.localizeLabels.deviceActionOnActionName
-        let offActionTitle = self.localizeLabels.deviceActionOffActionName
+        let onActionTitle = self.labelLocalization.deviceActionOnActionName
+        let offActionTitle = self.labelLocalization.deviceActionOffActionName
         segmentedView.insertSegment(withTitle: onActionTitle.capitalized, at: 0, animated: true)
         segmentedView.insertSegment(withTitle: offActionTitle.capitalized, at: 1, animated: true)
         

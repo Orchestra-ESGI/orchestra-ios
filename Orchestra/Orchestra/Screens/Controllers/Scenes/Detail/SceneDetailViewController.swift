@@ -24,7 +24,7 @@ class SceneDetailViewController: UIViewController {
     // MARK: Utils
     let colorUtils = ColorUtils.shared
     let progressUtils = ProgressUtils.shared
-    let localizeLabels = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     // MARK: Local data
     var sceneData: SceneDto?
@@ -61,8 +61,8 @@ class SceneDetailViewController: UIViewController {
     }
     
     private func localizeUI(){
-        self.descriptionLabel.text = self.localizeLabels.sceneInfoDesciptionLabel
-        self.actionsLabel.text = self.localizeLabels.sceneInfoActionListTitleLabel
+        self.descriptionLabel.text = self.labelLocalization.sceneInfoDesciptionLabel
+        self.actionsLabel.text = self.labelLocalization.sceneInfoActionListTitleLabel
     }
     
     private func setUpTopBar(){
