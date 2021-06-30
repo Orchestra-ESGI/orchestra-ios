@@ -35,9 +35,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let stringUtils = StringUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
-    let screenLocalize = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
-    let labelLocalize = ScreensLabelLocalizableUtils.shared
     let alertUtils = AlertUtils.shared
     
     let disposeBag = DisposeBag()
@@ -65,9 +64,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let controller = SPPermissions.dialog([.notification, .locationWhenInUse, .camera])
 
         // Overide texts in controller
-        controller.titleText = self.screenLocalize.permissionsAlertTitle
-        controller.headerText = self.screenLocalize.permissionsAlertHeaderTitle
-        controller.footerText = self.screenLocalize.permissionAlertFooterTitle
+        controller.titleText = self.labelLocalization.permissionsAlertTitle
+        controller.headerText = self.labelLocalization.permissionsAlertHeaderTitle
+        controller.footerText = self.labelLocalization.permissionAlertFooterTitle
         
         controller.dataSource = self
         controller.delegate = self
@@ -78,13 +77,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK: Localization
     private func localizeUI(){
-        self.bigTitle.attributedText = stringUtils.colorTextWithOptions(text: self.screenLocalize.loginBigText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, linkColor: ColorUtils.ORCHESTRA_WHITE_COLOR, shouldBold: true, fontSize: self.bigTitle.font.pointSize)
-        self.emailLabel.text = self.screenLocalize.loginEmailLabelText
-        self.passwordLabel.text = self.screenLocalize.loginPasswordLabelText
-        self.passwordForgotButton.setTitle(self.screenLocalize.loginPasswordForgotButtonText, for: .normal)
-        self.loginButton.setTitle(self.screenLocalize.loginConnexionButtonText.uppercased(), for: .normal)
+        self.bigTitle.attributedText = stringUtils.colorTextWithOptions(text: self.labelLocalization.loginBigText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, linkColor: ColorUtils.ORCHESTRA_WHITE_COLOR, shouldBold: true, fontSize: self.bigTitle.font.pointSize)
+        self.emailLabel.text = self.labelLocalization.loginEmailLabelText
+        self.passwordLabel.text = self.labelLocalization.loginPasswordLabelText
+        self.passwordForgotButton.setTitle(self.labelLocalization.loginPasswordForgotButtonText, for: .normal)
+        self.loginButton.setTitle(self.labelLocalization.loginConnexionButtonText.uppercased(), for: .normal)
         
-        let attr = NSMutableAttributedString(string: self.screenLocalize.noAccountLabelText)
+        let attr = NSMutableAttributedString(string: self.labelLocalization.noAccountLabelText)
         attr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, attr.length))
         self.signupButton.setAttributedTitle(attr, for: .normal)
     }
@@ -96,7 +95,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.emailTextField.setUpBlankLeftView()
         self.emailTextField.borderStyle = .none
         self.emailTextField.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
-        self.emailTextField.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginEmailLabelHint, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.emailTextField.attributedPlaceholder = stringUtils.colorText(text: self.labelLocalization.loginEmailLabelHint, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
         self.emailTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.emailTextField.clipsToBounds = true
 
@@ -104,7 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.setUpBlankLeftView()
         self.passwordTextField.borderStyle = .none
         self.passwordTextField.setBottomLayer(color: ColorUtils.shared.hexStringToUIColor(hex: "#788290"))
-        self.passwordTextField.attributedPlaceholder = stringUtils.colorText(text: self.screenLocalize.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
+        self.passwordTextField.attributedPlaceholder = stringUtils.colorText(text: self.labelLocalization.loginPasswordLabelText, color: ColorUtils.ORCHESTRA_WHITE_COLOR, alpha: 0.5)
         self.passwordTextField.textColor = ColorUtils.ORCHESTRA_WHITE_COLOR
         self.passwordTextField.autocorrectionType = .no
         self.passwordTextField.clipsToBounds = true
@@ -191,7 +190,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.progressUtils.dismiss()
         } onCompleted: {
             self.progressUtils.dismiss()
-            let alertMessage = self.screenLocalize.localNetworkAuthAlertMessage
+            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         } .disposed(by: self.disposeBag)
     }

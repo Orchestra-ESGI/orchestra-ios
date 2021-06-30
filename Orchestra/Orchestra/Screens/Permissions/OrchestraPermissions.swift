@@ -12,7 +12,7 @@ class OrchestraPermissions{
     private var category: Int = 2
     private var cell: SPPermissionTableViewCell?
     
-    private let labelLocalize = ScreensLabelLocalizableUtils.shared
+    private let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     init(category permissionId: Int, _ cell: SPPermissionTableViewCell) {
         self.category = permissionId
@@ -39,10 +39,10 @@ class OrchestraPermissions{
     
     func setLocationPermissionCell() -> SPPermissionTableViewCell {
         
-        self.cell!.permissionTitleLabel.text = self.labelLocalize.permissionsLocationAlertTitle
-        self.cell!.permissionDescriptionLabel.text = self.labelLocalize.permissionsLocationAlertDescription
-        self.cell!.button.allowTitle = self.labelLocalize.permissionAlertAllowButtonText
-        self.cell!.button.allowedTitle = self.labelLocalize.permissionAlertAllowedButtonText
+        self.cell!.permissionTitleLabel.text = self.labelLocalization.permissionsLocationAlertTitle
+        self.cell!.permissionDescriptionLabel.text = self.labelLocalization.permissionsLocationAlertDescription
+        self.cell!.button.allowTitle = self.labelLocalization.permissionAlertAllowButtonText
+        self.cell!.button.allowedTitle = self.labelLocalization.permissionAlertAllowedButtonText
 
         // Colors
         self.cell!.iconView.color = .systemBlue
@@ -58,10 +58,10 @@ class OrchestraPermissions{
     
     func setCameraPermissionCell() -> SPPermissionTableViewCell {
         
-        self.cell!.permissionTitleLabel.text = self.labelLocalize.permissionsCameraAlertTitle
-        self.cell!.permissionDescriptionLabel.text = self.labelLocalize.permissionsCameraAlertDescription
-        self.cell!.button.allowTitle = self.labelLocalize.permissionAlertAllowButtonText
-        self.cell!.button.allowedTitle = self.labelLocalize.permissionAlertAllowedButtonText
+        self.cell!.permissionTitleLabel.text = self.labelLocalization.permissionsCameraAlertTitle
+        self.cell!.permissionDescriptionLabel.text = self.labelLocalization.permissionsCameraAlertDescription
+        self.cell!.button.allowTitle = self.labelLocalization.permissionAlertAllowButtonText
+        self.cell!.button.allowedTitle = self.labelLocalization.permissionAlertAllowedButtonText
 
         // Colors
         self.cell!.iconView.color = .systemBlue
@@ -78,8 +78,8 @@ class OrchestraPermissions{
     func setLibraryPermissionCell() -> SPPermissionTableViewCell {
         self.cell!.permissionTitleLabel.text = "Photos"
         self.cell!.permissionDescriptionLabel.text = "Nous l'utiliserons pour localiser votre domicile sur un plan"
-        self.cell!.button.allowTitle = self.labelLocalize.permissionAlertAllowButtonText
-        self.cell!.button.allowedTitle = self.labelLocalize.permissionAlertAllowedButtonText
+        self.cell!.button.allowTitle = self.labelLocalization.permissionAlertAllowButtonText
+        self.cell!.button.allowedTitle = self.labelLocalization.permissionAlertAllowedButtonText
 
         // Colors
         self.cell!.iconView.color = .systemBlue
@@ -93,10 +93,10 @@ class OrchestraPermissions{
     
     func setNotificationPermissionCell() -> SPPermissionTableViewCell {
         
-        self.cell!.permissionTitleLabel.text = self.labelLocalize.permissionsNotificationAlertTitle
-        self.cell!.permissionDescriptionLabel.text = self.labelLocalize.permissionsLocationAlertDescription
-        self.cell!.button.allowTitle = self.labelLocalize.permissionAlertAllowButtonText
-        self.cell!.button.allowedTitle = self.labelLocalize.permissionAlertAllowedButtonText
+        self.cell!.permissionTitleLabel.text = self.labelLocalization.permissionsNotificationAlertTitle
+        self.cell!.permissionDescriptionLabel.text = self.labelLocalization.permissionsLocationAlertDescription
+        self.cell!.button.allowTitle = self.labelLocalization.permissionAlertAllowButtonText
+        self.cell!.button.allowedTitle = self.labelLocalization.permissionAlertAllowedButtonText
 
         // Colors
         self.cell!.iconView.color = .systemBlue

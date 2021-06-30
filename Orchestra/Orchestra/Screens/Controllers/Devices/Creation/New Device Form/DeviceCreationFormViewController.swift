@@ -41,9 +41,10 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var deviceViewModel: DeviceViewModel?
     var homeViewModel: HomeViewModel?
     
-    let labelLocalize = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let notificationLocalization = NotificationLocalizableUtils.shared
     let notificationUtils = NotificationsUtils.shared
+    let alertUtils = AlertUtils.shared
     
     var deviceInfo: SupportedDevicesInformationsDto?
     var device: HubAccessoryConfigurationDto?
@@ -92,6 +93,31 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func handleBackClick(sender: UIBarButtonItem) {
+        let sceneNameLength = self.deviceNameTextField.text?.count ?? 0
+        let sceneDescriptionLength = self.roomNameTextField.text?.count ?? 0
+        if( sceneNameLength > 0 || sceneDescriptionLength > 0){
+            let alertTitle = self.notificationLocalization.sceneCancelAlertTitle
+            let alertMessage = self.notificationLocalization.sceneCancelAlertMessage
+            let continueActionTitle = self.notificationLocalization.sceneCancelAlertContinueButton
+            let cancelActionTitle = self.notificationLocalization.sceneCancelAlertCancelButton
+            
+            let alertCancelAction = UIAlertAction(title: cancelActionTitle,
+                                                  style: .cancel){ action in
+            }
+            let alertContinuelAction = UIAlertAction(title: continueActionTitle, style: .destructive) { action in
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+            self.alertUtils.showAlert(for: self,
+                                      title: alertTitle,
+                                      message: alertMessage,
+                                      actions: [alertCancelAction, alertContinuelAction])
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if(textField == self.deviceNameTextField){
             return true
@@ -105,6 +131,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     private func setTopBar(){
         self.setTitle()
         
+        self.navigationItem.hidesBackButton = true
+        let backButtonLabel = self.labelLocalization.sceneBackNavBarButton
+        let newBackButton = UIBarButtonItem(title: backButtonLabel, style: .plain, target: self, action: #selector(handleBackClick(sender:)))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        
         validateFormAppBarBtn = UIBarButtonItem(image: UIImage(systemName: "checkmark"), style: .done, target: self, action: nil)
         validateFormAppBarBtn?.isEnabled = true
         self.navigationItem.rightBarButtonItem = validateFormAppBarBtn
@@ -116,8 +147,8 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func localizeUI(){
-        self.deviceNameLabel.text = self.labelLocalize.deviceFormVcDeviceName
-        self.roomNameLabel.text = self.labelLocalize.deviceFormVcRoomName
+        self.deviceNameLabel.text = self.labelLocalization.deviceFormVcDeviceName
+        self.roomNameLabel.text = self.labelLocalization.deviceFormVcRoomName
     }
     
     private func setUpclickObservers(){
@@ -189,9 +220,9 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     
     private func setTitle(){
         if(self.isDeviceUpdate){
-            self.title = self.labelLocalize.deviceFormVcUpdateTitle
+            self.title = self.labelLocalization.deviceFormVcUpdateTitle
         }else{
-            self.title = self.labelLocalize.deviceFormVcTitle
+            self.title = self.labelLocalization.deviceFormVcTitle
         }
     }
     

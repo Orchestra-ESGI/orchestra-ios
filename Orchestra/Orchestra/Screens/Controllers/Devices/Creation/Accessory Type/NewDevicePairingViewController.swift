@@ -18,7 +18,7 @@ class NewDevicePairingViewController: UIViewController {
     // MARK: - Utils
     let notificationsUtils = NotificationsUtils.shared
     let localizeNotifications = NotificationLocalizableUtils.shared
-    let localizeLabel = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     let alertUtils = AlertUtils.shared
     
@@ -40,9 +40,9 @@ class NewDevicePairingViewController: UIViewController {
     
     private func setupUI(){
         if(self.device == nil){
-            self.title = self.localizeLabel.newDeviceVcTitle
+            self.title = self.labelLocalization.newDeviceVcTitle
         }else{
-            self.title = self.localizeLabel.configDeviceVcTitle
+            self.title = self.labelLocalization.configDeviceVcTitle
         }
     }
     
@@ -64,14 +64,14 @@ class NewDevicePairingViewController: UIViewController {
                     self.accessoriesTableView.reloadData()
                 }
         } onError: { err in
-            let alertTitle = self.localizeLabel.configurationCallErrorAlertTitle
-            let alertSubtitle = self.localizeLabel.configurationCallErrorAlertMessage
+            let alertTitle = self.labelLocalization.configurationCallErrorAlertTitle
+            let alertSubtitle = self.labelLocalization.configurationCallErrorAlertMessage
             self.notificationsUtils.showBasicBanner(title: alertTitle,
                                                     subtitle: alertSubtitle,
                                                     position: .top, style: .danger)
         } onCompleted: {
             self.progressUtils.dismiss()
-            let alertMessage = self.localizeLabel.localNetworkAuthAlertMessage
+            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
             self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
         }
 

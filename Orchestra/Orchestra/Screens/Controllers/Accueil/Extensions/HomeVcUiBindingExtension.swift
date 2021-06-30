@@ -20,7 +20,7 @@ extension HomeViewController{
                     self?.isCellsShaking = !self!.isCellsShaking
                 }
                 
-                let addSceneLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewScene
+                let addSceneLabelText = self?.labelLocalization.homePlusButtonAlertNewScene
                 let addScene = PopMenuDefaultAction(title: addSceneLabelText, image: UIImage(systemName: "timer"), didSelect: { action in
                     let sceneVc = SceneViewController()
                     sceneVc.devices = self!.hubDevices
@@ -28,7 +28,7 @@ extension HomeViewController{
                     self?.navigationController?.pushViewController(sceneVc, animated: true)
                 })
                 
-                let addDeviceLabelText = self?.screenLabelLocalize.homePlusButtonAlertNewDevice
+                let addDeviceLabelText = self?.labelLocalization.homePlusButtonAlertNewDevice
                 let addDevice = PopMenuDefaultAction(title: addDeviceLabelText,image: UIImage(systemName: "lightbulb.fill"), didSelect: { action in
                     let newDeviceVc = NewDevicePairingViewController()
                     self?.navigationController?.pushViewController(newDeviceVc, animated: true)

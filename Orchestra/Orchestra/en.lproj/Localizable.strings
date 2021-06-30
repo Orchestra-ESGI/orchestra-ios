@@ -132,7 +132,7 @@
 "floaty.pairing.rate.title" = " Share Orchestra ";
 
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "New scene";
 "update.scene.vc.title" = "Update";
 
@@ -150,6 +150,22 @@
 "new.scene.close.custom.view.button.title" = "Close";
 "new.scene.device.custom.view.title" = "Choose a device";
 "new.scene.action.custom.view.title" = "Choose an action";
+
+"scene.vc.cancel.alert.title" = "Warning";
+"scene.vc.cancel.alert.message" = "You will lose all your changes, this action is irreversible. Are you sure you want to continue?";
+"scene.vc.cancel.alert.cancel.button" = "To cancel";
+"scene.vc.cancel.alert.continue.button" = "Continue";
+"scene.vc.back.btn" = "Back";
+
+"device.form.cancel.alert.title" = "Warning";
+"device.form.cancel.alert.message" = "You will lose all your changes, this action is irreversible. Are you sure you want to continue?";
+"device.form.cancel.alert.cancel.button" = "To cancel";
+"device.form.cancel.alert.continue.button" = "Continue";
+"device.form.back.btn" = "Back";
+
+"scene.vc.noaction.alert.title" = "Impossible action!";
+"scene.vc.noaction.alert.message" = "You cannot create a scene without actions";
+"scene.vc.noaction.alert.cancel.button" = "Okay";
 
 // - MARK: Actions
 "device.action.state.on" = "Turn device on";

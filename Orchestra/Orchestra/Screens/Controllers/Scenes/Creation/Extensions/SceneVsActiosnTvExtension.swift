@@ -90,7 +90,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.textLabel?.text = deviceSelectedActions![indexPath.row].key
                 cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             } else {
-                cell.textLabel?.text = self.localizeUtils.addActionOnDeviceNewSceneButtonTitle
+                cell.textLabel?.text = self.labelLocalization.addActionOnDeviceNewSceneButtonTitle
             }
             return cell
         }
@@ -158,7 +158,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     self.alertDevice = DevicesAlert()
                     self.alertDevice?.delegate = self
                     self.alertDevice?.deviceSelectedSection = indexPath.section
-                    self.alertDevice?.titleLabel.text = self.localizeUtils.newSceneActionCustomViewTitle
+                    self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneActionCustomViewTitle
                     self.view.addSubview(self.alertDevice!.parentView)
                     self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
                     self.alertDevice!.tableView.reloadData()

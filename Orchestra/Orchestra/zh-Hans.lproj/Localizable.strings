@@ -132,7 +132,7 @@
 "floaty.share.item.title" = " 给我们评分 ";
 "floaty.pairing.rate.title" = " 分享 Orchestra ";
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "新场景";
 "update.scene.vc.title" = "修改";
 
@@ -150,6 +150,22 @@
 "new.scene.close.custom.view.button.title" = "关闭";
 "new.scene.device.custom.view.title" = "选择设备";
 "new.scene.action.custom.view.title" = "选择一个动作";
+
+"scene.vc.cancel.alert.title" = "警告";
+"scene.vc.cancel.alert.message" = "您将丢失所有更改，此操作不可撤销。 你确定你要继续吗？";
+"scene.vc.cancel.alert.cancel.button" = "取消";
+"scene.vc.cancel.alert.continue.button" = "继续";
+"scene.vc.back.btn" = "返回";
+
+"device.form.cancel.alert.title" = "警告";
+"device.form.cancel.alert.message" = "您将丢失所有更改，此操作不可撤销。 你确定你要继续吗？";
+"device.form.cancel.alert.cancel.button" = "取消";
+"device.form.cancel.alert.continue.button" = "继续";
+"device.form.back.btn" = "返回";
+
+"scene.vc.noaction.alert.title" = "不可能的行动!";
+"scene.vc.noaction.alert.message" = "没有动作就无法创建场景";
+"scene.vc.noaction.alert.cancel.button" = "协议";
 
 // - MARK: Actions
 "device.action.state.on" = "打开设备";

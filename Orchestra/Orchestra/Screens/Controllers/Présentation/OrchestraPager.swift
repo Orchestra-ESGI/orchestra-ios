@@ -23,7 +23,7 @@ class OrchestraPager: UIViewController {
     private let floatingActionButton = Floaty()
     
     // MARK: - Utils
-    let screenLabelLocalizeUtils = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,28 +70,28 @@ class OrchestraPager: UIViewController {
         // Create sldies for the pager
         let slide1 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         slide1.slideImage.image = UIImage(named: "couple-couch-slide-1")
-        slide1.slideTitle.text = self.screenLabelLocalizeUtils.pageSlide1TitleLabelText //"Simplicité"
-        slide1.slideDescription.text = self.screenLabelLocalizeUtils.pagerSlide1LabelText
+        slide1.slideTitle.text = self.labelLocalization.pageSlide1TitleLabelText //"Simplicité"
+        slide1.slideDescription.text = self.labelLocalization.pagerSlide1LabelText
         
         let slide2 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         slide2.slideImage.image = UIImage(named: "couple-couch-slide-1")
-        slide2.slideTitle.text = self.screenLabelLocalizeUtils.pageSlide2TitleLabelText //"Efficacité"
-        slide2.slideDescription.text = self.screenLabelLocalizeUtils.pagerSlide2LabelText
+        slide2.slideTitle.text = self.labelLocalization.pageSlide2TitleLabelText //"Efficacité"
+        slide2.slideDescription.text = self.labelLocalization.pagerSlide2LabelText
         
         let slide3 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         slide3.slideImage.image = UIImage(named: "couple-couch-slide-1")
-        slide3.slideTitle.text = self.screenLabelLocalizeUtils.pageSlide3TitleLabelText // "Clarté"
-        slide3.slideDescription.text = self.screenLabelLocalizeUtils.pagerSlide3LabelText
+        slide3.slideTitle.text = self.labelLocalization.pageSlide3TitleLabelText // "Clarté"
+        slide3.slideDescription.text = self.labelLocalization.pagerSlide3LabelText
         
         let slide4 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         slide4.slideImage.image = UIImage(named: "couple-couch-slide-1")
-        slide4.slideTitle.text = self.screenLabelLocalizeUtils.pageSlide4TitleLabelText //"Synchronisation"
-        slide4.slideDescription.text = self.screenLabelLocalizeUtils.pagerSlide4LabelText
+        slide4.slideTitle.text = self.labelLocalization.pageSlide4TitleLabelText //"Synchronisation"
+        slide4.slideDescription.text = self.labelLocalization.pagerSlide4LabelText
         
         let slide5 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         slide5.slideImage.image = UIImage(named: "couple-couch-slide-1")
-        slide5.slideTitle.text = self.screenLabelLocalizeUtils.pageSlide5TitleLabelText //"C'est parti !"
-        slide5.slideDescription.text = self.screenLabelLocalizeUtils.pagerSlide5LabelText
+        slide5.slideTitle.text = self.labelLocalization.pageSlide5TitleLabelText //"C'est parti !"
+        slide5.slideDescription.text = self.labelLocalization.pagerSlide5LabelText
         
         return [slide1, slide2, slide3, slide4, slide5]
     }

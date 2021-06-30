@@ -90,6 +90,14 @@ public class NotificationLocalizableUtils {
     let deviceFormInvalidFormNotificationTitle = NSLocalizedString("device.form.invalid.form.notification.title", comment: "")
     let deviceFormInvalidFormNotificationSubtitle = NSLocalizedString("device.form.invalid.form.notification.subtitle", comment: "")
         
+    let sceneCancelAlertTitle = NSLocalizedString("scene.vc.cancel.alert.title", comment: "")
+    let sceneCancelAlertMessage = NSLocalizedString("scene.vc.cancel.alert.message", comment: "")
+    let sceneCancelAlertCancelButton = NSLocalizedString("scene.vc.cancel.alert.cancel.button", comment: "")
+    let sceneCancelAlertContinueButton = NSLocalizedString("scene.vc.cancel.alert.continue.button", comment: "")
+    
+    let sceneNoActionAlertTitle = NSLocalizedString("scene.vc.noaction.alert.title", comment: "")
+    let sceneNoActionAlertMessage = NSLocalizedString("scene.vc.noaction.alert.message", comment: "")
+    let sceneNoActionAlertCancelButton = NSLocalizedString("scene.vc.noaction.alert.cancel.button", comment: "")
     
     init() {
         

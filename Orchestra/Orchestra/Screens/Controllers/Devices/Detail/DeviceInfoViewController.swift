@@ -27,8 +27,7 @@ class DeviceInfoViewController: UIViewController {
     var onDoneBlock : (() -> Void)?
     
     // MARK: - Utils
-    let localizerUtils = ScreensLabelLocalizableUtils.shared
-    let localizeLabels = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let colorUtils = ColorUtils.shared
     
     // MARK: - Local data
@@ -191,21 +190,21 @@ class DeviceInfoViewController: UIViewController {
     private func setUpLabels(){
         let roomNameLocalize = NSLocalizedString(self.deviceData?.room?.name ?? "", comment: "")
         self.locationLabel.text = roomNameLocalize
-        self.locationTitleLabel.text = self.localizeLabels.objectRoomNameTitleLabelText
-        self.tableViewTitleLabel.text = self.localizeLabels.objectCaracteristicsTitleLabelText
+        self.locationTitleLabel.text = self.labelLocalization.objectRoomNameTitleLabelText
+        self.tableViewTitleLabel.text = self.labelLocalization.objectCaracteristicsTitleLabelText
     }
     
     private func setUpData(){
-        let manufacturerLabel = self.localizerUtils.objectInfoManufacturerLabelText
+        let manufacturerLabel = self.labelLocalization.objectInfoManufacturerLabelText
         
         // MARK: - Remove from localize files
         //let serialNumberLabel = self.localizerUtils.objectInfoSerialNumberLabelText
         //let versionLabel = self.localizerUtils.objectInfoVersionLabelText
-        let modeleLabel = self.localizerUtils.objectInfoModeleLabelText
-        let reachabilityLabel = self.localizerUtils.objectCellReachabilityLabelText
+        let modeleLabel = self.labelLocalization.objectInfoModeleLabelText
+        let reachabilityLabel = self.labelLocalization.objectCellReachabilityLabelText
         let reachableStatus = (self.deviceData?.isReachable ?? false) ?
-                                self.localizerUtils.objectCellReachabilityStatusOkLabelText :
-                                self.localizerUtils.objectCellReachabilityStatusKoLabelText
+                                self.labelLocalization.objectCellReachabilityStatusOkLabelText :
+                                self.labelLocalization.objectCellReachabilityStatusKoLabelText
         
         self.objectInfoNames = [manufacturerLabel,
                                 modeleLabel, reachabilityLabel]

@@ -133,7 +133,7 @@
 "floaty.pairing.rate.title" = " Partilhar Orchestra ";
 
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nova cena";
 "update.scene.vc.title" = "Modificação";
 
@@ -152,10 +152,26 @@
 "new.scene.device.custom.view.title" = "Escolha um dispositivo";
 "new.scene.action.custom.view.title" = "Escolha uma ação";
 
+"scene.vc.cancel.alert.title" = "Aviso";
+"scene.vc.cancel.alert.message" = "Você perderá todas as suas alterações, esta ação é irreversível. Você tem certeza que quer continuar?";
+"scene.vc.cancel.alert.cancel.button" = "Cancelar";
+"scene.vc.cancel.alert.continue.button" = "Continuar";
+"scene.vc.back.btn" = "Retour";
+
+"device.form.cancel.alert.title" = "Aviso";
+"device.form.cancel.alert.message" = "Você perderá todas as suas alterações, esta ação é irreversível. Você tem certeza que quer continuar?";
+"device.form.cancel.alert.cancel.button" = "Cancelar";
+"device.form.cancel.alert.continue.button" = "Continuar";
+"device.form.back.btn" = "Retornar";
+
+"scene.vc.noaction.alert.title" = "Action impossible!";
+"scene.vc.noaction.alert.message" = "Vous ne pouvez pas créer une scène sans actions";
+"scene.vc.noaction.alert.cancel.button" = "D'accord";
+
 // - MARK: Actions
 "device.action.state.on" = "Ligue o aparelho";
 "device.action.state.off" = "Desligue o aparelho";
-"device.action.state.toggle" = "Basculer l'appareil";
+"device.action.state.toggle" = "Cambia il dispositivo";
 "device.action.brightness.100" = "Brilho 100%";
 "device.action.brightness.75" = "Brilho 75%";
 "device.action.brightness.50" = "Brilho 50%";

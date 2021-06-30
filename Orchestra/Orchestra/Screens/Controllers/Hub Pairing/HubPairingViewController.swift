@@ -24,7 +24,7 @@ class HubPairingViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Utils
     let notificationUtils = NotificationsUtils.shared
     let notificationLocalize = NotificationLocalizableUtils.shared
-    let screenLabelLocalize = ScreensLabelLocalizableUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
     
     
@@ -48,7 +48,7 @@ class HubPairingViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UI setup
     private func setUpTopBar(){
-        self.title = self.screenLabelLocalize.hubPairingVcTitle
+        self.title = self.labelLocalization.hubPairingVcTitle
         
         pairHubButton = UIBarButtonItem(image: UIImage(systemName: "paperplane.fill"), style: .done, target: self, action: nil)
         pairHubButton?.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
@@ -74,8 +74,8 @@ class HubPairingViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func localizeLabels(){
-        self.pairingCodeLabel.text = self.screenLabelLocalize.hubPairingVcPairingCodeLabel
-        self.reachableHubAroundTitle.text = self.screenLabelLocalize.hubPairingVcReachableHubLabel
+        self.pairingCodeLabel.text = self.labelLocalization.hubPairingVcPairingCodeLabel
+        self.reachableHubAroundTitle.text = self.labelLocalization.hubPairingVcReachableHubLabel
     }
     
     
@@ -97,9 +97,9 @@ class HubPairingViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Local functions
     private func showIndicationAlert(){
-        let alertTitle = self.screenLabelLocalize.hubPairingAlertInfoTitle
-        let alertBodyText = self.screenLabelLocalize.hubPairingAlertInfoBodyText
-        let alertOkActionTitle = self.screenLabelLocalize.hubPairingAlertInfoOkButtonText
+        let alertTitle = self.labelLocalization.hubPairingAlertInfoTitle
+        let alertBodyText = self.labelLocalization.hubPairingAlertInfoBodyText
+        let alertOkActionTitle = self.labelLocalization.hubPairingAlertInfoOkButtonText
         
         let alert = UIAlertController(title: alertTitle, message: alertBodyText, preferredStyle: .alert)
 
@@ -109,7 +109,7 @@ class HubPairingViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func tryPairingPhoneAndHub(){
-        let alertTitle = self.screenLabelLocalize.hubPairingProgressAlertTitle
+        let alertTitle = self.labelLocalization.hubPairingProgressAlertTitle
         self.progressUtils.displayIndeterminateProgeress(title: alertTitle, view: self.view)
     }
 

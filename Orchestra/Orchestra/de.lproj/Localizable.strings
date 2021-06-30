@@ -132,7 +132,7 @@
 "floaty.share.item.title" = " Bewerten Sie uns ";
 "floaty.pairing.rate.title" = " Teilen  Orchestra ";
 
-// - MARK: New scene Labels annd texts
+// - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Neue Szene";
 "update.scene.vc.title" = "Modifikation";
 
@@ -150,6 +150,22 @@
 "new.scene.close.custom.view.button.title" = "Schließen";
 "new.scene.device.custom.view.title" = "Wähle ein Gerät";
 "new.scene.action.custom.view.title" = "Wähle eine Aktion";
+
+"scene.vc.cancel.alert.title" = "Warnung";
+"scene.vc.cancel.alert.message" = "Sie verlieren alle Ihre Änderungen, diese Aktion ist irreversibel. Sind Sie sicher, dass Sie fortfahren möchten?";
+"scene.vc.cancel.alert.cancel.button" = "Abbrechen";
+"scene.vc.cancel.alert.continue.button" = "Mach weiter";
+"scene.vc.back.btn" = "Rückkehr";
+
+"device.form.cancel.alert.title" = "Warnung";
+"device.form.cancel.alert.message" = "Vous allez perdre toutes vos modifications, cette action est irréversible. Êtes-vous sûr de vouloir coninuer ?";
+"device.form.cancel.alert.cancel.button" = "Abbrechen";
+"device.form.cancel.alert.continue.button" = "Mach weiter";
+"device.form.back.btn" = "Rückkehr";
+
+"scene.vc.noaction.alert.title" = "Unmögliche Aktion!";
+"scene.vc.noaction.alert.message" = "Sie können keine Szene ohne Aktionen erstellen";
+"scene.vc.noaction.alert.cancel.button" = "Okay";
 
 // - MARK: Actions
 "device.action.state.on" = "Gerät einschalten";
