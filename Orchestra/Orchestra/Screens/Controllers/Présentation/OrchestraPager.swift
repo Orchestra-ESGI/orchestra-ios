@@ -32,12 +32,12 @@ class OrchestraPager: UIViewController {
         pageControl.addTarget(self,
                               action: #selector(self.pageControlDidChanged(_:)),
                               for: .valueChanged)
-        self.configureScrollView()
         self.slides = createSlides()
         scrollView.backgroundColor = .black
         view.addSubview(pageControl)
         view.addSubview(scrollView)
         view.bringSubviewToFront(pageControl)
+        self.configureScrollView()
         self.setUpFAB()
     }
     
