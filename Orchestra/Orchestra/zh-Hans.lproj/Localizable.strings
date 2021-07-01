@@ -131,6 +131,8 @@
 "floaty.pairing.item.title" = " 搭配枢纽 ";
 "floaty.share.item.title" = " 给我们评分 ";
 "floaty.pairing.rate.title" = " 分享 Orchestra ";
+"home.screen.default.title" = "我的家";
+"home.screen.filter.title" = "房间";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "新场景";
@@ -338,6 +340,7 @@
 "Kitchen" = "煮熟的";
 "Bathroom" = "浴室";
 "Garage" = "车库";
+"rooms.chip.all" = "全部";
 
 // - MARK: Settings
 "settings.title" = "设置";

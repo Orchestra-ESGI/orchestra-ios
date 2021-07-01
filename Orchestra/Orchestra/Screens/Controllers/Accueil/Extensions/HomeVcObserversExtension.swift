@@ -17,7 +17,10 @@ extension HomeViewController{
             .subscribe { devices in
                 self.hubDevices = devices
                 self.filtereHubDevices = devices
-                self.rooms = ["Toutes" ,"Salon", "Bureau", "Chambre", "Cuisine", "Salle de bain", "Ceci est une pièce avec un nom trop long"]
+                self.rooms = [NSLocalizedString("rooms.chip.all", comment: "")]
+                for device in devices{
+                    self.rooms.append(NSLocalizedString(device.room?.name ?? "", comment: ""))
+                }
                 self.roomsCollectionView.reloadData()
             } onError: { err in
                 self.progressUtils.dismiss()

@@ -22,7 +22,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     var addSceneAppbarButon: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     var trashButton: UIBarButtonItem?
-    var userSettingsAppbarButton: UIBarButtonItem?
     var menuButton: UIBarButtonItem?
 
     // - MARK: Utils
@@ -300,16 +299,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
-
-        if parent != nil && self.navigationItem.titleView == nil {
-            //setClickableTitle()
-        }
     }
 
-//    Implement here whatever you want to add to menu that appears when top right + button is clicked
-//    @objc func showHousesnBottomSheet() {
-//
-//    }
 
     // MARK: Internal functions
     func showInfoDetailAboutHubAccessory(for indexPath: IndexPath){

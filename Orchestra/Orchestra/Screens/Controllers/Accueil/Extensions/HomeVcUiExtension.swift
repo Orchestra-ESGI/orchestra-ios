@@ -28,13 +28,12 @@ extension HomeViewController{
     
     func setUpTopBar(){
         self.navigationItem.hidesBackButton = true
-        self.title = "Mon domicile" //userLoggedInData?.houses[0].houseName
+        self.title = NSLocalizedString("home.screen.default.title", comment: "")
         self.navigationController?.navigationBar.prefersLargeTitles = false
         
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: nil)
         cancelButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .done, target: self, action: nil)
         trashButton = UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .done, target: self, action: nil)
-        //userSettingsAppbarButton = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .done, target: self, action: nil)
         
         menuButton = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .done, target: self, action: nil)
         
@@ -43,10 +42,9 @@ extension HomeViewController{
         trashButton?.isEnabled = false
         trashButton?.tintColor = .clear
         addSceneAppbarButon!.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
-        //userSettingsAppbarButton!.tintColor = #colorLiteral(red: 2.387956192e-05, green: 0.5332912803, blue: 0.8063663244, alpha: 1)
         
         self.navigationItem.rightBarButtonItems = [addSceneAppbarButon!, trashButton!, cancelButton!]
-        self.navigationItem.leftBarButtonItem = menuButton //userSettingsAppbarButton!
+        self.navigationItem.leftBarButtonItem = menuButton 
     }
     
     func setupRoomCollectionView(){

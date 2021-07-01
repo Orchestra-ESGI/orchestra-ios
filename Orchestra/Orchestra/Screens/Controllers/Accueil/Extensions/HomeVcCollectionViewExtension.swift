@@ -16,7 +16,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             let defaultCellHeight: CGFloat = 40
             let defaultCellWidth = (self.view.frame.width / 3) - 10
             
-            let caracterForDefaultWidth = CGFloat(20) // number of caracters in cell of default width
+            let caracterForDefaultWidth = CGFloat(10) // number of caracters in cell of default width
             let roomNameSize = CGFloat(self.rooms[indexPath.row].count)
             
             var cellRatioWidth = roomNameSize / caracterForDefaultWidth
@@ -123,6 +123,11 @@ extension HomeViewController: UICollectionViewDataSource{
             }
         }else{
             if(collectionView == self.roomsCollectionView){
+                if(indexPath.row == 0){
+                    self.title = NSLocalizedString("home.screen.default.title", comment: "")
+                }else{
+                    self.title = NSLocalizedString("home.screen.filter.title", comment: "")
+                }
                 let selectedChip = collectionView.cellForItem(at: indexPath) as! MDCChipCollectionViewCell
                 selectedChip.chipView.setBackgroundColor(ColorUtils.ORCHESTRA_RED_COLOR, for: .selected)
                 self.selectedRoomIndex = indexPath.row

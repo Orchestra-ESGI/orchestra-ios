@@ -131,6 +131,8 @@
 "floaty.pairing.item.title" = " Koppeln mit dem Hub ";
 "floaty.share.item.title" = " Bewerten Sie uns ";
 "floaty.pairing.rate.title" = " Teilen  Orchestra ";
+"home.screen.default.title" = "Mein Zuhause";
+"home.screen.filter.title" = "Zimmer";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Neue Szene";
@@ -338,6 +340,7 @@
 "Kitchen" = "Gekocht";
 "Bathroom" = "Bad";
 "Garage" = "Garage";
+"rooms.chip.all" = "Alle";
 
 // - MARK: Settings
 "settings.title" = "die Einstellungen";
