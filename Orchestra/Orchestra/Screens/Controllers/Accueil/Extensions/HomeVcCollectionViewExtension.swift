@@ -17,7 +17,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             let defaultCellWidth = (self.view.frame.width / 3) - 10
             
             let caracterForDefaultWidth = CGFloat(10) // number of caracters in cell of default width
-            let roomNameSize = CGFloat(self.rooms[indexPath.row].count)
+            let roomNameSize = CGFloat(self.rooms[indexPath.row].name?.count ?? 0)
             
             var cellRatioWidth = roomNameSize / caracterForDefaultWidth
             // Dynamise cell width depending on room name's width
@@ -69,7 +69,7 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if(collectionView == self.roomsCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath) as! MDCChipCollectionViewCell
-            cell.chipView.titleLabel.text = self.rooms[indexPath.row]
+            cell.chipView.titleLabel.text = self.rooms[indexPath.row].name
             cell.chipView.titleLabel.textAlignment = .center
             cell.chipView.titleFont = Font.Bold(18.0)
             cell.chipView.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .selected)
@@ -152,7 +152,7 @@ extension HomeViewController: UICollectionViewDataSource{
             self.filtereHubDevices = self.hubDevices
         }else{
             self.filtereHubDevices = self.hubDevices.filter({ device in
-                return self.rooms[indexPath.row] == NSLocalizedString((device.room?.name)!, comment: "")
+                return self.rooms[indexPath.row].name == NSLocalizedString((device.room?.name)!, comment: "")
             })
         }
     }

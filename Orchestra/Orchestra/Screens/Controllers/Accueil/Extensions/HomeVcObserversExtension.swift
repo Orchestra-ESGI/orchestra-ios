@@ -17,11 +17,6 @@ extension HomeViewController{
             .subscribe { devices in
                 self.hubDevices = devices
                 self.filtereHubDevices = devices
-                self.rooms = [NSLocalizedString("rooms.chip.all", comment: "")]
-                for device in devices{
-                    self.rooms.append(NSLocalizedString(device.room?.name ?? "", comment: ""))
-                }
-                self.roomsCollectionView.reloadData()
             } onError: { err in
                 self.progressUtils.dismiss()
                 self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème est survenu lors du chargement de votre domicile", position: .top, style: .danger)
@@ -32,6 +27,19 @@ extension HomeViewController{
                 let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
                 self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
             }
+    }
+    
+    func observeAllRooms(){
+        _ = self.homeVM!
+            .getAllRooms()
+            .subscribe { roomsDto in
+                for room in roomsDto {
+                    self.rooms.append(room)
+                }
+                self.roomsCollectionView.reloadData()
+        } onError: { err in
+            print("err")
+        }
     }
     
     func setScenesStreamObserver(){
