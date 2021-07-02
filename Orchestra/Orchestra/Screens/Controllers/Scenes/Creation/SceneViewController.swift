@@ -360,7 +360,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         deviceAlert.tableView.delegate = self
         deviceAlert.tableView.dataSource = self
         deviceAlert.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "POP_UP_CELL")
-
+        deviceAlert.tableView.register(DeviceAlertTableViewCell.self, forCellReuseIdentifier: "POP_UP_CELL_DEVICE")
         deviceAlert.tableView.tableFooterView = UIView()
     }
 
