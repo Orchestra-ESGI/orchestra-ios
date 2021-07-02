@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum HubAccessoryType {
-    case LightBulb
-    case StatelessProgrammableSwitch
-    case Sensor
-    case Switch
-    case Unknown
+enum HubAccessoryType: String {
+    case LightBulb = "lightbulb"
+    case StatelessProgrammableSwitch = "programmableswitch"
+    case Occupancy = "occupancy"
+    case Contact = "contact"
+    case Switch = "switch"
+    case Unknown = "unknown"
 }

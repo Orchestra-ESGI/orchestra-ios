@@ -27,20 +27,28 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
     func mapping(map: Map) {
         self.name <- map["name"]
         switch map["type"].currentValue as? String {
-            case "lightbulb":
-                self.type = .LightBulb
-            case "switch":
-                self.type = .Switch
-            case "statelessProgrammableSwitch":
-                self.type = .StatelessProgrammableSwitch
-            case "sensor":
-                self.type = .Sensor
-            default:
-                self.type = .Unknown
+        case "lightbulb":
+            self.type = .LightBulb
+            break
+        case "switch":
+            self.type = .Switch
+            break
+        case "programmableswitch":
+            self.type = .StatelessProgrammableSwitch
+            break
+        case "occupancy":
+            self.type = .Occupancy
+            break
+        case "contact":
+            self.type = .Contact
+            break
+        default:
+            self.type = .Unknown
+            break
         }
         self.actions <- map["actions"]
         self.friendlyName <- map["friendly_name"]
-
+        
         self.room <- map["room"]
         self.backgroundColor <- map["background_color"]
         self.manufacturer <- map["manufacturer"]
@@ -53,16 +61,18 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         
         map["name"] = self.name
         switch self.type  {
-            case .Switch:
-                map["type"] = "switch"
-            case .LightBulb:
-                map["type"] = "lightbulb"
-            case .StatelessProgrammableSwitch:
-                map["type"] = "statelessProgrammableSwitch"
-            case .Sensor:
-                map["type"] = "occupancySensor"
-            default:
-                self.type = .Unknown
+        case .Switch:
+            map["type"] = "switch"
+        case .LightBulb:
+            map["type"] = "lightbulb"
+        case .StatelessProgrammableSwitch:
+            map["type"] = "programmableswitch"
+        case .Occupancy:
+            map["type"] = "occupancysensor"
+        case .Contact:
+            map["type"] = "contact"
+        default:
+            self.type = .Unknown
         }
         map["actions"] = self.actions // fake
         map["friendly_name"] = self.friendlyName
@@ -82,16 +92,19 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         let colorComponent3 = ColorUtils.shared.hexStringToUIColor(hex: self.backgroundColor!).cgColor.components![2]
         var type: String = "";
         switch self.type  {
-            case .Switch:
-                type = "switch"
-            case .LightBulb:
-                type = "lightbulb"
-            case .StatelessProgrammableSwitch:
-                type = "statelessProgrammableSwitch"
-            case .Sensor:
-                type = "occupancySensor"
-            default:
-                type = "Unknown"
+        case .Switch:
+            type = "switch"
+        case .LightBulb:
+            type = "lightbulb"
+        case .StatelessProgrammableSwitch:
+            type = "programmableswitch"
+        case .Occupancy:
+            type = "occupancysensor"
+        case .Contact:
+            type = "contact"
+            
+        default:
+            type = "Unknown"
         }
         
         return [

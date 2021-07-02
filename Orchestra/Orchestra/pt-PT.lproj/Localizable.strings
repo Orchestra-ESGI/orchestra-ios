@@ -137,6 +137,13 @@
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nova cena";
 "update.scene.vc.title" = "Modificação";
+"automation.vc.title" = "Automatizando";
+
+"automation.trigger.label" = "Objeto de gatilho";
+"automation.trigger.tf.hint" = "Adicionar um objeto acionador";
+"single" = "Clique único";
+"double" = "Duplo click";
+"long" = "Clique longo";
 
 "scene.form.name.label.text" = "Nome";
 "scene.form.name.tf.textt" = "Acender a luz ao pôr-do-sol";
@@ -208,6 +215,7 @@
 "home.screen.new.scene.alert" = "Acrescentar uma cena";
 "home.screen.new.device.alert" = "Adicionar um dispositivo";
 "home.screen.new.room.alert" = "Adicionar uma sala";
+"home.screen.new.automation.alert" = "Adicionar uma automação";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Adicionar um dispositivo";

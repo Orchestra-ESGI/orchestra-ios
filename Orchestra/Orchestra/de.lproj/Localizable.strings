@@ -137,6 +137,13 @@
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Neue Szene";
 "update.scene.vc.title" = "Modifikation";
+"automation.vc.title" = "Automatisierung";
+
+"automation.trigger.label" = "Triggerobjekt";
+"automation.trigger.tf.hint" = "Triggerobjekt hinzufügen";
+"single" = "Ein Klick";
+"double" = "Doppelklick";
+"long" = "Langer Klick";
 
 "scene.form.name.label.text" = "Name";
 "scene.form.name.tf.textt" = "Schalten Sie das Licht bei Sonnenuntergang ein";
@@ -208,6 +215,7 @@
 "home.screen.new.scene.alert" = "Hinzufügen einer Szene";
 "home.screen.new.device.alert" = "Ein Objekt hinzufügen";
 "home.screen.new.room.alert" = "Raum hinzufügen";
+"home.screen.new.automation.alert" = "Une-Automatisierung hinzufügen";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ein Objekt hinzufügen";

@@ -29,10 +29,10 @@ class DeviceRow: RootRowController{
         case "lightbulb":
             iconName = "lightbulb.fill"
             break
-        case "statelessProgrammableSwitch":
+        case "programmableswitch":
             iconName = "circle.circle.fill"
             break
-        case "occupancySensor":
+        case "occupancysensor":
             iconName = "figure.walk"
             break
         default:

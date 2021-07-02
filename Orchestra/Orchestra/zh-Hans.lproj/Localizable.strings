@@ -137,6 +137,13 @@
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "新场景";
 "update.scene.vc.title" = "修改";
+"automation.vc.title" = "自动化";
+
+"automation.trigger.label" = "触发对象";
+"automation.trigger.tf.hint" = "添加触发器对象";
+"single" = "单击";
+"double" = "双击";
+"long" = "长按";
 
 "scene.form.name.label.text" = "名称";
 "scene.form.name.tf.textt" = "日落时开灯";
@@ -208,6 +215,7 @@
 "home.screen.new.scene.alert" = "添加一个场景";
 "home.screen.new.device.alert" = "添加一个对象";
 "home.screen.new.room.alert" = "添加房间";
+"home.screen.new.automation.alert" = "添加自动化";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "添加一个场景";

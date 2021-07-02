@@ -94,6 +94,7 @@ class ScreensLabelLocalizableUtils{
     // - MARK: New scene Labels & text
     let newSceneVcTitle = NSLocalizedString("new.scene.vc.title", comment: "")
     let updateSceneVcTitle = NSLocalizedString("update.scene.vc.title", comment: "")
+    let automationVcTitle = NSLocalizedString("automation.vc.title", comment: "")
 
     let sceneFormNameLabel = NSLocalizedString("scene.form.name.label.text", comment: "")
     let sceneFormNameTf = NSLocalizedString("scene.form.name.tf.textt", comment: "")
@@ -104,6 +105,8 @@ class ScreensLabelLocalizableUtils{
     let newSceneCustomAlertCloseButtonTitle = NSLocalizedString("new.scene.close.custom.view.button.title", comment: "")
     let newSceneDeviceCustomViewTitle = NSLocalizedString("new.scene.device.custom.view.title", comment: "")
     let newSceneActionCustomViewTitle = NSLocalizedString("new.scene.action.custom.view.title", comment: "")
+    let automationTriggerLabel = NSLocalizedString("automation.trigger.label", comment: "")
+    let automationTriggerTfHint = NSLocalizedString("automation.trigger.tf.hint", comment: "")
 
     // -  MARK: Pairing to hub Labels & text
     let hubPairingVcTitle = NSLocalizedString("hub.pairing.vc.topbar.title", comment: "")
@@ -123,6 +126,7 @@ class ScreensLabelLocalizableUtils{
     let homePlusButtonAlertNewScene = NSLocalizedString("home.screen.new.scene.alert", comment: "")
     let homePlusButtonAlertNewDevice = NSLocalizedString("home.screen.new.device.alert", comment: "")
     let homePlusButtonAlertNewRoom = NSLocalizedString("home.screen.new.room.alert", comment: "")
+    let homePlusButtonAlertNewAutomation = NSLocalizedString("home.screen.new.automation.alert", comment: "")
 
     // - MARK: Add New Device Screen (supported types)
     let newDeviceVcTitle = NSLocalizedString("new.device.controller.title", comment: "")
