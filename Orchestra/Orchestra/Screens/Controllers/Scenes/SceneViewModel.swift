@@ -80,6 +80,15 @@ class SceneViewModel{
         }
     }
     
+    func sendAutomation(body: [String: Any], httpMethode: CallMethod) -> Observable<Bool>{
+        switch httpMethode {
+        case .Patch:
+            return self.sceneService.updateAutomation(automation: body)
+        case .Post:
+            return self.sceneService.createAutomation(automation: body)
+        }
+    }
+    
     func getAllScenes() -> Observable<Bool> {
         _ = self.sceneService.sceneStream.subscribe { scenes in
             self.scenesStream.onNext(scenes)

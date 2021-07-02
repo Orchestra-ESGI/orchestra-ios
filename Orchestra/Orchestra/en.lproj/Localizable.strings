@@ -136,6 +136,13 @@
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "New scene";
 "update.scene.vc.title" = "Update";
+"automation.vc.title" = "Automating";
+
+"automation.trigger.label" = "Trigger object";
+"automation.trigger.tf.hint" = "Add a trigger object";
+"single" = "Simple click";
+"double" = "Double click";
+"long" = "Long click";
 
 "scene.form.name.label.text" = "Name";
 "scene.form.name.tf.textt" = "Turn on the light at sunset";
@@ -207,6 +214,7 @@
 "home.screen.new.scene.alert" = "Add a scene";
 "home.screen.new.device.alert" = "Add a device";
 "home.screen.new.room.alert" = "Add a room";
+"home.screen.new.automation.alert" = "Add an automation";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Add a device";

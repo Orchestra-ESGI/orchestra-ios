@@ -58,10 +58,10 @@ class DeviceConfigurationService{
                                 case "lightbulb":
                                     let lighBulbConf = self.getLightBulbConf(topics, &accessoryMap)
                                     hubAccessoriesMapped.append(lighBulbConf)
-                                case "statelessProgrammableSwitch":
+                                case "programmableswitch":
                                     let programmableSwitch = self.getStatelessProgrammableSwitch(topics, &accessoryMap)
                                     hubAccessoriesMapped.append(programmableSwitch)
-                                case "occupancySensor":
+                                case "occupancysensor":
                                     let occupancySensorConf = self.getOccupancySensorConf(topics, &accessoryMap)
                                     hubAccessoriesMapped.append(occupancySensorConf)
                                 default:

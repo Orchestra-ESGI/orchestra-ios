@@ -12,20 +12,27 @@ import ObjectMapper
 
 class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomViewProtocol {
     
+    
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var automationDynamicContainerHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var automationDynamicContainer: UIView!
+    
     // MARK: - UI
     @IBOutlet weak var sceneNameLabel: UILabel!
     @IBOutlet weak var sceneNameTf: UITextField!
     @IBOutlet weak var sceneBackgroundColorLabel: UILabel!
     @IBOutlet weak var shuffleColorsButton: UIButton!
     @IBOutlet weak var backgroudColorsCollectionView: UICollectionView!
-    
+    @IBOutlet weak var addTriggerButton: UIButton!
+    @IBOutlet weak var triggerDeviceTf: UITextField!
     @IBOutlet weak var viewContainer: UIView!
-    
     @IBOutlet weak var sceneDescriptionLabel: UILabel!
     @IBOutlet weak var sceneDescriptionTf: UITextField!
     @IBOutlet weak var addActionButton: UIButton!
     @IBOutlet weak var actionsTableView: UITableView!
-    
+    @IBOutlet weak var triggerDeviceLabel: UILabel!
+
     var addSceneAppbarButon: UIBarButtonItem?
     
     // MARK: Utils
@@ -38,28 +45,42 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     // MARK: Service
     let sceneVM = SceneViewModel()
     var deviceVM: DeviceViewModel?
+    let disposebag = DisposeBag()
     
     // MARK: - Local data
     var dataDelegate: SendBackDataProtocol?
-    var isUpdating: Bool = false
     var sceneToEdit: SceneDto?
-    var sceneColors: [UIColor] = []
-    var sceneActions: [[String: Any]] = []
-    var selectedColor = 0
-    let disposebag = DisposeBag()
+    var alertDevice: DevicesAlert?
+    var onDoneBlock : (() -> Void)?
     
-    var isPopUpVisible = false
-    var popUpType = 0 // 0 ---> Device , 1 ---> Actions
+    var sceneColors: [UIColor] = []
+    // Available actions for scenes
+    var sceneActions: [[String: Any]] = []
     var actionsName: [SceneActionsName] = []
     var filteredActionsName: [SceneActionsName] = []
-    var alertDevice: DevicesAlert?
-    
     // All available devices
     var devices : [HubAccessoryConfigurationDto] = []
     var deviceDict: [[String:Any]] = []
     
-    var onDoneBlock : (() -> Void)?
+    var triggerDevices: [HubAccessoryConfigurationDto] = []
+    var selectedTriggerAction: String = ""
+    var selectedTriggerDevice = PublishSubject<[String: Any]>()
+    var selectedTriggerDeviceIndex: Int?
+    var selectedTriggerActionIndex: Int?
+    var triggersData: [[String: Any]] = []
     
+    
+    var isUpdating: Bool = false
+    var isPopUpVisible = false
+    var isAutomation = false
+    var popUpType = 0
+    var selectedColor = 0
+    
+    private lazy var pickerViewPresenter: PickerViewPresenter = {
+        let pickerViewPresenter = PickerViewPresenter(2, items: self.triggersData,
+                                                      closePickerCompletion: self.didClosePickerView)
+        return pickerViewPresenter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +94,19 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.setActionsTableView()
         self.generatesBackGroundColor()
         self.clickObservers()
+        if(self.isAutomation){
+            self.automationDynamicContainerHeight.constant = CGFloat(100)
+            self.setUpTriggersData()
+            self.view.addSubview(self.pickerViewPresenter)
+        }else{
+            self.automationDynamicContainerHeight.constant = CGFloat(0)
+            self.triggerDeviceTf.isEnabled = false
+            self.triggerDeviceLabel.isEnabled = false
+            self.addTriggerButton.isEnabled = false
+            self.triggerDeviceTf.isHidden = true
+            self.triggerDeviceLabel.isHidden = true
+            self.addTriggerButton.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +120,32 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
+    private func setUpTriggersData(){
+        self.getTriggersFromAllDevices()
+        self.parseTriggerDevices()
+    }
+    
+    private func getTriggersFromAllDevices(){
+        for device in self.devices{
+            if(device.type == .Occupancy ||
+                device.type == .StatelessProgrammableSwitch ||
+                device.type == .Contact){
+                self.triggerDevices.append(device)
+            }
+        }
+    }
+    
+    private func parseTriggerDevices(){
+        for trigger in triggerDevices{
+            if(trigger.type == .StatelessProgrammableSwitch){
+                self.triggersData.append([trigger.name!: ["single", "double", "long"]])
+            }else{
+                self.triggersData.append([trigger.name!: ["on", "off"]])
+            }
+        }
+        print(self.triggersData)
+    }
+    
     // MARK: Controller Setup
     private func localizeLabels(){
         self.sceneNameLabel.text = self.labelLocalization.sceneFormNameLabel
@@ -94,7 +154,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.addActionButton.setTitle(self.labelLocalization.addActionButtonnText, for: .normal)
         self.sceneDescriptionTf.placeholder = self.labelLocalization.sceneFormDescriptionTf
         self.sceneNameTf.placeholder = self.labelLocalization.sceneFormNameTf
-        
+        self.triggerDeviceLabel.text = self.labelLocalization.automationTriggerLabel
+        self.triggerDeviceTf.placeholder = self.labelLocalization.automationTriggerTfHint
     }
     
     private func setUpTextFields(){
@@ -145,12 +206,26 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                     }
                 }
             })
+        
+        _ = self.selectedTriggerDevice.subscribe(onNext: { trigger in
+            let triggerName = trigger["name"] as? String ?? ""
+            let triggerAction = trigger["action"] as? String ?? ""
+            self.selectedTriggerAction = triggerAction
+            self.triggerDeviceTf.text = "\(triggerName) > \(triggerAction)"
+        })
     }
     
     private func setUpUI(){
         let newSceneTitle = self.labelLocalization.newSceneVcTitle
         let updateSceneTitle = self.labelLocalization.updateSceneVcTitle
-        self.title = self.isUpdating ? updateSceneTitle : newSceneTitle
+        let automationTitle = self.labelLocalization.automationVcTitle
+        if(self.isUpdating){
+            self.title = updateSceneTitle
+        }else if(self.isAutomation){
+            self.title = automationTitle
+        }else{
+            self.title = newSceneTitle
+        }
         
         self.navigationItem.hidesBackButton = true
         let backButtonLabel = self.labelLocalization.sceneBackNavBarButton
@@ -160,11 +235,36 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "paperplane.fill"), style: .done, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = addSceneAppbarButon
         
-        if(!self.isUpdating){
+        if(!self.isUpdating || !self.isAutomation){
             self.addSceneAppbarButon?.isEnabled = false
         }
         
         self.viewContainer.frame.size.height = self.view.frame.height + 40
+    }
+    
+    @IBAction func showTriggersPickerView(_ sender: Any) {
+        self.pickerViewPresenter.showPicker()
+    }
+    
+    func didClosePickerView(data: Any){
+        if let response = data as? [String: Any]{
+            if let deviceIndex = response["device_index"] as? Int,
+               let actionIndex = response["action_index"] as? Int{
+                
+                self.selectedTriggerDeviceIndex = deviceIndex
+                self.selectedTriggerActionIndex = actionIndex
+                print("Selected device name :\(self.triggerDevices[deviceIndex].name)")
+                print("Selected device friendly name :\(self.triggerDevices[deviceIndex].friendlyName)")
+                
+                let availableActions = (self.triggersData[deviceIndex].values.first as? [String] ?? [])
+                let triggerDeviceName = Array(self.triggersData[deviceIndex].keys)[0]
+                var triggerDevice = [
+                    "name": triggerDeviceName,
+                    "action": availableActions[actionIndex],
+                ]
+                self.selectedTriggerDevice.onNext(triggerDevice)
+            }
+        }
     }
     
     @objc func handleBackClick(sender: UIBarButtonItem) {
@@ -283,7 +383,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             
             self.devices = devices.filter { !devicenameInScene.contains($0.name!) }
             self.progressUtils.dismiss()
-            if(self.view.subviews.count == 1){
+            if(self.view.subviews.count >= 1){
                 self.alertDevice = DevicesAlert()
                 self.alertDevice?.delegate = self
                 self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneDeviceCustomViewTitle
@@ -295,17 +395,18 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     }
     
     func hidePopUp(){
-        let alertView = self.view.subviews[1].subviews[0].subviews
+        let customAlertViewPositionInSubviews = isAutomation ? 2 : 1
+        let alertView = self.view.subviews[customAlertViewPositionInSubviews].subviews[0].subviews
         for view in alertView{
             view.removeFromSuperview()
         }
-        self.view.subviews[1].subviews[0].removeFromSuperview()
+        self.view.subviews[customAlertViewPositionInSubviews].subviews[0].removeFromSuperview()
         
-        let alertViewParent = self.view.subviews[1].subviews
+        let alertViewParent = self.view.subviews[customAlertViewPositionInSubviews].subviews
         for view in alertViewParent{
             view.removeFromSuperview()
         }
-        self.view.subviews[1].removeFromSuperview()
+        self.view.subviews[customAlertViewPositionInSubviews].removeFromSuperview()
         
         if(self.actionsName.count > 0){
             self.actionsName.removeAll()
@@ -404,8 +505,13 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                                               message: alertMessage,
                                               actions: [alertCancelAction])
                 }else{
-                    let sceneToSend = self.buildSceneToSend()
-                    self.sendScene(scene: sceneToSend)
+                    if(self.isAutomation){
+                        let automationToSend = self.buildAutomationToSend()
+                        self.sendAutomation(automation: automationToSend)
+                    }else{
+                        let sceneToSend = self.buildSceneToSend()
+                        self.sendScene(scene: sceneToSend)
+                    }
                 }
             }
     }
@@ -417,8 +523,10 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         scene["name"] = self.sceneNameTf.text!
         scene["color"] = self.sceneColors[self.selectedColor].toHexString()
         scene["description"] = self.sceneDescriptionTf.text!
-        scene["devices"] = self.deviceDict.map({ device -> [String: Any] in
-            
+        scene["devices"] = self.deviceDict.compactMap({ device -> [String: Any]? in
+            if(device["actions"] == nil){
+                return nil
+            }
             let friendlyName = device["friendly_name"]!
             let actions = device["actions"]!
             return [
@@ -433,11 +541,69 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         return scene
     }
     
+    private func buildAutomationToSend() -> [String: Any]{
+        self.progressUtils.displayV2(view: self.view, title: self.notificationLocalize.undeterminedProgressViewTitle, modeView: .MRActivityIndicatorView)
+        
+        var automation: [String: Any] = [:]
+        automation["name"] = self.sceneNameTf.text!
+        automation["color"] = self.sceneColors[self.selectedColor].toHexString()
+        automation["description"] = self.sceneDescriptionTf.text!
+        automation["targets"] = self.deviceDict.map({ device -> [String: Any] in
+            
+            let friendlyName = device["friendly_name"]!
+            let actions = device["actions"]!
+            return [
+                "friendly_name": friendlyName,
+                "actions": actions
+            ]
+        })
+        if(self.isUpdating){
+            automation["_id"] = self.sceneToEdit?.id ?? ""
+        }
+        automation["trigger"] = [
+            "type": self.triggerDevices[selectedTriggerDeviceIndex!].type.rawValue,
+            "friendly_name": self.triggerDevices[selectedTriggerDeviceIndex!].friendlyName,
+            "actions": [
+                "state": self.selectedTriggerAction
+            ]
+        ]
+        
+        return automation
+    }
+    
     private func sendScene(scene: [String: Any]){
         let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
         
         _ = self.sceneVM
             .sendScene(body: scene, httpMethode: self.isUpdating ? .Patch : .Post)
+            .subscribe(onNext: { succeeded in
+                self.progressUtils.dismiss()
+                let successAlertTitle = self.labelLocalization.newSceneSuccessCreationAlertTitle
+                self.progressUtils.displayCheckMark(title: successAlertTitle, view: uiscreenWindow)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.progressUtils.dismiss()
+                    if(self.isUpdating){
+                        self.dismiss(animated: true, completion: nil)
+                        self.onDoneBlock!()
+                    }else{
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }, onError: { err in
+                self.progressUtils.dismiss()
+                let alertTitle = self.notificationLocalize.saveSceneErrorNotificationTitle
+                let alertMessage = self.notificationLocalize.saveSceneErrorNotificationSubtitle
+                self.notificationUtils.showFloatingNotificationBanner(title: alertTitle,
+                                                                      subtitle:alertMessage,
+                                                                      position: .top, style: .danger)
+            })
+    }
+    
+    private func sendAutomation(automation: [String: Any]){
+        let uiscreenWindow = (UIApplication.shared.windows[0].rootViewController?.view)!
+        
+        _ = self.sceneVM
+            .sendAutomation(body: automation, httpMethode: self.isUpdating ? .Patch : .Post)
             .subscribe(onNext: { succeeded in
                 self.progressUtils.dismiss()
                 let successAlertTitle = self.labelLocalization.newSceneSuccessCreationAlertTitle
@@ -492,4 +658,11 @@ class SceneActionsName {
 
 protocol CloseCustomViewProtocol {
     func popOffView()
+}
+
+enum ProgrammableSwitchClick: String {
+    case Single = "single"
+    case Double = "double"
+    case Many = "many"
+    case Long = "long"
 }

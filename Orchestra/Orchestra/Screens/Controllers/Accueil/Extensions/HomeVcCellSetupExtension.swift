@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FontAwesome_swift
 
 extension HomeViewController{
      func fillHubDeviceCell(_ indexPath: IndexPath,
@@ -18,14 +19,23 @@ extension HomeViewController{
         switch currentObject.type {
         case.Switch:
             objectCell.objectImageView.image = UIImage(systemName: "switch.2")
+            break
         case .LightBulb:
             objectCell.objectImageView.image = UIImage(systemName: "lightbulb.fill")
+            break
         case .StatelessProgrammableSwitch:
             objectCell.objectImageView.image = UIImage(systemName: "switch.2")
-        case .Sensor:
+            break
+        case .Occupancy:
             objectCell.objectImageView.image = UIImage(systemName: "figure.walk")
+            break
+        case .Contact:
+            objectCell.objectImageView.image = UIImage.fontAwesomeIcon(name: .doorOpen, style: .solid,
+                                                                       textColor: .white, size: CGSize(width: 15, height: 15))
+            break
         default:
             objectCell.objectImageView.image = UIImage(systemName: "questionmark")
+            break
         }
         
         let reachableStatus = (currentObject.isReachable ?? false) ?
@@ -65,7 +75,7 @@ extension HomeViewController{
                                     _ collectionView: UICollectionView) -> SceneCollectionViewCell {
         let sceneCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SCENE", for: indexPath) as! SceneCollectionViewCell
         
-        sceneCell.sceneImageView.image = UIImage(systemName: "timer")
+        sceneCell.sceneImageView.image = UIImage(systemName: "arrowtriangle.right.circle.fill")
         if self.traitCollection.userInterfaceStyle == .dark {
             sceneCell.sceneImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }else{

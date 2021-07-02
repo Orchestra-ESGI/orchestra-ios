@@ -35,7 +35,8 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var deviceBackgrounds: [UIColor] = []
     var selectedColor = 0
     var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
-    private var selectedRoom = PublishSubject<RoomDto>()
+    private var selectedRoom = PublishSubject<String>()
+    private var selectedRoomIndex: Int?
     private var currentRoom : RoomDto?
     
     var deviceViewModel: DeviceViewModel?
@@ -52,11 +53,10 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     var rooms: [RoomDto] = []
     
     private lazy var pickerViewPresenter: PickerViewPresenter = {
-        let pickerViewPresenter = PickerViewPresenter()
-        pickerViewPresenter.items = self.rooms
-        pickerViewPresenter.didSelectItem = { [weak self] item in
-            self?.selectedRoom.onNext(item)
+        let roomsName = self.rooms.map { room -> String in
+            return room.name ?? ""
         }
+        let pickerViewPresenter = PickerViewPresenter(1, items: roomsName, closePickerCompletion: didClosePickerView)
         return pickerViewPresenter
     }()
     
@@ -80,6 +80,17 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         self.setColorsCollectionView()
         self.localizeUI()
         self.validateFormAppBarBtn?.isEnabled = false
+    }
+    
+    @objc func doneButtonClick(){
+        self.pickerViewPresenter.resignFirstResponder()
+    }
+    
+    func didClosePickerView(data: Any){
+        if let index = data as? Int{
+            self.selectedRoomIndex = index
+            self.selectedRoom.onNext(self.rooms[index].name!)
+        }
     }
 
     private func getHubRooms(){
@@ -152,9 +163,9 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUpclickObservers(){
-        _ = self.selectedRoom.subscribe { roomDto in
-            self.currentRoom = roomDto.element
-            let roomNameLocalized = NSLocalizedString(roomDto.element?.name ?? "", comment: "")
+        _ = self.selectedRoom.subscribe { roomName in
+            self.currentRoom = self.rooms[self.selectedRoomIndex ?? 0]
+            let roomNameLocalized = NSLocalizedString(roomName.element ?? "", comment: "")
             self.roomNameTextField.text = roomNameLocalized
         }
         

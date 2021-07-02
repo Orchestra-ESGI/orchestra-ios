@@ -137,6 +137,13 @@
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nieuwe scène";
 "update.scene.vc.title" = "Wijziging";
+"automation.vc.title" = "Automatiseren";
+
+"automation.trigger.label" = "Trigger-object";
+"automation.trigger.tf.hint" = "Een triggerobject toevoegen";
+"single" = "Enkele klik";
+"double" = "Dubbelklik";
+"long" = "Lange klik";
 
 "scene.form.name.label.text" = "Naam";
 "scene.form.name.tf.textt" = "Doe het licht aan bij zonsondergang";
@@ -208,6 +215,7 @@
 "home.screen.new.scene.alert" = "een scène toevoegen";
 "home.screen.new.device.alert" = "Een apparaat toevoegen";
 "home.screen.new.room.alert" = "Voeg een kamer toe";
+"home.screen.new.automation.alert" = "Voeg automatisering toe";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Een apparaat toevoegen";

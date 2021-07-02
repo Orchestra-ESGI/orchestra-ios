@@ -21,7 +21,7 @@ extension HomeViewController{
                 }
                 
                 let addSceneLabel = self?.labelLocalization.homePlusButtonAlertNewScene
-                let addScene = PopMenuDefaultAction(title: addSceneLabel, image: UIImage(systemName: "timer"), didSelect: { action in
+                let addScene = PopMenuDefaultAction(title: addSceneLabel, image: UIImage(systemName: "arrowtriangle.right.circle.fill"), didSelect: { action in
                     let sceneVc = SceneViewController()
                     sceneVc.devices = self!.hubDevices
                     sceneVc.dataDelegate = self
@@ -35,7 +35,7 @@ extension HomeViewController{
                 })
                 
                 let addRoomLabel = self?.labelLocalization.homePlusButtonAlertNewRoom
-                let addHouse = PopMenuDefaultAction(title: addRoomLabel,image: UIImage(systemName: "house.fill"), didSelect: { action in
+                let addRoom = PopMenuDefaultAction(title: addRoomLabel,image: UIImage(systemName: "house.fill"), didSelect: { action in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
                         let alertTitle = self!.notificationLocalize.roomCreationAlertTitle
                         let alertMessage = self!.notificationLocalize.roomCreationAlertMessage
@@ -48,8 +48,17 @@ extension HomeViewController{
                     })
                 })
                 
+                let addAutomationLabel = self?.labelLocalization.homePlusButtonAlertNewAutomation
+                let addAutomation = PopMenuDefaultAction(title: addAutomationLabel,image: UIImage(systemName: "timer"), didSelect: { action in
+                    let newAutomatisationVC = SceneViewController()
+                    newAutomatisationVC.isAutomation = true
+                    newAutomatisationVC.devices = self!.hubDevices
+                    self?.navigationController?.pushViewController(newAutomatisationVC, animated: true)
+                })
                 
-                let menuViewController = PopMenuViewController(actions: [addScene, addDevice, addHouse])
+                
+                let menuViewController = PopMenuViewController(actions: [addScene, addDevice,
+                                                                         addRoom, addAutomation])
                 menuViewController.appearance.popMenuBackgroundStyle = .blurred(.regular)
                 self!.present(menuViewController, animated: true, completion: nil)
         }.disposed(by: self.disposeBag)

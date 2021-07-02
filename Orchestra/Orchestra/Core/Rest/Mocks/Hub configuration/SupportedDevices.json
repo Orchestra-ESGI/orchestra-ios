@@ -45,7 +45,7 @@
        ]
     },
     {
-      "type": "occupancySensor",
+      "type": "occupancysensor",
       "devices": [
           {
             "name": "SONOFF Motion Sensor",

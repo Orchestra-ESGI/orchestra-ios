@@ -12,6 +12,9 @@ import SnapKit
 class PickerUtils{
     static let shared = PickerUtils()
     
+    func showPickerView(with components: Int, items: [Any], okAction: @escaping ((Void) -> Void)){
+        
+    }
     
 }
 
@@ -44,13 +47,67 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
         return pickerView
     }()
 
-    var items: [RoomDto] = []
-    var didSelectItem: ((RoomDto) -> Void)?
+    var itemNames: [String] = []
+    var pickerSecondColumnItems: [[String]] = []
+    var pickerThirdColumnItems: [String] = []
+    
+    var onePickerViewDidSelectItem: ((Any) -> Void)?
 
-    private var selectedItem: RoomDto?
+    private var selectedItem: String?
+    private var selectedItemIndex: Int?
+    
+    private var selectedSecondColumnItem: String?
+    private var selectedSecondColumnItemIndex: Int?
+    
+    private var columns = 1
+    
+    private var actionValues: [String] = []
+    private var actions: [String] = []
 
-    init() {
+    init(_ columns: Int, items: Any, closePickerCompletion: @escaping ((Any) -> Void)) {
         super.init(frame: .zero)
+        self.columns = columns
+        
+        if let itemDictionnary = items as? [[String: Any]]{
+            let allKeys = itemDictionnary.map { item in
+                return item.keys.first!
+            }
+            
+            self.itemNames.append(contentsOf: allKeys)
+            if(columns > 1){
+                var actionsName: [String] = []
+                var counter = 0
+                for item in itemDictionnary{
+                    actionsName.append(contentsOf: item.values.first as? [String] ?? [])
+                    self.pickerSecondColumnItems.insert(actionsName, at: counter)
+                    actionsName.removeAll()
+                    counter += 1
+                }
+                
+//                _ = itemDictionnary.compactMap { value -> String? in
+//                    if let dictionnary = value as? [String: Any]{
+//                        for item in dictionnary.values.first as? [String] ?? []{
+//                            if(!actionsName.contains(item)){
+//                                actionsName.append(item)
+//                            }
+//                        }
+//                    }
+//                    return nil
+//                }
+            }
+            self.actions = self.pickerSecondColumnItems[0]
+        } else if let itemArray = items as? [String]{
+            for item in itemArray{
+                self.itemNames.append(item)
+            }
+        }
+        if(itemNames.count > 0){
+            self.selectedItemIndex = 0
+        }
+        if(actions.count > 0){
+            self.selectedSecondColumnItemIndex = 0
+        }
+        self.onePickerViewDidSelectItem = closePickerCompletion
         setupView()
     }
 
@@ -64,8 +121,14 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
     }
 
     @objc private func doneButtonTapped() {
-        if let selectedItem = selectedItem {
-            didSelectItem?(selectedItem)
+        if(columns == 1){
+            self.onePickerViewDidSelectItem!(selectedItemIndex)
+        }else{
+            let data = [
+                "device_index": self.selectedItemIndex,
+                "action_index": self.selectedSecondColumnItemIndex
+            ]
+            self.onePickerViewDidSelectItem!(data)
         }
         resignFirstResponder()
     }
@@ -75,20 +138,64 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return self.columns
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return items.count
+        switch component {
+        case 0:
+            return self.itemNames.count
+        case 1:
+//            let actionAtComponent = pickerSecondColumnItems[component]
+//            if(pickerSecondColumnItems.count > 0){
+//                self.selectedSecondColumnItemIndex = 0
+//            }
+            return self.actions.count
+        default:
+            if(itemNames.count > 0){
+                self.selectedItemIndex = 0
+            }
+            return itemNames.count
+        }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return NSLocalizedString(items[row].name ?? "", comment: "")
+        switch component {
+        case 0:
+            return NSLocalizedString(itemNames[row] , comment: "")
+        case 1:
+            return NSLocalizedString(self.actions[row], comment: "")
+        default:
+            return NSLocalizedString(itemNames[row] , comment: "")
+        }
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedItem = items[row]
+        switch component {
+        case 0:
+            selectedItem = itemNames[row]
+            selectedItemIndex = row
+            if(self.columns > 1){
+                self.actions = pickerSecondColumnItems[row]
+                pickerView.reloadComponent(1)
+            }
+            print("Device selected: \(selectedItem), device position: \(selectedItemIndex)")
+        case 1:
+            selectedSecondColumnItem = NSLocalizedString(self.actions[row], comment: "")
+            self.selectedSecondColumnItemIndex = row
+            print("Action selected: \(selectedSecondColumnItem), action position: \(selectedSecondColumnItemIndex)")
+        default:
+            selectedItem = itemNames[row]
+            selectedItemIndex = row
+        }
+        
     }
+}
+
+enum PickerType {
+    case OneColumn
+    case TwoColumn
+    case ThreeColumn
 }
 
 class ToolBarTitleItem: UIBarButtonItem {

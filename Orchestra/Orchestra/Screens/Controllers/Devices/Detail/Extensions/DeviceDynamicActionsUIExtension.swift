@@ -16,10 +16,13 @@ extension DeviceInfoViewController{
         let color =  self.deviceData?.actions?.color
         let colorTemp = self.deviceData?.actions?.colorTemp
         let state = self.deviceData?.actions?.state
+        let deviceType = self.deviceData?.type
         
         var lastElementInsertedYpos = CGFloat(0)
-
-        if(self.deviceData?.type == .Unknown){
+        if(deviceType == .Occupancy || deviceType == .Contact || deviceType == .StatelessProgrammableSwitch){
+            self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
+            lastElementInsertedYpos += 120
+        }else if(self.deviceData?.type == .Unknown){
             self.insertContactUsButton(xPos: 0, yPos: lastElementInsertedYpos)
             lastElementInsertedYpos += 120
         }else{

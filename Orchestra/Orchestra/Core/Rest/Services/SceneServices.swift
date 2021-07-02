@@ -93,6 +93,32 @@ class SceneServices{
         self.sendScene(scene: scene, method: .post)
     }
     
+    private func sendAutomation(automation: [String: Any], method: HTTPMethod) -> Observable<Bool>{
+        return Observable<Bool>.create({observer in
+            AF.request("\(RootApiService.BASE_API_URL)/automation", method: method, parameters: automation, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                        case .success( _):
+                            observer.onNext(true)
+                        case .failure(_):
+                            let callReponse = response.response
+                            self.rootApiService.handleErrorResponse(observer: observer, response: callReponse)
+                            print("Error - SceneServices - createNewScene()")
+                    }
+                }
+            return Disposables.create();
+        })
+    }
+    
+    func createAutomation(automation: [String: Any]) -> Observable<Bool>{
+        self.sendAutomation(automation: automation, method: .post)
+    }
+    
+    func updateAutomation(automation: [String: Any]) -> Observable<Bool>{
+        self.sendAutomation(automation: automation, method: .patch)
+    }
+    
     func launchScene(id: String){
         _ = AF.request("\(RootApiService.BASE_API_URL)/scene/\(id)", method: .post, parameters: nil, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)

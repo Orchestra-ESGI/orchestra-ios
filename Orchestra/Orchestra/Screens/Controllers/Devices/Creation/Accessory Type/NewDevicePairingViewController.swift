@@ -92,10 +92,12 @@ class NewDevicePairingViewController: UIViewController {
         switch confType {
         case "lightbulb":
             return .LightBulb
-        case "statelessProgrammableSwitch":
-            return .LightBulb
-        case "occupancySensor":
-            return .Sensor
+        case "programmableswitch":
+            return .StatelessProgrammableSwitch
+        case "occupancy":
+            return .Occupancy
+        case "contact":
+            return .Contact
         default:
             return .Unknown
         }
