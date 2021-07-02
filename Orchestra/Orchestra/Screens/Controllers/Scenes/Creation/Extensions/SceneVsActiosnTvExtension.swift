@@ -72,17 +72,81 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
         return (actionForDevice?.count ?? 0 ) + 1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.isPopUpVisible && self.popUpType == 0 {
+            return 60.0
+        }
+        
+        return 44.0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(self.isPopUpVisible){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "POP_UP_CELL", for: indexPath)
-            cell.textLabel?.textAlignment = .center
             if(self.popUpType == 0){
-                cell.textLabel?.text = self.devices[indexPath.row].name
+                let cell = tableView.dequeueReusableCell(withIdentifier: "POP_UP_CELL_DEVICE", for: indexPath) as! DeviceAlertTableViewCell
+                if cell.deviceName != nil {
+                    cell.deviceName.removeFromSuperview()
+                }
+                
+                if cell.roomLabel != nil {
+                    cell.roomLabel.removeFromSuperview()
+                }
+                
+                cell.deviceName = UILabel()
+                cell.deviceName.translatesAutoresizingMaskIntoConstraints = false
+                cell.deviceName.font = Font.Regular(14)
+                cell.deviceName.textAlignment = .center
+                cell.deviceName.textColor = .white
+                
+                cell.roomLabel = UILabel()
+                cell.roomLabel.translatesAutoresizingMaskIntoConstraints = false
+                cell.roomLabel.font = Font.Regular(12)
+                cell.roomLabel.textAlignment = .center
+                cell.roomLabel.textColor = .white
+                
+                cell.addSubview(cell.deviceName)
+                cell.addSubview(cell.roomLabel)
+                
+                cell.deviceName.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
+                cell.deviceName.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10).isActive = true
+                cell.deviceName.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+                cell.deviceName.bottomAnchor.constraint(equalTo: cell.roomLabel.topAnchor).isActive = true
+                
+                cell.roomLabel.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
+                cell.roomLabel.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+                cell.roomLabel.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -10).isActive = true
+                
+                cell.deviceName.text = self.devices[indexPath.row].name
+                cell.roomLabel.text = self.devices[indexPath.row].room?.name
+                switch self.devices[indexPath.row].type {
+                case.Switch:
+                    cell.imageView?.image = UIImage(systemName: "switch.2")
+                    break
+                case .LightBulb:
+                    cell.imageView?.image = UIImage(systemName: "lightbulb.fill")
+                    break
+                case .StatelessProgrammableSwitch:
+                    cell.imageView?.image = UIImage(systemName: "switch.2")
+                    break
+                case .Occupancy:
+                    cell.imageView?.image = UIImage(systemName: "figure.walk")
+                    break
+                case .Contact:
+                    cell.imageView?.image = UIImage.fontAwesomeIcon(name: .doorOpen, style: .solid, textColor: .white, size: CGSize(width: 15, height: 15))
+                    break
+                default:
+                    cell.imageView?.image = UIImage(systemName: "questionmark")
+                }
+                
+                cell.imageView?.tintColor = .white
+                return cell
             }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "POP_UP_CELL", for: indexPath)
+                cell.textLabel?.textAlignment = .center
                 let devicePossibleActions = self.filteredActionsName //self.deviceDict[indexPath.section]["possible_actions"] as? [SceneActionsName]
                 cell.textLabel?.text = devicePossibleActions[indexPath.row].key
+                return cell
             }
-            return cell
         }else{
             let deviceSelectedActions = self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName]
             let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL", for: indexPath)

@@ -56,7 +56,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     var dataToTranferToWatch: [String: Any] = [:]
     var actionsName: [[String: Any]] = []
     
-    var rooms: [String] = []
+    var rooms: [RoomDto] = [RoomDto(JSON: ["name": NSLocalizedString("rooms.chip.all", comment: "")])!]
     var selectedRoomIndex = 0
 
     override func viewDidLoad() {
@@ -248,6 +248,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
 
     func loadData(fromPullRefresh: Bool = false){
+        self.homeVM!.getAllRooms()
         if (!fromPullRefresh) {
             let loadingString = self.labelLocalization.homeScreenProgressAlertTitle
             self.progressUtils.displayIndeterminateProgeress(title: loadingString, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
@@ -557,6 +558,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     private func setUpObservers(){
         self.observeAllDevices()
+        self.observeAllRooms()
         self.setScenesStreamObserver()
         self.setEditModeObserver()
         self.editingTableViewObserver()

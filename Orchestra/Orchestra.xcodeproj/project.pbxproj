@@ -24,6 +24,8 @@
 		5E29D7BE2689305A00325A9F /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7BD2689305900325A9F /* UIDeviceExtension.swift */; };
 		5E29D7C12689326900325A9F /* GenericWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7C02689326900325A9F /* GenericWebViewController.swift */; };
 		5E2B10E4267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */; };
+		5E44FF02268F552100CBB04F /* DeviceAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */; };
+		5E44FF03268F552100CBB04F /* DeviceAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */; };
 		6304590D2629B20000FA7F40 /* HubPairingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6304590B2629B20000FA7F40 /* HubPairingViewController.swift */; };
 		6304590E2629B20000FA7F40 /* HubPairingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6304590C2629B20000FA7F40 /* HubPairingViewController.xib */; };
 		63065A21263DA82000CBE30D /* LoginViewRxBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63065A20263DA82000CBE30D /* LoginViewRxBindingExtension.swift */; };
@@ -231,6 +233,8 @@
 		5E29D7BD2689305900325A9F /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		5E29D7C02689326900325A9F /* GenericWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericWebViewController.swift; sourceTree = "<group>"; };
 		5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerRxBindingExtension.swift; sourceTree = "<group>"; };
+		5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAlertTableViewCell.swift; sourceTree = "<group>"; };
+		5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceAlertTableViewCell.xib; sourceTree = "<group>"; };
 		6304590B2629B20000FA7F40 /* HubPairingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubPairingViewController.swift; sourceTree = "<group>"; };
 		6304590C2629B20000FA7F40 /* HubPairingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HubPairingViewController.xib; sourceTree = "<group>"; };
 		63065A20263DA82000CBE30D /* LoginViewRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRxBindingExtension.swift; sourceTree = "<group>"; };
@@ -560,6 +564,8 @@
 				630B100F261E2A9900B41804 /* SceneViewController.xib */,
 				63FFB10126753FD60040B4FC /* DevicesAlert.xib */,
 				63FFB103267543840040B4FC /* DevicesAlert.swift */,
+				5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */,
+				5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -1291,6 +1297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E44FF03268F552100CBB04F /* DeviceAlertTableViewCell.xib in Resources */,
 				635DD4E8261A0640001D1EFC /* SignupViewController.xib in Resources */,
 				6322682726458FB70037672D /* InfoPlist.strings in Resources */,
 				63D1A959266171EC00DEDB96 /* NewDevicePairingViewController.xib in Resources */,
@@ -1531,6 +1538,7 @@
 				635DD4E7261A0640001D1EFC /* SignupViewController.swift in Sources */,
 				63526479268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift in Sources */,
 				639E43A4263F03450042951E /* Slide.swift in Sources */,
+				5E44FF02268F552100CBB04F /* DeviceAlertTableViewCell.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				633E7E742610D6660094B148 /* HouseDto.swift in Sources */,
 				63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */,

@@ -109,6 +109,10 @@ public class NotificationLocalizableUtils {
     let roomCreationAlertMessage = NSLocalizedString("room.creation.alert.message", comment: "")
     let roomCreationAlertSave = NSLocalizedString("room.creation.alert.action.save", comment: "")
     
+    let deviceFormCancelButtonTitle = NSLocalizedString("device.form.cancel.alert.cancel.button", comment: "")
+    let deviceFormCancelAlertTitle = NSLocalizedString("device.form.cancel.alert.title", comment: "")
+    let deviceFormErrorMessage = NSLocalizedString("device.form.error.message", comment: "")
+    
     init() {
         
     }

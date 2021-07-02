@@ -169,6 +169,7 @@
 "device.form.cancel.alert.title" = "Warnung";
 "device.form.cancel.alert.message" = "Vous allez perdre toutes vos modifications, cette action est irréversible. Êtes-vous sûr de vouloir coninuer ?";
 "device.form.cancel.alert.cancel.button" = "Abbrechen";
+"device.form.error.message" = "Alle Ihre Geräte sind bereits hinzugefügt worden.";
 "device.form.cancel.alert.continue.button" = "Mach weiter";
 "device.form.back.btn" = "Rückkehr";
 

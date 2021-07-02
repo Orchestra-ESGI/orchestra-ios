@@ -169,6 +169,7 @@
 "device.form.cancel.alert.title" = "Waarschuwing";
 "device.form.cancel.alert.message" = "U verliest al uw wijzigingen, deze actie is onomkeerbaar. Weet je zeker dat je door wilt gaan?";
 "device.form.cancel.alert.cancel.button" = "Annuleren";
+"device.form.error.message" = "Al uw apparaten zijn al toegevoegd.";
 "device.form.cancel.alert.continue.button" = "Ga door";
 "device.form.back.btn" = "Terugkeer";
 

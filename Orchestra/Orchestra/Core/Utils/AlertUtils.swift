@@ -48,18 +48,34 @@ class AlertUtils {
         controller.present(alert, animated: true)
     }
     
+    var ac = UIAlertController()
+    
     func showAlertWithTf(for controller: UIViewController, title: String, message: String, actionName: String, style: UIAlertController.Style = .alert, completion: @escaping (String) -> Void){
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.addTextField()
+        self.ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.ac.addTextField { textField in
+            textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
+        }
         
         let submitAction = UIAlertAction(title: actionName, style: .default) { [unowned ac] _ in
             let textField = ac.textFields![0]
-            completion(textField.text!)
+            if (textField.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? true) {
+                textField.isError(numberOfShakes: 3.0, revert: true)
+            } else {
+                completion(textField.text!)
+            }
             // do something interesting with "answer" here
         }
+        submitAction.isEnabled = false
+        self.ac.addAction(submitAction)
         
-        ac.addAction(submitAction)
+        let cancelAction = UIAlertAction(title: self.labelLocalization.settingsAlertCancelTitle, style: .cancel, handler: nil)
+        self.ac.addAction(cancelAction)
         
         controller.present(ac, animated: true)
+    }
+    
+    @objc
+    func alertTextFieldDidChange(_ sender: UITextField) {
+        ac.actions[0].isEnabled = !(sender.text?.trimmingCharacters(in: .whitespaces).isEmpty ?? false)
     }
 }

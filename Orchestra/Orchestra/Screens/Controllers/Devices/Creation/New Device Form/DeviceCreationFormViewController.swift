@@ -96,8 +96,8 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     private func getHubRooms(){
         _ = self.homeViewModel!.getAllRooms().subscribe { rooms in
             self.rooms = rooms
-            self.currentRoom = rooms[0]
-            self.roomNameTextField.text = NSLocalizedString(rooms[0].name ?? "", comment: "")
+            self.currentRoom = self.device?.room ?? rooms[0]
+            self.roomNameTextField.text = NSLocalizedString(self.device?.room?.name ?? "", comment: "")
             self.view.addSubview(self.pickerViewPresenter)
         } onError: { err in
             print("err")
