@@ -121,12 +121,19 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 switch self.devices[indexPath.row].type {
                 case.Switch:
                     cell.imageView?.image = UIImage(systemName: "switch.2")
+                    break
                 case .LightBulb:
                     cell.imageView?.image = UIImage(systemName: "lightbulb.fill")
+                    break
                 case .StatelessProgrammableSwitch:
                     cell.imageView?.image = UIImage(systemName: "switch.2")
-                case .Sensor:
-                    cell.imageView?.image = UIImage.fontAwesomeIcon(name: .doorOpen, style: .solid, textColor: .white, size: CGSize(width: 20, height: 20))
+                    break
+                case .Occupancy:
+                    cell.imageView?.image = UIImage(systemName: "figure.walk")
+                    break
+                case .Contact:
+                    cell.imageView?.image = UIImage.fontAwesomeIcon(name: .doorOpen, style: .solid, textColor: .white, size: CGSize(width: 15, height: 15))
+                    break
                 default:
                     cell.imageView?.image = UIImage(systemName: "questionmark")
                 }

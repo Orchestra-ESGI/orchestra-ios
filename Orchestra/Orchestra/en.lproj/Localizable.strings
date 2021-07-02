@@ -161,13 +161,14 @@
 
 "scene.vc.cancel.alert.title" = "Warning";
 "scene.vc.cancel.alert.message" = "You will lose all your changes, this action is irreversible. Are you sure you want to continue?";
-"scene.vc.cancel.alert.cancel.button" = "To cancel";
+"scene.vc.cancel.alert.cancel.button" = "Cancel";
 "scene.vc.cancel.alert.continue.button" = "Continue";
 "scene.vc.back.btn" = "Back";
 
 "device.form.cancel.alert.title" = "Warning";
 "device.form.cancel.alert.message" = "You will lose all your changes, this action is irreversible. Are you sure you want to continue?";
-"device.form.cancel.alert.cancel.button" = "To cancel";
+"device.form.cancel.alert.cancel.button" = "Cancel";
+"device.form.error.message" = "All your devices have already been added.";
 "device.form.cancel.alert.continue.button" = "Continue";
 "device.form.back.btn" = "Back";
 

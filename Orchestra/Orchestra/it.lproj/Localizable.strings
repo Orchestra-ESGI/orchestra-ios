@@ -169,6 +169,7 @@
 "device.form.cancel.alert.title" = "Avvertimento";
 "device.form.cancel.alert.message" = "Perderai tutte le modifiche, questa azione è irreversibile. Sei sicuro di voler continuare?";
 "device.form.cancel.alert.cancel.button" = "Per cancellare";
+"device.form.error.message" = "Tutti i tuoi dispositivi sono già stati aggiunti.";
 "device.form.cancel.alert.continue.button" = "Continua";
 "device.form.back.btn" = "Ritorno";
 

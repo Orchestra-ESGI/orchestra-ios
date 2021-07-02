@@ -116,11 +116,8 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eN1-Dd-G1U">
-                                    <rect key="frame" x="0.0" y="524" width="390" height="350"/>
+                                    <rect key="frame" x="0.0" y="524" width="390" height="256"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="350" id="DLY-ov-u2G"/>
-                                    </constraints>
                                 </tableView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZM-tP-quZ">
                                     <rect key="frame" x="15" y="358" width="360" height="100"/>
@@ -181,6 +178,7 @@
                                 <constraint firstItem="8n5-ss-ZJ4" firstAttribute="top" secondItem="NJU-is-HXJ" secondAttribute="bottom" constant="25" id="VYh-dd-Eu3"/>
                                 <constraint firstItem="eN1-Dd-G1U" firstAttribute="leading" secondItem="FJC-bd-tCu" secondAttribute="leading" id="Y1O-cB-zDH"/>
                                 <constraint firstItem="ePV-6G-Ld9" firstAttribute="leading" secondItem="FJC-bd-tCu" secondAttribute="leading" constant="15" id="bB7-Z8-4s0"/>
+                                <constraint firstAttribute="bottom" secondItem="eN1-Dd-G1U" secondAttribute="bottom" constant="20" symbolic="YES" id="cj7-j4-Dsb"/>
                                 <constraint firstItem="eN1-Dd-G1U" firstAttribute="top" secondItem="ePV-6G-Ld9" secondAttribute="bottom" constant="30" id="dka-43-50a"/>
                                 <constraint firstItem="NJU-is-HXJ" firstAttribute="leading" secondItem="FJC-bd-tCu" secondAttribute="leading" constant="15" id="dnQ-L6-hGb"/>
                                 <constraint firstItem="F4n-Ci-DyU" firstAttribute="top" secondItem="oSC-Hw-W4X" secondAttribute="bottom" constant="15" id="e2T-Nc-6Pz"/>

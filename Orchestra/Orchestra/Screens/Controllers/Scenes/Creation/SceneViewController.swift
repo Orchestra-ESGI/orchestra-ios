@@ -375,21 +375,29 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.isPopUpVisible = true
         self.popUpType = 0
         if(devices.count == 0){
+            let cancelAction = UIAlertAction(title: self.notificationLocalize.deviceFormCancelButtonTitle, style: .default, handler: nil)
+            self.alertUtils.showAlert(for: self, title: self.notificationLocalize.deviceFormCancelAlertTitle, message: "Tous vos appareils ont déjà été ajoutés.", actions: [cancelAction])
             self.isPopUpVisible = false
         }else{
             let devicenameInScene = self.deviceDict.map { dict -> String in
                 return dict["friendly_name"] as! String
             }
 
-            self.devices = devices.filter { !devicenameInScene.contains($0.friendlyName) }
+            let typeFilter: [HubAccessoryType] = [.Contact, .Occupancy, .StatelessProgrammableSwitch]
+            self.devices = devices.filter { !devicenameInScene.contains($0.friendlyName) && !typeFilter.contains($0.type) }
             self.progressUtils.dismiss()
-            if(self.view.subviews.count >= 1){
-                self.alertDevice = DevicesAlert()
-                self.alertDevice?.delegate = self
-                self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneDeviceCustomViewTitle
-                self.view.addSubview(self.alertDevice!.parentView)
-                self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
-                self.alertDevice!.tableView.reloadData()
+            if (self.devices.count > 0) {
+                if(self.view.subviews.count >= 1){
+                    self.alertDevice = DevicesAlert()
+                    self.alertDevice?.delegate = self
+                    self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneDeviceCustomViewTitle
+                    self.view.addSubview(self.alertDevice!.parentView)
+                    self.setUpDevicesTableView(deviceAlert: self.alertDevice!)
+                    self.alertDevice!.tableView.reloadData()
+                }
+            } else {
+                let cancelAction = UIAlertAction(title: self.notificationLocalize.deviceFormCancelButtonTitle, style: .default, handler: nil)
+                self.alertUtils.showAlert(for: self, title: self.notificationLocalize.deviceFormCancelAlertTitle, message: "Tous vos appareils ont déjà été ajoutés.", actions: [cancelAction])
             }
         }
     }
