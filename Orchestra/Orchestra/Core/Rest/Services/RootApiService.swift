@@ -87,6 +87,24 @@ public class RootApiService{
             }
         }
     }
+    
+    func saveFcmToken(token: String) {
+        var body: [String: Any] = [:]
+        body["token"] = token
+        AF.request("\(RootApiService.BASE_API_URL)/notification", method: .post, parameters: body, encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                    case .success( _):
+                        guard let _ =  response.value else {
+                            print("Error saving token")
+                            return
+                        }
+                    case .failure( _):
+                        print("Error saving token")
+                    }
+            }
+    }
 }
 
 enum ServerError: Error {
