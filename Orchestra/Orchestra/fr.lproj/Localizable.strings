@@ -150,6 +150,7 @@
 "double" = "Clique double";
 "long" = "Clique long";
 
+
 "scene.form.name.label.text" = "Nom";
 "scene.form.name.tf.textt" = "\"Allumer la lumière au coucher du soleil\"";
 "scene.form.bg.color.label.text" = "Choisissez une couleur";
@@ -323,6 +324,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Description";
+"scene.info.trigger.label" = "Déclencheur";
 "scene.info.action.list.title.label" = "Actions";
 
 // - MARK: Device Form

@@ -318,6 +318,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Descrizione";
+"scene.info.trigger.label" = "Grilletto";
 "scene.info.action.list.title.label" = "Azioni";
 
 // - MARK: Device Form

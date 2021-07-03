@@ -317,6 +317,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Beschreibung";
+"scene.info.trigger.label" = "Auslösen";
 "scene.info.action.list.title.label" = "Aktionen";
 
 // - MARK: Device Form
