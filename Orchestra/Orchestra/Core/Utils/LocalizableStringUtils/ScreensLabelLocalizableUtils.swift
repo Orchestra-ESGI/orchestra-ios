@@ -90,6 +90,7 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Scene info Labels & text
     let sceneInfoStartingSceneProgressAlertTitle = NSLocalizedString("scene.info.startnig.progress.alert.title", comment: "")
     let sceneInfoDesciptionLabel = NSLocalizedString("scene.info.descritpion.label", comment: "")
+    let sceneInfoTriggerLabel = NSLocalizedString("scene.info.trigger.label", comment: "")
     let sceneInfoActionListTitleLabel = NSLocalizedString("scene.info.action.list.title.label", comment: "")
 
     // - MARK: New scene Labels & text

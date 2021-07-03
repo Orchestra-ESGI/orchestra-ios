@@ -317,6 +317,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "描述";
+"scene.info.trigger.label" = "扳机";
 "scene.info.action.list.title.label" = "行动";
 
 // - MARK: Device Form
