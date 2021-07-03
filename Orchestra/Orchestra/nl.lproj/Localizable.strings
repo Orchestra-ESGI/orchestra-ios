@@ -155,7 +155,7 @@
 
 "new.scene.successfully.created.title" = "Toegevoegd!";
 "new.scene.successfully.created.subtitle" = "De scène is toegevoegd!";
-"new.scene.unsuccessfully.created.title" = "Ajout impossible!";
+"new.scene.unsuccessfully.created.title" = "Toevoeging niet mogelijk!";
 "new.scene.unsuccessfully.created.subtitle" = "De scène is niet toegevoegd, probeer het opnieuw!";
 "new.scene.close.custom.view.button.title" = "Sluiten";
 "new.scene.device.custom.view.title" = "Kies een apparaat";
@@ -175,7 +175,7 @@
 "device.form.back.btn" = "Terugkeer";
 
 "scene.vc.noaction.alert.title" = "Onmogelijke actie!";
-"scene.vc.noaction.alert.message" = "U kunt geen scène maken zonder acties";
+"scene.vc.noaction.alert.message" = "U kunt geen scène of automatisering maken zonder acties";
 "scene.vc.noaction.alert.cancel.button" = "Oke";
 
 // - MARK: Actions
@@ -221,7 +221,7 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Een apparaat toevoegen";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "Een apparaat configureren";
 "progress.notification.config.finished.title" = "Laden van de voltooide configuratie";
 
 // - MARK: Watch

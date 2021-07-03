@@ -179,7 +179,7 @@
 "device.form.back.btn" = "Retour";
 
 "scene.vc.noaction.alert.title" = "Action impossible!";
-"scene.vc.noaction.alert.message" = "Vous ne pouvez pas créer une scène sans actions";
+"scene.vc.noaction.alert.message" = "Vous ne pouvez pas créer une scène ou une automatiosation sans actions";
 "scene.vc.noaction.alert.cancel.button" = "D'accord";
 
 // - MARK: Actions

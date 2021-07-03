@@ -175,7 +175,7 @@
 "device.form.back.btn" = "返回";
 
 "scene.vc.noaction.alert.title" = "不可能的行动!";
-"scene.vc.noaction.alert.message" = "没有动作就无法创建场景";
+"scene.vc.noaction.alert.message" = "没有动作就无法创建场景或自动化";
 "scene.vc.noaction.alert.cancel.button" = "协议";
 
 // - MARK: Actions

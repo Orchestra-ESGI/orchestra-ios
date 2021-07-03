@@ -174,9 +174,9 @@
 "device.form.cancel.alert.continue.button" = "Continuar";
 "device.form.back.btn" = "Retornar";
 
-"scene.vc.noaction.alert.title" = "Action impossible!";
-"scene.vc.noaction.alert.message" = "Vous ne pouvez pas créer une scène sans actions";
-"scene.vc.noaction.alert.cancel.button" = "D'accord";
+"scene.vc.noaction.alert.title" = "Ação impossível!";
+"scene.vc.noaction.alert.message" = "Você não pode criar uma cena ou automação sem ações";
+"scene.vc.noaction.alert.cancel.button" = "OK";
 
 // - MARK: Actions
 "device.action.state.on" = "Ligue o aparelho";
@@ -221,7 +221,7 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Adicionar um dispositivo";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "Configurar um dispositivo";
 "progress.notification.config.finished.title" = "Carregamento da configuração completa";
 
 // - MARK: Watch
@@ -263,7 +263,7 @@
 
 // - MARK: Signup Network Auth Alert
 "signup.local.network.auth.alert.title" = "Ação necessária";
-"signup.local.network.auth.alert.message" = "Une erreur est survenue, cela peut venir de deux choses possibles: 1) Vérifiez que votre Hub Orchestra esAção necessáriat correctement connecté à votre box. 2) verifiez que vous avez donnez l'autorisation à Orchestra d'accéder à votre réseau local dans les paramètres. Reéssayez ensuite";
+"signup.local.network.auth.alert.message" = "Ocorreu um erro, que pode dever-se a duas coisas possíveis: 1) Verifique se o Hub Orchestra esAção necessáriat está correctamente ligado à sua caixa. 2) Verifique se você deu permissão à Orquestra para acessar sua rede local nas configurações. Então tente novamente";
 "signup.local.network.auth.alert.action.title.label" = "Ir para parâmetros";
 
 

@@ -175,7 +175,7 @@
 "device.form.back.btn" = "Regreso";
 
 "scene.vc.noaction.alert.title" = "¡Acción imposible!";
-"scene.vc.noaction.alert.message" = "No puedes crear una escena sin acciones.";
+"scene.vc.noaction.alert.message" = "No puedes crear una escena o automatización sin acciones";
 "scene.vc.noaction.alert.cancel.button" = "Vale";
 
 // - MARK: Actions
@@ -216,12 +216,12 @@
 // - MARK: Home Screen Nav Bar plus button alert
 "home.screen.new.scene.alert" = "Añadir una escena";
 "home.screen.new.device.alert" = "Añadir un objeto";
-"home.screen.new.room.alert" = "Ajouter une pièce";
+"home.screen.new.room.alert" = "Agregar una habitación";
 "home.screen.new.automation.alert" = "Agregue una automatización";
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Añadir un dispositivo";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "Configurar un dispositivo";
 "progress.notification.config.finished.title" = "Carga de la configuración completada";
 
 // - MARK: Watch

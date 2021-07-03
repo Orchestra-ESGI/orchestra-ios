@@ -125,17 +125,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-    }
-
     private func setUpTriggersData(){
         self.getTriggersFromAllDevices()
         self.parseTriggerDevices()

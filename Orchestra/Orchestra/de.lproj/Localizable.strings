@@ -168,14 +168,14 @@
 "scene.vc.back.btn" = "Rückkehr";
 
 "device.form.cancel.alert.title" = "Warnung";
-"device.form.cancel.alert.message" = "Vous allez perdre toutes vos modifications, cette action est irréversible. Êtes-vous sûr de vouloir coninuer ?";
+"device.form.cancel.alert.message" = "Sie verlieren alle Ihre Änderungen, diese Aktion ist irreversibel. Sind Sie sicher, dass Sie fortfahren möchten?";
 "device.form.cancel.alert.cancel.button" = "Abbrechen";
 "device.form.error.message" = "Alle Ihre Geräte sind bereits hinzugefügt worden.";
 "device.form.cancel.alert.continue.button" = "Mach weiter";
 "device.form.back.btn" = "Rückkehr";
 
 "scene.vc.noaction.alert.title" = "Unmögliche Aktion!";
-"scene.vc.noaction.alert.message" = "Sie können keine Szene ohne Aktionen erstellen";
+"scene.vc.noaction.alert.message" = "Sie können keine Szene oder Automation ohne Aktionen erstellen";
 "scene.vc.noaction.alert.cancel.button" = "Okay";
 
 // - MARK: Actions
@@ -221,7 +221,7 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Ein Objekt hinzufügen";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "Konfigurieren Sie ein Gerät";
 "progress.notification.config.finished.title" = "Laden der fertigen Konfiguration";
 
 // - MARK: Watch
@@ -300,7 +300,7 @@
 "device.actions.off.label.title" = "Ausschalten";
 "device.actions.noaction.label.title" = "Auf dieses Objekt ist keine Aktion möglich, aber Sie können es zum Erstellen von Szenen verwenden";
 
-"device.detail.configuration.needed.alert.title" = "Configuration demandée!";
+"device.detail.configuration.needed.alert.title" = "Konfiguration erbeten!";
 "device.detail.configuration.needed.alert.message" = "Um dieses Apprail vollständig nutzen zu können, ist eine zusätzliche Konfiguration erforderlich. Wenn diese Konfiguration nicht vorgenommen wird, kann das Objekt nicht funktionieren! ";
 "device.detail.configuration.needed.alert.cancel.action" = "Später";
 "device.detail.configuration.needed.alert.go.action" = "Los geht's!";

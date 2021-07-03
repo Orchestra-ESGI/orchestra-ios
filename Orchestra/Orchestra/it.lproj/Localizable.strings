@@ -175,7 +175,7 @@
 "device.form.back.btn" = "Ritorno";
 
 "scene.vc.noaction.alert.title" = "Azione impossibile!";
-"scene.vc.noaction.alert.message" = "Non puoi creare una scena senza azioni";
+"scene.vc.noaction.alert.message" = "Non puoi creare una scena o un'automazione senza azioni";
 "scene.vc.noaction.alert.cancel.button" = "Va bene";
 
 // - MARK: Actions
@@ -222,7 +222,7 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Aggiungere un dispositivo";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "Configura un dispositivo";
 "progress.notification.config.finished.title" = "Caricare la configurazione completata";
 
 // - MARK: Watch
@@ -311,7 +311,7 @@
 "default.ok" = "OK";
 
 "configuration.error.alert.title" = "Si è verificato un errore";
-"configuration.error.alert.message" = "Impossible de récupérer la configartion actuelle du Hub";
+"configuration.error.alert.message" = "Impossibile recuperare la configurazione dell'hub corrente";
 
 "no.response.server.action.title" = "Chiudere";
 "undefined.value.dto" = "Undefined";
@@ -390,6 +390,6 @@
 "room.creation.ko.notification.title" = "L'aggiunta è fallita!";
 "room.creation.ko.notification.subtitle" = "La stanza non può essere aggiunta correttamente alla tua casa.";
 
-"room.creation.alert.title" = "Nouvelle pièce";
+"room.creation.alert.title" = "Nuova parte";
 "room.creation.alert.message" = "Attenzione: non potrai cambiare il nome della stanza, dovrai eliminarla e crearne un'altra";
 "room.creation.alert.action.save" = "registrare";

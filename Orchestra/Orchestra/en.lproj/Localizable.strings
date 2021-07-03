@@ -174,7 +174,7 @@
 "device.form.back.btn" = "Back";
 
 "scene.vc.noaction.alert.title" = "Impossible action!";
-"scene.vc.noaction.alert.message" = "You cannot create a scene without actions";
+"scene.vc.noaction.alert.message" = "You cannot create a scene or automation without actions";
 "scene.vc.noaction.alert.cancel.button" = "Okay";
 
 // - MARK: Actions
@@ -220,7 +220,7 @@
 
 // - MARK: Add New Device Screen (supported types)
 "new.device.controller.title" = "Add a device";
-"config.device.controller.title" = "Configurer un appareil";
+"config.device.controller.title" = "Configure a device";
 "progress.notification.config.finished.title" = "Configuration loaded successfully";
 
 
@@ -379,7 +379,7 @@
 "add.device.screen.state.failure.title" = "Oops!";
 "add.device.screen.state.success.description" = "Your item has been correctly updated!";
 "add.device.screen.state.failure.description" = "Something went wrong during the update!";
-"add.device.screen.state.success.button" = "Revenir à l'accueil";
+"add.device.screen.state.success.button" = "Return to home";
 "add.device.screen.state.failure.button" = "Retry";
 
 // - MARK: Rooms
