@@ -42,11 +42,16 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     var objectsToRemove: [HubAccessoryConfigurationDto] = []
     var scenesToRemove: [SceneDto] = []
+    var automationToRemove: [AutomationDto] = []
 
     var hubDevices: [HubAccessoryConfigurationDto] = []
     var filtereHubDevices: [HubAccessoryConfigurationDto] = []
+    
     var homeScenes: [SceneDto] = []
     var filteredHomeScenes: [SceneDto] = []
+    
+    var homeAutomations: [AutomationDto] = []
+    var filteredAutomations: [AutomationDto] = []
     
     let isSchakingStream = PublishSubject<Bool>()
     let elementsToRemoveStream = PublishSubject<Bool>()
@@ -254,7 +259,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
             self.progressUtils.displayIndeterminateProgeress(title: loadingString, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
         }
 
-        self.homeVM!.loadAllDevicesAndScenes { successLoad in
+        self.homeVM!.loadHomData { successLoad in
             self.refreshHome(successLoad)
             self.refreshControl.endRefreshing()
         }
@@ -325,8 +330,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
 
     func startSceneActions(for indexPath: IndexPath){
-        print("Starting actions...")
+        print("Starting scene actions...")
         self.homeVM?.sceneVm?.playScene(id: self.homeScenes[indexPath.row].id)
+    }
+    
+    func startAutomationActions(for indexPath: IndexPath){
+        print("Starting automation actions...")
+        self.homeVM?.sceneVm?.playAutomation(id: self.homeAutomations[indexPath.row].id)
     }
 
     func shakeCells(){
@@ -370,18 +380,29 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     @objc func showSceneDetail(sender: UIButton){
         let sceneSelected = sender.tag
-        let sceneDetailVc = SceneDetailViewController()
-        sceneDetailVc.onDoneBlock = {
+        let isAutomation = sender.accessibilityLabel == "automation"
+        let detailVc = SceneDetailViewController()
+        detailVc.onDoneBlock = {
             self.loadData()
         }
-        let navigationCtr = UINavigationController(rootViewController: sceneDetailVc)
-        let sceneData = self.homeScenes[sceneSelected]
-        sceneDetailVc.sceneData = sceneData
-        let deviceInfoMap = self.hubDevices.map({ device  in
-            return [device.friendlyName : device.name!]
-        })
-        sceneDetailVc.devices = deviceInfoMap
-        sceneDetailVc.sceneDevices = self.hubDevices
+        
+        if(!isAutomation){
+            detailVc.sceneData = self.homeScenes[sceneSelected]
+            let deviceInfoMap = self.hubDevices.map({ device  in
+                return [device.friendlyName : device.name!]
+            })
+            detailVc.devices = deviceInfoMap
+            detailVc.sceneDevices = self.hubDevices
+        }else{
+            detailVc.automationData = self.homeAutomations[sceneSelected]
+            let deviceInfoMap = self.hubDevices.map({ device  in
+                return [device.friendlyName : device.name!]
+            })
+            detailVc.devices = deviceInfoMap
+            detailVc.sceneDevices = self.hubDevices
+            detailVc.isAutomation = true
+        }
+        let navigationCtr = UINavigationController(rootViewController: detailVc)
         self.navigationController?.present(navigationCtr, animated: true, completion: nil)
     }
 
@@ -407,7 +428,36 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
 
-        let removedDeviceObservable = self.homeVM!.clearObjectSelected { observer in
+        let removedDeviceObservable = self.removeDeviceObservable()
+        let removedSceneObservable = self.removeSceneObservable()
+        let removedAutomationObservable = self.removeAutomationObservable()
+
+        _ = Observable.combineLatest(removedDeviceObservable,
+                                     removedSceneObservable,
+                                     removedAutomationObservable){ (obs1, obs2, obs3) -> Bool in
+            return obs1 && obs2 && obs3
+        }.subscribe { (finished) in
+            self.isCellsShaking = !self.isCellsShaking
+            self.progressUtils.dismiss()
+            self.stopCellsShake()
+            if(finished.element!){
+                self.progressUtils.displayCheckMark(title: finishProgressAlertTitle, view: self.view)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    self.progressUtils.dismiss()
+                    self.collectionView.reloadData()
+                }
+            }else{
+                let errorDeletNotificationTitle = self.notificationLocalize.deleteDeviceErrorNotificationTitle
+                let errorDeletNotificationSubtitle = self.notificationLocalize.deleteDeviceErrorNotificationSubtitle
+                self.notificationUtils.showFloatingNotificationBanner(title: errorDeletNotificationTitle,
+                                                                      subtitle: errorDeletNotificationSubtitle,
+                                                                      position: .top, style: .danger)
+            }
+        }
+    }
+
+    private func removeDeviceObservable() -> Observable<Bool>{
+        return self.homeVM!.clearObjectSelected { observer in
             if(self.objectsToRemove.count > 0){
                 let deviceRemovedFriendlyNames = self.objectsToRemove.map { device -> String in
                     return device.friendlyName
@@ -439,7 +489,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     print("Err when removing device")
                     observer.onNext(false)
                 } onCompleted: {
-                    print("onCompleted() called in setScenesStreamObserver()")
+                    print("onCompleted() called in removeDeviceObservable()")
                     self.progressUtils.dismiss()
                     let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
                     self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
@@ -448,9 +498,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                 observer.onNext(true)
             }
         }
-
-
-        let removedSceneObservable = self.homeVM!.clearScenesSelected { observer in
+    }
+    
+    private func removeSceneObservable() -> Observable<Bool>{
+        return self.homeVM!.clearScenesSelected { observer in
             if(self.scenesToRemove.count > 0){
                 let sceneRemovedids = self.scenesToRemove.map { scene -> String in
                     return scene.id
@@ -481,7 +532,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                     print("Err when removing device")
                     observer.onNext(false)
                 } onCompleted: {
-                    print("onCompleted() called in setScenesStreamObserver()")
+                    print("onCompleted() called in removeSceneObservable()")
                     self.progressUtils.dismiss()
                     let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
                     self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
@@ -490,32 +541,49 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                 observer.onNext(true)
             }
         }
-
-        _ = Observable.combineLatest(removedDeviceObservable, removedSceneObservable){ (obs1, obs2) -> Bool in
-            return obs1 && obs2
-        }.subscribe { (finished) in
-            self.isCellsShaking = !self.isCellsShaking
-            self.progressUtils.dismiss()
-            self.stopCellsShake()
-            if(finished.element!){
-                self.progressUtils.displayCheckMark(title: finishProgressAlertTitle, view: self.view)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+    }
+    
+    private func removeAutomationObservable() -> Observable<Bool>{
+        return self.homeVM!.clearScenesSelected { observer in
+            if(self.automationToRemove.count > 0){
+                let automationRemovedids = self.automationToRemove.map { automation -> String in
+                    return automation.id
+                }
+                _ = self.homeVM!
+                    .removeAutomations(ids: automationRemovedids)
+                    .subscribe{ finished in
+                    if(finished){
+                        self.deleteSelectedAutomations()
+                        print("Automation deleted")
+                        observer.onNext(true)
+                    }else{
+                        observer.onNext(false)
+                    }
+                } onError: { err in
+                    let errorDeletNotificationTitle = self.notificationLocalize.deleteDeviceErrorNotificationTitle
+                    let errorDeletNotificationSubtitle = self.notificationLocalize.deleteDeviceErrorNotificationSubtitle
+                    self.notificationUtils.showFloatingNotificationBanner(title: errorDeletNotificationTitle,
+                                                                          subtitle: errorDeletNotificationSubtitle,
+                                                                          position: .top, style: .danger)
+                    print("Err when removing automation")
+                    observer.onNext(false)
+                } onCompleted: {
+                    print("onCompleted() called in removeAutomationObservable()")
                     self.progressUtils.dismiss()
+                    let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
+                    self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
                 }
             }else{
-                let errorDeletNotificationTitle = self.notificationLocalize.deleteDeviceErrorNotificationTitle
-                let errorDeletNotificationSubtitle = self.notificationLocalize.deleteDeviceErrorNotificationSubtitle
-                self.notificationUtils.showFloatingNotificationBanner(title: errorDeletNotificationTitle,
-                                                                      subtitle: errorDeletNotificationSubtitle,
-                                                                      position: .top, style: .danger)
+                observer.onNext(true)
             }
         }
     }
-
+    
     private func deleteSelectedObjects(){
         self.hubDevices = self.hubDevices.filter { (object) -> Bool in
             return !self.objectsToRemove.contains(object)
         }
+        self.filtereHubDevices = self.hubDevices
         self.objectsToRemove.removeAll()
     }
 
@@ -523,7 +591,16 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.homeScenes = self.homeScenes.filter({ (scene) -> Bool in
             return !self.scenesToRemove.contains(scene)
         })
+        self.filteredHomeScenes = self.homeScenes
         self.scenesToRemove.removeAll()
+    }
+    
+    private func deleteSelectedAutomations(){
+        self.homeAutomations = self.homeAutomations.filter({ (scene) -> Bool in
+            return !self.automationToRemove.contains(scene)
+        })
+        self.filteredAutomations = self.homeAutomations
+        self.automationToRemove.removeAll()
     }
 
 
@@ -560,6 +637,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.observeAllDevices()
         self.observeAllRooms()
         self.setScenesStreamObserver()
+        self.setAutomationsStreamObserver()
         self.setEditModeObserver()
         self.editingTableViewObserver()
     }

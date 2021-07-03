@@ -69,6 +69,7 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Home Labels & text
     let homeHeaderObjectsText = NSLocalizedString("home.collection.header.objects", comment: "")
     let homeHeaderScenesText = NSLocalizedString("home.collection.header.scenes", comment: "")
+    let homeHeaderAutomationText = NSLocalizedString("home.collection.header.automations", comment: "")
     let objectCellReachabilityStatusOkLabelText = NSLocalizedString("home.object.cell.reachability.status.ok.label.text", comment: "")
     let objectCellReachabilityStatusKoLabelText = NSLocalizedString("home.object.cell.reachability.status.ko.label.text", comment: "")
     let floatyButtonPairingButtonTitle = NSLocalizedString("floaty.pairing.item.title", comment: "")

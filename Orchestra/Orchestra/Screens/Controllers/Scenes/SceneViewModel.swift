@@ -14,6 +14,7 @@ class SceneViewModel{
     let sceneService = SceneServices()
     let scenesStream = PublishSubject<[SceneDto]>()
     let sceneValidStream = PublishSubject<Bool>()
+    let automationStream = PublishSubject<[AutomationDto]>()
     
     // MARK: Utils
     let labelLocalization = ScreensLabelLocalizableUtils.shared
@@ -71,6 +72,10 @@ class SceneViewModel{
         return self.sceneService.removeScene(idsScene: ids)
     }
     
+    func removeAutomations(ids: [String]) -> Observable<Bool>{
+        return self.sceneService.removeAutomations(idsAutomations: ids)
+    }
+    
     func sendScene(body: [String: Any], httpMethode: CallMethod) -> Observable<Bool>{
         switch httpMethode {
         case .Patch:
@@ -101,7 +106,23 @@ class SceneViewModel{
         return self.sceneService.getAllScenes()
     }
     
+    func getAllAutomations() -> Observable<Bool> {
+        _ = self.sceneService.automationStream.subscribe { scenes in
+            self.automationStream.onNext(scenes)
+        } onError: { err in
+            self.automationStream.onError(err)
+        } onCompleted: {
+            self.automationStream.onCompleted()
+        }
+
+        return self.sceneService.getAllAutomations()
+    }
+    
     func playScene(id: String){
-        self.sceneService.launchScene(id: id)
+        self.sceneService.playActions(id: id)
+    }
+    
+    func playAutomation(id: String){
+        self.sceneService.playActions(id: id, forAutomation: true)
     }
 }

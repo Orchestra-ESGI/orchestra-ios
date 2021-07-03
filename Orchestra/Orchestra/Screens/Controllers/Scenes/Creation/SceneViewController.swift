@@ -50,6 +50,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     // MARK: - Local data
     var dataDelegate: SendBackDataProtocol?
     var sceneToEdit: SceneDto?
+    var automationToEdit: AutomationDto?
     var alertDevice: DevicesAlert?
     var onDoneBlock : (() -> Void)?
 
@@ -94,6 +95,21 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.setActionsTableView()
         self.generatesBackGroundColor()
         self.clickObservers()
+        self.handleAutomationUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func handleAutomationUI(){
         if(self.isAutomation){
             self.automationDynamicContainerHeight.constant = CGFloat(100)
             self.setUpTriggersData()
@@ -161,6 +177,13 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     private func setUpTextFields(){
         self.sceneNameTf.delegate = self
         self.sceneDescriptionTf.delegate = self
+        if(!self.isAutomation){
+            self.sceneNameTf.text = self.sceneToEdit?.name ?? ""
+            self.sceneDescriptionTf.text = self.sceneToEdit?.sceneDescription ?? ""
+        }else{
+            self.sceneNameTf.text = self.automationToEdit?.name ?? ""
+            self.sceneDescriptionTf.text = self.automationToEdit?.automationDescription ?? ""
+        }
     }
 
     private func setUpStreamsObserver(){
@@ -230,9 +253,11 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.navigationItem.hidesBackButton = true
         let backButtonLabel = self.labelLocalization.sceneBackNavBarButton
         let newBackButton = UIBarButtonItem(title: backButtonLabel, style: .plain, target: self, action: #selector(handleBackClick(sender:)))
+        newBackButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         self.navigationItem.leftBarButtonItem = newBackButton
 
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "paperplane.fill"), style: .done, target: self, action: nil)
+        addSceneAppbarButon?.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         self.navigationItem.rightBarButtonItem = addSceneAppbarButon
 
         if(!self.isUpdating || !self.isAutomation){
@@ -311,10 +336,15 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
 
         if(self.isUpdating){
             var actionJson: [String: Any] = [:]
-            self.sceneNameTf.text = self.sceneToEdit?.name ?? ""
-            self.sceneDescriptionTf.text = self.sceneToEdit?.sceneDescription ?? ""
+            var deviceActions: Any
+            if(!self.isAutomation){
+                deviceActions = (self.sceneToEdit?.devices ?? [])
+            }else{
+                deviceActions = (self.automationToEdit?.targets ?? [])
+            }
             var deviceDictIndex = 0
-            for sceneDevice in (self.sceneToEdit?.devices ?? []){
+            
+            for sceneDevice in deviceActions as! [SceneAction]{
                 self.devices.filter { hubDevice in
                     return sceneDevice.friendlyName == hubDevice.friendlyName
                 }.forEach { device in
@@ -575,17 +605,20 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         automation["name"] = self.sceneNameTf.text!
         automation["color"] = self.sceneColors[self.selectedColor].toHexString()
         automation["description"] = self.sceneDescriptionTf.text!
-        automation["targets"] = self.deviceDict.map({ device -> [String: Any] in
-
-            let friendlyName = device["friendly_name"]!
-            let actions = device["actions"]!
-            return [
-                "friendly_name": friendlyName,
-                "actions": actions
-            ]
+        automation["targets"] = self.deviceDict.compactMap({ device -> [String: Any]? in
+            if(device["actions"] == nil){
+                return nil
+            }else{
+                let friendlyName = device["friendly_name"]!
+                let actions = device["actions"]!
+                return [
+                    "friendly_name": friendlyName,
+                    "actions": actions
+                ]
+            }
         })
         if(self.isUpdating){
-            automation["_id"] = self.sceneToEdit?.id ?? ""
+            automation["_id"] = self.automationToEdit?.id ?? ""
         }
         automation["trigger"] = [
             "type": self.triggerDevices[selectedTriggerDeviceIndex!].type.rawValue,

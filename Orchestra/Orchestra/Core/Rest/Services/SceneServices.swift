@@ -13,7 +13,8 @@ import RxCocoa
 
 class SceneServices{
     let rootApiService = RootApiService.shared
-    var sceneStream = PublishSubject<[SceneDto]>()
+    let sceneStream = PublishSubject<[SceneDto]>()
+    let automationStream = PublishSubject<[AutomationDto]>()
     
     func getAllScenes() -> Observable<Bool>{
         
@@ -67,6 +68,24 @@ class SceneServices{
         })
     }
     
+    func removeAutomations(idsAutomations: [String]) -> Observable<Bool>{
+
+        return Observable<Bool>.create({observer in
+            AF.request("\(RootApiService.BASE_API_URL)/automation", method: .delete, parameters: ["ids": idsAutomations], encoding: JSONEncoding.default, headers: self.rootApiService.headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                        case .success( _):
+                            observer.onNext(true)
+                        case .failure(_):
+                            print("Error - SceneServices - removeAutomations()")
+                            observer.onNext(false)
+                    }
+                }
+            return Disposables.create();
+        })
+    }
+    
     private func sendScene(scene: [String: Any], method: HTTPMethod) -> Observable<Bool>{
         return Observable<Bool>.create({observer in
             AF.request("\(RootApiService.BASE_API_URL)/scene", method: method, parameters: scene, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
@@ -111,6 +130,40 @@ class SceneServices{
         })
     }
     
+    func getAllAutomations() -> Observable<Bool>{
+        
+        return Observable<Bool>.create({observer in
+            AF.request("\(RootApiService.BASE_API_URL)/automation/all", method: .get, parameters: nil, headers: self.rootApiService.headers)
+                .validate(statusCode: 200..<300)
+                .responseJSON { response in
+                    switch response.result {
+                        case .success( _):
+                            guard let response =  response.value as? [String: Any],
+                                  let responseData = response["automations"] as? [[String: Any]]  else {
+                                self.automationStream.onNext([])
+                                observer.onNext(false)
+                                return
+                            }
+                            
+                            var allMappedScenes: [AutomationDto] = []
+                            for sceneJson in responseData {
+                                allMappedScenes.append(Mapper<AutomationDto>().map(JSONObject: sceneJson)!)
+                            }
+                            
+                            self.automationStream.onNext(allMappedScenes)
+                            observer.onNext(true)
+                        case .failure(_):
+                            let callResponse = response.response
+                            self.rootApiService.handleErrorResponse(stream: self.sceneStream,
+                                                                    response: callResponse)
+                            observer.onNext(false)
+                            print("Error - SceneServices - getAllAutomations()")
+                    }
+                }
+            return Disposables.create()
+        })
+    }
+    
     func createAutomation(automation: [String: Any]) -> Observable<Bool>{
         self.sendAutomation(automation: automation, method: .post)
     }
@@ -119,8 +172,16 @@ class SceneServices{
         self.sendAutomation(automation: automation, method: .patch)
     }
     
-    func launchScene(id: String){
-        _ = AF.request("\(RootApiService.BASE_API_URL)/scene/\(id)", method: .post, parameters: nil, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
+    func playActions(id: String, forAutomation auto: Bool = false){
+        if(!auto){
+            self.launchScene(id: id, target: "scene")
+        }else{
+            self.launchScene(id: id, target: "automation")
+        }
+    }
+    
+    private func launchScene(id: String, target: String){
+        _ = AF.request("\(RootApiService.BASE_API_URL)/\(target)/\(id)", method: .post, parameters: nil, encoding: JSONEncoding.default,  headers: self.rootApiService.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {

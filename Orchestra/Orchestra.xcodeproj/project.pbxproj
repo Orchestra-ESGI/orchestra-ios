@@ -150,6 +150,7 @@
 		63DB1C132645AA6D008B29D2 /* CurrentHouseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB1C112645AA6D008B29D2 /* CurrentHouseTableViewCell.swift */; };
 		63DB1C142645AA6D008B29D2 /* CurrentHouseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DB1C122645AA6D008B29D2 /* CurrentHouseTableViewCell.xib */; };
 		63DB1C162645B173008B29D2 /* BottomSheetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DB1C152645B173008B29D2 /* BottomSheetHeader.swift */; };
+		63DDFDD9268FB685005A81B9 /* AutomationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFDD8268FB685005A81B9 /* AutomationDto.swift */; };
 		63E1DA9F268CBA900023D830 /* RoomServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E1DA9E268CBA900023D830 /* RoomServices.swift */; };
 		63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E84FB0262B73F300AA9558 /* SceneDetailViewController.swift */; };
 		63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E84FB1262B73F300AA9558 /* SceneDetailViewController.xib */; };
@@ -388,6 +389,7 @@
 		63DB1C112645AA6D008B29D2 /* CurrentHouseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentHouseTableViewCell.swift; sourceTree = "<group>"; };
 		63DB1C122645AA6D008B29D2 /* CurrentHouseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentHouseTableViewCell.xib; sourceTree = "<group>"; };
 		63DB1C152645B173008B29D2 /* BottomSheetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetHeader.swift; sourceTree = "<group>"; };
+		63DDFDD8268FB685005A81B9 /* AutomationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationDto.swift; sourceTree = "<group>"; };
 		63E1DA9E268CBA900023D830 /* RoomServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomServices.swift; sourceTree = "<group>"; };
 		63E81DD22615D028003FD580 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63E81DD32615D028003FD580 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Interface.strings"; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				63D1A94D2661684800DEDB96 /* SupportedAccessoriesDto.swift */,
 				63D1A94F266168B900DEDB96 /* SupportedDevicesDto.swift */,
 				63526488268A8EC50018F5F6 /* RoomDto.swift */,
+				63DDFDD8268FB685005A81B9 /* AutomationDto.swift */,
 			);
 			path = Dto;
 			sourceTree = "<group>";
@@ -1557,6 +1560,7 @@
 				63D235E82639CC2200D2485F /* HomeVcUiBindingExtension.swift in Sources */,
 				63D1A96026617F9800DEDB96 /* DeviceTableViewCell.swift in Sources */,
 				63E1DA9F268CBA900023D830 /* RoomServices.swift in Sources */,
+				63DDFDD9268FB685005A81B9 /* AutomationDto.swift in Sources */,
 				634AF63D2622061300F6CBBE /* ObjectInfoTableViewCell.swift in Sources */,
 				631BAB1D2610EA38003F65F9 /* StringUtils.swift in Sources */,
 				633E7E7A2610D67B0094B148 /* SceneDto.swift in Sources */,

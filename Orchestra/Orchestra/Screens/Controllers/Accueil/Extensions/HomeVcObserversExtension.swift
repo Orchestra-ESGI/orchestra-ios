@@ -61,6 +61,25 @@ extension HomeViewController{
         }
     }
     
+    func setAutomationsStreamObserver(){
+        // Listen to scene stream and show them in TV
+        _ = self.homeVM!
+            .automationStream
+            .subscribe { (automations) in
+                self.homeAutomations = automations
+                self.filteredAutomations = automations
+        } onError: { (err) in
+            self.notificationUtils
+                .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
+            self.progressUtils.dismiss()
+        } onCompleted: {
+            print("onCompleted() called in setAutomationsStreamObserver()")
+            self.progressUtils.dismiss()
+            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
+            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
+        }
+    }
+    
     func setEditModeObserver(){
         // Listen to stream to know if cells are in edit mode
         self.isSchakingStream.subscribe { (isShaking) in

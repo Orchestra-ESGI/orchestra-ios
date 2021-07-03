@@ -49,7 +49,7 @@ extension HomeViewController: UICollectionViewDataSource{
         if(collectionView == self.roomsCollectionView){
             return 1
         }else{
-            return 2
+            return 3
         }
     }
 
@@ -60,8 +60,10 @@ extension HomeViewController: UICollectionViewDataSource{
         }else{
             if section == 0 {
                 return self.filtereHubDevices.count
-            }else {
+            }else if section == 1 {
                 return self.filteredHomeScenes.count
+            }else{
+                return self.filteredAutomations.count
             }
         }
     }
@@ -104,6 +106,8 @@ extension HomeViewController: UICollectionViewDataSource{
                 headerCell.headerTextLabel.text = self.labelLocalization.homeHeaderObjectsText
             }else if(indexPath.section == 1){
                 headerCell.headerTextLabel.text = self.labelLocalization.homeHeaderScenesText
+            }else if(indexPath.section == 2){
+                headerCell.headerTextLabel.text = self.labelLocalization.homeHeaderAutomationText
             }
             
             return headerCell
@@ -134,14 +138,17 @@ extension HomeViewController: UICollectionViewDataSource{
                 
                 self.filterDevices(for: indexPath)
                 self.filterScenes(for: indexPath)
+                //self.filterAutomation(for: indexPath)
                 
                 self.collectionView.reloadData()
                 self.roomsCollectionView.reloadData()
             }else{
                 if(indexPath.section == 0){
                     self.showInfoDetailAboutHubAccessory(for: indexPath)
-                }else{
+                }else if(indexPath.section == 1){
                     self.startSceneActions(for: indexPath)
+                }else{
+                    self.startAutomationActions(for: indexPath)
                 }
             }
         }
@@ -174,6 +181,7 @@ extension HomeViewController: UICollectionViewDataSource{
             })
         }
     }
+    
 }
 
 extension HomeViewController: UICollectionViewDelegate{

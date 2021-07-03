@@ -86,6 +86,22 @@ class SceneAction: NSObject, Mappable{
     }
 }
 
+class AutomationTrigger: NSObject, Mappable{
+    var friendlyName: String = ""
+    var type: String = ""
+    var actions: [String: Any] = [:]
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        self.friendlyName <- map["friendly_name"]
+        self.actions <- map["actions"]
+        self.type <- map["type"]
+    }
+}
+
 class Actions: NSObject, Mappable{
     var brightness: SliderAction?
     var color: ColorAction?

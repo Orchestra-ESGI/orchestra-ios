@@ -113,6 +113,7 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "Mis objetos";
 "home.collection.header.scenes" = "Mis escenas";
+"home.collection.header.automations" = "Mis automatizaciones";
 "home.object.cell.reachability.label.text" = "Disponibilidad";
 "home.object.cell.reachability.status.ok.label.text" = "Disponible";
 "home.object.cell.reachability.status.ko.label.text" = "No disponible";

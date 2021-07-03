@@ -113,6 +113,7 @@
 // - MARK: Home Labels and texts
 "home.collection.header.objects" = "我的对象";
 "home.collection.header.scenes" = "我的场景";
+"home.collection.header.automations" = "我的自动化";
 "home.object.cell.reachability.label.text" = "可用性";
 "home.object.cell.reachability.status.ok.label.text" = "可用";
 "home.object.cell.reachability.status.ko.label.text" = "不可用";

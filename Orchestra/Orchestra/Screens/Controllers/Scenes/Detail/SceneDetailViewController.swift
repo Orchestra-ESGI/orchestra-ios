@@ -28,6 +28,8 @@ class SceneDetailViewController: UIViewController {
     
     // MARK: Local data
     var sceneData: SceneDto?
+    var automationData: AutomationDto?
+    var isAutomation = false
     let sceneVM = SceneViewModel()
     var sceneDevices: [HubAccessoryConfigurationDto] = []
     var sceneActionsName: [String: [String]] = [:]
@@ -42,7 +44,11 @@ class SceneDetailViewController: UIViewController {
         self.setUpUI()
         self.setUpClickObserver()
         self.setUpTableView()
-        self.getActionsNameFromJson()
+        if(!self.isAutomation){
+            self.getActionsNameFromScene()
+        }else{
+            self.getActionsFromAutomation()
+        }
     }
     
     // MARK: UI setup
@@ -66,11 +72,19 @@ class SceneDetailViewController: UIViewController {
     }
     
     private func setUpTopBar(){
+        var titleColor = UIColor()
+        if(!self.isAutomation){
+            titleColor = self.colorUtils.hexStringToUIColor(hex: self.sceneData?.color ?? "")
+            self.title = self.sceneData?.name
+        }else{
+            titleColor = self.colorUtils.hexStringToUIColor(hex: self.automationData?.color ?? "")
+            self.title = self.automationData?.name
+        }
+        
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : self.colorUtils.hexStringToUIColor(hex: (self.sceneData?.color)!)]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : titleColor]
 
-        self.navigationController?.navigationBar.barTintColor = self.colorUtils.hexStringToUIColor(hex: (self.sceneData?.color)!)
-        self.title = self.sceneData?.name
+        self.navigationController?.navigationBar.barTintColor = titleColor
         
         //editSceneButton = UIBarButtonItem(title: "Éditer", style: .done, target: self, action: nil)
         if #available(iOS 14.0, *) {
@@ -90,18 +104,26 @@ class SceneDetailViewController: UIViewController {
         _ = self.editSceneButton?
                 .rx
                 .tap.bind{
-                    let currentScene = self.sceneData
-                    let updateSceneVC = SceneViewController()
-                    updateSceneVC.onDoneBlock = self.onDoneBlock
-                    updateSceneVC.devices = self.sceneDevices
-                    updateSceneVC.sceneToEdit = currentScene
-                    updateSceneVC.isUpdating = true
-                    self.navigationController?.pushViewController(updateSceneVC, animated: true)
+                    let updateVc = SceneViewController()
+                    updateVc.onDoneBlock = self.onDoneBlock
+                    if(!self.isAutomation){
+                        updateVc.sceneToEdit = self.sceneData
+                    }else{
+                        updateVc.automationToEdit = self.automationData
+                        updateVc.isAutomation = true
+                    }
+                    updateVc.devices = self.sceneDevices
+                    updateVc.isUpdating = true
+                    self.navigationController?.pushViewController(updateVc, animated: true)
             }
     }
     
     private func setUpLabels(){
-        self.descriptionTextView.text = self.sceneData?.sceneDescription
+        if(!self.isAutomation){
+            self.descriptionTextView.text = self.sceneData?.sceneDescription
+        }else{
+            self.descriptionTextView.text = self.automationData?.automationDescription
+        }
     }
     
     private func setUpTableView(){
@@ -111,12 +133,51 @@ class SceneDetailViewController: UIViewController {
         self.actionsTableView.tableFooterView = UIView()
     }
     
-    private func getActionsNameFromJson(){
-        guard let sceneDevices = self.sceneData?.devices else{
+    private func getActionsNameFromScene(){
+        guard let sceneActions = self.sceneData?.devices else{
             return
         }
         
-        for device in sceneDevices {
+        for device in sceneActions {
+            let deviceFriendlyName = device.friendlyName
+            let deviceName = self.devices.map { device -> String in
+                if(Array(device.keys)[0] == deviceFriendlyName){
+                    return device[deviceFriendlyName]!
+                }
+                return ""
+            }.filter{ $0 != ""}[0]
+            
+            var actions: [String] = []
+            for action in device.actions{
+                let actionType = action.key
+                var actionValue = ""
+                if action.value is [String: Any]{
+                    actionValue = "color"
+                }else{
+                    switch actionType {
+                    case "state":
+                        actionValue = action.value as! String
+                    default:
+                        actionValue = (action.value as! Int).description
+                    }
+                }
+                
+                
+                if let action = self.sceneVM.getSceneActionName(key: actionType, value: actionValue){
+                    actions.append(action)
+                }
+            }
+
+            self.sceneActionsName[deviceName] = actions
+        }
+    }
+    
+    private func getActionsFromAutomation(){
+        guard let automationDevices = self.automationData?.targets else{
+            return
+        }
+        
+        for device in automationDevices {
             let deviceFriendlyName = device.friendlyName
             let deviceName = self.devices.map { device -> String in
                 if(Array(device.keys)[0] == deviceFriendlyName){

@@ -27,6 +27,7 @@ class HomeViewModel{
     
     let sceneVm: SceneViewModel?
     let sceneStream = PublishSubject<[SceneDto]>()
+    let automationStream = PublishSubject<[AutomationDto]>()
     
     let roomVm = RoomServices()
     
@@ -36,11 +37,12 @@ class HomeViewModel{
         self.sceneVm = SceneViewModel()
     }
     
-    func loadAllDevicesAndScenes(completion: @escaping (Bool) -> Void){
+    func loadHomData(completion: @escaping (Bool) -> Void){
         _ = Observable.combineLatest(self.loadAllScenes(),
-                                     self.loadAllDevices())
-        { (obs1, obs2) -> Bool in
-            return obs1 && obs2
+                                     self.loadAllDevices(),
+                                     self.loadAllAutomations())
+        { (obs1, obs2, obs3) -> Bool in
+            return obs1 && obs2 && obs3
         }.subscribe { (finished) in
             if(finished.element != nil){
                 completion(finished.element!)
@@ -72,10 +74,22 @@ class HomeViewModel{
         } onError: { err in
             self.sceneStream.onError(err)
         } onCompleted: {
-            self.deviceStream.onCompleted()
+            self.sceneStream.onCompleted()
         }.disposed(by: self.disposeBag)
         
         return self.sceneVm!.getAllScenes()
+    }
+    
+    private func loadAllAutomations() -> Observable<Bool>{
+        _ = self.sceneVm!.automationStream.subscribe { scenes in
+            self.automationStream.onNext(scenes)
+        } onError: { err in
+            self.automationStream.onError(err)
+        } onCompleted: {
+            self.automationStream.onCompleted()
+        }.disposed(by: self.disposeBag)
+        
+        return self.sceneVm!.getAllAutomations()
     }
     
     func sendActionOnDevice(action: [String: Any]){
@@ -88,6 +102,10 @@ class HomeViewModel{
     
     func removeScenes(ids: [String]) -> Observable<Bool> {
         return self.sceneVm!.removeScenes(ids: ids)
+    }
+    
+    func removeAutomations(ids: [String]) -> Observable<Bool> {
+        return self.sceneVm!.removeAutomations(ids: ids)
     }
     
     func creatRoom(body: [String: Any]) -> Observable<Bool> {
