@@ -131,6 +131,8 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 case .Occupancy:
                     cell.imageView?.image = UIImage(systemName: "figure.walk")
                     break
+                case .TemperatureAndHumidity:
+                    cell.imageView?.image = UIImage(systemName: "thermometer")
                 case .Contact:
                     cell.imageView?.image = UIImage.fontAwesomeIcon(name: .doorOpen, style: .solid, textColor: .white, size: CGSize(width: 15, height: 15))
                     break
