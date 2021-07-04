@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automatisierung";
 
 "automation.trigger.label" = "Triggerobjekt";
-"automation.trigger.tf.hint" = "Triggerobjekt hinzufügen";
+"automation.trigger.tf.hint" = "Kein Auslöser";
 "single" = "Ein Klick";
 "double" = "Doppelklick";
 "long" = "Langer Klick";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Name";
 "scene.form.name.tf.textt" = "Schalten Sie das Licht bei Sonnenuntergang ein";
 "scene.form.bg.color.label.text" = "Wählen Sie eine Farbe";
 "scene.form.description.label.text" = "Beschreibung";
 "scene.form.description.tf.text" = "Schalten Sie das Licht ein, wenn es dunkel ist";
-"scene.form.add.action.button" = "Aktionen hinzufügen";
+"scene.form.add.action.button" = "Geräte hinzufügen";
 
 "new.scene.successfully.created.title" = "Hinzugefügt!";
 "new.scene.successfully.created.subtitle" = "Die Szene wurde hinzugefügt!";

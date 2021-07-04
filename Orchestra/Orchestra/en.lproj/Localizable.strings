@@ -140,17 +140,19 @@
 "automation.vc.title" = "Automating";
 
 "automation.trigger.label" = "Trigger object";
-"automation.trigger.tf.hint" = "Add a trigger object";
+"automation.trigger.tf.hint" = "No trigger";
 "single" = "Simple click";
 "double" = "Double click";
 "long" = "Long click";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Name";
 "scene.form.name.tf.textt" = "Turn on the light at sunset";
 "scene.form.bg.color.label.text" = "Choose a colour";
 "scene.form.description.label.text" = "Description";
 "scene.form.description.tf.text" = "Turn on the lights if it is dark";
-"scene.form.add.action.button" = "Add actions";
+"scene.form.add.action.button" = "Add devices";
 
 "new.scene.successfully.created.title" = "Added!";
 "new.scene.successfully.created.subtitle" = "The scene has been added!";

@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automazione";
 
 "automation.trigger.label" = "Oggetto trigger";
-"automation.trigger.tf.hint" = "Aggiungi un oggetto trigger";
+"automation.trigger.tf.hint" = "Nessun trigger";
 "single" = "Clic singolo";
 "double" = "Doppio click";
 "long" = "Clic lungo";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Nome";
 "scene.form.name.tf.textt" = "Accendere la luce al tramonto";
 "scene.form.bg.color.label.text" = "Scegliere un colore";
 "scene.form.description.label.text" = "Descrizione";
 "scene.form.description.tf.text" = "Accendere le luci se è buio";
-"scene.form.add.action.button" = "Aggiungere azioni";
+"scene.form.add.action.button" = "Aggiungi dispositivi";
 
 "new.scene.successfully.created.title" = "Aggiunto!";
 "new.scene.successfully.created.subtitle" = "La scena è stata aggiunta!";
