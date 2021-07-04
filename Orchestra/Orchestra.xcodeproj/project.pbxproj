@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DDCC4227F7B5916A16D7FB5 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1665323D5B9C35F4AC924EEE /* Pods_Orchestra_WatchKit_App.framework */; };
 		5E0E7757267E60CD005F2264 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E7756267E60CD005F2264 /* Font.swift */; };
 		5E0E7763267E6A35005F2264 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E0E7761267E6A34005F2264 /* Gilroy-Light.otf */; };
 		5E0E7764267E6A35005F2264 /* Gilroy-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E0E7761267E6A34005F2264 /* Gilroy-Light.otf */; };
@@ -18,12 +19,12 @@
 		5E0E776E267E741A005F2264 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E776C267E741A005F2264 /* StringExtension.swift */; };
 		5E1A1789267FA9820084FB9F /* QRCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */; };
 		5E1A178B267FC55D0084FB9F /* QRCodeReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */; };
+		5E29D7B32688CAD800325A9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */; };
 		5E29D7B82688E29300325A9F /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7B72688E29300325A9F /* MenuTableViewController.swift */; };
 		5E29D7BA2688EB6E00325A9F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7B92688EB6E00325A9F /* UIViewExtension.swift */; };
 		5E29D7BC26892B8400325A9F /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7BB26892B8300325A9F /* MailComposer.swift */; };
 		5E29D7BE2689305A00325A9F /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7BD2689305900325A9F /* UIDeviceExtension.swift */; };
 		5E29D7C12689326900325A9F /* GenericWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7C02689326900325A9F /* GenericWebViewController.swift */; };
-		5E29D7B32688CAD800325A9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */; };
 		5E2B10E4267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */; };
 		5E44FF02268F552100CBB04F /* DeviceAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */; };
 		5E44FF03268F552100CBB04F /* DeviceAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */; };
@@ -172,9 +173,8 @@
 		63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */; };
 		63FFB10226753FD60040B4FC /* DevicesAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FFB10126753FD60040B4FC /* DevicesAlert.xib */; };
 		63FFB104267543840040B4FC /* DevicesAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FFB103267543840040B4FC /* DevicesAlert.swift */; };
-		675071DF64A6045C7D54CB55 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B830D1061199514EB8C6BE /* Pods_Orchestra_WatchKit_Extension.framework */; };
-		C5EC397C9BD64F45D1FE1085 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34BB1D24F993C5F39C12311C /* Pods_Orchestra_WatchKit_App.framework */; };
-		D30DB4B30E1C8CAAAE2EFCFD /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8659C3B0BC12B66BD60527DF /* Pods_Orchestra.framework */; };
+		700D9FD6F2C01ED61BF174AA /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B76A1B3F7EB05E22DFECC517 /* Pods_Orchestra_WatchKit_Extension.framework */; };
+		C4027082B133ABE035549FFD /* Pods_Orchestra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6E9B5496B9FDEBB03CADDA /* Pods_Orchestra.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,22 +220,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		07B830D1061199514EB8C6BE /* Pods_Orchestra_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1ED5A469BF779889B080B646 /* Pods-Orchestra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.release.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.release.xcconfig"; sourceTree = "<group>"; };
-		34BB1D24F993C5F39C12311C /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1665323D5B9C35F4AC924EEE /* Pods_Orchestra_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB9E299328E9FB5E4E63DBE /* Pods-Orchestra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.debug.xcconfig"; sourceTree = "<group>"; };
+		4B6CAB9619069B6C07E7C2C1 /* Pods-Orchestra WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0E7756267E60CD005F2264 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		5E0E7761267E6A34005F2264 /* Gilroy-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Light.otf"; sourceTree = "<group>"; };
 		5E0E7762267E6A35005F2264 /* Gilroy-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-ExtraBold.otf"; sourceTree = "<group>"; };
 		5E0E776C267E741A005F2264 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewController.swift; sourceTree = "<group>"; };
 		5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderOverlay.swift; sourceTree = "<group>"; };
+		5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5E29D7B42688D32800325A9F /* Orchestra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orchestra.entitlements; sourceTree = "<group>"; };
 		5E29D7B72688E29300325A9F /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		5E29D7B92688EB6E00325A9F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		5E29D7BB26892B8300325A9F /* MailComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
 		5E29D7BD2689305900325A9F /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		5E29D7C02689326900325A9F /* GenericWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericWebViewController.swift; sourceTree = "<group>"; };
-		5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		5E29D7B42688D32800325A9F /* Orchestra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orchestra.entitlements; sourceTree = "<group>"; };
 		5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerRxBindingExtension.swift; sourceTree = "<group>"; };
 		5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAlertTableViewCell.swift; sourceTree = "<group>"; };
 		5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceAlertTableViewCell.xib; sourceTree = "<group>"; };
@@ -415,12 +415,12 @@
 		63FFB0FE26751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionsForDeviceAvailableViewController.xib; sourceTree = "<group>"; };
 		63FFB10126753FD60040B4FC /* DevicesAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicesAlert.xib; sourceTree = "<group>"; };
 		63FFB103267543840040B4FC /* DevicesAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesAlert.swift; sourceTree = "<group>"; };
-		8659C3B0BC12B66BD60527DF /* Pods_Orchestra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		97E6B36433727D64F2E784F0 /* Pods-Orchestra WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		B2A57A54E7776A42219D214E /* Pods-Orchestra WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
-		E087E88C747FDA981DE7BA4B /* Pods-Orchestra WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
-		EBC703208AD94D7ED6425C51 /* Pods-Orchestra WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
-		F0727A9EBAD3FB33C1DE64DE /* Pods-Orchestra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.debug.xcconfig"; sourceTree = "<group>"; };
+		6F6E9B5496B9FDEBB03CADDA /* Pods_Orchestra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A4E82392E68CD5724B929D /* Pods-Orchestra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra.release.xcconfig"; path = "Target Support Files/Pods-Orchestra/Pods-Orchestra.release.xcconfig"; sourceTree = "<group>"; };
+		B03D409E298E96F00C42F9A0 /* Pods-Orchestra WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		B76A1B3F7EB05E22DFECC517 /* Pods_Orchestra_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Orchestra_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D175A57EE61268C892910199 /* Pods-Orchestra WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		F843E460AE09DAC58D928E79 /* Pods-Orchestra WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orchestra WatchKit App.release.xcconfig"; path = "Target Support Files/Pods-Orchestra WatchKit App/Pods-Orchestra WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,7 +428,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5EC397C9BD64F45D1FE1085 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */,
+				3DDCC4227F7B5916A16D7FB5 /* Pods_Orchestra_WatchKit_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +436,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30DB4B30E1C8CAAAE2EFCFD /* Pods_Orchestra.framework in Frameworks */,
+				C4027082B133ABE035549FFD /* Pods_Orchestra.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,34 +444,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				675071DF64A6045C7D54CB55 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */,
+				700D9FD6F2C01ED61BF174AA /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0AF53B43EB22605CFE69BA4A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8659C3B0BC12B66BD60527DF /* Pods_Orchestra.framework */,
-				34BB1D24F993C5F39C12311C /* Pods_Orchestra_WatchKit_App.framework */,
-				07B830D1061199514EB8C6BE /* Pods_Orchestra_WatchKit_Extension.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3C234B1F80F51B1918CA428F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F0727A9EBAD3FB33C1DE64DE /* Pods-Orchestra.debug.xcconfig */,
-				1ED5A469BF779889B080B646 /* Pods-Orchestra.release.xcconfig */,
-				EBC703208AD94D7ED6425C51 /* Pods-Orchestra WatchKit App.debug.xcconfig */,
-				B2A57A54E7776A42219D214E /* Pods-Orchestra WatchKit App.release.xcconfig */,
-				97E6B36433727D64F2E784F0 /* Pods-Orchestra WatchKit Extension.debug.xcconfig */,
-				E087E88C747FDA981DE7BA4B /* Pods-Orchestra WatchKit Extension.release.xcconfig */,
+				2EB9E299328E9FB5E4E63DBE /* Pods-Orchestra.debug.xcconfig */,
+				80A4E82392E68CD5724B929D /* Pods-Orchestra.release.xcconfig */,
+				4B6CAB9619069B6C07E7C2C1 /* Pods-Orchestra WatchKit App.debug.xcconfig */,
+				F843E460AE09DAC58D928E79 /* Pods-Orchestra WatchKit App.release.xcconfig */,
+				B03D409E298E96F00C42F9A0 /* Pods-Orchestra WatchKit Extension.debug.xcconfig */,
+				D175A57EE61268C892910199 /* Pods-Orchestra WatchKit Extension.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5D5A2FCAF525BCA4696F0097 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F6E9B5496B9FDEBB03CADDA /* Pods_Orchestra.framework */,
+				1665323D5B9C35F4AC924EEE /* Pods_Orchestra_WatchKit_App.framework */,
+				B76A1B3F7EB05E22DFECC517 /* Pods_Orchestra_WatchKit_Extension.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5E0E7758267E63E1005F2264 /* Fonts */ = {
@@ -492,6 +492,14 @@
 			path = "QRCode-Reader";
 			sourceTree = "<group>";
 		};
+		5E29D7B12688CAD800325A9F /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
 		5E29D7B62688E26A00325A9F /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -506,14 +514,6 @@
 				5E29D7C02689326900325A9F /* GenericWebViewController.swift */,
 			);
 			path = WebView;
-			sourceTree = "<group>";
-		};
-		5E29D7B12688CAD800325A9F /* Google */ = {
-			isa = PBXGroup;
-			children = (
-				5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */,
-			);
-			path = Google;
 			sourceTree = "<group>";
 		};
 		5E2B10E2267F7F55003595CB /* Extensions */ = {
@@ -910,8 +910,8 @@
 				636F4725260A5F91001D8196 /* Orchestra WatchKit Extension */,
 				636F46FF260A5F8B001D8196 /* Products */,
 				3C234B1F80F51B1918CA428F /* Pods */,
-				0AF53B43EB22605CFE69BA4A /* Frameworks */,
 				5E29D7B12688CAD800325A9F /* Google */,
+				5D5A2FCAF525BCA4696F0097 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1206,13 +1206,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636F473C260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra" */;
 			buildPhases = (
-				83A51BF0C3515E443DD7A826 /* [CP] Check Pods Manifest.lock */,
+				E504514C861C7C40CA1CF678 /* [CP] Check Pods Manifest.lock */,
 				636F46FA260A5F8B001D8196 /* Sources */,
 				636F46FB260A5F8B001D8196 /* Frameworks */,
 				636F46FC260A5F8B001D8196 /* Resources */,
 				636F473B260A5F94001D8196 /* Embed Watch Content */,
-				11187FAB597C06EAF57F5DDB /* [CP] Embed Pods Frameworks */,
 				5E29D7B52688D4CF00325A9F /* ShellScript */,
+				F1741851C7F5F83D5A775599 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1228,7 +1228,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636F4738260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit App" */;
 			buildPhases = (
-				E90CBB2218EEC87F7BE32841 /* [CP] Check Pods Manifest.lock */,
+				615FD0A13B832794213526EE /* [CP] Check Pods Manifest.lock */,
 				636F4710260A5F8F001D8196 /* Resources */,
 				636F4737260A5F94001D8196 /* Embed App Extensions */,
 				00A852ECB76DB9266A5CE67E /* Frameworks */,
@@ -1247,11 +1247,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 636F4734260A5F94001D8196 /* Build configuration list for PBXNativeTarget "Orchestra WatchKit Extension" */;
 			buildPhases = (
-				8B1C4BA8B030166DEE3D5242 /* [CP] Check Pods Manifest.lock */,
+				C83DD628B03FE32D2DC8E619 /* [CP] Check Pods Manifest.lock */,
 				636F471D260A5F91001D8196 /* Sources */,
 				636F471E260A5F91001D8196 /* Frameworks */,
 				636F471F260A5F91001D8196 /* Resources */,
-				4C802F4FF7F4F107FBCE84D7 /* [CP] Embed Pods Frameworks */,
+				DA14FA51F407CF85ADC0EBE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1381,47 +1381,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11187FAB597C06EAF57F5DDB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C802F4FF7F4F107FBCE84D7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5E29D7B52688D4CF00325A9F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			inputPaths = (
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
@@ -1434,7 +1399,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
-		83A51BF0C3515E443DD7A826 /* [CP] Check Pods Manifest.lock */ = {
+		615FD0A13B832794213526EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1449,14 +1414,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Orchestra-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Orchestra WatchKit App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8B1C4BA8B030166DEE3D5242 /* [CP] Check Pods Manifest.lock */ = {
+		C83DD628B03FE32D2DC8E619 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1478,7 +1443,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E90CBB2218EEC87F7BE32841 /* [CP] Check Pods Manifest.lock */ = {
+		DA14FA51F407CF85ADC0EBE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Orchestra WatchKit Extension/Pods-Orchestra WatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E504514C861C7C40CA1CF678 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1493,11 +1475,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Orchestra WatchKit App-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Orchestra-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1741851C7F5F83D5A775599 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Orchestra/Pods-Orchestra-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1829,7 +1828,7 @@
 		};
 		636F4735260A5F94001D8196 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97E6B36433727D64F2E784F0 /* Pods-Orchestra WatchKit Extension.debug.xcconfig */;
+			baseConfigurationReference = B03D409E298E96F00C42F9A0 /* Pods-Orchestra WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -1852,7 +1851,7 @@
 		};
 		636F4736260A5F94001D8196 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E087E88C747FDA981DE7BA4B /* Pods-Orchestra WatchKit Extension.release.xcconfig */;
+			baseConfigurationReference = D175A57EE61268C892910199 /* Pods-Orchestra WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
@@ -1876,7 +1875,7 @@
 		};
 		636F4739260A5F94001D8196 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBC703208AD94D7ED6425C51 /* Pods-Orchestra WatchKit App.debug.xcconfig */;
+			baseConfigurationReference = 4B6CAB9619069B6C07E7C2C1 /* Pods-Orchestra WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1897,7 +1896,7 @@
 		};
 		636F473A260A5F94001D8196 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2A57A54E7776A42219D214E /* Pods-Orchestra WatchKit App.release.xcconfig */;
+			baseConfigurationReference = F843E460AE09DAC58D928E79 /* Pods-Orchestra WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1919,7 +1918,7 @@
 		};
 		636F473D260A5F94001D8196 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0727A9EBAD3FB33C1DE64DE /* Pods-Orchestra.debug.xcconfig */;
+			baseConfigurationReference = 2EB9E299328E9FB5E4E63DBE /* Pods-Orchestra.debug.xcconfig */;
 			buildSettings = {
 				API_SECRET = TOKEN;
 				API_URL = "http://localhost:8000";
@@ -1944,7 +1943,7 @@
 		};
 		636F473E260A5F94001D8196 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1ED5A469BF779889B080B646 /* Pods-Orchestra.release.xcconfig */;
+			baseConfigurationReference = 80A4E82392E68CD5724B929D /* Pods-Orchestra.release.xcconfig */;
 			buildSettings = {
 				API_SECRET = TOKEN;
 				API_URL = "http://localhost:8000";
