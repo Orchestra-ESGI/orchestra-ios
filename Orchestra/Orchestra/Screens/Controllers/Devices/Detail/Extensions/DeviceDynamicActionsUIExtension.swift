@@ -19,7 +19,9 @@ extension DeviceInfoViewController{
         let deviceType = self.deviceData?.type
         
         var lastElementInsertedYpos = CGFloat(0)
-        if(deviceType == .Occupancy || deviceType == .Contact || deviceType == .StatelessProgrammableSwitch){
+        if(deviceType == .Occupancy || deviceType == .Contact ||
+            deviceType == .StatelessProgrammableSwitch || deviceType == .TemperatureAndHumidity ||
+            deviceType == .Temperature || deviceType == .Humidity){
             self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
             lastElementInsertedYpos += 120
         }else if(self.deviceData?.type == .Unknown){
