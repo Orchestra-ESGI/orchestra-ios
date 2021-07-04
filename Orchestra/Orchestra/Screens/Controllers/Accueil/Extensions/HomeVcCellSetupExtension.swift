@@ -29,6 +29,9 @@ extension HomeViewController{
         case .Occupancy:
             objectCell.objectImageView.image = UIImage(systemName: "figure.walk")
             break
+        case .TemperatureAndHumidity:
+            objectCell.objectImageView.image = UIImage(systemName: "thermometer")
+            break
         case .Contact:
             objectCell.objectImageView.image = UIImage.fontAwesomeIcon(name: .doorOpen, style: .solid,
                                                                        textColor: .white, size: CGSize(width: 15, height: 15))
