@@ -55,6 +55,15 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         objectCell.addGestureRecognizer(longPressRecognizer)
         
+        objectCell.objectPlaceNameLabel.font = Font.Regular(14)
+        objectCell.objectPlaceNameLabel.textColor = .white
+        
+        objectCell.objectNameLabel.font = Font.Regular(14)
+        objectCell.objectNameLabel.textColor = .white
+        
+        objectCell.objectStatusLabel.font = Font.Regular(12)
+        objectCell.objectStatusLabel.textColor = .white
+        
         objectCell.objectPlaceNameLabel.text = self.filtereHubDevices[currentCellPos].name
         let roomNameLocalize = NSLocalizedString(self.filtereHubDevices[currentCellPos].room?.name ?? "", comment: "")
         objectCell.objectNameLabel.text = roomNameLocalize
@@ -95,11 +104,13 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         sceneCell.addGestureRecognizer(longPressRecognizer)
         var cellColor: String = ""
+        sceneCell.sceneDescription.font = Font.Regular(14)
+        sceneCell.sceneDescription.textColor = .white
         if(indexPath.section == 1){
-            sceneCell.sceneDescription .text = self.filteredHomeScenes[currentCellPos].name
+            sceneCell.sceneDescription.text = self.filteredHomeScenes[currentCellPos].name
             cellColor = self.filteredHomeScenes[currentCellPos].color ?? ""
         }else{
-            sceneCell.sceneDescription .text = self.filteredAutomations[currentCellPos].name
+            sceneCell.sceneDescription.text = self.filteredAutomations[currentCellPos].name
             cellColor = self.filteredAutomations[currentCellPos].color ?? ""
         }
         sceneCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: cellColor)

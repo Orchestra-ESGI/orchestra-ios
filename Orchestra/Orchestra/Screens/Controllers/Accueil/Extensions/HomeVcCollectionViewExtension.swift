@@ -73,7 +73,7 @@ extension HomeViewController: UICollectionViewDataSource{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath) as! MDCChipCollectionViewCell
             cell.chipView.titleLabel.text = NSLocalizedString(self.rooms[indexPath.row].name ?? "", comment: "")
             cell.chipView.titleLabel.textAlignment = .center
-            cell.chipView.titleFont = Font.Bold(18.0)
+            cell.chipView.titleFont = Font.Regular(18.0)
             cell.chipView.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .selected)
             let selectedChipColor = ColorUtils.ORCHESTRA_RED_COLOR
             let defaultChipColor = ColorUtils.ORCHESTRA_WHITE_COLOR
@@ -101,6 +101,12 @@ extension HomeViewController: UICollectionViewDataSource{
             return UICollectionReusableView()
         }else{
             let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SECTION_HEADER", for: indexPath) as! HeaderCollectionViewCell
+            
+            headerCell.backgroundColor = .clear
+            headerCell.headerTextLabel.backgroundColor = .clear
+            headerCell.headerView.backgroundColor = .clear
+            headerCell.headerTextLabel.font = Font.Bold(20)
+            headerCell.headerTextLabel.textColor = .white
 
             if(indexPath.section == 0){
                 headerCell.headerTextLabel.text = self.labelLocalization.homeHeaderObjectsText

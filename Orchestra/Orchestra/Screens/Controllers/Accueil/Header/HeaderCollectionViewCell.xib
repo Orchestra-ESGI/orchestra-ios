@@ -37,6 +37,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="7Gi-oF-zkT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1ve-hK-6hE"/>
                 <constraint firstItem="7Gi-oF-zkT" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="77W-VD-bcZ"/>
@@ -46,6 +47,7 @@
             </constraints>
             <connections>
                 <outlet property="headerTextLabel" destination="ewn-pB-fRb" id="RLK-EW-hbx"/>
+                <outlet property="headerView" destination="7Gi-oF-zkT" id="eZN-JD-Wmj"/>
             </connections>
             <point key="canvasLocation" x="139" y="104"/>
         </collectionViewCell>
