@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automatizando";
 
 "automation.trigger.label" = "Objeto de gatilho";
-"automation.trigger.tf.hint" = "Adicionar um objeto acionador";
+"automation.trigger.tf.hint" = "Sem gatilho";
 "single" = "Clique único";
 "double" = "Duplo click";
 "long" = "Clique longo";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Nome";
 "scene.form.name.tf.textt" = "Acender a luz ao pôr-do-sol";
 "scene.form.bg.color.label.text" = "Escolha um cuoleur";
 "scene.form.description.label.text" = "Descrição";
 "scene.form.description.tf.text" = "Acender as luzes se estiver escuro";
-"scene.form.add.action.button" = "Acrescentar acções";
+"scene.form.add.action.button" = "Adicionar dispositivos";
 
 "new.scene.successfully.created.title" = "Adicionado!";
 "new.scene.successfully.created.subtitle" = "A cena foi acrescentada!";

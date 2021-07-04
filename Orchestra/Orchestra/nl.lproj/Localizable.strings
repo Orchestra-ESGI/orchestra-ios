@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automatiseren";
 
 "automation.trigger.label" = "Trigger-object";
-"automation.trigger.tf.hint" = "Een triggerobject toevoegen";
+"automation.trigger.tf.hint" = "Geen trigger";
 "single" = "Enkele klik";
 "double" = "Dubbelklik";
 "long" = "Lange klik";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Naam";
 "scene.form.name.tf.textt" = "Doe het licht aan bij zonsondergang";
 "scene.form.bg.color.label.text" = "Kies een kleur";
 "scene.form.description.label.text" = "Beschrijving";
 "scene.form.description.tf.text" = "Doe de lichten aan als het donker is";
-"scene.form.add.action.button" = "Acties toevoegen";
+"scene.form.add.action.button" = "Apparaten toevoegen";
 
 "new.scene.successfully.created.title" = "Toegevoegd!";
 "new.scene.successfully.created.subtitle" = "De scène is toegevoegd!";

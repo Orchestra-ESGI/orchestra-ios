@@ -121,8 +121,10 @@ extension HomeViewController: UICollectionViewDataSource{
             }else{
                 if(indexPath.section == 0){
                     self.setUpDeviceCellSelected(collectionView, indexPath)
-                }else{
+                }else if(indexPath.section == 1){
                     self.setUpSceneCellSelected(collectionView, indexPath)
+                }else{
+                    self.setUpSelectedAutomation(collectionView, indexPath)
                 }
             }
         }else{

@@ -145,10 +145,14 @@
 "automation.vc.title" = "Automatisation";
 
 "automation.trigger.label" = "Objet déclancheur";
-"automation.trigger.tf.hint" = "Ajoutez un objet déclancheur";
+"automation.trigger.tf.hint" = "Aucun déclancheur";
 "single" = "Clique simple";
 "double" = "Clique double";
 "long" = "Clique long";
+"lt" = "<=";
+"gt" = ">=";
+"temperature" = "Température";
+"humidity" = "Humidité";
 
 
 "scene.form.name.label.text" = "Nom";
@@ -156,7 +160,7 @@
 "scene.form.bg.color.label.text" = "Choisissez une couleur";
 "scene.form.description.label.text" = "Description";
 "scene.form.description.tf.text" = "\"Allumer les lampes si il fait nuit\"";
-"scene.form.add.action.button" = "Ajouter";
+"scene.form.add.action.button" = "Ajouter des appareils";
 
 "new.scene.successfully.created.title" = "Ajout effecuté!";
 "new.scene.successfully.created.subtitle" = "La scène a été ajoutée!";
