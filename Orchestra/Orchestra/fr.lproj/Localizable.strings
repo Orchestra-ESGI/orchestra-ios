@@ -139,6 +139,8 @@
 "home.screen.default.title" = "Mon domicile";
 "home.screen.filter.title" = "Pièce";
 
+"home.empty.label" = "Aucun objet connecté dans votre domicile, ajoutez-en dès maintenant";
+
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nouvelle scène";
 "update.scene.vc.title" = "Modification";

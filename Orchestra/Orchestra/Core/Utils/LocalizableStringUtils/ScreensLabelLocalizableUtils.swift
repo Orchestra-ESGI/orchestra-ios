@@ -258,4 +258,6 @@ class ScreensLabelLocalizableUtils{
     
     let sceneBackNavBarButton = NSLocalizedString("scene.vc.back.btn", comment: "")
     let notifyLabel = NSLocalizedString("automation.and.scene.vc.notify.label", comment: "")
+    
+    let emptyHomeLabel = NSLocalizedString("home.empty.label", comment: "")
 }

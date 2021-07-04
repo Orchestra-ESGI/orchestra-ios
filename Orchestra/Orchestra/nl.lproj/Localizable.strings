@@ -135,6 +135,8 @@
 "home.screen.default.title" = "Mijn huis";
 "home.screen.filter.title" = "Kamer";
 
+"home.empty.label" = "Geen verbonden object in uw huis, voeg er nu een toe";
+
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nieuwe scène";
 "update.scene.vc.title" = "Wijziging";

@@ -17,11 +17,18 @@ extension HomeViewController{
             .subscribe { devices in
                 self.hubDevices = devices
                 self.filtereHubDevices = devices
+                if(devices.count == 0){
+                    self.isEmptyHome = true
+                    self.homeHasElementsToShow()
+                }
             } onError: { err in
                 self.progressUtils.dismiss()
                 self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème est survenu lors du chargement de votre domicile", position: .top, style: .danger)
                 print("error while fetching data")
             } onCompleted: {
+                self.isEmptyHome = true
+                self.homeHasElementsToShow()
+                
                 print("onCompleted() called in observeAllDevices()")
                 self.progressUtils.dismiss()
                 let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
@@ -54,6 +61,9 @@ extension HomeViewController{
                 .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
             self.progressUtils.dismiss()
         } onCompleted: {
+            self.isEmptyHome = true
+            self.homeHasElementsToShow()
+
             print("onCompleted() called in setScenesStreamObserver()")
             self.progressUtils.dismiss()
             let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
@@ -73,6 +83,9 @@ extension HomeViewController{
                 .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
             self.progressUtils.dismiss()
         } onCompleted: {
+            self.isEmptyHome = true
+            self.homeHasElementsToShow()
+            
             print("onCompleted() called in setAutomationsStreamObserver()")
             self.progressUtils.dismiss()
             let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage

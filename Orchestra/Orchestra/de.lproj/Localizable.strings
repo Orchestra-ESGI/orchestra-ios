@@ -135,6 +135,8 @@
 "home.screen.default.title" = "Mein Zuhause";
 "home.screen.filter.title" = "Zimmer";
 
+"home.empty.label" = "Nessun oggetto connesso in casa, aggiungine uno ora";
+
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Neue Szene";
 "update.scene.vc.title" = "Modifikation";

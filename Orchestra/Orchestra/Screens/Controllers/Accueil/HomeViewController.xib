@@ -12,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Orchestra" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="5TR-He-pgt" id="5Xa-kG-P03"/>
+                <outlet property="emptyHomeImageView" destination="sgS-WT-77F" id="F5h-8O-lFg"/>
+                <outlet property="emptyHomeLabel" destination="gjs-2K-v9o" id="XCA-mO-46S"/>
+                <outlet property="emptyHomeViewContainer" destination="Bkv-vP-Gso" id="3ab-Zo-VMI"/>
                 <outlet property="roomsCollectionView" destination="uDa-xG-HXr" id="DZ2-6K-UOf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,22 +47,57 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bkv-vP-Gso">
+                    <rect key="frame" x="20" y="134" width="374" height="708"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_house" translatesAutoresizingMaskIntoConstraints="NO" id="sgS-WT-77F">
+                            <rect key="frame" x="137" y="174" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="AfG-tf-LtN"/>
+                                <constraint firstAttribute="height" constant="100" id="fLb-AK-lrb"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aucun objet connecté dans votre domicile !" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjs-2K-v9o">
+                            <rect key="frame" x="0.0" y="304" width="374" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="pwN-Ka-sik"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="sgS-WT-77F" firstAttribute="centerX" secondItem="Bkv-vP-Gso" secondAttribute="centerX" id="1tf-dj-ZHU"/>
+                        <constraint firstItem="gjs-2K-v9o" firstAttribute="leading" secondItem="Bkv-vP-Gso" secondAttribute="leading" id="4Ia-EQ-ipQ"/>
+                        <constraint firstItem="gjs-2K-v9o" firstAttribute="centerY" secondItem="Bkv-vP-Gso" secondAttribute="centerY" id="5L0-Si-cre"/>
+                        <constraint firstAttribute="trailing" secondItem="gjs-2K-v9o" secondAttribute="trailing" id="9aj-lb-VRT"/>
+                        <constraint firstItem="gjs-2K-v9o" firstAttribute="centerX" secondItem="Bkv-vP-Gso" secondAttribute="centerX" id="L51-hr-sBm"/>
+                        <constraint firstItem="gjs-2K-v9o" firstAttribute="top" secondItem="sgS-WT-77F" secondAttribute="bottom" constant="30" id="jYX-jh-T59"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="uDa-xG-HXr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="350-3Q-qcY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bkv-vP-Gso" secondAttribute="trailing" constant="20" id="6id-Mc-5iG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5TR-He-pgt" secondAttribute="bottom" id="Ds4-2g-4jR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uDa-xG-HXr" secondAttribute="trailing" id="MUB-fz-q7C"/>
                 <constraint firstItem="5TR-He-pgt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QIQ-ik-hWz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Bkv-vP-Gso" secondAttribute="bottom" constant="20" id="R4o-u9-1gI"/>
                 <constraint firstItem="uDa-xG-HXr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Sf7-KF-3PU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5TR-He-pgt" secondAttribute="trailing" id="Ss0-zu-ah7"/>
+                <constraint firstItem="Bkv-vP-Gso" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="X56-dI-M5d"/>
                 <constraint firstItem="5TR-He-pgt" firstAttribute="top" secondItem="uDa-xG-HXr" secondAttribute="bottom" constant="5" id="knp-BB-h6L"/>
+                <constraint firstItem="Bkv-vP-Gso" firstAttribute="top" secondItem="uDa-xG-HXr" secondAttribute="bottom" constant="20" id="rU5-ZT-ZGP"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
         </view>
     </objects>
     <resources>
+        <image name="empty_house" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -135,6 +135,8 @@
 "home.screen.default.title" = "我的家";
 "home.screen.filter.title" = "房间";
 
+"home.empty.label" = "您家中没有连接的对象，现在添加一个";
+
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "新场景";
 "update.scene.vc.title" = "修改";

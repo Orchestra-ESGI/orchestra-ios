@@ -140,7 +140,7 @@
                                                 <action selector="showTriggersPickerView:" destination="-1" eventType="touchUpInside" id="lq1-lJ-MJg"/>
                                             </connections>
                                         </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="When Temp Sensor - temperature &gt;= 20 then" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RSn-Kn-8Mm">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="When Temp Sensor - temperature &gt;= 20 then" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RSn-Kn-8Mm">
                                             <rect key="frame" x="0.0" y="5" width="360" height="60"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>

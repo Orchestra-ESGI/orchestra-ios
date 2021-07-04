@@ -135,6 +135,8 @@
 "home.screen.default.title" = "Mi hogar";
 "home.screen.filter.title" = "Habitación";
 
+"home.empty.label" = "No hay ningún objeto conectado en su hogar, agregue uno ahora";
+
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nueva escena";
 "update.scene.vc.title" = "Modification";

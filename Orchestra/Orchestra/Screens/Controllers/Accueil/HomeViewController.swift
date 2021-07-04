@@ -18,6 +18,13 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var roomsCollectionView: UICollectionView!
     
+    // No device or scenes or automations view
+    
+    @IBOutlet weak var emptyHomeViewContainer: UIView!
+    @IBOutlet weak var emptyHomeImageView: UIImageView!
+    @IBOutlet weak var emptyHomeLabel: UILabel!
+    
+    
     var addSceneAppbarButon: UIBarButtonItem?
     var cancelButton: UIBarButtonItem?
     var trashButton: UIBarButtonItem?
@@ -36,6 +43,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     let disposeBag = DisposeBag()
     var userLoggedInData: UserDto?
     var isCellsShaking = false
+    var isEmptyHome = true
 
     var homeVM: HomeViewModel?
 
@@ -65,7 +73,8 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideHome()
+        self.localizeLabels()
         if(self.navigationController?.viewControllers.count ?? 0 > 1){
             self.clearControllerStack()
         }
@@ -89,7 +98,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.loadData()
@@ -99,6 +108,38 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         super.viewWillDisappear(animated)
         if isBeingDismissed {
             print("dismissed")
+        }
+    }
+    
+    private func localizeLabels(){
+        self.emptyHomeLabel.text = self.labelLocalization.emptyHomeLabel
+        self.emptyHomeLabel.font = Font.Bold(22)
+        self.emptyHomeLabel.textColor = .white
+    }
+    
+    private func hideHome(){
+        self.emptyHomeViewContainer.isHidden = true
+        self.emptyHomeImageView.isHidden = true
+        self.emptyHomeLabel.isHidden = true
+        self.roomsCollectionView.isHidden = true
+        self.collectionView.isHidden = true
+    }
+    
+    func homeHasElementsToShow(){
+        if(self.isEmptyHome){
+            self.emptyHomeViewContainer.isHidden = false
+            self.emptyHomeImageView.isHidden = false
+            self.emptyHomeLabel.isHidden = false
+            
+            self.roomsCollectionView.isHidden = true
+            self.collectionView.isHidden = true
+        }else{
+            self.emptyHomeViewContainer.isHidden = true
+            self.emptyHomeImageView.isHidden = true
+            self.emptyHomeLabel.isHidden = true
+            
+            self.roomsCollectionView.isHidden = false
+            self.collectionView.isHidden = false
         }
     }
 
@@ -252,7 +293,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
 
     func loadData(fromPullRefresh: Bool = false){
-        self.homeVM!.getAllRooms()
+        _ = self.homeVM!.getAllRooms()
         if (!fromPullRefresh) {
             let loadingString = self.labelLocalization.homeScreenProgressAlertTitle
             self.progressUtils.displayIndeterminateProgeress(title: loadingString, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
@@ -272,6 +313,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.progressUtils.dismiss()
         
         if(loadSuccessfull){
+            self.isEmptyHome = false
             self.collectionView.reloadData()
 
             if let watchConnectivity = self.sessionConnectivity,
@@ -293,6 +335,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                 self.progressUtils.dismiss()
             }
         }else{
+            self.isEmptyHome = true
             let errorNotificationTitle = self.notificationLocalize.homeLoadingErrorNotificationTitle
             let errorNotificationSubtitle = self.notificationLocalize.homeLoadingErrorNotificationSubtitle
             self.notificationUtils.showFloatingNotificationBanner(title: errorNotificationTitle,
@@ -300,6 +343,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
                                                                   position: .top,
                                                                   style: .danger)
         }
+        self.homeHasElementsToShow()
     }
 
     override func didMove(toParent parent: UIViewController?) {
