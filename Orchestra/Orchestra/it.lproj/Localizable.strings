@@ -201,6 +201,14 @@
 "home.vc.remove.alert.cancel.button.text" = "Cancella";
 "home.vc.remove.alert.delete.button.text" = "Eliminare";
 
+"automation.and.scene.vc.notify.label" = "Notifiche";
+"notify.alert.title" = "Informazione";
+"notify.alert.message" = "Se attivi questa opzione, sarai avvisato se qualcuno nella tua casa avvia questa automazione.";
+"notify.alert.cancel.button" = "Va bene";
+"When" = "Quando";
+"then" = "allora";
+"on" = "On";
+"off" = "Off";
 
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Abbinamento";

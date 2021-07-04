@@ -257,4 +257,5 @@ class ScreensLabelLocalizableUtils{
     let addingDeviceStateScreenFailureButton = NSLocalizedString("add.device.screen.state.failure.button", comment: "")
     
     let sceneBackNavBarButton = NSLocalizedString("scene.vc.back.btn", comment: "")
+    let notifyLabel = NSLocalizedString("automation.and.scene.vc.notify.label", comment: "")
 }

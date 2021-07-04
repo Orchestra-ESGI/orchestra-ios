@@ -84,6 +84,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var isAutomation = false
     var popUpType = 0
     var selectedColor = 0
+    var isNotifyable = false
 
     private lazy var pickerViewPresenter: PickerViewPresenter = {
         var pickerColumns = 4
@@ -203,39 +204,24 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 ])
             }
         }
-        
-        var tempValues: [String] = []
-        for i in 0...2{
-            tempValues.append(String(i))
-        }
-        self.pickerViewTriggerData.append([
-            "Temp Sensor": [
-                "type": "temperature",
-                "states": tempValues
-            ]
-        ])
-        
-        var humidityValues: [String] = []
-        for i in 0...2{
-            humidityValues.append(String(i))
-        }
-        self.pickerViewTriggerData.append([
-            "Humidity Sensor": [
-                "type": "humidity",
-                "states": humidityValues
-            ]
-        ])
-        
         print(self.pickerViewTriggerData)
     }
     
     @IBAction func showExplainationAlertAboutNotifications(_ sender: Any) {
-        print("show alert to explain the notification")
+        let alertTitle = self.notificationLocalize.notifyAlertTitle
+        let alertMessage = self.notificationLocalize.notifyAlertMessage
+        let alertCancelAction = self.notificationLocalize.notifyAlertCanceAction
+        
+        let cancelAction = UIAlertAction(title: alertCancelAction, style: .cancel, handler: nil)
+        self.alertUtils.showAlert(for: self,
+                                  title: alertTitle,
+                                  message: alertMessage,
+                                  actions: [cancelAction])
     }
     
     
     @IBAction func notifySwitchDidChange(_ sender: Any) {
-        print("Notify switch state just changed")
+        self.isNotifyable = (sender as! UISwitch).isOn
     }
     
 
@@ -249,6 +235,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.sceneNameTf.placeholder = self.labelLocalization.sceneFormNameTf
         self.triggerDeviceLabel.text = self.labelLocalization.automationTriggerLabel
         self.triggerDeviceTf.text = self.labelLocalization.automationTriggerTfHint
+        self.notifyMeLabel.text = self.labelLocalization.notifyLabel
     }
 
     private func setUpTextFields(){
@@ -308,19 +295,27 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             })
 
         _ = self.selectedTriggerDevice.subscribe(onNext: { trigger in
+            self.selectedTriggerAction = trigger["action"] as? String ?? ""
+            
             let triggerName = trigger["name"] as? String ?? ""
-            let triggerAction = trigger["action"] as? String ?? ""
-            self.selectedTriggerAction = triggerAction
-            if(trigger["type"] != nil){
+            let triggerAction = NSLocalizedString(self.selectedTriggerAction, comment: "")
+            let whenEventLocalized = NSLocalizedString("When", comment: "")
+            
+            if(trigger["type"] == nil){
+                self.triggerDeviceTf.text = "\(whenEventLocalized) \(triggerName) > \(triggerAction)"
+            }else{
                 let triggerType = NSLocalizedString(trigger["type"] as? String ?? "", comment: "")
                 let triggerOperator = NSLocalizedString(trigger["operator"] as? String ?? "", comment: "")
-                let triggerValue = trigger["state"] as? String ?? ""
-                self.triggerDeviceTf.text = "When \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue)  then \(triggerAction) "
+                let triggerValue = NSLocalizedString(trigger["state"] as? String ?? "", comment: "")
+                
                 self.selectedTriggerType = triggerType
                 self.selectedOperator = triggerOperator
                 self.selectedTempAndHumidityValue = triggerValue
-            }else{
-                self.triggerDeviceTf.text = "When \(triggerName) > \(triggerAction)"
+
+                let thenEventLocalized = NSLocalizedString("then", comment: "")
+                let triggerDeviceTfText = "\(whenEventLocalized) \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue) \(thenEventLocalized) \(triggerAction) "
+                
+                self.triggerDeviceTf.text = triggerDeviceTfText
             }
         })
     }
@@ -694,6 +689,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         if(self.isUpdating){
             scene["_id"] = self.sceneToEdit?.id ?? ""
         }
+        scene["notify"] = self.isNotifyable
 
         return scene
     }
@@ -737,6 +733,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             "friendly_name": self.triggerDevices[selectedTriggerDeviceIndex!].friendlyName,
             "actions": triggerActions["actions"]
         ]
+        automation["notify"] = self.isNotifyable
 
         return automation
     }

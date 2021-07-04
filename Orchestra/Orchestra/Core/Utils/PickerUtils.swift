@@ -147,6 +147,9 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if(self.columns == 1){
+            return 1
+        }
         let firstDeviceName = (selectedItem != nil ? selectedItem : devicesName[0]) ?? devicesName[0]
         let deviceIndex = selectedItemIndex
         let deviceDictionnary = self.devices[deviceIndex][firstDeviceName] as? [String: Any] ?? [:]
@@ -193,16 +196,18 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
         if(component == 0){
             selectedItem = devicesName[row]
             selectedItemIndex = row
-            let deviceDictionnary = self.devices[row][selectedItem!] as? [String: Any] ?? [:]
-            if let type = deviceDictionnary["type"]{
-                // device has a type, its either temperature of humidity
-                if(self.columns > 2){
-                    self.filterColumns = 4
+            if(self.filterColumns > 1){
+                let deviceDictionnary = self.devices[row][selectedItem!] as? [String: Any] ?? [:]
+                if deviceDictionnary["type"] != nil{
+                    // device has a type, its either temperature of humidity
+                    if(self.columns > 2){
+                        self.filterColumns = 4
+                        pickerView.reloadAllComponents()
+                    }
+                }else{
+                    self.filterColumns = 2
                     pickerView.reloadAllComponents()
                 }
-            }else{
-                self.filterColumns = 2
-                pickerView.reloadAllComponents()
             }
             if(self.columns > 1){
                 self.actions = pickerSecondColumnItems[row]

@@ -201,6 +201,15 @@
 "home.vc.remove.alert.cancel.button.text" = "Annuleren";
 "home.vc.remove.alert.delete.button.text" = "Verwijder";
 
+"automation.and.scene.vc.notify.label" = "Meldingen";
+"notify.alert.title" = "Informatie";
+"notify.alert.message" = "Als u deze optie activeert, krijgt u een melding als iemand in uw huis deze automatisering start.";
+"notify.alert.cancel.button" = "Oke";
+"When" = "Wanneer";
+"then" = "dus";
+"on" = "On";
+"off" = "Off";
+
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Koppelen";
 "hub.pairing.info.alert.title" = "Waar kan ik mijn koppelingscode vinden?";

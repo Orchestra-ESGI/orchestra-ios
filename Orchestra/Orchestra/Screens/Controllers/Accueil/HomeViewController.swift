@@ -16,7 +16,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     // - MARK: UI
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var roomsCollectionView: UICollectionView!
     
     var addSceneAppbarButon: UIBarButtonItem?
