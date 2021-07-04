@@ -320,6 +320,13 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     }
 
     private func setUpUI(){
+        self.view.backgroundColor = ColorUtils.ORCHESTRA_BLUE_COLOR
+        self.viewContainer.backgroundColor = .clear
+        self.actionsTableView.backgroundColor = .clear
+        self.sceneNameTf.backgroundColor = .clear
+        self.sceneDescriptionTf.backgroundColor = .clear
+        self.backgroudColorsCollectionView.backgroundColor = .clear
+        
         let newSceneTitle = self.labelLocalization.newSceneVcTitle
         let updateSceneTitle = self.labelLocalization.updateSceneVcTitle
         let automationTitle = self.labelLocalization.automationVcTitle
@@ -346,6 +353,24 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
 
         self.viewContainer.frame.size.height = self.view.frame.height + 40
+        
+        self.sceneNameLabel.font = Font.Regular(17)
+        self.sceneNameLabel.textColor = .white
+        self.sceneBackgroundColorLabel.font = Font.Regular(17)
+        self.sceneBackgroundColorLabel.textColor = .white
+        self.sceneDescriptionLabel.font = Font.Regular(17)
+        self.sceneDescriptionLabel.textColor = .white
+        self.addActionButton.titleLabel?.font = Font.Regular(17)
+        self.addActionButton.titleLabel?.textColor = .white
+        self.sceneDescriptionTf.font = Font.Regular(17)
+        self.sceneDescriptionTf.textColor = .white
+        self.sceneNameTf.font = Font.Regular(17)
+        self.sceneNameTf.textColor = .white
+        self.triggerDeviceLabel.font = Font.Regular(17)
+        self.triggerDeviceLabel.textColor = .white
+        self.triggerDeviceTf.font = Font.Regular(17)
+        self.triggerDeviceTf.textColor = .white
+        self.triggerDeviceTf.backgroundColor = .clear
     }
 
     @IBAction func showTriggersPickerView(_ sender: Any) {
@@ -514,6 +539,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 if(self.view.subviews.count >= 1){
                     self.alertDevice = DevicesAlert()
                     self.alertDevice?.delegate = self
+                    self.alertDevice?.tableView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
+                    self.alertDevice?.alertView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
                     self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneDeviceCustomViewTitle
                     self.view.addSubview(self.alertDevice!.parentView)
                     self.setUpDevicesTableView(deviceAlert: self.alertDevice!)

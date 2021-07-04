@@ -73,7 +73,7 @@ extension HomeViewController: UICollectionViewDataSource{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath) as! MDCChipCollectionViewCell
             cell.chipView.titleLabel.text = NSLocalizedString(self.rooms[indexPath.row].name ?? "", comment: "")
             cell.chipView.titleLabel.textAlignment = .center
-            cell.chipView.titleFont = Font.Regular(18.0)
+            cell.chipView.titleFont = Font.Regular(17.0)
             cell.chipView.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .selected)
             let selectedChipColor = ColorUtils.ORCHESTRA_RED_COLOR
             let defaultChipColor = ColorUtils.ORCHESTRA_WHITE_COLOR

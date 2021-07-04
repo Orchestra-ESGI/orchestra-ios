@@ -92,6 +92,8 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     cell.roomLabel.removeFromSuperview()
                 }
                 
+                
+                cell.backgroundColor = .clear
                 cell.deviceName = UILabel()
                 cell.deviceName.translatesAutoresizingMaskIntoConstraints = false
                 cell.deviceName.font = Font.Regular(14)
@@ -144,6 +146,9 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "POP_UP_CELL", for: indexPath)
+                cell.backgroundColor = .clear
+                cell.textLabel?.font = Font.Regular(17)
+                cell.textLabel?.textColor = .white
                 cell.textLabel?.textAlignment = .center
                 let devicePossibleActions = self.filteredActionsName //self.deviceDict[indexPath.section]["possible_actions"] as? [SceneActionsName]
                 cell.textLabel?.text = devicePossibleActions[indexPath.row].key
@@ -152,9 +157,11 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
         }else{
             let deviceSelectedActions = self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName]
             let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL", for: indexPath)
+            cell.backgroundColor = .clear
+            cell.textLabel?.font = Font.Regular(17)
+            cell.textLabel?.textColor = .white
             if (deviceSelectedActions != nil && indexPath.row < deviceSelectedActions!.count) {
                 cell.textLabel?.text = deviceSelectedActions![indexPath.row].key
-                cell.textLabel?.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             } else {
                 cell.textLabel?.text = self.labelLocalization.addActionOnDeviceNewSceneButtonTitle
             }
@@ -223,6 +230,8 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                     
                     self.alertDevice = DevicesAlert()
                     self.alertDevice?.delegate = self
+                    self.alertDevice?.tableView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
+                    self.alertDevice?.alertView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
                     self.alertDevice?.deviceSelectedSection = indexPath.section
                     self.alertDevice?.titleLabel.text = self.labelLocalization.newSceneActionCustomViewTitle
                     self.view.addSubview(self.alertDevice!.parentView)

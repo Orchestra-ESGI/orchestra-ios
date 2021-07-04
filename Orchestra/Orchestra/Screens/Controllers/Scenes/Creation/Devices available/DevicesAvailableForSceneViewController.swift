@@ -70,6 +70,8 @@ extension DevicesAvailableForSceneViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DEVICE_AVAILABLE")!
+        cell.textLabel?.font = Font.Regular(17)
+        cell.textLabel?.textColor = .white
         cell.textLabel?.text = self.devicesAvailable[indexPath.row].name
         return cell
     }
