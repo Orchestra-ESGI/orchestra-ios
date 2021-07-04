@@ -33,11 +33,11 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     @IBOutlet weak var addActionButton: UIButton!
     @IBOutlet weak var actionsTableView: UITableView!
     @IBOutlet weak var triggerDeviceLabel: UILabel!
-    
+
     @IBOutlet weak var notifyMeLabel: UILabel!
     @IBOutlet weak var informationAboutNotificationButton: UIButton!
     @IBOutlet weak var notifyUserStateSwitch: UISwitch!
-    
+
     var addSceneAppbarButon: UIBarButtonItem?
 
     // MARK: Utils
@@ -71,7 +71,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var triggerDevices: [HubAccessoryConfigurationDto] = []
     var pickerViewTriggerData: [[String: Any]] = []
     var selectedTriggerDevice = PublishSubject<[String: Any]>()
-    
+
     var selectedTriggerAction: String = ""
     var selectedTriggerDeviceIndex: Int?
     var selectedTriggerActionIndex: Int?
@@ -100,7 +100,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }else{
             pickerColumns = 0
         }
-        
+
         let pickerViewPresenter = PickerViewPresenter(pickerColumns, items: self.pickerViewTriggerData,
                                                       closePickerCompletion: self.didClosePickerView)
         return pickerViewPresenter
@@ -120,18 +120,18 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.clickObservers()
         self.handleAutomationUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
+
     private func handleAutomationUI(){
         if(self.isAutomation){
             self.automationDynamicContainerHeight.constant = CGFloat(100)
@@ -174,9 +174,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                         "states": ["single", "double", "long"]
                     ]
                 ])
-            }else if(trigger.type == .Temperature){
+            }else if(trigger.type == .Temperature || trigger.type == .TemperatureAndHumidity){
                 var tempValues: [String] = []
-                for i in 0...2{
+                for i in -100...100{
                     tempValues.append(String(i))
                 }
                 self.pickerViewTriggerData.append([
@@ -185,9 +185,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                         "states": tempValues
                     ]
                 ])
-            }else if(trigger.type == .Humidity){
+            }else if(trigger.type == .Humidity || trigger.type == .TemperatureAndHumidity){
                 var humidityValues: [String] = []
-                for i in 0...2{
+                for i in 0...100{
                     humidityValues.append(String(i))
                 }
                 self.pickerViewTriggerData.append([
@@ -204,26 +204,25 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 ])
             }
         }
-        print(self.pickerViewTriggerData)
     }
-    
+
     @IBAction func showExplainationAlertAboutNotifications(_ sender: Any) {
         let alertTitle = self.notificationLocalize.notifyAlertTitle
         let alertMessage = self.notificationLocalize.notifyAlertMessage
         let alertCancelAction = self.notificationLocalize.notifyAlertCanceAction
-        
+
         let cancelAction = UIAlertAction(title: alertCancelAction, style: .cancel, handler: nil)
         self.alertUtils.showAlert(for: self,
                                   title: alertTitle,
                                   message: alertMessage,
                                   actions: [cancelAction])
     }
-    
-    
+
+
     @IBAction func notifySwitchDidChange(_ sender: Any) {
         self.isNotifyable = (sender as! UISwitch).isOn
     }
-    
+
 
     // MARK: Controller Setup
     private func localizeLabels(){
@@ -296,25 +295,25 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
 
         _ = self.selectedTriggerDevice.subscribe(onNext: { trigger in
             self.selectedTriggerAction = trigger["action"] as? String ?? ""
-            
+
             let triggerName = trigger["name"] as? String ?? ""
             let triggerAction = NSLocalizedString(self.selectedTriggerAction, comment: "")
             let whenEventLocalized = NSLocalizedString("When", comment: "")
-            
+
             if(trigger["type"] == nil){
                 self.triggerDeviceTf.text = "\(whenEventLocalized) \(triggerName) > \(triggerAction)"
             }else{
                 let triggerType = NSLocalizedString(trigger["type"] as? String ?? "", comment: "")
-                let triggerOperator = NSLocalizedString(trigger["operator"] as? String ?? "", comment: "")
-                let triggerValue = NSLocalizedString(trigger["state"] as? String ?? "", comment: "")
-                
+                let triggerOperator = trigger["operator"] as? String ?? ""
+                let triggerValue = trigger["state"] as? String ?? ""
+                self.triggerDeviceTf.text = "When \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue)  then \(triggerAction) "
                 self.selectedTriggerType = triggerType
                 self.selectedOperator = triggerOperator
                 self.selectedTempAndHumidityValue = triggerValue
 
                 let thenEventLocalized = NSLocalizedString("then", comment: "")
                 let triggerDeviceTfText = "\(whenEventLocalized) \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue) \(thenEventLocalized) \(triggerAction) "
-                
+
                 self.triggerDeviceTf.text = triggerDeviceTfText
             }
         })
@@ -361,7 +360,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         if let response = data as? [String: Any]{
             if let deviceIndex = response["device_index"] as? Int,
                let actionIndex = response["action_index"] as? Int{
-                
+
                 self.selectedTriggerDeviceIndex = deviceIndex
                 self.selectedTriggerActionIndex = actionIndex
                 print("Selected device name :\(self.triggerDevices[deviceIndex].name)")
@@ -438,7 +437,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 deviceActions = (self.automationToEdit?.targets ?? [])
             }
             var deviceDictIndex = 0
-            
+
             for sceneDevice in deviceActions as! [SceneAction]{
                 self.devices.filter { hubDevice in
                     return sceneDevice.friendlyName == hubDevice.friendlyName
@@ -717,19 +716,23 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             automation["_id"] = self.automationToEdit?.id ?? ""
         }
         var triggerActions: [String: Any] = [:]
+        var triggerType: String = ""
+
         if self.selectedTriggerType != nil{
+            triggerType = self.selectedTriggerType ?? ""
             triggerActions["actions"] = [
                 "state": self.selectedTempAndHumidityValue,
                 "operator": self.selectedOperator
             ]
         }else{
+            triggerType = self.triggerDevices[selectedTriggerDeviceIndex!].type.rawValue
             triggerActions["actions"] = [
                 "state": self.selectedTriggerAction
             ]
         }
-        
+
         automation["trigger"] = [
-            "type": self.triggerDevices[selectedTriggerDeviceIndex!].type.rawValue,
+            "type": triggerType,
             "friendly_name": self.triggerDevices[selectedTriggerDeviceIndex!].friendlyName,
             "actions": triggerActions["actions"]
         ]
