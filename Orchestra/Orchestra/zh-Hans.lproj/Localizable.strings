@@ -201,6 +201,15 @@
 "home.vc.remove.alert.cancel.button.text" = "取消";
 "home.vc.remove.alert.delete.button.text" = "删除";
 
+"automation.and.scene.vc.notify.label" = "通知";
+"notify.alert.title" = "信息";
+"notify.alert.message" = "如果您激活此选项，如果您家中有人启动此自动化，您将收到通知。";
+"notify.alert.cancel.button" = "好的";
+"When" = "什么时候";
+"then" = "所以";
+"on" = "On";
+"off" = "Off";
+
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "搭配";
 "hub.pairing.info.alert.title" = "我在哪里可以找到我的配对代码？";

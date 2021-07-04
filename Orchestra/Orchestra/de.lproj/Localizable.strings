@@ -201,6 +201,15 @@
 "home.vc.remove.alert.cancel.button.text" = "Abbrechen";
 "home.vc.remove.alert.delete.button.text" = "Löschen";
 
+"automation.and.scene.vc.notify.label" = "Benachrichtigungen";
+"notify.alert.title" = "Information";
+"notify.alert.message" = "Wenn Sie diese Option aktivieren, werden Sie benachrichtigt, wenn jemand in Ihrem Zuhause diese Automatisierung startet.";
+"notify.alert.cancel.button" = "Okay";
+"When" = "Wann";
+"then" = "so";
+"on" = "On";
+"off" = "Off";
+
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Paarung";
 "hub.pairing.info.alert.title" = "Wo kann ich meinen Pairing-Code finden?";

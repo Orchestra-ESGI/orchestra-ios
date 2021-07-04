@@ -71,7 +71,7 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if(collectionView == self.roomsCollectionView){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "identifier", for: indexPath) as! MDCChipCollectionViewCell
-            cell.chipView.titleLabel.text = self.rooms[indexPath.row].name
+            cell.chipView.titleLabel.text = NSLocalizedString(self.rooms[indexPath.row].name ?? "", comment: "")
             cell.chipView.titleLabel.textAlignment = .center
             cell.chipView.titleFont = Font.Bold(18.0)
             cell.chipView.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .selected)
@@ -161,7 +161,7 @@ extension HomeViewController: UICollectionViewDataSource{
             self.filtereHubDevices = self.hubDevices
         }else{
             self.filtereHubDevices = self.hubDevices.filter({ device in
-                return self.rooms[indexPath.row].name == NSLocalizedString((device.room?.name)!, comment: "")
+                return NSLocalizedString(self.rooms[indexPath.row].name ?? "", comment: "") == NSLocalizedString((device.room?.name)!, comment: "")
             })
         }
     }
