@@ -24,7 +24,7 @@ extension HomeViewController{
             objectCell.objectImageView.image = UIImage(systemName: "lightbulb.fill")
             break
         case .StatelessProgrammableSwitch:
-            objectCell.objectImageView.image = UIImage(systemName: "switch.2")
+            objectCell.objectImageView.image = UIImage(named: "press_button")!
             break
         case .Occupancy:
             objectCell.objectImageView.image = UIImage(systemName: "figure.walk")
@@ -55,6 +55,15 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         objectCell.addGestureRecognizer(longPressRecognizer)
         
+        objectCell.objectPlaceNameLabel.font = Font.Bold(14)
+        objectCell.objectPlaceNameLabel.textColor = .white
+        
+        objectCell.objectNameLabel.font = Font.Regular(14)
+        objectCell.objectNameLabel.textColor = .white
+        
+        objectCell.objectStatusLabel.font = Font.Regular(12)
+        objectCell.objectStatusLabel.textColor = .white
+        
         objectCell.objectPlaceNameLabel.text = self.filtereHubDevices[currentCellPos].name
         let roomNameLocalize = NSLocalizedString(self.filtereHubDevices[currentCellPos].room?.name ?? "", comment: "")
         objectCell.objectNameLabel.text = roomNameLocalize
@@ -62,7 +71,7 @@ extension HomeViewController{
         
         objectCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: currentObject.backgroundColor!) //self.generatesBackGroundColor()
         objectCell.contentView.layer.cornerRadius = 8.0
-        objectCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        objectCell.contentView.layer.borderColor = UIColor.clear.cgColor
         objectCell.contentView.layer.borderWidth = 0.2
         objectCell.contentView.layer.masksToBounds = true;
         
@@ -95,16 +104,18 @@ extension HomeViewController{
         longPressRecognizer.delaysTouchesBegan = true
         sceneCell.addGestureRecognizer(longPressRecognizer)
         var cellColor: String = ""
+        sceneCell.sceneDescription.font = Font.Regular(14)
+        sceneCell.sceneDescription.textColor = .white
         if(indexPath.section == 1){
-            sceneCell.sceneDescription .text = self.filteredHomeScenes[currentCellPos].name
+            sceneCell.sceneDescription.text = self.filteredHomeScenes[currentCellPos].name
             cellColor = self.filteredHomeScenes[currentCellPos].color ?? ""
         }else{
-            sceneCell.sceneDescription .text = self.filteredAutomations[currentCellPos].name
+            sceneCell.sceneDescription.text = self.filteredAutomations[currentCellPos].name
             cellColor = self.filteredAutomations[currentCellPos].color ?? ""
         }
         sceneCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: cellColor)
         sceneCell.contentView.layer.cornerRadius = 8.0
-        sceneCell.contentView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        sceneCell.contentView.layer.borderColor = UIColor.clear.cgColor
         sceneCell.contentView.layer.borderWidth = 0.2
         sceneCell.contentView.layer.masksToBounds = true;
     
@@ -140,7 +151,7 @@ extension HomeViewController{
                     self.elementsToRemoveStream.onNext(false)
                 }
             }
-            cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cellBorderColor = UIColor.clear.cgColor
             cellBorderWidth = 2.0
         }else{
             // Select cell
@@ -150,7 +161,7 @@ extension HomeViewController{
                 }
                 self.scenesToRemove.append(sceneCellDtoSelected)
             }
-            cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
+            cellBorderColor = ColorUtils.ORCHESTRA_RED_COLOR.cgColor
             cellBorderWidth = 4.0
         }
         sceneCellSelected.contentView.layer.borderColor = cellBorderColor!
@@ -207,7 +218,7 @@ extension HomeViewController{
             if(self.objectsToRemove.count == 0 && self.scenesToRemove.count == 0){
                 self.elementsToRemoveStream.onNext(false)
             }
-            cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cellBorderColor = UIColor.clear.cgColor
             cellBorderWidth = 2.0
         }else{
             // Select cell
@@ -215,7 +226,7 @@ extension HomeViewController{
                 self.elementsToRemoveStream.onNext(true)
             }
             self.objectsToRemove.append(objectDtoSelected)
-            cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
+            cellBorderColor = ColorUtils.ORCHESTRA_RED_COLOR.cgColor
             cellBorderWidth = 4.0
         }
         objectCellSelected.contentView.layer.borderColor = cellBorderColor!

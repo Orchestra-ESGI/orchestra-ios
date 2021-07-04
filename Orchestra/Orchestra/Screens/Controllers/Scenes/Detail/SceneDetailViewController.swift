@@ -60,6 +60,13 @@ class SceneDetailViewController: UIViewController {
         self.setUpTopBar()
         self.setUpLabels()
         
+        self.descriptionLabel.font = Font.Regular(17)
+        self.descriptionLabel.textColor = .white
+        self.actionsLabel.font = Font.Regular(17)
+        self.actionsLabel.textColor = .white
+        
+        self.descriptionTextView.font = Font.Regular(17)
+        self.descriptionTextView.textColor = .white
         self.descriptionTextView.layer.borderWidth = 0.5
         self.descriptionTextView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.descriptionTextView.layer.cornerRadius = 8.0
@@ -264,6 +271,8 @@ extension SceneDetailViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_CELL")!
         let sectionHeader = Array(self.sceneActionsName.keys)[indexPath.section]
         let actions = self.sceneActionsName[sectionHeader]!
+        cell.textLabel?.font = Font.Regular(17)
+        cell.textLabel?.textColor = .white
         cell.textLabel?.text = actions[indexPath.row]
         return cell
     }

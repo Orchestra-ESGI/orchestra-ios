@@ -29,7 +29,11 @@ extension HomeViewController{
     func setUpTopBar(){
         self.navigationItem.hidesBackButton = true
         self.title = NSLocalizedString("home.screen.default.title", comment: "")
+        let attributes = [NSAttributedString.Key.font: Font.Bold(20)]
+        self.navigationController?.navigationBar.titleTextAttributes = attributes
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        self.view.backgroundColor = ColorUtils.ORCHESTRA_BLUE_COLOR
         
         addSceneAppbarButon = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: nil)
         cancelButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle.fill"), style: .done, target: self, action: nil)
@@ -52,12 +56,14 @@ extension HomeViewController{
         self.roomsCollectionView.register(MDCChipCollectionViewCell.self, forCellWithReuseIdentifier: "identifier")
         self.roomsCollectionView.delegate = self
         self.roomsCollectionView.dataSource = self
+        self.roomsCollectionView.backgroundColor = .clear
     }
     
     func setUpCollectionView(){
         self.collectionView.alpha = 0
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.backgroundColor = .clear
         
         // CELLS
         self.collectionView.register(UINib(nibName: "ObjectCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OBJECT")

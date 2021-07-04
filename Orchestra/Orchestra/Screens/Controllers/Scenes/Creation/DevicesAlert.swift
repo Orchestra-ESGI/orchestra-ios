@@ -37,6 +37,8 @@ class DevicesAlert: UIView{
                                        y: 0,
                                        width: UIScreen.main.bounds.width,
                                        height: UIScreen.main.bounds.height)
+        self.titleLabel.font = Font.Regular(17)
+        self.titleLabel.textColor = .white
     }
     
     private func localizeCustomView(){

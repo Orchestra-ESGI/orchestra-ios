@@ -18,6 +18,7 @@ class ActionsForDeviceAvailableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hintLabel.font = Font.Regular(17)
         self.hintLabel.text = self.hintLabel.text! + " \(deviceName)"
         self.setUpTableView()
         self.parseDeviceActionToGetName()
@@ -64,6 +65,8 @@ extension ActionsForDeviceAvailableViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACTION_AVAILABLE")!
+        cell.textLabel?.font = Font.Regular(17)
+        cell.textLabel?.textColor = .white
         cell.textLabel?.text = self.actionsName[indexPath.row]
         return cell
     }

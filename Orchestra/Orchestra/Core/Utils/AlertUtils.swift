@@ -53,6 +53,7 @@ class AlertUtils {
     func showAlertWithTf(for controller: UIViewController, title: String, message: String, actionName: String, style: UIAlertController.Style = .alert, completion: @escaping (String) -> Void){
         self.ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         self.ac.addTextField { textField in
+            textField.font = Font.Regular(17)
             textField.addTarget(self, action: #selector(self.alertTextFieldDidChange(_:)), for: .editingChanged)
         }
         
