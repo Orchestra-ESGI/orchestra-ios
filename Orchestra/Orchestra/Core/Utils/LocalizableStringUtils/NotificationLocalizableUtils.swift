@@ -99,6 +99,10 @@ public class NotificationLocalizableUtils {
     let sceneNoActionAlertMessage = NSLocalizedString("scene.vc.noaction.alert.message", comment: "")
     let sceneNoActionAlertCancelButton = NSLocalizedString("scene.vc.noaction.alert.cancel.button", comment: "")
     
+    let notifyAlertTitle = NSLocalizedString("notify.alert.title", comment: "")
+    let notifyAlertMessage = NSLocalizedString("notify.alert.message", comment: "")
+    let notifyAlertCanceAction = NSLocalizedString("notify.alert.cancel.button", comment: "")
+    
     let roomCreationOkNotificationTitle = NSLocalizedString("room.creation.ok.notification.title", comment: "")
     let roomCreationOkNotificationSubtitle = NSLocalizedString("room.creation.ok.notification.subtitle", comment: "")
     

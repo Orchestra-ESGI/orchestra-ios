@@ -140,17 +140,19 @@
 "automation.vc.title" = "Automating";
 
 "automation.trigger.label" = "Trigger object";
-"automation.trigger.tf.hint" = "Add a trigger object";
+"automation.trigger.tf.hint" = "No trigger";
 "single" = "Simple click";
 "double" = "Double click";
 "long" = "Long click";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Name";
 "scene.form.name.tf.textt" = "Turn on the light at sunset";
 "scene.form.bg.color.label.text" = "Choose a colour";
 "scene.form.description.label.text" = "Description";
 "scene.form.description.tf.text" = "Turn on the lights if it is dark";
-"scene.form.add.action.button" = "Add actions";
+"scene.form.add.action.button" = "Add devices";
 
 "new.scene.successfully.created.title" = "Added!";
 "new.scene.successfully.created.subtitle" = "The scene has been added!";
@@ -197,6 +199,13 @@
 "home.vc.remove.alert.subtitle" = "Do you really want to delete the selection? \n Warning: this action is irreversible, you will lose the deleted data.";
 "home.vc.remove.alert.cancel.button.text" = "Cancel";
 "home.vc.remove.alert.delete.button.text" = "Delete";
+
+"automation.and.scene.vc.notify.label" = "Notifications";
+"notify.alert.title" = "Information";
+"notify.alert.message" = "If you activate this option, you will be notified if someone in your home starts this automation.";
+"notify.alert.cancel.button" = "Alright";
+"on" = "On";
+"off" = "Off";
 
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Pairing";
@@ -317,6 +326,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Description";
+"scene.info.trigger.label" = "Trigger";
 "scene.info.action.list.title.label" = "Actions";
 
 // - MARK: Device Form

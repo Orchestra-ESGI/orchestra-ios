@@ -12,6 +12,9 @@ enum HubAccessoryType: String {
     case StatelessProgrammableSwitch = "programmableswitch"
     case Occupancy = "occupancy"
     case Contact = "contact"
+    case Temperature = "temperature"
+    case Humidity = "humidity"
+    case TemperatureAndHumidity = "temperatureandhumidity"
     case Switch = "switch"
     case Unknown = "unknown"
 }

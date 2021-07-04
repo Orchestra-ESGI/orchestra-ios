@@ -141,17 +141,19 @@
 "automation.vc.title" = "自动化";
 
 "automation.trigger.label" = "触发对象";
-"automation.trigger.tf.hint" = "添加触发器对象";
+"automation.trigger.tf.hint" = "无触发器";
 "single" = "单击";
 "double" = "双击";
 "long" = "长按";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "名称";
 "scene.form.name.tf.textt" = "日落时开灯";
 "scene.form.bg.color.label.text" = "选择一种颜色";
 "scene.form.description.label.text" = "说明";
 "scene.form.description.tf.text" = "天黑就开灯";
-"scene.form.add.action.button" = "增加行动";
+"scene.form.add.action.button" = "添加设备";
 
 "new.scene.successfully.created.title" = "添加！";
 "new.scene.successfully.created.subtitle" = "场景已经添加了!";
@@ -198,6 +200,15 @@
 "home.vc.remove.alert.subtitle" = "你真的想删除选择吗？\n 小心，这个动作是不可逆的，你会失去被删除的数据。";
 "home.vc.remove.alert.cancel.button.text" = "取消";
 "home.vc.remove.alert.delete.button.text" = "删除";
+
+"automation.and.scene.vc.notify.label" = "通知";
+"notify.alert.title" = "信息";
+"notify.alert.message" = "如果您激活此选项，如果您家中有人启动此自动化，您将收到通知。";
+"notify.alert.cancel.button" = "好的";
+"When" = "什么时候";
+"then" = "所以";
+"on" = "On";
+"off" = "Off";
 
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "搭配";
@@ -317,6 +328,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "描述";
+"scene.info.trigger.label" = "扳机";
 "scene.info.action.list.title.label" = "行动";
 
 // - MARK: Device Form

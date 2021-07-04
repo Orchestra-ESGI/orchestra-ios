@@ -128,21 +128,12 @@ extension HomeViewController{
         // Scene cell selected
         let sceneCellSelected = collectionView.cellForItem(at: indexPath) as! SceneCollectionViewCell
         let sceneCellDtoSelected = self.filteredHomeScenes[indexPath.row]
-        let automationCellDtoSelected = self.filteredAutomations[indexPath.row]
         if(self.scenesToRemove.contains(sceneCellDtoSelected)){
             // Unselect cell
             if(indexPath.section == 1){
                 let index = self.scenesToRemove.firstIndex(of: sceneCellDtoSelected)!
                 self.scenesToRemove.remove(at: index)
                 if(self.objectsToRemove.count == 0 && self.scenesToRemove.count == 0){
-                    self.elementsToRemoveStream.onNext(false)
-                }
-            }else{
-                let index = self.automationToRemove.firstIndex(of: automationCellDtoSelected)!
-                self.automationToRemove.remove(at: index)
-                if(self.objectsToRemove.count == 0 &&
-                    self.scenesToRemove.count == 0 &&
-                    self.automationToRemove.count == 0){
                     self.elementsToRemoveStream.onNext(false)
                 }
             }
@@ -155,14 +146,42 @@ extension HomeViewController{
                     self.elementsToRemoveStream.onNext(true)
                 }
                 self.scenesToRemove.append(sceneCellDtoSelected)
-            }else{
-                if(self.objectsToRemove.count == 0 ||
-                    self.scenesToRemove.count == 0 ||
-                    self.automationToRemove.count == 0){
-                    self.elementsToRemoveStream.onNext(true)
-                }
-                self.automationToRemove.append(automationCellDtoSelected)
             }
+            cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
+            cellBorderWidth = 4.0
+        }
+        sceneCellSelected.contentView.layer.borderColor = cellBorderColor!
+        sceneCellSelected.contentView.layer.borderWidth = cellBorderWidth!
+        
+    }
+    
+    func setUpSelectedAutomation(_ collectionView: UICollectionView, _ indexPath: IndexPath){
+        let cellBorderColor: CGColor?
+        let cellBorderWidth: CGFloat?
+        
+        // Scene cell selected
+        let sceneCellSelected = collectionView.cellForItem(at: indexPath) as! SceneCollectionViewCell
+
+        let automationCellDtoSelected = self.filteredAutomations[indexPath.row]
+        if(self.automationToRemove.contains(automationCellDtoSelected)){
+            // Unselect cell
+            let index = self.automationToRemove.firstIndex(of: automationCellDtoSelected)!
+            self.automationToRemove.remove(at: index)
+            if(self.objectsToRemove.count == 0 &&
+                self.scenesToRemove.count == 0 &&
+                self.automationToRemove.count == 0){
+                self.elementsToRemoveStream.onNext(false)
+            }
+            cellBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cellBorderWidth = 2.0
+        }else{
+            // Select cell
+            if(self.objectsToRemove.count == 0 ||
+                self.scenesToRemove.count == 0 ||
+                self.automationToRemove.count == 0){
+                self.elementsToRemoveStream.onNext(true)
+            }
+            self.automationToRemove.append(automationCellDtoSelected)
             cellBorderColor = #colorLiteral(red: 1, green: 0.01224201724, blue: 0, alpha: 1)
             cellBorderWidth = 4.0
         }

@@ -25,13 +25,18 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     @IBOutlet weak var shuffleColorsButton: UIButton!
     @IBOutlet weak var backgroudColorsCollectionView: UICollectionView!
     @IBOutlet weak var addTriggerButton: UIButton!
-    @IBOutlet weak var triggerDeviceTf: UITextField!
+    //@IBOutlet weak var triggerDeviceTf: UITextField!
+    @IBOutlet weak var triggerDeviceTf: UITextView!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var sceneDescriptionLabel: UILabel!
     @IBOutlet weak var sceneDescriptionTf: UITextField!
     @IBOutlet weak var addActionButton: UIButton!
     @IBOutlet weak var actionsTableView: UITableView!
     @IBOutlet weak var triggerDeviceLabel: UILabel!
+
+    @IBOutlet weak var notifyMeLabel: UILabel!
+    @IBOutlet weak var informationAboutNotificationButton: UIButton!
+    @IBOutlet weak var notifyUserStateSwitch: UISwitch!
 
     var addSceneAppbarButon: UIBarButtonItem?
 
@@ -64,21 +69,39 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var deviceDict: [[String:Any]] = []
 
     var triggerDevices: [HubAccessoryConfigurationDto] = []
-    var selectedTriggerAction: String = ""
+    var pickerViewTriggerData: [[String: Any]] = []
     var selectedTriggerDevice = PublishSubject<[String: Any]>()
+
+    var selectedTriggerAction: String = ""
     var selectedTriggerDeviceIndex: Int?
     var selectedTriggerActionIndex: Int?
-    var triggersData: [[String: Any]] = []
-
+    var selectedTriggerType: String?
+    var selectedOperator: String = ""
+    var selectedTempAndHumidityValue: String = ""
 
     var isUpdating: Bool = false
     var isPopUpVisible = false
     var isAutomation = false
     var popUpType = 0
     var selectedColor = 0
+    var isNotifyable = false
 
     private lazy var pickerViewPresenter: PickerViewPresenter = {
-        let pickerViewPresenter = PickerViewPresenter(2, items: self.triggersData,
+        var pickerColumns = 4
+        if(self.triggerDevices.count > 0){
+            let triggerTypes = self.triggerDevices.map { trigger in
+                return trigger.type
+            }
+            if(triggerTypes.contains(.Temperature) ||
+                triggerTypes.contains(.Humidity) ||
+                triggerTypes.contains(.TemperatureAndHumidity)){
+                pickerColumns = 4
+            }
+        }else{
+            pickerColumns = 0
+        }
+
+        let pickerViewPresenter = PickerViewPresenter(pickerColumns, items: self.pickerViewTriggerData,
                                                       closePickerCompletion: self.didClosePickerView)
         return pickerViewPresenter
     }()
@@ -97,18 +120,18 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.clickObservers()
         self.handleAutomationUI()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
+
     private func handleAutomationUI(){
         if(self.isAutomation){
             self.automationDynamicContainerHeight.constant = CGFloat(100)
@@ -116,7 +139,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             self.view.addSubview(self.pickerViewPresenter)
         }else{
             self.automationDynamicContainerHeight.constant = CGFloat(0)
-            self.triggerDeviceTf.isEnabled = false
+            self.triggerDeviceTf.isUserInteractionEnabled = false
             self.triggerDeviceLabel.isEnabled = false
             self.addTriggerButton.isEnabled = false
             self.triggerDeviceTf.isHidden = true
@@ -134,7 +157,10 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         for device in self.devices{
             if(device.type == .Occupancy ||
                 device.type == .StatelessProgrammableSwitch ||
-                device.type == .Contact){
+                device.type == .Contact ||
+                device.type == .Temperature ||
+                device.type == .Humidity ||
+                device.type == .TemperatureAndHumidity){
                 self.triggerDevices.append(device)
             }
         }
@@ -143,13 +169,60 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     private func parseTriggerDevices(){
         for trigger in triggerDevices{
             if(trigger.type == .StatelessProgrammableSwitch){
-                self.triggersData.append([trigger.name!: ["single", "double", "long"]])
+                self.pickerViewTriggerData.append([
+                    trigger.name!: [
+                        "states": ["single", "double", "long"]
+                    ]
+                ])
+            }else if(trigger.type == .Temperature || trigger.type == .TemperatureAndHumidity){
+                var tempValues: [String] = []
+                for i in -100...100{
+                    tempValues.append(String(i))
+                }
+                self.pickerViewTriggerData.append([
+                    trigger.name!: [
+                        "type": "temperature",
+                        "states": tempValues
+                    ]
+                ])
+            }else if(trigger.type == .Humidity || trigger.type == .TemperatureAndHumidity){
+                var humidityValues: [String] = []
+                for i in 0...100{
+                    humidityValues.append(String(i))
+                }
+                self.pickerViewTriggerData.append([
+                    trigger.name!: [
+                        "type": "humidity",
+                        "states": humidityValues
+                    ]
+                ])
             }else{
-                self.triggersData.append([trigger.name!: ["on", "off"]])
+                self.pickerViewTriggerData.append([
+                    trigger.name!: [
+                        "states": ["on", "off"]
+                    ]
+                ])
             }
         }
-        print(self.triggersData)
     }
+
+    @IBAction func showExplainationAlertAboutNotifications(_ sender: Any) {
+        let alertTitle = self.notificationLocalize.notifyAlertTitle
+        let alertMessage = self.notificationLocalize.notifyAlertMessage
+        let alertCancelAction = self.notificationLocalize.notifyAlertCanceAction
+
+        let cancelAction = UIAlertAction(title: alertCancelAction, style: .cancel, handler: nil)
+        self.alertUtils.showAlert(for: self,
+                                  title: alertTitle,
+                                  message: alertMessage,
+                                  actions: [cancelAction])
+    }
+
+
+    @IBAction func notifySwitchDidChange(_ sender: Any) {
+        self.isNotifyable = (sender as! UISwitch).isOn
+    }
+
 
     // MARK: Controller Setup
     private func localizeLabels(){
@@ -160,7 +233,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.sceneDescriptionTf.placeholder = self.labelLocalization.sceneFormDescriptionTf
         self.sceneNameTf.placeholder = self.labelLocalization.sceneFormNameTf
         self.triggerDeviceLabel.text = self.labelLocalization.automationTriggerLabel
-        self.triggerDeviceTf.placeholder = self.labelLocalization.automationTriggerTfHint
+        self.triggerDeviceTf.text = self.labelLocalization.automationTriggerTfHint
+        self.notifyMeLabel.text = self.labelLocalization.notifyLabel
     }
 
     private func setUpTextFields(){
@@ -220,10 +294,28 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             })
 
         _ = self.selectedTriggerDevice.subscribe(onNext: { trigger in
+            self.selectedTriggerAction = trigger["action"] as? String ?? ""
+
             let triggerName = trigger["name"] as? String ?? ""
-            let triggerAction = trigger["action"] as? String ?? ""
-            self.selectedTriggerAction = triggerAction
-            self.triggerDeviceTf.text = "\(triggerName) > \(triggerAction)"
+            let triggerAction = NSLocalizedString(self.selectedTriggerAction, comment: "")
+            let whenEventLocalized = NSLocalizedString("When", comment: "")
+
+            if(trigger["type"] == nil){
+                self.triggerDeviceTf.text = "\(whenEventLocalized) \(triggerName) > \(triggerAction)"
+            }else{
+                let triggerType = NSLocalizedString(trigger["type"] as? String ?? "", comment: "")
+                let triggerOperator = trigger["operator"] as? String ?? ""
+                let triggerValue = trigger["state"] as? String ?? ""
+                self.triggerDeviceTf.text = "When \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue)  then \(triggerAction) "
+                self.selectedTriggerType = triggerType
+                self.selectedOperator = triggerOperator
+                self.selectedTempAndHumidityValue = triggerValue
+
+                let thenEventLocalized = NSLocalizedString("then", comment: "")
+                let triggerDeviceTfText = "\(whenEventLocalized) \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue) \(thenEventLocalized) \(triggerAction) "
+
+                self.triggerDeviceTf.text = triggerDeviceTfText
+            }
         })
     }
 
@@ -257,7 +349,11 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     }
 
     @IBAction func showTriggersPickerView(_ sender: Any) {
-        self.pickerViewPresenter.showPicker()
+        if(self.triggerDevices.count > 0){
+            self.pickerViewPresenter.showPicker()
+        }else{
+            print("No triggers available, please add them to your home devices first and try again")
+        }
     }
 
     func didClosePickerView(data: Any){
@@ -270,12 +366,21 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 print("Selected device name :\(self.triggerDevices[deviceIndex].name)")
                 print("Selected device friendly name :\(self.triggerDevices[deviceIndex].friendlyName)")
 
-                let availableActions = (self.triggersData[deviceIndex].values.first as? [String] ?? [])
-                let triggerDeviceName = Array(self.triggersData[deviceIndex].keys)[0]
-                var triggerDevice = [
+                let triggerDeviceAllActions = self.pickerViewTriggerData[deviceIndex].values.first as? [String: Any] ?? [:]
+
+                let availableActions = triggerDeviceAllActions["states"] as? [String] ?? []
+                let triggerDeviceName = Array(self.pickerViewTriggerData[deviceIndex].keys)[0]
+                var triggerDevice: [String: Any] = [
                     "name": triggerDeviceName,
-                    "action": availableActions[actionIndex],
+                    "action": availableActions[actionIndex]
                 ]
+                if let deviceType = response["type"] as? String,
+                   let deviceOperator = response["operator"] as? String,
+                   let deviceState = response["state"] as? String {
+                    triggerDevice["type"] = deviceType
+                    triggerDevice["operator"] = deviceOperator
+                    triggerDevice["state"] = deviceState
+                }
                 self.selectedTriggerDevice.onNext(triggerDevice)
             }
         }
@@ -332,7 +437,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 deviceActions = (self.automationToEdit?.targets ?? [])
             }
             var deviceDictIndex = 0
-            
+
             for sceneDevice in deviceActions as! [SceneAction]{
                 self.devices.filter { hubDevice in
                     return sceneDevice.friendlyName == hubDevice.friendlyName
@@ -583,6 +688,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         if(self.isUpdating){
             scene["_id"] = self.sceneToEdit?.id ?? ""
         }
+        scene["notify"] = self.isNotifyable
 
         return scene
     }
@@ -609,13 +715,28 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         if(self.isUpdating){
             automation["_id"] = self.automationToEdit?.id ?? ""
         }
-        automation["trigger"] = [
-            "type": self.triggerDevices[selectedTriggerDeviceIndex!].type.rawValue,
-            "friendly_name": self.triggerDevices[selectedTriggerDeviceIndex!].friendlyName,
-            "actions": [
+        var triggerActions: [String: Any] = [:]
+        var triggerType: String = ""
+
+        if self.selectedTriggerType != nil{
+            triggerType = self.selectedTriggerType ?? ""
+            triggerActions["actions"] = [
+                "state": self.selectedTempAndHumidityValue,
+                "operator": self.selectedOperator
+            ]
+        }else{
+            triggerType = self.triggerDevices[selectedTriggerDeviceIndex!].type.rawValue
+            triggerActions["actions"] = [
                 "state": self.selectedTriggerAction
             ]
+        }
+
+        automation["trigger"] = [
+            "type": triggerType,
+            "friendly_name": self.triggerDevices[selectedTriggerDeviceIndex!].friendlyName,
+            "actions": triggerActions["actions"]
         ]
+        automation["notify"] = self.isNotifyable
 
         return automation
     }

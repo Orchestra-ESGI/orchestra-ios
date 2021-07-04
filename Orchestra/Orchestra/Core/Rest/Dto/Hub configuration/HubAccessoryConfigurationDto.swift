@@ -42,6 +42,13 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
         case "contact":
             self.type = .Contact
             break
+        case "temperature":
+            self.type = .Temperature
+            break
+        case "humidity":
+            self.type = .Humidity
+        case "temperatureandhumidity":
+            self.type = .TemperatureAndHumidity
         default:
             self.type = .Unknown
             break
@@ -71,6 +78,12 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
             map["type"] = "occupancysensor"
         case .Contact:
             map["type"] = "contact"
+        case .Temperature:
+            map["type"] = "temperature"
+        case .Humidity:
+            map["type"] = "humidity"
+        case .TemperatureAndHumidity:
+            map["type"] = "temperatureandhumidity"
         default:
             self.type = .Unknown
         }
@@ -102,7 +115,12 @@ class HubAccessoryConfigurationDto: NSObject, Mappable{
             type = "occupancysensor"
         case .Contact:
             type = "contact"
-            
+        case.Temperature:
+            type = "temperature"
+        case.Humidity:
+            type = "humidity"
+        case .TemperatureAndHumidity:
+            type = "temperatureandhumidity"
         default:
             type = "Unknown"
         }

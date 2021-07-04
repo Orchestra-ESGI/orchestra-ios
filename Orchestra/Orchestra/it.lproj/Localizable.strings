@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automazione";
 
 "automation.trigger.label" = "Oggetto trigger";
-"automation.trigger.tf.hint" = "Aggiungi un oggetto trigger";
+"automation.trigger.tf.hint" = "Nessun trigger";
 "single" = "Clic singolo";
 "double" = "Doppio click";
 "long" = "Clic lungo";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Nome";
 "scene.form.name.tf.textt" = "Accendere la luce al tramonto";
 "scene.form.bg.color.label.text" = "Scegliere un colore";
 "scene.form.description.label.text" = "Descrizione";
 "scene.form.description.tf.text" = "Accendere le luci se è buio";
-"scene.form.add.action.button" = "Aggiungere azioni";
+"scene.form.add.action.button" = "Aggiungi dispositivi";
 
 "new.scene.successfully.created.title" = "Aggiunto!";
 "new.scene.successfully.created.subtitle" = "La scena è stata aggiunta!";
@@ -199,6 +201,14 @@
 "home.vc.remove.alert.cancel.button.text" = "Cancella";
 "home.vc.remove.alert.delete.button.text" = "Eliminare";
 
+"automation.and.scene.vc.notify.label" = "Notifiche";
+"notify.alert.title" = "Informazione";
+"notify.alert.message" = "Se attivi questa opzione, sarai avvisato se qualcuno nella tua casa avvia questa automazione.";
+"notify.alert.cancel.button" = "Va bene";
+"When" = "Quando";
+"then" = "allora";
+"on" = "On";
+"off" = "Off";
 
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Abbinamento";
@@ -318,6 +328,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Descrizione";
+"scene.info.trigger.label" = "Grilletto";
 "scene.info.action.list.title.label" = "Azioni";
 
 // - MARK: Device Form

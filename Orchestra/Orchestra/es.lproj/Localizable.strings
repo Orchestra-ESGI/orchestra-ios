@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automatizando";
 
 "automation.trigger.label" = "Objeto disparador";
-"automation.trigger.tf.hint" = "Agregar un objeto desencadenante";
+"automation.trigger.tf.hint" = "Sin gatillo";
 "single" = "Un click";
 "double" = "Doble clic";
 "long" = "Clic largo";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Denominación";
 "scene.form.name.tf.textt" = "Encender la luz al atardecer";
 "scene.form.bg.color.label.text" = "Elige un color";
 "scene.form.description.label.text" = "Descripción";
 "scene.form.description.tf.text" = "Encienda las luces si está oscuro";
-"scene.form.add.action.button" = "Agregar acciones";
+"scene.form.add.action.button" = "Agregar dispositivos";
 
 "new.scene.successfully.created.title" = "¡Agregado!";
 "new.scene.successfully.created.subtitle" = "¡La escena ha sido añadida!";
@@ -198,6 +200,15 @@
 "home.vc.remove.alert.subtitle" = "¿Realmente quieres borrar la selección? \n Cuidado, esta acción es irreversible, perderás los datos borrados.";
 "home.vc.remove.alert.cancel.button.text" = "Cancelar";
 "home.vc.remove.alert.delete.button.text" = "Borrar";
+
+"automation.and.scene.vc.notify.label" = "Notificaciones";
+"notify.alert.title" = "Información";
+"notify.alert.message" = "Si activa esta opción, se le notificará si alguien en su hogar inicia esta automatización.";
+"notify.alert.cancel.button" = "Vale";
+"When" = "Cuándo";
+"then" = "entonces";
+"on" = "On";
+"off" = "Off";
 
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Emparejamiento";
@@ -317,6 +328,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Descripción";
+"scene.info.trigger.label" = "Desencadenar";
 "scene.info.action.list.title.label" = "Acciones";
 
 // - MARK: Device Form

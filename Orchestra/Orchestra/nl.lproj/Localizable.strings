@@ -141,17 +141,19 @@
 "automation.vc.title" = "Automatiseren";
 
 "automation.trigger.label" = "Trigger-object";
-"automation.trigger.tf.hint" = "Een triggerobject toevoegen";
+"automation.trigger.tf.hint" = "Geen trigger";
 "single" = "Enkele klik";
 "double" = "Dubbelklik";
 "long" = "Lange klik";
+"lt" = "<=";
+"gt" = ">=";
 
 "scene.form.name.label.text" = "Naam";
 "scene.form.name.tf.textt" = "Doe het licht aan bij zonsondergang";
 "scene.form.bg.color.label.text" = "Kies een kleur";
 "scene.form.description.label.text" = "Beschrijving";
 "scene.form.description.tf.text" = "Doe de lichten aan als het donker is";
-"scene.form.add.action.button" = "Acties toevoegen";
+"scene.form.add.action.button" = "Apparaten toevoegen";
 
 "new.scene.successfully.created.title" = "Toegevoegd!";
 "new.scene.successfully.created.subtitle" = "De scène is toegevoegd!";
@@ -198,6 +200,15 @@
 "home.vc.remove.alert.subtitle" = "Wil je echt de selectie verwijderen ? \Wees voorzichtig, deze actie is onomkeerbaar, u zult de verwijderde gegevens verliezen.";
 "home.vc.remove.alert.cancel.button.text" = "Annuleren";
 "home.vc.remove.alert.delete.button.text" = "Verwijder";
+
+"automation.and.scene.vc.notify.label" = "Meldingen";
+"notify.alert.title" = "Informatie";
+"notify.alert.message" = "Als u deze optie activeert, krijgt u een melding als iemand in uw huis deze automatisering start.";
+"notify.alert.cancel.button" = "Oke";
+"When" = "Wanneer";
+"then" = "dus";
+"on" = "On";
+"off" = "Off";
 
 // - MARK: Hub Pairing Labels & texts
 "hub.pairing.vc.topbar.title" = "Koppelen";
@@ -317,6 +328,7 @@
 
 // - MARK: Scene Info
 "scene.info.descritpion.label" = "Beschrijving";
+"scene.info.trigger.label" = "Op gang brengen";
 "scene.info.action.list.title.label" = "Acties";
 
 // - MARK: Device Form

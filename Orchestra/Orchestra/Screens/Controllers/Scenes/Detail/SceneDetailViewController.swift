@@ -15,10 +15,13 @@ class SceneDetailViewController: UIViewController {
     // MARK: UI
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
-    
     @IBOutlet weak var actionsLabel: UILabel!
     @IBOutlet weak var actionsTableView: UITableView!
     
+    @IBOutlet weak var triggerLabel: UILabel!
+    @IBOutlet weak var triggerActionLabel: UILabel!
+    @IBOutlet weak var triggerViewHeightContraint: NSLayoutConstraint!
+
     var editSceneButton: UIBarButtonItem?
     
     // MARK: Utils
@@ -46,6 +49,7 @@ class SceneDetailViewController: UIViewController {
         self.setUpTableView()
         if(!self.isAutomation){
             self.getActionsNameFromScene()
+            self.handleAutomationUI()
         }else{
             self.getActionsFromAutomation()
         }
@@ -68,7 +72,18 @@ class SceneDetailViewController: UIViewController {
     
     private func localizeUI(){
         self.descriptionLabel.text = self.labelLocalization.sceneInfoDesciptionLabel
+        self.triggerLabel.text = self.labelLocalization.sceneInfoTriggerLabel
         self.actionsLabel.text = self.labelLocalization.sceneInfoActionListTitleLabel
+    }
+    
+    private func handleAutomationUI(){
+        if(self.isAutomation){
+            self.triggerViewHeightContraint.constant = CGFloat(100)
+        }else{
+            self.triggerViewHeightContraint.constant = CGFloat(0)
+            self.triggerLabel.isHidden = true
+            self.triggerActionLabel.isHidden = true
+        }
     }
     
     private func setUpTopBar(){
@@ -173,8 +188,20 @@ class SceneDetailViewController: UIViewController {
     }
     
     private func getActionsFromAutomation(){
-        guard let automationDevices = self.automationData?.targets else{
+        guard let automationDevices = self.automationData?.targets,
+              let automationTrigger = self.automationData?.trigger else{
             return
+        }
+        
+        let triggerName = self.sceneDevices.compactMap { device -> String? in
+            if(device.friendlyName == automationTrigger.friendlyName){
+                return device.name
+            }
+            return nil
+        }
+        if(triggerName.count > 0){
+            let triggerActionState = NSLocalizedString(automationTrigger.actions["state"] as? String ?? "" , comment: "")
+            self.triggerActionLabel.text = "\(triggerName[0]) - \(triggerActionState)"
         }
         
         for device in automationDevices {
