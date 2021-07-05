@@ -116,7 +116,6 @@
 		637FB6BB2615CBAE00790735 /* NotificationLocalizableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB6BA2615CBAE00790735 /* NotificationLocalizableUtils.swift */; };
 		637FB6CF2615CEA600790735 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 637FB6D12615CEA600790735 /* Localizable.strings */; };
 		63880ED12610E66E003C3701 /* ApiUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63880ED02610E66E003C3701 /* ApiUtils.swift */; };
-		638856E6262769B9002354FB /* SceneVcColorsCvExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638856E5262769B9002354FB /* SceneVcColorsCvExtension.swift */; };
 		638856EB262769D1002354FB /* SceneVsActiosnTvExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638856EA262769D1002354FB /* SceneVsActiosnTvExtension.swift */; };
 		63885706262851DE002354FB /* HomeVcCollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63885705262851DE002354FB /* HomeVcCollectionViewExtension.swift */; };
 		6388571126288BDE002354FB /* HomeVcShakingCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388571026288BDE002354FB /* HomeVcShakingCellExtension.swift */; };
@@ -130,7 +129,6 @@
 		63A8F517265AE4A100BA02C8 /* LaunchSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */; };
 		63B4352E26680CA2004D12A7 /* DeviceCreationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */; };
 		63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */; };
-		63B435322668133A004D12A7 /* DeviceFormTvActionsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */; };
 		63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */; };
 		63C6C43B26827113007BC8B5 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C43A26827113007BC8B5 /* AlertUtils.swift */; };
 		63D1A94C2661680300DEDB96 /* SupportedDevices.json in Resources */ = {isa = PBXBuildFile; fileRef = 63D1A94B2661680300DEDB96 /* SupportedDevices.json */; };
@@ -353,7 +351,6 @@
 		6382CD0B2615CFEF00384F69 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6382CD0F2615CFF000384F69 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Interface.strings; sourceTree = "<group>"; };
 		63880ED02610E66E003C3701 /* ApiUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtils.swift; sourceTree = "<group>"; };
-		638856E5262769B9002354FB /* SceneVcColorsCvExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneVcColorsCvExtension.swift; sourceTree = "<group>"; };
 		638856EA262769D1002354FB /* SceneVsActiosnTvExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneVsActiosnTvExtension.swift; sourceTree = "<group>"; };
 		63885705262851DE002354FB /* HomeVcCollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcCollectionViewExtension.swift; sourceTree = "<group>"; };
 		6388571026288BDE002354FB /* HomeVcShakingCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcShakingCellExtension.swift; sourceTree = "<group>"; };
@@ -367,7 +364,6 @@
 		63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneDelegate.swift; sourceTree = "<group>"; };
 		63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCreationFormViewController.swift; sourceTree = "<group>"; };
 		63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceCreationFormViewController.xib; sourceTree = "<group>"; };
-		63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFormTvActionsExtension.swift; sourceTree = "<group>"; };
 		63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldsExtensions.swift; sourceTree = "<group>"; };
 		63BB149A2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63BB149B2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Interface.strings"; sourceTree = "<group>"; };
@@ -999,7 +995,6 @@
 		638856E426276984002354FB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				638856E5262769B9002354FB /* SceneVcColorsCvExtension.swift */,
 				638856EA262769D1002354FB /* SceneVsActiosnTvExtension.swift */,
 			);
 			path = Extensions;
@@ -1039,7 +1034,6 @@
 		63B435302668131A004D12A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				63B435312668133A004D12A7 /* DeviceFormTvActionsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1529,7 +1523,6 @@
 				633E7E412610D0F50094B148 /* FakeUserDataService.swift in Sources */,
 				633E7E542610D1400094B148 /* UserDto.swift in Sources */,
 				634C259E262224E30034A7A1 /* FakeSceneDataService.swift in Sources */,
-				638856E6262769B9002354FB /* SceneVcColorsCvExtension.swift in Sources */,
 				63503FF32666D9B600C336E2 /* HomeVcCellSetupExtension.swift in Sources */,
 				5E2B10E4267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift in Sources */,
 				637FB6792615BFA200790735 /* ProgressUtils.swift in Sources */,
@@ -1556,7 +1549,6 @@
 				638AB8E6261494510020EE75 /* SceneServices.swift in Sources */,
 				5E29D7C12689326900325A9F /* GenericWebViewController.swift in Sources */,
 				633E7E4C2610D12D0094B148 /* RootApiService.swift in Sources */,
-				63B435322668133A004D12A7 /* DeviceFormTvActionsExtension.swift in Sources */,
 				63D1A958266171EC00DEDB96 /* NewDevicePairingViewController.swift in Sources */,
 				63F854DF2643108F00983044 /* OrchestraPermissions.swift in Sources */,
 				637FB6BB2615CBAE00790735 /* NotificationLocalizableUtils.swift in Sources */,
