@@ -11,7 +11,6 @@ import RxCocoa
 
 
 class DeviceViewModel{
-    let deviceConfig = DeviceConfigurationService.shared
     let hubAccessoriesConfig = ConfigurationService()
     
     // Device layer conv data
