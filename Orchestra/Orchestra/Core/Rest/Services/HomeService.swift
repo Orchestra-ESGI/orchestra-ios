@@ -17,9 +17,9 @@ class HomeService{
     let deviceService = DeviceServices()
     let configurationService = ConfigurationService()
     
-    let deviceStream = PublishSubject<[HubAccessoryConfigurationDto]>()
+    let deviceStream = PublishSubject<[DeviceDto]>()
     let sceneStream = PublishSubject<[SceneDto]>()
-    let confStream = PublishSubject<[SupportedAccessoriesDto]>()
+    let confStream = PublishSubject<[SupportedDeviceDto]>()
     let roomsStream = PublishSubject<[RoomDto]>()
         
     func getAllRooms() -> Observable<[RoomDto]>{

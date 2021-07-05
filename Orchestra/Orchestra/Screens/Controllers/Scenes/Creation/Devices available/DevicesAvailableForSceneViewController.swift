@@ -14,7 +14,7 @@ class DevicesAvailableForSceneViewController: UIViewController {
     
     let progressUtils = ProgressUtils.shared
     
-    var devicesAvailable : [HubAccessoryConfigurationDto] = []
+    var devicesAvailable : [DeviceDto] = []
     var deviceVM: DeviceViewModel?
     let alertUtils = AlertUtils.shared
     let labelLocalization = ScreensLabelLocalizableUtils.shared

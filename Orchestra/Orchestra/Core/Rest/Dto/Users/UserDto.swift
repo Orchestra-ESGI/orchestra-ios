@@ -14,7 +14,6 @@ class UserDto: NSObject, Mappable{
     var email: String = ""
     var password: String = ""
     var is_removed: Bool = false
-    var houses: [HouseDto] = []
 
     
     required init?(map: Map) {
@@ -27,7 +26,6 @@ class UserDto: NSObject, Mappable{
         self.email <- map["email"]
         self.password <- map["password"]
         self.is_removed <- map["is_removed"]
-        self.houses <- map["houses"]
     }
     
     

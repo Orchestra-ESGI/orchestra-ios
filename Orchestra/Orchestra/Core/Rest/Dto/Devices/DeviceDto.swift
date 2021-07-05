@@ -8,14 +8,14 @@
 import Foundation
 import ObjectMapper
 
-class HubAccessoryConfigurationDto: NSObject, Mappable{
+class DeviceDto: NSObject, Mappable{
     var name: String?
     var room: RoomDto?
     var backgroundColor: String?
     var manufacturer: String?
     var model: String?
     var isReachable: Bool?
-    var type: HubAccessoryType = .Unknown
+    var type: DeviceType = .Unknown
     var actions: Actions?
     var friendlyName: String = ""
     

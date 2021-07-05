@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // - MARK : View models
     let userVm = UsersViewModel()
-    
+    let disposeBag = DisposeBag()
     
     // - MARK : Utils
     let stringUtils = StringUtils.shared
@@ -39,7 +39,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let progressUtils = ProgressUtils.shared
     let alertUtils = AlertUtils.shared
     
-    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,6 +142,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.signupButton.titleLabel?.font = Font.Bold(self.signupButton.titleLabel?.font.pointSize ?? 15)
     }
     
+    private func setUpUiBindings(){
+        self.setupLoginButtonBindings()
+        self.setUpPasswordBindings()
+        self.setUpSigninButtonBindings()
+    }
+    
     // - MARK: Observers
     private func setUpObservers(){
         // Login form
@@ -161,17 +166,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }.disposed(by: self.disposeBag)
     }
     
-    
-    // - MARK: RX binding
-    private func setUpUiBindings(){
-        self.setupLoginButtonBindings()
-        self.setUpPasswordBindings()
-        self.setUpSigninButtonBindings()
-    }
-    
-    
-    
-    // - MARK: Real Data
     private func sendLogin(){
         _ = self.userVm
             .login(email: self.emailTextField.text!, password: self.passwordTextField.text!, on: self)
@@ -250,11 +244,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-extension LoginViewController: SPPermissionsDelegate {
-    
-}
-
-extension LoginViewController: SPPermissionsDataSource{
+extension LoginViewController: SPPermissionsDataSource, SPPermissionsDelegate{
     func configure(_ cell: SPPermissionTableViewCell, for permission: SPPermission) -> SPPermissionTableViewCell {
         return OrchestraPermissions(category: permission.rawValue, cell).setPermissionCell()
     }

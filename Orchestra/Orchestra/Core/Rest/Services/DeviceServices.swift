@@ -13,11 +13,11 @@ import ObjectMapper
 
 class DeviceServices{
     let rootApiService = RootApiService.shared
-    let devicesStream = PublishSubject<[HubAccessoryConfigurationDto]>()
+    let devicesStream = PublishSubject<[DeviceDto]>()
     
-    func getAllDevices(_ devicesStream: PublishSubject<[HubAccessoryConfigurationDto]>) -> Observable<Bool>{
+    func getAllDevices(_ devicesStream: PublishSubject<[DeviceDto]>) -> Observable<Bool>{
         return Observable<Bool>.create { observer in
-            var hubAccessoriesMapped : [HubAccessoryConfigurationDto] = []
+            var hubAccessoriesMapped : [DeviceDto] = []
             
             AF.request("\(RootApiService.BASE_API_URL)/device/all", method: .get, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
                 .validate(statusCode: 200..<300)
@@ -122,9 +122,9 @@ class DeviceServices{
                             observer.onNext(false)
                             return
                         }
-                        var allMappedDevices: [HubAccessoryConfigurationDto] = []
+                        var allMappedDevices: [DeviceDto] = []
                         for devicesJson in devices {
-                            allMappedDevices.append(Mapper<HubAccessoryConfigurationDto>().map(JSONObject: devicesJson)!)
+                            allMappedDevices.append(Mapper<DeviceDto>().map(JSONObject: devicesJson)!)
                         }
                         self.devicesStream.onNext(allMappedDevices)
                         observer.onNext(true)
@@ -140,19 +140,19 @@ class DeviceServices{
         }
     }
     
-    private func getLightBulbConf(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> HubAccessoryConfigurationDto{
-        var lightBulbConf: HubAccessoryConfigurationDto?
+    private func getLightBulbConf(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> DeviceDto{
+        var lightBulbConf: DeviceDto?
         
         print("Light")
         accessoryMap["actions"] = topics
         
-        lightBulbConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)!
+        lightBulbConf = Mapper<DeviceDto>().map(JSON: accessoryMap)!
         
         return lightBulbConf!
     }
     
     
-    private func getOccupancySensorConf(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> HubAccessoryConfigurationDto{
+    private func getOccupancySensorConf(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> DeviceDto{
         print("Occupancy Sensor")
         let getOccupancyDetected = topics["getOccupancyDetected"] as! String
         let friendlyName = getOccupancyDetected.split(separator: "/")[1].description
@@ -160,12 +160,12 @@ class DeviceServices{
             ["title": getOccupancyDetected]
         ]
         accessoryMap["friendly_name"] = friendlyName
-        let occupancySensorConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)
+        let occupancySensorConf = Mapper<DeviceDto>().map(JSON: accessoryMap)
         
         return occupancySensorConf!
     }
     
-    private func getStatelessProgrammableSwitch(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> HubAccessoryConfigurationDto{
+    private func getStatelessProgrammableSwitch(_ topics: [String: Any], _ accessoryMap: inout [String: Any]) -> DeviceDto{
         print("Stateless programmable switch")
         let getOccupancyDetected = topics["getSwitch"] as! [String: Any]
         let topic = getOccupancyDetected["topic"] as! String
@@ -174,7 +174,7 @@ class DeviceServices{
             ["title": topic]
         ]
         accessoryMap["friendly_name"] = friendlyName
-        let occupancySensorConf = Mapper<HubAccessoryConfigurationDto>().map(JSON: accessoryMap)
+        let occupancySensorConf = Mapper<DeviceDto>().map(JSON: accessoryMap)
         
         return occupancySensorConf!
     }

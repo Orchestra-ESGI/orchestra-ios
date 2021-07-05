@@ -79,9 +79,7 @@ class ScreensLabelLocalizableUtils{
     // - MARK: Object info Labels & text
     let objectInfoOnOffButtonText = NSLocalizedString("object.info.onoff.button.text", comment: "")
     let objectInfoManufacturerLabelText = NSLocalizedString("object.info.manufacturer.label.text", comment: "")
-    let objectInfoSerialNumberLabelText = NSLocalizedString("object.info.serial.label.text", comment: "")
     let objectInfoModeleLabelText = NSLocalizedString("object.info.model.label.text", comment: "")
-    let objectInfoVersionLabelText = NSLocalizedString("object.info.version.label.text", comment: "")
     let objectCellReachabilityLabelText = NSLocalizedString("home.object.cell.reachability.label.text", comment: "")
     let objectInfoOkButtonLabelText = NSLocalizedString("object.info.ok.button.label.text", comment: "")
     let objectRoomNameTitleLabelText = NSLocalizedString("object.info.room.name.title.text", comment: "")

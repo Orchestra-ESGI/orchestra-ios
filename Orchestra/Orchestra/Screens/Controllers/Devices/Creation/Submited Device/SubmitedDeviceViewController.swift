@@ -1,5 +1,5 @@
 //
-//  SearchDeviceViewController.swift
+//  SubmitedDeviceViewController.swift
 //  Orchestra
 //
 //  Created by Ramzy Kermad on 03/06/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchDeviceViewController: UIViewController {
+class SubmitedDeviceViewController: UIViewController {
 
     @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var successTitle: UILabel!

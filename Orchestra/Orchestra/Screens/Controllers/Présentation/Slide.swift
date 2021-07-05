@@ -11,19 +11,19 @@ class Slide: UIView {
 
     
     @IBOutlet weak var imageBackground: UIView!
-    
     @IBOutlet weak var slideImage: UIImageView!
     @IBOutlet weak var slideTitle: UILabel!
     @IBOutlet weak var slideDescription: UITextView!
+    @IBOutlet weak var slideImageContainerHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var sliderImageHeightConstraint: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let imageContainerHeight =  (UIScreen.main.bounds.height / 2)
         commonInit()
-        self.imageBackground = self.imageBackground.roundedImage
-//        NSLayoutConstraint.activate([
-//            // OK
-//            self.imageBackground.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 3)
-//        ])
+        self.slideImageContainerHeightConstraint.constant = imageContainerHeight
+        self.sliderImageHeightConstraint.constant = imageContainerHeight - 50
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,20 +46,19 @@ class Slide: UIView {
 
 extension UIView{
       var roundedImage: UIView {
-        let maskLayer = CAShapeLayer(layer: self.layer)
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x:0, y:0))
-        bezierPath.addLine(to: CGPoint(x:self.bounds.size.width, y:0))
-        bezierPath.addLine(to: CGPoint(x:self.bounds.size.width,
-                                       y:self.bounds.size.height - (self.bounds.size.height * 0.36)))
-        bezierPath.addQuadCurve(to: CGPoint(x:0, y: self.bounds.size.height - (self.bounds.size.height * 0.3)),
-                                controlPoint: CGPoint(x:self.bounds.size.width/2, y:self.bounds.size.height))
-        bezierPath.addLine(to: CGPoint(x:0, y:0))
-        bezierPath.close()
-        
-        maskLayer.path = bezierPath.cgPath
-        maskLayer.frame = self.bounds
-        maskLayer.masksToBounds = true
+        let offset: CGFloat = (self.frame.height * 0.5)
+        let bounds: CGRect = self.bounds
+
+        let rectBounds: CGRect = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.size.width , height: bounds.size.height / 2)
+        let rectPath: UIBezierPath = UIBezierPath(rect: rectBounds)
+        let ovalBounds: CGRect = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y, width: bounds.size.width + offset , height: bounds.size.height)
+        let ovalPath: UIBezierPath = UIBezierPath(ovalIn: ovalBounds)
+        rectPath.append(ovalPath)
+
+        let maskLayer: CAShapeLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = rectPath.cgPath
+
         self.layer.mask = maskLayer
         return self
       }

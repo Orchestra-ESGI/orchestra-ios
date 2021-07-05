@@ -15,7 +15,7 @@ import ObjectMapper
 
 class ConfigurationService{
     let rootApiService = RootApiService.shared
-    var confStream = PublishSubject<[SupportedAccessoriesDto]>()
+    var confStream = PublishSubject<[SupportedDeviceDto]>()
     
     func getCurrentAccessoriesConfig() {
         AF.request("\(RootApiService.BASE_API_URL)/device/supported", method: .get, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
@@ -27,9 +27,9 @@ class ConfigurationService{
                     guard let dataResponse = response.value as? [[String: Any]] else{
                         return
                     }
-                    var mappedAccessories: [SupportedAccessoriesDto] = []
+                    var mappedAccessories: [SupportedDeviceDto] = []
                     for accessory in dataResponse {
-                        mappedAccessories.append(Mapper<SupportedAccessoriesDto>().map(JSON: accessory)!)
+                        mappedAccessories.append(Mapper<SupportedDeviceDto>().map(JSON: accessory)!)
                     }
                     self.confStream.onNext(mappedAccessories)
                 case .failure(_):

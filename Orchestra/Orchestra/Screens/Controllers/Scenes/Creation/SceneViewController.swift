@@ -25,7 +25,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     @IBOutlet weak var shuffleColorsButton: UIButton!
     @IBOutlet weak var backgroudColorsCollectionView: UICollectionView!
     @IBOutlet weak var addTriggerButton: UIButton!
-    //@IBOutlet weak var triggerDeviceTf: UITextField!
     @IBOutlet weak var triggerDeviceTf: UITextView!
     @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var sceneDescriptionLabel: UILabel!
@@ -65,10 +64,10 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var actionsName: [SceneActionsName] = []
     var filteredActionsName: [SceneActionsName] = []
     // All available devices
-    var devices : [HubAccessoryConfigurationDto] = []
+    var devices : [DeviceDto] = []
     var deviceDict: [[String:Any]] = []
 
-    var triggerDevices: [HubAccessoryConfigurationDto] = []
+    var triggerDevices: [DeviceDto] = []
     var pickerViewTriggerData: [[String: Any]] = []
     var selectedTriggerDevice = PublishSubject<[String: Any]>()
 
@@ -532,7 +531,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 return dict["friendly_name"] as! String
             }
 
-            let typeFilter: [HubAccessoryType] = [.Contact, .Occupancy, .StatelessProgrammableSwitch]
+            let typeFilter: [DeviceType] = [.Contact, .Occupancy, .StatelessProgrammableSwitch]
             self.devices = devices.filter { !devicenameInScene.contains($0.friendlyName) && !typeFilter.contains($0.type) }
             self.progressUtils.dismiss()
             if (self.devices.count > 0) {
@@ -577,7 +576,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.isPopUpVisible = false
     }
 
-    func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
+    func parseDeviceActionToGetName(device: DeviceDto) {
         var actions: [String] = []
         var values: [Any] = []
         if device.actions?.state != nil {
@@ -629,7 +628,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
     }
 
-    func appendDevices(device: HubAccessoryConfigurationDto){
+    func appendDevices(device: DeviceDto){
         let deviceFeriendlyName = device.friendlyName
         let deviceName = device.name
         //let deviceActions = self.parseDeviceActionToGetName(device: device)

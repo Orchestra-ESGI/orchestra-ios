@@ -48,7 +48,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     let alertUtils = AlertUtils.shared
     
     var deviceInfo: SupportedDevicesInformationsDto?
-    var device: HubAccessoryConfigurationDto?
+    var device: DeviceDto?
     var isDeviceUpdate = false
     var rooms: [RoomDto] = []
     
@@ -181,7 +181,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                     if(self.isDeviceUpdate){
                         // Update device
                         self.deviceViewModel?.updateDevice(deviceData: deviceData)
-                        let searchVC = SearchDeviceViewController()
+                        let searchVC = SubmitedDeviceViewController()
                         searchVC.onDoneBlock = self.onDoneBlock
                         searchVC.isSuccessfulyAdded = true
                         self.navigationController?.pushViewController(searchVC, animated: true)
@@ -291,7 +291,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
 
 
 protocol SendDeviceProtocol {
-    func save(device: HubAccessoryConfigurationDto)
+    func save(device: DeviceDto)
 }
 
 enum FormValidationError: Error{

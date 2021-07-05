@@ -20,9 +20,12 @@ class DeviceInfoViewController: UIViewController {
     @IBOutlet weak var tableViewTitleLabel: UILabel!
     @IBOutlet weak var caracteristicsTableView: UITableView!
     @IBOutlet weak var dynamicViewContainer: UIView!
-    
     @IBOutlet weak var dynamicContainerHeight: NSLayoutConstraint!
     
+    var editSceneButton: UIBarButtonItem?
+    var dynamicColorContainerSlider: ColorSlider?
+    var dynamicTemperatureContainerLabel: UILabel?
+    var dynamicTemperatureContainerSlider: UISlider?
     
     var onDoneBlock : (() -> Void)?
     
@@ -31,22 +34,19 @@ class DeviceInfoViewController: UIViewController {
     let colorUtils = ColorUtils.shared
     
     // MARK: - Local data
-    var deviceData: HubAccessoryConfigurationDto?
+    var deviceVM: DeviceViewModel?
+    var deviceData: DeviceDto?
     var disposeBag = DisposeBag()
+    
     let favClicStream = PublishSubject<String>()
     var collectionView: UICollectionView!
     var objectInfoKeyValue: [String: String] = [:]
     var objectInfoNames: [String] = []
-    var deviceVM: DeviceViewModel?
     
     var actionToSend: [String: Any] = [:]
     var devicesActionsValues: [String: Any] = [:]
     var dynamicColorContainerLabel: UILabel?
-    var dynamicColorContainerSlider: ColorSlider?
-    var dynamicTemperatureContainerLabel: UILabel?
-    var dynamicTemperatureContainerSlider: UISlider?
     
-    var editSceneButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,8 +198,6 @@ class DeviceInfoViewController: UIViewController {
         let manufacturerLabel = self.labelLocalization.objectInfoManufacturerLabelText
         
         // MARK: - Remove from localize files
-        //let serialNumberLabel = self.localizerUtils.objectInfoSerialNumberLabelText
-        //let versionLabel = self.localizerUtils.objectInfoVersionLabelText
         let modeleLabel = self.labelLocalization.objectInfoModeleLabelText
         let reachabilityLabel = self.labelLocalization.objectCellReachabilityLabelText
         let reachableStatus = (self.deviceData?.isReachable ?? false) ?

@@ -10,6 +10,13 @@ import Foundation
 import WatchConnectivity
 
 class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
+    private let watchSessionManager = WatchSessionManager.shared
+    private var sessionConnectivity: WCSession?
+    
+    // - MARK: Utils
+    private let listUtils = ListUtil.shared
+    private let watchLocalization = WatchLabelLocalizableUtils.shared
+    
     // MARK: - Local data
     private var controllerTitle = ""
     private var objectColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -17,10 +24,7 @@ class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
     private var actionsList: [String] = []
     private var currentActionIndex = 0
     private var selectedDeviceIndex = 0
-    private let watchLocalization = WatchLabelLocalizableUtils.shared
-    private let watchSessionManager = WatchSessionManager.shared
-    private var sessionConnectivity: WCSession?
-    private let listUtils = ListUtil.shared
+    
     
     // MARK: - Outlets
     @IBOutlet weak var objectNameLabel: WKInterfaceLabel!

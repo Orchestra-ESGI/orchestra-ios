@@ -13,9 +13,13 @@ import WatchConnectivity
 class DomoticDevicesController: WKInterfaceController{
     var sessionConnectivity: WCSession?
     let watchSessionManager = WatchSessionManager.shared
+    
+    // - MARK: Utils
     let listUtils = ListUtil.shared
     let watchLocalization = WatchLabelLocalizableUtils.shared
     
+    
+    // - MARK: Local data
     private var loadingTimer = Timer()
     private var progressTracker = 1
     var selectedDeviceIndex = 0
@@ -23,7 +27,6 @@ class DomoticDevicesController: WKInterfaceController{
     var devices: [Device] = []
     
     @IBOutlet weak var loadingLabel: WKInterfaceLabel!
-    
     @IBOutlet weak var devicesList: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {

@@ -34,7 +34,7 @@ class SceneDetailViewController: UIViewController {
     var automationData: AutomationDto?
     var isAutomation = false
     let sceneVM = SceneViewModel()
-    var sceneDevices: [HubAccessoryConfigurationDto] = []
+    var sceneDevices: [DeviceDto] = []
     var sceneActionsName: [String: [String]] = [:]
     var devices: [[String: String]] = []
     

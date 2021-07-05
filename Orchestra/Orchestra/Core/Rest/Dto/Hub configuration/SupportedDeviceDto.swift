@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-class SupportedAccessoriesDto: NSObject, Mappable{
+class SupportedDeviceDto: NSObject, Mappable{
     var brand: String = ""
     var devices: [SupportedDevicesInformationsDto] = []
        

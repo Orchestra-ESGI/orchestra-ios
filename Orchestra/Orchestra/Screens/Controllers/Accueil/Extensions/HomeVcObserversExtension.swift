@@ -40,6 +40,7 @@ extension HomeViewController{
         _ = self.homeVM!
             .getAllRooms()
             .subscribe { roomsDto in
+                self.rooms.append(self.allRoomsFilterChip)
                 for room in roomsDto {
                     self.rooms.append(room)
                 }
@@ -50,7 +51,6 @@ extension HomeViewController{
     }
     
     func setScenesStreamObserver(){
-        // Listen to scene stream and show them in TV
         _ = self.homeVM!
             .sceneStream
             .subscribe { (scenes) in
@@ -72,7 +72,6 @@ extension HomeViewController{
     }
     
     func setAutomationsStreamObserver(){
-        // Listen to scene stream and show them in TV
         _ = self.homeVM!
             .automationStream
             .subscribe { (automations) in

@@ -18,7 +18,7 @@ class HomeViewModel{
     let homeService: HomeService = HomeService()
     
     let deviceVM: DeviceViewModel?
-    let deviceStream = PublishSubject<[HubAccessoryConfigurationDto]>()
+    let deviceStream = PublishSubject<[DeviceDto]>()
     
     let sceneVm: SceneViewModel?
     let sceneStream = PublishSubject<[SceneDto]>()
