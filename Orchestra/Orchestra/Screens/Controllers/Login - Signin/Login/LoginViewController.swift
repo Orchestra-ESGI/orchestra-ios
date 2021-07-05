@@ -183,6 +183,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.progressUtils.dismiss()
                     let homeVC = HomeViewController()
                     homeVC.userLoggedInData = userLogged
+                    if let token = UserDefaults.standard.object(forKey: "fcmToken") as? String {
+                        RootApiService.shared.saveFcmToken(token: token)
+                    }
                     self.navigationController?.pushViewController(homeVC, animated: true)
                 }
         } onError: { (err) in

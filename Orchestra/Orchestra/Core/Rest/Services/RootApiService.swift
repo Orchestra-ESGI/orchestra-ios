@@ -91,7 +91,7 @@ public class RootApiService{
     func saveFcmToken(token: String) {
         var body: [String: Any] = [:]
         body["token"] = token
-        AF.request("\(RootApiService.BASE_API_URL)/notification", method: .post, parameters: body, encoding: JSONEncoding.default)
+        AF.request("\(RootApiService.BASE_API_URL)/notification", method: .post, parameters: body, encoding: JSONEncoding.default, headers: RootApiService.shared.headers)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
