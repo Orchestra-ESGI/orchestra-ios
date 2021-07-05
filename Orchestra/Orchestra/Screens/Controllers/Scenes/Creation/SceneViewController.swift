@@ -52,7 +52,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var dataDelegate: SendBackDataProtocol?
     var sceneToEdit: SceneDto?
     var automationToEdit: AutomationDto?
-    var alertDevice: DevicesAlert?
+    var alertDevice: CustomSceneActionTbvAlert?
     var onDoneBlock : (() -> Void)?
 
     // Available actions for scenes
@@ -488,7 +488,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
     }
 
-    func setUpDevicesTableView(deviceAlert: DevicesAlert){
+    func setUpDevicesTableView(deviceAlert: CustomSceneActionTbvAlert){
         deviceAlert.tableView.delegate = self
         deviceAlert.tableView.dataSource = self
         deviceAlert.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "POP_UP_CELL")
@@ -514,7 +514,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             self.progressUtils.dismiss()
             if (self.devices.count > 0) {
                 if(self.view.subviews.count >= 1){
-                    self.alertDevice = DevicesAlert()
+                    self.alertDevice = CustomSceneActionTbvAlert()
                     self.alertDevice?.delegate = self
                     self.alertDevice?.tableView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
                     self.alertDevice?.alertView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)

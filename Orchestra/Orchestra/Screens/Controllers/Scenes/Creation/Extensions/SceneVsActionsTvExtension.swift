@@ -228,7 +228,7 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                         self.filteredActionsName = allActions
                     }
                     
-                    self.alertDevice = DevicesAlert()
+                    self.alertDevice = CustomSceneActionTbvAlert()
                     self.alertDevice?.delegate = self
                     self.alertDevice?.tableView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
                     self.alertDevice?.alertView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)

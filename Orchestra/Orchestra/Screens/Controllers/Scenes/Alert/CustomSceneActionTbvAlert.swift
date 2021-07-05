@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DevicesAlert: UIView{
+class CustomSceneActionTbvAlert: UIView{
     
     @IBOutlet var parentView: UIView!
     @IBOutlet weak var alertView: UIView!
