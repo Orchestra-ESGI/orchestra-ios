@@ -109,9 +109,9 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
                 cell.addSubview(cell.deviceName)
                 cell.addSubview(cell.roomLabel)
                 
-                cell.deviceName.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
+                cell.deviceName.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 45.0).isActive = true
                 cell.deviceName.topAnchor.constraint(equalTo: cell.topAnchor, constant: 10).isActive = true
-                cell.deviceName.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+                cell.deviceName.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -45.0).isActive = true
                 cell.deviceName.bottomAnchor.constraint(equalTo: cell.roomLabel.topAnchor).isActive = true
                 
                 cell.roomLabel.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true

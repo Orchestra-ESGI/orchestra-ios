@@ -127,7 +127,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
 
     private func handleAutomationUI(){
         if(self.isAutomation){
-            self.automationDynamicContainerHeight.constant = CGFloat(100)
+            self.automationDynamicContainerHeight.constant = CGFloat(60)
             self.setUpTriggersData()
             self.view.addSubview(self.pickerViewPresenter)
         }else{
