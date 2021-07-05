@@ -22,7 +22,7 @@ class CustomSceneActionTbvAlert: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        Bundle.main.loadNibNamed("DevicesAlert", owner: self, options: nil)
+        Bundle.main.loadNibNamed("CustomSceneActionTbvAlert", owner: self, options: nil)
         self.commonInit()
         self.localizeCustomView()
     }
