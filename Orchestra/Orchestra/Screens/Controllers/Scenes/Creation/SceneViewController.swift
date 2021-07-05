@@ -21,9 +21,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     // MARK: - UI
     @IBOutlet weak var sceneNameLabel: UILabel!
     @IBOutlet weak var sceneNameTf: UITextField!
-    @IBOutlet weak var sceneBackgroundColorLabel: UILabel!
-    @IBOutlet weak var shuffleColorsButton: UIButton!
-    @IBOutlet weak var backgroudColorsCollectionView: UICollectionView!
     @IBOutlet weak var addTriggerButton: UIButton!
     @IBOutlet weak var triggerDeviceTf: UITextView!
     @IBOutlet weak var viewContainer: UIView!
@@ -58,7 +55,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     var alertDevice: DevicesAlert?
     var onDoneBlock : (() -> Void)?
 
-    var sceneColors: [UIColor] = []
     // Available actions for scenes
     var sceneActions: [[String: Any]] = []
     var actionsName: [SceneActionsName] = []
@@ -113,9 +109,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.localizeLabels()
         self.setUpUI()
         self.setUpTextFields()
-        self.setColorsCollectionView()
         self.setActionsTableView()
-        self.generatesBackGroundColor()
         self.clickObservers()
         self.handleAutomationUI()
     }
@@ -226,7 +220,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     // MARK: Controller Setup
     private func localizeLabels(){
         self.sceneNameLabel.text = self.labelLocalization.sceneFormNameLabel
-        self.sceneBackgroundColorLabel.text = self.labelLocalization.sceneFormBackgroundColorLabel
         self.sceneDescriptionLabel.text = self.labelLocalization.sceneFormDescriptionLabel
         self.addActionButton.setTitle(self.labelLocalization.addActionButtonnText, for: .normal)
         self.sceneDescriptionTf.placeholder = self.labelLocalization.sceneFormDescriptionTf
@@ -324,7 +317,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         self.actionsTableView.backgroundColor = .clear
         self.sceneNameTf.backgroundColor = .clear
         self.sceneDescriptionTf.backgroundColor = .clear
-        self.backgroudColorsCollectionView.backgroundColor = .clear
         
         let newSceneTitle = self.labelLocalization.newSceneVcTitle
         let updateSceneTitle = self.labelLocalization.updateSceneVcTitle
@@ -355,8 +347,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         
         self.sceneNameLabel.font = Font.Regular(17)
         self.sceneNameLabel.textColor = .white
-        self.sceneBackgroundColorLabel.font = Font.Regular(17)
-        self.sceneBackgroundColorLabel.textColor = .white
         self.sceneDescriptionLabel.font = Font.Regular(17)
         self.sceneDescriptionLabel.textColor = .white
         self.addActionButton.titleLabel?.font = Font.Regular(17)
@@ -439,12 +429,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
     }
 
-    private func setColorsCollectionView(){
-        self.backgroudColorsCollectionView.delegate = self
-        self.backgroudColorsCollectionView.dataSource = self
-        self.backgroudColorsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "COLOR_CELL")
-    }
-
     private func setActionsTableView(){
         self.actionsTableView.delegate = self
         self.actionsTableView.dataSource = self
@@ -510,12 +494,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         deviceAlert.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "POP_UP_CELL")
         deviceAlert.tableView.register(DeviceAlertTableViewCell.self, forCellReuseIdentifier: "POP_UP_CELL_DEVICE")
         deviceAlert.tableView.tableFooterView = UIView()
-    }
-
-    @IBAction func shuffleColors(_ sender: Any) {
-        self.sceneColors.removeAll()
-        self.generatesBackGroundColor()
-        self.backgroudColorsCollectionView.reloadData()
     }
 
 
@@ -698,7 +676,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
 
         var scene: [String: Any] = [:]
         scene["name"] = self.sceneNameTf.text!
-        scene["color"] = self.sceneColors[self.selectedColor].toHexString()
+        scene["color"] = ""
         scene["description"] = self.sceneDescriptionTf.text!
         scene["devices"] = self.deviceDict.compactMap({ device -> [String: Any]? in
             if(device["actions"] == nil){
@@ -724,7 +702,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
 
         var automation: [String: Any] = [:]
         automation["name"] = self.sceneNameTf.text!
-        automation["color"] = self.sceneColors[self.selectedColor].toHexString()
+        automation["color"] = ""
         automation["description"] = self.sceneDescriptionTf.text!
         automation["targets"] = self.deviceDict.compactMap({ device -> [String: Any]? in
             if(device["actions"] == nil){
@@ -824,9 +802,6 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
     }
 
     // MARK: Local functions
-    private func generatesBackGroundColor(){
-        ColorUtils.shared.generatesBackGroundColor(colorArray: &self.sceneColors, size: 6)
-    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

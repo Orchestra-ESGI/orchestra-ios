@@ -18,11 +18,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var roomNameLabel: UILabel!
     @IBOutlet weak var roomNameTextField: UITextField!
-    
-    @IBOutlet weak var deviceBackgroundColorsCollectionView: UICollectionView!
-    
-    @IBOutlet weak var addDeviceToFavLabel: UILabel!
-    @IBOutlet weak var favDeviceSwitch: UISwitch!
+
     var onDoneBlock : (() -> Void)?
     
     var validateFormAppBarBtn: UIBarButtonItem?
@@ -32,7 +28,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     
     var accessoryType: String = ""
     var accessoryDocUrl: String = ""
-    var deviceBackgrounds: [UIColor] = []
     var selectedColor = 0
     var isDeviceDocumented = false // Depending on the field 'documentation' in the conf
     private var selectedRoom = PublishSubject<String>()
@@ -77,7 +72,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         self.setUpTextFields()
         self.setUpStreamsObserver()
         self.setUpclickObservers()
-        self.setColorsCollectionView()
         self.localizeUI()
         self.validateFormAppBarBtn?.isEnabled = false
     }
@@ -220,15 +214,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
             })
     }
     
-    
-    private func setColorsCollectionView(){
-        self.deviceBackgroundColorsCollectionView.delegate = self
-        self.deviceBackgroundColorsCollectionView.dataSource = self
-        self.deviceBackgroundColorsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "COLOR_CELL")
-        self.generatesBackGroundColor()
-        self.deviceBackgroundColorsCollectionView.reloadData()
-    }
-    
     private func setTitle(){
         if(self.isDeviceUpdate){
             self.title = self.labelLocalization.deviceFormVcUpdateTitle
@@ -240,16 +225,6 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
     private func setUpTextFields(){
         self.deviceNameTextField.delegate = self
         self.roomNameTextField.delegate = self
-    }
-
-    @IBAction func shuffleColors(_ sender: Any) {
-        self.deviceBackgrounds.removeAll()
-        self.generatesBackGroundColor()
-        self.deviceBackgroundColorsCollectionView.reloadData()
-    }
-    
-    private func generatesBackGroundColor(){
-        ColorUtils.shared.generatesBackGroundColor(colorArray: &self.deviceBackgrounds, size: 6)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -278,7 +253,7 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
                 "_id": self.currentRoom?.id ?? "",
                 "name": self.currentRoom?.name ?? ""
             ],
-            "background_color": self.deviceBackgrounds[selectedColor].toHexString(),
+            "background_color": "",
             "model": self.device?.model ?? "",
             "friendly_name": self.device?.friendlyName ?? ""
         ]
