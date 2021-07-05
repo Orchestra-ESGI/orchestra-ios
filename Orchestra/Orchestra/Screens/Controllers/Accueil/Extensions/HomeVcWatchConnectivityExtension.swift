@@ -9,6 +9,47 @@ import Foundation
 import WatchConnectivity
 import UIKit
 
+extension HomeViewController{
+    func syncWatchScenes(){
+        guard WCSession.default.isReachable else{
+            return
+        }
+
+        WCSession.default.sendMessage(dataToTranferToWatch) { (reply) in
+            print("responseHandler: \(reply)")
+        } errorHandler: { (err) in
+            print("errorHandler: \(err)")
+        }
+        dataToTranferToWatch.removeAll()
+    }
+
+    func parseScenesForWatch(){
+        var sceneCount = 0
+        for scene in self.homeScenes {
+            let sceneKey = (sceneCount).description
+            self.dataToTranferToWatch[sceneKey] = scene.mapSceneToString(position: sceneCount + 1)
+
+            print(scene)
+            sceneCount += 1
+        }
+    }
+    
+    func parseDevicesForWatch(){
+        var deviceCount = 0
+        for device in self.hubDevices {
+            let deviceKey = (deviceCount).description
+            var deviceDict = device.mapDeviceToString(position: deviceCount + 1)
+            self.parseDeviceActionToGetName(device: device)
+            deviceDict["actions"] = self.actionsName
+            self.dataToTranferToWatch[deviceKey] = deviceDict
+
+            print(device)
+            deviceCount += 1
+        }
+    }
+}
+
+
 extension HomeViewController: WCSessionDelegate{
 
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?){
@@ -29,17 +70,19 @@ extension HomeViewController: WCSessionDelegate{
         print(message)
         switch message.keys.first {
         case "scene_pos":
+            // Play action on scpecific scene
             guard let response = message["scene_pos"] as? String else{
                 return
             }
             let scenePos = Int(response)!
-            self.playAllActionsOf(for: IndexPath(row: scenePos, section: 1))
+            self.playAllActions(for: IndexPath(row: scenePos, section: 1))
             
             replyHandler([
                 "response": "Scene lancée correctement!"
             ])
             break
         case "device_action":
+            // Play action on a specific device
             guard let response = message["device_action"] as? [String: Any],
                   let index = response["index"] as? Int,
                   let action = response["actions"] as? [String: Any] else{
@@ -64,13 +107,13 @@ extension HomeViewController: WCSessionDelegate{
             }
             break
         case "scenes":
-            // Syncroniser la montre et le tél sur la liste de scène
+            // Sync watch and phone on scenes
             self.parseScenesForWatch()
             replyHandler(self.dataToTranferToWatch)
             self.dataToTranferToWatch.removeAll() // clean the array for the next transfert
             break
         case "devices":
-            // Syncroniser la montre et le tél sur la liste de scène
+            // Sync watch and phone on devices
             self.parseDevicesForWatch()
             replyHandler(self.dataToTranferToWatch)
             self.dataToTranferToWatch.removeAll() // clean the array for the next transfert
@@ -82,3 +125,4 @@ extension HomeViewController: WCSessionDelegate{
         }
     }
 }
+

@@ -8,12 +8,13 @@
 import UIKit
 
 class DevicesAvailableForSceneViewController: UIViewController {
+    // - MARK: - TODO: Remove this controller it's unused
 
     @IBOutlet weak var devicesAvailableTableView: UITableView!
     
     let progressUtils = ProgressUtils.shared
     
-    var devicesAvailable : [HubAccessoryConfigurationDto] = []
+    var devicesAvailable : [DeviceDto] = []
     var deviceVM: DeviceViewModel?
     let alertUtils = AlertUtils.shared
     let labelLocalization = ScreensLabelLocalizableUtils.shared
@@ -26,29 +27,23 @@ class DevicesAvailableForSceneViewController: UIViewController {
         self.deviceVM = DeviceViewModel(navigationCtrl: self.navigationController!)
         let progressTitle = self.labelLocalization.loadingDeviceForSceneProgressAlertTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: (UIApplication.shared.windows[0].rootViewController?.view)!)
-        
-        
-        _ = self.deviceVM!.deviceConfig.getCurrentAccessoriesConfig().subscribe { finished in
-            print("fini")
-        } onError: { err in
-            print("ko")
-        }
 
-        _ = self.deviceVM!
-            .deviceConfig
-            .configurationStream
-            .subscribe { devices in
-                self.progressUtils.dismiss()
-                self.devicesAvailable = devices
-                self.devicesAvailableTableView.reloadData()
-        } onError: { err in
-            print("error while fetching devices for scene")
-        } onCompleted: {
-            print("onCompleted() called in setScenesStreamObserver()")
-            self.progressUtils.dismiss()
-            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
-            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
-        }
+//        self.deviceVM!.getSupportedAccessories()
+//
+//        _ = self.deviceVM!
+//            .supportedAccessoriesStrem
+//            .subscribe { devices in
+//                self.progressUtils.dismiss()
+//                self.devicesAvailable = devices
+//                self.devicesAvailableTableView.reloadData()
+//        } onError: { err in
+//            print("error while fetching devices for scene")
+//        } onCompleted: {
+//            print("onCompleted() called in setScenesStreamObserver()")
+//            self.progressUtils.dismiss()
+//            let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
+//            self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
+//        }
         
         
         self.title = self.labelLocalization.deviceAvailableScreenTitle

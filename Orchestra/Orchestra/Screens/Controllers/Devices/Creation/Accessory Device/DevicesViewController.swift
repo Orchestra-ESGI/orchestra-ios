@@ -23,7 +23,7 @@ class DevicesViewController: UIViewController {
     let localizeNotifications = NotificationLocalizableUtils.shared
     let labelLocalization = ScreensLabelLocalizableUtils.shared
     let progressUtils = ProgressUtils.shared
-    var device: HubAccessoryConfigurationDto?
+    var device: DeviceDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()

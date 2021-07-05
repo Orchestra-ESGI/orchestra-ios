@@ -11,14 +11,13 @@ import RxCocoa
 
 
 class DeviceViewModel{
-    let deviceConfig = DeviceConfigurationService.shared
     let hubAccessoriesConfig = ConfigurationService()
     
     // Device layer conv data
     let deviceService = DeviceServices()
-    let devicesStream = PublishSubject<[HubAccessoryConfigurationDto]>()
+    let devicesStream = PublishSubject<[DeviceDto]>()
     
-    let supportedAccessoriesStrem = PublishSubject<[SupportedAccessoriesDto]>()
+    let supportedAccessoriesStrem = PublishSubject<[SupportedDeviceDto]>()
     let deviceFormCompleted = PublishSubject<Bool>()
     
     private var saveDeviceDelegate: SendDeviceProtocol?

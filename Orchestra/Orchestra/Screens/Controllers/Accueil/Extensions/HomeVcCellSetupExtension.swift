@@ -44,11 +44,7 @@ extension HomeViewController{
         let reachableStatus = (currentObject.isReachable ?? false) ?
                                 self.labelLocalization.objectCellReachabilityStatusOkLabelText :
                                 self.labelLocalization.objectCellReachabilityStatusKoLabelText
-        if self.traitCollection.userInterfaceStyle == .dark {
-            objectCell.objectImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }else{
-            objectCell.objectImageView.tintColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        }
+        objectCell.objectImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let currentCellPos = indexPath.row
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressed))
         longPressRecognizer.minimumPressDuration = 0.5
@@ -69,7 +65,7 @@ extension HomeViewController{
         objectCell.objectNameLabel.text = roomNameLocalize
         objectCell.objectStatusLabel.text = reachableStatus
         
-        objectCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: currentObject.backgroundColor!) //self.generatesBackGroundColor()
+        objectCell.cellContentView.backgroundColor = self.colorUtils.hexStringToUIColor(hex: currentObject.backgroundColor!)
         objectCell.contentView.layer.cornerRadius = 8.0
         objectCell.contentView.layer.borderColor = UIColor.clear.cgColor
         objectCell.contentView.layer.borderWidth = 0.2
@@ -92,11 +88,7 @@ extension HomeViewController{
             sceneCell.sceneImageView.image = UIImage(systemName: "timer")
         }
         
-        if self.traitCollection.userInterfaceStyle == .dark {
-            sceneCell.sceneImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        }else{
-            sceneCell.sceneImageView.tintColor = .black
-        }
+        sceneCell.sceneImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let currentCellPos = indexPath.row
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressed))

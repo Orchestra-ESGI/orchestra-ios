@@ -53,7 +53,6 @@ extension HomeViewController: UICollectionViewDataSource{
         }
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if(collectionView == self.roomsCollectionView){
             return self.rooms.count
@@ -146,7 +145,6 @@ extension HomeViewController: UICollectionViewDataSource{
                 
                 self.filterDevices(for: indexPath)
                 self.filterScenes(for: indexPath)
-                //self.filterAutomation(for: indexPath)
                 
                 self.collectionView.reloadData()
                 self.roomsCollectionView.reloadData()

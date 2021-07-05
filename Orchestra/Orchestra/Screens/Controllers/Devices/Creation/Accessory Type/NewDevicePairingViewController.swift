@@ -13,7 +13,7 @@ class NewDevicePairingViewController: UIViewController {
     // MARK: - Local data
     var deviceVM: DeviceViewModel?
     
-    var accessories: [SupportedAccessoriesDto] = []
+    var accessories: [SupportedDeviceDto] = []
     
     // MARK: - Utils
     let notificationsUtils = NotificationsUtils.shared
@@ -22,7 +22,7 @@ class NewDevicePairingViewController: UIViewController {
     let progressUtils = ProgressUtils.shared
     let alertUtils = AlertUtils.shared
     
-    var device: HubAccessoryConfigurationDto?
+    var device: DeviceDto?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +88,7 @@ class NewDevicePairingViewController: UIViewController {
 
     }
     
-    private func getAccessoryType(confType: String) -> HubAccessoryType {
+    private func getAccessoryType(confType: String) -> DeviceType {
         switch confType {
         case "lightbulb":
             return .LightBulb

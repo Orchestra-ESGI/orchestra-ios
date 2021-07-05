@@ -69,27 +69,27 @@ class OrchestraPager: UIViewController {
     func createSlides() -> [UIView] {
         // Create sldies for the pager
         let slide1 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide1.slideImage.image = UIImage(named: "couple-couch-slide-1")
+        slide1.slideImage.image = UIImage(named: "simplicite")
         slide1.slideTitle.text = self.labelLocalization.pageSlide1TitleLabelText //"Simplicité"
         slide1.slideDescription.text = self.labelLocalization.pagerSlide1LabelText
         
         let slide2 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide2.slideImage.image = UIImage(named: "couple-couch-slide-1")
+        slide2.slideImage.image = UIImage(named: "connected-house")
         slide2.slideTitle.text = self.labelLocalization.pageSlide2TitleLabelText //"Efficacité"
         slide2.slideDescription.text = self.labelLocalization.pagerSlide2LabelText
         
         let slide3 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide3.slideImage.image = UIImage(named: "couple-couch-slide-1")
+        slide3.slideImage.image = UIImage(named: "hub-mess")
         slide3.slideTitle.text = self.labelLocalization.pageSlide3TitleLabelText // "Clarté"
         slide3.slideDescription.text = self.labelLocalization.pagerSlide3LabelText
         
         let slide4 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide4.slideImage.image = UIImage(named: "couple-couch-slide-1")
+        slide4.slideImage.image = UIImage(named: "hand-phone")
         slide4.slideTitle.text = self.labelLocalization.pageSlide4TitleLabelText //"Synchronisation"
         slide4.slideDescription.text = self.labelLocalization.pagerSlide4LabelText
         
         let slide5 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide5.slideImage.image = UIImage(named: "couple-couch-slide-1")
+        slide5.slideImage.image = UIImage(named: "lets-go")
         slide5.slideTitle.text = self.labelLocalization.pageSlide5TitleLabelText //"C'est parti !"
         slide5.slideDescription.text = self.labelLocalization.pagerSlide5LabelText
         
@@ -110,7 +110,7 @@ class OrchestraPager: UIViewController {
     }
     
     private func setUpFAB(){
-        floatingActionButton.buttonImage = UIImage(systemName: "arrow.forward")
+        floatingActionButton.buttonImage = UIImage(systemName: "chevron.right")
         floatingActionButton.size = CGFloat(60.0)
         floatingActionButton.plusColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         floatingActionButton.buttonColor = .red

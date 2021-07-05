@@ -13,7 +13,6 @@ class HeaderCollectionViewCell: UICollectionReusableView {
     @IBOutlet weak var headerTextLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

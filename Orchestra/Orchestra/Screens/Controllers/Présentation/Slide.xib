@@ -13,7 +13,9 @@
                 <outlet property="imageBackground" destination="Xqj-41-5ik" id="t7x-2m-tT3"/>
                 <outlet property="slideDescription" destination="Hii-Ah-B7t" id="xQ1-Du-EOG"/>
                 <outlet property="slideImage" destination="TK9-R8-5qC" id="Fyb-Wd-q3j"/>
+                <outlet property="slideImageContainerHeightConstraint" destination="5ld-mV-vSL" id="WPL-JS-cgC"/>
                 <outlet property="slideTitle" destination="8b1-cD-QVi" id="Kpm-EW-dYl"/>
+                <outlet property="sliderImageHeightConstraint" destination="DWD-G8-1cJ" id="LWu-Fm-Vrs"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,13 +24,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simplicité" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8b1-cD-QVi">
-                    <rect key="frame" x="25" y="564" width="369" height="48"/>
+                    <rect key="frame" x="25" y="560" width="369" height="48"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hii-Ah-B7t">
-                    <rect key="frame" x="25" y="632" width="369" height="110"/>
+                    <rect key="frame" x="25" y="628" width="369" height="110"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="110" id="ZI2-9i-s3j"/>
@@ -39,18 +41,18 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-41-5ik">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="couple-couch-slide-1" translatesAutoresizingMaskIntoConstraints="NO" id="TK9-R8-5qC">
-                            <rect key="frame" x="0.0" y="175" width="414" height="200"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="connected-house" translatesAutoresizingMaskIntoConstraints="NO" id="TK9-R8-5qC">
+                            <rect key="frame" x="0.0" y="50" width="414" height="400"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="DWD-G8-1cJ"/>
+                                <constraint firstAttribute="height" constant="400" id="DWD-G8-1cJ"/>
                             </constraints>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.89853173490000005" green="0.93259006739999994" blue="0.98825174569999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="550" id="5ld-mV-vSL"/>
+                        <constraint firstAttribute="height" constant="500" id="5ld-mV-vSL"/>
                         <constraint firstAttribute="trailing" secondItem="TK9-R8-5qC" secondAttribute="trailing" id="Dqf-me-G1g"/>
                         <constraint firstItem="TK9-R8-5qC" firstAttribute="centerX" secondItem="Xqj-41-5ik" secondAttribute="centerX" id="JbR-wB-UC3"/>
                         <constraint firstItem="TK9-R8-5qC" firstAttribute="centerY" secondItem="Xqj-41-5ik" secondAttribute="centerY" id="ZMx-Vn-JY6"/>
@@ -63,11 +65,11 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8b1-cD-QVi" secondAttribute="trailing" constant="20" id="09K-R9-Dcp"/>
                 <constraint firstItem="Hii-Ah-B7t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="811-Km-bij"/>
+                <constraint firstItem="8b1-cD-QVi" firstAttribute="top" secondItem="Xqj-41-5ik" secondAttribute="bottom" constant="60" id="PYv-28-fQU"/>
                 <constraint firstItem="Hii-Ah-B7t" firstAttribute="top" secondItem="8b1-cD-QVi" secondAttribute="bottom" constant="20" id="U37-OM-doE"/>
                 <constraint firstItem="Xqj-41-5ik" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Xlw-Sh-70y"/>
                 <constraint firstItem="8b1-cD-QVi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="25" id="Y7K-7L-mdm"/>
                 <constraint firstItem="Xqj-41-5ik" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="g1r-Dc-Kls"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Hii-Ah-B7t" secondAttribute="bottom" constant="120" id="paT-ge-cax"/>
                 <constraint firstItem="Xqj-41-5ik" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pb7-QK-4zd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hii-Ah-B7t" secondAttribute="trailing" constant="20" id="zcY-vL-Gl2"/>
             </constraints>
@@ -76,6 +78,6 @@
         </view>
     </objects>
     <resources>
-        <image name="couple-couch-slide-1" width="612" height="408"/>
+        <image name="connected-house" width="612" height="408"/>
     </resources>
 </document>

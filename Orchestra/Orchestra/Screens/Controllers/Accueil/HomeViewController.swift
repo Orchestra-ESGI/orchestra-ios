@@ -19,7 +19,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     @IBOutlet weak var roomsCollectionView: UICollectionView!
     
     // No device or scenes or automations view
-    
     @IBOutlet weak var emptyHomeViewContainer: UIView!
     @IBOutlet weak var emptyHomeImageView: UIImageView!
     @IBOutlet weak var emptyHomeLabel: UILabel!
@@ -40,6 +39,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
 
     // - MARK: Data
+    var sessionConnectivity: WCSession?
     let disposeBag = DisposeBag()
     var userLoggedInData: UserDto?
     var isCellsShaking = false
@@ -47,16 +47,20 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
 
     var homeVM: HomeViewModel?
 
-    var objectsToRemove: [HubAccessoryConfigurationDto] = []
+    // Data to handle removals
+    var objectsToRemove: [DeviceDto] = []
     var scenesToRemove: [SceneDto] = []
     var automationToRemove: [AutomationDto] = []
 
-    var hubDevices: [HubAccessoryConfigurationDto] = []
-    var filtereHubDevices: [HubAccessoryConfigurationDto] = []
+    // Data to handle Devices
+    var hubDevices: [DeviceDto] = []
+    var filtereHubDevices: [DeviceDto] = []
     
+    // Data to handle Scenes
     var homeScenes: [SceneDto] = []
     var filteredHomeScenes: [SceneDto] = []
     
+    // Data to handle Automations
     var homeAutomations: [AutomationDto] = []
     var filteredAutomations: [AutomationDto] = []
     
@@ -64,11 +68,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     let elementsToRemoveStream = PublishSubject<Bool>()
     let refreshControl = UIRefreshControl()
 
-    var sessionConnectivity: WCSession?
     var dataToTranferToWatch: [String: Any] = [:]
     var actionsName: [[String: Any]] = []
     
-    var rooms: [RoomDto] = [RoomDto(JSON: ["name": NSLocalizedString("rooms.chip.all", comment: "")])!]
+    let allRoomsFilterChip = RoomDto(JSON: ["name": NSLocalizedString("rooms.chip.all", comment: "")])!
+    var rooms: [RoomDto] = []
     var selectedRoomIndex = 0
 
     override func viewDidLoad() {
@@ -94,7 +98,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         } else {
             self.collectionView.addSubview(self.refreshControl)
         }
-
         self.refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
 
@@ -144,7 +147,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     }
 
     private func clearControllerStack(){
-
         for _ in 0..<(self.navigationController?.viewControllers.count)! - 1{
             self.navigationController?.viewControllers.remove(at: 0)
         }
@@ -165,49 +167,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         }
     }
 
-    func playAllActionsOf(for index: IndexPath){
+    func playAllActions(for index: IndexPath){
         self.startSceneActions(for: index)
     }
 
-    func syncWatchScenes(){
-        guard WCSession.default.isReachable else{
-            return
-        }
-
-        WCSession.default.sendMessage(dataToTranferToWatch) { (reply) in
-            print("responseHandler: \(reply)")
-        } errorHandler: { (err) in
-            print("errorHandler: \(err)")
-        }
-        dataToTranferToWatch.removeAll()
-    }
-
-    func parseScenesForWatch(){
-        var sceneCount = 0
-        for scene in self.homeScenes {
-            let sceneKey = (sceneCount).description
-            self.dataToTranferToWatch[sceneKey] = scene.mapSceneToString(position: sceneCount + 1)
-
-            print(scene)
-            sceneCount += 1
-        }
-    }
-
-    func parseDevicesForWatch(){
-        var deviceCount = 0
-        for device in self.hubDevices {
-            let deviceKey = (deviceCount).description
-            var deviceDict = device.mapDeviceToString(position: deviceCount + 1)
-            self.parseDeviceActionToGetName(device: device)
-            deviceDict["actions"] = self.actionsName
-            self.dataToTranferToWatch[deviceKey] = deviceDict
-
-            print(device)
-            deviceCount += 1
-        }
-    }
-
-    private func parseDeviceActionToGetName(device: HubAccessoryConfigurationDto) {
+    func parseDeviceActionToGetName(device: DeviceDto) {
         var actions: [String] = []
         var values: [Any] = []
         self.actionsName.removeAll()
@@ -449,24 +413,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.navigationController?.present(navigationCtr, animated: true, completion: nil)
     }
 
-
-    func showPairingVc(){
-        print("Hub pairing...")
-        let paringVc = HubPairingViewController()
-        let paringNavVc = UINavigationController(rootViewController: paringVc)
-        self.navigationController?.present(paringNavVc, animated: true)
-    }
-
-    func showRatemarks(){
-        print("Rate us")
-    }
-
-    func showShareBottomSheet(){
-        print("Share")
-    }
-
     func clearCellsSelection(){
-        // Do call WS here to remove from db
         let progressAlertTitle = self.notificationLocalize.editingHomeProgressViewTitle
         let finishProgressAlertTitle = self.notificationLocalize.finishEditingHomeProgressViewTitle
         self.progressUtils.displayIndeterminateProgeress(title: progressAlertTitle, view: self.view)
@@ -646,15 +593,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.automationToRemove.removeAll()
     }
 
-
-    // To move to VM
     func saveScene(scene: SceneDto) {
         self.notificationUtils.showFloatingNotificationBanner(title: self.notificationLocalize.successfullyAddedNotificationTitle, subtitle: self.notificationLocalize.successfullyAddedNotificationSubtitle, position: .top, style: .success)
         self.homeScenes.append(scene)
         self.collectionView.reloadData()
     }
 
-    // To move to VM
     func updateScene(scene: SceneDto) {
         guard let index = self.homeScenes.firstIndex(of: scene) else{
             return
@@ -663,7 +607,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.homeScenes.remove(at: index + 1)
     }
 
-    func save(device: HubAccessoryConfigurationDto) {
+    func save(device: DeviceDto) {
         self.hubDevices.append(device)
         self.collectionView.reloadData()
     }
@@ -683,25 +627,5 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
         self.setAutomationsStreamObserver()
         self.setEditModeObserver()
         self.editingTableViewObserver()
-    }
-}
-
-
-extension UIButton {
-    func addLeftIcon(image: UIImage) {
-        let imageView = UIImageView(image: image)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-        addSubview(imageView)
-
-        let length = CGFloat(15)
-        titleEdgeInsets.left += length
-
-        NSLayoutConstraint.activate([
-            imageView.leftAnchor.constraint(equalTo: self.titleLabel!.leftAnchor, constant: -20),
-            imageView.centerYAnchor.constraint(equalTo: self.titleLabel!.centerYAnchor, constant: 0),
-            imageView.widthAnchor.constraint(equalToConstant: 18),
-            imageView.heightAnchor.constraint(equalToConstant: 18)
-        ])
     }
 }

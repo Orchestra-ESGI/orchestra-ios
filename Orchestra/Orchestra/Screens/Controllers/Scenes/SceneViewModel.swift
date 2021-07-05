@@ -28,7 +28,7 @@ class SceneViewModel{
     
     private var scenesActions: [String:[String: String]] = [:]
     
-    func fillsceneActions(devices: [HubAccessoryConfigurationDto]){
+    func fillsceneActions(devices: [DeviceDto]){
         self.scenesActions["state"] = [
             "on": self.labelLocalization.deviceActionStateOn,
             "off": self.labelLocalization.deviceActionStateOff,

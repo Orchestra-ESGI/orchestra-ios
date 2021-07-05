@@ -10,20 +10,15 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModel{
-    
-    // - MARK: Services
-    let fakeObjectsWS = FakeObjectsDataService.shared
-    let fakeScenesWS = FakeSceneDataService.shared
-    
+
     // - MARK: Data
     let disposeBag = DisposeBag()
     let navigationController: UINavigationController?
     
     let homeService: HomeService = HomeService()
-    let hubConfigWs = DeviceConfigurationService.shared
     
     let deviceVM: DeviceViewModel?
-    let deviceStream = PublishSubject<[HubAccessoryConfigurationDto]>()
+    let deviceStream = PublishSubject<[DeviceDto]>()
     
     let sceneVm: SceneViewModel?
     let sceneStream = PublishSubject<[SceneDto]>()

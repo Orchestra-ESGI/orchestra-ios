@@ -9,6 +9,13 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum StatusInsert {
+    case OK
+    case KO
+    case KOAPI
+    case UNREACHABLE
+}
+
 class UsersViewModel{
     let userWS = UserServices()
     let userDataStream = PublishSubject<UserDto>()
@@ -35,33 +42,18 @@ class UsersViewModel{
         return self.userWS.removeUser(email)
     }
     
-//    func updateUser(credentialName: String, id: String, credentialValue: String) -> Observable<UserDto>{
-//        return realUserWS.updateUser(credentialName, id, credentialValue)
-//    }
-    
     func responseHandle(status: StatusInsert, on viewController: UIViewController) {
         self.progressUtils.dismiss()
-        var redirect = false
         switch status {
             case .UNREACHABLE:
                 NotificationsUtils.shared.showFloatingNotificationBanner(title: notificationLocalizable.unreachableNotificationTitle, subtitle: notificationLocalizable.unreachableNotificationSubtitle, position: .top, style: .danger)
-                redirect = true
             case .OK:
                 NotificationsUtils.shared.showFloatingNotificationBanner(title: notificationLocalizable.okNotificationTitle, subtitle: notificationLocalizable.okNotificationSubtitle, position: .top, style: .success)
-                redirect = true
             case .KOAPI:
                 NotificationsUtils.shared.showFloatingNotificationBanner(title: notificationLocalizable.koApiNotificationTitle, subtitle: notificationLocalizable.koApiNotificationSubtitle, position: .top, style: .danger)
-                redirect = true
             case .KO:
                 NotificationsUtils.shared.showFloatingNotificationBanner(title: notificationLocalizable.koNotificationTitle, subtitle: notificationLocalizable.koNotificationSubtitle, position: .top, style: .danger)
-                redirect = false
         }
-        if redirect {
-            self.redirect()
-        }
-    }
-    
-    func redirect(){
     }
     
     func checkForm(emailTf: UITextField, passwordTf: UITextField, confirmPasswordTf: UITextField? = nil){
@@ -135,11 +127,4 @@ class UsersViewModel{
     func checkSignupForm(){
         self.isSignupFormValid.onNext(true)
     }
-}
-
-enum StatusInsert {
-    case OK
-    case KO
-    case KOAPI
-    case UNREACHABLE
 }

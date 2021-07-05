@@ -11,21 +11,31 @@ import ColorSlider
 
 extension DeviceInfoViewController{
     
+    private func isDeviceWithoutActions(type: DeviceType) -> Bool{
+        if(type == .TemperatureAndHumidity || type == .Temperature ||
+            type == .Occupancy || type == .Contact ||
+            type == .StatelessProgrammableSwitch ||
+            type == .Humidity){
+            return true
+        }else{
+            return false
+        }
+    }
+    
     func addDynamicComponents(){
         let brightness = self.deviceData?.actions?.brightness
         let color =  self.deviceData?.actions?.color
         let colorTemp = self.deviceData?.actions?.colorTemp
         let state = self.deviceData?.actions?.state
-        let deviceType = self.deviceData?.type
+        let deviceType = self.deviceData?.type ?? .Unknown
         
         var lastElementInsertedYpos = CGFloat(0)
-        if(deviceType == .Occupancy || deviceType == .Contact ||
-            deviceType == .StatelessProgrammableSwitch || deviceType == .TemperatureAndHumidity ||
-            deviceType == .Temperature || deviceType == .Humidity){
-            self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
-            lastElementInsertedYpos += 120
-        }else if(self.deviceData?.type == .Unknown){
+        
+        if(deviceType == .Unknown){
             self.insertContactUsButton(xPos: 0, yPos: lastElementInsertedYpos)
+            lastElementInsertedYpos += 120
+        }else if(self.isDeviceWithoutActions(type: deviceType)){
+            self.insertNoActionContainer(xPos: 0, yPos: lastElementInsertedYpos)
             lastElementInsertedYpos += 120
         }else{
             if ( brightness != nil || color != nil || colorTemp != nil) {
@@ -36,7 +46,6 @@ extension DeviceInfoViewController{
                     lastElementInsertedYpos += 100
                 }
                 if( color != nil && colorTemp != nil){
-                    // show segmentedView controller
                     self.insertColorAndTempContainer(mainSlider: 0, xPos: 0, yPos: lastElementInsertedYpos)
                     lastElementInsertedYpos += 130
                 }
@@ -72,7 +81,6 @@ extension DeviceInfoViewController{
 
         // Add label on top of the slider
         let sliderLabel = UILabel()
-        // MARK: - TODO Text color not adapting to dark mode
         let brightnessActionLabel = self.labelLocalization.deviceActionBrightnessActionName
         sliderLabel.text = brightnessActionLabel
         
