@@ -15,7 +15,6 @@ class HomeService{
     let rootApiService = RootApiService.shared
     
     let deviceService = DeviceServices()
-    let sceneService = FakeSceneDataService() //SceneServices()
     let configurationService = ConfigurationService()
     
     let deviceStream = PublishSubject<[HubAccessoryConfigurationDto]>()
