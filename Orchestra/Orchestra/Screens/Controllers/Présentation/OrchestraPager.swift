@@ -69,27 +69,32 @@ class OrchestraPager: UIViewController {
     func createSlides() -> [UIView] {
         // Create sldies for the pager
         let slide1 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide1.slideImage.image = UIImage(named: "simplicite")
+        //slide1.slideImage.image = UIImage(named: "simplicite")
+        slide1.fillLottieAnimation(lottieFileName: "simplicity")
         slide1.slideTitle.text = self.labelLocalization.pageSlide1TitleLabelText //"Simplicité"
         slide1.slideDescription.text = self.labelLocalization.pagerSlide1LabelText
         
         let slide2 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide2.slideImage.image = UIImage(named: "connected-house")
+        //slide2.slideImage.image = UIImage(named: "connected-house")
+        slide2.fillLottieAnimation(lottieFileName: "efficiency")
         slide2.slideTitle.text = self.labelLocalization.pageSlide2TitleLabelText //"Efficacité"
         slide2.slideDescription.text = self.labelLocalization.pagerSlide2LabelText
         
         let slide3 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide3.slideImage.image = UIImage(named: "hub-mess")
+        //slide3.slideImage.image = UIImage(named: "hub-mess")
+        slide3.fillLottieAnimation(lottieFileName: "clarity")
         slide3.slideTitle.text = self.labelLocalization.pageSlide3TitleLabelText // "Clarté"
         slide3.slideDescription.text = self.labelLocalization.pagerSlide3LabelText
         
         let slide4 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide4.slideImage.image = UIImage(named: "hand-phone")
+        //slide4.slideImage.image = UIImage(named: "hand-phone")
+        slide4.fillLottieAnimation(lottieFileName: "sync")
         slide4.slideTitle.text = self.labelLocalization.pageSlide4TitleLabelText //"Synchronisation"
         slide4.slideDescription.text = self.labelLocalization.pagerSlide4LabelText
         
         let slide5 = Slide(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        slide5.slideImage.image = UIImage(named: "lets-go")
+        //slide5.slideImage.image = UIImage(named: "lets-go")
+        slide5.fillLottieAnimation(lottieFileName: "rocket")
         slide5.slideTitle.text = self.labelLocalization.pageSlide5TitleLabelText //"C'est parti !"
         slide5.slideDescription.text = self.labelLocalization.pagerSlide5LabelText
         
