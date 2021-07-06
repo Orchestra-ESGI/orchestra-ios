@@ -37,7 +37,7 @@ class ScreensLabelLocalizableUtils{
     let pagerSlide2LabelText = NSLocalizedString("pager.slide.2.label.text", comment: "")
     let pagerSlide3LabelText = NSLocalizedString("pager.slide.3.label.text", comment: "")
     let pagerSlide4LabelText = NSLocalizedString("pager.slide.4.label.text", comment: "")
-    let pagerSlide5LabelText = NSLocalizedString("pager.slide.1.label.text", comment: "")
+    let pagerSlide5LabelText = NSLocalizedString("pager.slide.5.label.text", comment: "")
 
     let pageSlide1TitleLabelText = NSLocalizedString("pager.slide.1.title.label.text", comment: "")
     let pageSlide2TitleLabelText = NSLocalizedString("pager.slide.2.title.label.text", comment: "")

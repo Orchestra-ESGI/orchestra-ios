@@ -31,9 +31,9 @@
 
 
 // - MARK: Pager
-"pager.slide.1.label.text" = "Gérez votre & vos objets connectés depuis la même application et simplifiez-vous la vie";
+"pager.slide.1.label.text" = "Gérez vos objets connectés depuis la même application et simplifiez-vous la vie";
 "pager.slide.2.label.text" = "Gérez tout votre docmilice depuis Orchestra simplement et rapidement";
-"pager.slide.3.label.text" = "Trop de fils ? Trop de Hub ? Trop d'applications ? Trop de chose pour gérer  votre domotique, avec Orchestra, débarassez vous du surplus, et gardez uniquement l'essentiel";
+"pager.slide.3.label.text" = "Trop de fils ? Trop de Hub ? Trop d'applications ? Trop de choses pour gérer  votre domotique, avec Orchestra, débarassez vous du surplus, et gardez uniquement l'essentiel";
 "pager.slide.4.label.text" = "Vous décidez de changez de téléphone ou de marque? Pas d'inquiétude, réinstallez Orchestra sur votre nouvel appareil, on se charge de tout synchroniser pour vous";
 "pager.slide.5.label.text" = "Orchestra, la domotique facile et utile";
 
