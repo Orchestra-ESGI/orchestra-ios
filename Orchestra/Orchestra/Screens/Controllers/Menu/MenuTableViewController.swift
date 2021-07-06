@@ -326,40 +326,13 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             vc = createWebViewVC(pageTitle: title, url: self.userVM.rootApi.CGU_URL)
             break
         case .shutdown:
-            let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
-            let sutdownAlertTitle = self.labelLocalization.settingShutdownAlertTitle
-            let sutdownAlertMessage = self.labelLocalization.settingShutdownAlertMessage
-            
-            let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
-                self.userVM.shutDownHub()
-            }
-            self.showPopUp(title: sutdownAlertTitle,
-                           message: sutdownAlertMessage,
-                           action: shutDownAction)
+            self.showShutDownPopup()
             break
         case .reboot:
-            let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
-            let rebootAlertTitle = self.labelLocalization.settingRebootAlertTitle
-            let rebootAlertMessage = self.labelLocalization.settingRebootAlertMessage
-            
-            let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
-                self.userVM.rebootHub()
-            }
-            self.showPopUp(title: rebootAlertTitle,
-                           message: rebootAlertMessage,
-                           action: shutDownAction)
+            self.showRebootPopup()
             break
         case .factoryReset:
-            let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
-            let rebootAlertTitle = self.labelLocalization.settingFactoryResetAlertTitle
-            let rebootAlertMessage = self.labelLocalization.settingFactoryResetAlertMessage
-            
-            let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
-                self.userVM.factoryResetHub()
-            }
-            self.showPopUp(title: rebootAlertTitle,
-                           message: rebootAlertMessage,
-                           action: shutDownAction)
+            self.showResetFactorySettingPopup()
             break
         case .signout:
             self.signoutPopup()
@@ -376,24 +349,99 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         }
     }
     
-    func showPopUp(title: String, message: String, action: UIAlertAction){
+    private func showShutDownPopup(){
         let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
-        let cancellabel = self.labelLocalization.settingsAlertCancelTitle
+        let cancelLabel = self.labelLocalization.settingsAlertCancelTitle
+        
         let warningAlertTitle = self.labelLocalization.settingWarningAlertTitle
         let warningAlertMessage = self.labelLocalization.settingWarningAlertMessage
+        
+        let shutDownAlertTitle = self.labelLocalization.settingShutdownAlertTitle
+        let shutDownAlertMessage = self.labelLocalization.settingShutdownAlertMessage
+        
+        let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+            self.userVM.shutDownHub()
+        }
         let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             let warningAlertTitle = warningAlertTitle
             let warningAlertMessage = warningAlertMessage
-            let warningAlertCancelAction = UIAlertAction(title: cancellabel, style: .cancel) { action in
+            
+            let warningAlertCancelAction = UIAlertAction(title: cancelLabel, style: .cancel) { action in
             }
-            self.alertUtils.showAlert(for: self, title: warningAlertTitle, message: warningAlertMessage, actions: [warningAlertCancelAction, action])
+            self.alertUtils.showAlert(for: self,
+                                      title: warningAlertTitle,
+                                      message: warningAlertMessage, actions: [warningAlertCancelAction, shutDownAction])
         }
-        let cancelAction = UIAlertAction(title: cancellabel, style: .default) { action in
+        let cancelAction = UIAlertAction(title: cancelLabel, style: .default) { action in
 
         }
         self.alertUtils.showAlert(for: self,
-                                  title: title,
-                                  message: message,
+                                  title: shutDownAlertTitle,
+                                  message: shutDownAlertMessage,
+                                  actions: [cancelAction, continueAction])
+    }
+    
+    private func showRebootPopup(){
+        let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
+        let cancelLabel = self.labelLocalization.settingsAlertCancelTitle
+        
+        let warningAlertTitle = self.labelLocalization.settingWarningAlertTitle
+        let warningAlertMessage = self.labelLocalization.settingWarningAlertMessage
+        
+        let rebootAlertTitle = self.labelLocalization.settingRebootAlertTitle
+        let rebootAlertMessage = self.labelLocalization.settingRebootAlertMessage
+        
+        let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+            self.userVM.rebootHub()
+        }
+        let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+            let warningAlertTitle = warningAlertTitle
+            let warningAlertMessage = warningAlertMessage
+            
+            let warningAlertCancelAction = UIAlertAction(title: cancelLabel, style: .cancel) { action in
+            }
+            self.alertUtils.showAlert(for: self,
+                                      title: warningAlertTitle,
+                                      message: warningAlertMessage, actions: [warningAlertCancelAction, shutDownAction])
+        }
+        let cancelAction = UIAlertAction(title: cancelLabel, style: .default) { action in
+
+        }
+        self.alertUtils.showAlert(for: self,
+                                  title: rebootAlertTitle,
+                                  message: rebootAlertMessage,
+                                  actions: [cancelAction, continueAction])
+    }
+    
+    private func showResetFactorySettingPopup(){
+        let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
+        let cancelLabel = self.labelLocalization.settingsAlertCancelTitle
+        
+        let warningAlertTitle = self.labelLocalization.settingWarningAlertTitle
+        let warningAlertMessage = self.labelLocalization.settingWarningAlertMessage
+        
+        let factoryResetAlertTitle = self.labelLocalization.settingFactoryResetAlertTitle
+        let factoryResetAlertMessage = self.labelLocalization.settingFactoryResetAlertMessage
+        
+        let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+            self.userVM.factoryResetHub()
+        }
+        let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+            let warningAlertTitle = warningAlertTitle
+            let warningAlertMessage = warningAlertMessage
+            
+            let warningAlertCancelAction = UIAlertAction(title: cancelLabel, style: .cancel) { action in
+            }
+            self.alertUtils.showAlert(for: self,
+                                      title: warningAlertTitle,
+                                      message: warningAlertMessage, actions: [warningAlertCancelAction, shutDownAction])
+        }
+        let cancelAction = UIAlertAction(title: cancelLabel, style: .default) { action in
+
+        }
+        self.alertUtils.showAlert(for: self,
+                                  title: factoryResetAlertTitle,
+                                  message: factoryResetAlertMessage,
                                   actions: [cancelAction, continueAction])
     }
     
