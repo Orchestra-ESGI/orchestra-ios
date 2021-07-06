@@ -292,7 +292,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             let triggerAction = NSLocalizedString(self.selectedTriggerAction, comment: "")
             let whenEventLocalized = NSLocalizedString("When", comment: "")
 
-            if(self.isAutomation && trigger["type"] == nil){
+            if(trigger["type"] == nil){
                 self.triggerDeviceTf.text = "\(whenEventLocalized) \(triggerName) > \(triggerAction)"
             }else{
                 let triggerType = NSLocalizedString(trigger["type"] as? String ?? "", comment: "")
@@ -641,7 +641,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                                               title: alertTitle,
                                               message: alertMessage,
                                               actions: [alertCancelAction])
-                }else if(self.selectedTriggerDeviceIndex == nil || self.selectedTriggerAction == ""){
+                }else if((self.selectedTriggerDeviceIndex == nil ||
+                            self.selectedTriggerAction == "") && self.isAutomation){
                     alertTitle = self.notificationLocalize.noAutomationTriggerAlertTitle
                     alertMessage = self.notificationLocalize.noAutomationTriggerAlertMessage
                     self.alertUtils.showAlert(for: self,
