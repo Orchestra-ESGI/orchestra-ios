@@ -99,6 +99,9 @@
 "login.complete.checkmark.title" = "Successfully connected!";
 "login.vc.no.account.label.text" = "Don't have an account?";
 
+"problem.occured.label.text" = "A problem with your Hub?";
+"privacy.label.text" = "Privacy Policy";
+
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Account creation";
 "signup.vc.appbar.send.form" = "Continue";
@@ -135,6 +138,17 @@
 "home.screen.filter.title" = "Room";
 
 "home.empty.label" = "No connected hub in your home has been detected";
+
+"home.help.alert.title" = "Has a problem occurred?";
+"home.help.alert.message" = "If you have a problem with your Hub, choose one of the options below";
+"home.help.alert.action.faq" = "Frequently Asked Questions";
+"home.help.alert.factory.reset" = "Reset Hub";
+"home.help.alert.close" = "Close";
+
+"warninr.alert.title" = "Warning !";
+"warning.alert.message" = "This action is destructive, it will reset your Hub to factory settings. You will lose all the information that was stored in your Hub. Are you sure you want to continue ?";
+"warning.cancel.action" = "Cancel";
+"warning.continue.action" = "Reset";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "New scene";
@@ -385,6 +399,25 @@
 "settings.alert.delete.action.message" = "Are you sure you want to delete your account ?";
 "settings.alert.delete.action.title" = "Delete";
 "settings.alert.cancel.title" = "Cancel";
+
+"settings.shutdown" = "Shutdown";
+"settings.reboot" = "Reboot";
+"settings.factory.reset" = "Reset to factory settings";
+
+"settings.warning.alert.title" = "Warning !";
+"settings.warning.alert.message" = "This action is destructive. Are you sure you want to continue ?";
+
+"setting.destructive.cancel.label.text" = "Cancel";
+"setting.destructive.continue.label.text" = "Continue";
+
+"setting.shutdown.alert.title" = "Turn off the Hub";
+"setting.shutdown.alert.message" = "You will turn off the hub, you will no longer have access to it until you restart it";
+
+"setting.reboot.alert.title" = "Restart your Hub";
+"setting.reboot.alert.message" = "You will restart your Hub, you may not be able to do any actions for a few seconds";
+
+"setting.factory.reset.alert.title" = "Reset to factory settings";
+"setting.factory.reset.alert.message" = "This action is destructive. Are you sure you want to continue ?";
 
 // - MARK: Mail
 "mail.error.configuration" = "Your phone is not currently configured to send mail.";

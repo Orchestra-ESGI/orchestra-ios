@@ -17,15 +17,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var passwordForgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var privacyPolicyButton: UIButton!
+    @IBOutlet weak var helpButton: UIButton!
     
     // - MARK : View models
     let userVm = UsersViewModel()
@@ -87,9 +86,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordForgotButton.setTitle(self.labelLocalization.loginPasswordForgotButtonText, for: .normal)
         self.loginButton.setTitle(self.labelLocalization.loginConnexionButtonText.uppercased(), for: .normal)
         
-        let attr = NSMutableAttributedString(string: self.labelLocalization.noAccountLabelText)
-        attr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, attr.length))
-        self.signupButton.setAttributedTitle(attr, for: .normal)
+        let signupAttr = NSMutableAttributedString(string: self.labelLocalization.noAccountLabelText)
+        signupAttr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, signupAttr.length))
+        self.signupButton.setAttributedTitle(signupAttr, for: .normal)
+        
+        let problemAttr = NSMutableAttributedString(string: self.labelLocalization.problemOccuredLabelText)
+        problemAttr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, problemAttr.length))
+        
+        let privacyAttr = NSMutableAttributedString(string: self.labelLocalization.privacyLabelText)
+        privacyAttr.addAttribute(.underlineStyle, value: 1, range: NSMakeRange(0, privacyAttr.length))
+        self.privacyPolicyButton.setAttributedTitle(privacyAttr, for: .normal)
     }
     
     private func setUpUI(){
@@ -118,9 +124,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.layer.cornerRadius = 25.0
         self.loginButton.clipsToBounds = true
         
+        self.setupHelpButton()
         self.setupFonts()
         self.setupLabelColors()
         self.localizeUI()
+    }
+    
+    func setupHelpButton() {
+        self.helpButton.imageView?.image = UIImage.fontAwesomeIcon(name: .handsHelping, style: .regular, textColor: .white, size: CGSize(width: 15, height: 15))
     }
     
     private func setupLabelColors() {
@@ -133,6 +144,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
         
         self.signupButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
+        self.privacyPolicyButton.setTitleColor(ColorUtils.ORCHESTRA_WHITE_COLOR, for: .normal)
     }
     
     private func setupFonts() {
@@ -145,12 +157,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.titleLabel?.font = Font.Bold(self.loginButton.titleLabel?.font.pointSize ?? 20)
         self.passwordForgotButton.titleLabel?.font = Font.Bold(self.passwordForgotButton.titleLabel?.font.pointSize ?? 17)
         self.signupButton.titleLabel?.font = Font.Bold(self.signupButton.titleLabel?.font.pointSize ?? 15)
+        self.privacyPolicyButton.titleLabel?.font = Font.Bold(self.privacyPolicyButton.titleLabel?.font.pointSize ?? 15)
     }
     
     private func setUpUiBindings(){
         self.setupLoginButtonBindings()
         self.setUpPasswordBindings()
         self.setUpSigninButtonBindings()
+        self.setUpProblemOccuredButtonBinding()
+        self.setUpPrivacyPolicyButtonBinding()
     }
     
     // - MARK: Observers

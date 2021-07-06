@@ -120,6 +120,17 @@ public class NotificationLocalizableUtils {
     let deviceFormCancelAlertTitle = NSLocalizedString("device.form.cancel.alert.title", comment: "")
     let deviceFormErrorMessage = NSLocalizedString("device.form.error.message", comment: "")
     
+    
+    let homeHelpAlertTitle = NSLocalizedString("home.help.alert.title", comment: "")
+    let homeHelpAlertMessage = NSLocalizedString("home.help.alert.message", comment: "")
+    let homeHelpAlertActionFaq = NSLocalizedString("home.help.alert.action.faq", comment: "")
+    let homeHelpAlertResetAction = NSLocalizedString("home.help.alert.factory.reset", comment: "")
+    let homeHelpAlertClose = NSLocalizedString("home.help.alert.close", comment: "")
+    let homeWarningAlertTitle = NSLocalizedString("warninr.alert.title", comment: "")
+    let homeWarningAlertMessage = NSLocalizedString("warning.alert.message", comment: "")
+    let homeWarningAlertCancelAction = NSLocalizedString("warning.cancel.action", comment: "")
+    let homeWarningAlertContinueAction = NSLocalizedString("warning.continue.action", comment: "")
+    
     init() {
         
     }

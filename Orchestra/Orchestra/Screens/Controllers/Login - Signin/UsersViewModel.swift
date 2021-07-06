@@ -17,6 +17,9 @@ enum StatusInsert {
 }
 
 class UsersViewModel{
+    
+    let rootApi = RootApiService.shared
+    
     let userWS = UserServices()
     let userDataStream = PublishSubject<UserDto>()
     
@@ -126,5 +129,17 @@ class UsersViewModel{
     
     func checkSignupForm(){
         self.isSignupFormValid.onNext(true)
+    }
+    
+    func factoryResetHub(){
+        self.userWS.factoryRestHub()
+    }
+    
+    func shutDownHub(){
+        self.userWS.shutDownHub()
+    }
+    
+    func rebootHub(){
+        self.userWS.rebootHub()
     }
 }

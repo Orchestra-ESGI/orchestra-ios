@@ -54,7 +54,8 @@ class ScreensLabelLocalizableUtils{
     let loginConnexionButtonText = NSLocalizedString("login.vc.connexion.button.text", comment: "")
     let loginSigupbButtonText = NSLocalizedString("login.vc.signup.button.text", comment: "")
     let noAccountLabelText = NSLocalizedString("login.vc.no.account.label.text", comment: "")
-
+    let problemOccuredLabelText = NSLocalizedString("problem.occured.label.text", comment: "")
+    let privacyLabelText = NSLocalizedString("privacy.label.text", comment: "")
 
     // - MARK: Signup Labels and texts
     let signupVcTitle = NSLocalizedString("signup.vc.title", comment: "")
@@ -234,12 +235,30 @@ class ScreensLabelLocalizableUtils{
     let settingsSignout = NSLocalizedString("settings.signout", comment: "")
     let settingsDeleteAccount = NSLocalizedString("settings.delete", comment: "")
     let settingsShareTitle = NSLocalizedString("settings.share.title", comment: "")
+    let settingsShutdown = NSLocalizedString("settings.shutdown", comment: "")
+    let settingReboot = NSLocalizedString("settings.reboot", comment: "")
+    let settingFactoryReset = NSLocalizedString("settings.factory.reset", comment: "")
 
     let settingsAlertSignoutMessage = NSLocalizedString("settings.alert.signout.message", comment: "")
     let settingsAlertSignoutActionTitle = NSLocalizedString("settings.alert.signout.action.title", comment: "")
     let settingsAlertDeleteMessage = NSLocalizedString("settings.alert.delete.action.message", comment: "")
     let settingsAlertDeleteActionTitle = NSLocalizedString("settings.alert.delete.action.title", comment: "")
     let settingsAlertCancelTitle = NSLocalizedString("settings.alert.cancel.title", comment: "")
+    
+    let settingDestructivePopUpCancelLabelText = NSLocalizedString("setting.destructive.cancel.label.text", comment: "")
+    let settingDestructivePopUpContinueLabelText = NSLocalizedString("setting.destructive.continue.label.text", comment: "")
+    
+    let settingShutdownAlertTitle = NSLocalizedString("setting.shutdown.alert.title", comment: "")
+    let settingShutdownAlertMessage = NSLocalizedString("setting.shutdown.alert.message", comment: "")
+    
+    let settingRebootAlertTitle = NSLocalizedString("setting.reboot.alert.title", comment: "")
+    let settingRebootAlertMessage = NSLocalizedString("setting.reboot.alert.message", comment: "")
+    
+    let settingFactoryResetAlertTitle = NSLocalizedString("setting.factory.reset.alert.title", comment: "")
+    let settingFactoryResetAlertMessage = NSLocalizedString("setting.factory.reset.alert.message", comment: "")
+    
+    let settingWarningAlertTitle = NSLocalizedString("settings.warning.alert.title", comment: "")
+    let settingWarningAlertMessage = NSLocalizedString("settings.warning.alert.message", comment: "")
 
     // - MARK: Mail
     let mailSettingsSubject = NSLocalizedString("mail.settings.subject", comment: "")

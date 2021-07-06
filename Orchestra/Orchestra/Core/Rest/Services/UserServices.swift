@@ -183,4 +183,42 @@ class UserServices{
         // Update saved user credentials in shared pref or local storage
     }
     
+    func factoryRestHub(){
+        AF.request("\(RootApiService.BASE_API_URL)/factory-reset", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                    case .success( _):
+                        print("success")
+                    case .failure( _):
+                        print("failure")
+                }
+            }
+    }
+    
+    func shutDownHub(){
+        AF.request("\(RootApiService.BASE_API_URL)/shutdown", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                    case .success( _):
+                        print("success")
+                    case .failure( _):
+                        print("failure")
+                }
+            }
+    }
+    
+    func rebootHub(){
+        AF.request("\(RootApiService.BASE_API_URL)/reboot", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: self.rootApiService.headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                    case .success( _):
+                        print("success")
+                    case .failure( _):
+                        print("failure")
+                }
+            }
+    }
 }

@@ -99,6 +99,8 @@
 "login.welcome.notification.subtitle" = "Aspettavamo il tuo ritorno";
 "login.complete.checkmark.title" = "Connessione riuscita";
 "login.vc.no.account.label.text" = "Non hai un account?";
+"problem.occured.label.text" = "Un problema con il tuo Hub?";
+"privacy.label.text" = "politica sulla riservatezza";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Creare un account";
@@ -136,6 +138,17 @@
 "home.screen.filter.title" = "Pezzo";
 
 "home.empty.label" = "Nessun hub connesso in casa è stato rilevato home";
+
+"home.help.alert.title" = "Si è verificato un problema?";
+"home.help.alert.message" = "Se hai un problema con il tuo Hub, scegli una delle opzioni di seguito";
+"home.help.alert.action.faq" = "FAQ";
+"home.help.alert.factory.reset" = "Ripristina hub";
+"home.help.alert.close" = "Chiudere";
+
+"warninr.alert.title" = "Avvertimento !";
+"warning.alert.message" = "Questa azione è distruttiva, ripristinerà il tuo Hub alle impostazioni di fabbrica. Perderai tutte le informazioni che sono state memorizzate nel tuo Hub. Sei sicuro di voler continuare ?";
+"warning.cancel.action" = "Per cancellare";
+"warning.continue.action" = "Ripristina";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nuova scena";
@@ -387,6 +400,24 @@
 "settings.alert.delete.action.message" = "Sei sicuro di voler eliminare il tuo account?";
 "settings.alert.delete.action.title" = "Elimina";
 "settings.alert.cancel.title" = "Annulla";
+
+"settings.shutdown" = "Spegni l'hub";
+"settings.reboot" = "Riavvia l'hub";
+"settings.factory.reset" = "Ripristina le impostazioni di fabbrica";
+
+"settings.warning.alert.title" = "Avvertimento !";
+"settings.warning.alert.message" = "Questa azione è distruttiva. Sei sicuro di voler continuare ?";
+"setting.destructive.cancel.label.text" = "Per cancellare";
+"setting.destructive.continue.label.text" = "Continuare";
+
+"setting.shutdown.alert.title" = "Continuare";
+"setting.shutdown.alert.message" = "Spegnerai l'hub, non avrai più accesso ad esso finché non lo riavvierai";
+
+"setting.reboot.alert.title" = "Riavvia il tuo Hub";
+"setting.reboot.alert.message" = "Riavvierai il tuo Hub, potresti non essere in grado di eseguire alcuna azione per alcuni secondi";
+
+"setting.factory.reset.alert.title" = "Ripristina le impostazioni di fabbrica";
+"setting.factory.reset.alert.message" = "Questa azione è distruttiva. Sei sicuro di voler continuare ?";
 
 // - MARK: Mail
 "mail.error.configuration" = "Il tuo telefono non è attualmente configurato per inviare posta.";

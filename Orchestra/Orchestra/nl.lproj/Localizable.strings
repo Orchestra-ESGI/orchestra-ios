@@ -100,6 +100,9 @@
 "login.complete.checkmark.title" = "Succesvolle verbinding";
 "login.vc.no.account.label.text" = "Heb je geen account?";
 
+"problem.occured.label.text" = "Een probleem met uw Hub?";
+"privacy.label.text" = "Privacybeleid";
+
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Maak een account aan";
 "signup.vc.appbar.send.form" = "Ga door";
@@ -136,6 +139,17 @@
 "home.screen.filter.title" = "Kamer";
 
 "home.empty.label" = "Er is geen aangesloten hub in uw huis gedetecteerd";
+
+"home.help.alert.title" = "Is er een probleem opgetreden?";
+"home.help.alert.message" = "Als je een probleem hebt met je Hub, kies dan een van de onderstaande opties";
+"home.help.alert.action.faq" = "Veel Gestelde Vragen";
+"home.help.alert.factory.reset" = "Hub resetten";
+"home.help.alert.close" = "Sluiten";
+
+"warninr.alert.title" = "Waarschuwing!";
+"warning.alert.message" = "Deze actie is destructief, het zal je Hub terugzetten naar de fabrieksinstellingen. U verliest alle informatie die in uw Hub was opgeslagen. Weet je zeker dat je door wilt gaan ?";
+"warning.cancel.action" = "Annuleren";
+"warning.continue.action" = "Resetten";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nieuwe scène";
@@ -387,6 +401,25 @@
 "settings.alert.delete.action.message" = "Weet je zeker dat je je account wilt verwijderen?";
 "settings.alert.delete.action.title" = "Verwijderen";
 "settings.alert.cancel.title" = "Annuleren";
+
+"settings.shutdown" = "Zet de Hub uit";
+"settings.reboot" = "Herstart de Hub";
+"settings.factory.reset" = "Terugzetten naar fabrieksinstellingen";
+
+"settings.warning.alert.title" = "Waarschuwing!";
+"settings.warning.alert.message" = "Deze actie is destructief. Weet je zeker dat je door wilt gaan ?";
+
+"setting.destructive.cancel.label.text" = "Annuleren";
+"setting.destructive.continue.label.text" = "Doorgaan";
+
+"setting.shutdown.alert.title" = "Zet de Hub uit";
+"setting.shutdown.alert.message" = "Je schakelt de hub uit, je hebt er geen toegang meer toe totdat je hem opnieuw opstart";
+
+"setting.reboot.alert.title" = "Start je Hub opnieuw op";
+"setting.reboot.alert.message" = "U start uw Hub opnieuw op. Mogelijk kunt u enkele seconden geen acties uitvoeren";
+
+"setting.factory.reset.alert.title" = "Terugzetten naar fabrieksinstellingen";
+"setting.factory.reset.alert.message" = "Deze actie is destructief. Weet je zeker dat je door wilt gaan ?";
 
 // - MARK: Mail
 "mail.error.configuration" = "Uw telefoon is momenteel niet geconfigureerd om e-mail te verzenden.";

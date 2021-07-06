@@ -99,6 +99,8 @@
 "login.welcome.notification.subtitle" = "Estábamos esperando tu regreso";
 "login.complete.checkmark.title" = "Conexión exitosa";
 "login.vc.no.account.label.text" = "¿No tiene una cuenta?";
+"problem.occured.label.text" = "¿Algún problema con tu Hub?";
+"privacy.label.text" = "Política de confidencialidad";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Crear una cuenta";
@@ -136,6 +138,17 @@
 "home.screen.filter.title" = "Habitación";
 
 "home.empty.label" = "No se ha detectado ningún concentrador conectado en su hogar";
+
+"home.help.alert.title" = "¿Ha ocurrido algún problema?";
+"home.help.alert.message" = "Si tiene un problema con su Hub, elija una de las siguientes opciones";
+"home.help.alert.action.faq" = "Preguntas más frecuentes";
+"home.help.alert.factory.reset" = "Restablecer Hub";
+"home.help.alert.close" = "Cerrar";
+
+"warninr.alert.title" = "Atención !";
+"warning.alert.message" = "Esta acción es destructiva, restablecerá su Hub a la configuración de fábrica. Perderá toda la información almacenada en su Hub. Estás seguro de que quieres continuar ?";
+"warning.cancel.action" = "Anular";
+"warning.continue.action" = "Reiniciar";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nueva escena";
@@ -387,6 +400,24 @@
 "settings.alert.delete.action.message" = "¿Estás seguro de que quieres eliminar tu cuenta?";
 "settings.alert.delete.action.title" = "Borrar";
 "settings.alert.cancel.title" = "Cancelar";
+
+"settings.shutdown" = "Apague el Hub";
+"settings.reboot" = "Reinicie el Hub";
+"settings.factory.reset" = "Restablecer la configuración de fábrica";
+
+"settings.warning.alert.title" = "Atención !";
+"settings.warning.alert.message" = "Esta acción es destructiva. Estás seguro de que quieres continuar ?";
+"setting.destructive.cancel.label.text" = "Anular";
+"setting.destructive.continue.label.text" = "Seguir";
+
+"setting.shutdown.alert.title" = "Apague el Hub";
+"setting.shutdown.alert.message" = "Apagará el concentrador, ya no tendrá acceso a él hasta que lo reinicie";
+
+"setting.reboot.alert.title" = "Reinicia tu Hub";
+"setting.reboot.alert.message" = "Reiniciará su Hub, es posible que no pueda realizar ninguna acción durante unos segundos";
+
+"setting.factory.reset.alert.title" = "Restablecer la configuración de fábrica";
+"setting.factory.reset.alert.message" = "Esta acción es destructiva. Estás seguro de que quieres continuar ?";
 
 // - MARK: Mail
 "mail.error.configuration" = "Su teléfono no está configurado actualmente para enviar correo.";

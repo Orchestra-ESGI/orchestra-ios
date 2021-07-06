@@ -24,7 +24,6 @@ class GenericWebViewController: UIViewController, WKNavigationDelegate, WKUIDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.initNavigation()
         self.loadWebView()
     }

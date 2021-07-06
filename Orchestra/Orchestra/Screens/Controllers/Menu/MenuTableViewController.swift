@@ -17,6 +17,7 @@ private enum MenuActions {
     case about, rate, contact
     case libs, cgu, privacy
     case share, signout, delete
+    case reboot, shutdown, factoryReset
 }
 
 private enum MenuDataKeys: String {
@@ -33,13 +34,15 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     
     let progressUtils = ProgressUtils.shared
     let notificationUtils = NotificationsUtils.shared
+    let labelLocalization = ScreensLabelLocalizableUtils.shared
     let accountUtils = AccountUtils.shared
+    let alertUtils = AlertUtils.shared
     
     // - MARK: Services
     let userVM = UsersViewModel()
     let disposeBag = DisposeBag()
     
-    let labelLocalization = ScreensLabelLocalizableUtils.shared
+    
     
     init() {
         super.init(style: .grouped)
@@ -101,6 +104,11 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             [
                 [ .title: self.labelLocalization.settingsPrivacy, .action: MenuActions.privacy, .prefix: FontAwesome.userShield, .style: FontAwesomeStyle.solid],
                 [ .title: self.labelLocalization.settingsCgu, .action: MenuActions.cgu, .prefix: FontAwesome.fileContract, .style: FontAwesomeStyle.solid]
+            ],
+            [
+                [ .title: self.labelLocalization.settingsShutdown, .action: MenuActions.shutdown, .prefix: FontAwesome.powerOff, .style: FontAwesomeStyle.solid],
+                [ .title: self.labelLocalization.settingReboot, .action: MenuActions.reboot, .prefix: FontAwesome.fileContract, .style: FontAwesomeStyle.solid],
+                [ .title: self.labelLocalization.settingFactoryReset, .action: MenuActions.factoryReset, .prefix: FontAwesome.fileContract, .style: FontAwesomeStyle.solid]
             ],
             [
                 [ .title: self.labelLocalization.settingsSignout, .action: MenuActions.signout, .prefix: FontAwesome.signOutAlt, .style: FontAwesomeStyle.solid],
@@ -239,6 +247,11 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             .disposed(by: self.disposeBag)
     }
     
+    
+    func reboot() {
+        self.userVM.rebootHub()
+    }
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.data?.count ?? 0
@@ -269,7 +282,8 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         }
         cell.textLabel?.text = text
         
-        if rowData?[MenuDataKeys.action] as! MenuActions == .delete {
+        if rowData?[MenuDataKeys.action] as! MenuActions == .delete ||
+            rowData?[MenuDataKeys.action] as! MenuActions == .factoryReset {
             cell.textLabel?.textColor = ColorUtils.ORCHESTRA_RED_COLOR
         } else {
             cell.textLabel?.textColor = .white
@@ -297,7 +311,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             self.shareApp()
             break
         case .about:
-            vc = createWebViewVC(pageTitle: title, url: "https://www.google.com")
+            vc = createWebViewVC(pageTitle: title, url: self.userVM.rootApi.ABOUT_US_URL)
             break
         case .contact:
             self.contact()
@@ -306,10 +320,46 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             vc = nil
             break
         case .privacy:
-            vc = createWebViewVC(pageTitle: title, url: "https://www.google.com")
+            vc = createWebViewVC(pageTitle: title, url: self.userVM.rootApi.PRIVACY_URL)
             break
         case .cgu:
-            vc = createWebViewVC(pageTitle: title, url: "https://www.google.com")
+            vc = createWebViewVC(pageTitle: title, url: self.userVM.rootApi.CGU_URL)
+            break
+        case .shutdown:
+            let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
+            let sutdownAlertTitle = self.labelLocalization.settingShutdownAlertTitle
+            let sutdownAlertMessage = self.labelLocalization.settingShutdownAlertMessage
+            
+            let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+                self.userVM.shutDownHub()
+            }
+            self.showPopUp(title: sutdownAlertTitle,
+                           message: sutdownAlertMessage,
+                           action: shutDownAction)
+            break
+        case .reboot:
+            let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
+            let rebootAlertTitle = self.labelLocalization.settingRebootAlertTitle
+            let rebootAlertMessage = self.labelLocalization.settingRebootAlertMessage
+            
+            let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+                self.userVM.rebootHub()
+            }
+            self.showPopUp(title: rebootAlertTitle,
+                           message: rebootAlertMessage,
+                           action: shutDownAction)
+            break
+        case .factoryReset:
+            let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
+            let rebootAlertTitle = self.labelLocalization.settingFactoryResetAlertTitle
+            let rebootAlertMessage = self.labelLocalization.settingFactoryResetAlertMessage
+            
+            let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+                self.userVM.factoryResetHub()
+            }
+            self.showPopUp(title: rebootAlertTitle,
+                           message: rebootAlertMessage,
+                           action: shutDownAction)
             break
         case .signout:
             self.signoutPopup()
@@ -324,6 +374,27 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         if let nextScreen = vc {
             self.navigationController?.pushViewController(nextScreen, animated: true)
         }
+    }
+    
+    func showPopUp(title: String, message: String, action: UIAlertAction){
+        let continueLabel = self.labelLocalization.settingDestructivePopUpContinueLabelText
+        let cancellabel = self.labelLocalization.settingsAlertCancelTitle
+        let warningAlertTitle = self.labelLocalization.settingWarningAlertTitle
+        let warningAlertMessage = self.labelLocalization.settingWarningAlertMessage
+        let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
+            let warningAlertTitle = warningAlertTitle
+            let warningAlertMessage = warningAlertMessage
+            let warningAlertCancelAction = UIAlertAction(title: cancellabel, style: .cancel) { action in
+            }
+            self.alertUtils.showAlert(for: self, title: warningAlertTitle, message: warningAlertMessage, actions: [warningAlertCancelAction, action])
+        }
+        let cancelAction = UIAlertAction(title: cancellabel, style: .default) { action in
+
+        }
+        self.alertUtils.showAlert(for: self,
+                                  title: title,
+                                  message: message,
+                                  actions: [cancelAction, continueAction])
     }
     
     // MARK: - Header related

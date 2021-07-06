@@ -99,6 +99,8 @@
 "login.welcome.notification.subtitle" = "Wir haben auf Ihre Rückkehr gewartet";
 "login.complete.checkmark.title" = "Erfolgreiche Verbindung";
 "login.vc.no.account.label.text" = "Sie haben noch kein Konto?";
+"problem.occured.label.text" = "Ein Problem mit Ihrem Hub?";
+"privacy.label.text" = "Datenschutz-Bestimmungen";
 
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "Ein Konto erstellen";
@@ -136,6 +138,17 @@
 "home.screen.filter.title" = "Zimmer";
 
 "home.empty.label" = "Es wurde kein verbundener Hub in Ihrem Zuhause erkannt";
+
+"home.help.alert.title" = "Ist ein Problem aufgetreten?";
+"home.help.alert.message" = "Wenn Sie ein Problem mit Ihrem Hub haben, wählen Sie eine der folgenden Optionen";
+"home.help.alert.action.faq" = "Häufig gestellte Fragen";
+"home.help.alert.factory.reset" = "Hub zurücksetzen";
+"home.help.alert.close" = "Schließen";
+
+"warninr.alert.title" = "Warnung !";
+"warning.alert.message" = "Diese Aktion ist destruktiv, sie setzt Ihren Hub auf die Werkseinstellungen zurück. Sie verlieren alle Informationen, die in Ihrem Hub gespeichert wurden. Sind Sie sicher, dass Sie fortfahren möchten ?";
+"warning.cancel.action" = "Abbrechen";
+"warning.continue.action" = "Zurücksetzen";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Neue Szene";
@@ -387,6 +400,24 @@
 "settings.alert.delete.action.message" = "Möchten Sie Ihr Konto wirklich löschen?";
 "settings.alert.delete.action.title" = "Löschen";
 "settings.alert.cancel.title" = "Stornieren";
+
+"settings.shutdown" = "Schalten Sie den Hub aus";
+"settings.reboot" = "Starten Sie den Hub neu";
+"settings.factory.reset" = "Auf Werkseinstellungen zurücksetzen";
+
+"settings.warning.alert.title" = "Warnung !";
+"settings.warning.alert.message" = "Diese Aktion ist destruktiv. Sind Sie sicher, dass Sie fortfahren möchten ?";
+"setting.destructive.cancel.label.text" = "Abbrechen";
+"setting.destructive.continue.label.text" = "Fortfahren";
+
+"setting.shutdown.alert.title" = "Schalten Sie den Hub aus";
+"setting.shutdown.alert.message" = "Sie werden den Hub ausschalten, Sie haben keinen Zugriff mehr darauf, bis Sie ihn neu starten";
+
+"setting.reboot.alert.title" = "Starten Sie Ihren Hub neu";
+"setting.reboot.alert.message" = "Sie werden Ihren Hub neu starten. Möglicherweise können Sie einige Sekunden lang keine Aktionen ausführen";
+
+"setting.factory.reset.alert.title" = "Auf Werkseinstellungen zurücksetzen";
+"setting.factory.reset.alert.message" = "Diese Aktion ist destruktiv. Sind Sie sicher, dass Sie fortfahren möchten ?";
 
 // - MARK: Mail
 "mail.error.configuration" = "Ihr Telefon ist derzeit nicht zum Senden von E-Mails konfiguriert.";

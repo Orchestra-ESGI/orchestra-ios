@@ -100,6 +100,9 @@
 "login.complete.checkmark.title" = "成功连接";
 "login.vc.no.account.label.text" = "没有账户？";
 
+"problem.occured.label.text" = "您的集线器有问题吗？";
+"privacy.label.text" = "隐私政策";
+
 // - MARK: Signup Labels and texts
 "signup.vc.title"= "创建一个账户";
 "signup.vc.appbar.send.form" = "继续";
@@ -136,6 +139,17 @@
 "home.screen.filter.title" = "房间";
 
 "home.empty.label" = "未检测到您家中已连接的集线器";
+
+"home.help.alert.title" = "出现问题了吗？";
+"home.help.alert.message" = "如果您的集线器有问题，请选择以下选项之一";
+"home.help.alert.action.faq" = "经常问的问题";
+"home.help.alert.factory.reset" = "重置集线器";
+"home.help.alert.close" = "关闭";
+
+"warninr.alert.title" = "警告 ！";
+"warning.alert.message" = "此操作具有破坏性，它会将您的集线器重置为出厂设置。 您将丢失存储在 Hub 中的所有信息。 你确定你要继续吗 ？";
+"warning.cancel.action" = "取消";
+"warning.continue.action" = "重启";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "新场景";
@@ -387,6 +401,25 @@
 "settings.alert.delete.action.message" = "您确定要删除您的帐户吗？";
 "settings.alert.delete.action.title" = "删除";
 "settings.alert.cancel.title" = "取消";
+
+"settings.shutdown" = "关闭集线器";
+"settings.reboot" = "重新启动集线器";
+"settings.factory.reset" = "恢复出厂设置";
+
+"settings.warning.alert.title" = "警告 ！";
+"settings.warning.alert.message" = "这个动作是破坏性的。 你确定你要继续吗 ？";
+
+"setting.destructive.cancel.label.text" = "取消";
+"setting.destructive.continue.label.text" = "继续";
+
+"setting.shutdown.alert.title" = "关闭集线器";
+"setting.shutdown.alert.message" = "您将关闭集线器，在重新启动它之前您将无法再访问它";
+
+"setting.reboot.alert.title" = "重新启动您的集线器";
+"setting.reboot.alert.message" = "您将重新启动 Hub，您可能在几秒钟内无法执行任何操作";
+
+"setting.factory.reset.alert.title" = "恢复出厂设置";
+"setting.factory.reset.alert.message" = "这个动作是破坏性的。 你确定你要继续吗 ？";
 
 // - MARK: Mail
 "mail.error.configuration" = "您的电话当前未配置为发送邮件。";
