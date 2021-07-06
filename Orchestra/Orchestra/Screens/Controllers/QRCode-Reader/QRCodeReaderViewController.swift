@@ -77,7 +77,26 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         metadataOutput.rectOfInterest = qrCodeOverlayPreviewLayer.rectOfInterest
         self.view.layer.addSublayer(qrCodeOverlayPreviewLayer)
         
+        self.addLabel()
+        
         captureSession.startRunning()
+    }
+    
+    func addLabel() {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Scan the QR Code behind the Orchestra® hub"
+        label.font = Font.Bold(17)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        
+        self.view.addSubview(label);
+        
+        label.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150).isActive = true
+        label.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 50).isActive = true
+        label.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -50).isActive = true
+        
     }
 
     func failed() {
@@ -115,6 +134,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
 
     func found(code: String) {
+        var qrCodeError = false
         let data = Data(code.utf8)
 
         do {
@@ -122,20 +142,35 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
             if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                 // try to read out a string array
                 guard let page = json["page"] as? String,
-                      let key = json["key"] as? String else { return }
-                if key != "orchestra" {
+                      let key = json["key"] as? String else {
+                    qrCodeError = true
                     return
+                }
+                if key != "orchestra" {
+                    qrCodeError = true
                 }
                 switch page {
                 case "signup":
                     self.navigationController?.pushViewController(SignupViewController(), animated: true)
                     break
                 default:
+                    qrCodeError = true
                     break
                 }
             }
         } catch let error as NSError {
+            qrCodeError = true
             print("Failed to load: \(error.localizedDescription)")
+        }
+        
+        if qrCodeError {
+            let alert = UIAlertController(title: "Oops", message: "The readed QR Code is wrong", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.captureSession.startRunning()
+            })
+            alert.addAction(defaultAction)
+
+            self.present(alert, animated: true)
         }
     }
 

@@ -292,7 +292,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             let triggerAction = NSLocalizedString(self.selectedTriggerAction, comment: "")
             let whenEventLocalized = NSLocalizedString("When", comment: "")
 
-            if(trigger["type"] == nil){
+            if(self.isAutomation && trigger["type"] == nil){
                 self.triggerDeviceTf.text = "\(whenEventLocalized) \(triggerName) > \(triggerAction)"
             }else{
                 let triggerType = NSLocalizedString(trigger["type"] as? String ?? "", comment: "")
