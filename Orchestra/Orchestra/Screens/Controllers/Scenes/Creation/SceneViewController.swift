@@ -629,7 +629,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 self.addSceneAppbarButon?.isEnabled = false
                 var alertTitle = self.notificationLocalize.sceneNoActionAlertTitle
                 var alertMessage = self.notificationLocalize.sceneNoActionAlertMessage
-                var cancelActionTitle = self.notificationLocalize.sceneNoActionAlertCancelButton
+                let cancelActionTitle = self.notificationLocalize.sceneNoActionAlertCancelButton
 
                 let alertCancelAction = UIAlertAction(title: cancelActionTitle,
                                                       style: .cancel){ action in

@@ -134,7 +134,7 @@
 "home.screen.default.title" = "Home";
 "home.screen.filter.title" = "Room";
 
-"home.empty.label" = "No connected object in your home, add one now";
+"home.empty.label" = "No connected hub in your home has been detected";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "New scene";

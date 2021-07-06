@@ -60,17 +60,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func getPermissionsUser(){
-        let controller = SPPermissions.dialog([.notification, .locationWhenInUse, .camera])
+        if(!(SPPermission.notification.isAuthorized) ||
+            !(SPPermission.locationWhenInUse.isAuthorized) ||
+            !(SPPermission.camera.isAuthorized)){
+            
+            let controller = SPPermissions.dialog([.notification, .locationWhenInUse, .camera])
 
-        // Overide texts in controller
-        controller.titleText = self.labelLocalization.permissionsAlertTitle
-        controller.headerText = self.labelLocalization.permissionsAlertHeaderTitle
-        controller.footerText = self.labelLocalization.permissionAlertFooterTitle
-        
-        controller.dataSource = self
-        controller.delegate = self
-        
-        controller.present(on: self)
+            // Overide texts in controller
+            controller.titleText = self.labelLocalization.permissionsAlertTitle
+            controller.headerText = self.labelLocalization.permissionsAlertHeaderTitle
+            controller.footerText = self.labelLocalization.permissionAlertFooterTitle
+            
+            controller.dataSource = self
+            controller.delegate = self
+            
+            controller.present(on: self)
+        }
     }
     
     

@@ -121,4 +121,8 @@ class HomeViewModel{
         }
     }
     
+    func handleUnauthorizedEvent(authErr: ServerError){
+        self.homeService.rootApiService.handleUnauthEvent(err: authErr)
+    }
+    
 }

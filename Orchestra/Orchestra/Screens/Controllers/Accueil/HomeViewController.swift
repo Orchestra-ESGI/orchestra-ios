@@ -36,6 +36,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate,
     let progressUtils = ProgressUtils.shared
     let colorUtils = ColorUtils.shared
     let alertUtils = AlertUtils.shared
+    let accountUtils = AccountUtils.shared
 
 
     // - MARK: Data

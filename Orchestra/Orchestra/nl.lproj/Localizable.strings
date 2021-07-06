@@ -135,7 +135,7 @@
 "home.screen.default.title" = "Mijn huis";
 "home.screen.filter.title" = "Kamer";
 
-"home.empty.label" = "Geen verbonden object in uw huis, voeg er nu een toe";
+"home.empty.label" = "Er is geen aangesloten hub in uw huis gedetecteerd";
 
 // - MARK: Scene Labels annd texts
 "new.scene.vc.title" = "Nieuwe scène";

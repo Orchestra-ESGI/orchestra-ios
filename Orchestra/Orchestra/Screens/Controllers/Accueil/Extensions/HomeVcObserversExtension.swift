@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import NotificationBannerSwift
 
 extension HomeViewController{
     
@@ -23,13 +24,13 @@ extension HomeViewController{
                 }
             } onError: { err in
                 self.progressUtils.dismiss()
-                self.notificationUtils.showFloatingNotificationBanner(title: "Erreur", subtitle: "Un problème est survenu lors du chargement de votre domicile", position: .top, style: .danger)
-                print("error while fetching data")
+                if let authErr = err as? ServerError{
+                    self.homeVM?.handleUnauthorizedEvent(authErr: authErr)
+                }
             } onCompleted: {
                 self.isEmptyHome = true
                 self.homeHasElementsToShow()
                 
-                print("onCompleted() called in observeAllDevices()")
                 self.progressUtils.dismiss()
                 let alertMessage = self.labelLocalization.localNetworkAuthAlertMessage
                 self.alertUtils.goToParamsAlert(message: alertMessage, for: self)
@@ -66,9 +67,10 @@ extension HomeViewController{
                 self.homeScenes = scenes
                 self.filteredHomeScenes = scenes
         } onError: { (err) in
-            self.notificationUtils
-                .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
             self.progressUtils.dismiss()
+            if let authErr = err as? ServerError{
+                self.homeVM?.handleUnauthorizedEvent(authErr: authErr)
+            }
         } onCompleted: {
             self.isEmptyHome = true
             self.homeHasElementsToShow()
@@ -87,9 +89,10 @@ extension HomeViewController{
                 self.homeAutomations = automations
                 self.filteredAutomations = automations
         } onError: { (err) in
-            self.notificationUtils
-                .showFloatingNotificationBanner(title: self.notificationLocalize.loginCredentialsWrongNotificationTitle, subtitle: self.notificationLocalize.loginCredentialsWrongNotificationSubtitle, position: .top, style: .warning)
             self.progressUtils.dismiss()
+            if let authErr = err as? ServerError{
+                self.homeVM?.handleUnauthorizedEvent(authErr: authErr)
+            }
         } onCompleted: {
             self.isEmptyHome = true
             self.homeHasElementsToShow()

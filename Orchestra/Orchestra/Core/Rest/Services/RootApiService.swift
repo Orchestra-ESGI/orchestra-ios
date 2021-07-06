@@ -10,6 +10,7 @@ import Alamofire
 import ObjectMapper
 import RxSwift
 import RxCocoa
+import NotificationBannerSwift
 
 public class RootApiService{
     /// Les fonctions globale de gestion du routing de l'app se fait ici
@@ -21,8 +22,11 @@ public class RootApiService{
     static let ORCHESTRA_HUB_IP = "orchestra.local"
     
     static var BASE_API_URL = "http://\(ORCHESTRA_HUB_IP):3000"
-    var stringUtils = StringUtils.shared
-    var fileUtils = FileUtils.shared
+    let stringUtils = StringUtils.shared
+    let fileUtils = FileUtils.shared
+    let notificationLocalizeUtils = NotificationLocalizableUtils.shared
+    let notificationUtils = NotificationsUtils.shared
+    let accountUtils = AccountUtils.shared
 
     let disposeBag = DisposeBag()
 
@@ -104,6 +108,27 @@ public class RootApiService{
                         print("Error saving token")
                     }
             }
+    }
+    
+    func handleUnauthEvent(err: ServerError){
+        var notificationTitle = notificationLocalizeUtils.serverErrorCallNotificationTitle
+        var notificationSubtitle = notificationLocalizeUtils.serverErrorCallNotificationSubitle
+        var notificationStyle: BannerStyle  = .danger
+    
+        if(err == .Unauthorized){
+            notificationStyle = .warning
+            notificationTitle = notificationLocalizeUtils.unauthorizedCallNotificationTitle
+            notificationSubtitle = notificationLocalizeUtils.unauthorizedCallNotificationSubitle
+            self.accountUtils.signout()
+            self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                  subtitle: notificationSubtitle,
+                                                                  position: .top, style: notificationStyle)
+        
+        }else{
+            self.notificationUtils.showFloatingNotificationBanner(title: notificationTitle,
+                                                                  subtitle: notificationSubtitle,
+                                                                  position: .top, style: notificationStyle)
+        }
     }
 }
 
