@@ -180,6 +180,10 @@
 
 "scene.vc.noaction.alert.title" = "不可能的行动!";
 "scene.vc.noaction.alert.message" = "没有动作就无法创建场景或自动化";
+
+"no.automation.alert.title" = "不可能的行动!";
+"no.automation.alert.message" = "您必须选择一个触发器对象来创建自动化";
+
 "scene.vc.noaction.alert.cancel.button" = "协议";
 
 // - MARK: Actions

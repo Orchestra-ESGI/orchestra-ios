@@ -39,10 +39,19 @@ extension HomeViewController{
     func observeAllRooms(){
         _ = self.homeVM!
             .getAllRooms()
-            .subscribe { roomsDto in
-                self.rooms.append(self.allRoomsFilterChip)
-                for room in roomsDto {
-                    self.rooms.append(room)
+            .subscribe { roomsInDb in
+                if(self.rooms.count == 0){
+                    self.rooms.append(self.allRoomsFilterChip)
+                    self.rooms.append(contentsOf: roomsInDb)
+                }else{
+                    let currentRoomsIds = self.rooms.map { room in
+                        return room.id
+                    }
+                    for room in roomsInDb{
+                        if(!currentRoomsIds.contains(room.id)){
+                            self.rooms.append(room)
+                        }
+                    }
                 }
                 self.roomsCollectionView.reloadData()
         } onError: { err in

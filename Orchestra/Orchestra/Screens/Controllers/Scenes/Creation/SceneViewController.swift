@@ -627,9 +627,9 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             .tap
             .bind{
                 self.addSceneAppbarButon?.isEnabled = false
-                let alertTitle = self.notificationLocalize.sceneNoActionAlertTitle
-                let alertMessage = self.notificationLocalize.sceneNoActionAlertMessage
-                let cancelActionTitle = self.notificationLocalize.sceneNoActionAlertCancelButton
+                var alertTitle = self.notificationLocalize.sceneNoActionAlertTitle
+                var alertMessage = self.notificationLocalize.sceneNoActionAlertMessage
+                var cancelActionTitle = self.notificationLocalize.sceneNoActionAlertCancelButton
 
                 let alertCancelAction = UIAlertAction(title: cancelActionTitle,
                                                       style: .cancel){ action in
@@ -641,8 +641,14 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                                               title: alertTitle,
                                               message: alertMessage,
                                               actions: [alertCancelAction])
+                }else if(self.selectedTriggerDeviceIndex == nil || self.selectedTriggerAction == ""){
+                    alertTitle = self.notificationLocalize.noAutomationTriggerAlertTitle
+                    alertMessage = self.notificationLocalize.noAutomationTriggerAlertMessage
+                    self.alertUtils.showAlert(for: self,
+                                              title: alertTitle,
+                                              message: alertMessage,
+                                              actions: [alertCancelAction])
                 }else{
-
                     for device in self.deviceDict {
                         guard let selectedActions = device["selected_actions"] as? [SceneActionsName] else {
                             self.alertUtils.showAlert(for: self,

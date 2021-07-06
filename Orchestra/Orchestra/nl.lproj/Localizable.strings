@@ -180,6 +180,10 @@
 
 "scene.vc.noaction.alert.title" = "Onmogelijke actie!";
 "scene.vc.noaction.alert.message" = "U kunt geen scène of automatisering maken zonder acties";
+
+"no.automation.alert.title" = "Onmogelijke actie!";
+"no.automation.alert.message" = "U moet een triggerobject kiezen om een ​​automatisering te maken";
+
 "scene.vc.noaction.alert.cancel.button" = "Oke";
 
 // - MARK: Actions

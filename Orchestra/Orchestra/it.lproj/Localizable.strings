@@ -180,6 +180,10 @@
 
 "scene.vc.noaction.alert.title" = "Azione impossibile!";
 "scene.vc.noaction.alert.message" = "Non puoi creare una scena o un'automazione senza azioni";
+
+"no.automation.alert.title" = "Azione impossibile!";
+"no.automation.alert.message" = "Devi scegliere un oggetto trigger per creare un'automazione";
+
 "scene.vc.noaction.alert.cancel.button" = "Va bene";
 
 // - MARK: Actions

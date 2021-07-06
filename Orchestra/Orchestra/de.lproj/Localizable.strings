@@ -180,6 +180,10 @@
 
 "scene.vc.noaction.alert.title" = "Unmögliche Aktion!";
 "scene.vc.noaction.alert.message" = "Sie können keine Szene oder Automation ohne Aktionen erstellen";
+
+"no.automation.alert.title" = "Unmögliche Aktion!";
+"no.automation.alert.message" = "Sie müssen ein Trigger-Objekt auswählen, um eine Automatisierung zu erstellen";
+
 "scene.vc.noaction.alert.cancel.button" = "Okay";
 
 // - MARK: Actions

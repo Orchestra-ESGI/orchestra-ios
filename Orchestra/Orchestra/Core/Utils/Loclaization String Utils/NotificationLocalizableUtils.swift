@@ -97,6 +97,9 @@ public class NotificationLocalizableUtils {
     
     let sceneNoActionAlertTitle = NSLocalizedString("scene.vc.noaction.alert.title", comment: "")
     let sceneNoActionAlertMessage = NSLocalizedString("scene.vc.noaction.alert.message", comment: "")
+    
+    let noAutomationTriggerAlertTitle = NSLocalizedString("no.automation.alert.title", comment: "")
+    let noAutomationTriggerAlertMessage = NSLocalizedString("no.automation.alert.message", comment: "")
     let sceneNoActionAlertCancelButton = NSLocalizedString("scene.vc.noaction.alert.cancel.button", comment: "")
     
     let notifyAlertTitle = NSLocalizedString("notify.alert.title", comment: "")

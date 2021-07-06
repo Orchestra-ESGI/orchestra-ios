@@ -116,7 +116,7 @@
 		63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */; };
 		63A8F517265AE4A100BA02C8 /* LaunchSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */; };
 		63B4352E26680CA2004D12A7 /* DeviceCreationFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */; };
-		63B4352F26680CA2004D12A7 /* DeviceFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceFormViewController.xib */; };
+		63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */; };
 		63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */; };
 		63C6C43B26827113007BC8B5 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6C43A26827113007BC8B5 /* AlertUtils.swift */; };
 		63D1A94E2661684800DEDB96 /* SupportedDeviceDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1A94D2661684800DEDB96 /* SupportedDeviceDto.swift */; };
@@ -333,7 +333,7 @@
 		63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WkListDelegate.swift; sourceTree = "<group>"; };
 		63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSceneDelegate.swift; sourceTree = "<group>"; };
 		63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCreationFormViewController.swift; sourceTree = "<group>"; };
-		63B4352D26680CA2004D12A7 /* DeviceFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceFormViewController.xib; sourceTree = "<group>"; };
+		63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceCreationFormViewController.xib; sourceTree = "<group>"; };
 		63B97CBA262B36E500F50E12 /* UITextFieldsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldsExtensions.swift; sourceTree = "<group>"; };
 		63BB149A2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		63BB149B2615CEF0001E9D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Interface.strings"; sourceTree = "<group>"; };
@@ -700,9 +700,8 @@
 		63460F612669447D00DECD35 /* New Device Form */ = {
 			isa = PBXGroup;
 			children = (
-				63B435302668131A004D12A7 /* Extensions */,
 				63B4352C26680CA2004D12A7 /* DeviceCreationFormViewController.swift */,
-				63B4352D26680CA2004D12A7 /* DeviceFormViewController.xib */,
+				63B4352D26680CA2004D12A7 /* DeviceCreationFormViewController.xib */,
 			);
 			path = "New Device Form";
 			sourceTree = "<group>";
@@ -976,13 +975,6 @@
 				63A8F516265AE4A100BA02C8 /* LaunchSceneDelegate.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		63B435302668131A004D12A7 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		63B97CB9262B36D600F50E12 /* Global Extensions */ = {
@@ -1308,7 +1300,7 @@
 				636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */,
 				637FB6CF2615CEA600790735 /* Localizable.strings in Resources */,
 				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
-				63B4352F26680CA2004D12A7 /* DeviceFormViewController.xib in Resources */,
+				63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */,
 				634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */,
 				639E43A2263F031D0042951E /* Slide.xib in Resources */,
 				632268382645A2170037672D /* AddHouseTableViewCell.xib in Resources */,
