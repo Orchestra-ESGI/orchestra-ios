@@ -1,6 +1,12 @@
-# app_identifier("[[APP_IDENTIFIER]]") # The bundle identifier of your app
-# apple_id("[[APPLE_ID]]") # Your Apple email address
+app_identifier("com.nrv.orchestra")
 
+apple_dev_portal_id "orchestra.nrv.dev@gmail.com"  # Apple Developer Account
+itunes_connect_id "orchestra.nrv.dev@gmail.com"     # App Store Connect Account
 
-# For more information about the Appfile, see:
-#     https://docs.fastlane.tools/advanced/#appfile
+team_id "PS454LZVNR" # Developer Portal Team ID
+itc_team_id "123208710" # App Store Connect Team ID
+
+ENV["FASTLANE_USER"] = "orchestra.nrv.dev@gmail.com"
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "kynj-zunf-jctp-youl" #"oums-zxmi-zwdl-vybj"
+ENV["SPACESHIP_2FA_SMS_DEFAULT_PHONE_NUMBER"] = "+33 7 83 43 73 28"
+ENV["MATCH_GIT_PRIVATE_KEY"]= "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"

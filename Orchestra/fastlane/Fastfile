@@ -10,6 +10,21 @@ lane :create_app do
 	create_app_online  # produce
 end
 
+platform :watchos do
+  desc "Release testflight watch"
+  lane :watch do
+    match(type: "appstore", readonly: is_ci)
+
+    # Use gym to archive your app
+    gym(
+      silent: true,
+      output_directory: "./fastlane/builds",
+      # xcargs: "-allowProvisioningUpdates",
+      scheme: "Orchestra WatchKit App"
+    )
+  end
+end
+
 platform :ios do
   before_all do
   	Dotenv.load ".env.ios"
@@ -34,7 +49,7 @@ platform :ios do
   end
 
   desc "Release binary"
-  lane :release_appstore
+  lane :release_appstore do
   	ensure_git_status_clean
   	ensure_git_branch
 
@@ -67,6 +82,37 @@ platform :ios do
     match(type: "appstore", readonly: is_ci)
 
     # Use gym to archive your app
+    #gym(
+    #  silent: true,
+    #  output_directory: "./fastlane/builds",
+      # xcargs: "-allowProvisioningUpdates",
+    #  scheme: ENV["SCHEME"]
+    #)
+
+    build_app(
+      scheme: ENV["SCHEME"],
+      output_directory: "./fastlane/builds",
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: { 
+          "com.nrv.orchestra" => "match AppStore com.nrv.orchestra",
+          "com.nrv.orchestra.watchkitapp" => "match AppStore com.nrv.orchestra.watchkitapp",
+          "com.nrv.orchestra.watchkitapp.watchkitextension" => "com.nrv.orchestra.watchkitapp.watchkitextension"
+        }
+      }
+    )
+
+    # Use pilot to upload your app to testflight
+    pilot(
+      app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
+      distribute_external: false,
+    )
+  end
+
+
+  desc "Livraison TestFlight"
+  lane :testflight_pilot do
+     # Use gym to archive your app
     gym(
       silent: true,
       output_directory: "./fastlane/builds",
@@ -74,33 +120,18 @@ platform :ios do
       scheme: ENV["SCHEME"]
     )
 
-    # Use pilot to upload your app to testflight
     pilot(
-      app_identifier: ENV["APP_ID"],
+      app_identifier: ENV["PRODUCE_APP_IDENTIFIER"],
+      ipa: "./fastlane/builds/Orchestra.ipa",
       distribute_external: false,
     )
-
-    # clean
   end
 
   desc "clean project"
   lane :clean do |options|
-    # Update Info plist Bundle ID
-    update_app_identifier(
-      xcodeproj: "carto-sdk-ios.xcodeproj", # Optional path to xcodeproj, will use the first .xcodeproj if not set
-      plist_path: "./Orchestra/Info.plist", # Path to info plist file, relative to xcodeproj
-      app_identifier: ENV['PRODUCE_APP_IDENTIFIER'] # The App Identifier
-    )
-
-    # Update Info plist AppName
-    update_info_plist( # Change the Display Name of your app
-      plist_path: "./Orchestra/Info.plist",
-      display_name: "Orchestra"
-    )
-
-    sh "rm -rf builds/**.zip"
+    sh("rm", "-rf", "./fastlane/builds/**.zip")
     #sh "rm -rf builds/carto-sdk-ios.xcarchive"
-    #sh "rm -rf builds/carto-sdk-ios.ipa"
+    sh("rm", "-rf", "./fastlane/builds/**.ipa")
     #sh "rm -rf builds/carto-sdk-ios.app.dSYM.zip"
   end
 end

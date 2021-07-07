@@ -297,16 +297,15 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
             if(trigger["type"] == nil){
                 self.triggerDeviceTf.text = "\(whenEventLocalized) \(triggerName) > \(triggerAction)"
             }else{
-                let triggerType = NSLocalizedString(trigger["type"] as? String ?? "", comment: "")
+                let triggerType = trigger["type"] as? String ?? ""
                 let triggerOperator = trigger["operator"] as? String ?? ""
                 let triggerValue = trigger["state"] as? String ?? ""
-                self.triggerDeviceTf.text = "When \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue)  then \(triggerAction) "
                 self.selectedTriggerType = triggerType
                 self.selectedOperator = triggerOperator
                 self.selectedTempAndHumidityValue = triggerValue
 
                 let thenEventLocalized = NSLocalizedString("then", comment: "")
-                let triggerDeviceTfText = "\(whenEventLocalized) \(triggerName) - \(triggerType) \(triggerOperator) \(triggerValue) \(thenEventLocalized) \(triggerAction) "
+                let triggerDeviceTfText = "\(whenEventLocalized) \(triggerName) - \(triggerType) \(NSLocalizedString(triggerOperator, comment: "")) \(triggerValue) \(thenEventLocalized) \(triggerAction)"
 
                 self.triggerDeviceTf.text = triggerDeviceTfText
             }
@@ -511,7 +510,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
                 return dict["friendly_name"] as! String
             }
 
-            let typeFilter: [DeviceType] = [.Contact, .Occupancy, .StatelessProgrammableSwitch]
+            let typeFilter: [DeviceType] = [.Contact, .Occupancy, .StatelessProgrammableSwitch, .Temperature, .Humidity, .TemperatureAndHumidity]
             self.devices = devices.filter { !devicenameInScene.contains($0.friendlyName) && !typeFilter.contains($0.type) }
             self.progressUtils.dismiss()
             if (self.devices.count > 0) {

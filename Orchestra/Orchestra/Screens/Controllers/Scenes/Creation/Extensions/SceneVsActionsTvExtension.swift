@@ -213,7 +213,6 @@ extension SceneViewController: UITableViewDelegate, UITableViewDataSource{
             self.actionsTableView.reloadData()
         }else{
             if(indexPath.row == (self.deviceDict[indexPath.section]["selected_actions"] as? [SceneActionsName] ?? []).count){
-                print("Selected action from scene actions at row: \(indexPath.section)")
                 let allActions = self.deviceDict[indexPath.section]["possible_actions"] as! [SceneActionsName]
                 if(allActions.count > 0){
                     self.isPopUpVisible = true
