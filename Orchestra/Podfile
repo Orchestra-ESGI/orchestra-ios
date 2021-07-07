@@ -32,6 +32,7 @@ target 'Orchestra' do
 
   # Material
   pod 'MaterialComponents/Chips'
+  pod 'MDFInternationalization','~>2.0'
   pod 'NotificationBannerSwift', :git => 'https://github.com/Daltron/NotificationBanner.git', :branch => 'master'
   pod 'MRProgress'
   pod 'Floaty', '~> 4.2.0'
