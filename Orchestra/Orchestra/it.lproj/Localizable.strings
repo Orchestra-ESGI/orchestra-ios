@@ -374,7 +374,9 @@
 "unknown.device.label.button.title" = "Invia una richiesta";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Scegli una stanza";
+"picker.view.toolbar.title.room" = "Scegli una stanza";
+"picker.view.toolbar.title.trigger" = "Scegli un oggetto";
+
 "Living room" = "Soggiorno";
 "Lobby" = "Atrio";
 "Bedroom" = "Camera da letto";
@@ -441,3 +443,10 @@
 "room.creation.alert.title" = "Nuova parte";
 "room.creation.alert.message" = "Attenzione: non potrai cambiare il nome della stanza, dovrai eliminarla e crearne un'altra";
 "room.creation.alert.action.save" = "registrare";
+
+// - MARK: QR Code
+"qrcode.overlay.indication" = "Scansiona il QR Code dietro l'hub di Orchestra®";
+"qrcode.error.alert.title" = "Scansione non supportata";
+"qrcode.error.alert.message" = "Il tuo dispositivo non supporta la scansione di un codice da un articolo. Si prega di utilizzare un dispositivo con una fotocamera.";
+"qrcode.error.reading.alert.title" = "Ops";
+"qrcode.error.reading.alert.message" = "Il QR Code letto è sbagliato";

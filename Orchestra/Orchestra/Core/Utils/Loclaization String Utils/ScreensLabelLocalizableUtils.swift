@@ -220,7 +220,8 @@ class ScreensLabelLocalizableUtils{
     let unknownDeviceButtonTitle = NSLocalizedString("unknown.device.label.button.title", comment: "")
 
     // - MARK: Device Update Screen
-    let deviceUpdateScreenPickerViewTitle = NSLocalizedString("device.update.screen.pickerview.title", comment: "")
+    let devicePickerViewToolbarTitle = NSLocalizedString("picker.view.toolbar.title.room", comment: "")
+    let triggerPickerViewToolbarTitle = NSLocalizedString("picker.view.toolbar.title.trigger", comment: "")
 
 
     // - MARK: Settings Localization
@@ -277,4 +278,6 @@ class ScreensLabelLocalizableUtils{
     let notifyLabel = NSLocalizedString("automation.and.scene.vc.notify.label", comment: "")
     
     let emptyHomeLabel = NSLocalizedString("home.empty.label", comment: "")
+    
+    let qrCodeOverlayIndicationLabel = NSLocalizedString("qrcode.overlay.indication", comment: "")
 }

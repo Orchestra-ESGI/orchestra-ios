@@ -10,6 +10,7 @@ import Foundation
 public class NotificationLocalizableUtils {
     static let shared = NotificationLocalizableUtils()
     
+    let defautlOkActionLabel = NSLocalizedString("default.ok", comment: "")
     // - MARK: Login Notifications
     let unreachableNotificationTitle = NSLocalizedString("login.notification.unreachable.title", comment: "")
     let unreachableNotificationSubtitle = NSLocalizedString("login.notification.unreachable.subtitle", comment: "")
@@ -130,6 +131,12 @@ public class NotificationLocalizableUtils {
     let homeWarningAlertMessage = NSLocalizedString("warning.alert.message", comment: "")
     let homeWarningAlertCancelAction = NSLocalizedString("warning.cancel.action", comment: "")
     let homeWarningAlertContinueAction = NSLocalizedString("warning.continue.action", comment: "")
+    
+    let qrCodeFailedAlertTitle = NSLocalizedString("qrcode.error.alert.title", comment: "")
+    let qrCodeFailedAlertMessage = NSLocalizedString("qrcode.error.alert.message", comment: "")
+    
+    let qrCodeErrorReadingAlertTitle = NSLocalizedString("qrcode.error.reading.alert.title", comment: "")
+    let qrCodeErrorReadingAlertMessage = NSLocalizedString("qrcode.error.reading.alert.message", comment: "")
     
     init() {
         

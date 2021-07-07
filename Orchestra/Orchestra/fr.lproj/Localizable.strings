@@ -346,7 +346,7 @@ actions";
 
 // - MARK: Default actions
 "default.success" = "Succès";
-"default.ok" = "ok";
+"default.ok" = "Ok";
 
 "configuration.error.alert.title" = "Une erreur est survenue";
 "configuration.error.alert.message" = "Impossible de récupérer la configartion actuelle du Hub";
@@ -383,7 +383,9 @@ actions";
 "unknown.device.label.button.title" = "Envoyer une demande";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Choisissez une pièce";
+"picker.view.toolbar.title.room" = "Choisissez une pièce";
+"picker.view.toolbar.title.trigger" = "Choisissez une objet";
+
 "Living room" = "Salon";
 "Lobby" = "Hall";
 "Bedroom" = "Chambre";
@@ -451,3 +453,10 @@ actions";
 "room.creation.alert.title" = "Nouvelle pièce";
 "room.creation.alert.message" = "Attention: Vous ne pourrez pas changer le nom de la pièce, il faudra le supprimer et en créer une autre";
 "room.creation.alert.action.save" = "Enregistrer";
+
+// - MARK: QR Code
+"qrcode.overlay.indication" = "Scannez le QR Code derrière le hub Orchestra®";
+"qrcode.error.alert.title" = "Numérisation non prise en charge";
+"qrcode.error.alert.message" = "Votre appareil ne prend pas en charge la numérisation d'un code à partir d'un élément. Veuillez utiliser un appareil avec une caméra.";
+"qrcode.error.reading.alert.title" = "Oops";
+"qrcode.error.reading.alert.message" = "Le QR Code lu est erroné";

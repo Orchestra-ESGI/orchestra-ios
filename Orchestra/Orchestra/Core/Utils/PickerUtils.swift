@@ -9,26 +9,14 @@ import Foundation
 import UIKit
 import SnapKit
 
-class PickerUtils{
-    static let shared = PickerUtils()
-    
-    func showPickerView(with components: Int, items: [Any], okAction: @escaping ((Void) -> Void)){
-        
-    }
-    
-}
-
-
-
 class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDelegate {
-    let labelLocalization = ScreensLabelLocalizableUtils.shared
     
     private lazy var doneToolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
 
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        let toolBarTitleValue = self.labelLocalization.deviceUpdateScreenPickerViewTitle
+        let toolBarTitleValue = self.pickerViewToolBarTitle
         let toolBarTitle = ToolBarTitleItem(text: toolBarTitleValue,
                                             font: .systemFont(ofSize: 20),
                                             color: .white)
@@ -73,7 +61,9 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
     
     private var actions: [String] = [] // the most right column
     
-    init(_ columns: Int, items: Any, closePickerCompletion: @escaping ((Any) -> Void)) {
+    var pickerViewToolBarTitle = ""
+    
+    init(_ columns: Int, items: Any, closePickerCompletion: @escaping ((Any) -> Void), toolBarTitle: String) {
         super.init(frame: .zero)
         if(columns > 0){
             self.columns = columns
@@ -111,6 +101,8 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
                 self.selectedSecondColumnItemIndex = 0
             }
             self.onePickerViewDidSelectItem = closePickerCompletion
+            
+            self.pickerViewToolBarTitle = toolBarTitle
             setupView()
         }
     }
@@ -213,7 +205,6 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
                 self.actions = pickerSecondColumnItems[row]
                 pickerView.reloadComponent(self.filterColumns - 1)
             }
-            print("Device selected: \(selectedItem), device position: \(selectedItemIndex)")
         }else if(component == 1 && self.filterColumns > 2){
             // This case is triggered only if there is Temperature or Humidity in trigger devices
             self.selectedActionStateIndex = row
@@ -223,7 +214,6 @@ class PickerViewPresenter: UITextField, UIPickerViewDataSource, UIPickerViewDele
         }else if(component == self.filterColumns - 1){
             selectedSecondColumnItem = NSLocalizedString(self.actions[row], comment: "")
             self.selectedSecondColumnItemIndex = row
-            print("Action selected: \(selectedSecondColumnItem), action position: \(selectedSecondColumnItemIndex)")
         }else{
             selectedItem = devicesName[row]
             selectedItemIndex = row

@@ -375,7 +375,9 @@
 "unknown.device.label.button.title" = "Stuur een verzoek";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Kies een kamer";
+"picker.view.toolbar.title.room" = "Kies een kamer";
+"picker.view.toolbar.title.trigger" = "Kies een object ";
+
 "Living room" = "Woonkamer";
 "Lobby" = "Lobby";
 "Bedroom" = "Slaapkamer";
@@ -443,3 +445,10 @@
 "room.creation.alert.title" = "Nieuw deel";
 "room.creation.alert.message" = "Waarschuwing: u kunt de naam van de kamer niet wijzigen, u moet deze verwijderen en een andere maken";
 "room.creation.alert.action.save" = "Opnemen";
+
+// - MARK: QR Code
+"qrcode.overlay.indication" = "Scan de QR-code achter de Orchestra®-hub";
+"qrcode.error.alert.title" = "Scannen niet ondersteund";
+"qrcode.error.alert.message" = "Uw apparaat ondersteunt het scannen van een code van een item niet. Gebruik een apparaat met een camera.";
+"qrcode.error.reading.alert.title" = "Oeps";
+"qrcode.error.reading.alert.message" = "De gelezen QR-code is verkeerd";

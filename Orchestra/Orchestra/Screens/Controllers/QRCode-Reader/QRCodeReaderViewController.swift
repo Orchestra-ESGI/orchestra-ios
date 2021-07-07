@@ -14,6 +14,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     var captureSession: AVCaptureSession!
     
     private let labelLocalization = ScreensLabelLocalizableUtils.shared
+    private let notificationLocalization = NotificationLocalizableUtils.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,12 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         
 
         if (SPPermission.camera.isDenied) {
-            let alert = UIAlertController(title: self.labelLocalization.permissionsCameraErrorAlertTitle, message: self.labelLocalization.permissionsCameraErrorAlertDescription, preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+            let alertTitle = self.labelLocalization.permissionsCameraErrorAlertTitle
+            let alertMessage = self.labelLocalization.permissionsCameraErrorAlertDescription
+            let alertDefaultActionLabel = self.notificationLocalization.defautlOkActionLabel
+            
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: alertDefaultActionLabel, style: .default, handler: { action in
                 self.navigationController?.popViewController(animated: true)
                 if let bundleIdentifier = Bundle.main.bundleIdentifier, let appSettings = URL(string: UIApplication.openSettingsURLString + bundleIdentifier) {
                     if UIApplication.shared.canOpenURL(appSettings) {
@@ -85,7 +90,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     func addLabel() {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Scan the QR Code behind the Orchestra® hub"
+        label.text = self.labelLocalization.qrCodeOverlayIndicationLabel
         label.font = Font.Bold(17)
         label.textColor = .white
         label.textAlignment = .center
@@ -100,8 +105,12 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
 
     func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        let alertTitle = self.notificationLocalization.qrCodeFailedAlertTitle
+        let alertMessage = self.notificationLocalization.qrCodeFailedAlertMessage
+        let alertDefaultAction = self.notificationLocalization.defautlOkActionLabel
+        
+        let ac = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: alertDefaultAction, style: .default))
         present(ac, animated: true)
         captureSession = nil
     }
@@ -158,14 +167,20 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
                     break
                 }
             }
-        } catch let error as NSError {
+        } catch {
             qrCodeError = true
-            print("Failed to load: \(error.localizedDescription)")
         }
         
         if qrCodeError {
-            let alert = UIAlertController(title: "Oops", message: "The readed QR Code is wrong", preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+            let alertTitle = self.notificationLocalization.qrCodeErrorReadingAlertTitle
+            let alertMessage = self.notificationLocalization.qrCodeErrorReadingAlertMessage
+            let alertDefaultAction = self.notificationLocalization.defautlOkActionLabel
+            
+            let alert = UIAlertController(title: alertTitle,
+                                          message: alertMessage,
+                                          preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: alertDefaultAction, style: .default, handler: { action in
                 self.captureSession.startRunning()
             })
             alert.addAction(defaultAction)

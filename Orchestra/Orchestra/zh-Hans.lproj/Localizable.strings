@@ -375,7 +375,9 @@
 "unknown.device.label.button.title" = "发送请求";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "选择房间";
+"picker.view.toolbar.title.room" = "选择房间";
+"picker.view.toolbar.title.trigger" = "选择一个对象 ";
+
 "Living room" = "客厅";
 "Lobby" = "大堂";
 "Bedroom" = "卧室";
@@ -443,3 +445,10 @@
 "room.creation.alert.title" = "新零件";
 "room.creation.alert.message" = "警告：您将无法更改房间的名称，您必须将其删除并创建另一个房间";
 "room.creation.alert.action.save" = "记录";
+
+// - MARK: QR Code
+"qrcode.overlay.indication" = "扫描 Orchestra® 中心后面的二维码";
+"qrcode.error.alert.title" = "不支持扫描";
+"qrcode.error.alert.message" = "您的设备不支持从项目扫描代码。 请使用带摄像头的设备。";
+"qrcode.error.reading.alert.title" = "哎呀";
+"qrcode.error.reading.alert.message" = "读取的二维码有误";

@@ -51,7 +51,11 @@ class DeviceCreationFormViewController: UIViewController, UITextFieldDelegate {
         let roomsName = self.rooms.map { room -> String in
             return room.name ?? ""
         }
-        let pickerViewPresenter = PickerViewPresenter(1, items: roomsName, closePickerCompletion: didClosePickerView)
+        let pickerViewToolbarTitle = self.labelLocalization.devicePickerViewToolbarTitle
+        let pickerViewPresenter = PickerViewPresenter(1,
+                                                      items: roomsName,
+                                                      closePickerCompletion: didClosePickerView,
+                                                      toolBarTitle: pickerViewToolbarTitle)
         return pickerViewPresenter
     }()
     
