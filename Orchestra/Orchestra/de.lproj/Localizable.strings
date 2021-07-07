@@ -450,3 +450,5 @@
 "qrcode.error.alert.message" = "Ihr Gerät unterstützt das Scannen eines Codes von einem Artikel nicht. Bitte verwenden Sie ein Gerät mit einer Kamera.";
 "qrcode.error.reading.alert.title" = "Hoppla";
 "qrcode.error.reading.alert.message" = "Der gelesene QR-Code ist falsch";
+
+"mail.settings.subject.device.request" = "Geräteunterstützung - Orchestra iOS-App";

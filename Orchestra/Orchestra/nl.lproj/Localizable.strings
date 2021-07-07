@@ -452,3 +452,5 @@
 "qrcode.error.alert.message" = "Uw apparaat ondersteunt het scannen van een code van een item niet. Gebruik een apparaat met een camera.";
 "qrcode.error.reading.alert.title" = "Oeps";
 "qrcode.error.reading.alert.message" = "De gelezen QR-code is verkeerd";
+
+"mail.settings.subject.device.request" = "Apparaatondersteuning - Orchestra iOS-app";

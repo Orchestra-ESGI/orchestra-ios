@@ -38,6 +38,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     let notificationLoclaize = NotificationLocalizableUtils.shared
     let accountUtils = AccountUtils.shared
     let alertUtils = AlertUtils.shared
+    let localizeNotifications = NotificationLocalizableUtils.shared
     
     // - MARK: Services
     let userVM = UsersViewModel()
@@ -363,6 +364,12 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         
         let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             self.userVM.shutDownHub()
+            let progressTitle = self.localizeNotifications.undeterminedProgressViewTitle
+            self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: self.view)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                self.progressUtils.dismiss()
+                self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            }
         }
         let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             let warningAlertTitle = warningAlertTitle
@@ -395,6 +402,12 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         
         let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             self.userVM.rebootHub()
+            let progressTitle = self.localizeNotifications.undeterminedProgressViewTitle
+            self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: self.view)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                self.progressUtils.dismiss()
+                self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            }
         }
         let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             let warningAlertTitle = warningAlertTitle
@@ -427,6 +440,12 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
         
         let shutDownAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             self.userVM.factoryResetHub()
+            let progressTitle = self.localizeNotifications.undeterminedProgressViewTitle
+            self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: self.view)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                self.progressUtils.dismiss()
+                self.navigationController?.pushViewController(HomeViewController(), animated: true)
+            }
         }
         let continueAction = UIAlertAction(title: continueLabel, style: .destructive) { action in
             let warningAlertTitle = warningAlertTitle

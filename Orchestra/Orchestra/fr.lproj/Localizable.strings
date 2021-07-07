@@ -460,3 +460,5 @@ actions";
 "qrcode.error.alert.message" = "Votre appareil ne prend pas en charge la numérisation d'un code à partir d'un élément. Veuillez utiliser un appareil avec une caméra.";
 "qrcode.error.reading.alert.title" = "Oops";
 "qrcode.error.reading.alert.message" = "Le QR Code lu est erroné";
+
+"mail.settings.subject.device.request" = "Prise en charge des appareils - Application iOS Orchestra";

@@ -33,6 +33,7 @@ class DevicesViewController: UIViewController {
     }
     
     private func setupUI(){
+        self.view.backgroundColor = ColorUtils.ORCHESTRA_BLUE_COLOR
         self.title = self.brand
     }
     
@@ -41,6 +42,7 @@ class DevicesViewController: UIViewController {
         self.devicesTableView.tableFooterView = UIView()
         self.devicesTableView.delegate = self
         self.devicesTableView.dataSource = self
+        self.devicesTableView.backgroundColor = .clear
     }
 }
 
@@ -68,7 +70,7 @@ extension DevicesViewController: UITableViewDataSource{
             } onError: { err in
                 print("Error occured while fetching image for the cell at position: \(indexPath.row)")
             }
-
+        cell.backgroundColor = .clear
         return cell
     }
     
@@ -87,6 +89,13 @@ extension DevicesViewController: UITableViewDataSource{
                 let alert = UIAlertController(title: alertTitle, message:alertMessage, preferredStyle: .alert)
                 let resetAction = UIAlertAction(title: alertResetActionString, style: .cancel) { action in
                     self.deviceVM?.resetDevice()
+                    
+                    let progressTitle = self.localizeNotifications.undeterminedProgressViewTitle
+                    self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: self.view)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                        self.progressUtils.dismiss()
+                        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                    }
                 }
                 alert.addAction(resetAction)
                 self.present(alert, animated: true)

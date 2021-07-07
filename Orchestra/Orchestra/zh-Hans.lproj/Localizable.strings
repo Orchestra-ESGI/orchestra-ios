@@ -452,3 +452,5 @@
 "qrcode.error.alert.message" = "您的设备不支持从项目扫描代码。 请使用带摄像头的设备。";
 "qrcode.error.reading.alert.title" = "哎呀";
 "qrcode.error.reading.alert.message" = "读取的二维码有误";
+
+"mail.settings.subject.device.request" = "设备支持 - Orchestra iOS 应用";

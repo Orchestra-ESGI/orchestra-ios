@@ -10,8 +10,9 @@ import RxCocoa
 import RxSwift
 import Floaty
 import ColorSlider
+import MessageUI
 
-class DeviceInfoViewController: UIViewController {
+class DeviceInfoViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: - UI
     @IBOutlet weak var tableViewContainer: UIView!
@@ -151,6 +152,28 @@ class DeviceInfoViewController: UIViewController {
     
     @objc func sendEmailRequest(){
         print("Email screen present")
+        if MFMailComposeViewController.canSendMail() {
+            let mailController = MFMailComposeViewController()
+            mailController.mailComposeDelegate = self
+            
+            MailComposer.setupMailController(
+                mfMailVC: mailController,
+                subject: self.labelLocalization.mailSettingsSubjectDeviceRequest
+            )
+
+            present(mailController, animated: true, completion: nil)
+        }
+        else {
+            // Email is not configured
+            let alert = UIAlertController(
+                title: nil,
+                message: self.labelLocalization.mailErrorConfiguration,
+                preferredStyle: UIAlertController.Style.alert)
+
+            alert.addAction(UIAlertAction.init(title: self.labelLocalization.objectInfoOkButtonLabelText,
+                                               style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func setUpNavBar(){

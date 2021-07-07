@@ -63,6 +63,12 @@ extension LoginViewController{
                     let warningAlertMessage = self.notificationLocalize.homeWarningAlertMessage
                     let warningAlertContinueAction = UIAlertAction(title: warningAlertContinueAction, style: .destructive) { action in
                         self.userVm.factoryResetHub()
+                        let progressTitle = self.notificationLocalize.undeterminedProgressViewTitle
+                        self.progressUtils.displayIndeterminateProgeress(title: progressTitle, view: self.view)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 15.0) {
+                            self.progressUtils.dismiss()
+                            self.navigationController?.pushViewController(HomeViewController(), animated: true)
+                        }
                     }
                     let warningAlertCancelAction = UIAlertAction(title: cancelAlertAction, style: .cancel) { action in
                     }

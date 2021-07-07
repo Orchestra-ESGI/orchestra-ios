@@ -263,6 +263,7 @@ class ScreensLabelLocalizableUtils{
 
     // - MARK: Mail
     let mailSettingsSubject = NSLocalizedString("mail.settings.subject", comment: "")
+    let mailSettingsSubjectDeviceRequest = NSLocalizedString("mail.settings.subject.device.request", comment: "")
     let mailErrorConfiguration = NSLocalizedString("mail.error.configuration", comment: "")
 
     

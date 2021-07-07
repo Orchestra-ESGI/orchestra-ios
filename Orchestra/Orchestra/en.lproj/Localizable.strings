@@ -451,3 +451,5 @@
 "qrcode.error.alert.message" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
 "qrcode.error.reading.alert.title" = "Oops";
 "qrcode.error.reading.alert.message" = "The readed QR Code is wrong";
+
+"mail.settings.subject.device.request" = "Device support - Orchestra iOS app";

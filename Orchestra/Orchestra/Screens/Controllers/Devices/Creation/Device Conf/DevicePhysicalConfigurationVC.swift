@@ -25,6 +25,8 @@ class DevicePhysicalConfigurationVC: UIViewController {
         super.viewDidLoad()
         
         self.indicationLabelText.text = self.labelLocalization.configurationScreenHeaderText
+        self.view.backgroundColor = ColorUtils.ORCHESTRA_BLUE_COLOR
+        
         self.setUpTopBar()
         self.setUpSteps()
     }

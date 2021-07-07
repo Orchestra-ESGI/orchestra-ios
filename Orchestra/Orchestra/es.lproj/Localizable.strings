@@ -451,3 +451,5 @@
 "qrcode.error.alert.message" = "Su dispositivo no admite escanear un código de un elemento. Utilice un dispositivo con cámara.";
 "qrcode.error.reading.alert.title" = "Ups";
 "qrcode.error.reading.alert.message" = "El código QR leído es incorrecto";
+
+"mail.settings.subject.device.request" = "Compatibilidad con dispositivos: aplicación Orchestra para iOS";

@@ -50,6 +50,7 @@ class NewDevicePairingViewController: UIViewController {
     }
     
     private func setupUI(){
+        self.view.backgroundColor = ColorUtils.ORCHESTRA_BLUE_COLOR
         if(self.device == nil){
             self.title = self.labelLocalization.newDeviceVcTitle
         }else{
@@ -62,6 +63,7 @@ class NewDevicePairingViewController: UIViewController {
         self.accessoriesTableView.tableFooterView = UIView()
         self.accessoriesTableView.delegate = self
         self.accessoriesTableView.dataSource = self
+        self.accessoriesTableView.backgroundColor = .clear
     }
     
     private func accessoriesConfigObserve(){
@@ -117,6 +119,7 @@ extension NewDevicePairingViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ACCESSORY_ROW")!
         cell.textLabel?.text = self.accessories[indexPath.row].brand
         cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = .clear
         return cell
     }
     

@@ -26,7 +26,7 @@
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="1. Suivez le lien suivant: https://www.google.fr" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VhL-b4-0xx">
                     <rect key="frame" x="10" y="90" width="300" height="80"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="Zz8-e5-P5B"/>
                     </constraints>
@@ -37,7 +37,7 @@
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="2. Allez dans la section #Pairing" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lnH-K0-5gR">
                     <rect key="frame" x="10" y="185" width="300" height="40"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="KFx-51-w4L"/>
                     </constraints>
@@ -47,13 +47,14 @@
                 </textView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fP3-vw-ZY0">
                     <rect key="frame" x="20" y="250" width="280" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="UHH-qa-Akj"/>
                     </constraints>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="3. Suivez les instructions pour  reinitialiser votre objet" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-4P-Kq3">
                     <rect key="frame" x="20" y="395" width="280" height="60"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="ETS-fN-Jm9"/>
                     </constraints>
@@ -63,6 +64,7 @@
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suivez ces étapes pour configurer votre objet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D01-YD-aBW">
                     <rect key="frame" x="10" y="25" width="300" height="45"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="rbu-4v-S3B"/>
                     </constraints>

@@ -449,3 +449,5 @@
 "qrcode.error.alert.message" = "Seu dispositivo não suporta a leitura de um código de um item. Use um dispositivo com câmera.";
 "qrcode.error.reading.alert.title" = "Opa";
 "qrcode.error.reading.alert.message" = "O código QR lido está errado";
+
+"mail.settings.subject.device.request" = "Suporte para dispositivos - app Orchestra iOS";
