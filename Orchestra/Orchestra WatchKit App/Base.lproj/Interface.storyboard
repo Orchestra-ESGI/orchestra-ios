@@ -64,7 +64,7 @@
                                 <table alignment="left" id="jeB-Aa-6Fg">
                                     <items>
                                         <tableRow identifier="Device_Row" id="rqp-YX-3JE" customClass="DeviceRow" customModule="Orchestra_WatchKit_Extension">
-                                            <group key="rootItem" width="1" height="65" alignment="left" layout="vertical" id="2Dn-LZ-d1o">
+                                            <group key="rootItem" width="1" height="72" alignment="left" layout="vertical" id="2Dn-LZ-d1o">
                                                 <items>
                                                     <group width="1" height="29" alignment="left" id="cIN-cG-uwr">
                                                         <items>
@@ -160,7 +160,7 @@
                                 <table alignment="left" id="mOB-Vg-f2Q">
                                     <items>
                                         <tableRow identifier="Scene_Row" selectable="NO" id="9ch-5Z-lq5" customClass="SceneRow" customModule="Orchestra_WatchKit_Extension">
-                                            <group key="rootItem" width="1" height="57" alignment="left" layout="vertical" id="IdU-3v-TQa">
+                                            <group key="rootItem" width="1" height="75" alignment="left" layout="vertical" id="IdU-3v-TQa">
                                                 <items>
                                                     <group width="1" alignment="left" id="3k2-sE-FsD">
                                                         <items>
