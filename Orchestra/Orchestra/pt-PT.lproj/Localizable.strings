@@ -373,7 +373,9 @@
 "unknown.device.label.button.title" = "Enviar um pedido";
 
 // - MARK: Update Device Screen
-"device.update.screen.pickerview.title" = "Escolha uma sala";
+"picker.view.toolbar.title.room" = "Escolha uma sala";
+"picker.view.toolbar.title.trigger" = "Escolha um objeto ";
+
 "Living room" = "Sala de estar";
 "Lobby" = "Salão";
 "Bedroom" = "Quarto";
@@ -440,3 +442,10 @@
 "room.creation.alert.title" = "Nova parte";
 "room.creation.alert.message" = "Aviso: Você não poderá alterar o nome da sala, você terá que excluí-la e criar outra";
 "room.creation.alert.action.save" = "Registro";
+
+// - MARK: QR Code
+"qrcode.overlay.indication" = "Digitalize o código QR atrás do hub Orchestra®";
+"qrcode.error.alert.title" = "A digitalização não é compatível";
+"qrcode.error.alert.message" = "Seu dispositivo não suporta a leitura de um código de um item. Use um dispositivo com câmera.";
+"qrcode.error.reading.alert.title" = "Opa";
+"qrcode.error.reading.alert.message" = "O código QR lido está errado";

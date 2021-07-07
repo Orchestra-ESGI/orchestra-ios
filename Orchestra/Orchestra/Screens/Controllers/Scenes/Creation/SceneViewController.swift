@@ -83,6 +83,7 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
 
     private lazy var pickerViewPresenter: PickerViewPresenter = {
         var pickerColumns = 4
+        let pickerViewToolbarTitle = self.labelLocalization.triggerPickerViewToolbarTitle
         if(self.triggerDevices.count > 0){
             let triggerTypes = self.triggerDevices.map { trigger in
                 return trigger.type
@@ -97,7 +98,8 @@ class SceneViewController: UIViewController, UITextFieldDelegate, CloseCustomVie
         }
 
         let pickerViewPresenter = PickerViewPresenter(pickerColumns, items: self.pickerViewTriggerData,
-                                                      closePickerCompletion: self.didClosePickerView)
+                                                      closePickerCompletion: self.didClosePickerView,
+                                                      toolBarTitle: pickerViewToolbarTitle)
         return pickerViewPresenter
     }()
 

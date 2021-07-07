@@ -100,6 +100,11 @@
 		636F472B260A5F91001D8196 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472A260A5F91001D8196 /* NotificationController.swift */; };
 		636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472C260A5F91001D8196 /* ComplicationController.swift */; };
 		636F472F260A5F93001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F472E260A5F93001D8196 /* Assets.xcassets */; };
+		637EFCD72694DACA001DE78C /* simplicity.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCD62694DACA001DE78C /* simplicity.json */; };
+		637EFCD92694E268001DE78C /* efficiency.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCD82694E268001DE78C /* efficiency.json */; };
+		637EFCDB2694E442001DE78C /* clarity.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCDA2694E441001DE78C /* clarity.json */; };
+		637EFCDD2694E4A6001DE78C /* sync.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCDC2694E4A6001DE78C /* sync.json */; };
+		637EFCDF2694E549001DE78C /* rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCDE2694E549001DE78C /* rocket.json */; };
 		637FB62C2615125000790735 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB62B2615125000790735 /* UsersViewModel.swift */; };
 		637FB6422615BCB900790735 /* NotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB6412615BCB900790735 /* NotificationUtils.swift */; };
 		637FB6712615BE8000790735 /* UserLocalizableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB6702615BE8000790735 /* UserLocalizableUtils.swift */; };
@@ -316,6 +321,11 @@
 		636F472E260A5F93001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636F4730260A5F93001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636F4731260A5F93001D8196 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		637EFCD62694DACA001DE78C /* simplicity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simplicity.json; sourceTree = "<group>"; };
+		637EFCD82694E268001DE78C /* efficiency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = efficiency.json; sourceTree = "<group>"; };
+		637EFCDA2694E441001DE78C /* clarity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clarity.json; sourceTree = "<group>"; };
+		637EFCDC2694E4A6001DE78C /* sync.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sync.json; sourceTree = "<group>"; };
+		637EFCDE2694E549001DE78C /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket.json; sourceTree = "<group>"; };
 		637FB62B2615125000790735 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		637FB6412615BCB900790735 /* NotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtils.swift; sourceTree = "<group>"; };
 		637FB6702615BE8000790735 /* UserLocalizableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalizableUtils.swift; sourceTree = "<group>"; };
@@ -643,6 +653,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		63365C272694D9BC002D579A /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				637EFCDE2694E549001DE78C /* rocket.json */,
+				637EFCDC2694E4A6001DE78C /* sync.json */,
+				637EFCDA2694E441001DE78C /* clarity.json */,
+				637EFCD82694E268001DE78C /* efficiency.json */,
+				637EFCD62694DACA001DE78C /* simplicity.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		633E7E392610CFE60094B148 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +850,7 @@
 		635DD50E261A177F001D1EFC /* Présentation Pager */ = {
 			isa = PBXGroup;
 			children = (
+				63365C272694D9BC002D579A /* Lottie */,
 				63065A2E263DFC5800CBE30D /* OrchestraPager.swift */,
 				639E43A1263F031D0042951E /* Slide.xib */,
 				639E43A3263F03450042951E /* Slide.swift */,
@@ -1285,6 +1308,7 @@
 				635DD4E8261A0640001D1EFC /* SignupViewController.xib in Resources */,
 				6322682726458FB70037672D /* InfoPlist.strings in Resources */,
 				63D1A959266171EC00DEDB96 /* NewDevicePairingViewController.xib in Resources */,
+				637EFCDB2694E442001DE78C /* clarity.json in Resources */,
 				630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */,
 				63FFB10226753FD60040B4FC /* CustomSceneActionTbvAlert.xib in Resources */,
 				634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */,
@@ -1302,8 +1326,11 @@
 				634F9545261A340A0092C269 /* HomeViewController.xib in Resources */,
 				636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */,
 				637FB6CF2615CEA600790735 /* Localizable.strings in Resources */,
+				637EFCD92694E268001DE78C /* efficiency.json in Resources */,
+				637EFCDF2694E549001DE78C /* rocket.json in Resources */,
 				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
 				63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */,
+				637EFCDD2694E4A6001DE78C /* sync.json in Resources */,
 				634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */,
 				639E43A2263F031D0042951E /* Slide.xib in Resources */,
 				632268382645A2170037672D /* AddHouseTableViewCell.xib in Resources */,
@@ -1311,6 +1338,7 @@
 				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
 				63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */,
 				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
+				637EFCD72694DACA001DE78C /* simplicity.json in Resources */,
 				630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

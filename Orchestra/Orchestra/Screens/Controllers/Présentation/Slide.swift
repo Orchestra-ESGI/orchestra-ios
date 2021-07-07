@@ -6,24 +6,24 @@
 //
 
 import UIKit
+import Lottie
 
 class Slide: UIView {
 
     
     @IBOutlet weak var imageBackground: UIView!
-    @IBOutlet weak var slideImage: UIImageView!
     @IBOutlet weak var slideTitle: UILabel!
     @IBOutlet weak var slideDescription: UITextView!
     @IBOutlet weak var slideImageContainerHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var sliderImageHeightConstraint: NSLayoutConstraint!
+    private var animationView: AnimationView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         let imageContainerHeight =  (UIScreen.main.bounds.height / 2)
         commonInit()
         self.slideImageContainerHeightConstraint.constant = imageContainerHeight
-        self.sliderImageHeightConstraint.constant = imageContainerHeight - 50
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,9 +31,22 @@ class Slide: UIView {
 
     }
     
-    private func shapeImageBgView(){
+    func fillLottieAnimation(lottieFileName: String){
+        animationView = .init(name: lottieFileName)
+        animationView!.frame = self.bounds
+        animationView!.contentMode = .scaleAspectFit
+        animationView!.loopMode = .loop
+        animationView!.animationSpeed = 1.5
+        animationView?.translatesAutoresizingMaskIntoConstraints = false
+        imageBackground.addSubview(animationView!)
         
         
+        animationView?.leftAnchor.constraint(equalTo: imageBackground.leftAnchor).isActive = true
+        animationView?.rightAnchor.constraint(equalTo: imageBackground.rightAnchor).isActive = true
+        animationView?.topAnchor.constraint(equalTo: imageBackground.topAnchor).isActive = true
+        animationView?.bottomAnchor.constraint(equalTo: imageBackground.bottomAnchor).isActive = true
+        
+        animationView!.play()
     }
     
     func commonInit(){
