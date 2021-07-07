@@ -25,7 +25,6 @@ class ListUtil{
             if(T.self == DeviceActionRow.self){
                 let deviceActionRow = controller as? DeviceActionRow
                 deviceActionRow?.rowPosition = i
-                deviceActionRow?.delagate = delegate
             }
         }
     }

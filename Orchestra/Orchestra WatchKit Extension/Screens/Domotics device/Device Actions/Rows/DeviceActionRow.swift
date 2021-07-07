@@ -14,7 +14,6 @@ class DeviceActionRow: RootRowController{
     
     @IBOutlet weak var actionNameLabel: WKInterfaceLabel!
     @IBOutlet weak var playActionBtn: WKInterfaceButton!
-    var delagate: LaunchSceneDelegate?
     
     override func refresh(object: Any) {
         guard let action = object as? String else{
@@ -22,9 +21,5 @@ class DeviceActionRow: RootRowController{
         }
         
         self.actionNameLabel.setText(action)
-    }
-    
-    @IBAction func playDeviceAction() {
-        self.delagate?.launchSceneAt(rowPosition)
     }
 }

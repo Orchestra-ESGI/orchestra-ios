@@ -18,7 +18,8 @@
                                         <label alignment="center" verticalAlignment="center" text="Mes scènes" id="EGK-jw-8yD">
                                             <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
                                         </label>
-                                        <button width="60" height="50" alignment="center" verticalAlignment="center" backgroundImage="scenes" id="aGg-pZ-zUR">
+                                        <button width="30" height="30" alignment="center" verticalAlignment="center" backgroundImage="play.fill" catalog="system" id="aGg-pZ-zUR">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="showScenesController" destination="ubo-Yt-PPI" id="ge0-NE-GXr"/>
                                             </connections>
@@ -31,7 +32,8 @@
                                         <label alignment="center" verticalAlignment="center" text="Mes objets" id="uPY-R4-LCl">
                                             <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
                                         </label>
-                                        <button width="60" height="50" alignment="center" verticalAlignment="center" backgroundImage="domotic_devices" id="BEY-pa-Eg6">
+                                        <button width="30" height="30" alignment="center" verticalAlignment="center" backgroundImage="lightbulb.fill" catalog="system" id="BEY-pa-Eg6">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="showDevicesController" destination="ubo-Yt-PPI" id="QW5-Wg-Ux9"/>
                                             </connections>
@@ -122,12 +124,9 @@
                                             <label width="136" height="1" alignment="left" verticalAlignment="center" textAlignment="left" numberOfLines="3" id="SD3-TD-vQF">
                                                 <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                                             </label>
-                                            <button width="20" height="20" alignment="right" verticalAlignment="center" backgroundImage="play" catalog="system" id="ol3-Ua-da5">
+                                            <button width="20" height="20" alignment="right" verticalAlignment="center" enabled="NO" backgroundImage="play" catalog="system" id="ol3-Ua-da5">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="backgroundColor" red="0.29111556890000001" green="0.87413865329999996" blue="0.10483576059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="playDeviceAction" destination="dej-JV-J3y" id="wiJ-Mi-zSb"/>
-                                                </connections>
                                             </button>
                                         </items>
                                     </group>
@@ -240,11 +239,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="domotic_devices" width="512" height="512"/>
         <image name="homepod.2.fill" catalog="system" width="128" height="114"/>
         <image name="house.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="lightbulb.fill" catalog="system" width="115" height="128"/>
         <image name="play" catalog="system" width="119" height="128"/>
         <image name="play.fill" catalog="system" width="115" height="128"/>
-        <image name="scenes" width="512" height="512"/>
     </resources>
 </document>

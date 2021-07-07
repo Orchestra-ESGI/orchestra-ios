@@ -35,6 +35,18 @@ class DeviceRow: RootRowController{
         case "occupancysensor":
             iconName = "figure.walk"
             break
+        case "temperature":
+            iconName = "thermometer"
+            break
+        case "temperatureandhumidity":
+            iconName = "thermometer"
+            break
+        case "humidity":
+            iconName = "thermometer"
+            break
+        case "contact":
+            iconName = "lock.fill"
+            break
         default:
             iconName = "questionmark"
             break

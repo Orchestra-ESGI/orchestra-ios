@@ -40,7 +40,15 @@ extension HomeViewController{
             let deviceKey = (deviceCount).description
             var deviceDict = device.mapDeviceToString(position: deviceCount + 1)
             self.parseDeviceActionToGetName(device: device)
-            deviceDict["actions"] = self.actionsName
+            if(device.type != .Contact && device.type != .Occupancy &&
+                device.type != .Temperature && device.type != .Humidity &&
+                device.type != .TemperatureAndHumidity && device.type != .StatelessProgrammableSwitch &&
+                device.type != .Unknown){
+                deviceDict["actions"] = self.actionsName
+            }else{
+                deviceDict["actions"] = []
+            }
+            
             self.dataToTranferToWatch[deviceKey] = deviceDict
 
             print(device)

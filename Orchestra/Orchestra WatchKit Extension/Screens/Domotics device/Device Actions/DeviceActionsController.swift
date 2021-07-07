@@ -9,7 +9,8 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
+class DeviceActionsController: WKInterfaceController{
+    
     private let watchSessionManager = WatchSessionManager.shared
     private var sessionConnectivity: WCSession?
     
@@ -58,8 +59,11 @@ class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
     
     private func reloadTable(){
         listUtils.setUpList(wkTable: actionsTable, modelList: self.actionsList,
-                            rowId: "Device_Action_Row", type: DeviceActionRow.self,
-                            delegate: self)
+                            rowId: "Device_Action_Row", type: DeviceActionRow.self)
+    }
+    
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        self.launchActionAt(rowIndex)
     }
     
     private func setUpUI(){
@@ -80,7 +84,7 @@ class DeviceActionsController: WKInterfaceController, LaunchSceneDelegate{
         self.reloadTable()
     }
     
-    func launchSceneAt(_ position: Int) {
+    func launchActionAt(_ position: Int) {
         self.currentActionIndex = position
         playAction()
     }

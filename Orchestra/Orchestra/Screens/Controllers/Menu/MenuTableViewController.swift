@@ -35,6 +35,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
     let progressUtils = ProgressUtils.shared
     let notificationUtils = NotificationsUtils.shared
     let labelLocalization = ScreensLabelLocalizableUtils.shared
+    let notificationLoclaize = NotificationLocalizableUtils.shared
     let accountUtils = AccountUtils.shared
     let alertUtils = AlertUtils.shared
     
@@ -218,10 +219,11 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
             title: nil,
             message: self.labelLocalization.settingsAlertDeleteMessage,
             preferredStyle: .alert)
+        let loaderTitle = self.notificationLoclaize.undeterminedProgressViewTitle
         
         let deleteAccountAction = UIAlertAction(title: self.labelLocalization.settingsAlertDeleteActionTitle
                                                 , style: .destructive) { _ in
-            self.progressUtils.displayV2(view: self.view, title: "", modeView: .MRActivityIndicatorView)
+            self.progressUtils.displayV2(view: self.view, title: loaderTitle, modeView: .MRActivityIndicatorView)
             self.deleteAccount()
         }
         
