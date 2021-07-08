@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>742750324330-e84lk9f3t417l5kphph2ja7g3s5ri7lg.apps.googleusercontent.com</string>
+	<string>742750324330-nvcn00clllukk2282g09n2mgditj9n94.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.742750324330-e84lk9f3t417l5kphph2ja7g3s5ri7lg</string>
+	<string>com.googleusercontent.apps.742750324330-nvcn00clllukk2282g09n2mgditj9n94</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBrkhcCcMY3T2a9pBi9r9nNJ6F6qzmsWrk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,22 +13,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.nrv.orchestra</string>
+	<string>com.orchestra.nrv</string>
 	<key>PROJECT_ID</key>
 	<string>orchestra-5c305</string>
 	<key>STORAGE_BUCKET</key>
 	<string>orchestra-5c305.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:742750324330:ios:7c1c306380f0a4b862ac13</string>
+	<string>1:742750324330:ios:fa4804cd12bd51c162ac13</string>
 </dict>
 </plist>

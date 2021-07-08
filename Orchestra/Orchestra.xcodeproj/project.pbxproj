@@ -19,13 +19,15 @@
 		5E0E776E267E741A005F2264 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E776C267E741A005F2264 /* StringExtension.swift */; };
 		5E1A1789267FA9820084FB9F /* QRCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */; };
 		5E1A178B267FC55D0084FB9F /* QRCodeReaderOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */; };
-		5E29D7B32688CAD800325A9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */; };
 		5E29D7B82688E29300325A9F /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7B72688E29300325A9F /* MenuTableViewController.swift */; };
 		5E29D7BA2688EB6E00325A9F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7B92688EB6E00325A9F /* UIViewExtension.swift */; };
 		5E29D7BC26892B8400325A9F /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7BB26892B8300325A9F /* MailComposer.swift */; };
 		5E29D7BE2689305A00325A9F /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7BD2689305900325A9F /* UIDeviceExtension.swift */; };
 		5E29D7C12689326900325A9F /* GenericWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29D7C02689326900325A9F /* GenericWebViewController.swift */; };
 		5E2B10E4267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */; };
+		5E2F16F126966CC500B58F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */; };
+		5E2F16F226966CC500B58F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */; };
+		5E2F16F326966CC500B58F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */; };
 		5E44FF02268F552100CBB04F /* DeviceAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */; };
 		5E44FF03268F552100CBB04F /* DeviceAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */; };
 		5EC880D135DB3D4F8BAEBE07 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D8D5BA940522C2B3075FD3 /* Pods_Orchestra_WatchKit_Extension.framework */; };
@@ -216,7 +218,6 @@
 		5E0E776C267E741A005F2264 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		5E1A1788267FA9820084FB9F /* QRCodeReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewController.swift; sourceTree = "<group>"; };
 		5E1A178A267FC55C0084FB9F /* QRCodeReaderOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeReaderOverlay.swift; sourceTree = "<group>"; };
-		5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E29D7B42688D32800325A9F /* Orchestra.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orchestra.entitlements; sourceTree = "<group>"; };
 		5E29D7B72688E29300325A9F /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		5E29D7B92688EB6E00325A9F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		5E29D7BD2689305900325A9F /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		5E29D7C02689326900325A9F /* GenericWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericWebViewController.swift; sourceTree = "<group>"; };
 		5E2B10E3267F7F71003595CB /* SignupViewControllerRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerRxBindingExtension.swift; sourceTree = "<group>"; };
+		5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAlertTableViewCell.swift; sourceTree = "<group>"; };
 		5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceAlertTableViewCell.xib; sourceTree = "<group>"; };
 		63065A20263DA82000CBE30D /* LoginViewRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRxBindingExtension.swift; sourceTree = "<group>"; };
@@ -467,7 +469,7 @@
 		5E29D7B12688CAD800325A9F /* Google */ = {
 			isa = PBXGroup;
 			children = (
-				5E29D7B22688CAD800325A9F /* GoogleService-Info.plist */,
+				5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */,
 			);
 			path = Google;
 			sourceTree = "<group>";
@@ -1317,7 +1319,6 @@
 				63460F7126695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib in Resources */,
 				63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */,
 				63460F762669797900DECD35 /* SubmitedDeviceViewController.xib in Resources */,
-				5E29D7B32688CAD800325A9F /* GoogleService-Info.plist in Resources */,
 				63FFB0FB267510850040B4FC /* DevicesAvailableForSceneViewController.xib in Resources */,
 				5E0E7766267E6A35005F2264 /* Gilroy-ExtraBold.otf in Resources */,
 				635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */,
@@ -1334,6 +1335,7 @@
 				634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */,
 				639E43A2263F031D0042951E /* Slide.xib in Resources */,
 				632268382645A2170037672D /* AddHouseTableViewCell.xib in Resources */,
+				5E2F16F126966CC500B58F8E /* GoogleService-Info.plist in Resources */,
 				634F957D261B65920092C269 /* ObjectCollectionViewCell.xib in Resources */,
 				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
 				63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */,
@@ -1352,6 +1354,7 @@
 				636F4719260A5F8F001D8196 /* Interface.storyboard in Resources */,
 				5E0E7764267E6A35005F2264 /* Gilroy-Light.otf in Resources */,
 				5E0E7767267E6A35005F2264 /* Gilroy-ExtraBold.otf in Resources */,
+				5E2F16F226966CC500B58F8E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1361,6 +1364,7 @@
 			files = (
 				5E0E7765267E6A35005F2264 /* Gilroy-Light.otf in Resources */,
 				6352647D2687938C0018F5F6 /* Localizable.strings in Resources */,
+				5E2F16F326966CC500B58F8E /* GoogleService-Info.plist in Resources */,
 				636F472F260A5F93001D8196 /* Assets.xcassets in Resources */,
 				5E0E7768267E6A35005F2264 /* Gilroy-ExtraBold.otf in Resources */,
 			);

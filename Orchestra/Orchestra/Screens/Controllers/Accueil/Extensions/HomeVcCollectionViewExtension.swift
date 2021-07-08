@@ -165,7 +165,7 @@ extension HomeViewController: UICollectionViewDataSource{
             self.filtereHubDevices = self.hubDevices
         }else{
             self.filtereHubDevices = self.hubDevices.filter({ device in
-                return NSLocalizedString(self.rooms[indexPath.row].name ?? "", comment: "") == NSLocalizedString((device.room?.name)!, comment: "")
+                return NSLocalizedString(self.rooms[indexPath.row].name ?? "", comment: "") == NSLocalizedString((device.room?.name ?? ""), comment: "")
             })
         }
     }
