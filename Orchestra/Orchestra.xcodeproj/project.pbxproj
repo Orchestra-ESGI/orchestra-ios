@@ -30,10 +30,17 @@
 		5E2F16F326966CC500B58F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */; };
 		5E44FF02268F552100CBB04F /* DeviceAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */; };
 		5E44FF03268F552100CBB04F /* DeviceAlertTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */; };
+		5E74695E277840FB0074CBE3 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74695B277840FB0074CBE3 /* Slide.swift */; };
+		5E74695F277840FB0074CBE3 /* OrchestraPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74695C277840FB0074CBE3 /* OrchestraPager.swift */; };
+		5E746960277840FB0074CBE3 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E74695D277840FB0074CBE3 /* Slide.xib */; };
+		5E74696A277841380074CBE3 /* efficiency.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E746965277841370074CBE3 /* efficiency.json */; };
+		5E74696B277841380074CBE3 /* clarity.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E746966277841370074CBE3 /* clarity.json */; };
+		5E74696C277841380074CBE3 /* simplicity.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E746967277841370074CBE3 /* simplicity.json */; };
+		5E74696D277841380074CBE3 /* rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E746968277841370074CBE3 /* rocket.json */; };
+		5E74696E277841380074CBE3 /* sync.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E746969277841380074CBE3 /* sync.json */; };
 		5EC880D135DB3D4F8BAEBE07 /* Pods_Orchestra_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D8D5BA940522C2B3075FD3 /* Pods_Orchestra_WatchKit_Extension.framework */; };
 		63065A21263DA82000CBE30D /* LoginViewRxBindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63065A20263DA82000CBE30D /* LoginViewRxBindingExtension.swift */; };
 		63065A23263DAA0C00CBE30D /* SceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63065A22263DAA0C00CBE30D /* SceneViewModel.swift */; };
-		63065A2F263DFC5800CBE30D /* OrchestraPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63065A2E263DFC5800CBE30D /* OrchestraPager.swift */; };
 		630B1010261E2A9900B41804 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B100E261E2A9900B41804 /* SceneViewController.swift */; };
 		630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630B100F261E2A9900B41804 /* SceneViewController.xib */; };
 		630B1017261E2DDC00B41804 /* DeviceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */; };
@@ -103,11 +110,6 @@
 		636F472B260A5F91001D8196 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472A260A5F91001D8196 /* NotificationController.swift */; };
 		636F472D260A5F91001D8196 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F472C260A5F91001D8196 /* ComplicationController.swift */; };
 		636F472F260A5F93001D8196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636F472E260A5F93001D8196 /* Assets.xcassets */; };
-		637EFCD72694DACA001DE78C /* simplicity.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCD62694DACA001DE78C /* simplicity.json */; };
-		637EFCD92694E268001DE78C /* efficiency.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCD82694E268001DE78C /* efficiency.json */; };
-		637EFCDB2694E442001DE78C /* clarity.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCDA2694E441001DE78C /* clarity.json */; };
-		637EFCDD2694E4A6001DE78C /* sync.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCDC2694E4A6001DE78C /* sync.json */; };
-		637EFCDF2694E549001DE78C /* rocket.json in Resources */ = {isa = PBXBuildFile; fileRef = 637EFCDE2694E549001DE78C /* rocket.json */; };
 		637FB62C2615125000790735 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB62B2615125000790735 /* UsersViewModel.swift */; };
 		637FB6422615BCB900790735 /* NotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB6412615BCB900790735 /* NotificationUtils.swift */; };
 		637FB6712615BE8000790735 /* UserLocalizableUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FB6702615BE8000790735 /* UserLocalizableUtils.swift */; };
@@ -118,8 +120,6 @@
 		63885706262851DE002354FB /* HomeVcCollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63885705262851DE002354FB /* HomeVcCollectionViewExtension.swift */; };
 		6388571126288BDE002354FB /* HomeVcShakingCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388571026288BDE002354FB /* HomeVcShakingCellExtension.swift */; };
 		638AB8E6261494510020EE75 /* SceneServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638AB8E5261494510020EE75 /* SceneServices.swift */; };
-		639E43A2263F031D0042951E /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639E43A1263F031D0042951E /* Slide.xib */; };
-		639E43A4263F03450042951E /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639E43A3263F03450042951E /* Slide.swift */; };
 		63A8F50D265ACEA200BA02C8 /* DeviceActionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */; };
 		63A8F510265ADB0100BA02C8 /* ListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F50F265ADB0100BA02C8 /* ListUtil.swift */; };
 		63A8F512265ADC1B00BA02C8 /* WkListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */; };
@@ -228,9 +228,16 @@
 		5E2F16F026966CC500B58F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E44FF00268F552100CBB04F /* DeviceAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAlertTableViewCell.swift; sourceTree = "<group>"; };
 		5E44FF01268F552100CBB04F /* DeviceAlertTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceAlertTableViewCell.xib; sourceTree = "<group>"; };
+		5E74695B277840FB0074CBE3 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Slide.swift; path = Presentation/Slide.swift; sourceTree = "<group>"; };
+		5E74695C277840FB0074CBE3 /* OrchestraPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrchestraPager.swift; path = Presentation/OrchestraPager.swift; sourceTree = "<group>"; };
+		5E74695D277840FB0074CBE3 /* Slide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Slide.xib; path = Presentation/Slide.xib; sourceTree = "<group>"; };
+		5E746965277841370074CBE3 /* efficiency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = efficiency.json; path = Presentation/Lottie/efficiency.json; sourceTree = "<group>"; };
+		5E746966277841370074CBE3 /* clarity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = clarity.json; path = Presentation/Lottie/clarity.json; sourceTree = "<group>"; };
+		5E746967277841370074CBE3 /* simplicity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = simplicity.json; path = Presentation/Lottie/simplicity.json; sourceTree = "<group>"; };
+		5E746968277841370074CBE3 /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rocket.json; path = Presentation/Lottie/rocket.json; sourceTree = "<group>"; };
+		5E746969277841380074CBE3 /* sync.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = sync.json; path = Presentation/Lottie/sync.json; sourceTree = "<group>"; };
 		63065A20263DA82000CBE30D /* LoginViewRxBindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewRxBindingExtension.swift; sourceTree = "<group>"; };
 		63065A22263DAA0C00CBE30D /* SceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewModel.swift; sourceTree = "<group>"; };
-		63065A2E263DFC5800CBE30D /* OrchestraPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrchestraPager.swift; sourceTree = "<group>"; };
 		630B100E261E2A9900B41804 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		630B100F261E2A9900B41804 /* SceneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneViewController.xib; sourceTree = "<group>"; };
 		630B1015261E2DDC00B41804 /* DeviceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoViewController.swift; sourceTree = "<group>"; };
@@ -324,11 +331,6 @@
 		636F472E260A5F93001D8196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		636F4730260A5F93001D8196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		636F4731260A5F93001D8196 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		637EFCD62694DACA001DE78C /* simplicity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simplicity.json; sourceTree = "<group>"; };
-		637EFCD82694E268001DE78C /* efficiency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = efficiency.json; sourceTree = "<group>"; };
-		637EFCDA2694E441001DE78C /* clarity.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clarity.json; sourceTree = "<group>"; };
-		637EFCDC2694E4A6001DE78C /* sync.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sync.json; sourceTree = "<group>"; };
-		637EFCDE2694E549001DE78C /* rocket.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket.json; sourceTree = "<group>"; };
 		637FB62B2615125000790735 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		637FB6412615BCB900790735 /* NotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtils.swift; sourceTree = "<group>"; };
 		637FB6702615BE8000790735 /* UserLocalizableUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalizableUtils.swift; sourceTree = "<group>"; };
@@ -341,8 +343,6 @@
 		63885705262851DE002354FB /* HomeVcCollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcCollectionViewExtension.swift; sourceTree = "<group>"; };
 		6388571026288BDE002354FB /* HomeVcShakingCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVcShakingCellExtension.swift; sourceTree = "<group>"; };
 		638AB8E5261494510020EE75 /* SceneServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneServices.swift; sourceTree = "<group>"; };
-		639E43A1263F031D0042951E /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
-		639E43A3263F03450042951E /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		63A8F50C265ACEA200BA02C8 /* DeviceActionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceActionsController.swift; sourceTree = "<group>"; };
 		63A8F50F265ADB0100BA02C8 /* ListUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUtil.swift; sourceTree = "<group>"; };
 		63A8F511265ADC1B00BA02C8 /* WkListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WkListDelegate.swift; sourceTree = "<group>"; };
@@ -498,6 +498,29 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5E74695A277840F30074CBE3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5E7469642778412E0074CBE3 /* Lottie */,
+				5E74695C277840FB0074CBE3 /* OrchestraPager.swift */,
+				5E74695B277840FB0074CBE3 /* Slide.swift */,
+				5E74695D277840FB0074CBE3 /* Slide.xib */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		5E7469642778412E0074CBE3 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				5E746966277841370074CBE3 /* clarity.json */,
+				5E746965277841370074CBE3 /* efficiency.json */,
+				5E746968277841370074CBE3 /* rocket.json */,
+				5E746967277841370074CBE3 /* simplicity.json */,
+				5E746969277841380074CBE3 /* sync.json */,
+			);
+			name = Lottie;
+			sourceTree = "<group>";
+		};
 		630110B726936899001A39A9 /* Devices List */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,11 +558,11 @@
 		630459152629B67E00FA7F40 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E74695A277840F30074CBE3 /* Presentation */,
 				5E29D7BF2689325C00325A9F /* WebView */,
 				5E29D7B62688E26A00325A9F /* Menu */,
 				5E1A1787267FA96B0084FB9F /* QRCode-Reader */,
 				63D1A95326616B2C00DEDB96 /* Login - Signin */,
-				635DD50E261A177F001D1EFC /* Présentation Pager */,
 				634F9541261A33E80092C269 /* Accueil */,
 				630B100C261E2A2600B41804 /* Scenes */,
 				63D1A955266170E700DEDB96 /* Devices */,
@@ -653,18 +676,6 @@
 				63DB1C152645B173008B29D2 /* BottomSheetHeader.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		63365C272694D9BC002D579A /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				637EFCDE2694E549001DE78C /* rocket.json */,
-				637EFCDC2694E4A6001DE78C /* sync.json */,
-				637EFCDA2694E441001DE78C /* clarity.json */,
-				637EFCD82694E268001DE78C /* efficiency.json */,
-				637EFCD62694DACA001DE78C /* simplicity.json */,
-			);
-			path = Lottie;
 			sourceTree = "<group>";
 		};
 		633E7E392610CFE60094B148 /* Screens */ = {
@@ -847,18 +858,6 @@
 				635DD4E6261A0640001D1EFC /* SignupViewController.xib */,
 			);
 			path = Signup;
-			sourceTree = "<group>";
-		};
-		635DD50E261A177F001D1EFC /* Présentation Pager */ = {
-			isa = PBXGroup;
-			children = (
-				63365C272694D9BC002D579A /* Lottie */,
-				63065A2E263DFC5800CBE30D /* OrchestraPager.swift */,
-				639E43A1263F031D0042951E /* Slide.xib */,
-				639E43A3263F03450042951E /* Slide.swift */,
-			);
-			name = "Présentation Pager";
-			path = "Présentation";
 			sourceTree = "<group>";
 		};
 		635DD50F261A1799001D1EFC /* Ressources */ = {
@@ -1309,38 +1308,38 @@
 				5E44FF03268F552100CBB04F /* DeviceAlertTableViewCell.xib in Resources */,
 				635DD4E8261A0640001D1EFC /* SignupViewController.xib in Resources */,
 				6322682726458FB70037672D /* InfoPlist.strings in Resources */,
+				5E74696D277841380074CBE3 /* rocket.json in Resources */,
 				63D1A959266171EC00DEDB96 /* NewDevicePairingViewController.xib in Resources */,
-				637EFCDB2694E442001DE78C /* clarity.json in Resources */,
 				630B1011261E2A9900B41804 /* SceneViewController.xib in Resources */,
 				63FFB10226753FD60040B4FC /* CustomSceneActionTbvAlert.xib in Resources */,
 				634AF63E2622061300F6CBBE /* ObjectInfoTableViewCell.xib in Resources */,
 				634F9587261B67A80092C269 /* SceneCollectionViewCell.xib in Resources */,
 				635984C0266BDB6700F7A076 /* Device-Creation.json in Resources */,
+				5E74696E277841380074CBE3 /* sync.json in Resources */,
 				63460F7126695B6E00DECD35 /* DevicePhysicalConfigurationVC.xib in Resources */,
 				63D1A96126617F9800DEDB96 /* DeviceTableViewCell.xib in Resources */,
 				63460F762669797900DECD35 /* SubmitedDeviceViewController.xib in Resources */,
+				5E74696A277841380074CBE3 /* efficiency.json in Resources */,
 				63FFB0FB267510850040B4FC /* DevicesAvailableForSceneViewController.xib in Resources */,
 				5E0E7766267E6A35005F2264 /* Gilroy-ExtraBold.otf in Resources */,
 				635DD4B12618867E001D1EFC /* LoginViewController.xib in Resources */,
 				5E0E7763267E6A35005F2264 /* Gilroy-Light.otf in Resources */,
+				5E746960277840FB0074CBE3 /* Slide.xib in Resources */,
+				5E74696C277841380074CBE3 /* simplicity.json in Resources */,
 				63DB1C142645AA6D008B29D2 /* CurrentHouseTableViewCell.xib in Resources */,
 				634F9545261A340A0092C269 /* HomeViewController.xib in Resources */,
 				636F470E260A5F8F001D8196 /* LaunchScreen.storyboard in Resources */,
 				637FB6CF2615CEA600790735 /* Localizable.strings in Resources */,
-				637EFCD92694E268001DE78C /* efficiency.json in Resources */,
-				637EFCDF2694E549001DE78C /* rocket.json in Resources */,
 				636F470B260A5F8F001D8196 /* Assets.xcassets in Resources */,
 				63B4352F26680CA2004D12A7 /* DeviceCreationFormViewController.xib in Resources */,
-				637EFCDD2694E4A6001DE78C /* sync.json in Resources */,
 				634F958E261B6B260092C269 /* HeaderCollectionViewCell.xib in Resources */,
-				639E43A2263F031D0042951E /* Slide.xib in Resources */,
 				632268382645A2170037672D /* AddHouseTableViewCell.xib in Resources */,
 				5E2F16F126966CC500B58F8E /* GoogleService-Info.plist in Resources */,
 				634F957D261B65920092C269 /* ObjectCollectionViewCell.xib in Resources */,
 				63D1A9672661837000DEDB96 /* DevicesViewController.xib in Resources */,
 				63FFB10026751B8C0040B4FC /* ActionsForDeviceAvailableViewController.xib in Resources */,
+				5E74696B277841380074CBE3 /* clarity.json in Resources */,
 				63E84FB3262B73F400AA9558 /* SceneDetailViewController.xib in Resources */,
-				637EFCD72694DACA001DE78C /* simplicity.json in Resources */,
 				630B1018261E2DDC00B41804 /* DeviceInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1537,6 +1536,7 @@
 				5E0E776D267E741A005F2264 /* StringExtension.swift in Sources */,
 				5E29D7B82688E29300325A9F /* MenuTableViewController.swift in Sources */,
 				634F9586261B67A80092C269 /* SceneCollectionViewCell.swift in Sources */,
+				5E74695E277840FB0074CBE3 /* Slide.swift in Sources */,
 				63D235E32639C3DB00D2485F /* HomeViewModel.swift in Sources */,
 				638AB8E6261494510020EE75 /* SceneServices.swift in Sources */,
 				5E29D7C12689326900325A9F /* GenericWebViewController.swift in Sources */,
@@ -1555,17 +1555,16 @@
 				63DB1C132645AA6D008B29D2 /* CurrentHouseTableViewCell.swift in Sources */,
 				635DD4E7261A0640001D1EFC /* SignupViewController.swift in Sources */,
 				63526479268676890018F5F6 /* HomeVcWatchConnectivityExtension.swift in Sources */,
-				639E43A4263F03450042951E /* Slide.swift in Sources */,
 				5E44FF02268F552100CBB04F /* DeviceAlertTableViewCell.swift in Sources */,
 				636F4702260A5F8B001D8196 /* AppDelegate.swift in Sources */,
 				63B97CBB262B36E500F50E12 /* UITextFieldsExtensions.swift in Sources */,
 				635984C4266D673700F7A076 /* DeviceServices.swift in Sources */,
 				63D1A9662661837000DEDB96 /* DevicesViewController.swift in Sources */,
 				6388571126288BDE002354FB /* HomeVcShakingCellExtension.swift in Sources */,
+				5E74695F277840FB0074CBE3 /* OrchestraPager.swift in Sources */,
 				633E7E822610D7460094B148 /* ActionsSceneDto.swift in Sources */,
 				63D1A95B2661722400DEDB96 /* DeviceViewModel.swift in Sources */,
 				5E29D7BC26892B8400325A9F /* MailComposer.swift in Sources */,
-				63065A2F263DFC5800CBE30D /* OrchestraPager.swift in Sources */,
 				63E84FB2262B73F400AA9558 /* SceneDetailViewController.swift in Sources */,
 				63F2FECA269344B1004516EF /* UIButtonExtension.swift in Sources */,
 				63FFB0F62674ED3E0040B4FC /* UIImageViewExtension.swift in Sources */,
